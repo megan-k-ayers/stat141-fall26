@@ -1,0 +1,264 @@
+---
+title: "Lab 3"
+subtitle: "Math 141"
+author: "Your name here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: Tuesday, February 17th at 11:59pm on Gradescope
+
+In this lab, you will
+
+  - Demonstrate the Law of Large Numbers via simulation
+  - Assess the independence of events in data
+ - Implement different sampling strategies
+  - Interpret study findings from a visualization and reflect on generalizability
+  - Practice identifying different sampling strategies
+  
+
+## Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
+
+# Exercises
+
+### Exercise 1: Winfall
+
+In 2003, the Michigan Lottery had a game called Winfall. For each ticket, you would pick six numbers between 1 and 49. Michigan Lottery would draw a six numbers: if you had all six numbers on your ticket, you won the jackpot. If you guessed fewer numbers, you won smaller amounts. If nobody won the jackpot for a while, there was a "roll-down," where on the next drawing, as long as no one had a ticket with all six numbers, the jackpot cash flowed into the lesser tiers of winners. Roll-downs happened every six weeks or so, and in these cases, tickets with 5 winning numbers won \$25,000, tickets with 4 winning numbers won \$1000, and tickets with 3 winning numbers won \$50.  
+
+A man named Jerry Selbee discovered a flaw (or, opportunity) in the math behind this roll-down structure. Mathematically, we **expect** the average winnings per ticket in this setup to be about \$2.31 (we'll learn why and what this formally means later in the semester). Importantly, a ticket only cost \$1, meaning that on average, a ticket-buyer should expect to earn $1.31! For this problem, imagine we're in Jerry's shoes and deciding how to use this information.
+
+(*I am not claiming it is a good idea to go buy a bunch of lottery tickets! This particular instance was an anomaly that was quickly corrected when discovered by the Michigan Lottery. Read more about it in this article: https://highline.huffingtonpost.com/articles/en/lotto-winners/, or watch the movie based on it.*)
+
+The function below simulates the lottery process. For a given number of tickets you purchase (`n`), it returns your profit across all tickets (net winnings - cost of the tickets). This code uses several R concepts we haven't learned, so don't worry if they are unfamiliar - feel free to treat it like a black box.
+
+```{r}
+
+buy_tickets <- function(n) {
+  
+  # Draw our n tickets (assuming random selection of the numbers)
+  your_tickets <- replicate(n, sample(1:49, 6), simplify = FALSE)
+  
+  # Draw the winning ticket
+  winning_ticket <- sample(1:49, 6)
+
+  # For each of our n tickets, calculate how many of its numbers are in the
+  # winning ticket
+  wins <- sapply(your_tickets, function(a) sum(a %in% winning_ticket))
+  
+  # If 3 numbers are in the winning ticket, a ticket wins $50. If 4 numbers are
+  # in the winning ticket, a ticket wins $1000. If 5 numbers are in the winning
+  # ticket, a ticket wins $25000. Otherwise, we win $0. We
+  # subtract the price of the tickets from our winnings to get our profit.
+  profit <- sum(wins == 3) * 50 + sum(wins == 4) * 1000 +
+    sum(wins == 5) * 25000 - n
+  
+  return(profit)
+  
+}
+
+```
+
+
+**a. Intuitively, do you think you are likely to make money by buying one ticket? What if you buy 10, or 100?** Run `buy_tickets(n)` in the console repeatedly for each value `n` to get an anecdotal sense of how often you'll win money for buying `n` tickets.  
+
+-------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+**b.** The number of possible tickets is 13983816. The number of possible tickets with exactly 3 winning numbers is 246820. The number of possible tickets with exactly 4 winning numbers is 13545. The number of possible tickets with exactly 5 winning numbers is 258. **What is the probability of randomly selecting a ticket that wins something?**
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
+
+
+**c.** Suppose you and a group of friends decides to test a few ticket-buying strategies, with each strategy differing simply on the number of tickets you buy for each lottery day: 1 ticket, 100 tickets, 500 tickets, 2500 tickets, or 5000 tickets. Being patient people, you test each strategy during 200 different lottery days.
+
+The chunk below loads a data frame with the simulated profit per ticket results from testing these strategies (this is essentially a more systematic version of what you did in the console in part a). Each case of the data frame represents a single test of one of the strategies (ex. buying 100 tickets for one lottery day). **Using this data frame, create a new column that indicates whether or not your group made money for that day and strategy. Then, create a barplot showing how often each strategy made or lost money.** Choose a type of barplot that makes comparison easy across the different strategies.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+profit_df <- read.csv("data/winfall_jackpot_sim.csv")
+profit_df$strategy <- factor(profit_df$strategy,
+                             levels = c("1 ticket(s)", "100 ticket(s)",
+                                        "500 ticket(s)", "2500 ticket(s)",
+                                        "5000 ticket(s)"))
+head(profit_df)
+
+### Your code below
+
+
+
+
+```
+
+
+**d.** For each of the ticket buying strategies, what is the minimum and maximum possible profit per ticket? 
+
+-------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+**e.** Jerry figured out that *in the long run*, ticket buyers should make money from playing Winfall on roll-down days. **What do you observe in the barplot in part (c)? How does this relate to the law of large numbers?** 
+
+*Fun fact: The first time Jerry tested his idea out, he bought 2200 tickets, and lost $50 (an average per ticket profit of -\$0.023). Next time he bought 8000 tickets, and won $15,700 (an average per ticket profit of \$0.963).*
+
+-------------------------------------------------------------------------------
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+### Exercise 2: Titanic
+
+In this exercise we will explore the data set loaded below, which includes information about all of the passengers who were aboard the RMS Titanic when it sank. 
+
+```{r}
+titanic <- read.csv("data/Titanic-Dataset.csv")
+head(titanic)
+```
+
+
+**a.** Use R and probability rules to determine if survival was independent of gender. **Show the values of the probabilities that you calculate to make your argument. Would you expect these variables to be independent?**
+
+*Hint: If you get stuck on data wrangling code, first try writing pseudo-code like at the end of lecture on 2/4. Then, identify which of the dplyr functions can help you accomplish each step.*
+
+-------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+**b.** Use R and probability rules to determine if survival was independent of being in first class or not. **Show the values of the probabilities that you calculate to make your argument. Would you expect these variables to be independent?**
+
+-------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+**c.** Suppose we did not have access to this data set, and needed to estimate the overall survival rate by sampling names from the passenger list and following up with relatives. **In the chunk below, use `sample_n()` to draw a simple random sample of 100 passenger IDs, and use these to estimate the survival rate.**
+
+-------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+**d.** Instead, now perform a stratified sample based on these variables, where we sample 20 passengers within each gender x class category (you can do this by combining `group_by` and `sample_n` from `dplyr`). **What is the survival rate overall in this sample, and within each strata of the sample? Why might this sampling strategy be preferred to simple random sampling?**
+
+-------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+### Exercise 3: Bias in Course Evaluations
+
+In Exercises 3 and 4, you will explore studies that ask the question "Is there gender bias in course evaluations?"
+
+Let's start with the interactive data visualization called ["Gendered Language in Teacher Reviews"](https://benschmidt.org/profGender). Use the tool to explore at least one positive word (e.g., "intelligent", "engaging") and at least one negative word (e.g., "bossy", "mean").
+
+**a.**  Discuss the story the visualization tells, and describe the data visualization choices that were made to do so.
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
+
+
+**b.**  Are the data used to create the data visualization from an observational study or an experiment? **Explain your reasoning.**
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
+
+
+**c.**  Would you be comfortable generalizing these findings about gendered language in teaching evaluations to all college students in the US? **Explain your reasoning.**
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+
+### Exercise 4: Voter ID Laws and Sampling
+
+Back in 2014, researchers investigated the impact of voter ID laws on potential voters in the midterm elections. The study involved three locations: Philadelphia, Northern Virginia, and Dallas County, Texas. Each location is divided up into voting precincts and each precinct has a polling site.
+
+In this problem, we will describe the data collection method of two locations and you will practice tying these methods to specific sampling techniques.
+
+**a.**  For Philadelphia, 30 precincts were randomly selected from all precincts in Philadelphia. For each selected precinct, Swarthmore College students interviewed every 3rd person leaving the polling site over a randomly selected hour. **Does this sampling design use cluster sampling, stratified sampling, neither, or both? Justify your answer.**
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+**b.**  For Dallas County, each polling site was categorized by the time of day interviews would take place (morning/mid-day/evening) and whether voters at that site were projected to have an overall high or low propensity of voting. Within each category, a random sample of precincts were selected and Southern Methodist University students interviewed every person leaving those polling places at the particular time of day (morning/mid-day/evening). **Does this sampling design use cluster sampling, stratified sampling, neither, or both? Justify your answer.**
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
+
+
+**c.**  Why didn't the researchers just take a simple random sample of names (i.e., from a voter registration list) and then conduct exit polls on those people? Justify your answer.
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
+
+
+**d.**  Suppose that for a particular state, precincts are known to be relatively heterogeneous; e.g., precincts tend to have different social demographics. **Would cluster sampling or stratified sampling be the recommended strategy for this state? Justify your answer.**
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
+

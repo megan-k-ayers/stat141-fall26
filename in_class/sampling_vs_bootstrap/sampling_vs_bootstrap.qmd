@@ -1,0 +1,285 @@
+---
+title: "Sampling Distributions and Bootstrap Distributions"
+author: "Math 141"
+format: pdf
+---
+
+<style type="text/css">
+  body{
+  font-size: 9pt;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,warning = FALSE,message = FALSE,fig.align = 'center')
+set.seed(1)
+library(tidyverse)
+library(moderndive)
+```
+
+
+In this worksheet, we'll consider the difference between **sampling distributions** and **bootstrap distributions**. As a brief reminder:
+
++ In all cases, we are interested in estimating an unknown population parameter, $p$ using a sample statistic, $\hat p$. In the real world, we calculate $\hat p$ using data from a sample of size $n$. We would like to understand how close our estimate, $\hat p$, might be to the unknown truth, $p$.
+
++ A **sampling distribution** represents the distribution of all possible statistics (which could have come from every possible sample of size $n$ from our *population*). We can't actually calculate a sampling distribution in the real world, because we only have one sample!
+
++ A **bootstrap distribution** is a practical attempt to understand sampling variability given our single sample. Instead of showing the distribution of statistics from every possible sample from the population, it shows the distribution of statistics from every possible sample of size $n$ from our *sample*. 
+
+## Data: A Deck of Cards
+
+Yet again, we'll use the example of sampling from a deck of cards. As before, let's count:
+  
+  - Aces as 1
+  
+  - Jacks as 11
+  
+  - Queens as 12
+  
+  - Kings as 13
+  
+Below is code to create the "deck" virtually.
+
+```{r, out.width="60%", fig.asp=0.5}
+deck <- data.frame(cards = rep(1:13, each=4))
+```
+
+```{r, out.width="60%",fig.asp=0.5,echo=FALSE}
+ggplot(deck, aes(cards)) + geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = 1:13) + theme_bw() +
+  labs(x = "Cards", y = "Count", title = "Fig. 1: Population Distribution")
+```
+
+### Q1: In Figure 1, why is the height of each bar 4? Describe this distribution.
+
+
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+\newpage
+
+
+## Sampling Distributions
+
+When creating sampling distributions and bootstrap distributions, we will need a way to sample (from a population or a sample). With cards, it's possible to physically shuffle the deck and draw a "random sample". It's also possible to draw samples with code! Moving forward, we'll often use the `rep_sample_n()` function in R to sample. Here's an example:
+
+```{r}
+set.seed(1) # ensures we all get the same "random" sample
+single_sample <- deck %>% rep_sample_n(size = 10, replace = FALSE, reps = 1)
+single_sample$cards
+```
+
+The code above took our `deck`, and took a simple random sample of `size = 10`. The additional arguments `replace = FALSE` means that we're sampling *without replacement*, and `reps = 1` means we took a single sample from the deck! We then print the `cards` in our `single_sample`.
+
+### Q2: Based on the code, which cards are in our sample? Use the cards to calculate our sample statistic (the sample mean) based on this sample.
+
+
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+
+\vspace{6em}
+
+The following code creates a ("snapshot" of the) sampling distribution:
+
+```{r, out.width="60%",fig.asp=0.5}
+deck %>% 
+  rep_sample_n(size = 10, 
+               replace = FALSE, reps = 50000) %>%
+  group_by(replicate) %>% 
+  summarize(x_bar = mean(cards)) %>%
+  ggplot(aes(x = x_bar)) + 
+  geom_histogram(binwidth = 0.2) + theme_bw() +
+  labs(x = "Mean Card Value from Many Samples",
+       title = "Fig. 2: Sampling Distribution")
+```
+
+### Q3: Based on the code above, how many cards are in each sample? How many different samples did we take to create the sampling distribution in Figure 2?
+
+
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+### Q4: Figure 3 (below) displays sampling distributions for samples of size n=10, n=20, and n=40. How are they similar and how are they different? Why do larger samples have sampling distributions with less variability?
+
+
+```{r, out.width = "100%", fig.asp = 0.4, echo = FALSE}
+g1 <- deck %>%
+  rep_sample_n(size = 10,
+               replace = FALSE,
+               reps = 100000) %>%
+  group_by(replicate) %>%
+  summarize(x_bar = mean(cards)) %>%
+  ggplot(aes(x = x_bar)) + geom_histogram(binwidth = 0.2) + theme_bw() +
+  scale_y_continuous(labels = c()) +
+  labs(
+    x = "Mean Card Value",
+    y = element_blank(),
+    title = "Fig. 3",
+    subtitle = "n=10"
+  ) +
+  scale_x_continuous(breaks = 1:13, limits = c(1, 13))
+
+g2 <- deck %>%
+  rep_sample_n(size = 20,
+               replace = FALSE,
+               reps = 100000) %>%
+  group_by(replicate) %>%
+  summarize(x_bar = mean(cards)) %>%
+  ggplot(aes(x = x_bar)) + geom_histogram(binwidth = 0.1) +
+  scale_y_continuous(labels = c()) +
+  labs(
+    x = "Mean Card Value",
+    y = element_blank(),
+    title = "",
+    subtitle = "n=20"
+  ) + theme_bw() +
+  scale_x_continuous(breaks = 1:13, limits = c(1, 13))
+g3 <- deck %>%
+  rep_sample_n(size = 40,
+               replace = FALSE,
+               reps = 100000) %>%
+  group_by(replicate) %>%
+  summarize(x_bar = mean(cards)) %>%
+  ggplot(aes(x = x_bar)) + geom_histogram(binwidth = 0.05) +
+  labs(
+    x = "Mean Card Value",
+    y = element_blank(),
+    title = "",
+    subtitle = "n=40"
+  ) + theme_bw() +
+  scale_y_continuous(labels = c()) +
+  scale_x_continuous(breaks = 1:13, limits = c(1, 13))
+gridExtra::grid.arrange(g1, g2, g3, nrow = 1)
+```
+
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+
+
+\newpage
+
+
+
+
+
+## Bootstrap Distributions
+
+The following code creates a single "bootstrap sample".
+
+```{r}
+bootstrap_sample <- single_sample %>% rep_sample_n(size = 10, replace = TRUE,
+                                                   reps = 1)
+bootstrap_sample$cards
+```
+
+### Q5: In the code above, what are we sampling from (the population, or the single sample)? Are we sampling with replacement? What's our sample size? 
+
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+### Q6: How would your answers to Q5 be different if we were talking about sampling for a sampling distribution?
+
+
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+\newpage
+
+
+Next, we write code to calculate a bootstrap distribution:
+
+```{r out.width="80%",fig.asp=0.5}
+single_sample %>% ungroup() %>% select(cards) %>%
+  rep_sample_n(size = 10, replace = TRUE, reps = 20000) %>%
+  group_by(replicate) %>% 
+  summarize(x_bar = mean(cards)) %>%
+  ggplot(aes(x = x_bar)) + geom_histogram(binwidth = 0.1) +
+  labs(x = "Mean Card Value Based on Samples of Size 10",
+       title = "Fig. 4: Bootstrap Distribution") + 
+  theme_bw() +
+  scale_x_continuous(breaks = 1:13, limits = c(1, 13))
+```
+
+### Q7: Based on the code above, how many bootstrap samples are we taking to create the bootstrap distribution?
+
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+
+### Q8: Which sampling distribution from Figure 3 looks most like the bootstrap distribution in Figure 4? How specifically is it similar or different? Consider the shape, center, and spread of each distibution.
+
+
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+
+
+### Q9: Thinking more generally, compare and contrast sampling distributions and bootstrap distributions.
+
+
+
+
+
+**************************************************
+
+
+
+
+**************************************************
+

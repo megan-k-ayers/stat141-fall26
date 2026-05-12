@@ -1,0 +1,217 @@
+---
+title: "Syllabus"
+subtitle: |
+  STAT 141: Introduction to Probability and Statistics \
+  Reed College \ 
+  Fall 2026
+author: "Professor Megan Ayers"
+format:
+  html: default
+  pdf: default
+editor: 
+  mode: source
+---
+
+## Useful Information
+
+**Lecture and Lab Instructor**: Megan Ayers (she/her) 
+
+-   Email: [meganayers@reed.edu](mailto:meganayers@reed.edu)
+-   Office hours: See [Moodle](XXX) for weekly office hour times and locations. I am also happy to meet by appointment if you have conflicts during the scheduled times. Please [email me](mailto:meganayers@reed.edu) or send me a Slack message to find a time to meet. 
+
+**Course Assistants**: We have course assistants for STAT 141 this semester. A course assistant will be present at each lab section. Further, each course assistant will hold office hours during the week. Times and locations of course assistant office hours can be found on [Moodle](XXX). Feel free to go to any course assistant's office hours, even if they are not the course assistant for your lab section. 
+
+
+**Links and course resources**:
+
+The course website, [link-here](link-here), includes information on the course, lecture slides, public course materials, and links to all other course resources:
+
+-   Textbooks (links on this Syllabus page)
+-   RStudio Server, for working on homework and lab assignments
+-   Slack, for course correspondence,
+-   Gradescope, for turning in assignments, and
+-   [Moodle](XXX), (sparingly) for information about meetings and private course materials
+
+
+**Meeting Times**:
+
+We'll have a lecture-style meeting three times a week, and a lab meeting once a week. Please see the course [Moodle](XXX) page or the [Reed schedule of classes](https://solar.reed.edu/class_schedule/) to verify the times and locations for your section.
+
+
+**Communication**:
+I am most easily reached over email on weekdays between 9am and 5pm. I will do my best to answer your email within one school day. *For urgent matters, please email me rather than sending a Slack message.* For non-urgent course-related questions, particularly questions that fellow classmates or course assistants may know the answer to, your question may be answered more quickly in a public channel on Slack, which I will also monitor.
+
+
+## Learning Outcomes
+
+In this course, you will learn how to think critically with data by engaging in the entire data analysis process through theory, computation, and practice. While most of our time will be spent learning techniques related to the *Exploration and Visualization* step and the *Modeling and Inference* step, you will also practice the other important components of analyzing data. Furthermore, since computation is an integral part of modern statistical work, you will learn to write `R` code -- leveraging the `RStudio` user interface -- to analyze data and will become familiar with several tidyverse `R` packages. You will also develop a reproducible and shareable workflow by using `Quarto` documents for all analyses.
+
+By the end of the course, you will have improved your data acumen and your ability to think statistically. More concretely, you will be better able to accomplish the following tasks, which have been broken down by steps of the data analysis workflow:
+
+![](slides/img/DAW.jpeg){width=65% fig-align='center'}
+
+**Question formulation:**
+
+-   Translate a research problem into a set of questions that can be answered with data.
+-   Formulate data questions as measurable statements about statistics and parameters.
+
+**Data acquisition:**
+
+-   Determine the necessary data to conduct analyses.
+-   Reflect on how design structures and data collection impact potential conclusions.
+-   Identify potential ethical concerns surrounding data collection and data privacy.
+
+**Data wrangling:**
+
+-   Explore datasets to determine what wrangling may be required (e.g., removing missing values, filtering out variables or observations, collapsing categories of a categorical variable).
+-   Apply basic data wrangling operations.
+
+**Exploration and Visualization:**
+
+-   Understand key principles of designing and creating effective data visualizations.
+-   Create graphs from data, and appropriately draw conclusions from graphs.
+-   Compute and interpret summary statistics.
+
+**Modeling and Inference:**
+
+-   Understand and be able to explain key probabilistic and inferential concepts, such as, sampling, variability, random variables, distributions, confidence, and significance.
+-   Use probability theory and data to recognize patterns and associations between variables.
+-   Create and assess the appropriateness of linear regression models for a given problem and set of data.
+-   Appropriately apply and draw inferences from a statistical analysis using both simulation-based and theory-based methods, including quantifying and interpreting the uncertainty in model estimates.
+-   Consider the ethical implications of various modeling practices.
+
+**Communicating Findings:**
+
+-   Develop a reproducible workflow using Quarto documents.
+-   Interpret and communicate results of statistical analyses effectively for both a statistical and a non-statistical audience.
+-   Be able to reflect on the data involved in an analysis and show a curiosity for other ways of examining and thinking about the data.
+
+
+
+
+
+## Learning Materials & Tools
+
+**Textbooks**: We'll use three textbooks for our course, all of which are freely available online: 
+
+-   [Statistical Inference via Data Science: A ModernDive into R and the tidyverse, Second Edition](https://moderndive.com/v2)
+    - Reading abbreviation: **MD**
+
+-   [Introduction to Modern Statistics, Second Edition](https://www.openintro.org/book/ims/)
+    - Reading abbreviation: **IMS**
+
+-   [OpenIntro Statistics, Fourth Edition](https://www.openintro.org/book/os/)
+    - Reading abbreviation: **OI**
+
+
+**Technologies (R, RStudio, and Quarto)**: R is a free and open source programming language, RStudio is an Integrated Development Environment (IDE) which allows for streamlined use of the R programming language, and Quarto is a markdown language that allows for reproducible documents that include R code, text, images, and much more! We will access these technologies via the [RStudio Server](https://rstudio.reed.edu/) for this course. A laptop that can access the internet and use the RStudio Server is required for this course.
+
+\textbf{Please let me know ASAP if you do not have access to a personal computer!}
+
+
+
+
+
+## Assignments, activities, and exams
+
+We'll have a variety of assignments, activities, and exams for this course. In particular: 
+
+-   **Lab assignments**:
+    - Almost every week, we will have a lab assignment. The lab assignments will be assigned on Thursday at lab time and **due the following week on Tuesday by 11:59pm**. 
+    - Lab assignments will be made available for download from the course website before each lab. 
+    - Lab assignments will mostly include computational questions and involve R, but may also include theoretical questions.
+    - These lab assignments will be turned in via Gradescope. 
+
+-   **Homework assignments** and **readings**:
+    - Almost every week, we will have a homework assignment. Homework assignments will be posted on the course website on Fridays. 
+    - These will be turned in via Gradescope by **11:59pm on Friday of the following week**, unless otherwise instructed.
+    - Homework assignments will mostly include theoretical and conceptual questions, but may include some computational questions involving R. 
+    - Almost every class, we will have an assigned reading to complete before the beginning of each class. Homework assignments may refer to parts of the reading.
+
+    
+-   **In-class activities**:
+    - During lecture and lab, we will include some in-class activities. Including but not limited to: 
+        - group activities,
+        - independent activities,
+        - low-stakes quizzes.
+    
+-   **Exams**:
+    - We'll have a midterm exam and final exam for this course. Each exam will consist of an in-person written exam. 
+    - The midterm exam will take place on Thursday 3/12 during lab time. You will have 60 minutes to complete the exam. 
+    - The final exam slot is now officially scheduled for:
+        - *S01, S02, and S03*: Monday, May 11 from 6-9pm
+        - *S11, S12, and S13*: Thursday, May 14 from 6-9pm
+    - No late exams will be accepted.
+
+
+
+## Attendance
+
+Being actively present in lectures and labs is very important in this course. This requires attendance, and can look like:
+
+-   Active listening
+-   Contributing to small group or classroom level discussions
+-   Contributing to discussions on Slack.
+
+Missing more than 4 lectures or 1 lab will have a small, accumulating impact on your grade. Being consistently late to class, being consistently distracted during class (ex. using cell phone or doing homework during lecture), or consistently not participating in group work will have a negative impact on your participation grade.
+
+
+
+## Distribution Requirements
+
+This course can be used towards your **Group III, “Natural, Mathematical, and Psychological Science”** requirement. It accomplishes the following learning goals for the group:
+
+1. Use and evaluate quantitative data or modeling, or use logical/mathematical reasoning to evaluate, test or prove statements.
+2. Given a problem or question, formulate a hypothesis or conjecture, and design an experiment, collect data or use mathematical reasoning to test or validate it.
+3. Collect, analyze, and interpret data.
+
+This course does <u>not</u> satisfy the "primary data collection and analysis" requirement.
+
+
+
+## Course Climate
+
+We expect everyone in this class to strive to foster a learning environment that is equitable, inclusive, and welcoming. If you experience any barriers to learning, please come to Professor Megan Ayers or a college administrator with your concerns.
+
+**Code of Conduct**:
+
+We expect all members of Math 141 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+
+We expect everyone to act and interact in ways that contribute to an open, welcoming, inclusive, and healthy community of learners. You can contribute to a positive learning environment by demonstrating empathy and kindness, being respectful of differing viewpoints and experiences, and giving and gracefully accepting constructive feedback.[^1]
+
+[^1]: This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html), version 2.0.
+
+
+
+## Policies
+
+**Late work policy**:
+
+To help with various circumstances (expected and unexpected), you have up to 4 additional lab extensions days and 4 additional homework extension days that you can use as you need, no questions asked. You are free to distribute the extension days to different assignments as you wish (e.g., 1 additional day for 4 labs, 4 additional days for 1 lab) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). Lab extension days may only be used for lab assignments, and homework extension days may only be used for homework assignments. When you use extension days, it may take longer for you to receive feedback on that assignment. 
+
+If you need to use any extension days, send Megan an **email** (not a Slack message) with the title: "Math 141 Extension Days" that includes the assignment that you are using an extension for, and the number of day(s) used. 
+
+If you have used all of your extension days and submit an additional assignment late, you may still submit your assignment (via Gradescope, or email if the Gradescope assignment is closed) for a grade worth up to 50% of the maximum possible grade of the original assignment. For example, if a lab is worth 100 points, and you submit it late without using extension days, your maximum possible grade for that assignment will be 50 points. It may take several weeks for assignments to be graded in these cases, and detailed feedback will not be given.
+
+
+**Collaboration Policy and Academic Honesty**:
+
+Working with your classmates on difficult and interesting problems can not only help your learning, but also help you get to know each other! Therefore, I highly encourage you to collaborate on assignments, but, every piece of work you do must be your own. Copying and pasting other people’s work or code is not acceptable. The Honor Principle must guide your conduct in this class. 
+
+If you choose to collaborate with a classmate, **you must add their name to the top of your assignment**, and list them as a collaborator, e.g.:
+
+Collaborator(s): Michael Pearce, Lenny Wainstein, Grayson White
+
+*But what is collaboration?*:
+
+For Math 141, collaboration can look like: working with classmates together on a given problem, doing scratch work, helping each other get un-stuck on a part of a problem, and even coming to a solution. However, you **must** write up your own problem solutions individually and cannot copy other's solutions (even those who you have collaborated with). Further, copying code from a collaborator, classmate, or generative AI tool (see the following section) is strictly prohibited. 
+
+
+**AI Policy**:
+
+Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. If you have questions about whether a tool is allowed for this course, ask the Instructor before using it.
+
+
+## Acknowledgements
+
+Thank you to Grayson White for allowing me to largely reuse the website structure he developed for Math 141, and many of the related course materials. Thank you to Michael Pearce and Lenny Wainstein, whose previous Math 141 course materials have also been adapted for this course.

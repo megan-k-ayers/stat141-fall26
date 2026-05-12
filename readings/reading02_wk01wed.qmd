@@ -1,0 +1,14 @@
+---
+date: 1/28/26
+editor: source
+---
+
+# Math 141: Readings for {{< meta date >}}
+
+
+Before coming to lecture today, please read the following material: 
+
+-   MD 2.1 - 2.3 (except 2.1.3 and 2.1.4)
+
+**Note:** These sections have a couple mentions of R code and the `ggplot2` R package. Don't feel that you need to run the code when instructed - just follow along with the provided text. It's okay if references to R code are unfamiliar to you - focus on the overall discussion about the data being presented and visualized.
+

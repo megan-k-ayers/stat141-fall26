@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>STAT 141</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./assets/favicon.ico" rel="icon">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-4a8cb1f038451bc38072230142d42b88.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-267325f7005b9cb1abd05251d8edec78.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-schedule-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-week','listing-days',{ data: ['index'] },{ data: ['categories'] }],
+      
+      searchColumns: ["listing-week","listing-days"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-schedule-listing'] = new List('listing-schedule-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./syllabus.html"> 
+<span class="menu-text">Syllabus</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./office_hours.html"> 
+<span class="menu-text">Office Hours</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://math141sp26.slack.com" title="" class="quarto-navigation-tool px-1" aria-label="Slack"><i class="bi bi-chat-dots-fill"></i></a>
+    <a href="https://rstudio.reed.edu/" title="" class="quarto-navigation-tool px-1" aria-label="RStudio Server"><i class="bi bi-r-circle-fill"></i></a>
+    <a href="https://www.gradescope.com/courses/1225246" title="" class="quarto-navigation-tool px-1" aria-label="Gradescope"><i class="bi bi-bar-chart-fill"></i></a>
+    <a href="https://moodle.reed.edu/course/view.php?id=6317" title="" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-door-closed-fill"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+<!-- main -->
+
+
+
+
+<div class="content-block">
+<div class="grid">
+<div id="banner" class="g-col-12 g-col-md-12" style="margin: 3em 1em 0em 1em">
+<div class="banner-text">
+<p>Introduction to Probability and Statistics</p>
+</div>
+<p><span class="smallcaps">STAT 141 Reed College, Fall 2026</span></p>
+</div>
+</div>
+</div>
+<div class="content-block">
+<div id="listing-schedule-listing" class="quarto-listing quarto-listing-container-custom">
+
+  <h4>Week 1</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Jan 26</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Course Introduction &amp; Statistical Thinking</span><br>
+    
+      
+        
+          <a href="./readings/reading01_wk01mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture01_wk01mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Jan 28</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Data Visualization Introduction</span><br>
+    
+      
+        
+          <a href="./readings/reading02_wk01wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture02_wk01wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Jan 29</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Introduction to R, RStudio, and Quarto</span><br>
+    
+      
+        
+          <a href="./readings/reading03_wk01thu.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./readings/lab_instr_01.html" class="btn btn-success btn-sm">Lab Instructions</a>
+        
+      
+        
+          <a href="labs/lab01.zip" class="btn btn-success btn-sm">Download Lab</a>
+        
+      
+        
+          <a href="./slides/labslides01.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Jan 30</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Data Visualization: the 5 Named Graphs with <code>ggplot2</code></span><br>
+    
+      
+        
+          <a href="./readings/reading04_wk01fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture03_wk01fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="hw/hw01.zip" class="btn btn-success btn-sm">Download HW01</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 2</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Feb 2</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Summary Statistics</span><br>
+    
+      
+        
+          <a href="./readings/reading05_wk02mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture04_wk02mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Feb 4</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Data Wrangling</span><br>
+    
+      
+        
+          <a href="./readings/reading06_wk02wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture05_wk02wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Feb 5</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Data Visualization</span><br>
+    
+      
+        
+          <a href="./readings/reading07_wk02thu.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="labs/lab02.zip" class="btn btn-success btn-sm">Download Lab</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Feb 6</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Probability I: Introduction and LLN</span><br>
+    
+      
+        
+          <a href="./readings/reading08_wk02fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture06_wk02fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="hw/hw02.zip" class="btn btn-success btn-sm">Download HW02</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 3</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Feb 9</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Probability II: Properties and Rules</span><br>
+    
+      
+        
+          <a href="./readings/reading09_wk03mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture07_wk03mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Feb 11</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Data Collection and Sampling</span><br>
+    
+      
+        
+          <a href="./readings/reading10_wk03wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture08_wk03wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Feb 12</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Data Sampling and Summary Statistics</span><br>
+    
+      
+        
+          <a href="labs/lab03.zip" class="btn btn-success btn-sm">Download Lab</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Feb 13</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Study Design</span><br>
+    
+      
+        
+          <a href="./readings/reading11_wk03fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture09_wk03fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="hw/hw03.zip" class="btn btn-success btn-sm">Download HW03</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 4</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Feb 16</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Linear Models I: Introduction</span><br>
+    
+      
+        
+          <a href="./readings/reading12_wk04mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture10_wk04mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Feb 18</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Linear Models II: Accuracy and Assumptions</span><br>
+    
+      
+        
+          <a href="./readings/reading13_wk04wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture11_wk04wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Feb 19</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Linear Regression</span><br>
+    
+      
+        
+          <a href="labs/lab04.zip" class="btn btn-success btn-sm">Download Lab</a>
+        
+      
+        
+          <a href="labs/slr_demo.zip" class="btn btn-success btn-sm">Demo File</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Feb 20</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Linear Models III: Categorical Predictors</span><br>
+    
+      
+        
+          <a href="./readings/reading14_wk04fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture12_wk04fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="hw/hw04.zip" class="btn btn-success btn-sm">Download HW04</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 5</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Feb 23</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Linear Models IV: Multiple Regression</span><br>
+    
+      
+        
+          <a href="./readings/reading15_wk05mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture13_wk05mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Feb 25</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Linear Models V: More Variables + Case Study</span><br>
+    
+      
+        
+          <a href="./readings/reading16_wk05wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture14_wk05wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Feb 26</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Multiple Linear Regression</span><br>
+    
+      
+        
+          <a href="labs/mlr_demo.zip" class="btn btn-success btn-sm">Case Study Demo</a>
+        
+      
+        
+          <a href="labs/lab05.zip" class="btn btn-success btn-sm">Download Lab</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Feb 27</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Sampling Distributions I: Introduction</span><br>
+    
+      
+        
+          <a href="./readings/reading17_wk05fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture15_wk05fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="hw/hw05.zip" class="btn btn-success btn-sm">Download HW05</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 6</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Mar 2</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Sampling Distributions II: Properties</span><br>
+    
+      
+        
+          <a href="./readings/reading18_wk06mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture16_wk06mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="in_class/studyguide.pdf" class="btn btn-success btn-sm">Midterm Review Sheet</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Mar 4</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Bootstrapping</span><br>
+    
+      
+        
+          <a href="./readings/reading19_wk06wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture17_wk06wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Mar 5</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Midterm Review</span><br>
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Mar 6</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Sampling vs Bootstrap Distributions</span><br>
+    
+      
+        
+          <a href="./readings/reading20_wk06fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture18_wk06fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="in_class/sampling_vs_bootstrap.zip" class="btn btn-success btn-sm">Activity</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 7</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Mar 9</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Confidence Intervals I: Introduction</span><br>
+    
+      
+        
+          <a href="./readings/reading21_wk07mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture19_wk07mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="hw/hw06.zip" class="btn btn-success btn-sm">Download HW06</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Mar 11</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Confidence Intervals II: Misconceptions and Changing Levels</span><br>
+    
+      
+        
+          <a href="./readings/reading22_wk07wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture20_wk07wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Mar 12</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: MIDTERM EXAM</span><br>
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Mar 13</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Hypothesis Testing I: Introduction</span><br>
+    
+      
+        
+          <a href="./readings/reading23_wk07fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture21_wk07fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 8</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Mar 16</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Hypothesis Testing II: Null Distributions and P-Values</span><br>
+    
+      
+        
+          <a href="./readings/reading24_wk08mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="in_class/midterm_revisions_instructions.pdf" class="btn btn-success btn-sm">Midterm Revisions</a>
+        
+      
+        
+          <a href="./slides/lecture22_wk08mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Mar 18</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Hypothesis Testing III: Types of Errors, Power</span><br>
+    
+      
+        
+          <a href="./readings/reading25_wk08wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture23_wk08wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Mar 19</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Sampling and Bootstrap Distributions</span><br>
+    
+      
+        
+          <a href="labs/lab06.zip" class="btn btn-success btn-sm">Download Lab</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Mar 20</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">P-Value Pitfalls</span><br>
+    
+      
+        
+          <a href="./readings/reading26_wk08fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture24_wk08fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="hw/hw07.zip" class="btn btn-success btn-sm">Download HW07</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 9 (Spring Break)</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Saturday, March 21 - Sunday, March 29</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">No Class</span><br>
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 10</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Mar 30</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Random Variables I: Introduction</span><br>
+    
+      
+        
+          <a href="./readings/reading27_wk10mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture25_wk10mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Apr 1</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Random Variables II: Discrete Distributions</span><br>
+    
+      
+        
+          <a href="./readings/reading28_wk10wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture26_wk10wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Apr 2</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Confidence Intervals &amp; Hypothesis Testing</span><br>
+    
+      
+        
+          <a href="labs/lab07.zip" class="btn btn-success btn-sm">Download Lab</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Apr 3</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Random Variables III: Continuous Distributions &amp; the CLT</span><br>
+    
+      
+        
+          <a href="./readings/reading29_wk10fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture27_wk10fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="hw/hw08.zip" class="btn btn-success btn-sm">Download HW08</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 11</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Apr 6</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Theory-based Inference I: Intro</span><br>
+    
+      
+        
+          <a href="./readings/reading30_wk11mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture28_wk11mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Apr 8</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Theory-based Inference II: Proportions</span><br>
+    
+      
+        
+          <a href="./readings/reading31_wk11wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture29_wk11wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Apr 9</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: The Normal Distribution</span><br>
+    
+      
+        
+          <a href="labs/lab08.zip" class="btn btn-success btn-sm">Download Lab</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Apr 10</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Theory-based Inference III: Means</span><br>
+    
+      
+        
+          <a href="./readings/reading32_wk11fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture30_wk11fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 12</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Apr 13</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Theory-based Inference IV: Difference in Means and Activity</span><br>
+    
+      
+        
+          <a href="./readings/reading33_wk12mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture31_wk12mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Apr 15</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Inference for Regression I: Recap and SLR</span><br>
+    
+      
+        
+          <a href="./readings/reading34_wk12wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture32_wk12wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Apr 16</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Theory-Based Inference</span><br>
+    
+      
+        
+          <a href="labs/lab09.zip" class="btn btn-success btn-sm">Download Lab</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Apr 17</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Inference for Regression II: MLR</span><br>
+    
+      
+        
+          <a href="./readings/reading35_wk12fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture33_wk12fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="hw/hw09.zip" class="btn btn-success btn-sm">Download HW09</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 13</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Apr 20</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Inference for Regression III: ANOVA</span><br>
+    
+      
+        
+          <a href="./readings/reading36_wk13mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture34_wk13mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Apr 22</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Inference for Regression IV: Activity</span><br>
+    
+      
+        
+          <a href="./readings/reading37_wk13wed.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture35_wk13wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="in_class/inference_for_regression.zip" class="btn btn-success btn-sm">Activity</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Apr 23</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Inference for Regression in R</span><br>
+    
+      
+        
+          <a href="labs/lab10.zip" class="btn btn-success btn-sm">Download Lab</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, Apr 24</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Chi-Squared Tests</span><br>
+    
+      
+        
+          <a href="./readings/reading38_wk13fri.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture36_wk13fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+  <h4>Week 14</h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  
+    <div class="date-cell">
+    <p>Monday, Apr 27</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Exam Info, Modeling Categorical Outcomes</span><br>
+    
+      
+        
+          <a href="./readings/reading39_wk14mon.html" class="btn btn-success btn-sm">Reading</a>
+        
+      
+        
+          <a href="./slides/lecture37_wk14mon.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+        
+          <a href="in_class/final_review_sheet.pdf" class="btn btn-success btn-sm">Exam Review Sheet</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Wednesday, Apr 29</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">The Big Picture!</span><br>
+    
+      
+        
+          <a href="./slides/lecture38_wk14wed.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Thursday, Apr 30</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Lab: Review Day (Coding)</span><br>
+    
+      
+        
+          <a href="in_class/lab_review_session.pdf" class="btn btn-success btn-sm">Review Exercises</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+    <div class="date-cell">
+    <p>Friday, May 1</p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic">Review Day (Conceptual)</span><br>
+    
+      
+        
+          <a href="./slides/lecture39_wk14fri.html" class="btn btn-success btn-sm">Slides</a>
+        
+      
+    
+    </p>
+    </div>
+    
+  
+  
+  </div>
+  </div>
+
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</div>
+
+
+
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("XXX SITE URL HERE XXX");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,186 @@
+---
+title: "Case Study: Home Prices in King County, WA"
+format: pdf
+---
+
+\vspace{-2.5cm}
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, fig.align = 'center')
+library(tidyverse)
+library(moderndive)
+library(gridExtra)
+house <- read_csv("data/house.csv")
+```
+
+## What's the relationship between a home's square footage and number of bedrooms on the home's sale price?
+
+We'll consider \textbf{four variables}: Sale price (**response**); and square footage, above-ground square footage, and number of bedrooms (potential explanatory variables). Check out the exploratory plots below:
+
+
+```{r outwidth="100%",fig.asp=0.65}
+
+# Distribution of price
+gg1 <- ggplot(house, aes(x = price)) + 
+  geom_histogram(binwidth = 25, color = "white") + 
+    theme_bw(base_size = 11) +
+    labs(x = "Price (thousands of dollars)")
+
+# Distribution of bedrooms
+gg2 <- ggplot(house, aes(x = bedrooms)) + 
+  geom_histogram(binwidth = 1, color = "white") + 
+    theme_bw(base_size = 11) +
+    labs(x = "Number of Bedrooms") + 
+  scale_x_continuous(breaks = 1:10)
+
+# Distribution of sqft_living
+gg3 <- ggplot(house, aes(x = sqft_living)) + 
+  geom_histogram(binwidth = 100, color = "white") + 
+    theme_bw(base_size = 11) +
+    labs(x = "Total Square Footage")
+
+# Distribution of sqft_above
+gg4 <- ggplot(house, aes(x = sqft_above)) + 
+  geom_histogram(binwidth = 100, color = "white") + 
+    theme_bw(base_size = 11) +
+    labs(x = "Above-Ground Square Footage")
+
+grid.arrange(gg1, gg2, gg3, gg4, nrow = 2)  # Arranges our 4 graphs nicely
+```
+
+
+- **Q**: How would you describe the distribution of `price`?
+
+- **Q**: What do you expect the relationship between `price` and `bedrooms` to be like?
+
+\newpage
+
+
+## Exploration, Multicollinearity
+
+It's important to look at relationships **between explanatory variables.**
+
+```{r outwidth="100%",fig.asp=0.45}
+
+grid.arrange(  # grid.arrange places all three of these graphs in a row for us
+  
+  # Plots sqft_above vs sqft_living 
+  ggplot(house, aes(x = sqft_living, y = sqft_above)) + 
+    geom_point(alpha = 0.3) + theme_bw(base_size = 10) +
+    labs(x = "Sq. Footage", y = "Ab.-Ground Sq. Ft."),
+  
+  # Plots bedrooms vs sqft_living 
+  ggplot(house, aes(x = sqft_living, y = bedrooms)) + 
+    geom_point(alpha = 0.3) + theme_bw(base_size = 10) +
+    labs(x = "Sq. Footage", y = "Bedrooms"),
+  
+  # Plots bedrooms vs sqft_above 
+   ggplot(house, aes(x = sqft_above, y = bedrooms)) + 
+    geom_point(alpha = 0.3) + theme_bw(base_size = 10) +
+    labs(x = "Ab.-Ground Sq. Ft.", y = "Bedrooms"),
+  nrow = 1)
+
+```
+
+- **Multicollinearity**: when explanatory variables are **highly** correlated with one another. Multicollinearity often results in coefficients that are distorted in erroneous ways! We want to avoid this (*some* correlation is okay!)
+
+- **Q**: Which pair of explanatory variables suffers *most* from multicollinearity?
+
+\newpage
+
+We also should check relationships **between potential explanatory variables and the outcome** to assess **linearity**.
+
+```{r outwidth="100%",fig.asp=0.75}
+
+### Can use ggpairs() from the GGally library to visualize ALL pairwise and
+### individual distributions.
+library(GGally)
+house %>% select(sqft_living, sqft_above, bedrooms, price) %>%
+  ggpairs()
+```
+
+- **Q**: Linear relationships with price?
+
+\newpage
+
+
+## Model Estimation
+
+```{r}
+mod <- lm(price ~ sqft_living + bedrooms, data = house)  # Builds model
+get_regression_table(mod)  # Gets regression summary table
+```
+
+- **Q**: What is the equation, including coefficient values, for the estimated model?
+
+
+- **Q**: How should interpret the **intercept** coefficient in our model?
+
+
+- **Q**: The coefficient for **Bedrooms**? Does this match your expectation?
+
+
+\newpage
+
+
+
+## LINE Assumptions
+
+```{r}
+res <- get_regression_points(mod)  # Gets regression residuals, fitted values
+
+res_plot <- ggplot(res, aes(x = price_hat, y = residual)) +
+  geom_point() + geom_hline(aes(yintercept = 0), lty = 2, color = "gray50")
+
+res_hist <- ggplot(res, aes(x = residual)) + geom_histogram(color = "white")
+
+qq_gg <- ggplot(res, aes(sample = residual)) + geom_qq() + geom_qq_line()
+
+grid.arrange(res_plot, res_hist, qq_gg, nrow = 2)  # Display diagnostics together
+
+```
+- **Q**: Are the LINE assumptions met? 
+
+
+\newpage
+
+
+## Adjusted $R^2$
+
+What's the adjusted $R^2$ of our model?
+
+```{r echo = TRUE}
+# get_regression_summaries gives summary stats about the model as a whole,
+# including R^2 and adjusted R^2. The brackets grab just these two results.
+get_regression_summaries(mod)[, c("r_squared", "adj_r_squared")]
+```
+
+Not super close to 1. Compare to a simpler model:
+
+
+
+```{r echo = TRUE}
+small_mod <- lm(price ~ bedrooms, data = house)
+get_regression_summaries(small_mod)[, c("r_squared", "adj_r_squared")]
+```
+
+
+
+Compare to a much bigger model with additional variables:
+
+```{r echo = TRUE}
+big_mod <- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_above + 
+                sqft_lot + view + condition + yr_built, data = house)
+get_regression_summaries(big_mod)[, c("r_squared", "adj_r_squared")]
+```
+
+
+\newpage
+
+
+## Chunk error example
+
+```{r}
+# lm(price ~ Bedrooms, data = house)
+```
+

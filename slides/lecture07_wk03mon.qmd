@@ -1,0 +1,645 @@
+---
+pagetitle: "Probability II: Properties and Rules"
+editor: source
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: false
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = 'center')
+library(knitr)
+library(tidyverse)
+library(ggthemes)
+library(moderndive)
+library(gapminder)
+library(infer)
+theme_set(theme_bw())
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Probability II]{.custom-title}
+
+<br> <br> <br> <br> <br> 
+
+[Megan Ayers]{.custom-subtitle}
+
+[Math 141 \| Spring 2026 <br> Monday, Week 3]{.custom-subtitle}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### Announcements/Reminders
+
+- Groupwork expectations  
+
+------------------------------------------------------------------------
+
+### Last Lecture
+
+::: {.nonincremental}
+-   Introduced **probability theory**
+-   Saw the **Law of Large Numbers**
+-   Defined and practiced using key **rules of probability**
+:::
+
+<br>
+
+### Goals for Today
+
+::: {.incremental}
+- Introduce **Conditional Probability**
+- Define **Independence** and the **Multiplication Rule**
+- Practice using the **Law of Total Probability** and **Bayes' Rule**
+:::
+
+
+
+# Conditional Probability
+
+------------------------------------------------------------------------
+
+## Activity 1: Coffee or Tea?
+
+A survey was given to 100 Math 141 students in 2017. Some results are summarized below:
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+|           | Coffee | Tea | total |
+|-----------|--------|-----|-------|
+| First-year| 7      | 10  | 17    |
+| Sophomore | 25     | 20  | 45    |
+| Junior    | 13     | 12  | 25    |
+| Senior    | 8      | 5   | 13    |
+| **total** | **53** | **47** | **100** |
+
+:::
+
+::: {.column width=50%}
+
+::: {.incremental}
+1. What is the probability that a **random student** prefers *coffee*?
+
+2. What is the probability that a **random student** was a *sophomore*?
+
+3. What is the probability that a **random student** was a *sophomore* and preferred *coffee*?
+
+4. What is the probability that a **random *sophomore*** preferred *coffee*?
+:::
+
+:::
+
+::::
+
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
+
+
+------------------------------------------------------------------------
+
+## Conditional Probability
+
+**Conditional Probability**: probability of something occurring, **given** that another event has **already** occurred.
+
+::: {.fragment}
+We write *the conditional probability of Event A given Event B has occurred* as, 
+
+$$P(A\ | \ B)$$
+:::
+
+::: {.fragment}
+In the previous example,
+
+::: {.incremental}
+- Question: What is the probability that a random *sophomore* preferred *coffee*?
+- Event A: The student prefers coffee
+- Event B: The student is a sophomore
+- Answer: P(Coffee | Sophomore) = P(A|B)
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Conditional Probability
+
+How do we calculate conditional probabilities?
+
+::: {.fragment}
+$$
+P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
+$$
+:::
+
+::: {.fragment}
+In general,
+
+::: {.callout-note icon=false}
+## Theorem: Conditional Probability Rule
+The Conditional Probability of an event $A$ given another event $B$ is
+$$
+P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
+$$
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Answers to Activity 1
+
+- Event $A$: The student prefers coffee
+- Event $B$: The student is a sophomore
+
+::: {.fragment}
+1. **Probability student prefers coffee:** $P(\text{Coffee}) = P(A) = \frac{53}{100}$
+:::
+
+::: {.fragment}
+2. **Probability student is a sophomore:** $P(\text{Sophomore}) = P(B) = \frac{45}{100}$
+:::
+
+::: {.fragment}
+3. **Probability student is a sophomore and prefers coffee:** $P(\text{Sophomore and Coffee}) = P(\text{A and B}) = \frac{25}{100}$
+:::
+
+::: {.fragment}
+4. **Probability a random sophomore prefers coffee:** 
+$$P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}$$
+:::
+
+# Using Conditional Probability
+
+------------------------------------------------------------------------
+
+## Using Conditional Probabilities...
+
+In the next few slides, we're going to use the concept of conditional probability to explore 4 more concepts:
+
+::: {.incremental}
+1. Independence
+
+2. Multiplication Rule
+
+3. Law of Total Probability
+
+4. Bayes' Rule
+:::
+
+------------------------------------------------------------------------
+
+## Independence
+
+We say two events are **independent** if knowing one occurs doesn't change the probability that another occurs.
+
+::: {.fragment}
+- For example, rolling a 3 on a die (*event B*) doesn't change the probability that it rains today (*event A*), so these two events are independent.
+:::
+
+::: fragment
+- Learning that an even number has been rolled on a die (*event B*) does change the probability that a 4 was rolled (*event A*), so these two events are not independent. 
+:::
+
+::: {.fragment .callout-note icon=false}
+## Theorem: Criteria for Independence
+Two events $A$ and $B$ are independent if and only if
+$$
+P(A | B) = P(A) \quad \text{and} \quad P(B | A) = P(B)
+$$
+:::
+
+::: {.fragment}
+**Q:** Are the events "preferring coffee" (A) and "being a sophomore at Reed" (B) independent?
+:::
+
+::: {.fragment}
+No! That's because $P(A)=\frac{53}{100}$ and $P(A|B)=\frac{25}{45}$, so $P(A)\neq P(A|B)$
+:::
+
+------------------------------------------------------------------------
+
+## Multiplication Rule
+
+What if we want to know the probability that two events **both** occur?
+
+::: {.fragment}
+Rearrange our formula for conditional probability!
+
+
+\begin{align}
+    P(A | B)&= \frac{P(A \textrm{ and } B)}{P(B)}   \\
+    \implies  P(A | B) P(B) &= P(A \textrm{ and } B) 
+  \end{align}
+
+:::
+
+::: {.fragment .callout-note icon=false}
+## Theorem: Multiplication Rule
+For any events $A$ and $B$,
+$$
+P(A \textrm{ and } B ) = P(A|B) \times P(B)
+$$
+:::
+
+------------------------------------------------------------------------
+
+## Multiplication Rule
+
+::::: .columns
+::: {.column width=50%}
+::: {.callout-note icon=false}
+## Theorem: Multiplication Rule
+For any events $A$ and $B$,
+$$
+P(A \textrm{ and } B ) = P(A|B) \times P(B)
+$$
+:::
+
+::: {.fragment}
+In the previous example...
+
+- Event $A$: The student prefers coffee
+- Event $B$: The student is a sophomore
+:::
+
+::: {.fragment}
+and
+
+- $P(B) = \frac{45}{100}$
+- $P(A|B) = \frac{25}{45}$
+- **$P(A \ \text{and} \ B) = \frac{25}{100}$**
+:::
+:::
+
+::: {.column width=5%}
+:::
+
+::: {.column width=45%}
+::: {.fragment}
+**Does it work?**
+:::
+
+::: fragment
+$$ P(A|B) P(B) = \left(\frac{25}{45}\right) \left(\frac{45}{100}\right) = \frac{25}{100}$$
+
+Checks out!
+:::
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## The Law of Total Probability
+
+Consider two events:
+
+- Event $A$: The student prefers coffee
+- Event $B$: The student is a sophomore
+
+::: {.fragment}
+In this scenario, notice for any student who prefers coffee ($A$), it's possible...
+
+::: {.incremental}
+- they're a sophomore ($B$)
+- they're **not** a sophomore ($B^c$)
+:::
+:::
+
+::: {.fragment}
+Thus,
+$$
+\begin{align}
+P(A) &= P(A\text{ and }B) + P(A\text{ and }B^c) \tag{Addition Rule}\\
+&=P(A | B)P(B) + P(A|B^c)P(B^c) \tag{Multiplication Rule}
+\end{align}
+$$
+:::
+
+------------------------------------------------------------------------
+
+## The Law of Total Probability
+
+::: {.callout-note icon=false}
+## Theorem: The Law of Total Probability
+Let $A$ and $B$ be events. Then
+$$
+P(A) = P(A  | B)P(B) + P(A  | B^c)P(B^c) 
+$$
+:::
+
+::: {.fragment}
+- The Law of Total Probability is useful for finding "overall" probabilities when we only have the "pieces".
+- We'll see a real-world example next!
+:::
+
+------------------------------------------------------------------------
+
+## Patient Health
+
+Suppose you're a medical researcher interested in population health.
+
+::: {.fragment}
+- 80% of individuals *see a physician* each year
+- 20% do not
+:::
+
+::: {.fragment}
+- Among people who see a physician, 95% are generally healthy.
+- Among people who *don't see* a physician, 70% are generally healthy.
+:::
+
+::: {.fragment}
+**Q:** What proportion of adults are generally healthy?
+:::
+
+::: {.fragment}
+Let
+
+- Event $A$: Individual is healthy
+- Event $B$: Individual sees a physician each year
+- Event: $B^c$: Individual doesn't see a physician each year
+:::
+
+::: {.fragment}
+This question is asking: **$P(A)=$???**
+:::
+
+------------------------------------------------------------------------
+
+## Patient Health
+
+::: {.callout-note icon=false}
+## Theorem: The Law of Total Probability
+Let $A$ and $B$ be events. Then
+$$
+P(A) = P(A  | B)P(B) + P(A  | B^c)P(B^c) 
+$$
+:::
+
+We want to answer $P(\text{Healthy})$.
+
+::: {.fragment}
+Using the Law of Total Probability:
+
+$$
+\begin{align}
+P(\text{Healthy}) &= P(\text{Healthy}|\text{Doctor})P(\text{Doctor})+P(\text{Healthy}|\text{Doctor}^c)P(\text{Doctor}^c)\\
+&= P(A|B)P(B) + P(A|B^c)P(B^c)\\
+&= (.95)(.80) + (.70)(.20)\\
+&= 0.90
+\end{align}
+$$
+:::
+
+::: {.fragment}
+Thus, 90% of adults are generally healthy!
+:::
+
+------------------------------------------------------------------------
+
+## Bayes' Rule
+
+What if we know $P(B|A)$, but we want to know $P(A|B)$?
+
+::: {.callout-note icon=false .fragment}
+## Theorem: Bayes' Rule
+Let $A$ and $B$ be events. Then,
+$$
+P(A|B) = \frac{P(B  | A)P(A)}{P(B)}
+$$
+:::
+
+::: {.fragment}
+**Proof:** From the definition of multiplication rule,
+$$
+\begin{align}
+P(A \text{ and } B) &= P(A|B)\times P(B)\\
+P(A \text{ and } B) &= P(B|A)\times P(A)
+\end{align}
+$$
+:::
+
+::: {.fragment}
+Setting these two equations equal, we find
+$$
+\begin{align}
+P(A|B)\times P(B) &= P(B|A)\times P(A)\\
+\implies P(A|B) &= \frac{P(B|A)P(A)}{P(B)}
+\end{align}
+$$
+:::
+
+# Activity
+
+------------------------------------------------------------------------
+
+## Activity 2: Testing for a Rare Disease
+
+Suppose that we have a rapid COVID-19 test where:
+
+::: {.incremental}
+- Given a person **does not** have COVID, the test is (correctly) negative 99% of the time.
+- Given a person **does** have COVID, the test is (correctly) positive 80% of the time.
+:::
+
+::: {.fragment}
+Assume that the overall prevalence of COVID at the time of the test was 1%.
+:::
+
+::: {.fragment}
+**Q:** Suppose a person takes this test and receives a positive diagnosis -- **what is the probability that the person has COVID?**
+:::
+
+::: {.fragment}
+- **Hint 1**: Write out the object in question in terms of a conditional probability
+:::
+
+::: {.fragment}
+- **Hint 2**: Define the relevant events and their complements in this setting
+:::
+
+::: {.fragment}
+- **Hint 3**: Write out all the info given in terms of probabilities and events $A$ and $B$.
+:::
+
+::: {.fragment}
+- **Hint 4**: Start with Bayes' Rule! You'll also need the Law of Total Probability!
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(12)
+```
+
+
+------------------------------------------------------------------------
+
+## Activity 2: Solution
+
+**Q:** Suppose a person takes this test and receives a positive diagnosis -- what is the probability that the person has COVID?
+
+::: {.fragment}
+- This is asking for $P(\text{Have Covid} \ | \ \text{Positive Test})$
+:::
+
+::: {.fragment}
+- $C$ = Has COVID,  $C^c$ = No COVID,  $+$ = Positive Test,  $+^c$ = Negative Test
+:::
+
+::: {.fragment}
+- Express what we know using probability language...
+:::
+
+------------------------------------------------------------------------
+
+## Activity 2: Solution {.smaller}
+
+::: {.incremental}
+
+- Test correctly diagnoses a person who **does not** have COVID 99% of the time  
+  $P(+^c | C^c) = 0.99$ and $P(+ | C^c) = 0.01$
+
+- Test correctly diagnoses a patient who **does** have COVID 80% of the time.  
+  $P(+ | C) = 0.80$ and $P(+^c | C) = 0.20$
+
+- The overall prevalence of COVID at the time of the test was 1%.  
+  $P(C) = 0.01$ and $P(C^c) = 0.99$
+
+:::
+
+::: {.fragment}
+
+Bayes' Rule:
+
+$$
+P (C  | +) =  \frac{P(+ | C)P(C)}{P(+)} =  \frac{0.80 * 0.01}{P(+)=\text{???}}
+$$
+:::
+
+::: {.fragment}
+
+Law of Total Probability:
+
+$$
+P (+) = P(+ | C) P(C) + P(+ | C^c) P(C^c) = 0.80(0.01) + 0.01(0.99) = 0.0179 
+$$
+:::
+
+::: {.fragment}
+
+Combining the above:
+
+$$
+\implies P (C | +) = \frac{0.80 * 0.01}{0.0179} \approx \boxed{0.447}
+$$
+:::
+
+------------------------------------------------------------------------
+
+## Bonus Activity: Bayes' Rule
+
+::: {.callout-note icon=false}
+## Theorem: Bayes' Rule
+Let $A$ and $B$ be events. Then
+$$
+P(A|B) = \frac{P(B  | A)P(A)}{P(B)}
+$$
+:::
+
+**Q:** Consider Bayes' Rule. Under what circumstances will $P(A|B) = P(B|A)$?
+
+<br>
+
+**Q:** Suppose $P(B|A) = 1$:
+
+- What does this suggest about $A$ and $B$?
+- What is $P(A|B)$ in this case?
+
+------------------------------------------------------------------------
+
+## Bonus Activity: Answers
+
+::: {.callout-note icon=false}
+## Theorem: Bayes' Rule
+Let $A$ and $B$ be events. Then
+$$
+P(A|B) = \frac{P(B  | A)P(A)}{P(B)}
+$$
+:::
+
+::: {.fragment}
+**Q:** Under what circumstances will $P(A|B) = P(B|A)$?
+
+**Answer:** Whenever $P(A)=P(B)$
+:::
+
+::: {.fragment}
+**Q:** Suppose $P(B|A) = 1$:
+
+- What does this suggest about $A$ and $B$?
+:::
+
+::: {.fragment}
+**A:** Whenever A occurs, so does B.
+:::
+
+::: {.fragment}
+- What is $P(A|B)$ in this case?
+:::
+
+::: {.fragment}
+**A:** $P(A|B) = P(A)/P(B)$
+:::
+
+------------------------------------------------------------------------
+
+## Story time: Independence and "Lumpy" Randomness
+
+A professor from the Georgia Institute of Technology asked students on their homework assignment to either flip a coin 200 times and record the results, or pretend to flip a coin and fake 200 results. After HW submission, students were amazed that he could correctly identify whether everyone's results were real or fake...
+
+::: fragment
+-   Was he omniscient? 
+:::
+
+::: {.incremental}
+-   Nope! His strategy was simply to look for runs of at least six heads or six tails in a row. **Why did this work?** 
+    -   Independence and a large number of trials means a run of six is very likely from real coin flips.
+    -   Humans writing pretend coin flips are influenced by previously written outcomes.
+:::
+
+::: fragment
+-   This idea has connections to many topics, ranging from video games to fraud detection! 
+:::
+
+
+------------------------------------------------------------------------

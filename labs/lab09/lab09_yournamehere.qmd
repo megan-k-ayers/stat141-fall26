@@ -1,0 +1,311 @@
+---
+title: "Lab 9: Theory-Based Inference"
+subtitle: "Math 141, Week 12"
+author: "Insert Your Name Here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: Wednesday, April 22nd at 11:59pm on Gradescope
+
+```{r, include=FALSE, warning=FALSE, message=FALSE}
+# Do not edit this code block/chunk
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE, fig.width = 5, fig.height = 3)
+library(tidyverse)
+library(knitr)
+library(infer)
+library(openintro)
+```
+
+
+In this lab, you will
+
+  1. Make theory-based inferences on summary statistics in R
+  2. Explore data to determine whether assumptions for theory-based inference are met
+  3. Compare theory-based inference methods with simulation-based methods
+
+## Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
+
+
+
+## Background
+
+In August of 2012, news outlets ranging from the [\textcolor{blue}{Washington Post}](http://www.washingtonpost.com/national/on-faith/poll-shows-atheism-on-the-rise-in-the-us/2012/08/13/90020fd6-e57d-11e1-9739-eef99c5fb285_story.html) to the [\textcolor{blue}{Huffington Post}](http://www.huffingtonpost.com/2012/08/14/atheism-rise-religiosity-decline-in-america_n_1777031.html) ran a story about the rise of atheism in America. The source for the story was a global poll that asked people, “Irrespective of whether you attend a place of worship or not, would you say you are a religious person, not a religious person or a convinced atheist?” This type of question, which asks people to classify themselves in one way or another, is common in polling and generates categorical data. In this lab we take a look at the atheism survey and explore what's at play when making inference about population proportions using categorical data.
+
+
+## The Report
+
+The press release for the poll, conducted by WIN-Gallup International, can be accessed
+[\textcolor{blue}{here}](https://irtshdf.fr/wp-content/uploads/2019/12/Gallup-International-um-tru-og-truleysi-2012.pdf). Take a moment to review the report then address the following questions.
+
+
+
+
+
+## Exercise 1: Interpreting the Report
+
+**a.** In the first paragraph of the report, several key findings are reported. Do these percentages appear to be *sample statistics* (derived from the data sample) or *population parameters*? **Explain your reasoning.** [Text only for this part]
+    
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+
+
+**b.** The title of the report is “Global Index of Religiosity and Atheism”. To generalize the report's findings to the global human population, what must we assume about the sampling method? Does that seem like a reasonable assumption? [Text only for this part]
+    
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+\newpage
+
+
+
+## Exercise 2: Data Tabulation
+
+Turn your attention to Table 6 (pages 14 and 15), which reports the sample size and response percentages for all 57 countries. While this is a useful format to summarize the data, we will base our analysis on the original data set of individual responses to the survey. Load this data set into R with the following command.
+
+```{r }
+atheism <- read.csv("data/atheism.csv")
+```
+
+
+**a.** What does each row of Table 6 correspond to? What does each row of `atheism` correspond to? [Text only for this part]
+
+**************************************************
+
+
+
+**************************************************
+
+
+
+
+**b.** To investigate the link between these two ways of organizing this data, take a look at the estimated proportion of atheists in the **United States** in **2012**. Towards the bottom of Table 6, we see that this is reported to be 5%. **Show how we can arrive at the same number (up to rounding) using the `atheism` data.** [Code only for this part]
+
+**************************************************
+
+
+
+
+
+**************************************************
+
+
+\newpage
+
+
+
+## Exercise 3: Inference on Proportions
+
+Table 6 provides *statistics*, that is, calculations made from the sample of 51,927 people who were surveyed. What we'd like, though, is insight into the population *parameters*. You answer the question, “What proportion of people in your sample reported being atheists?” with a statistic; this also provides an estimate for the question “What proportion of people on earth would report being atheists?” which is a question about a parameter.
+
+Although formal confidence intervals and hypothesis tests don't show up in the report, suggestions of inference appear at the bottom of page 6: “In general, the error margin for surveys of this kind is +/- 3-5% at 95% confidence”. Let's practice providing more formalized results.
+
+Suppose religion scholars thought that the proportion of atheists in the United States was 3\% of the population. We'll perform a hypothesis test to determine if this assumption and our observed statistic are consistent.
+
+
+**a.** Write out the rule-of-thumb conditions required by *theory-based inference* to perform a hypothesis test for the proportion of atheists in the United States in 2012. Are you confident all conditions are met? [Text only for this part]
+    
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+
+**b**. Write out the null and alternative hypotheses. [Text only for this part]
+
+**************************************************
+
+
+
+
+
+**************************************************
+
+
+
+
+
+**c.** Using tools from *theory-based inference*, calculate the p-value given your hypotheses.  Then, write a conclusion about your test *in context* by referencing your calculated p-value and the stated hypotheses. [Text and code for this part]
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+
+**d.** Perform the hypothesis test using simulation-based methods (i.e., resampling -- reviewing Lab 7 may be helpful!). **How does this result compare with the Normal approximation result?** [Text and code for this part]
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+\newpage
+
+
+
+## Exercise 4: How does the proportion affect the margin of error?
+Let's take a brief detour. Imagine you've set out to survey 1000 people on two questions: Do you have brown eyes? Are you left-handed? Since both of these sample proportions were calculated from the same sample size, they should have the same margin of error, right? Nope! While the margin of error does change with sample size, it is also affected by the proportion.
+
+Think back to the formula for the standard error:
+
+$$SE = \sqrt{\frac{p(1-p)}{n}}$$
+This is then used in the formula for the margin of error for a 95% confidence interval:
+
+$$ME = 1.96\cdot SE = 1.96\cdot \sqrt{\frac{p(1-p)}{n}}$$
+
+Since the population proportion $p$ is in this $ME$ formula, it should make sense that the margin of error is in some way dependent on the population proportion. We can visualize this relationship by creating a plot of $ME$ vs. $p$.
+
+Since sample size is irrelevant to this discussion, let's just set it to some value ($n = 1000$) and use this value in the following calculations:
+
+```{r}
+n <- 1000
+```
+
+The first step is to make a variable `p` that is a sequence from 0 to 1 with each number incremented by 0.01. We can then create a vector of the margin of error (`me`) associated with each of these values of `p` using the familiar approximate formula ($ME = 2 \times SE$).
+
+```{r}
+p <- seq(0, 1, 0.01)
+me <- 2 * sqrt(p * (1 - p)/n)
+```
+
+Lastly, we combine these vectors into a dataframe so that we can visualize it either using `geom_point()` or `geom_line()` (or both!).
+
+```{r}
+dd <- data.frame(p = p, me = me)
+```
+
+
+
+**a.** Use `ggplot` to plot the relationship between `p` and `me`. [Code only for this part]
+
+**************************************************
+
+
+
+
+
+**************************************************
+
+
+
+
+**b.** Describe the relationship shown in the plot you created above. **Then, state for which value of `p` the margin of error maximized**. [Text only for this part]
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+\newpage
+
+
+
+## Exercise 5: Difference in Proportions
+
+Back to the report! Find the sample proportion of atheists in Canada in 2012. Then perform a hypothesis test (with $\alpha = 0.01$) to determine whether the true proportion of atheists in Canada and in the United States differed in 2012. Use *theory-based inference*, and be sure to write out: 
+
+i. The hypotheses you're testing
+ii. Your test statistic
+iii. Your p-value
+iv. Your final conclusion
+
+You should use a combination of code and text to show and explain your work.
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+\newpage
+
+
+
+## Exercise 6: Inference with a Single Mean
+
+Let's return to the combined [Opportunity Insights dataset](http://www.equality-of-opportunity.org/data/) and college endowment data set from Lab 5. For the purpose of this lab, let's proceed as if this is a random sample of elite colleges in the U.S, and that we want to make inferences about the *average* endowment assets per student in 2016 across all elite colleges.
+
+```{r}
+load("data/colleges_endow.Rdata")
+```
+
+
+
+**a.** Create a histogram of the `fy2016_endowment_pc` column, which contains data on the monetary value of endowment assets per student (in 2016), measured in USD. **Does it appear approximately Normal? Even if not, what allows us to still proceed with theory-based inference for the average endowment value?** [Text and code for this part]
+
+**********************************************************************
+
+
+
+
+**********************************************************************
+
+
+
+**b.** Using *theory-based inference*, calculate a 95% confidence interval for the average endowment assets per student. Interpret the interval **in context**. [Text and code for this part]
+
+**********************************************************************
+
+
+
+
+
+**********************************************************************
+
+
+
+**c.** Create a bootstrap distribution of the sample mean using our sample of `fy2016_endowment_pc` (isolated in the chunk below as `endow_sample`). **Does this distribution appear to be approximately Normal? Use the percentile method to generate a 95% confidence interval and compare to your previous result in part (b).** [Text and code for this part]
+
+**********************************************************************
+
+```{r}
+endow_sample <- data.frame(fy2016_endowment_pc = colleges$fy2016_endowment_pc)
+
+### Your work below
+
+```
+
+
+
+**********************************************************************
+

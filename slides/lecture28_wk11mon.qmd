@@ -1,0 +1,931 @@
+---
+pagetitle: "Theory-Based Inference I: Introduction"
+editor: source
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+#| echo:    false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.align = 'center')
+library(knitr)
+library(tidyverse)
+library(ggthemes)
+library(moderndive)
+library(gapminder)
+library(infer)
+library(tufte)
+```
+
+::::: columns
+::: {.column .center width="50%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="50%"}
+<br>
+
+[Theory Based Inference I]{.custom-title}
+
+<br> <br> 
+
+[Megan Ayers]{.custom-subtitle}
+
+[Math 141 \| Spring 2026 <br> Monday, Week 11]{.custom-subtitle}
+:::
+:::::
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, message = FALSE, warning = FALSE, fig.align = "center", fig.height = 4, fig.width = 6,  out.width = "75%")
+library(knitr)
+library(tidyverse)
+library(ggthemes)
+library(moderndive)
+library(gapminder)
+library(infer)
+library(tufte)
+library(gridExtra)
+theme_set(theme_bw())
+```
+
+------------------------------------------------------------------------
+
+## Announcements
+
+- CA Office hours cancelled today (Megan's are still 2-3:30)
+
+------------------------------------------------------------------------
+
+## Goals for today
+
+- Review how to conduct inference
+
+- Apply the Central Limit Theorem to the Binomial distribution
+
+- Practice "theory-based inference" for one proportion
+
+
+# Review of Inference
+
+
+------------------------------------------------------------------------
+
+## What's Inference Again?
+
+**Statistical Inference:** Estimating or testing claims about a **parameter** in a **population**, using a **statistic** in a **sample**.
+
+
+- **Ex:** To understand proportion of Reedies who are vegetarians, we survey 40 students. 16 of the 40 are vegetarians.
+  - **Population:** All Reedies
+  - **Parameter:** $p$ = Proportion of all Reedies who are vegetarians
+  - **Sample:** $n=40$ Reedies we surveyed
+  - **Statistic:** $\widehat{p} = 16/40 = 0.4$
+  
+
+- We have seen [two types]{.underline} of inference procedures:
+
+  1) **Confidence Intervals**
+  
+  2) **Hypothesis Testing**
+  
+- Let's review each...
+
+------------------------------------------------------------------------
+
+## Confidence Intervals {.smaller}
+
+::: nonincremental
+**Confidence Intervals:** plausible ranges of values for a parameter
+
+**Ex:** What proportion of Reedies are vegetarians?
+
+  - **Population:** All Reedies
+  
+  - **Parameter:** $p$ = Proportion of Reedies who are vegetarians
+
+  - **Sample:** $n=40$ students, of which 16 were vegetarian.
+
+  - **Statistic:** $\widehat{p} = 16/40 = 0.4$
+:::
+
+::: fragment
+
+Until now, we have learned to construct confidence intervals using **Bootstrap Distributions**:
+
+:::
+
+::::: columns
+::: {.column width=50% .fragment}
+```{r echo=FALSE,fig.height=3}
+bs <- data.frame(outcome=c(
+  rep("Yes",16),rep("No",24))) %>%
+  rep_sample_n(size=40,replace=TRUE,reps=10000) %>%
+  group_by(replicate) %>% summarize(phat=mean(outcome=="Yes"))
+ggplot(bs, aes(x=phat))+geom_histogram(binwidth=0.025)+theme_minimal(base_size=15)+
+  labs(x=expression("Bootstrap Sample Statistics,"~hat(p)))
+```
+
+:::
+
+::: {.column width=50%}
+
+  + **Bootstrap distribution:** Approximation of sampling distribution
+    
+  + Sample $n$ observations [with replacement]{.underline} from the [sample]{.underline}
+    
+  + For each "bootstrap sample", calculate/plot the statistic
+
+:::
+
+:::::
+
+
+- **90% confidence interval:** Middle 90% is $(0.275, \ 0.525)$
+
+
+------------------------------------------------------------------------
+
+## Hypothesis Testing {.smaller}
+
+::: nonincremental
+**Hypothesis Tests:** formal procedure for testing claims about a parameter
+
+**Ex:** Are *less than* 50% of Reedies vegetarians?
+
+  - **Parameter:** $p$ = Proportion of Reedies who are vegetarians
+
+  - **Statistic:** $\widehat{p} = 16/40 = 0.4$
+
+  - **State Hypotheses:** $H_0: p=0.5$; $H_a: p<0.5$
+  
+:::
+
+::: fragment
+We need to construct the **Null Distribution:**
+:::
+
+::: fragment
+::::: columns
+
+::: {.column width=50%}
+
+```{r eval=TRUE,echo=FALSE,fig.height=3.5,cache=TRUE}
+sampling <- data.frame(
+  outcome=c(rep("Yes",.5*10^6),rep("No",.5*10^6))) %>%
+  rep_sample_n(size=40,replace=FALSE,reps=10000) %>%
+  group_by(replicate) %>% 
+  summarize(phat=mean(outcome=="Yes"))
+ggplot(sampling, aes(x=phat))+
+  geom_histogram(binwidth=0.025)+theme_minimal(base_size=15)+
+  labs(x=expression("Sample Statistics"~hat(p)~" assuming"~H[0]))
+```
+
+:::
+
+::: {.column width=50%}
+
+  + **Null distribution:** Sampling distribution [assuming $H_0$]{.underline}
+    
+  + Many times, sample $n$ observations from [population assumed under $H_0$]{.underline}
+    
+  + For each "sample", calculate/plot the statistic
+  
+:::
+
+:::::
+:::
+
+
+- **P-Value:** Area under curve to the left of $\widehat{p}$ is $0.07$
+
+- **Compare to Significance Level:** Using $\alpha = 0.05$, we would *fail to reject* $H_0$.
+
+------------------------------------------------------------------------
+
+## What's Similar?
+
+- **Both inference procedures require a [sampling distribution of a statistic:]{.underline}**
+
+  + [Confidence Intervals:]{.underline} Approximate with our bootstrap distribution (based on our sample)
+  
+  + [Hypothesis Testing:]{.underline} Simulate a sampling distribution assuming a population under $H_0$
+  
+
+<br>
+
+- We've had to use simulation in `R` to find these "distributions of statistics"
+
+  + In small samples, the code works and runs relatively quickly.
+  
+  + In larger samples, or with complicated statistics, this can be more computationally costly.
+
+
+<br>
+
+- **Could we do this work more efficiently? What did people use before computers?**
+
+------------------------------------------------------------------------
+
+## Theory-Based Inference
+
+- Could we do this work more efficiently? **Yes! Use the Central Limit Theorem (CLT)!**
+
+- Last lecture, we found:
+  + Many sample statistics can be written as a **"sample mean"**
+  + Sample means follow **Normal distributions**, with **formulas** for the mean and SD
+  + We can **use the CLT** to characterize the distribution of a statistic!
+  
+::: fragment
+::::: columns
+::: {.column width=50%}
+
+Instead of...
+```{r echo=FALSE,out.width="100%",fig.asp=0.5}
+bs <- data.frame(outcome=c(
+  rep("Yes",16),rep("No",40-16))) %>%
+  rep_sample_n(size=40,replace=TRUE,reps=10000) %>%
+  group_by(replicate) %>% 
+  summarize(phat=mean(outcome=="Yes"))
+ggplot(bs, aes(x=phat))+theme_bw(base_size=15)+
+  geom_histogram(binwidth=0.025,col="white")+
+  labs(title="Sampling Distribution (based on computation)")
+```
+
+:::
+
+::: {.column width=50%}
+
+... we will instead use:
+```{r out.width="100%",fig.asp=0.5}
+theory <- data.frame(x=seq(0.1,0.7,length=10000),
+                     density=dnorm(seq(0.1,0.7,length=10000),mean=0.4,sd=sqrt(.4*.6/40)))
+ggplot(theory, aes(x=x,y=density))+
+  geom_line()+theme_bw(base_size=15)+
+  labs(title="Sampling Distribution (based on CLT)")
+```
+
+:::
+
+:::::
+:::
+
+
+  
+# Inference for a Single Proportion
+
+------------------------------------------------------------------------
+
+## Central Limit Theorem (CLT)
+
+::: {.callout-note icon=false}
+## Theorem: Central Limit Theorem
+Suppose a simple random sample of size $n$ is drawn from a population with finite mean $\mu$ and finite standard deviation $\sigma$. Let $\bar{x}$ be the sample mean. When $n$ is large, then approximately
+$$\bar{x} \sim Normal\Big(\mu, \frac{\sigma}{\sqrt{n}}\Big)$$
+:::
+
+
+<br>
+
+**Goal:** Can we write a sample *proportion* $\widehat{p}$ as a sample *mean*?
+
+
+------------------------------------------------------------------------
+
+## Sample Proportion as a Sample Mean
+
+- [Reminder]{.underline}: Let **$X\sim \text{Binomial}(n,p)$** distribution
+    - $X$ is number of "successes" in **$n$ independent trials**, each trial has **probability of success, $p$**
+    - $E(X) = np$ and $SD(X) = \sqrt{np(1-p)}$
+  
+
+- **Ex:** Polling (a SRS of) $n$ Reedies about vegetarianism
+
+<br>
+
+::::: columns
+::: {.column width=50%}
+
+::: {.nonincremental .fragment}
+- **Key Trick 1:** Define
+    - $X_1 = 1$ if Person 1 is vegetarian, 0 if not
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $\vdots$
+    - $X_n = 1$ if Person n is vegetarian, 0 if not
+    
+:::
+    
+- Note each $X_i \sim \text{Bernoulli}(p)$
+
+:::
+
+::: {.column width=50%}
+
+- **Key Trick 2:** The sample proportion, $\widehat{p}$ is a sample mean of these $X_i$'s!
+$$
+\begin{align}
+\widehat{p} &= \frac{\text{Number of vegetarians}}{n} \\
+&= \frac{X_1 + X_2 + \dots + X_n}{n} \\
+& = \bar{x}
+\end{align}
+$$
+
+:::
+
+:::::
+
+------------------------------------------------------------------------
+
+## Proportions and the CLT
+
+::: {.callout-note icon=false}
+## Theorem: Central Limit Theorem
+Suppose a simple random sample of size $n$ is drawn from a population with finite mean $\mu$ and finite standard deviation $\sigma$. Let $\bar{x}$ be the sample mean. When $n$ is large, then approximately
+$$\bar{x} \sim Normal\Big(\mu, \frac{\sigma}{\sqrt{n}}\Big)$$
+:::
+
+::: fragment
+
+[Bernoulli Random Variables:]{.underline} If $X_i\sim \text{Bernoulli}(p)$, then
+$$\mu = E(X_i) = p \ \ \ \text{and} \ \ \ \sigma = SD(X) = \sqrt{p(1-p)}$$
+
+:::
+
+- $\widehat{p} = \bar{x}$ 
+
+
+- Plugging this in to CLT, **$\widehat{p} \sim \text{Normal}\Big(p, \sqrt{\frac{p(1-p)}{n}}\Big)$**
+
+------------------------------------------------------------------------
+
+## Theory-Based Sampling Distribution for One Sample Proportion
+
+::: {.callout-note icon=false}
+## Theorem: Theory-Based Sampling Distribution for One Sample Proportion 
+Given a SRS of size $n$ drawn from a population with true proportion $p$, [when $n$ is large]{.underline} the sample proportion $\widehat{p}$ is distributed as:
+$$\widehat{p} \sim \text{Normal}\Big(\ p, \ \sqrt{\frac{p(1-p)}{n}}\ \Big)$$
+:::
+
+
+- Traditionally, $n$ is considered "large enough" when there are:
+
+  - 10 or more "successes", [and]{.underline}
+  
+  - 10 or more "failures"
+
+
+- Mathematically,
+
+  - $n \widehat{p} \geq 10$, [and]{.underline}
+  
+  - $n (1 - \widehat{p}) \geq 10$
+
+------------------------------------------------------------------------
+
+## Word of Caution: CLT requires "large" $n$
+
+::: fragment
+$$\textbf{Theory-Based Sampling Distribution:} \ \ \  \widehat{p} \sim \text{Normal}\Big(\ p, \ \sqrt{\frac{p(1-p)}{n}}\ \Big)$$
+:::
+
+::::: columns
+::: {.column width=60% .fragment}
+```{r fig.height=4, out.width="95%"}
+set.seed(110)
+p <- c(.5, .5, .01, .01)
+n <- c(10, 100, 100, 1000)
+b<-10000
+sim_data <- data.frame(x = c(), example = c() )
+for (i in 1:4){
+  x <- rbinom(b, n[i], p[i])/n[i]
+  sim_data <- rbind(sim_data, data.frame(x, example = rep(i, b)))
+}
+sim_summary <- sim_data %>% group_by(example) %>% 
+  summarize(mean = mean(x), sd = sd(x))
+
+g<-list()
+for (i in 1:4){
+  mu <- sim_summary[i,2] %>% pull()
+  s <- sim_summary[i,3] %>% pull()
+  g[[i]]<-sim_data %>% filter(example == i) %>% 
+    ggplot(aes(x = x))+geom_histogram(aes(y = ..density..), binwidth =1/n[i], color = "white",fill ="steelblue")+
+    stat_function(fun = dnorm, args = list(mean = mu, sd = s), color = "red", size = 1)+
+    labs(x = expression(hat(p)), title = paste0("p=", p[i], ", n=", n[i]))
+}
+
+grid.arrange(g[[1]], g[[2]], g[[3]], g[[4]], ncol = 2)
+```
+
+:::
+
+::: {.column width=40%}
+
+- **"Large Enough $n$"**: 10 or more "successes" *and* "failures"
+
+<br>
+
+- **Q:** When does the (red) theory-based curve best/worst match the true sampling distribution? Why?
+
+:::
+
+:::::
+
+
+# Confidence Intervals and Hypothesis Tests
+
+------------------------------------------------------------------------
+
+## Confidence Intervals (again) 
+
+::: nonincremental
+**Ex:** What proportion of Reedies are vegetarians?
+
+  - **Population:** All Reedies
+  
+  - **Parameter:** $p$ = Proportion of Reedies who are vegetarians
+
+  - **Sample:** $n=40$ students, of which 16 were vegetarian.
+
+  - **Statistic:** $\widehat{p} = 16/40 = 0.4$
+
+:::
+
+::: fragment
+**Sampling Distribution:**
+:::
+
+::::: columns
+::: {.column width=2%}
+
+:::
+
+::: {.column width=55%}
+
+  + *Theoretical* sampling distribution: $\widehat{p} \sim \text{Normal}(p,\sqrt{p(1-p)/n})$
+
+
+
+  + For *our best guess*, **substitute $\widehat{p}=0.4$ for $p$**: $\widehat{p} \sim \text{Normal}(0.4,\sqrt{0.4(1-0.4)/40})$
+
+:::
+
+::: {.column width=43% .fragment}
+```{r echo=FALSE,fig.height=4}
+theory <- data.frame(x=seq(0.1,0.7,length=10000),
+                     density=dnorm(seq(0.1,0.7,length=10000),mean=0.4,sd=sqrt(.4*.6/40)))
+ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+
+  geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+
+  labs(title="Theory-Based Sampling Distribution")
+```
+
+:::
+
+:::::
+
+------------------------------------------------------------------------
+  
+## Confidence Intervals (again) 
+
+::: nonincremental
+**Ex:** What proportion of Reedies are vegetarians?
+
+  - **Population:** All Reedies
+  
+  - **Parameter:** $p$ = Proportion of Reedies who are vegetarians
+
+  - **Sample:** $n=40$ students, of which 16 were vegetarian.
+
+  - **Statistic:** $\widehat{p} = 16/40 = 0.4$
+
+:::
+
+
+**Sampling Distribution:**
+
+::::: columns
+::: {.column width=2%}
+
+:::
+
+::: {.column width=55% .nonincremental}
+
+  + *Theoretical* sampling distribution: $\widehat{p} \sim \text{Normal}(p,\sqrt{p(1-p)/n})$
+
+
+  + For *our best guess*, **substitute $\widehat{p}=0.4$ for $p$**: $\widehat{p} \sim \text{Normal}(0.4,\sqrt{0.4(1-0.4)/40})$
+  
+  + **Quantiles** of this distribution give us confidence intervals, ex. $(0.273, \ 0.527)$
+
+:::
+
+::: {.column width=43%}
+```{r echo=FALSE,fig.height=4}
+theory <- data.frame(x=seq(0.1,0.7,length=10000),
+                     density=dnorm(seq(0.1,0.7,length=10000),mean=0.4,sd=sqrt(.4*.6/40)))
+ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+
+  stat_function(fun = function(x){dnorm(x,.4,sqrt(.4*.6/40))},
+                xlim = c(0.273,  0.527), geom = "area", fill = "steelblue") +
+  annotate(geom = "text", label = "Middle 90%", x = .4, y = 2.5,color="white",size=5) +
+  geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+
+  labs(title="Theory-Based Sampling Distribution")+
+  scale_x_continuous(breaks=c(.273,.4,.527))
+```
+
+:::
+
+:::::
+
+
+------------------------------------------------------------------------
+
+## Confidence Intervals: Process Check 
+
+When making (percentile) confidence intervals using **computational** methods, we:
+
+1) Specify our population, and parameter
+
+2) Collect a sample, and calculate the statistic
+
+3) Create a bootstrap distribution to approximate the sampling distribution
+
+4) Use quantiles of the approximated sampling distribution to make a confidence interval
+
+<br>
+
+
+::: fragment
+**Q:** Which steps above are the **same** and which are **different** with our new "theory-based" way?
+:::
+
+- **Only #3 is different!**
+
+- "Old Way": Collect bootstrap samples 
+
+- "Theory-based Way": Use CLT, which gives a "theoretical" sampling distribution of
+$$\widehat{p} \sim \text{Normal}(\widehat{p},\sqrt{\widehat{p}(1-\widehat{p})/n})$$
+
+```{r}
+#| echo: false
+countdown::countdown(1.5)
+```
+
+------------------------------------------------------------------------
+
+## Hypothesis Testing (again) 
+
+::: {.nonincremental}
+**Ex:** Are *less than* 50% of Reedies vegetarians?
+
+  - **Parameter:** $p$ = Proportion of Reedies who are vegetarians
+
+  - **Statistic:** $\widehat{p} = 16/40 = 0.4$
+
+  - **State Hypotheses:** $H_0: p=0.5$; $H_a: p<0.5$
+
+:::
+
+::: fragment
+**Null Distribution:**
+:::
+
+::::: columns
+::: {.column width=2%}
+
+:::
+
+::: {.column width=57%}
+
+  + *Theoretical* sampling distribution: $\widehat{p} \sim \text{Normal}(p,\sqrt{p(1-p)/n})$
+
+
+  + For *null distribution*, **substitute "null value" $p=0.5$**: $\widehat{p} \sim \text{Normal}(0.5,\sqrt{0.5(1-0.5)/40})$
+
+:::
+
+::: {.column width=41% .fragment}
+```{r echo=FALSE,fig.height=5}
+theory <- data.frame(x=seq(0.2,0.8,length=10000),
+                     density=dnorm(seq(0.2,0.8,length=10000),mean=0.5,sd=sqrt(.5*.5/40)))
+ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+
+  geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+
+  labs(title="Theory-Based Null Distribution")+
+  scale_x_continuous(breaks=seq(.3,.7,by=0.1))
+```
+
+:::
+
+:::::
+
+------------------------------------------------------------------------
+
+## Hypothesis Testing (again) 
+
+::: {.nonincremental}
+**Ex:** Are *less than* 50% of Reedies vegetarians?
+
+  - **Parameter:** $p$ = Proportion of Reedies who are vegetarians
+
+  - **Statistic:** $\widehat{p} = 16/40 = 0.4$
+
+  - **State Hypotheses:** $H_0: p=0.5$; $H_a: p<0.5$
+
+**Null Distribution:**
+:::
+
+
+::::: columns
+::: {.column width=2%}
+
+:::
+
+::: {.column width=57%}
+
+::: nonincremental
+  + *Theoretical* sampling distribution: $\widehat{p} \sim \text{Normal}(p,\sqrt{p(1-p)/n})$
+
+  + For *null distribution*, **substitute "null value" $p=0.5$**: $\widehat{p} \sim \text{Normal}(0.5,\sqrt{0.5(1-0.5)/40})$
+  
+  + **P-Value:** In this case, area under curve to the left of $\widehat{p}=0.4$. Here, $\text{P-Value}=0.07$.
+
+:::
+
+  + Compare the P-Value to your significance level ($\alpha$).
+
+:::
+
+::: {.column width=41%}
+
+```{r echo=FALSE,fig.height=5}
+theory <- data.frame(x=seq(0.2,0.8,length=10000),
+                     density=dnorm(seq(0.2,0.8,length=10000),mean=0.5,sd=sqrt(.5*.5/40)))
+ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+
+  stat_function(fun = function(x){dnorm(x,.5,sqrt(.5*.5/40))},
+                xlim = c(.2,  0.4), geom = "area", fill = "steelblue") +
+  annotate(geom = "text", label = "p-value=\n0.07", x = .3, y = 2,color="black",size=7) +
+  geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+
+  labs(title="Theory-Based Null Distribution")+
+  scale_x_continuous(breaks=seq(.3,.7,by=0.1))
+```
+
+:::
+
+:::::
+
+------------------------------------------------------------------------
+
+## Hypothesis Tests: Process Check {.smaller}
+
+When conducting hypothesis tests, we:
+
+1) Specify our population, and parameter
+
+2) State null ($H_0$) and alternative ($H_a$) hypotheses, e.g.,
+$$
+H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p < p_0 \ \ \text{or} \ \ p > p_0
+$$
+
+3) Collect a sample, and calculate the statistic
+
+4) Create a null distribution
+
+5) Use "areas/proportions" of the null distribution distribution to calculate the p-value
+
+6) Compare p-value to our rejection threshold $\alpha$, and make a conclusion
+
+<br>
+
+- **Q:** Which steps in the above are the **same** in both the "old" way of doing hypothesis tests, and this new "theory-based" way? Which steps are **different**?
+
+- **Only #4 is different!** (again, the distribution we use comes from theory instead of simulation)
+
+```{r}
+#| echo: false
+countdown::countdown(1.5)
+```
+
+------------------------------------------------------------------------
+
+## Recap: Theory-Based Inference
+
+$$\textbf{CLT-Based Sampling Distribution:} \ \ \  \widehat{p} \sim \text{Normal}\Big(\ p, \ \sqrt{\frac{p(1-p)}{n}}\ \Big)$$
+
+- The general steps we take are the [same]{.underline} as before, but we **now use the CLT instead of simulation to find sampling distributions**.
+
+::::: columns
+::: {.column width=45% .fragment}
+
+$$\textbf{Confidence Intervals}$$
+$$\text{Sampling Distribution of } p$$
+$$(\text{Plug in statistic, }\color{red}{\widehat{p}})$$
+
+$$\text{Normal}\Bigg(\color{red}{\widehat{p}}, \ \sqrt{\frac{\color{red}{\widehat{p}}(1-\color{red}{\widehat{p}})}{n}} \ \Bigg)$$
+
+:::
+
+::: {.column width=10%}
+
+:::
+
+::: {.column width=45% .fragment}
+
+$$\textbf{Hypothesis Testing}$$
+$$\text{Null Distribution}$$
+$$(\text{Plug in null value, }\color{red}{p_0})$$
+
+$$\text{Normal}\Bigg(\color{red}{p_0}, \ \sqrt{\frac{\color{red}{p_0}(1-\color{red}{p_0})}{n}} \ \Bigg)$$
+
+:::
+
+:::::
+
+# Activity
+
+------------------------------------------------------------------------
+
+## Activity
+
+::::: columns
+
+::: {.column width=45%}
+In a SRS of 60 Reedies, 45 have watched the *Lord of the Rings* trilogy. Create a **80% confidence interval** for the true proportion of Reedies who have watched *LOTR* using theory-based inference.
+
+<br>
+
+  1. Carefully go through each step of the inference procedure.
+  
+  2. Sketch and write down the assumed [sampling distribution]{.underline} of the statistic 
+  
+  3. Calculate confidence interval (use R)
+  
+  4. Interpret your confidence interval in context.
+
+:::  
+
+::: {.column width=10%}
+
+:::
+
+::: {.column width=45%}
+In a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a **hypothesis test** using theory-based inference.
+
+<br>
+
+  1. Carefully go through each step of the inference procedure.
+  
+  2. Sketch and write down the [null distribution]{.underline}
+  
+  3. Calculate p-value (use R)
+  
+  4. Use your p-value to make a conclusion with $\alpha=0.10$
+  
+:::  
+
+:::::
+
+```{r}
+#| echo: false
+countdown::countdown(10)
+```
+  
+<!-- ------------------------------------------------------------------------   -->
+
+<!-- ## Answers (Confidence Intervals) {.smaller} -->
+
+<!-- ::::: columns -->
+
+<!-- ::: {.column width=100%} -->
+
+<!-- - **Collect Data:** In a sample of 60 students, 45 watched *LOTR* -->
+<!-- - **Point Estimate:** We estimate $\widehat{p} = 45/60 = 0.75$ -->
+<!-- - **Get Sampling Distribution:** -->
+
+<!-- ::: -->
+
+<!-- ::::: -->
+
+
+
+<!-- ::::: columns -->
+
+<!-- ::: {.column width=50%} -->
+
+<!-- ::: fragment -->
+<!-- $$\text{Normal}(0.75,\ \sqrt{0.75(1-0.75)/60})$$ -->
+
+<!-- ```{r echo=FALSE,out.width="100%",fig.asp=0.65} -->
+<!-- theory <- data.frame(x=seq(0.6,.90,length=10000), -->
+<!--                      density=dnorm(seq(0.6,.90,length=10000),mean=0.75,sd=sqrt(.75*.25/60))) -->
+<!-- ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+ -->
+<!--   stat_function(fun = function(x){dnorm(x,0.75,sqrt(.75*.25/60))}, -->
+<!--                 xlim = c(.678,.822), geom = "area", fill = "steelblue") + -->
+<!--   annotate(geom = "text", label = "Middle 80%", x = .75, y = 2.5,color="white",size=5) + -->
+<!--   geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+ -->
+<!--   labs(title="Theory-Based Bootstrap Distribution")+ -->
+<!--   scale_x_continuous(breaks=c(.678,.75,.822)) -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width=50%} -->
+
+<!-- - **Get confidence interval:** -->
+
+<!-- -  Need 0.1 and 0.9 quantiles for 80% confidence interval -->
+
+<!-- ::: {.fragment .nonincremental} -->
+
+<!-- ```{r echo=TRUE} -->
+<!-- qnorm(c(0.1, 0.9), 0.75, sqrt(0.75*0.25/60)) -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- - We are 80% confident that between 67.8% and 82.2% of Reedies have watched *LOTR* -->
+
+<!-- ::: -->
+
+<!-- ::::: -->
+
+
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ## Answers (Hypothesis Testing) -->
+
+<!-- ::::: columns -->
+
+<!-- ::: {.column width=100%} -->
+<!-- - **State Hypotheses:** $H_0: p=0.6$; $H_a: p>0.6$  -->
+<!-- ::: -->
+
+<!-- ::::: -->
+
+<!-- ::::: columns -->
+
+<!-- ::: {.column width=48% .fragment .nonincremental} -->
+
+<!-- - **Null Distribution:** -->
+
+<!-- $$\text{Normal}(0.6,\sqrt{0.6(1-0.6)/30})$$ -->
+
+<!-- ```{r echo=FALSE,out.width="100%",fig.asp=0.65} -->
+<!-- theory <- data.frame(x=seq(0.3,1,length=10000), -->
+<!--                      density=dnorm(seq(0.3,1,length=10000),mean=0.6,sd=sqrt(.6*.4/30))) -->
+<!-- ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+ -->
+<!--   stat_function(fun = function(x){dnorm(x,.6,sqrt(.6*.4/30))}, -->
+<!--                 xlim = c(.667,1), geom = "area", fill = "steelblue") + -->
+<!--   annotate(geom = "text", label = "p-value=\n0.228", x = .82, y = 2,color="black",size=7) + -->
+<!--   geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+ -->
+<!--   labs(title="Theory-Based Null Distribution")+ -->
+<!--   scale_x_continuous(breaks=seq(.3,.9,by=0.1)) -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width=50%} -->
+
+<!-- - **Collect Data:** $\widehat{p}=20/30=0.667$ -->
+<!-- - **Calculate P-Value:** Area under null distribution curve to the right of $\widehat{p}$  -->
+
+<!-- ::: fragment -->
+
+<!-- ``` {r echo=T} -->
+<!-- 1 - pnorm(20/30, 0.6, sqrt(0.6*(1 - 0.6) / 30)) -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- - **Conclusion:** Because 0.228 > 0.10, we fail to reject $H_0$ that 60% of birds in the Reed canyon are crows. -->
+
+<!-- ::: -->
+
+<!-- ::::: -->
+
+
+
+
+

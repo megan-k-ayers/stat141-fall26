@@ -1,0 +1,209 @@
+---
+title: "HW 5: Sampling Distributions"
+subtitle: "Math 141, Week 5"
+author: "Insert Your Name Here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: **MONDAY, March 9th** at 11:59pm on Gradescope
+
+In this homework assignment you will:
+
+- Demonstrate knowledge of the distinction between populations and samples, and
+  parameters and statistics. 
+- Generate sampling distributions by hand; calculate, and interpret their properties.
+- Demonstrate understanding of the uses for bootstrap distributions and how to generate them.
+
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your assignment**
+
+
+```{r echo = FALSE}
+# Load the necessary packages
+library(tidyverse)
+
+# Exercise 3 setup
+df <- data.frame(x = replicate(500000, {
+  mean(sample(c(1, 0, 0), 30, replace = T))}))
+gg <- ggplot(df, aes(x)) +
+  geom_histogram(color = "white", binwidth = 0.034) + 
+  theme_classic() + 
+  labs(title="Question 4: Bootstrap Distribution",
+       x="Statistic") + 
+  scale_x_continuous(breaks = seq(0, 1, by = 0.1))
+
+```
+
+
+# Exercises
+
+## Exercise 1: Components of Sampling
+
+In each of the following scenarios, (i) identify the population, (ii) identify the parameter of interest, (iii) identify the sample, (iv) identify and calculate the statistic, and (v) state whether or not the sample is representative of the population.
+
+**a.** Suppose you are an epidemiologist looking to understand Covid rates in Oregon over the last 3 months. Specifically, you would like to estimate the proportion of Oregon residents who had Covid between July 1 and October 1 of this year. To answer the question, you randomly sample 50 Oregon residents and ask each if they had Covid in that time period. 10 of the 50 individuals in your sample had Covid between July 1 and October 1.
+
+********************************
+
+
+
+
+********************************
+
+
+**b.** Suppose you are a naval engineer interested in understanding how resilient ships are to collisions with icebergs. Specifically, you would like to estimate the proportion of ships which would sink if they struck an iceberg. To answer this question, you randomly sample 10 historic ships from the US Naval Museum and see if each had sunk after a collision with an iceberg. None of the 10 historic ships in your sample had sunk after a collision with an iceberg.
+
+********************************
+
+
+
+
+********************************
+
+
+## Exercise 2: Sampling Distributions
+
+Consider the following population of 6 dogs: Aoki (0.5 years), Bluto (2 years), Coco (2.5 years), Dexter (5 years), Eggbert (8 years), and Fido (12 years). In this question, you will explicitly calculate the sampling distribution for the **mean age of the dogs** (in years) under samples of different sizes.
+
+**a.** Calculate the sampling distribution for samples of size $n=1$. That is, write down the dogs in each of the 6 possible samples and their corresponding sample statistics. **Then, calculate the mean and standard error of the sampling distribution.** 
+
+(*Hint: the `mean()` and `sd()` functions may be useful. You can write R calculations inline with this syntax: `r mean(c(1, 2, 3))`*.)
+
+********************************
+
+
+
+
+********************************
+
+**b.** Calculate the sampling distribution for samples of size $n=2$. That is, write down the dogs in each of the 15 possible samples and their corresponding sample statistics. **Then, calculate the mean and standard error of the sampling distribution.**
+
+********************************
+
+
+
+
+********************************
+
+
+**c.** Calculate the sampling distribution for samples of size $n=5$. That is, write down the dogs in each of the 6 possible samples and their corresponding sample statistics. **Then, calculate the mean and standard error of the sampling distribution.**
+
+********************************
+
+
+
+
+********************************
+
+
+**d.** Calculate the sampling distribution for samples of size $n=6$. That is, write down the dogs in the single possible sample and its corresponding sample statistic. **Then, calculate the mean and standard error of the sampling distribution.**
+
+********************************
+
+
+
+
+********************************
+
+
+**e.** Calculate the population parameter. 
+
+********************************
+
+
+
+********************************
+
+
+
+**f.** Compare and contrast the sampling distributions and parameter you calculated, with respect to **center** and **spread**.
+
+********************************
+
+
+
+
+********************************
+
+
+## Exercise 3: Bootstrap Distributions
+
+Suppose the Portland Department of Transportation (PBOT) is interested in understanding pedestrian safety at a specific intersection. To study safety, PBOT randomly sampled 30 unique 1-hour periods over the course of year and observed the intersection during each of those times. They found that in 10 of the 30 sampled periods, a driver seriously impacted the safety of a pedestrian.
+
+**a.** Explain in words why it is *not possible* for PBOT to create a sampling distribution for the sample proportion, $\hat p$ based on their data collection process.
+
+********************************
+
+
+
+
+********************************
+
+
+
+
+**b.** PBOT can, however, approximate the sampling distribution with a bootstrap distribution. Explain precisely how PBOT could use their sample to create a bootstrap distribution for the sample proportion, $\hat p$.
+
+********************************
+
+
+
+
+********************************
+
+
+**c.** The plot below displays a hypothetical bootstrap distribution for $\hat p$ based on the sample. Looking at the bootstrap distribution, (i) state a "best guess" and (ii) a plausible range of values for the population parameter, $p$. **Briefly explain your reasoning.**
+
+```{r echo=F, fig.asp=0.3}
+gg
+```
+
+********************************
+
+
+
+
+
+********************************
+
+
+
+## Exercise 4: Some ModernDive Learning Checks
+
+*For some of these questions, you will need to review parts of the readings assigned in [MD sections 7 and 8](https://moderndive.com/v2/sampling.html#sampling-framework). Questions are re-written here for your convenience, but additional context from the textbook is not included.*
+
+**a.** LC 7.2: Why is it that students did not all have the same sample proportion of red balls? 
+
+********************************
+
+
+
+********************************
+
+
+**b.** LC 7.5: Looking at Figure 7.10, would you say that sampling 50 balls where 30% of them were red is likely or not? What about sampling 50 balls where 10% of them were red? 
+
+********************************
+
+
+
+********************************
+
+
+**c.** LC 8.10: What is the chief difference between a bootstrap distribution and a sampling distribution?
+
+********************************
+
+
+
+********************************
+
+

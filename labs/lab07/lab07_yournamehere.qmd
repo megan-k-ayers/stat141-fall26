@@ -1,0 +1,297 @@
+---
+title: "Lab 7: Confidence Intervals and Hypothesis Testing"
+subtitle: "Math 141, Week 10"
+author: "Insert Your Name Here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: Tuesday, April 7th at 11:59pm on Gradescope
+
+
+In this lab, you will
+
+  1. Construct confidence intervals using the SE and percentile method
+  2. Generate sampling distributions (including null distributions)
+  3. Perform hypothesis tests
+  
+
+
+## Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
+
+
+
+## An Important Note on Reproducibility
+
+You will take random samples and build sampling distributions in this lab, which means **you should set a seed using `set.seed(x)`** (where $x$ is replaced with any number of your choosing) **in each code chunk where you generate random values** to ensure that each time you render your document, you obtain an identical random sample to what you see when you're working on the lab.
+
+
+```{r, include=FALSE}
+# Do not edit this code block/chunk
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE, fig.width = 5, fig.height = 3)
+library(tidyverse)
+library(openintro)
+library(moderndive)
+library(infer)
+```
+
+
+
+
+\newpage
+
+
+
+
+
+# Exercises
+
+The population of interest for this lab will be US adults. To keep our computation quick and simple, we will assume a total population size of 100,000 (even though that's much smaller than the true population size).
+
+An [April 2022 Gallup poll](https://news.gallup.com/poll/391679/climate-change-proposals-favored-solid-majorities.aspx) was conducted on six programs that might be used to fight climate change. They were supported by 59% to 89% of respondents. We'll focus on the one that had the least support. The poll results state that 59% percent of respondents favor "Spending federal money to increase the number of electric vehicle charging stations in the U.S."
+
+For the purposes of this lab, we'll assume that a simple random sample of $n=500$ people was asked the question about increasing the number of electric vehicle charging stations in the U.S. Based on this sample, we'll investigate what we can infer about the underlying population parameter.
+
+
+
+## Exercise 1
+
+**a.** The code below creates a data frame `sample_ev` with $n=500$ sample responses in the `ev_charging` column. 59% of this sample support "Spending federal money to increase the number of electric vehicle charging stations in the U.S." **Using `sample_ev`, create a bootstrap distribution with 5000 replicates called `boot_ev`, plot it, and calculate the 95% confidence interval using the PERCENTILE method.** 
+
+[Only code is needed for this question. *It may be helpful to adapt code from Lab 6 to get started. Be careful to adjust column names, sample sizes, etc. Remember that `quantile()` can help you find percentiles.*]
+
+*******************************************************************************
+
+```{r}
+sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500)))
+
+
+# Your work below. Don't forget to set your seed! 
+
+
+
+```
+
+
+
+*******************************************************************************
+
+
+
+
+
+**b.** Use the same sample and bootstrap distribution from part (a) -- `sample_ev` and `boot_ev` -- find a 95% confidence interval using the **standard error method** for the proportion of US Adults who favor increasing the number of electric vehicle charging stations in the U.S. **In 1-2 sentences, compare the intervals produced by the methods in parts (a) and (b) and explain whether we should expect them to coincide.**
+
+[Code and text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**c.** Will the whole class get exactly the same confidence intervals as you did for either parts (a) or (b)? [Only text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+\newpage
+
+
+
+## Exercise 2
+
+Suppose that somehow we actually know that the true parameter is that 60% of all US adults favor spending federal money to increase the number of electric vehicle charging stations in the U.S. Since we know the population parameter, we can compute the sampling distribution. A fake population (size 100,000) to sample from is set up in the code chunk below. **Plot a sampling distribution of 5000 samples of size 500 taken from the population, using the `rep_sample_n()` function.  Then, compare it to the plot of the simulation-based bootstrap distribution from part (a). Do the distributions have the same center? Spread? Shape?** 
+
+[Code and text for this question.]
+
+
+*******************************************************************************
+
+```{r}
+pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
+                                     rep("No", 0.4*100000)))
+
+# Your work below. Don't forget to set your seed! 
+
+
+
+```
+
+
+
+
+*******************************************************************************
+
+
+
+\newpage
+
+
+
+## Exercise 3
+
+**a.** We're interested in whether it's plausible that the true proportion of all US adults who favor spending federal money to increase the number of electric vehicle charging stations in the U.S. is actually 0.5. For policy reasons, we'd like to know if this survey gives us strong evidence the the proportion is actually more than 0.5 (a majority). Let p be the true proportion. **Write out the null and alternative hypotheses in terms of p.** [Only text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**b.** Using simulation, create and display the null distribution. The null distribution is the sampling distribution *under the assumption that the null is true*, so you should follow the same idea as Exercise 2, but where p = 0.5. **Show the results in a histogram as you did in Exercise 2, and explain why the centers are different.** [Code and text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**c.** Based on the test statistic from the actual survey ($\hat{p} = 0.59$), find the p-value, which is the proportion of simulated null distribution statistics that are at least as big as the test statistic (if there are any). **Describe the result and interpret your p-value.** If you're still in lab, discuss with someone near you. What was their p-value? [Code and text for this question.]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+**d.** Compare the p-value above to the significance level of alpha = 0.025. **Does this test give evidence to reject the null hypothesis?** [Only text for this question.]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+**e.** What would a Type I or Type II error mean in this context? Is it possible that you made either type of error in part (d)? [Only text for this question.]
+
+*******************************************************************************
+
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+
+\newpage
+
+
+
+
+## Exercise 4
+
+Imagine you're a political pollster interested in inferring the proportion of voters who support Carmen Rubio for Portland mayor back in the November 2024 election. You conduct a survey of 200 likely voters and find that 88 of them support Ms. Rubio.
+
+**a.** Create a **90%** confidence interval for $p$, the overall proportion of likely Portland voters who support Carmen Rubio for mayor. [Only code]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**b.** Carefully interpret your confidence interval in context. What can you learn about Ms. Rubio's electoral chances from this confidence interval? [Only text]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+**c.** Suppose we're also interested in knowing if it's plausible that Ms. Rubio will receive less than 50\% of the votes in the upcoming election for mayor. **To test this question, calculate a p-value** for the alternative hypothesis that $p<0.5$ vs. the null hypothesis that $p=0.50$ at the 0.05 level. [Only code]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+**d.** Carefully interpret your p-value in context. What can you learn about Ms. Rubio's electoral chances from this hypothesis test? [Only text]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+**e.** Consider your conclusions from 4(b) and 4(d). *In context*, what is different about your conclusions from the inferential procedures of confidence intervals and hypothesis tests? [Only text]
+
+*******************************************************************************
+
+
+
+
+
+
+*******************************************************************************
+
+
+
+**f.** You should have found a right endpoint for your 90% confidence interval of about 0.50 in (a), and a p-value of around 0.05 in (c). In other words, we are right at the "border" of evidence that 50% of voters support Ms. Rubio for mayor. **In your own words, explain why these two inferential procedures "align" in this sense.** [Only text]
+
+*******************************************************************************
+
+
+
+
+
+
+*******************************************************************************
+
+

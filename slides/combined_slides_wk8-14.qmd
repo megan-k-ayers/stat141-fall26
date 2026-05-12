@@ -1,0 +1,35 @@
+---
+title: "MATH 141: Combined Lecture Slides Weeks 8-14"
+output: html
+---
+
+{{< include lecture22_wk08mon.qmd >}}
+{{< include lecture23_wk08wed.qmd >}}
+{{< include lecture24_wk08fri.qmd >}}
+{{< include lecture25_wk10mon.qmd >}}
+{{< include lecture26_wk10wed.qmd >}}
+{{< include lecture27_wk10fri.qmd >}}
+{{< include lecture28_wk11mon.qmd >}}
+{{< include lecture29_wk11wed.qmd >}}
+{{< include lecture30_wk11fri.qmd >}}
+{{< include lecture31_wk12mon.qmd >}}
+{{< include lecture32_wk12wed.qmd >}}
+{{< include lecture33_wk12fri.qmd >}}
+{{< include lecture34_wk13mon.qmd >}}
+{{< include lecture35_wk13wed.qmd >}}
+{{< include lecture36_wk13fri.qmd >}}
+{{< include lecture37_wk14mon.qmd >}}
+{{< include lecture38_wk14wed.qmd >}}
+
+
+```{r, eval = FALSE, echo = FALSE}
+
+last_slides <- "lecture38_wk14wed.qmd"
+slides <- grep(".qmd", list.files(), value = TRUE, fixed = TRUE)
+slides <- grep("^lecture", slides, value = TRUE)
+slides <- slides[which(slides == "lecture22_wk08mon.qmd"):which(slides == last_slides)]
+cat(paste0("{{< include ", slides, " >}}\n"))
+
+```
+
+

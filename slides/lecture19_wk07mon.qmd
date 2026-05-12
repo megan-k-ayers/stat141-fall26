@@ -1,0 +1,786 @@
+---
+pagetitle: "Confidence Intervals I: Introduction"
+editor: source
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    math:
+      method: mathjax
+      version: 3
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+#| echo:    false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.align = 'center')
+library(knitr)
+library(tidyverse)
+library(ggthemes)
+library(moderndive)
+library(gapminder)
+library(infer)
+library(tufte)
+```
+
+::::: columns
+::: {.column .center width="50%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="50%"}
+<br>
+
+[Confidence Intervals I]{.custom-title}
+
+<br> <br> 
+
+[Megan Ayers]{.custom-subtitle}
+
+[Math 141 \| Spring 2026 <br> Monday, Week 7]{.custom-subtitle}
+:::
+:::::
+
+
+------------------------------------------------------------------------
+
+### Announcements/reminders
+
+- Homework 5 due tonight
+
+- Homework 6 is posted, but not due until 3/20 (last day before spring break)
+    - Today's content relevant to starting Ex. 4, 5. 
+
+------------------------------------------------------------------------
+
+### Today's Goals
+
+- Introduce confidence intervals as a method for estimating a parameter
+
+- Use bootstrapping as a means of creating confidence intervals
+
+
+
+# Confidence Intervals
+
+
+------------------------------------------------------------------------
+
+## Point Estimates
+
+- To estimate a population parameter, we can use a sample statistic.
+    - **Ex:**  You're hosting a pizza party for 200 people, and need to know what proportion [$p$]{style="color:red;"} of vegetarian pizza to order. 
+    - **Idea:** Ask a (random) sample of attendees about their pizza preference and use the proportion [$\widehat{p}$]{style="color:red;"} in the sample as an estimate for the total proportion $p$.
+  
+
+- Your sample statistic, $\widehat{p}$, is a good guess for the population parameter.
+  - **Terminology:** We sometimes call our sample statistic a [point estimate]{style="color:red;"}.
+  
+
+
+------------------------------------------------------------------------
+
+## Point Estimates vs. Interval Estimates
+
+- A sample statistic is a good guess for the population parameter, but not the whole story
+    - **Q:** After polling pizza party attendees, you find $\widehat{p} = 0.33$. What factor(s) determine your (un)certainty in this estimate?
+  
+
+- It may be preferable to estimate the proportion using **a range of values**, with smaller intervals corresponding to precision.
+  - With just **$n = 9$** people, you might give a range of **$0.03$ to $0.63$** for $p$.
+  
+  - But with **$n = 48$**, you might instead give the range **$0.20$ to $0.46$**.
+
+
+
+- We call these ranges **interval estimates**.
+
+
+------------------------------------------------------------------------
+
+## Confidence Interval Estimates
+
+::: fragment
+A **confidence interval estimate** for a parameter *[usually]{.underline}* takes the form
+$$
+\textrm{Statistic }\pm \textrm{ Margin of Error (ME)}
+$$
+:::
+
+::: fragment
+The confidence interval gives a range of plausible values for the parameter.
+:::
+
+::: {.fragment .nonincremental}
+  - e.g., when sampling pizza preferences with $n=48$, we estimate $p$ using the interval 
+    
+$$
+   0.20 \textrm{ to } 0.46  \qquad \textrm{ or } \qquad \underbrace{0.33}_{\text{Statistic ($\widehat{p}$)}} \pm \ \ \ \underbrace{0.13}_{\text{ME}} 
+$$
+
+:::
+
+::: fragment
+The **Margin of Error** determines the width of the interval ($2*\text{Margin of Error}$)
+:::
+
+::: {.fragment .nonincremental}
+  - e.g., in our pizza interval, the width is:
+$$
+   0.46 - 0.20 = 0.26 = 2 * \underbrace{0.13}_{\text{ME}}
+$$
+
+:::
+
+**Q:** How should we choose our Margin of Error? (think *conceptually*)
+ 
+ 
+------------------------------------------------------------------------
+
+## Confidence Intervals using the Sampling Distribution
+ 
+- **Goal**: Figure out a reasonable **Margin of Error**
+
+- In our example, suppose $p = 0.25$ (i.e., 25% of all party attendees prefer vegetarian)
+
+- For approximately bell-shaped sampling distributions, **95\% of all sample statistics are within 2 SE of the parameter.**
+
+::: fragment
+
+```{r out.width = "70%", fig.height=2.5, echo=FALSE}
+set.seed(1010)
+n<-10000
+p <- 0.25
+sample_size <- 48
+p_hat<-rbinom(n, size = sample_size, prob = p)/sample_size
+se <- sqrt(p*(1-p)/sample_size)
+dd<-data.frame(p_hat)
+
+ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, color = "white", fill = "gray60")+
+  labs(x = "Sample Proportion", title = "Sampling Distribution, n = 48, True parameter: p = .25", y = NULL)+
+  geom_rect(data =data.frame(x=0, y = 0), xmin = p-2*se, xmax =p+2*se, ymin = 0, ymax = Inf, fill = "gray50", alpha = .3)+
+ scale_x_continuous(breaks = seq(0, .5, by = .05))+
+#  scale_y_continuous(labels = NULL)+
+  annotate(geom = "text", label = paste("2*SE =",2*se), x = p+2*se, y = 900)+
+  annotate(geom = "text", label = "p", color = "magenta3", x = p+.01, y = 1500, size = 4)+
+  geom_vline(xintercept = p, color = "magenta3") +
+  theme_minimal() +
+  xlim(c(0, 0.525))
+```
+
+:::
+
+- This also means that **for 95\% of all samples, the [parameter]{.underline} will be within a distance of 2 SE of the sample [statistic]{.underline}** (every sample in the gray region) 
+
+
+------------------------------------------------------------------------
+
+## Confidence Intervals
+  
+**Idea:** Build an interval centered at the sample statistic, with a margin of error of $2\cdot SE$:
+
+$$
+\widehat{p} \pm 2\cdot \textrm{SE}
+$$
+  
+  
+  - This interval will contain the parameter $p$ in 95% of samples!
+
+::: {.fragment .nonincremental}
+
+```{r out.width = "70%", fig.height=2.5, echo=FALSE}
+ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, color = "white", fill = "gray60")+
+  labs(x = "Sample Proportion", title = "Sampling Distribution, n = 48, True parameter: p = .25", y = NULL)+
+  geom_rect(data =data.frame(x=0, y = 0), xmin = p-2*se, xmax =p+2*se, ymin = 0, ymax = Inf, fill = "gray50", alpha = .3)+
+ scale_x_continuous(breaks = seq(0, .5, by = .05))+
+#  scale_y_continuous(labels = NULL)+
+  annotate(geom = "text", label = paste("2*SE =",2*se), x = p+2.25*se, y = 600)+
+  annotate(geom = "text", label = "p", color = "magenta3", x = p+.01, y = 1500, size = 4)+
+  geom_vline(xintercept = .33, color = "forestgreen")+
+  annotate(geom = "text", label = expression(hat(p)), color = "forestgreen", x = .34, y = 1400, size = 4)+
+  geom_vline(xintercept = p, color = "magenta3")+
+  geom_segment(aes(x = .33 + 2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .33-2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .33, y = 200, color = "dodgerblue", size = 2) +
+  theme_minimal() +
+  xlim(c(0, 0.525))
+```
+
+
+- The interval for our sample was $0.33 \pm 0.125$, which *does* contain the parameter $p$
+
+:::
+
+------------------------------------------------------------------------
+
+## Interval Estimates
+
+::: nonincremental
+**Idea:** Build an interval centered at the sample statistic, with a margin of error of $2\cdot SE$:
+
+$$
+\widehat{p} \pm 2\cdot \textrm{SE}
+$$
+
+
+
+  - This interval will contain the parameter $p$ in 95% of samples!
+
+
+
+```{r out.width = "70%", fig.height=2.5, echo=FALSE}
+ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, color = "white", fill = "gray60")+
+  labs(x = "Sample Proportion", title = "Sampling Distribution, n = 48, True parameter: p = .25", y = NULL)+
+  geom_rect(data =data.frame(x=0, y = 0), xmin = p-2*se, xmax =p+2*se, ymin = 0, ymax = Inf, fill = "gray50", alpha = .3)+
+ scale_x_continuous(breaks = seq(0, .5, by = .05))+
+#  scale_y_continuous(labels = NULL)+
+  annotate(geom = "text", label = paste("2*SE =",2*se), x = p+2.25*se, y = 600)+
+  annotate(geom = "text", label = "p", color = "magenta3", x = p+.01, y = 1500, size = 4)+
+  geom_vline(xintercept = .33, color = "forestgreen")+
+  annotate(geom = "text", label = expression(hat(p)), color = "forestgreen", x = .34, y = 1400, size = 4)+
+  geom_vline(xintercept = p, color = "magenta3")+
+  geom_segment(aes(x = .33 + 2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .33-2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .33, y = 200, color = "dodgerblue", size = 2) +
+  theme_minimal() +
+  geom_segment(aes(x = .225 + 2*se, y = 400, xend = .225, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .225-2*se, y = 400, xend = .225, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .225, y = 400, color = "dodgerblue", size = 2) +
+  xlim(c(0, 0.525))
+```
+
+- Samples with $\widehat{p}$ in the gray region have intervals that also contain the parameter $p$
+
+:::
+
+------------------------------------------------------------------------
+
+## Interval Estimates
+
+::: nonincremental
+
+**Idea:** Build an interval centered at the sample statistic, with a margin of error of $2\cdot SE$:
+
+$$
+\widehat{p} \pm 2\cdot \textrm{SE}
+$$
+
+
+
+  - This interval will contain the parameter $p$ in 95% of samples!
+
+
+
+```{r out.width = "70%", fig.height=2.5, echo=FALSE}
+ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, color = "white", fill = "gray60")+
+  labs(x = "Sample Proportion", title = "Sampling Distribution, n = 48, True parameter: p = .25", y = NULL)+
+  geom_rect(data =data.frame(x=0, y = 0), xmin = p-2*se, xmax =p+2*se, ymin = 0, ymax = Inf, fill = "gray50", alpha = .3)+
+ scale_x_continuous(breaks = seq(0, .5, by = .05))+
+#  scale_y_continuous(labels = NULL)+
+  annotate(geom = "text", label = paste("2*SE =",2*se), x = p+2.25*se, y = 800)+
+  annotate(geom = "text", label = "p", color = "magenta3", x = p+.01, y = 1500, size = 4)+
+  geom_vline(xintercept = .33, color = "forestgreen")+
+  annotate(geom = "text", label = expression(hat(p)), color = "forestgreen", x = .34, y = 1400, size = 4)+
+  geom_vline(xintercept = p, color = "magenta3")+
+  geom_segment(aes(x = .33 + 2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .33-2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .33, y = 200, color = "dodgerblue", size = 2) +
+  theme_minimal() +
+  geom_segment(aes(x = .225 + 2*se, y = 400, xend = .225, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .225-2*se, y = 400, xend = .225, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .225, y = 400, color = "dodgerblue", size = 2) +
+  geom_segment(aes(x = .4 + 2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .4-2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .4, y = 600, color = "dodgerblue", size = 2) +
+  xlim(c(0, 0.525))
+```
+
+- Samples with $\widehat{p}$ outside the gray region have intervals that don't contain $p$
+
+:::
+
+------------------------------------------------------------------------
+
+## Interval Estimates
+  
+::: nonincremental  
+
+**Idea:** Build an interval centered at the sample statistic, with a margin of error of $2\cdot SE$:
+
+$$
+\widehat{p} \pm 2\cdot \textrm{SE}
+$$
+
+
+
+  - This interval will contain the parameter $p$ in 95% of samples!
+  
+
+```{r out.width = "70%", fig.height=2.5, echo=FALSE}
+ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, color = "white", fill = "gray60")+
+  labs(x = "Sample Proportion", title = "Sampling Distribution, n = 48, True parameter: p = .25", y = NULL)+
+  geom_rect(data =data.frame(x=0, y = 0), xmin = p-2*se, xmax =p+2*se, ymin = 0, ymax = Inf, fill = "gray50", alpha = .3)+
+ scale_x_continuous(breaks = seq(0, .5, by = .05))+
+#  scale_y_continuous(labels = NULL)+
+  # annotate(geom = "text", label = paste("2*SE =",2*se), x = p+2.25*se, y = 800)+
+  annotate(geom = "text", label = "p", color = "magenta3", x = p+.01, y = 1500, size = 4)+
+  geom_vline(xintercept = .33, color = "forestgreen")+
+  annotate(geom = "text", label = expression(hat(p)), color = "forestgreen", x = .34, y = 1400, size = 4)+
+  geom_vline(xintercept = p, color = "magenta3")+
+  geom_segment(aes(x = .33 + 2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .33-2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .33, y = 200, color = "dodgerblue", size = 2) +
+  theme_minimal() +
+  geom_segment(aes(x = .225 + 2*se, y = 400, xend = .225, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .225-2*se, y = 400, xend = .225, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .225, y = 400, color = "dodgerblue", size = 2) +
+  geom_segment(aes(x = .4 + 2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .4-2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .4, y = 600, color = "dodgerblue", size = 2) +
+  geom_segment(aes(x = .4 + 2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .4-2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .4, y = 600, color = "dodgerblue", size = 2) +
+  geom_segment(aes(x = .26 + 2*se, y = 1000, xend = .26, yend = 1000), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .26-2*se, y = 1000, xend = .26, yend = 1000), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .26, y = 1000, color = "dodgerblue", size = 2)+
+  geom_segment(aes(x = .18 + 2*se, y = 1200, xend = .18, yend = 1200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .18-2*se, y = 1200, xend = .18, yend = 1200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  
+  annotate(geom = "point", x = .18, y = 1200, color = "dodgerblue", size = 2) +
+    geom_segment(aes(x = .15 + 2*se, y = 800, xend = .15, yend = 800), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .15-2*se, y = 800, xend = .15, yend = 800), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .15, y = 800, color = "dodgerblue", size = 2) +
+  xlim(c(0, 0.525))
+```
+
+- But 95% of all samples will have intervals that do contain $p$
+
+:::
+
+------------------------------------------------------------------------
+
+## Confidence levels
+
+- On the previous slide, 95\% of confidence intervals contained the true parameter, $p$.
+
+- Thus, we call each interval estimate a **95\% confidence interval**.
+  
+
+- Here, 95\% is our **confidence level**: The success rate for our estimation technique.
+  - e.g., The pizza interval $0.33 \pm 0.13$ has confidence level of 95\%
+  
+
+- The confidence level corresponds to **the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter**.
+
+
+::: fragment
+
+```{r out.width = "70%", fig.height=2.5, echo=FALSE}
+ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, color = "white", fill = "gray60")+
+  labs(x = "Sample Proportion", title = "Sampling Distribution, n = 48, True parameter: p = .25", y = NULL)+
+  geom_rect(data =data.frame(x=0, y = 0), xmin = p-2*se, xmax =p+2*se, ymin = 0, ymax = Inf, fill = "gray50", alpha = .3)+
+ scale_x_continuous(breaks = seq(0, .5, by = .05))+
+#  scale_y_continuous(labels = NULL)+
+  # annotate(geom = "text", label = paste("2*SE =",2*se), x = p+2.25*se, y = 800)+
+  annotate(geom = "text", label = "p", color = "magenta3", x = p+.01, y = 1500, size = 4)+
+  geom_vline(xintercept = .33, color = "forestgreen")+
+  annotate(geom = "text", label = expression(hat(p)), color = "forestgreen", x = .34, y = 1400, size = 4)+
+  geom_vline(xintercept = p, color = "magenta3")+
+  geom_segment(aes(x = .33 + 2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .33-2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .33, y = 200, color = "dodgerblue", size = 2) +
+  theme_minimal() +
+  geom_segment(aes(x = .225 + 2*se, y = 400, xend = .225, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .225-2*se, y = 400, xend = .225, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .225, y = 400, color = "dodgerblue", size = 2) +
+  geom_segment(aes(x = .4 + 2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .4-2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .4, y = 600, color = "dodgerblue", size = 2) +
+  geom_segment(aes(x = .4 + 2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .4-2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .4, y = 600, color = "dodgerblue", size = 2) +
+  geom_segment(aes(x = .26 + 2*se, y = 1000, xend = .26, yend = 1000), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .26-2*se, y = 1000, xend = .26, yend = 1000), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .26, y = 1000, color = "dodgerblue", size = 2)+
+  geom_segment(aes(x = .18 + 2*se, y = 1200, xend = .18, yend = 1200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .18-2*se, y = 1200, xend = .18, yend = 1200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  
+  annotate(geom = "point", x = .18, y = 1200, color = "dodgerblue", size = 2) +
+    geom_segment(aes(x = .15 + 2*se, y = 800, xend = .15, yend = 800), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .15-2*se, y = 800, xend = .15, yend = 800), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .15, y = 800, color = "dodgerblue", size = 2) +
+  xlim(c(0, 0.525))
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## Confidence levels
+
+- **[Confidence Level:]{.underline}** the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter.
+
+
+- For example, were we to:
+    - Repeatedly draw samples from the population, and
+    - Create 95\% confidence intervals in each sample...
+    - 95\% of those confidence intervals would contain the true parameter
+
+
+
+------------------------------------------------------------------------
+
+## Recap: Confidence Intervals
+
+- Confidence intervals consist of 1. **an interval estimate** and 2. **a confidence level**.
+
+- In our pizza party sample, we estimated the true proportion of vegetarian pizza-eaters was between **$0.20$ and $0.46$**, with **$95\%$ confidence**.
+
+
+
+- What does "95\% confidence" mean?
+    - It's the success rate **[of the process]{.underline}**
+    - For 95\% of all samples, the interval we construct will actually contain the parameter.
+
+
+- Worth emphasizing: it's the success rate **of The Process, [NOT]{.underline} the specific interval you calculated in your sample.**
+    - The parameter is either in your interval, or it's not -- there's no success rate there!
+
+
+------------------------------------------------------------------------
+
+
+## Think-Pair-Share
+
+
+
+**Q:** What's the difference between these two interpretations of a 95\% confidence interval?
+
+  - For 95\% of all samples, the interval we construct will actually contain the parameter.
+  
+  - For a given interval, there is a 95\% chance that the parameter will fall in the interval. 
+  
+  
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
+
+------------------------------------------------------------------------
+
+## Think-Pair-Share (Answer) 
+
+
+
+**Q:** What's the difference between these two interpretations of a 95\% confidence interval?
+
+  - For 95\% of all samples, the interval we construct will actually contain the parameter.
+  
+  - For a given interval, there is a 95\% chance that the parameter will fall in the interval. 
+
+<br>
+
+::: fragment
+
+**A:**
+
+:::
+
+- The first one is accurate! 95\% confidence refers to the accuracy of the *process*
+
+- **The second one is wrong, an easy mistake to make!!** It confuses probability of the process with a deterministic outcome. Our sample statistic "moves" with sampling variability - the parameter does not.
+
+
+------------------------------------------------------------------------
+
+
+## Interval Width and Sample Size ($n$)
+  
+**Idea:** Build a 95\% confidence interval centered at the sample statistic, with a margin of error of $2\cdot SE$:
+$$
+\widehat{p} \pm \underbrace{2\cdot \textrm{SE}}_{\text{Margin of Error}}
+$$
+
+
+
+- This interval's **width is determined by the Standard Error (SE).**
+
+- **Reminder:** The SE is the standard deviation of the sampling distribution.
+
+- **Q:** What do we know about the SE as the sample size ($n$) increases?
+
+- **Q:** What does this imply about the interval's width  as the sample size ($n$) increases?
+    - The SE gets smaller as $n$ increases!
+    - Our interval becomes narrower as $n$ increases!
+
+
+------------------------------------------------------------------------
+
+
+## Interval Width and Confidence Level
+  
+**Idea:** Build an 95\% confidence interval centered at the sample statistic, with a margin of error of $2\cdot SE$:
+$$
+\widehat{p} \pm \underbrace{2\cdot \textrm{SE}}_{\text{Margin of Error}}
+$$
+
+- Chose $\text{Margin of Error} = 2*SE$ because 95\% of sample statistics fall within $2*SE$ of the parameter (in sampling distribution).
+
+
+- **Fun Fact:** 9[0]{.underline}\% of sample statistics fall within $1.64*SE$ of the parameter.
+    - **Q**: What would happen if we did the following interval?
+$$
+\widehat{p} \pm 1.64*\textrm{SE}
+$$
+    - We would get a 9[0]{.underline}\% confidence interval!
+    - This interval is narrower, but **has a lower "success" rate!** For 9[0]{.underline}\% of all samples, the interval will contain the parameter.
+
+
+------------------------------------------------------------------------
+
+## Interval Width and Confidence Level
+
+- **[Takeaway:]{.underline} The confidence level also determines the width of the interval!**
+  
+  - higher confidence (e.g., 95\%) means a *larger* margin of error (*wider* interval)
+  
+  - lower confidence (e.g., 90\%)  means a *smaller* margin of error (*narrower* interval)
+  
+
+```{r, echo = FALSE}
+ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, color = "white", fill = "gray60")+
+  labs(x = "Sample Proportion", title = "Sampling Distribution, n = 48, True parameter: p = .25", y = NULL)+
+  geom_rect(data =data.frame(x=0, y = 0), xmin = p-2*se, xmax =p+2*se, ymin = 0, ymax = Inf, fill = "gray50", alpha = .2)+
+ scale_x_continuous(breaks = seq(0, .5, by = .05))+
+#  scale_y_continuous(labels = NULL)+
+  annotate(geom = "text", label = "p", color = "magenta2", x = p+.01, y = 1500, size = 4)+
+  geom_vline(xintercept = p, color = "magenta2", lwd = 1)+
+    geom_vline(aes(xintercept = 0.33), lty = 2) +
+  geom_segment(aes(x = .33 + 2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  geom_segment(aes(x = .33-2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
+  annotate(geom = "point", x = .33, y = 200, color = "dodgerblue", size = 2) +
+  annotate("text", x = .47, y = 200, label = " 95%", color = "dodgerblue") +
+  geom_segment(aes(x = .33 + 1.64*se, y = 400, xend = .33, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "goldenrod", lwd = 1)+
+  geom_segment(aes(x = .33-1.64*se, y = 400, xend = .33, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "goldenrod", lwd = 1)+
+  annotate(geom = "point", x = .33, y = 400, color = "goldenrod", size = 2) +
+  annotate("text", x = .45, y = 400, label = " 90%", color = "goldenrod") +
+  theme_bw()
+```
+
+
+
+------------------------------------------------------------------------
+
+## Problems(?) with Confidence Intervals
+
+Let's say we're working with 95\% confidence intervals
+
+
+
+- **Problem 1:** We only have 1 sample, and we don't know if it belongs to the 95% of "good" samples, or the 5% of "bad" ones
+    - **Consolation:** If I go through life constructing 95% confidence intervals, I will be right about 95% of the time 
+    - That's not bad!
+  
+<br>
+
+- **Problem 2:** To make a confidence interval, we need the sampling distribution in order to compute the standard error. But in practice, we (often) don't have direct access to this.
+  - **Solution:** approximate the sampling distribution via bootstrapping!
+
+
+
+
+# Bootstrap Confidence Intervals
+
+
+------------------------------------------------------------------------
+
+## Sleep for Reed Students
+
+Suppose we wish to estimate **how many hours Reed students sleep, on average** with a sample of 50 students, who we surveys on hours of sleep.
+
+::::: columns
+
+::: {.column width=50%}
+
+```{r echo = FALSE, fig.height = 4}
+library(gridExtra)
+set.seed(10)
+sleep <- data.frame(Student=1:50, Hours = 9 - rgamma(50, 2, 1))
+ggplot(sleep, aes(x = Hours))+geom_histogram(binwidth = 0.25, color = "white")+
+  labs(title = "Sample Distribution of Sleep at Reed College")+
+  geom_vline(xintercept = mean(sleep$Hours), color = "red", size = 1.5)+
+  annotate("text", x = mean(sleep$Hours)-.15, y = 6.5, label = expression(bar(x)), color = "red", size = 10)
+```
+
+::: fragment
+
+```{r echo = TRUE}
+head(sleep, 4)
+sleep %>% summarize(MeanSleep = round(mean(Hours), 3))
+```
+
+:::
+
+:::
+
+::: {.column width=50%}
+
+- Is the true average hours of sleep at Reed is 7.046?
+    - Surely not! This is just one sample of size 50
+  
+
+- Let's create a *confidence interval* for the true average hours 
+    - We can **use the bootstrap distribution to estimate the SE** needed for the interval
+
+:::
+:::::
+  
+  
+------------------------------------------------------------------------
+
+## Bootstrap Average Sleep
+
+
+::::: columns
+::: {.column width=36%}
+
+Create the bootstrap samples: 
+
+- **Q**: What is each argument of `rep_sample_n()` doing?
+
+- Each bootstrap sample consists of 50 observations sampled *with replacement* from the original sample (`size = 50`)
+
+- We have a total of 10,000 bootstrap samples (`reps = 10000`)
+
+:::
+
+::: {.column width=55%}
+
+```{r echo = T, eval = F}
+bootstrap_samples <- sleep %>% 
+  rep_sample_n(size = 50, replace = TRUE, 
+               reps = 10000)
+bootstrap_samples
+```
+```{r echo = F, eval = T}
+set.seed(121)
+bootstrap_samples <- sleep %>% 
+  rep_sample_n(size = 50, replace = TRUE, reps = 10000)
+bootstrap_samples
+```
+
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Bootstrap Average Sleep
+
+Compute bootstrap statistics: (Mean of each *bootstrap* sample)
+
+::::: columns
+
+::: {.column width=50%}
+
+```{r echo = T}
+bootstrap_stats <- bootstrap_samples %>% 
+  group_by(replicate) %>% 
+  summarize(x_bar = mean(Hours))
+```
+
+
+
+```{r echo = T}
+bootstrap_stats
+```
+
+
+:::
+
+::: {.column width=50%}
+
+
+- We now have 10,000 sample means based on the bootstrap samples, and can assess their variability
+
+:::
+
+:::::
+
+------------------------------------------------------------------------
+
+## Bootstrap Average Sleep
+
+
+Graph the bootstrap distribution:
+
+```{r fig.height=2.5, fig.width = 6 , echo = F}
+ggplot(bootstrap_stats, aes(x = x_bar))+
+  geom_histogram(bins = 34, color = "white")+
+  labs(title = "Bootstrap Distribution for Average Sleep, n = 50", x = expression(bar(x)))
+```
+
+
+- Use the bootstrap distribution to **estimate** the standard error:
+
+::: fragment
+```{r echo = F}
+r0_se <- bootstrap_stats %>% summarize(SE = sd(x_bar)) %>% pull()
+```
+
+```{r echo = T}
+bootstrap_stats %>% summarize(SE = sd(x_bar))
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## Confidence Interval for Average Sleep
+
+- Our sample average sleep was **$\bar x = 7.046$.**
+
+
+
+- Based on the bootstrap distribution, this statistic has [Standard Error=`r round(r0_se,3)`]{style="color:blue;"}.
+
+
+
+- Our 95% confidence interval for the true average hours of sleep for Reed students is:
+$$
+{7.046} \pm 2 \cdot \color{blue}{0.165} 
+$$
+
+
+  - Our best guess for average nightly sleep is that it's between `r 7.046 - 2*round(r0_se,3)` and `r 7.046 + 2*round(r0_se,3)`. This method has a success rate of $95\%$.
+
+
+------------------------------------------------------------------------
+
+## Next time: 
+
+- More on changing confidence levels
+
+- What to do with distributions that aren't bell-shaped (percentile method)
+
+- Confidence interval misconceptions
+
+
+------------------------------------------------------------------------

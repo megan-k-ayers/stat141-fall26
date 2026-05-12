@@ -1,0 +1,234 @@
+---
+title: "Lab 1: Introduction to R, RStudio, and Quarto"
+subtitle: "Math 141"
+author: "Insert Your Name Here"
+format: pdf
+---
+
+## Due: Tuesday, February 3rd at 11:59pm on Gradescope as a **PDF**
+
+In this lab, you will practice
+
+1.  Warming up with fundamental commands in `R`.
+2.  Running `R` code from chunks.
+3.  Viewing and summarizing data frames in `R`.
+4.  Rendering a `Quarto` document.
+
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
+
+### When you have completed Lab 1, follow this submission process:
+
+-   **Step 1**: Export the PDF (not the QMD) of your Lab 1 from the RStudio Server. Within the Files tab in the lower right-hand window:
+    -   Check the box next to "lab01_yourname.pdf".
+    -   Click on the blue cog and select "Export..." and then "Download."
+-   **Step 2**: Within Gradescope (which you can access from the course website), click on Lab 01 and select the option "Submit PDF."
+    -   Then "Select PDF" from where it was downloaded onto your computer and hit "Upload PDF."
+-   **Step 3**: Within the Question Outline, click on "Problem 1" and then click on the pages that contain your solutions for Problem 1. Repeat this process for each Problem. Then hit "Submit."
+
+
+
+# Problems
+
+
+## Problem 1
+In this problem, we will explore fundamental commands and behavior in R.  
+
+a. In the R code chunk below, create a variable called `y` with the value 7. In R, we use `<-` to assign values to variable names, like x <- 1.
+*Pro tip: To run a single line of code, put the cursor on the same line as the code and hit Command+Enter (for a Mac) or Control+Enter (for a PC). To run all the code in a chunk, put the cursor on a line of code and hit Command+Shift+Enter (for a Mac) or Ctrl+Shift+Enter (for a PC).*
+
+```{r}
+
+```
+
+
+
+b. Below, create a new code chunk. Create another variable called `x` with the value of 5, and a third variable called `z` with the value of `x` multiplied by `y`. 
+
+
+c. Run the chunk below. Where does the answer appear? Find the console pane (usually the bottom left of the RStudio window), and run the same command, `2*50`, in the console. Where does the answer appear now? 
+```{r eval = F}
+2*50
+```
+
+
+
+d. Create another new chunk below, and use the `sum()` function to add `x`, `y`, and `z`. If you aren't sure how to use `sum()`, try running `?sum` in the console to pull up the help page.
+
+
+
+e. Find the environment pane in your RStudio window (usually in the upper right). What do you see there?
+
+
+
+f. In the environment pane, click the little broom icon in the upper bar. Click yes on the
+window that opens. What happened to the environment? What happens if you now try to run your chunks from steps (b) or (d)? 
+
+
+
+g. Find the "Run" button at the upper right corner of this chunk, and select "Run all chunks above." What happened to the environment?
+
+```{r}
+
+```
+
+
+
+h. Let's practice using exponents to create another variable, `s`. Run the chunk below one line at a time using Command+Enter (for a Mac) or Control+Enter (for a PC), and type out the value associated with each line. Why does each line affect the environment differently? Where did you find the values?
+
+```{r eval = F}
+s <- 7^7
+
+7^5
+```
+
+
+
+i. Finally, let's practice making a vector and creating character data types. In R, we create vectors using the function `c()`. For example, try running `c(1, 2, 3)` in the console. All elements of a vector must have the same data type (ex. all numeric, or all character). We create characters by writing `"some text"`. In a new chunk below, create a vector called `a` with three character elements, with each element representing one of your favorite genres of music. What information about this object is stored in the environment?
+
+
+
+## Problem 2
+
+In this problem, we are going to explore an existing data frame in `R`.
+
+a.  For data frames in general, what does a row represent? What does a column represent?
+
+
+
+b.  Run the following code to load the `openintro` library/package and to grab the `yrbss` dataset.
+
+```{r}
+#| message: false
+#load the openintro package and the yrbss dataset
+library(openintro)
+library(dplyr)
+data(yrbss)
+```
+
+
+c.  Run the following, and begin exploring the data called `yrbss`. (Leave in the `eval: false`.) Some useful functions to get started include: `head()` and `str()`. You don't need to write any written response for this part, just use this space to explore the data set and answer the following questions.
+
+*Pro tip: For datasets in packages, we can also run `?` followed by the dataset name to open up the documentation file in the Help pane that describes the dataset and provides information on the variables.*
+
+```{r}
+#| eval: false  
+View(yrbss)
+?yrbss
+```
+
+
+d.  What does a row of the data frame represent? How many rows are in the data frame?
+
+
+
+
+e.  What does a column of the data frame represent? How many columns are in the data frame?
+
+
+
+
+f.  Is `age` recorded as a categorical or a quantitative variable? How about `hours_tv_per_school_day`? Explain your reasoning.
+
+
+
+
+g.  We will learn to be careful with how we treat missing values, which are typically labeled as `NA` in the date frame. What are two possible reasons why the the variable `text_while_driving_30d` might be recorded as `NA`? 
+
+
+
+
+h.  List two quantitative variables found in the dataset that haven't already been mentioned in this problem.
+
+
+
+
+
+i.  List two categorical variables found in the dataset that haven't already been mentioned in this problem.
+
+
+
+
+
+
+## Problem 3
+
+Let's explore the `somerville` data frame, which is in the `somerville.csv` file. 
+
+Starting in 2011, officials from the city of Somerville, Massachusetts decided to start measuring residents' overall happiness and satisfaction with many aspects of life in Somerville; their goal was to become the first city in the United States to systematically track people's happiness. The Happiness Survey is an initiative of the Mayor's Office of Analytics and Innovation (SomerStat) and has the goal of supporting the local government's understanding of what makes Somerville a great place to live. 
+
+The happiness survey is sent out every two years to a random sample of Somerville households, with the instruction that each survey should be filled out by one person. The survey asks residents to rate their personal happiness, wellbeing, and satisfaction with City services. This combined dataset includes the survey responses from 2011 to 2019. 
+
+Run the code in the following chunk to load the `somerville` data.
+
+```{r, message = FALSE}
+somerville <- read.csv("data/somerville.csv")
+```
+
+
+Variables in the `somerville` data:
+
+  * `year`: year that response was collected
+  * `happy`: happiness rating, on a scale from 1 to 10 with 10 being most happy
+  * `satisfied_life`: rating for satisfaction with life in general, on a scale from 1 to 10 with 10 being most satisfied
+  * `satisfied_somerville`: rating for satisfaction with Somerville as a place to live, on a scale from 1 to 10 with 10 being most satisfied
+  * `age`: age in years
+  * `children_home`: whether respondent has children under 18 living at home
+  * `ward`: neighborhood ward the respondent lives in
+  * `precinct`: neighborhood precinct the respondent lives in
+  * `student`: whether respondent is a student
+  * `convenient_transport`: rating for how convenient it is to get to where you want to go, on a scale from 1 to 10 with 10 being most satisfied
+  * `direction_somerville`: whether respondent feels the City is headed in the right direction or is on the wrong track
+  * `housing`: whether respondent rents or owns their home
+  * `primary_transport`: primary form of transportation
+  * `lived_here`: years respondent has lived in Somerville
+
+You can use the `summary()` function on numerical variables to see summary statistics like the minimum and maximum values and the `count()` function to see the number of observations per category for categorical variables. See below for two examples of the syntax:
+
+```{r}
+summary(somerville$lived_here)
+count(somerville, primary_transport)
+```
+
+*Pro tip: Clicking on the name of the data frame in the Environment pane opens a spreadsheet window. In that window, you can sort the data frame by a particular variable by clicking on the arrows in that variable's column.*
+
+a. How many observations and variables are in the data? What does a row represent in the context of the data?
+
+
+
+
+
+b. Identify which variables are quantitative and which variables are categorical.
+
+
+
+
+c. Suppose that for the next version of the happiness survey, city officials would like to obtain data on race. Before recent changes, the U.S. Office of Management and Budget required the Census Bureau to have five minimum categories to the question asking respondents for racial identity: White, Black or African American, American Indian or Alaska Native, Asian, and Native Hawaiian or Other Pacific Islander. Discuss the extent to which these categories adequately represent the variable they describe. 
+
+
+
+
+d. For each categorical variable in the `somerville` data, discuss the extent to which the given categories adequately represent the variable they describe. 
+
+
+
+e. What is a categorical variable you would like to collect data on and what would the response categories be?
+
+
+
+
+
+f. For each quantitative variable in the `somerville` data, discuss if the range of values given are reasonable. In other words, think about whether there are values that might be the result of data entry error (such as if someone was listed as being 50 feet tall) and comment on what an unreasonable value might look like.
+
+
+
+
+
+g. What is a quantitative variable that you would recommend be collected in the next version of the survey? Briefly explain why having information about this variable would be helpful for the local government to understand what makes Somerville a great place to live. 
+
+
+

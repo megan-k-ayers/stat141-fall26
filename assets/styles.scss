@@ -1,0 +1,365 @@
+/*-- scss:defaults --*/
+
+// Google Fonts 
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono&display=swap');
+
+// Reed College Primary Colors
+$reed-red: #A70E16;
+$reed-black: #000000;
+
+// Reed College Secondary Colors
+$adirondack: #E85A37;
+$no2-pencil: #FFC846;
+$reactor-core: #DFE7E7;
+$blue-bridge: #3F6574;
+$golden-laurel: #BF995D;
+$parchment: #FFF7E9;
+$canyon-fern: #7E8A65;
+$newsprint: #ECEAE4;
+
+// Base colors 
+$white:    #fff !default;
+$gray-100: $parchment !default;
+$gray-200: $newsprint !default;
+$gray-300: $reactor-core !default;
+$gray-400: #ced4da !default;
+$gray-500: $canyon-fern !default;
+$gray-600: $blue-bridge !default;
+$gray-700: $reed-black !default;
+$gray-800: $reed-black !default;
+$gray-900: $reed-black !default;
+$black:    $reed-black !default;
+
+$blue:    $blue-bridge !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     $reed-red !default;
+$orange:  $adirondack !default;
+$yellow:  $no2-pencil !default;
+$green:   $canyon-fern !default;
+$teal:    #20c997 !default;
+$cyan:    #29abe0 !default;
+
+$primary:       $reed-red !default;
+$secondary:     $blue-bridge !default;
+$success:       $golden-laurel !default;
+$info:          $blue-bridge !default;
+$warning:       $no2-pencil !default;
+$danger:        $reed-red !default;
+$light:         $parchment !default;
+$dark:          $reed-black !default;
+
+// Body
+$body-color:                $blue-bridge !default;
+
+// Fonts - Updated to Reed College fonts
+$font-family-sans-serif: 'Source Sans Pro', sans-serif !default;
+$font-family-serif: 'Source Serif 4', serif !default;
+$font-family-monospace: 'Fira Mono', monospace !default;
+$headings-font-family: 'Source Serif 4', serif !default;
+$headings-font-weight: 400 !default;
+
+// Buttons
+$btn-padding-y-sm: .25rem;
+$btn-padding-x-sm: .5rem;
+$btn-font-size-sm: .75rem;
+
+/* css styles */
+
+// Reed-themed color utility classes
+.reed-red {
+  color: $reed-red;
+}
+.adirondack {
+  color: $adirondack;
+}
+.pencil-yellow {
+  color: $no2-pencil;
+}
+.blue-bridge {
+  color: $blue-bridge;
+}
+.golden-laurel {
+  color: $golden-laurel;
+}
+.canyon-fern {
+  color: $canyon-fern;
+}
+.center {
+  text-align: center;
+}
+
+.dropcap {
+  float: left;
+  font-family: 'Source Serif 4', serif;
+  font-size: 75px;
+  line-height: 60px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  color: $reed-red;
+}
+
+// Headings with Reed College styling
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Serif 4', serif;
+  color: $reed-red;
+}
+
+h1 {
+  color: $reed-red;
+}
+
+h2 {
+  color: $reed-red;
+}
+
+// Enhanced styling for strong elements
+strong {
+  font-weight: 600;
+  color: $golden-laurel;
+}
+
+// Blockquote styling with Reed theme
+blockquote {
+  border-left: solid 10px $reed-red;
+  padding-left: 1em;
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: $blue-bridge;
+}
+
+// Code styling with Reed colors
+code {
+  color: $adirondack;
+}
+
+pre code {
+  color: $adirondack;
+}
+
+// Links with Reed styling
+a {
+  color: $reed-red;
+  
+  &:hover {
+    color: $adirondack;
+  }
+}
+
+.v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+/* homepage */
+
+.content-block {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.banner-text {
+  color: $reed-red;
+  font-family: 'Source Serif 4', serif;
+  font-size: clamp(1.8em, 6vw, 4em);
+  font-weight: 600;
+  line-height: .9;
+  padding-top: .6em;
+}
+
+.week-x-box {
+  display: grid;
+  gap: 8px;
+  border-radius: 3px;
+  box-shadow: 0 0 0.5rem $reactor-core;
+  background-color: $white;
+  border: 1px solid $reactor-core;
+  
+  .daily-sched {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    padding: 3px;
+    
+    .date-cell {
+      border-bottom: 1px solid $reactor-core;
+      padding: 2px;
+      color: $blue-bridge;
+      font-weight: 600;
+    }
+    
+    .materials-cell {
+      border-bottom: 1px solid $reactor-core;
+      padding: 2px;
+      
+      .daily-topic {
+        font-size: 1em;
+        color: $blue-bridge;
+        font-family: 'Source Sans Pro', sans-serif;
+      }
+      
+      .PS-btn {
+        background-color: $reed-red;
+        color: $white;
+        border: none;
+        padding: 0.25rem 0.5rem;
+        border-radius: 3px;
+        font-size: 0.75rem;
+        font-family: 'Source Sans Pro', sans-serif;
+        
+        &:hover {
+          background-color: $adirondack;
+        }
+      }
+    }
+    
+    .date-cell:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+
+    .materials-cell:nth-last-child(-n+2) {
+      border-bottom: none;
+    }
+  }
+  
+}
+
+// Font size utility classes 
+.larger {
+  font-size: 3em;
+  font-family: 'Source Serif 4', serif;
+}
+
+.large {
+  font-size: 1.5em;
+  font-family: 'Source Serif 4', serif;
+}
+
+.midi {
+  font-size: 1.2em;
+}
+
+.quote-source {
+  font-size: 0.9em;
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+}
+
+.small {
+  font-size: 0.75em;
+}
+
+// Additional website-specific enhancements
+.centerh2 h2 {
+  text-align: center;
+}
+
+// Navigation styling
+.navbar {
+  background-color: $white !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  
+  .navbar-brand, .nav-link {
+    color: $blue-bridge !important;
+    font-family: 'Source Serif 4', serif;
+    
+    &:hover {
+      color: $reed-red !important;
+    }
+  }
+}
+
+// Card styling with Reed theme
+.card {
+  border: 1px solid $reactor-core;
+  background-color: $white;
+  
+  .card-header {
+    background-color: $parchment;
+    border-bottom: 1px solid $reactor-core;
+    color: $blue-bridge;
+    font-family: 'Source Serif 4', serif;
+  }
+  
+  .card-body {
+    color: $blue-bridge;
+  }
+}
+
+// Button styling with Reed colors
+.btn-primary {
+  background-color: $reed-red;
+  border-color: $reed-red;
+  
+  &:hover {
+    background-color: $adirondack;
+    border-color: $adirondack;
+  }
+}
+
+.btn-secondary {
+  background-color: $blue-bridge;
+  border-color: $blue-bridge;
+  
+  &:hover {
+    background-color: $canyon-fern;
+    border-color: $canyon-fern;
+  }
+}
+
+@media (min-width: 900px) {
+  .content-block {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content-block {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  #banner {
+    order: 2;
+    margin: 0em 1em 0em 1em !important;
+    padding-top: 0em;
+  }
+  
+  .banner-text {
+    padding-top: 0em;
+  }
+  
+  #hex {
+    order: 1;
+  }
+
+  .week-x-box {
+    grid-template-columns: 1fr;
+    
+    .daily-sched {
+      grid-template-columns: 1fr;
+      
+      .date-col {
+        border-bottom: none;
+      }
+    }
+    
+    .resources {
+      border-left: none;
+      border-top: 1px solid $reactor-core;
+    }
+  }
+}

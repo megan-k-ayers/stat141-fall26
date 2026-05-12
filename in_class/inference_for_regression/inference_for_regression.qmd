@@ -1,0 +1,274 @@
+---
+title: "Multiple Linear Regression: Inference and Model Selection"
+format: pdf
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+                      fig.align = 'center')
+library(tidyverse)
+library(moderndive)
+library(gridExtra)
+set.seed(1)
+data <- nycflights13::flights %>%
+  filter(dest == "PDX", arr_delay < 750)
+mod <- lm(arr_delay ~ air_time + dep_delay * carrier, data)
+data <- mod %>% get_regression_points()
+data$arr_delay <- data$arr_delay_hat + rnorm(1341, 0, sd = 25)
+data <- data %>% select(arr_delay, carrier, dep_delay, air_time)
+data$carrier <- factor(data$carrier, levels = c("B6", "DL", "UA"),
+                       labels = c("JetBlue", "Delta", "United"))
+rm(mod)
+```
+
+
+
+In this worksheet, we'll practice concepts related to inference for regression coefficients, F-Tests, and model selection. Work through the worksheet carefully in small groups.
+
+
+
+## Data: Flights to PDX Airport
+We will analyze data on flights arriving to the PDX airport in 2013. We have data on $n=1341$ randomly sampled flights, and for each flight, we have 4 variables:
+
+
++ Response: Arrival Delay in minutes (`arr_delay`). Can be negative if flight arrived early.
++ Explanatory 1: Airline Carrier (`carrier`).
++ Explanatory 2: Departure Delay in minutes (`dep_delay`). Can be negative if the flight departed early.
++ Explanatory 3: Air Time in minutes (`air_time`). 
+
+```{r, out.width="100%", fig.asp=0.5}
+grid.arrange(
+  ggplot(data, aes(x = arr_delay)) + geom_histogram() + labs(title = "Fig. 1") +
+    theme_bw(),
+  ggplot(data, aes(x = carrier, y = arr_delay)) + geom_boxplot() + 
+    labs(title = "Fig. 2") + theme_bw(),
+  ggplot(data, aes(x = dep_delay, y = arr_delay)) + geom_point(alpha = 0.3) +
+    labs(title = "Fig. 3") + theme_bw(),
+  ggplot(data, aes(x = air_time, y = arr_delay)) + geom_point(alpha = 0.3) +
+    labs(title = "Fig. 4") + theme_bw(),
+  nrow = 2
+)
+```
+
+
+### Question 1:
+
+
+Which variables seem to be important predictors of arrival delay? Consider the plots above and context.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+\newpage
+
+
+
+
+### Question 2:
+
+
+Let's test if arrival delay varies by airline carrier using ANOVA. 
+
+**a.** Specify the relevant parameters and the set of hypotheses.
+
+*******************************************************************************
+
+
+  
+*******************************************************************************
+  
+  
+
+
+
+
+
+
+**b.** State the p-value calculated by R (below) and interpret the result in context. What have you learned about these airline carriers from the ANOVA F-test and Figure 2?
+
+```{r echo=T}
+mod_carrier <- lm(arr_delay ~ carrier, data)
+anova(mod_carrier)
+```
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+\newpage
+
+
+
+
+### Question 3:
+
+
+Suppose we decide to model arrival delay using air time, departure delay, and carrier. We are considering additionally including an interaction term between departure delay and carrier. We will use a Nested F-Test to determine if we should use the "small" or "large" model, as defined below.
+
+  + Small Model: Predict Arrival Delay with Air Time, Departure Delay, and Carrier
+  + Large Model: Predict Arrival Delay with Air Time, Departure Delay, Carrier, and the interaction between Departure Delay and Carrier. 
+
+**a.** How many coefficients are in each of the small and large models? What variables do they represent?
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+
+
+**b.** Write down the set of hypotheses for a Nested F-Test to compare the small and large model above.
+
+*******************************************************************************
+
+
+  
+*******************************************************************************
+  
+  
+  
+
+
+**c.** State the p-value calculated by R (below) and interpret the results of the Nested F-Test in context.
+
+```{r echo=T}
+mod1 <- lm(arr_delay ~ air_time + dep_delay + carrier, data)
+mod2 <- lm(arr_delay ~ air_time + dep_delay * carrier, data)
+anova(mod1, mod2)
+```
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+\newpage
+
+
+
+### Question 4:
+
+
+Suppose your colleague proposes using a Nested F-Test to determine compare the two models defined below.
+
+  + Model 1: Predict Arrival Delay with Departure Delay, log(Departure Delay), and Carrier
+  + Model 2: Predict Arrival Delay with Air Time, Carrier, and the interaction between Air Time and Carrier. 
+
+Explain why a nested F-test \underline{cannot} be conducted to compare these two models.
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+\newpage
+
+
+
+
+### Question 5:
+Below are two plots to help assess assumptions of the large model, as defined before in Q3. Assess the conditions for conducting theory-based inference with linear regression.
+
+```{r out.width="100%",fig.asp=0.4}
+grid.arrange(
+  mod2 %>% get_regression_points() %>%
+    ggplot(aes(x = arr_delay_hat, y = residual)) + geom_point(alpha = 0.3) +
+    geom_smooth(method = "lm", se = F) + theme_bw(),
+  mod2 %>% get_regression_points() %>%
+    ggplot(aes(x = residual)) + geom_histogram(bins = 30) + theme_bw(),
+  nrow = 1
+)
+```
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+\newpage
+
+
+
+### Question 6:
+
+Examine the regression table below.
+
+```{r echo=T}
+get_regression_table(mod2, conf.level = 0.8)
+```
+
+**a.** Write down the estimated model equation implied by the regression table.
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+
+**b.** Interpret, in context, the coefficients for the (i) intercept, (ii) slope term on air time, (iii) the slope term on departure delay. Be particularly careful for when interpreting (iii) !
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+**c.** Write down the equation for the specific case when the airline carrier is Delta.
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+**d.** What is the confidence level for the confidence intervals shown? 
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+

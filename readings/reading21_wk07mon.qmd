@@ -1,0 +1,14 @@
+---
+date: 3/9/26
+editor: source
+---
+
+# Math 141: Readings for {{< meta date >}}
+
+## Reading 
+
+Before coming to lecture today, please read the following material: 
+
+-    OI 12.1-12.3
+
+

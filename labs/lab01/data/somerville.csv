@@ -1,0 +1,1535 @@
+year,happy,satisfied_life,satisfied_somerville,age,children_home,ward,precinct,student,convenient_transport,direction_somerville,housing,primary_transport,lived_here
+2015,5,9,6,6599974,No,3,2,No,NA,NA,Rent,Multiple Modes,21
+2015,10,10,10,5599964,No,3,1,No,NA,NA,Own,Multiple Modes,21
+2015,10,10,2,6599974,No,999,999,999,NA,NA,Own,Multiple Modes,21
+2015,7,7,7,6599974,No,7,1,No,NA,NA,Own,Multiple Modes,21
+2015,10,10,10,NA,No,3,3,No,NA,NA,Own,Multiple Modes,21
+2015,7,7,8,2599934,No,2,1,No,NA,NA,Rent,Multiple Modes,0
+2015,8,8,8,5599964,No,3,1,No,NA,NA,Own,Multiple Modes,21
+2015,9,8,9,2599934,No,5,3,No,NA,NA,Rent,Multiple Modes,0
+2015,6,6,8,5599964,No,1,3,No,NA,NA,Rent,Multiple Modes,21
+2015,9,10,10,2599934,No,6,3,No,NA,NA,Rent,Multiple Modes,0
+2015,9,7,9,2599934,No,3,3,No,NA,NA,Rent,Multiple Modes,0
+2015,9,9,9,2599934,No,3,2,No,NA,NA,Rent,Multiple Modes,0
+2015,6,8,9,2599934,No,3,3,Yes,NA,NA,Rent,Multiple Modes,0
+2015,9,9,10,4599954,No,2,2,No,NA,NA,Own,Multiple Modes,21
+2015,1,10,1,6599974,No,999,999,No,NA,NA,Own,Multiple Modes,21
+2015,7,7,9,NA,No,4,3,No,NA,NA,Own,Multiple Modes,21
+2015,8,10,10,6599974,No,2,3,No,NA,NA,Own,Multiple Modes,21
+2015,5,5,5,NA,No,6,1,No,NA,NA,Own,Multiple Modes,21
+2015,8,8,8,6599974,No,3,3,No,NA,NA,Own,Multiple Modes,21
+2015,10,10,10,6599974,No,7,3,No,NA,NA,Rent,Multiple Modes,21
+2015,9,9,9,NA,No,6,2,No,NA,NA,Own,Multiple Modes,21
+2015,5,7,6,5599964,No,5,2,No,NA,NA,Own,Multiple Modes,21
+2015,8,7,8,5599964,Yes,5,1,No,NA,NA,Rent,Multiple Modes,21
+2015,7,7,8,1899924,No,2,1,No,NA,NA,Rent,Multiple Modes,0
+2015,9,7,5,2599934,No,3,1,No,NA,NA,Rent,Multiple Modes,0
+2015,10,10,6,5599964,No,4,2,No,NA,NA,Own,Multiple Modes,21
+2015,6,7,6,4599954,Yes,7,1,No,NA,NA,Own,Multiple Modes,21
+2015,10,10,10,5599964,Yes,999,999,No,NA,NA,Own,Multiple Modes,21
+2015,5,3,8,1899924,No,2,3,No,NA,NA,Rent,Multiple Modes,0
+2015,9,9,9,2599934,No,6,2,No,NA,NA,Rent,Multiple Modes,0
+2015,8,8,9,1899924,No,7,3,No,NA,NA,Rent,Multiple Modes,0
+2015,8,8,9,5599964,No,7,1,No,NA,NA,Own,Multiple Modes,21
+2015,10,10,10,6599974,No,7,2,No,NA,NA,Rent,Multiple Modes,21
+2015,10,10,10,4599954,No,1,1,No,NA,NA,Own,Multiple Modes,21
+2015,7,7,7,3599944,No,3,3,No,NA,NA,Rent,Multiple Modes,0
+2015,999,999,9,1899924,No,2,3,Yes,NA,NA,Rent,Multiple Modes,0
+2015,9,9,9,3599944,No,6,1,No,NA,NA,Rent,Multiple Modes,0
+2015,10,10,10,NA,No,7,1,No,NA,NA,Own,Multiple Modes,21
+2015,10,10,10,NA,No,4,3,No,NA,NA,Rent,Multiple Modes,21
+2015,10,10,9,NA,Yes,4,3,No,NA,NA,Own,Multiple Modes,21
+2015,8,10,10,2599934,No,6,3,No,NA,NA,Own,Multiple Modes,0
+2015,8,8,9,6599974,No,7,3,No,NA,NA,Own,Multiple Modes,21
+2015,10,10,10,6599974,Yes,5,2,No,NA,NA,Own,Multiple Modes,21
+2015,8,10,8,4599954,No,4,2,No,NA,NA,Own,Multiple Modes,21
+2015,6,7,8,1899924,No,2,2,No,NA,NA,Rent,Multiple Modes,0
+2015,8,8,7,5599964,Yes,3,3,No,NA,NA,Rent,Multiple Modes,21
+2015,9,8,7,2599934,No,5,3,No,NA,NA,Rent,Multiple Modes,0
+2015,8,8,8,NA,No,2,3,No,NA,NA,Own,Multiple Modes,21
+2015,6,6,5,5599964,No,5,3,No,NA,NA,Rent,Multiple Modes,21
+2017,3,3,5,4599954,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,8,8,10,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,5,1,6599974,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,9,9,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,9,2599934,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,0
+2017,10,10,10,3599944,No,NA,NA,No,NA,NA,Own,Multiple Modes,0
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,9,7,3599944,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,8,8,9,5599964,Yes,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,5,5,7,6599974,No,NA,NA,Yes,NA,NA,Own,Multiple Modes,21
+2017,7,9,9,2599934,No,NA,NA,Yes,NA,NA,Rent,Multiple Modes,0
+2017,5,7,2,3599944,Yes,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,5,4,4,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,8,10,6599974,999,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,8,10,4599954,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,1,1,1,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,8,8,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,1,1,1,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,9,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,9,6,4599954,Yes,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,3,3,1,6599974,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,8,8,8,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,999,10,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,9,9,4599954,No,NA,NA,999,NA,NA,Rent,Multiple Modes,21
+2017,9,9,8,2599934,No,NA,NA,No,NA,NA,Own,Multiple Modes,0
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,2,4,4,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,6,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,4,4,7,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,9,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,9,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,9,9,6599974,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,4,4,8,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,8,5,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,9,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,6,9,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,10,10,1899924,No,NA,NA,999,NA,NA,Rent,Multiple Modes,0
+2017,5,5,4,5599964,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,3,3,9,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,5,7,5599964,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,9,8,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,6,9,6599974,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,10,10,10,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,10,10,10,2599934,No,NA,NA,999,NA,NA,Rent,Multiple Modes,0
+2017,4,5,8,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,5,10,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,8,10,9,6599974,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,9,9,10,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,1,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,9,6,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,9,5599964,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,6,8,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,7,4,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,9,7,2599934,No,NA,NA,Yes,NA,NA,Rent,Multiple Modes,0
+2017,5,4,6,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,8,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,7,8,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,6,10,5599964,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,7,7,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,10,10,7,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,10,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,6,6,3599944,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,10,10,10,4599954,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,10,10,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,8,6,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,7,2,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,8,10,NA,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,8,8,5,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,3,5,1,2599934,Yes,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,9,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,7,7,9,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,5599964,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,10,10,9,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,3,6,4,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,7,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,8,8,6599974,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,8,7,10,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,7,7,10,2599934,No,NA,NA,Yes,NA,NA,Rent,Multiple Modes,0
+2017,999,999,2,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,7,8,4599954,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,999,999,5,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,7,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,999,8,5599964,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,9,9,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,6,8,5599964,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,8,10,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,6599974,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,9,8,9,1899924,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,7,9,10,6599974,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,9,9,8,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,8,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,6,6,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,10,3599944,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,8,10,8,NA,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,5,5599964,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,9,8,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,9,2599934,No,NA,NA,999,NA,NA,Own,Multiple Modes,0
+2017,9,6,9,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,1,1,1,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,9,9,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,10,10,9,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,7,7,1899924,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,8,9,3,5599964,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,999,999,999,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,7,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,7,7,9,5599964,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,8,8,6599974,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,7,8,3599944,No,NA,NA,No,NA,NA,Own,Multiple Modes,0
+2017,7,9,10,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,7,6,8,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,5,8,3599944,Yes,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,8,8,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,7,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,8,8,9,5599964,No,NA,NA,Yes,NA,NA,Own,Multiple Modes,21
+2017,9,9,10,6599974,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,8,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,9,9,3599944,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,0
+2017,10,9,9,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,10,9,10,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,9,9,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,4,6,7,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,9,7,2599934,No,NA,NA,No,NA,NA,Own,Multiple Modes,0
+2017,9,9,9,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,10,10,10,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,4,4,6,5599964,Yes,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,6,6,1899924,No,NA,NA,Yes,NA,NA,Rent,Multiple Modes,0
+2017,9,9,10,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,7,3599944,No,NA,NA,999,NA,NA,Own,Multiple Modes,0
+2017,10,9,9,3599944,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,3,3599944,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,5,7,3599944,Yes,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,6,6,6,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,8,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,7,8,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,1,5,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,8,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,9,5599964,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,7,8,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,8,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,8,9,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,1,1,1,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,5,5,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,1,9,1,4599954,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,5,5,6599974,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,10,8,999,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,8,9,10,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,7,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,6599974,999,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,7,9,1899924,No,NA,NA,999,NA,NA,Rent,Multiple Modes,0
+2017,10,8,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,8,9,8,2599934,No,NA,NA,Yes,NA,NA,Rent,Multiple Modes,0
+2017,999,999,999,6599974,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,9,8,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,8,8,8,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,7,8,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,7,6,1899924,No,NA,NA,Yes,NA,NA,Rent,Multiple Modes,0
+2017,9,9,9,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,7,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,7,9,8,5599964,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,8,8,9,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,7,7,5,4599954,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,7,9,5599964,Yes,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,8,7,7,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,9,9,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,4,3,4,2599934,Yes,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,8,9,8,2599934,No,NA,NA,999,NA,NA,Own,Multiple Modes,0
+2017,8,8,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,8,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,7,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,5,5,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,8,10,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,8,7,1899924,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,6,8,7,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,999,10,10,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,4,4,6,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,8,8,1,4599954,Yes,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,10,10,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,5,8,8,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,8,10,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,9,10,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,999,999,7,4599954,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,6,7,1899924,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,5,5,10,6599974,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,8,9,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,4599954,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,9,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,7,1899924,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,7,9,1,3599944,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,1,10,1,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,7,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,7,8,8,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,8,8,2599934,No,NA,NA,No,NA,NA,Own,Multiple Modes,0
+2017,9,8,9,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,9,7,3599944,Yes,NA,NA,Yes,NA,NA,Rent,Multiple Modes,21
+2017,8,9,9,6599974,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,8,8,8,NA,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,6,6,8,4599954,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,5599964,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,8,8,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,8,9,9,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,5,8,4599954,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,5,10,NA,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,7,8,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,9,9,4599954,Yes,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,9,10,NA,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,9,9,9,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,8,8,6,1899924,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,6,10,6,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,7,8,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,6,8,10,NA,No,NA,NA,No,NA,NA,Rent,Multiple Modes,21
+2017,9,9,9,NA,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,1,1,1,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,9,10,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,7,10,8,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,9,9,2599934,No,NA,NA,Yes,NA,NA,Rent,Multiple Modes,0
+2017,10,10,6,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,9,4599954,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,10,3599944,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,6,6,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,9,10,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,9,9,4599954,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,8,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,3,3,10,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,5,5,8,2599934,No,NA,NA,Yes,NA,NA,Rent,Multiple Modes,0
+2017,8,8,2,2599934,No,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,9,8,6,3599944,Yes,NA,NA,Yes,NA,NA,Rent,Multiple Modes,0
+2017,10,10,9,NA,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,9,8,10,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,6,6,6,5599964,Yes,NA,NA,No,NA,NA,Rent,Multiple Modes,0
+2017,7,8,9,5599964,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,5,5,8,6599974,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2017,8,9,10,6599974,No,NA,NA,999,NA,NA,Own,Multiple Modes,21
+2017,10,10,10,4599954,No,NA,NA,No,NA,NA,Own,Multiple Modes,21
+2019,10,10,10,70,No,4,1,No,5,Right direction,Own,Car,51
+2019,7,7,9,64,No,6,2,No,8,Not sure,Own,Multiple Modes,10
+2019,9,9,1,70,Yes,7,1,No,1,Wrong track,Own,Car,20
+2019,10,9,9,58,No,3,2,No,7,Right direction,Own,Walk,3
+2019,8,8,7,58,No,4,3,No,9,Not sure,Own,Car,2
+2019,10,10,10,65,No,6,2,No,10,Right direction,Rent,Public transit,65
+2019,9,10,9,75,No,7,3,No,9,Right direction,Own,Multiple Modes,25
+2019,9,9,7,49,No,6,2,No,9,Right direction,Own,Walk,19
+2019,9,8,10,26,No,3,3,No,7,Right direction,Rent,Multiple Modes,4
+2019,7,8,6,74,No,3,1,No,7,Wrong track,Rent,Public transit,74
+2019,8,8,7,32,No,1,2,No,8,Not sure,Rent,Car,6
+2019,7,7,8,61,No,7,1,No,9,Right direction,Own,Public transit,3
+2019,10,10,10,55,Yes,4,2,No,10,Right direction,Own,Car,33
+2019,8,9,7,36,No,5,3,No,5,Not sure,Own,Bike,7
+2019,8,9,9,31,No,6,1,No,9,Right direction,Rent,Multiple Modes,2
+2019,2,5,4,78,No,6,1,No,4,Not sure,Own,Car,40
+2019,7,10,5,35,No,2,1,No,10,Wrong track,Rent,Bike,10
+2019,9,9,9,30,No,7,3,No,7,Right direction,Own,Car,3
+2019,8,8,8,27,No,2,3,No,9,Right direction,Rent,Bike,6
+2019,6,10,10,63,No,2,1,999,6,Right direction,Own,Multiple Modes,35
+2019,8,8,7,34,No,5,2,No,8,Not sure,Rent,Public transit,4
+2019,7,6,9,27,No,4,3,No,7,Right direction,Rent,Multiple Modes,2
+2019,7,8,8,34,Yes,1,2,No,2,Right direction,Own,Multiple Modes,2
+2019,8,8,8,55,Yes,6,1,No,10,Not sure,Own,Bike,23
+2019,7,9,8,67,No,3,2,No,9,Right direction,Own,Walk,45
+2019,10,8,9,30,No,4,2,No,7,Right direction,Rent,Bike,8
+2019,10,10,10,67,No,1,2,No,10,Right direction,Own,Car,67
+2019,7,7,8,24,No,7,2,No,8,Right direction,Rent,Car,2
+2019,9,8,9,38,No,7,2,No,8,Right direction,Rent,Multiple Modes,1
+2019,6,7,7,31,No,5,3,No,5,Right direction,Rent,Multiple Modes,3
+2019,9,9,9,70,No,3,1,No,4,Right direction,Own,Car,33
+2019,9,10,9,50,No,2,1,No,5,Right direction,Own,Car,10
+2019,10,10,6,24,No,2,3,Yes,7,Wrong track,Rent,Car,2
+2019,8,8,9,30,No,6,2,No,9,Right direction,Rent,Multiple Modes,5
+2019,10,999,9,85,No,5,2,No,1,Not sure,Rent,Public transit,46
+2019,7,8,10,31,No,1,1,No,8,Right direction,Own,Public transit,3
+2019,9,9,9,62,No,4,1,No,9,Right direction,Own,Car,2
+2019,7,8,7,31,No,6,1,No,7,Wrong track,Rent,Public transit,10
+2019,7,8,4,35,Yes,5,3,No,8,Wrong track,Rent,Public transit,5
+2019,5,6,4,58,No,5,2,No,4,Wrong track,Own,Car,58
+2019,10,10,5,68,No,7,2,No,10,Wrong track,Rent,Public transit,40
+2019,7,4,7,65,No,7,2,No,4,Wrong track,Rent,Public transit,30
+2019,7,4,7,65,No,7,2,No,4,Wrong track,Rent,Public transit,30
+2019,9,9,8,65,No,3,3,No,10,Not sure,Own,Multiple Modes,65
+2019,10,10,7,73,No,4,2,No,10,Right direction,Own,Car,40
+2019,8,8,8,62,No,3,3,No,4,999,Own,Multiple Modes,23
+2019,8,9,9,58,No,2,3,No,7,Right direction,Own,Public transit,9
+2019,1,6,2,66,No,6,3,No,3,Wrong track,Own,Car,66
+2019,6,6,7,33,No,7,1,No,4,Wrong track,Rent,Multiple Modes,9
+2019,7,8,7,36,Yes,7,3,No,3,Right direction,Own,Car,6
+2019,10,10,10,58,No,1,2,No,6,Not sure,Own,Multiple Modes,1.5
+2019,10,6,9,38,Yes,6,2,No,4,Not sure,Own,Car,13
+2019,7,9,9,31,No,1,2,No,5,Right direction,Rent,Multiple Modes,1
+2019,8,9,8,31,No,6,1,No,9,Not sure,Rent,Walk,1
+2019,9,9,9,61,No,3,3,No,9,Right direction,Own,Car,5
+2019,7,8,7,29,No,5,1,No,6,Right direction,Rent,Car,6
+2019,8,8,7,37,No,4,1,No,6,Right direction,Own,Car,15
+2019,7,6,7,36,No,4,1,No,4,Right direction,Own,Car,9
+2019,8,9,9,31,No,5,2,No,8,Not sure,Rent,Walk,9
+2019,5,1,7,84,No,6,2,No,10,Wrong track,Own,Walk,78
+2019,8,8,9,42,Yes,3,2,No,9,Not sure,Own,Car,19
+2019,8,8,9,35,Yes,3,3,No,7,Right direction,Own,Bike,13
+2019,7,8,9,77,No,6,1,No,9,Right direction,Own,Walk,35
+2019,9,10,7,35,No,2,2,No,10,Not sure,Rent,Walk,9
+2019,8,9,10,26,No,4,2,No,8,Right direction,Rent,Multiple Modes,2.5
+2019,6,6,9,34,No,7,1,No,7,Not sure,Rent,Multiple Modes,2.5
+2019,9,9,9,35,No,3,1,No,9,999,Own,Car,6
+2019,6,8,6,58,No,4,2,No,6,Not sure,Own,Car,14
+2019,1,1,1,74,No,4,3,No,1,Wrong track,Own,Car,65
+2019,10,7,10,35,No,7,2,No,10,Right direction,Rent,Public transit,9
+2019,8,9,8,30,No,3,1,No,10,Not sure,Rent,Multiple Modes,2
+2019,4,3,7,21,No,5,3,Yes,7,Wrong track,Rent,Multiple Modes,3
+2019,3,10,3,64,No,6,3,No,1,Wrong track,Own,Car,39
+2019,5,6,6,61,No,5,1,No,9,Right direction,Rent,Multiple Modes,11
+2019,8,9,6,49,No,6,1,No,8,Not sure,Own,Walk,13
+2019,8,10,8,50,Yes,2,3,999,10,Right direction,Rent,Multiple Modes,2
+2019,8,8,8,30,No,2,3,No,6,Right direction,Own,Bike,12
+2019,6,7,7,42,Yes,7,1,No,8,Right direction,Own,Car,5
+2019,3,4,6,71,No,7,3,No,1,Not sure,Rent,Public transit,30
+2019,9,9,7,69,No,7,3,No,8,Not sure,Own,Car,50
+2019,9,10,1,37,Yes,4,1,No,8,Wrong track,Rent,Multiple Modes,37
+2019,8,8,5,23,No,4,2,Yes,2,Not sure,Own,Car,23
+2019,8,8,5,37,Yes,3,2,No,3,Right direction,Own,Bike,14
+2019,7,7,5,30,No,2,3,No,3,Right direction,Rent,Car,2
+2019,4,3,7,61,No,4,3,No,3,Right direction,Rent,Public transit,13
+2019,9,9,8,31,Yes,3,3,No,9,Right direction,Own,Car,1
+2019,9,9,9,71,No,1,2,No,9,Right direction,Rent,Multiple Modes,2
+2019,9,9,10,80,No,7,3,No,3,Not sure,Rent,Car,40
+2019,8,7,8,31,No,2,3,No,6,Right direction,Rent,Public transit,2
+2019,9,9,7,62,No,5,1,999,9,Right direction,Own,Public transit,22
+2019,10,10,10,51,No,4,2,No,9,Wrong track,Own,Car,51
+2019,10,10,3,60,No,5,3,No,2,Wrong track,Own,Car,60
+2019,4,5,6,29,No,3,2,No,6,Not sure,Rent,Walk,2
+2019,6,8,6,24,No,5,1,No,7,Not sure,Rent,Car,2
+2019,10,10,10,45,Yes,7,2,No,10,Right direction,Rent,Multiple Modes,25
+2019,7,7,7,78,No,6,1,No,4,999,Rent,Public transit,2.5
+2019,8,9,9,40,No,1,2,No,10,Not sure,Rent,Bike,10
+2019,7,7,8,27,No,7,1,Yes,8,Right direction,Rent,Public transit,5
+2019,8,9,9,33,Yes,2,3,No,10,Right direction,Own,Car,6
+2019,6,5,6,24,No,2,3,No,9,Wrong track,Rent,Car,2
+2019,5,5,6,27,No,2,3,No,9,Wrong track,Rent,Multiple Modes,4
+2019,9,9,9,34,No,7,1,No,8,Right direction,Rent,Public transit,4
+2019,9,9,8,37,No,5,2,No,8,Right direction,Own,Car,2
+2019,8,8,4,35,No,2,1,No,5,Wrong track,Rent,Walk,8
+2019,7,7,7,44,Yes,3,1,No,1,Right direction,Own,Multiple Modes,20
+2019,6,8,8,54,No,2,3,No,8,Not sure,Rent,Multiple Modes,1
+2019,8,9,8,48,Yes,6,1,No,8,Right direction,Own,Public transit,20
+2019,6,5,6,31,No,3,3,No,3,Wrong track,Rent,Public transit,5
+2019,7,7,9,23,No,3,3,Yes,7,999,Rent,Multiple Modes,5
+2019,6,7,9,21,No,7,3,999,9,Not sure,Rent,Multiple Modes,4
+2019,10,10,10,42,No,5,1,No,8,Right direction,Own,Multiple Modes,19
+2019,7,6,8,34,No,3,1,No,6,Right direction,Rent,Walk,9
+2019,9,9,9,31,Yes,4,3,No,8,Right direction,Own,Bike,3
+2019,8,9,7,77,No,7,1,No,8,Not sure,Own,Car,56
+2019,5,9,6,65,No,2,2,No,3,Not sure,Own,Car,65
+2019,8,8,9,54,No,5,3,No,9,Right direction,Rent,Car,4
+2019,9,8,9,46,Yes,5,2,No,5,Right direction,Own,Car,14
+2019,9,9,8,40,No,4,1,No,4,Right direction,Own,Car,3
+2019,8,9,9,38,No,6,2,No,10,Right direction,Own,Walk,9
+2019,9,10,7,46,No,7,1,No,8,Right direction,Own,Car,3
+2019,9,9,9,70,No,6,2,No,7,Right direction,Own,Car,40
+2019,8,10,9,39,No,5,3,No,7,Right direction,Rent,Multiple Modes,11
+2019,8,9,9,33,No,6,2,No,8,Right direction,Rent,Public transit,1
+2019,7,7,9,51,No,5,1,No,6,Right direction,Rent,Multiple Modes,2
+2019,3,7,7,53,Yes,6,3,No,2,Not sure,Own,Walk,30
+2019,10,10,8,33,No,7,3,No,10,Right direction,Rent,Car,33
+2019,10,10,8,57,No,3,3,No,3,Not sure,Rent,Car,21
+2019,8,9,10,33,No,5,3,No,8,Right direction,Rent,Public transit,8
+2019,8,8,8,60,No,3,1,999,8,Not sure,Own,Public transit,60
+2019,9,8,8,74,No,5,1,No,6,Not sure,Own,Car,25
+2019,8,8,8,44,Yes,6,2,No,7,Right direction,Own,Car,6
+2019,8,7,8,39,Yes,1,3,No,7,Not sure,Own,Multiple Modes,8
+2019,8,8,5,62,No,6,2,No,8,Not sure,Own,Walk,31
+2019,6,4,7,35,No,6,3,No,8,Not sure,Rent,Bike,11
+2019,6,6,10,82,No,1,1,No,8,Right direction,Own,Car,52
+2019,10,10,10,66,Yes,4,1,999,9,Right direction,Own,Multiple Modes,22
+2019,8,9,8,35,No,5,2,No,8,Right direction,Own,Public transit,7
+2019,9,7,9,53,Yes,6,1,No,10,Right direction,Own,Car,3
+2019,6,6,9,32,No,7,3,No,9,Right direction,Rent,Walk,10
+2019,10,10,6,57,No,7,1,999,4,Wrong track,Own,Multiple Modes,6
+2019,9,9,9,75,No,7,2,No,9,Right direction,Rent,Public transit,16
+2019,7,9,4,36,No,7,3,No,9,Wrong track,Rent,Bike,13
+2019,9,8,8,47,Yes,6,2,No,5,Right direction,Own,Bike,12
+2019,8,8,7,34,Yes,3,2,Yes,8,Right direction,Rent,Bike,6
+2019,9,7,9,52,No,7,1,No,9,Right direction,Own,Car,37
+2019,5,8,1,68,Yes,4,1,No,8,Wrong track,Rent,Multiple Modes,37
+2019,10,10,10,72,No,5,3,No,9,Not sure,Own,Car,44
+2019,9,9,9,45,No,5,1,No,8,Right direction,Own,Bike,5
+2019,6,5,8,73,Yes,1,3,No,9,Right direction,Own,Car,40
+2019,6,4,9,28,No,3,1,No,2,Wrong track,Rent,Multiple Modes,1.5
+2019,9,9,5,54,No,4,3,No,1,Not sure,Own,Multiple Modes,54
+2019,7,7,8,31,No,7,1,No,9,Right direction,Rent,Public transit,6
+2019,10,10,10,27,No,2,1,No,10,Right direction,Rent,Car,2
+2019,8,9,6,51,No,4,2,No,5,Not sure,Own,Car,20
+2019,9,9,9,67,No,0,1,999,9,Right direction,Own,Car,38
+2019,8,8,8,30,No,2,3,No,9,Right direction,Rent,Walk,5
+2019,8,8,8,30,No,3,2,Yes,5,Right direction,Rent,Car,6
+2019,6,6,4,30,No,3,2,No,3,Not sure,Rent,Public transit,3
+2019,8,9,8,80,No,1,3,No,2,Not sure,Own,Car,80
+2019,8,8,6,31,Yes,5,3,No,8,Right direction,Own,Car,2
+2019,10,10,9,67,No,5,2,No,9,Not sure,Own,Car,35
+2019,8,9,9,31,No,7,3,No,10,Not sure,Rent,Public transit,4.5
+2019,9,9,7,58,No,2,3,No,2,Not sure,Own,Car,58
+2019,8,8,10,23,No,3,2,No,6,Right direction,Rent,Public transit,1
+2019,7,7,7,40,No,2,1,No,4,Not sure,Own,Public transit,5
+2019,7,7,9,33,No,6,1,No,10,Right direction,Rent,Public transit,11
+2019,6,9,7,37,No,5,3,No,4,Not sure,Own,Public transit,4
+2019,5,9,7,36,No,5,3,No,4,Right direction,Own,Car,4
+2019,7,8,4,30,No,7,2,No,5,Not sure,Rent,Public transit,1
+2019,9,9,7,42,Yes,2,2,No,3,Not sure,Own,Car,40
+2019,9,9,9,38,Yes,7,2,No,9,Right direction,Rent,Multiple Modes,1
+2019,7,7,8,30,No,1,3,No,6,Right direction,Rent,Car,7
+2019,10,10,10,59,No,1,3,Yes,10,Right direction,Rent,Car,26
+2019,4,7,6,29,No,7,1,999,3,Right direction,Rent,Multiple Modes,7
+2019,7,7,6,38,Yes,4,2,No,3,Not sure,Own,Public transit,1
+2019,10,10,9,75,No,6,3,No,10,Wrong track,Own,Car,65
+2019,7,7,8,27,No,3,3,No,8,Right direction,Rent,Walk,1.5
+2019,10,10,10,36,No,5,3,No,10,Right direction,Rent,Public transit,7
+2019,10,10,9,52,No,2,1,No,10,Not sure,Own,Bike,30
+2019,10,9,10,60,Yes,5,2,No,10,Right direction,Own,Car,60
+2019,9,9,9,78,No,7,3,No,5,Right direction,Rent,Car,9
+2019,4,4,3,69,No,2,2,No,2,Wrong track,Own,Car,28
+2019,10,9,9,69,No,5,1,No,10,Right direction,Own,Walk,13
+2019,5,7,6,33,No,1,3,No,3,Not sure,Rent,Car,8
+2019,6,7,6,23,No,1,3,No,5,Right direction,Rent,Car,1
+2019,7,10,7,27,No,1,3,No,8,Right direction,Rent,Public transit,2
+2019,6,6,8,51,No,5,1,No,5,Right direction,Rent,Walk,25
+2019,1,5,10,70,No,7,1,No,8,Not sure,Own,Car,70
+2019,6,4,7,35,No,5,1,No,7,Right direction,Rent,Bike,2
+2019,9,9,9,72,No,1,2,No,9,Right direction,Own,Car,23
+2019,6,7,8,69,No,5,1,No,5,Right direction,Own,Car,21
+2019,9,9,6,32,Yes,5,2,No,3,Right direction,Own,Car,2
+2019,9,9,9,71,No,7,3,No,8,Right direction,Own,Car,22
+2019,9,9,9,30,No,5,2,No,9,Right direction,Rent,Walk,2
+2019,8,9,8,38,No,2,3,Yes,10,Right direction,Rent,Public transit,1
+2019,7,6,7,53,No,2,3,Yes,10,Right direction,Rent,Public transit,9
+2019,10,8,5,32,No,2,3,Yes,10,Right direction,Rent,Public transit,2
+2019,4,8,2,50,No,5,2,No,6,Wrong track,Rent,Car,20
+2019,7,8,8,26,No,7,2,No,7,Not sure,Rent,Public transit,1
+2019,7,7,8,35,No,6,1,No,999,Right direction,Rent,Multiple Modes,2
+2019,7,7,9,75,No,5,3,No,10,Not sure,Own,Car,24
+2019,8,8,8,76,No,7,3,No,6,Not sure,Own,Car,30
+2019,8,8,8,40,Yes,4,3,No,7,Right direction,Own,Car,10
+2019,7,9,10,55,No,4,1,No,8,Right direction,Own,Car,12
+2019,6,8,6,60,No,1,2,No,2,Wrong track,Rent,Public transit,2
+2019,10,9,9,34,No,7,1,No,8,Not sure,Rent,Public transit,3
+2019,8,6,9,29,No,4,3,No,2,Not sure,Rent,Car,4
+2019,6,7,9,61,Yes,3,3,No,7,Right direction,Own,Walk,18
+2019,4,5,10,33,Yes,3,2,No,8,Right direction,Rent,Bike,9
+2019,7,7,7,48,Yes,5,2,No,8,Right direction,Own,Multiple Modes,14
+2019,6,6,6,34,No,4,3,No,7,Right direction,Rent,Bike,9
+2019,9,9,9,28,No,7,1,No,8,Right direction,Rent,Car,1
+2019,5,7,8,51,Yes,6,3,No,7,Not sure,Own,Car,20
+2019,8,9,9,25,No,6,2,No,7,Not sure,Rent,Public transit,2
+2019,10,9,8,34,No,2,2,No,10,Right direction,Own,Public transit,2
+2019,3,3,5,78,No,4,1,No,5,Wrong track,Own,Car,70
+2019,6,2,1,42,Yes,7,2,No,5,Wrong track,Rent,Public transit,42
+2019,7,7,6,31,No,5,1,No,4,Wrong track,Rent,Car,3
+2019,3,5,5,69,No,7,1,No,7,Not sure,Own,Car,26
+2019,8,8,8,60,No,7,1,No,10,Right direction,Own,Car,30
+2019,7,8,8,42,No,5,1,No,7,Right direction,Rent,Public transit,15
+2019,9,9,8,37,No,3,3,No,8,Right direction,Rent,Public transit,3
+2019,6,7,9,50,No,7,2,No,9,Wrong track,Rent,Public transit,25
+2019,9,9,8,63,No,7,2,No,9,Right direction,Own,Walk,2
+2019,7,10,5,51,No,7,1,No,3,Wrong track,Own,Car,51
+2019,7,7,8,36,No,3,1,No,9,Right direction,Rent,Public transit,7
+2019,9,9,9,46,No,3,2,No,9,Not sure,Own,Car,25
+2019,9,9,8,65,No,5,1,No,9,Not sure,Own,Multiple Modes,33
+2019,7,8,8,37,No,6,1,No,9,Right direction,Own,Public transit,2
+2019,9,9,9,43,Yes,2,3,No,8,Right direction,Own,Car,12
+2019,9,9,9,64,No,6,2,No,7,Right direction,Own,Car,50
+2019,6,6,7,74,No,4,3,No,8,Not sure,Rent,Car,30
+2019,8,8,10,24,No,5,1,999,9,Right direction,Rent,Walk,2
+2019,6,9,10,46,No,5,2,No,8,Right direction,Own,Public transit,6
+2019,8,7,7,86,No,1,3,No,3,Not sure,Own,Car,50
+2019,6,7,9,41,No,7,3,No,9,Not sure,Own,Car,15
+2019,9,9,9,31,No,4,2,No,9,Right direction,Own,Public transit,4
+2019,9,9,7,34,No,5,2,No,5,Wrong track,Rent,Car,5
+2019,8,8,7,29,No,6,3,Yes,8,Not sure,Rent,Car,4
+2019,9,10,10,42,No,2,3,No,7,Right direction,Own,Car,7
+2019,7,8,9,40,No,7,3,No,7,Right direction,Rent,Walk,7
+2019,10,10,8,25,No,5,2,Yes,7,Not sure,Rent,Public transit,2
+2019,10,10,9,43,Yes,6,3,No,8,Not sure,Own,Car,30
+2019,8,8,8,39,No,7,1,No,7,Right direction,Own,Public transit,15
+2019,7,7,8,36,No,7,1,No,7,Not sure,Own,Public transit,10
+2019,5,7,10,30,No,7,3,999,8,Right direction,Rent,Car,6
+2019,10,10,10,65,No,7,1,No,9,Wrong track,Own,Multiple Modes,4
+2019,10,10,7,27,No,6,2,Yes,6,Right direction,Rent,Public transit,2
+2019,8,8,8,73,No,7,2,No,7,Not sure,Rent,Multiple Modes,73
+2019,5,8,6,68,No,3,3,No,8,Not sure,Own,Walk,9.75
+2019,7,8,8,35,No,3,1,No,9,Not sure,Rent,Walk,12
+2019,9,9,4,83,No,3,3,No,9,Not sure,Own,Walk,55
+2019,5,8,5,62,No,3,3,No,10,Not sure,Own,Car,26
+2019,7,5,7,46,Yes,4,2,No,5,Right direction,Own,Car,20
+2019,10,9,9,39,Yes,2,1,No,10,Right direction,Rent,Multiple Modes,4
+2019,9,9,8,57,Yes,3,2,No,9,Not sure,Rent,Car,29
+2019,8,8,9,28,Yes,3,3,No,8,Right direction,Own,Public transit,2
+2019,2,6,8,45,Yes,5,3,No,8,Not sure,Own,Walk,2.5
+2019,10,10,8,40,No,3,2,999,7,Right direction,Rent,Car,2
+2019,10,9,10,83,No,7,3,No,10,Right direction,Rent,Public transit,16
+2019,6,6,1,30,No,4,3,No,1,Wrong track,Rent,Car,30
+2019,5,7,5,80,No,2,1,No,3,Not sure,Own,Car,30
+2019,9,9,7,26,No,3,3,No,8,Right direction,Rent,Multiple Modes,3
+2019,7,7,8,66,No,4,2,999,7,Right direction,Own,Car,17
+2019,7,6,9,27,No,6,2,No,8,Not sure,Own,Car,10
+2019,8,8,8,29,No,7,3,No,8,Not sure,Rent,Walk,5
+2019,7,7,9,67,No,2,3,No,8,Not sure,Own,Public transit,7
+2019,8,7,9,30,No,4,3,No,8,Right direction,Own,Car,5
+2019,8,8,9,47,No,2,1,No,3,Right direction,Own,Walk,10
+2019,7,7,8,38,Yes,7,2,No,8,Right direction,Own,Car,7
+2019,9,9,9,37,Yes,2,2,No,9,Right direction,Own,Walk,6
+2019,1,999,1,77,No,2,2,No,1,Wrong track,Own,Car,77
+2019,8,9,9,23,No,6,3,No,10,Right direction,Rent,Multiple Modes,1
+2019,6,8,9,64,No,1,3,No,9,Not sure,Rent,Walk,29
+2019,8,9,9,36,Yes,5,2,No,9,Right direction,Rent,Walk,5
+2019,10,9,9,30,No,4,3,No,8,Not sure,Rent,Walk,5
+2019,8,8,8,55,No,6,3,No,8,Right direction,Own,Walk,34
+2019,6,8,5,41,Yes,3,3,No,4,Not sure,Own,Car,12
+2019,3,3,1,36,No,2,1,No,3,Wrong track,Rent,Walk,7
+2019,10,10,10,40,No,3,1,No,8,Right direction,Own,Multiple Modes,1
+2019,10,10,10,41,No,3,1,No,8,Right direction,Own,Public transit,1
+2019,9,9,9,45,Yes,3,1,No,6,Right direction,Rent,Walk,3
+2019,7,7,9,71,No,6,2,No,8,Right direction,Own,Car,40
+2019,7,7,8,72,No,3,2,No,7,Not sure,Rent,Car,30
+2019,8,7,7,30,No,6,3,No,7,Not sure,Rent,Public transit,5
+2019,8,9,9,37,No,2,1,No,8,Not sure,Own,Bike,6
+2019,8,7,8,23,No,6,1,No,5,Right direction,Rent,Car,1
+2019,3,1,4,63,No,7,3,No,7,Wrong track,Rent,Public transit,8
+2019,8,8,9,36,No,4,3,No,3,Right direction,Own,Car,2
+2019,10,7,10,31,No,1,1,No,2,Right direction,Own,Car,5
+2019,10,7,10,33,No,1,1,No,2,Right direction,Own,Public transit,1
+2019,7,8,7,48,No,7,1,No,9,Right direction,Rent,Public transit,10
+2019,8,8,9,53,No,2,3,No,7,Not sure,Own,Car,12
+2019,7,8,8,35,No,6,1,No,7,Right direction,Rent,Bike,8
+2019,10,10,9,43,Yes,1,1,No,10,Right direction,Rent,Car,8
+2019,9,9,9,60,Yes,4,2,No,8,Not sure,Own,Car,30
+2019,7,7,9,38,No,3,1,No,6,Right direction,Own,Walk,6
+2019,6,6,10,55,No,4,3,No,1,Right direction,Own,Car,12
+2019,8,9,9,53,No,5,1,No,9,Right direction,Own,Multiple Modes,5
+2019,7,7,9,70,No,6,1,No,8,Right direction,Own,Walk,40
+2019,9,9,9,59,No,1,2,No,4,Right direction,Rent,Public transit,1
+2019,8,8,7,27,No,5,3,No,8,Right direction,Rent,Public transit,1
+2019,9,9,9,72,No,2,3,No,9,Right direction,Own,Car,6
+2019,7,6,9,53,No,4,2,No,8,Not sure,Own,Car,33
+2019,5,6,7,72,No,1,2,No,5,Right direction,Rent,Car,1
+2019,9,10,8,67,No,5,2,No,8,Not sure,Rent,Car,40
+2019,7,6,8,27,No,2,2,No,8,Right direction,Rent,Bike,2
+2019,8,6,7,40,No,7,1,No,6,Right direction,Own,Car,1
+2019,5,5,8,56,No,4,1,No,7,Right direction,Own,Car,14
+2019,7,6,8,30,No,7,1,No,8,Right direction,Rent,Car,7
+2019,8,8,9,35,No,1,2,No,9,Right direction,Own,Public transit,1.5
+2019,7,8,7,63,No,6,2,No,7,Not sure,Own,Walk,38
+2019,8,8,6,41,No,3,3,No,7,Right direction,Own,Public transit,7
+2019,8,9,9,27,No,2,2,No,5,Right direction,Rent,Public transit,3.5
+2019,9,7,10,27,No,2,3,No,9,Right direction,Rent,Walk,4
+2019,6,6,8,27,No,5,3,No,6,Right direction,Rent,Bike,6
+2019,9,8,7,29,No,5,3,999,4,Right direction,Rent,Walk,3
+2019,7,6,7,30,No,5,3,No,8,Right direction,Rent,Public transit,2
+2019,5,4,6,60,No,4,2,No,3,Right direction,Own,Bike,40
+2019,7,7,10,30,No,6,1,No,9,Right direction,Own,Multiple Modes,6
+2019,7,7,7,44,No,5,1,No,7,Right direction,Rent,Car,17
+2019,9,9,9,34,No,6,1,No,10,Right direction,Own,Car,13
+2019,9,9,8,31,No,3,3,No,4,Not sure,Own,Bike,5
+2019,7,7,10,28,No,2,2,No,7,Right direction,Rent,Bike,6
+2019,8,10,10,73,No,6,2,No,9,Right direction,Own,Multiple Modes,3
+2019,10,10,10,66,No,4,3,No,10,999,Own,Car,26
+2019,8,8,8,43,No,7,3,No,9,Right direction,Rent,Multiple Modes,11
+2019,8,7,10,31,No,7,3,No,7,Right direction,Rent,Car,4
+2019,8,8,8,50,No,1,1,No,8,Right direction,Own,Car,22
+2019,7,7,5,29,No,3,1,No,5,Wrong track,Rent,Public transit,4
+2019,10,10,10,27,No,6,2,No,9,Right direction,Rent,Multiple Modes,2.5
+2019,10,9,10,82,No,5,2,No,9,Not sure,Own,Multiple Modes,49
+2019,9,9,10,70,No,5,3,No,5,Right direction,Own,Car,50
+2019,9,9,8,35,Yes,5,2,No,8,Right direction,Own,Car,5
+2019,6,6,7,72,No,3,1,No,8,Not sure,Rent,Public transit,24
+2019,3,6,10,40,No,7,2,No,8,Right direction,Own,Car,1.5
+2019,8,8,6,25,No,1,2,No,3,Not sure,Rent,Public transit,1
+2019,10,8,10,25,No,6,2,No,7,Right direction,Rent,Public transit,1
+2019,8,8,8,28,No,3,3,No,8,999,Rent,Car,4
+2019,8,8,9,34,No,2,2,No,8,Not sure,Rent,Walk,3
+2019,3,3,2,56,No,7,2,No,5,Wrong track,Rent,Public transit,9
+2019,9,8,9,41,Yes,5,3,No,9,Right direction,Rent,Multiple Modes,7
+2019,4,3,10,32,No,6,1,No,8,Not sure,Rent,Bike,9
+2019,10,10,8,73,No,3,2,No,6,Not sure,Rent,Multiple Modes,7
+2019,5,3,5,69,No,6,2,No,10,Not sure,Rent,Multiple Modes,7
+2019,10,10,10,65,No,5,1,Yes,9,Right direction,Own,Car,13
+2019,7,7,5,33,No,5,3,999,4,Wrong track,Rent,Multiple Modes,8
+2019,8,8,2,73,No,1,2,No,5,Wrong track,Own,Public transit,73
+2019,8,8,9,44,No,5,2,Yes,4,Right direction,Own,Public transit,8
+2019,8,9,8,26,No,6,2,No,4,Right direction,Rent,Public transit,2
+2019,8,9,8,28,No,1,2,No,6,Right direction,Rent,Multiple Modes,5
+2019,6,6,8,36,Yes,4,3,No,4,Right direction,Own,Public transit,3
+2019,7,8,5,45,No,2,2,No,8,Not sure,Rent,Multiple Modes,10
+2019,8,8,4,29,No,3,3,999,2,Wrong track,Rent,Public transit,5
+2019,8,9,7,68,No,6,2,No,9,Not sure,Rent,Public transit,10
+2019,3,6,7,30,No,5,3,No,9,Right direction,Rent,Bike,2
+2019,8,8,9,31,No,6,3,No,9,Right direction,Rent,Public transit,9
+2019,6,6,8,28,No,6,1,No,4,Right direction,Rent,Walk,5
+2019,7,8,8,39,No,1,2,No,8,Right direction,Own,Public transit,12
+2019,8,7,8,28,No,3,2,No,6,Right direction,Rent,Public transit,5
+2019,7,6,6,91,No,5,3,No,10,Wrong track,Own,Car,91
+2019,8,8,7,35,No,7,1,No,8,Right direction,Rent,Car,2
+2019,10,10,10,60,No,7,2,No,9,999,Own,Car,5
+2019,7,8,7,26,No,5,3,No,7,Right direction,Rent,Car,2
+2019,8,6,8,23,Yes,999,NA,Yes,5,Right direction,Own,Public transit,5
+2019,9,8,9,29,Yes,999,NA,No,9,Right direction,Rent,Bike,3
+2019,8,8,9,35,No,4,3,No,9,Right direction,Rent,Multiple Modes,15
+2019,5,5,6,17,No,2,1,Yes,6,Right direction,Rent,Walk,17
+2019,9,9,8,40,No,5,3,No,7,Right direction,Own,Bike,21
+2019,5,5,5,79,No,4,1,No,5,999,Own,Car,79
+2019,7,7,8,42,No,3,1,Yes,7,Right direction,Own,Bike,20
+2019,8,8,8,59,Yes,2,1,No,2,Right direction,Own,Car,30
+2019,5,8,8,36,Yes,6,3,No,4,Wrong track,Rent,Car,3
+2019,7,8,9,31,No,2,3,999,8,Not sure,Rent,Public transit,3
+2019,9,9,8,34,No,4,3,No,7,Not sure,Own,Public transit,10
+2019,5,7,5,53,No,3,1,No,4,Wrong track,Rent,Walk,7
+2019,8,8,8,47,Yes,6,1,No,9,Right direction,Own,Walk,23
+2019,9,8,9,37,No,4,3,No,8,Right direction,Own,Public transit,10
+2019,9,8,9,29,No,2,3,No,7,Right direction,Rent,Multiple Modes,2
+2019,4,5,5,59,No,1,3,No,9,Wrong track,Rent,Multiple Modes,26
+2019,7,8,8,37,No,5,1,No,8,Not sure,Rent,Multiple Modes,5
+2019,10,7,10,37,No,3,1,No,6,999,Rent,Multiple Modes,15
+2019,3,2,3,65,No,3,1,No,8,Not sure,Rent,Walk,20
+2019,10,9,9,39,No,3,2,No,8,Right direction,Rent,Multiple Modes,8
+2019,10,10,10,73,No,3,2,No,10,Right direction,Rent,Multiple Modes,10
+2019,10,10,10,73,No,3,2,No,10,Right direction,Rent,Multiple Modes,10
+2019,8,8,8,36,Yes,7,3,No,3,Right direction,Own,Public transit,5
+2019,10,10,10,33,No,4,3,No,6,Right direction,Rent,Bike,1
+2019,7,6,2,53,No,5,2,No,3,Wrong track,Rent,Car,20
+2019,8,10,8,38,Yes,3,2,No,7,Right direction,Own,Multiple Modes,7
+2019,7,8,8,33,No,6,2,No,9,Not sure,Rent,Car,3
+2019,9,999,8,65,No,6,2,No,7,Not sure,Own,Multiple Modes,37
+2019,8,9,9,36,Yes,2,2,No,5,Right direction,Rent,Public transit,9
+2019,5,5,8,31,No,7,2,No,7,Not sure,Rent,Multiple Modes,5
+2019,9,10,9,71,No,6,1,No,9,Not sure,Own,Car,47
+2019,10,8,8,45,Yes,6,1,No,10,Not sure,Own,Bike,10
+2019,7,8,9,27,No,7,3,No,8,Right direction,Rent,Public transit,1
+2019,7,7,10,25,No,5,3,No,10,Right direction,Rent,Bike,1
+2019,9,10,9,35,Yes,2,2,No,9,Not sure,Rent,Walk,5
+2019,999,10,10,77,No,3,1,No,9,Right direction,Rent,Car,12
+2019,6,6,6,41,Yes,5,3,No,9,Not sure,Own,Walk,16
+2019,5,8,7,64,No,2,1,No,1,Not sure,Own,Car,31
+2019,10,9,10,58,No,3,3,No,8,Right direction,Rent,Car,15
+2019,9,9,9,33,No,2,2,No,9,Right direction,Rent,Multiple Modes,4
+2019,6,7,10,59,No,6,1,No,8,Right direction,Own,Car,16
+2019,6,8,8,32,Yes,3,3,No,7,Right direction,Rent,Car,3.5
+2019,8,8,8,48,Yes,5,1,No,9,Right direction,Own,Car,16
+2019,10,10,10,29,No,7,1,No,8,Right direction,Rent,Multiple Modes,1
+2019,9,8,2,50,Yes,6,1,No,6,Wrong track,Own,Car,45
+2019,4,4,6,24,No,2,3,No,5,Not sure,Rent,Multiple Modes,2.5
+2019,9,8,8,63,No,5,3,No,6,Right direction,Own,Bike,28
+2019,9,8,8,52,Yes,5,2,No,7,Right direction,Own,Car,25
+2019,6,5,9,48,No,2,3,No,4,Right direction,Own,Bike,19
+2019,10,10,10,65,No,1,1,No,10,Right direction,Own,Car,18
+2019,9,10,10,68,No,7,3,No,10,Right direction,Own,Multiple Modes,46
+2019,7,8,7,30,No,6,1,No,6,Not sure,Rent,Walk,7
+2019,3,3,7,40,Yes,4,3,No,5,Right direction,Own,Car,15
+2019,3,4,5,26,No,5,3,No,7,Wrong track,Rent,Public transit,2
+2019,8,8,9,77,No,5,1,No,9,Right direction,Own,Walk,10
+2019,10,10,8,73,No,4,2,No,10,Right direction,Own,Car,40
+2019,7,7,6,34,No,1,1,No,2,Right direction,Own,Public transit,3
+2019,8,8,8,32,No,6,1,No,9,Not sure,Rent,Bike,2
+2019,8,9,9,54,No,7,3,No,9,Right direction,Own,Car,42
+2019,10,10,10,24,No,5,3,No,7,Right direction,Rent,Public transit,2
+2019,7,9,8,40,Yes,3,2,No,8,Not sure,Own,Bike,20
+2019,6,8,8,28,No,3,1,No,8,Not sure,Rent,Walk,4
+2019,8,8,8,62,No,6,2,No,9,Not sure,Rent,Car,16
+2019,3,3,1,50,No,1,2,No,8,Wrong track,Rent,Multiple Modes,25
+2019,2,2,5,33,No,3,1,No,2,Not sure,Own,Bike,33
+2019,7,5,10,30,No,1,2,No,5,Not sure,Rent,Public transit,1
+2019,7,7,6,49,No,5,1,No,5,Not sure,Own,Car,15
+2019,9,8,4,41,Yes,5,2,No,7,Wrong track,Own,Car,12
+2019,7,9,7,42,Yes,4,3,No,8,Right direction,Own,Bike,5
+2019,8,7,7,40,No,3,1,No,3,Not sure,Own,Walk,10
+2019,8,9,8,35,No,7,1,999,8,Right direction,Rent,Multiple Modes,11
+2019,7,7,7,33,No,1,2,No,8,Right direction,Rent,Public transit,10
+2019,6,6,6,63,No,1,3,No,5,Not sure,Rent,Multiple Modes,20
+2019,6,7,5,82,No,5,1,No,7,Wrong track,Own,Walk,60
+2019,8,7,8,40,No,6,2,No,7,Not sure,Own,Public transit,3
+2019,8,8,7,40,Yes,3,1,No,10,Not sure,Rent,Public transit,13
+2019,6,6,10,47,No,7,1,No,8,Right direction,Own,Public transit,9
+2019,9,9,9,32,No,1,3,Yes,7,Right direction,Rent,Walk,1
+2019,7,10,7,32,No,5,2,No,8,Right direction,Own,Car,32
+2019,8,8,9,39,Yes,3,1,999,9,Right direction,Own,Multiple Modes,15
+2019,8,8,9,45,No,6,1,No,8,Right direction,Rent,Public transit,6
+2019,10,10,7,61,No,1,2,No,2,Not sure,Rent,Car,20
+2019,7,6,8,32,No,1,2,No,8,Right direction,Own,Walk,1
+2019,9,9,9,81,No,4,3,No,7,Right direction,Own,Car,60
+2019,5,3,8,42,No,3,3,No,10,Right direction,Rent,Car,15
+2019,10,10,10,28,No,5,2,No,10,Right direction,Rent,Car,6
+2019,7,7,8,57,No,3,2,No,7,Right direction,Own,Bike,20
+2019,7,7,999,36,Yes,4,2,No,1,Right direction,Own,Multiple Modes,9
+2019,8,8,9,28,No,5,1,999,7,Right direction,Rent,Car,1
+2019,8,7,8,50,Yes,3,3,No,7,Right direction,Own,Car,12
+2019,8,8,9,51,No,5,3,No,5,Not sure,Own,Car,9
+2019,7,8,8,45,No,5,2,No,7,Not sure,Rent,Car,2
+2019,7,8,9,38,No,4,3,No,8,Right direction,Own,Car,15
+2019,7,8,8,28,No,1,2,No,7,Not sure,Rent,Car,5
+2019,9,9,8,40,No,6,2,No,8,Not sure,Own,Public transit,9
+2019,8,8,8,48,Yes,6,2,No,10,Right direction,Own,Bike,26
+2019,9,9,7,31,Yes,7,1,No,9,Right direction,Rent,Bike,6
+2019,7,8,8,34,No,2,3,No,9,Right direction,Own,Car,1
+2019,7,8,9,31,Yes,6,1,No,9,Right direction,Own,Walk,3
+2019,8,9,10,26,No,2,2,No,8,Right direction,Rent,Bike,2.5
+2019,999,999,999,73,No,3,2,999,999,999,Rent,Multiple Modes,70
+2019,5,5,4,62,Yes,6,3,No,10,Wrong track,Own,Multiple Modes,40
+2019,10,10,9,77,No,3,2,No,9,Right direction,Rent,Multiple Modes,14
+2019,10,8,9,29,No,5,2,No,10,Right direction,Rent,Public transit,2
+2019,8,8,9,77,No,6,3,No,10,Right direction,Own,Multiple Modes,58
+2019,8,8,6,68,No,3,2,No,8,Wrong track,Own,Walk,56
+2019,7,8,8,30,No,3,1,No,7,999,Rent,Public transit,1.5
+2019,8,9,8,64,No,3,2,No,9,Right direction,Own,Walk,18
+2019,8,8,8,29,No,2,3,No,8,Right direction,Rent,Multiple Modes,4
+2019,9,10,5,43,No,2,3,No,9,Wrong track,Own,Bike,7
+2019,5,7,7,28,No,7,1,No,2,Not sure,Rent,Multiple Modes,5
+2019,8,8,7,27,No,5,3,No,9,Not sure,Rent,Public transit,2.5
+2019,7,8,8,55,No,5,3,No,5,Right direction,Rent,Public transit,2
+2019,10,10,8,23,No,2,2,No,4,Right direction,Rent,Car,1
+2019,7,6,10,32,No,5,1,No,7,Right direction,Rent,Public transit,8
+2019,1,1,4,65,No,2,2,No,1,Wrong track,Rent,Car,10
+2019,5,4,7,65,No,1,2,999,3,Not sure,Rent,Car,4
+2019,8,8,8,35,No,7,3,No,8,Not sure,Rent,Public transit,6
+2019,6,5,5,50,No,2,2,No,8,Right direction,Rent,Multiple Modes,11
+2019,7,9,8,31,No,5,2,No,4,Right direction,Own,Car,2.5
+2019,9,7,9,60,No,3,2,No,5,Not sure,Own,Public transit,19
+2019,1,8,6,24,No,4,2,Yes,8,Not sure,Rent,Multiple Modes,1
+2019,8,8,6,30,No,6,2,Yes,8,Right direction,Rent,Bike,3
+2019,7,6,9,31,No,2,2,No,7,Not sure,Rent,Public transit,4
+2019,2,3,4,40,No,2,1,No,4,Not sure,Rent,Multiple Modes,4
+2019,8,8,8,41,Yes,4,3,No,7,Right direction,Rent,Car,23
+2019,9,9,8,34,Yes,5,3,No,9,Right direction,Own,Public transit,9
+2019,9,9,7,35,Yes,5,3,No,7,Not sure,Own,Public transit,9
+2019,7,9,7,31,No,1,1,No,4,Right direction,Own,Public transit,3
+2019,5,8,8,57,No,6,2,No,9,Right direction,Own,Public transit,34
+2019,6,6,4,35,No,2,2,No,6,Not sure,Rent,Public transit,2
+2019,8,8,7,54,No,4,1,No,2,Right direction,Rent,Car,11
+2019,7,7,8,37,No,7,3,No,9,Right direction,Own,Multiple Modes,1
+2019,1,10,1,58,No,5,1,No,1,Wrong track,Own,Car,58
+2019,10,10,7,59,No,1,3,No,10,Right direction,Rent,Multiple Modes,40
+2019,9,9,10,30,No,6,1,No,9,Right direction,Own,Multiple Modes,2
+2019,10,10,10,27,No,7,3,No,9,Right direction,Rent,Car,3
+2019,7,7,8,26,No,3,3,No,8,Right direction,Rent,Car,1
+2019,6,9,9,26,No,1,1,Yes,8,Right direction,Own,Public transit,4
+2019,9,9,9,39,No,5,1,No,7,Right direction,Own,Walk,21
+2019,8,9,8,29,No,2,2,Yes,7,Right direction,Rent,Public transit,1
+2019,7,5,7,35,No,7,3,No,6,Right direction,Own,Car,1
+2019,6,6,9,42,Yes,6,1,No,9,Right direction,Rent,Public transit,17
+2019,9,9,8,32,Yes,2,1,Yes,4,Right direction,Rent,Bike,1
+2019,6,8,7,32,No,5,2,999,8,Right direction,Rent,Multiple Modes,3
+2019,10,10,10,43,Yes,2,3,No,10,Right direction,Own,Walk,9.5
+2019,8,9,9,71,No,7,3,No,8,Right direction,Own,Multiple Modes,33
+2019,9,9,8,48,No,1,1,No,3,Right direction,Own,Car,25
+2019,5,6,8,55,No,3,3,No,9,Right direction,Own,Bike,23
+2019,999,999,6,62,Yes,7,3,No,1,Wrong track,Rent,Multiple Modes,50
+2019,6,6,4,65,No,6,2,No,5,Wrong track,Rent,Car,65
+2019,7,9,9,45,Yes,2,3,No,8,Right direction,Own,Bike,10
+2019,7,7,9,29,No,3,1,No,5,Right direction,Rent,Bike,3
+2019,3,3,8,31,No,6,3,No,8,Wrong track,Rent,Public transit,4
+2019,7,7,5,30,No,7,3,No,8,Not sure,Rent,Public transit,5
+2019,8,6,3,62,No,6,2,No,8,Not sure,Own,Walk,32
+2019,9,9,9,38,Yes,5,3,No,9,Right direction,Own,Car,7
+2019,10,9,10,32,No,7,2,No,9,Right direction,Own,Multiple Modes,2.5
+2019,7,7,9,44,No,5,2,No,8,Right direction,Rent,Car,4
+2019,10,9,3,47,Yes,6,1,No,5,Wrong track,Own,Car,22
+2019,2,3,3,65,No,7,1,No,6,Not sure,Own,Walk,30
+2019,9,9,8,63,No,7,1,No,2,Right direction,Own,Walk,17
+2019,10,9,9,41,Yes,7,2,No,8,Right direction,Rent,Car,20
+2019,9,9,7,30,No,7,1,No,8,Not sure,Rent,Car,3
+2019,8,7,9,31,No,6,1,No,8,Right direction,Rent,Public transit,6
+2019,9,9,8,64,No,7,1,No,3,Right direction,Own,Walk,17
+2019,1,6,2,73,999,3,2,No,6,Wrong track,Rent,Multiple Modes,23
+2019,8,8,9,33,No,5,3,999,9,Right direction,Rent,Multiple Modes,7
+2019,10,10,10,64,No,2,3,No,10,Right direction,Own,Walk,9
+2019,5,7,8,56,Yes,3,3,No,9,Right direction,Own,Bike,10
+2019,9,9,8,69,No,2,1,No,3,Right direction,Rent,Car,15
+2019,8,8,8,95,No,6,1,No,9,Right direction,Own,Walk,63
+2019,5,4,7,35,Yes,5,2,No,1,Wrong track,Rent,Car,4
+2019,8,9,8,55,No,6,2,No,3,Wrong track,Rent,Car,6
+2019,10,10,10,34,No,7,3,No,8,Right direction,Own,Public transit,6
+2019,999,999,999,43,Yes,4,3,No,999,Right direction,Rent,Car,20
+2019,6,7,4,60,No,3,1,No,1,Wrong track,Own,Car,50
+2019,8,8,9,77,No,6,3,No,10,Right direction,Own,Multiple Modes,58
+2019,9,10,4,60,No,5,2,No,10,Not sure,Rent,Car,25
+2019,7,7,9,28,No,7,3,No,7,Right direction,Rent,Car,1
+2019,8,9,8,39,Yes,5,3,No,8,Right direction,Own,Multiple Modes,4
+2019,7,7,9,31,No,2,1,No,7,Right direction,Own,Public transit,1
+2019,9,8,10,35,No,4,3,No,9,Right direction,Rent,Multiple Modes,15
+2019,8,9,10,50,No,5,3,No,4,Not sure,Own,Car,18
+2019,9,7,8,34,No,7,2,No,3,Right direction,Rent,Public transit,6
+2019,9,8,10,34,No,5,1,No,10,Right direction,Own,Bike,1.5
+2019,7,6,8,75,No,7,2,No,8,Not sure,Own,Multiple Modes,50
+2019,5,6,8,35,No,5,3,No,7,Right direction,Own,Multiple Modes,13
+2019,7,7,6,85,No,2,3,No,2,Not sure,Rent,Walk,9
+2019,7,999,9,73,No,7,3,No,10,Not sure,Rent,Public transit,9
+2019,8,8,8,65,No,5,1,No,8,Right direction,Own,Car,22
+2019,7,9,8,36,Yes,1,2,No,7,Not sure,Own,Multiple Modes,2
+2019,10,10,10,78,No,1,1,No,5,Right direction,Rent,Car,30
+2019,7,8,8,42,Yes,3,3,No,6,Right direction,Rent,Walk,6
+2019,10,9,9,43,No,5,2,999,8,Right direction,Rent,Public transit,16
+2019,10,10,10,37,No,6,2,No,9,Right direction,Rent,Public transit,3
+2019,9,9,8,51,Yes,2,1,No,1,Right direction,Rent,Bike,12
+2019,4,4,6,32,No,2,3,No,7,Not sure,Rent,Bike,7
+2019,7,8,8,28,No,5,3,No,7,Not sure,Rent,Walk,2
+2019,7,7,8,79,No,1,3,No,5,Not sure,Own,Car,76
+2019,5,5,8,34,No,3,2,No,8,Not sure,Own,Car,3
+2019,10,10,10,75,No,6,2,No,9,Right direction,Own,Multiple Modes,19
+2019,6,6,5,28,No,2,3,No,7,Wrong track,Rent,Public transit,3
+2019,10,10,10,70,No,4,1,999,10,Right direction,Rent,Car,25
+2019,7,7,8,31,No,2,3,No,6,Not sure,Own,Public transit,4
+2019,1,1,10,62,Yes,6,3,No,10,Wrong track,Own,Walk,45
+2019,10,8,9,49,Yes,7,2,No,7,Not sure,Rent,Multiple Modes,30
+2019,10,10,10,36,Yes,5,3,No,10,Right direction,Own,Public transit,14
+2019,8,8,9,57,No,7,3,No,1,Right direction,Own,Car,29
+2019,8,9,8,40,Yes,3,1,No,10,Not sure,Own,Walk,11
+2019,5,5,9,55,No,6,3,No,9,Right direction,Own,Public transit,32
+2019,8,7,9,87,No,7,3,No,5,Right direction,Rent,Public transit,70
+2019,10,10,10,28,No,6,2,No,9,Right direction,Rent,Public transit,4
+2019,7,7,9,71,No,4,2,No,7,Right direction,Own,Public transit,38
+2019,8,9,7,34,Yes,2,2,Yes,5,Right direction,Own,Bike,10
+2019,8,8,10,23,No,4,3,No,8,Right direction,Rent,Public transit,1
+2019,7,7,8,71,999,5,1,No,7,Not sure,Own,Car,69
+2019,8,8,9,64,No,5,2,No,8,Right direction,Own,Car,20
+2019,8,9,9,54,No,5,1,No,9,Right direction,Own,Car,54
+2019,7,7,7,36,No,4,2,No,5,Not sure,Rent,Car,6
+2019,8,9,8,28,No,3,1,No,7,Right direction,Rent,Bike,3
+2019,8,7,7,41,No,4,2,No,6,Not sure,Rent,Car,3
+2019,6,9,8,27,No,3,1,No,5,Not sure,Rent,Public transit,5
+2019,8,9,8,43,No,4,3,No,3,Not sure,Own,Car,3
+2019,7,5,7,37,No,7,2,No,10,Not sure,Rent,Public transit,11
+2019,5,7,3,60,Yes,2,3,No,3,Wrong track,Own,Car,60
+2019,7,7,9,58,No,2,2,No,9,Not sure,Rent,Public transit,13
+2019,5,6,6,65,Yes,7,1,No,5,Not sure,Own,Car,40
+2019,4,4,7,34,No,6,1,No,7,Wrong track,Rent,Car,3
+2019,8,8,9,44,Yes,3,1,No,7,Not sure,Own,Multiple Modes,9.5
+2019,7,8,9,67,No,3,3,No,7,Right direction,Own,Public transit,40
+2019,9,9,7,63,No,6,2,No,6,Right direction,Own,Multiple Modes,32
+2019,7,9,10,24,No,6,1,No,10,Right direction,Rent,Multiple Modes,1
+2019,7,6,8,33,No,2,2,No,5,Not sure,Rent,Bike,6
+2019,8,8,8,32,No,2,3,No,7,Not sure,Rent,Public transit,1
+2019,7,8,9,68,No,6,1,No,8,Right direction,Own,Walk,12
+2019,10,9,9,64,No,6,1,No,8,Right direction,Own,Walk,12
+2019,6,8,8,53,No,3,2,No,9,Right direction,Own,Bike,10
+2019,4,3,3,50,Yes,3,2,No,4,Not sure,Own,Bike,6
+2019,10,10,10,34,Yes,4,3,No,8,Right direction,Own,Walk,10
+2019,8,7,7,22,No,6,2,Yes,8,Right direction,Own,Public transit,22
+2019,7,7,8,26,No,3,3,No,7,Right direction,Rent,Bike,6
+2019,8,8,8,30,Yes,6,2,No,8,Right direction,Own,Walk,3
+2019,8,9,9,32,No,3,1,No,6,Right direction,Own,Public transit,9
+2019,7,9,10,74,No,4,1,No,9,Right direction,Own,Multiple Modes,52
+2019,9,9,10,37,No,3,1,No,9,Not sure,Rent,Multiple Modes,13
+2019,8,7,6,37,No,5,2,No,5,Right direction,Own,Public transit,1
+2019,8,8,6,77,No,3,2,No,5,Wrong track,Rent,Car,77
+2019,6,7,7,33,Yes,3,3,No,8,Right direction,Own,Car,7
+2019,2,3,2,65,No,3,1,No,8,Wrong track,Rent,Walk,24
+2019,10,10,10,73,No,3,2,No,10,Right direction,Rent,Multiple Modes,15
+2019,7,7,6,26,No,3,2,No,9,Not sure,Rent,Bike,4
+2019,6,6,6,45,Yes,5,3,No,6,Not sure,Own,Walk,22
+2019,10,10,2,60,No,1,2,999,10,Wrong track,Rent,Car,8
+2019,7,7,6,49,No,3,1,No,5,Right direction,Rent,Public transit,10
+2019,7,7,6,21,No,7,2,Yes,8,Wrong track,Rent,Public transit,18
+2019,10,9,10,38,Yes,5,3,No,7,Right direction,Own,Public transit,8
+2019,5,3,8,35,No,3,3,No,9,Right direction,Rent,Public transit,8
+2019,9,10,7,73,No,5,3,No,9,999,Own,Multiple Modes,19
+2019,9,9,7,33,No,4,1,No,6,Right direction,Rent,Car,15
+2019,8,9,9,68,No,3,3,No,9,Not sure,Own,Walk,36
+2019,9,9,9,39,Yes,5,3,No,7,Right direction,Own,Car,8
+2019,9,9,9,38,Yes,2,2,No,7,Not sure,Rent,Bike,4
+2019,8,8,9,62,Yes,5,3,No,9,Right direction,Own,Public transit,60
+2019,999,999,999,64,No,1,1,No,999,Right direction,Own,Car,30
+2019,999,999,999,48,No,4,1,No,999,999,Rent,Car,4
+2019,2,2,2,48,Yes,4,1,No,9,Right direction,Rent,Car,8
+2019,999,999,999,57,Yes,1,2,No,999,Right direction,Rent,Multiple Modes,34
+2019,9,9,9,91,No,999,NA,No,9,Right direction,Own,Car,91
+2019,8,7,8,33,No,2,1,No,8,Right direction,Rent,Bike,1.5
+2019,8,8,6,36,Yes,5,3,No,8,Not sure,Rent,Public transit,6
+2019,8,8,8,58,No,6,2,No,1,Wrong track,Own,Public transit,17
+2019,4,4,10,30,No,6,2,No,10,Not sure,Rent,Multiple Modes,3
+2019,9,9,10,25,No,4,3,No,9,Right direction,Rent,Car,3
+2019,5,5,7,31,No,2,2,No,7,Not sure,Rent,Walk,2
+2019,10,999,8,34,Yes,7,2,No,9,Right direction,Rent,Public transit,4
+2019,8,10,9,31,Yes,2,2,No,7,Right direction,Rent,Bike,8
+2019,7,6,9,28,No,7,1,No,7,Right direction,Rent,Public transit,6
+2019,7,7,10,34,No,7,1,No,9,Right direction,Own,Public transit,11
+2019,9,9,9,55,No,3,3,No,5,Right direction,Own,Bike,24
+2019,4,6,2,53,Yes,3,1,No,2,Wrong track,Rent,Multiple Modes,51.5
+2019,10,10,10,90,No,3,2,No,10,Not sure,Own,Car,64
+2019,1,7,1,64,No,4,3,No,1,Wrong track,Own,Public transit,64
+2019,7,8,7,40,Yes,2,1,No,4,Right direction,Rent,Car,10
+2019,999,999,999,46,Yes,1,2,No,999,Right direction,Rent,Car,9
+2019,7,8,8,33,No,6,1,Yes,9,Right direction,Rent,Car,2
+2019,10,10,10,83,No,2,2,No,10,Not sure,Own,Multiple Modes,60
+2019,6,10,3,21,No,6,3,Yes,1,Right direction,Rent,Multiple Modes,3
+2019,8,7,8,25,No,3,2,No,6,Right direction,Rent,Car,1
+2019,8,8,8,30,No,5,1,No,9,Not sure,Rent,Public transit,5
+2019,9,10,9,51,No,6,1,No,9,Right direction,Own,Walk,14
+2019,10,10,10,30,No,1,2,No,8,Right direction,Rent,Public transit,1
+2019,9,9,8,80,No,1,1,No,9,Not sure,Own,Multiple Modes,60
+2019,9,10,8,65,No,3,2,No,10,Wrong track,Own,Car,65
+2019,9,8,10,38,No,3,2,No,3,Right direction,Own,Car,7
+2019,6,8,8,50,Yes,6,1,No,10,Not sure,Own,Car,14
+2019,8,6,7,65,No,2,1,No,5,Right direction,Rent,Bike,20
+2019,9,7,8,29,No,4,1,No,8,Right direction,Rent,Car,6
+2019,10,6,9,72,No,2,1,No,999,Right direction,Own,Car,44
+2019,10,8,10,34,No,5,2,No,10,Right direction,Rent,Car,2
+2019,999,10,10,60,No,1,3,No,10,Right direction,Rent,Car,22
+2019,10,10,10,44,Yes,7,2,No,2,Right direction,Rent,Public transit,7
+2019,9,9,9,45,No,2,1,No,4,Right direction,Own,Multiple Modes,15
+2019,9,9,9,30,No,2,1,No,8,Right direction,Rent,Bike,6
+2019,8,8,9,37,Yes,5,1,No,6,Right direction,Own,Car,5
+2019,8,8,9,40,Yes,7,2,No,7,Right direction,Own,Public transit,25
+2019,999,999,999,59,No,1,3,No,999,Not sure,Rent,Car,17
+2019,9,9,9,57,Yes,4,2,No,9,Right direction,Rent,Public transit,10
+2019,1,10,1,62,No,4,1,No,6,Not sure,Rent,Car,8
+2019,9,8,9,40,No,6,2,No,9,Right direction,Own,Multiple Modes,5
+2019,8,9,9,24,No,3,3,No,10,Not sure,Rent,Walk,2
+2019,10,10,10,86,No,3,1,No,10,Not sure,Own,Car,62
+2019,1,9,1,64,No,4,3,No,1,Wrong track,Rent,Car,64
+2019,10,9,8,31,No,1,2,No,9,Right direction,Own,Car,6
+2019,8,9,9,42,Yes,4,3,No,9,Not sure,Own,Car,19
+2019,8,8,10,44,No,4,3,No,10,Right direction,Own,Public transit,12
+2019,4,4,6,31,No,7,2,No,6,Wrong track,Rent,Bike,6
+2019,10,10,8,53,No,6,1,No,10,Not sure,Own,Bike,26
+2019,7,7,7,54,No,6,1,No,9,Right direction,Own,Bike,26
+2019,9,9,9,32,No,6,2,No,9,Right direction,Rent,Public transit,9
+2019,10,10,10,48,Yes,5,2,No,7,Right direction,Own,Car,15
+2019,8,8,9,30,No,7,3,No,8,Right direction,Rent,Car,1.5
+2019,7,7,9,33,No,6,3,No,9,Not sure,Rent,Walk,28
+2019,9,9,7,29,No,3,3,Yes,3,Right direction,Rent,Car,2
+2019,9,10,4,34,No,1,3,No,3,Right direction,Own,Car,1
+2019,10,10,9,57,No,1,3,No,7,Right direction,Rent,Multiple Modes,11
+2019,9,9,9,66,No,5,2,No,7,Not sure,Own,Multiple Modes,20
+2019,6,8,8,32,No,7,1,No,8,Right direction,Rent,Public transit,8
+2019,8,8,8,28,No,5,2,Yes,6,Right direction,Rent,Walk,7
+2019,7,7,6,36,Yes,2,2,No,3,Not sure,Own,Public transit,4
+2019,8,8,8,28,No,4,3,No,8,Not sure,Rent,Car,5
+2019,10,10,10,36,Yes,1,2,No,10,Right direction,Own,Public transit,2
+2019,7,7,8,66,No,4,2,999,4,Not sure,Own,Car,17
+2019,999,999,1,67,No,3,2,No,6,Wrong track,Own,Car,67
+2019,8,8,9,59,No,6,1,No,10,Not sure,Own,Walk,27
+2019,10,10,10,40,Yes,4,3,No,2,Not sure,Own,Bike,5
+2019,9,8,6,49,Yes,5,3,No,7,Wrong track,Rent,Walk,12
+2019,7,7,8,29,No,2,2,No,8,Right direction,Rent,Bike,2
+2019,8,8,8,52,No,7,1,No,9,Not sure,Rent,Multiple Modes,16
+2019,6,8,6,48,Yes,5,2,No,7,Wrong track,Own,Car,10
+2019,4,5,2,69,No,2,2,No,2,Wrong track,Own,Car,28
+2019,6,6,4,32,No,4,3,No,3,Wrong track,Rent,Car,6
+2019,8,9,9,70,No,6,2,No,7,Right direction,Own,Multiple Modes,44
+2019,10,10,9,34,No,6,1,No,8,Right direction,Rent,Car,10
+2019,8,8,6,30,No,4,1,No,6,Wrong track,Rent,Car,6
+2019,7,9,10,33,Yes,2,3,No,10,Right direction,Own,Bike,6
+2019,5,5,2,78,No,1,3,999,5,Not sure,Own,Car,76
+2019,9,7,8,40,Yes,2,2,No,2,Right direction,Own,Car,6
+2019,10,9,10,31,No,3,2,No,7,Not sure,Rent,Walk,2
+2019,6,5,10,57,No,7,2,No,1,Not sure,Rent,Public transit,4
+2019,7,8,8,57,No,7,2,No,7,Not sure,Rent,Public transit,4
+2019,999,999,999,63,No,1,1,No,999,Right direction,Rent,Car,18
+2019,6,6,7,61,No,4,3,No,8,Wrong track,Own,Car,26
+2019,10,10,8,45,No,6,2,No,9,Not sure,Own,Public transit,6
+2019,10,10,5,19,No,6,3,Yes,10,Not sure,Rent,Bike,4
+2019,9,9,9,33,No,5,2,No,7,Not sure,Own,Multiple Modes,1
+2019,8,9,6,39,No,3,3,No,3,Wrong track,Own,Bike,5
+2019,7,7,6,61,No,6,2,No,5,Not sure,Rent,Public transit,4
+2019,9,9,10,72,No,5,3,No,8,Right direction,Own,Car,48
+2019,999,999,999,60,No,6,3,No,999,Wrong track,Own,Car,54
+2019,10,10,7,59,No,2,2,No,4,999,Own,Car,59
+2019,8,9,9,38,Yes,6,3,No,7,Right direction,Own,Public transit,6
+2019,6,8,1,57,No,2,2,No,2,Wrong track,Own,Car,57
+2019,8,8,7,28,No,4,2,Yes,6,Wrong track,Rent,Car,2
+2019,10,10,10,53,No,1,2,No,9,999,Rent,Multiple Modes,26
+2019,3,5,6,59,No,7,3,No,10,Not sure,Own,Walk,15
+2019,6,6,7,64,No,1,3,No,9,Right direction,Rent,Car,13
+2019,8,8,7,51,Yes,5,2,No,5,Right direction,Own,Car,15
+2019,9,10,8,31,No,2,1,No,7,Right direction,Own,Bike,5
+2019,7,7,5,41,No,2,1,No,8,Not sure,Rent,Multiple Modes,41
+2019,9,9,7,30,No,5,2,No,8,Right direction,Rent,Public transit,4
+2019,7,9,9,59,No,2,3,No,6,Not sure,Rent,Multiple Modes,9
+2019,9,9,9,74,No,4,1,No,9,Right direction,Own,Multiple Modes,53
+2019,7,7,6,52,Yes,4,2,No,7,Not sure,Rent,Car,12
+2019,8,8,9,40,No,3,3,999,9,Right direction,Rent,Public transit,9
+2019,7,9,8,30,No,1,3,No,8,Wrong track,Rent,Public transit,1.5
+2019,8,10,10,25,No,3,1,No,7,Right direction,Rent,Multiple Modes,3
+2019,8,8,9,22,No,6,3,No,9,Not sure,Rent,Public transit,1
+2019,8,8,9,41,No,2,3,No,10,Right direction,Rent,Public transit,10
+2019,7,7,8,28,No,2,3,No,7,Right direction,Rent,Car,1.5
+2019,10,10,10,55,No,3,3,No,8,Right direction,Own,Walk,54
+2019,6,8,8,27,No,7,3,No,7,Right direction,Rent,Public transit,1
+2019,8,8,9,57,No,5,2,No,7,Not sure,Rent,Car,26
+2019,7,7,10,58,No,2,2,No,3,Not sure,Own,Car,53
+2019,4,2,6,36,No,1,2,No,5,Not sure,Rent,Public transit,1
+2019,9,8,9,41,Yes,1,2,No,7,Right direction,Own,Public transit,19
+2019,6,8,8,65,Yes,5,3,No,9,Right direction,Own,Bike,23
+2019,7,9,8,33,No,5,2,No,4,Right direction,Own,Public transit,6
+2019,8,6,8,40,No,3,2,No,5,Not sure,Own,Multiple Modes,14
+2019,10,8,4,37,Yes,1,3,No,5,Wrong track,Own,Car,16
+2019,8,8,9,82,No,4,3,No,9,Not sure,Rent,Car,49
+2019,10,10,10,30,No,4,3,No,5,999,Rent,Car,5
+2019,8,8,8,47,Yes,3,3,No,8,Right direction,Own,Walk,15
+2019,1,9,10,69,No,4,1,No,5,Right direction,Rent,Public transit,24
+2019,8,8,7,33,No,2,2,No,9,Not sure,Rent,Public transit,4
+2019,7,6,7,33,No,7,1,No,7,Right direction,Rent,Public transit,1
+2019,6,6,8,38,Yes,7,2,No,9,Wrong track,Rent,Public transit,10
+2019,8,10,10,44,Yes,5,2,No,10,Right direction,Own,Walk,6
+2019,9,8,8,31,No,5,1,No,7,Not sure,Rent,Car,4
+2019,4,9,7,66,No,7,3,No,5,Wrong track,Own,Public transit,7
+2019,4,4,6,43,Yes,2,3,No,8,Right direction,Rent,Bike,5
+2019,7,7,8,32,No,3,1,No,6,Right direction,Rent,Bike,4
+2019,8,8,8,30,No,6,2,No,8,Right direction,Rent,Public transit,1.5
+2019,7,8,7,50,Yes,6,2,No,5,Right direction,Own,Car,24
+2019,5,5,6,44,No,2,1,No,4,Not sure,Own,Multiple Modes,14
+2019,5,5,6,50,No,2,3,No,4,Right direction,Own,Multiple Modes,10
+2019,7,8,7,50,Yes,6,2,No,4,Right direction,Own,Car,24
+2019,10,10,10,59,No,6,1,No,1,Not sure,Rent,Multiple Modes,20
+2019,7,8,7,27,No,5,3,No,3,Not sure,Rent,Car,2
+2019,5,7,1,26,No,7,1,No,2,Wrong track,Rent,Car,21
+2019,8,9,7,43,No,6,2,No,6,Not sure,Own,Public transit,12
+2019,8,8,8,29,No,6,1,No,9,Not sure,Rent,Car,1
+2019,7,10,10,27,No,4,2,Yes,8,Not sure,Rent,Walk,2
+2019,9,9,9,88,No,4,2,No,10,Right direction,Rent,Public transit,15
+2019,7,7,6,50,No,5,3,No,7,Wrong track,Rent,Public transit,28
+2019,8,8,8,43,No,4,1,No,7,Right direction,Own,Car,9
+2019,8,7,8,29,No,5,2,No,4,Right direction,Rent,Public transit,2
+2019,6,6,7,32,No,2,1,No,8,Right direction,Own,Walk,7
+2019,6,7,8,36,Yes,2,1,No,9,Right direction,Rent,Walk,10
+2019,9,8,9,52,No,5,2,No,9,Right direction,Own,Public transit,12
+2019,8,8,9,47,Yes,3,3,No,8,Right direction,Own,Car,15
+2019,8,7,8,39,No,3,1,No,7,Not sure,Rent,Car,5
+2019,8,8,8,28,No,5,1,No,2,Right direction,Rent,Car,5
+2019,8,8,9,35,No,3,3,No,9,Right direction,Rent,Car,10
+2019,1,6,6,29,No,3,2,999,8,Right direction,Rent,Public transit,5
+2019,9,9,8,30,No,5,1,No,8,Right direction,Rent,Walk,4
+2019,10,9,3,40,No,5,1,No,2,Wrong track,Rent,Car,40
+2019,10,10,10,80,No,3,2,999,10,Right direction,Rent,Car,5
+2019,8,7,9,33,No,3,2,No,8,Right direction,Rent,Public transit,11
+2019,7,7,9,43,Yes,2,2,No,10,Right direction,Rent,Walk,2
+2019,9,10,9,43,No,3,1,No,9,Right direction,Own,Bike,1
+2019,7,6,9,32,No,6,3,No,6,Right direction,Rent,Multiple Modes,6
+2019,8,8,9,33,No,6,3,No,10,Not sure,Rent,Multiple Modes,10
+2019,9,9,9,29,No,7,1,999,8,Right direction,Rent,Public transit,1
+2019,7,9,9,37,Yes,3,2,No,10,Right direction,Own,Bike,4
+2019,9,9,9,73,No,7,1,No,10,Right direction,Own,Public transit,32
+2019,6,6,3,35,No,5,2,Yes,1,Wrong track,Rent,Car,6
+2019,8,9,9,69,No,5,3,No,8,Right direction,Own,Car,69
+2019,7,9,8,34,Yes,5,1,No,7,Right direction,Own,Bike,3
+2019,8,8,7,33,No,2,2,Yes,10,Not sure,Rent,Bike,2
+2019,7,9,9,28,No,6,3,No,4,Not sure,Rent,Multiple Modes,1
+2019,9,9,10,56,No,6,2,No,10,Right direction,Own,Walk,26
+2019,7,7,8,44,Yes,7,2,No,7,Right direction,Own,Multiple Modes,16
+2019,3,3,8,72,No,1,1,No,1,Not sure,Own,Car,25
+2019,8,7,10,65,No,7,2,No,8,Right direction,Own,Car,55
+2019,9,8,9,53,No,2,3,No,7,Right direction,Own,Car,12
+2019,4,4,4,60,No,7,2,999,5,Not sure,Rent,Public transit,36
+2019,9,10,9,69,No,6,3,No,10,Right direction,Own,Car,28
+2019,8,9,7,27,No,5,3,No,9,Not sure,Rent,Public transit,2
+2019,1,5,1,81,No,3,2,No,10,Wrong track,Rent,Multiple Modes,18
+2019,2,6,2,53,Yes,3,1,No,1,Wrong track,Rent,Multiple Modes,51
+2019,8,8,8,33,Yes,3,3,No,7,Right direction,Own,Car,7
+2019,1,10,1,61,No,3,3,No,1,Wrong track,Own,Car,50
+2019,9,8,9,68,No,2,3,No,8,Right direction,Own,Bike,9
+2019,9,9,9,28,No,7,3,No,7,Right direction,Own,Car,4
+2019,8,9,9,45,Yes,3,2,No,9,Right direction,Own,Car,15
+2019,10,9,9,56,No,2,1,No,7,Right direction,Own,Multiple Modes,24
+2019,10,10,10,85,No,5,2,No,2,Not sure,Rent,Multiple Modes,46
+2019,4,6,7,31,No,6,2,Yes,7,Not sure,Rent,Walk,3
+2019,10,9,9,61,No,4,2,No,8,Right direction,Rent,Multiple Modes,10
+2019,9,9,9,55,No,6,1,No,8,Right direction,Rent,Car,22
+2019,6,6,8,70,No,3,2,No,6,Not sure,Rent,Public transit,40
+2019,8,6,999,58,No,3,2,Yes,5,Right direction,Own,Multiple Modes,3
+2019,7,7,8,31,No,1,1,No,3,999,Rent,Public transit,2
+2019,1,1,1,42,No,3,1,No,1,Wrong track,Rent,Car,3
+2019,3,1,1,36,999,3,1,999,1,Wrong track,Rent,Multiple Modes,6
+2019,7,8,3,69,No,7,1,No,5,Wrong track,Own,Car,20
+2019,8,10,9,66,No,2,1,No,1,Wrong track,Own,Car,66
+2019,8,8,7,25,No,2,1,No,8,Right direction,Rent,Bike,7
+2019,8,8,9,25,No,2,1,No,8,Right direction,Rent,Public transit,3
+2019,5,6,7,33,No,2,2,No,5,Not sure,Own,Car,7
+2019,5,5,5,58,No,1,1,No,8,Not sure,Own,Multiple Modes,53
+2019,9,9,9,63,No,6,1,No,7,Right direction,Own,Multiple Modes,33
+2019,6,5,7,29,No,7,2,No,7,Right direction,Rent,Car,2
+2019,9,8,7,72,No,2,1,No,6,Not sure,Rent,Car,37
+2019,7,6,8,26,No,6,2,No,7,Right direction,Rent,Multiple Modes,2
+2019,8,8,9,37,No,3,3,No,9,Right direction,Rent,Walk,10
+2019,10,10,10,44,No,4,2,999,10,Not sure,Own,Car,14
+2019,7,8,9,39,Yes,6,3,No,7,Not sure,Own,Multiple Modes,10
+2019,8,8,8,53,No,1,3,No,8,Right direction,Own,Public transit,20
+2019,5,6,8,48,No,2,3,No,8,Right direction,Rent,Multiple Modes,14
+2019,10,10,10,59,No,1,2,No,10,Right direction,Own,Car,25
+2019,7,7,6,69,No,3,2,No,8,Wrong track,Own,Walk,56
+2019,9,9,8,30,No,7,3,No,9,Right direction,Own,Car,3
+2019,6,7,9,28,No,2,2,Yes,8,Right direction,Rent,Walk,6
+2019,8,8,8,43,No,2,2,No,6,Right direction,Own,Car,12
+2019,8,8,7,26,No,6,3,No,7,Wrong track,Rent,Multiple Modes,3
+2019,7,7,7,60,No,6,2,No,6,Not sure,Rent,Multiple Modes,50
+2019,4,5,5,90,No,1,2,No,10,Right direction,Rent,Public transit,90
+2019,6,5,6,60,No,6,3,No,3,Not sure,Own,Multiple Modes,30
+2019,8,8,9,33,No,5,3,No,7,Right direction,Rent,Public transit,5
+2019,7,8,9,31,No,3,1,Yes,6,Right direction,Own,Multiple Modes,5
+2019,8,8,6,34,No,6,1,No,7,Right direction,Rent,Walk,8
+2019,6,6,9,60,Yes,5,3,No,10,Right direction,Own,Car,20
+2019,7,6,7,52,No,2,3,No,8,Not sure,Rent,Multiple Modes,18
+2019,8,8,7,24,No,2,3,No,7,Right direction,Rent,Bike,2
+2019,8,8,8,31,No,3,3,No,9,Right direction,Rent,Multiple Modes,5
+2019,9,9,10,58,No,7,3,No,10,Right direction,Own,Car,14
+2019,2,5,2,27,No,1,1,No,4,Not sure,Rent,Multiple Modes,2
+2019,8,4,4,26,No,3,1,Yes,3,Wrong track,Rent,Bike,1
+2019,9,9,9,38,Yes,5,2,No,4,Right direction,Own,Public transit,15
+2019,5,5,9,33,No,4,3,No,7,Right direction,Rent,Car,8
+2019,5,10,5,53,No,3,2,No,4,Not sure,Rent,Car,5
+2019,8,8,6,32,No,5,2,No,8,Not sure,Rent,Bike,3
+2019,8,8,9,63,No,6,1,No,3,Right direction,Own,Multiple Modes,60
+2019,8,8,8,34,No,6,1,No,9,Right direction,Rent,Public transit,2
+2019,4,7,7,42,No,3,3,No,7,Right direction,Own,Public transit,6
+2019,7,8,7,45,No,6,3,No,8,Not sure,Rent,Walk,11
+2019,9,7,10,28,No,6,3,No,10,Right direction,Own,Car,2
+2019,9,9,9,50,No,2,1,No,3,Right direction,Own,Car,10
+2019,999,9,6,63,No,7,1,No,3,Right direction,Own,Car,53
+2019,8,8,9,58,No,6,2,No,5,Right direction,Own,Car,3
+2019,8,8,8,70,No,7,1,No,6,Right direction,Own,Car,37
+2019,8,9,8,35,No,3,1,No,6,Not sure,Rent,Car,6
+2019,10,10,1,69,No,6,3,No,5,Wrong track,Own,Car,69
+2019,10,10,10,34,No,5,1,No,9,Right direction,Rent,Car,8
+2019,7,8,8,26,No,4,2,No,7,Right direction,Rent,Car,3
+2019,6,7,7,23,No,3,3,No,7,Not sure,Rent,Car,1
+2019,9,9,8,64,No,7,3,No,10,999,Own,Multiple Modes,25
+2019,7,10,7,28,No,2,3,No,9,Right direction,Own,Car,20
+2019,8,7,10,43,Yes,2,2,No,10,Right direction,Rent,Bike,9
+2019,4,7,9,27,No,5,3,No,4,Right direction,Own,Public transit,5
+2019,5,7,6,53,Yes,4,2,No,3,Not sure,Own,Walk,20
+2019,6,6,8,36,Yes,2,2,999,5,Right direction,Own,Car,10
+2019,7,8,8,58,No,6,2,No,8,Not sure,Own,Walk,3
+2019,9,9,9,32,No,5,1,No,8,Right direction,Own,Bike,8
+2019,999,999,7,52,No,5,3,999,7,999,Rent,Public transit,1
+2019,8,9,9,32,No,1,3,No,8,Not sure,Rent,Car,11
+2019,7,8,7,41,No,2,3,No,2,Right direction,Rent,Car,5
+2019,8,8,8,76,No,4,3,No,6,Right direction,Own,Car,33
+2019,7,10,7,41,Yes,2,1,No,5,Right direction,Own,Multiple Modes,6
+2019,9,10,8,33,Yes,5,3,No,4,Not sure,Own,Car,2
+2019,7,7,9,40,No,5,3,No,8,Not sure,Rent,Bike,13
+2019,8,8,7,36,No,2,2,999,7,Right direction,Own,Car,7
+2019,8,8,8,60,No,1,3,No,8,Not sure,Own,Multiple Modes,20
+2019,6,8,7,27,No,5,1,No,4,Not sure,Rent,Bike,5
+2019,10,9,9,55,No,1,2,No,8,Not sure,Rent,Walk,2
+2019,7,7,9,72,No,1,3,No,8,Not sure,Own,Car,65
+2019,7,8,4,66,No,6,3,No,4,Wrong track,Own,Car,66
+2019,4,7,8,26,No,3,3,Yes,8,Right direction,Rent,Public transit,2
+2019,7,6,6,33,No,2,1,No,4,Not sure,Rent,Walk,4
+2019,7,8,2,59,No,1,3,No,9,Not sure,Rent,Multiple Modes,18
+2019,7,5,8,25,No,3,2,No,8,Right direction,Rent,Bike,2
+2019,8,8,10,43,No,5,3,No,8,Right direction,Own,Multiple Modes,20
+2019,7,8,9,28,No,5,3,No,8,Right direction,Rent,Public transit,5
+2019,9,9,8,39,No,2,2,No,8,Not sure,Own,Car,10
+2019,7,7,8,60,No,3,1,No,7,Right direction,Rent,Public transit,7
+2019,7,7,5,62,No,7,2,No,6,Not sure,Rent,Public transit,19
+2019,5,4,8,48,Yes,7,2,No,8,Right direction,Own,Public transit,15
+2019,8,9,9,31,No,6,1,No,9,Right direction,Rent,Multiple Modes,3
+2019,6,9,8,29,No,2,2,No,7,Not sure,Rent,Walk,5
+2019,6,8,6,66,No,3,3,No,5,Not sure,Own,Walk,9.5
+2019,10,10,9,62,No,5,3,No,4,Not sure,Own,Car,35
+2019,8,7,6,46,No,7,1,No,2,Not sure,Rent,Car,15
+2019,8,8,7,43,No,3,2,No,7,Not sure,Own,Car,20
+2019,6,6,7,35,No,3,2,No,5,Right direction,Own,Car,2
+2019,4,8,7,81,No,3,3,No,3,Not sure,Own,Car,70
+2019,10,10,10,83,No,7,3,No,10,Right direction,Rent,Public transit,16
+2019,9,8,9,28,No,4,2,No,7,Right direction,Rent,Car,2
+2019,1,1,1,75,No,1,1,No,1,Not sure,Rent,Walk,70
+2019,7,7,5,40,Yes,5,3,No,4,Wrong track,Own,Multiple Modes,10
+2019,8,8,8,73,No,7,1,999,8,999,Own,Car,33
+2019,9,9,9,49,Yes,7,3,No,9,Right direction,Own,Car,14
+2019,7,7,7,32,No,2,1,No,7,Not sure,Rent,Public transit,10
+2019,5,5,9,67,No,4,2,No,10,Wrong track,Rent,Multiple Modes,20
+2019,8,9,8,38,No,2,2,No,7,Right direction,Rent,Multiple Modes,7
+2019,8,9,10,29,No,3,1,No,8,Right direction,Rent,Car,1
+2019,7,7,8,24,No,6,2,Yes,8,Not sure,Rent,Bike,2
+2019,8,7,8,26,No,6,2,No,8,999,Rent,Public transit,4
+2019,7,9,7,29,No,3,1,No,7,Right direction,Rent,Public transit,1
+2019,8,9,9,49,No,7,3,No,7,Right direction,Own,Bike,16
+2019,7,6,8,46,No,2,1,No,6,Not sure,Own,Car,12
+2019,10,8,8,38,No,3,1,No,5,Right direction,Rent,Walk,15
+2019,9,9,9,67,No,6,2,No,10,Right direction,Own,Multiple Modes,5
+2019,8,10,6,72,No,4,2,No,10,Wrong track,Rent,Car,72
+2019,8,9,9,43,No,2,2,No,8,Right direction,Rent,Bike,16
+2019,8,10,9,27,No,2,3,Yes,9,Right direction,Rent,Walk,2
+2019,8,7,8,40,No,5,1,No,6,Right direction,Own,Car,18
+2019,8,8,6,20,No,7,3,Yes,7,Not sure,Rent,Multiple Modes,2
+2019,8,8,8,50,No,6,2,No,10,Right direction,Own,Bike,10
+2019,8,8,8,44,No,6,2,No,8,Not sure,Own,Multiple Modes,9
+2019,7,7,8,57,Yes,3,1,No,9,Right direction,Own,Public transit,13
+2019,9,10,6,66,No,3,2,No,9,Wrong track,Own,Car,66
+2019,7,8,9,38,Yes,2,1,No,8,Wrong track,Own,Bike,8
+2019,6,6,2,30,No,5,2,No,1,Wrong track,Own,Car,5
+2019,8,7,8,55,No,1,2,No,8,Right direction,Rent,Public transit,4
+2019,8,8,7,70,No,2,3,No,8,Not sure,Own,Car,14
+2019,10,9,9,27,No,1,2,No,9,Right direction,Own,Public transit,1
+2019,8,10,9,27,No,5,3,No,8,Right direction,Rent,Public transit,2
+2019,10,8,10,29,No,7,1,Yes,5,Right direction,Rent,Public transit,6.5
+2019,9,8,8,77,No,1,2,No,10,Right direction,Own,Car,30
+2019,7,6,3,31,No,1,2,No,2,Wrong track,Rent,Public transit,31
+2019,5,3,4,28,No,5,2,No,4,Not sure,Rent,Public transit,3
+2019,9,9,9,59,No,3,1,No,7,Not sure,Own,Walk,4
+2019,2,5,5,44,Yes,5,1,No,5,Not sure,Own,Multiple Modes,13
+2019,3,4,1,36,No,2,1,No,1,Wrong track,Rent,Walk,7
+2019,8,8,8,28,No,3,3,No,8,Not sure,Rent,Public transit,3
+2019,4,4,7,36,No,5,3,No,7,Not sure,Own,Car,14
+2019,7,7,8,28,No,2,1,No,10,Not sure,Rent,Walk,1
+2019,8,10,9,38,No,6,2,No,9,Right direction,Own,Walk,9
+2019,10,10,8,79,No,3,2,No,6,Not sure,Own,Car,45
+2019,6,7,7,27,No,6,1,Yes,8,Right direction,Rent,Public transit,1
+2019,6,6,4,45,Yes,2,1,No,1,Right direction,Rent,Car,7
+2019,999,9,10,32,No,3,2,No,10,Right direction,Rent,Multiple Modes,1
+2019,9,9,10,52,No,6,1,No,10,Not sure,Own,Walk,8
+2019,10,10,10,80,No,5,1,No,10,Right direction,Own,Car,42
+2019,9,10,10,70,No,1,2,No,5,Not sure,Own,Car,70
+2019,8,8,8,31,No,2,2,No,6,Right direction,Rent,Bike,7
+2019,7,6,9,31,No,2,2,No,3,Right direction,Rent,Walk,6
+2019,4,4,6,38,No,7,2,No,9,Not sure,Rent,Public transit,11
+2019,8,9,8,41,No,4,3,No,8,Right direction,Own,Car,3
+2019,9,8,9,67,No,7,3,999,2,Right direction,Own,Car,35
+2019,8,8,8,55,No,3,2,No,8,Right direction,Own,Car,11
+2019,8,8,3,77,No,3,2,No,8,Wrong track,Rent,Car,77
+2019,8,7,7,38,No,3,3,No,8,Right direction,Rent,Car,16
+2019,8,8,9,33,No,4,3,No,8,Right direction,Rent,Bike,5
+2019,7,8,8,40,No,6,1,No,8,Not sure,Rent,Car,1
+2019,7,7,7,28,No,7,2,No,6,Not sure,Rent,Multiple Modes,4
+2019,7,7,8,60,No,3,2,No,3,Right direction,Own,Public transit,14
+2019,8,8,8,32,No,7,3,No,7,Not sure,Rent,Car,3
+2019,10,10,10,34,No,7,1,Yes,8,Not sure,Rent,Multiple Modes,4
+2019,5,4,7,31,No,3,3,No,8,Right direction,Rent,Public transit,5
+2019,8,7,8,35,Yes,6,2,No,7,Not sure,Rent,Bike,5
+2019,10,8,10,23,No,1,3,No,10,Not sure,Rent,Car,1
+2019,7,8,6,32,No,3,1,No,8,Not sure,Rent,Walk,3
+2019,9,9,4,48,No,2,1,999,1,Wrong track,Rent,Multiple Modes,25
+2019,1,1,5,62,No,3,2,No,5,Wrong track,Rent,Multiple Modes,62
+2019,9,8,8,38,Yes,4,3,No,7,Right direction,Own,Public transit,11
+2019,7,5,8,35,Yes,4,3,No,4,Right direction,Own,Car,8
+2019,8,8,7,36,No,2,1,No,10,Right direction,Rent,Walk,4
+2019,8,7,10,27,No,5,3,No,8,Right direction,Own,Public transit,3
+2019,10,7,10,61,No,1,2,No,10,Right direction,Own,Car,4.5
+2019,10,10,10,54,No,1,2,No,9,Right direction,Own,Car,32
+2019,7,7,9,60,No,6,2,No,9,Wrong track,Own,Car,50
+2019,8,8,8,31,No,4,3,No,7,Right direction,Rent,Car,7
+2019,9,8,9,23,No,2,3,No,9,Not sure,Rent,Walk,1
+2019,8,999,9,23,No,2,3,No,8,Not sure,Rent,Bike,1
+2019,10,10,10,53,Yes,1,3,No,10,Right direction,Own,Car,29
+2019,9,9,10,28,No,2,1,999,8,Right direction,Rent,Walk,5
+2019,8,8,9,32,Yes,5,1,No,7,Not sure,Own,Multiple Modes,9
+2019,10,10,10,39,Yes,6,3,No,10,Right direction,Own,Public transit,9
+2019,7,8,9,34,No,3,1,No,7,Right direction,Own,Walk,14
+2019,8,8,10,36,No,2,2,No,10,Right direction,Rent,Walk,1
+2019,7,8,10,41,No,6,3,No,10,Right direction,Own,Public transit,13
+2019,8,8,8,29,Yes,2,3,No,7,Right direction,Rent,Public transit,1
+2019,7,7,6,40,No,7,1,No,5,Right direction,Own,Bike,6
+2019,4,5,8,24,No,5,3,No,7,Not sure,Rent,Public transit,3
+2019,10,10,8,45,No,6,2,No,9,Wrong track,Own,Public transit,6
+2019,9,9,8,28,No,1,3,No,10,Right direction,Rent,Multiple Modes,6
+2019,6,6,8,42,Yes,1,2,No,10,Not sure,Rent,Car,11
+2019,8,9,9,52,No,5,2,No,8,Not sure,Own,Car,25
+2019,4,4,3,72,No,4,3,No,5,Wrong track,Rent,Car,40
+2019,10,10,8,73,No,2,1,No,10,Not sure,Own,Walk,12
+2019,10,10,8,54,Yes,3,2,No,9,Right direction,Own,Car,17
+2019,6,6,8,40,Yes,4,3,Yes,8,Right direction,Own,Car,4
+2019,7,6,6,40,No,1,2,No,9,Right direction,Rent,Public transit,1.5
+2019,8,7,8,27,No,6,2,No,9,Not sure,Rent,Bike,3
+2019,9,9,7,31,No,4,2,No,8,Right direction,Rent,Car,3
+2019,8,8,7,26,No,5,2,No,1,Not sure,Rent,Car,2
+2019,6,4,8,64,No,2,2,No,8,Wrong track,Own,Multiple Modes,20
+2019,7,8,7,30,No,2,1,No,7,Not sure,Rent,Car,5
+2019,8,9,9,49,No,2,1,No,8,999,Own,Walk,14
+2019,7,7,8,69,No,3,1,No,4,Wrong track,Rent,Public transit,35
+2019,9,9,9,27,No,3,1,No,8,Right direction,Rent,Car,3
+2019,10,10,10,83,No,7,3,No,10,Right direction,Rent,Public transit,15
+2019,8,8,8,37,No,2,1,No,9,Wrong track,Rent,Walk,12
+2019,7,8,8,39,No,2,1,No,4,Right direction,Own,Public transit,8
+2019,10,10,10,78,Yes,2,1,999,1,Wrong track,Rent,Multiple Modes,14
+2019,9,9,10,35,No,6,1,No,10,Right direction,Rent,Public transit,1
+2019,6,8,9,41,Yes,3,1,No,7,Right direction,Own,Multiple Modes,4
+2019,10,10,10,75,No,7,3,No,10,Right direction,Own,Car,11
+2019,6,6,6,35,No,1,1,No,10,Right direction,Own,Public transit,3
+2019,9,10,9,71,No,6,1,No,9,Not sure,Own,Walk,47
+2019,7,8,7,37,No,5,1,No,3,Not sure,Rent,Car,10
+2019,5,4,7,29,No,4,2,No,4,999,Rent,Car,6
+2019,8,9,9,24,No,5,3,Yes,4,Not sure,Rent,Public transit,1.5
+2019,5,6,9,43,Yes,4,2,No,8,Wrong track,Rent,Car,17
+2019,9,9,10,38,No,7,3,No,7,Right direction,Rent,Car,5
+2019,8,9,8,41,No,3,2,No,7,Right direction,Own,Car,15
+2019,4,8,8,28,No,3,1,Yes,6,Right direction,Own,Bike,1
+2019,9,9,8,33,No,3,3,No,7,Right direction,Rent,Walk,7
+2019,9,9,10,76,No,4,1,No,10,Not sure,Rent,Walk,70
+2019,10,10,10,71,No,5,1,No,9,Right direction,Rent,Multiple Modes,21
+2019,6,9,5,38,Yes,3,2,No,1,Wrong track,Own,Multiple Modes,15
+2019,8,9,6,52,Yes,2,3,No,3,Wrong track,Own,Car,52
+2019,9,8,10,59,No,2,3,No,7,Not sure,Rent,Multiple Modes,10
+2019,7,8,7,28,No,3,3,No,9,Right direction,Rent,Car,5
+2019,9,8,8,38,No,5,2,No,8,Right direction,Own,Car,1.5
+2019,8,8,9,55,No,4,2,No,9,999,Own,Car,48
+2019,9,8,9,25,No,6,1,No,8,Not sure,Rent,Multiple Modes,3
+2019,6,7,6,46,Yes,4,8,No,5,Not sure,Own,Car,7
+2019,7,7,7,37,Yes,5,1,No,10,Right direction,Own,Car,8
+2019,9,9,9,43,No,7,1,No,9,Right direction,Rent,Multiple Modes,2
+2019,8,8,8,32,No,6,1,No,5,Right direction,Rent,Public transit,3
+2019,7,8,8,29,No,3,1,No,7,Right direction,Own,Car,3
+2019,9,9,9,64,No,6,2,No,4,Right direction,Own,Multiple Modes,26
+2019,7,8,8,42,Yes,999,NA,No,8,Not sure,Own,Car,15
+2019,8,7,8,79,No,1,3,No,8,Right direction,Rent,Car,79
+2019,3,10,3,36,Yes,6,3,No,3,Not sure,Own,Multiple Modes,4
+2019,6,8,10,63,No,5,3,No,7,Right direction,Own,Bike,30
+2019,5,5,7,90,No,7,3,No,5,Not sure,Rent,Car,3
+2019,10,10,9,42,No,4,3,No,5,Not sure,Own,Car,20
+2019,5,6,4,34,No,2,1,No,1,Wrong track,Own,Public transit,5
+2019,9,9,8,32,No,3,3,No,7,Right direction,Own,Multiple Modes,1.5
+2019,5,5,5,72,No,3,1,No,5,Wrong track,Rent,Public transit,49
+2019,1,9,9,75,No,7,3,No,8,Right direction,Rent,Public transit,30
+2019,10,10,10,72,No,7,2,No,10,Right direction,Own,Car,30
+2019,7,7,7,30,No,4,2,No,6,Right direction,Rent,Bike,8
+2019,7,7,9,73,No,3,3,No,8,Right direction,Own,Car,5
+2019,8,9,10,23,No,6,1,No,10,Right direction,Rent,Public transit,6
+2019,5,7,3,72,No,1,2,999,8,Wrong track,Own,Multiple Modes,66
+2019,10,10,10,37,Yes,7,1,No,9,Right direction,Own,Bike,11
+2019,8,8,8,23,No,2,2,No,10,Right direction,Rent,Walk,3
+2019,8,9,6,30,No,7,3,999,6,Wrong track,Own,Car,7
+2019,6,6,10,49,No,1,2,No,8,Right direction,Own,Car,2
+2019,9,9,9,51,No,1,1,No,8,Not sure,Rent,Multiple Modes,30
+2019,6,6,7,88,No,4,3,No,4,999,Own,Multiple Modes,85
+2019,8,9,10,67,No,6,2,No,9,Not sure,Own,Car,40
+2019,10,10,8,36,Yes,2,1,No,10,Right direction,Rent,Bike,4
+2019,8,9,7,34,Yes,1,1,No,4,Not sure,Own,Car,2
+2019,8,9,7,26,No,5,3,No,8,Right direction,Rent,Public transit,1
+2019,9,10,9,26,No,2,3,No,5,Right direction,Rent,Car,2
+2019,10,9,8,25,No,2,3,No,5,Right direction,Rent,Bike,3
+2019,5,5,8,64,No,3,1,No,4,Not sure,Own,Car,22
+2019,8,6,9,31,No,6,2,No,9,Right direction,Rent,Walk,6
+2019,7,4,4,27,No,7,3,No,7,Wrong track,Rent,Car,4
+2019,7,7,7,37,No,3,1,No,5,Right direction,Rent,Car,2.5
+2019,1,10,1,59,No,5,2,No,9,Right direction,Own,Car,29
+2019,9,9,10,28,No,7,3,No,6,Not sure,Rent,Car,2
+2019,6,8,1,52,Yes,7,3,Yes,7,Wrong track,Own,Multiple Modes,21
+2019,8,7,9,62,No,6,1,No,10,Not sure,Rent,Car,20
+2019,5,10,5,61,No,3,3,No,10,Not sure,Own,Car,10
+2019,9,9,9,65,No,1,2,No,9,Right direction,Own,Bike,2
+2019,7,6,9,32,No,7,1,No,6,Right direction,Rent,Car,5
+2019,3,3,9,50,No,999,NA,No,8,Wrong track,Rent,Car,20
+2019,8,8,8,32,No,6,1,No,10,Not sure,Rent,Public transit,9
+2019,6,6,9,23,No,6,3,No,10,Right direction,Rent,Public transit,1
+2019,7,8,7,25,No,7,2,No,5,Right direction,Rent,Multiple Modes,2
+2019,6,6,7,30,No,6,1,No,7,Right direction,Rent,Public transit,2
+2019,7,7,7,25,No,7,1,No,8,Right direction,Rent,Public transit,2
+2019,7,6,9,37,No,6,2,No,9,Wrong track,Rent,Walk,13
+2019,8,8,9,67,No,7,3,No,9,Right direction,Own,Bike,50
+2019,8,9,10,74,No,6,1,No,10,Right direction,Own,Multiple Modes,45
+2019,7,7,7,33,No,6,1,No,8,Right direction,Own,Multiple Modes,11
+2019,8,8,8,28,No,4,3,No,6,Right direction,Own,Walk,1.5
+2019,7,6,7,25,No,2,2,Yes,7,Right direction,Rent,Public transit,2.5
+2019,7,9,9,30,No,6,3,No,10,Not sure,Rent,Car,9
+2019,10,10,9,38,Yes,3,1,999,8,Right direction,Own,Car,10
+2019,9,10,9,42,Yes,3,3,No,7,Right direction,Own,Public transit,16
+2019,8,8,6,52,Yes,6,2,No,7,Wrong track,Own,Bike,10
+2019,8,10,9,65,No,6,2,No,10,Right direction,Rent,Public transit,32
+2019,7,8,10,43,Yes,6,1,No,10,Right direction,Own,Public transit,8
+2019,10,10,5,34,No,4,3,No,6,Right direction,Own,Car,8
+2019,6,7,9,39,Yes,6,3,No,6,Not sure,Own,Car,10
+2019,9,9,10,72,Yes,5,3,999,10,Not sure,Own,Car,40
+2019,4,9,4,31,No,1,1,Yes,1,Right direction,Rent,Multiple Modes,4
+2019,9,9,9,65,No,1,2,No,4,Right direction,Own,Bike,10
+2019,8,7,5,30,No,5,2,No,6,Not sure,Rent,Public transit,4
+2019,8,9,5,57,No,6,2,No,2,Wrong track,Rent,Public transit,32
+2019,10,10,5,46,Yes,4,3,Yes,6,Wrong track,Rent,Multiple Modes,2
+2019,7,8,7,38,No,4,3,No,7,Not sure,Own,Car,10
+2019,10,10,5,56,No,5,2,No,3,Not sure,Own,Car,56
+2019,10,5,4,38,Yes,4,2,No,8,Wrong track,Own,Car,38
+2019,7,8,5,53,Yes,4,2,No,9,Wrong track,Rent,Public transit,18
+2019,4,8,3,29,No,4,2,No,10,Wrong track,Rent,Multiple Modes,7
+2019,7,7,8,32,No,1,1,No,4,Not sure,Rent,Bike,11
+2019,10,10,10,65,No,6,2,No,10,Right direction,Rent,Public transit,65
+2019,10,10,10,80,No,4,1,No,999,Not sure,Own,Car,27
+2019,7,8,7,36,Yes,3,1,No,7,Not sure,Own,Multiple Modes,8
+2019,8,9,9,36,Yes,3,1,No,7,Right direction,Own,Car,9
+2019,9,9,9,60,No,1,3,No,10,Right direction,Own,Public transit,6
+2019,10,10,10,66,No,3,2,No,1,Not sure,Own,Multiple Modes,35
+2019,2,10,2,34,No,1,3,999,9,Right direction,Own,Car,1
+2019,7,8,8,34,No,2,1,No,6,Right direction,Rent,Car,10
+2019,6,6,9,46,No,6,2,No,9,Not sure,Rent,Public transit,7
+2019,7,7,8,24,No,6,3,No,7,Right direction,Rent,Walk,1
+2019,9,10,9,33,Yes,1,2,999,5,Right direction,Rent,Car,4
+2019,4,4,7,65,Yes,4,2,No,4,Not sure,Own,Walk,50
+2019,9,10,9,31,No,5,3,No,9,Right direction,Rent,Car,1
+2019,7,8,10,46,Yes,3,2,999,8,Wrong track,Rent,Public transit,7
+2019,4,7,8,29,No,2,2,No,5,Not sure,Rent,Public transit,2
+2019,4,7,8,29,No,2,2,No,6,Not sure,Rent,Car,2
+2019,8,8,10,27,No,7,3,No,9,Right direction,Rent,Car,3
+2019,9,9,9,33,No,5,3,No,7,Right direction,Rent,Car,1
+2019,8,8,9,50,No,5,1,No,9,Not sure,Own,Multiple Modes,3
+2019,8,9,9,56,No,7,2,No,8,Right direction,Rent,Public transit,27
+2019,8,9,9,30,No,7,1,No,7,Right direction,Rent,Public transit,2
+2019,10,10,10,82,No,5,3,No,10,999,Rent,Walk,53
+2019,8,8,8,35,No,7,1,No,7,Right direction,Rent,Multiple Modes,14
+2019,9,9,10,79,No,2,3,No,7,Right direction,Own,Car,36
+2019,7,8,9,46,No,5,2,No,9,Right direction,Own,Car,19
+2019,7,10,6,24,No,6,2,No,8,Right direction,Rent,Multiple Modes,1
+2019,8,9,8,62,No,3,3,No,7,Right direction,Own,Car,4
+2019,9,9,10,33,No,3,1,No,9,Right direction,Rent,Car,10
+2019,8,8,9,61,No,3,3,No,8,Not sure,Own,Multiple Modes,34
+2019,10,10,10,39,Yes,7,2,No,10,Not sure,Rent,Car,3
+2019,8,8,8,70,No,6,2,No,9,Right direction,Own,Car,6
+2019,8,7,9,48,No,6,1,No,9,Right direction,Rent,Bike,16
+2019,4,7,10,30,No,4,1,No,1,Wrong track,Rent,Multiple Modes,9
+2019,10,10,10,74,No,7,2,No,10,Right direction,Rent,Public transit,16
+2019,8,8,1,90,No,7,2,No,8,Not sure,Rent,Multiple Modes,90
+2019,8,7,9,37,Yes,3,2,999,9,Not sure,Own,Bike,8
+2019,10,10,10,31,Yes,3,3,No,8,Right direction,Own,Car,1
+2019,8,8,7,40,Yes,2,1,No,6,Right direction,Rent,Car,10
+2019,4,4,9,25,No,6,1,No,8,Right direction,Rent,Car,3
+2019,7,8,8,34,No,5,3,No,9,Right direction,Own,Public transit,8
+2019,8,8,7,24,No,3,1,No,2,Right direction,Rent,Walk,3
+2019,8,9,9,43,Yes,5,3,No,9,Right direction,Own,Car,3
+2019,999,8,8,74,No,5,2,No,9,999,Rent,Car,10
+2019,8,8,7,24,No,2,1,No,4,Right direction,Rent,Bike,2
+2019,7,8,9,50,No,7,2,No,10,Wrong track,Rent,Public transit,24
+2019,10,10,9,29,No,1,2,No,9,Right direction,Rent,Car,1
+2019,5,5,8,31,No,1,2,No,7,Right direction,Rent,Car,1
+2019,7,6,9,25,No,7,1,No,9,Right direction,Rent,Public transit,2
+2019,8,8,8,44,No,5,2,Yes,6,Right direction,Own,Public transit,8
+2019,8,8,10,41,No,4,3,No,8,Right direction,Own,Car,15
+2019,7,9,9,27,No,2,2,Yes,9,Right direction,Rent,Bike,3
+2019,6,5,8,26,No,4,3,No,6,Right direction,Rent,Walk,1
+2019,8,8,3,81,No,3,3,No,2,Wrong track,Own,Walk,81
+2019,10,10,5,64,No,3,3,No,3,Wrong track,Own,Car,52
+2019,7,7,7,33,No,1,1,999,7,Not sure,Rent,Multiple Modes,2
+2019,10,10,10,50,No,4,3,No,10,Right direction,Own,Car,20
+2019,8,8,8,52,No,6,1,No,10,Right direction,Own,Multiple Modes,10
+2019,10,7,7,39,Yes,4,2,No,1,Right direction,Own,Car,1
+2019,8,8,9,36,No,5,3,No,10,Not sure,Rent,Public transit,6
+2019,7,8,8,24,No,4,2,No,5,Not sure,Rent,Public transit,2
+2019,6,5,7,51,Yes,2,1,No,7,Not sure,Own,Public transit,15
+2019,10,10,7,38,Yes,5,1,No,10,Not sure,Own,Multiple Modes,8
+2019,9,9,6,40,No,3,3,No,1,Wrong track,Rent,Car,40
+2019,7,8,8,32,No,3,2,Yes,5,Right direction,Own,Walk,4
+2019,10,10,10,64,No,3,2,No,10,Right direction,Rent,Public transit,1
+2019,7,7,9,58,No,5,1,No,3,Right direction,Own,Multiple Modes,5
+2019,8,7,7,29,No,5,1,No,4,Right direction,Rent,Car,8
+2019,8,8,7,26,No,5,2,Yes,6,Right direction,Own,Walk,1
+2019,1,5,1,46,Yes,2,1,No,1,Wrong track,Rent,Car,7
+2019,8,7,9,43,No,5,2,No,9,Right direction,Own,Car,5
+2019,7,8,7,37,No,3,3,No,6,Not sure,Rent,Car,2.5
+2019,9,10,10,63,No,2,1,No,10,Wrong track,Own,Car,52
+2019,7,7,8,33,Yes,3,2,No,6,Right direction,Own,Multiple Modes,3
+2019,7,7,7,70,No,3,1,No,8,Wrong track,Own,Car,46
+2019,7,8,9,33,No,3,3,No,10,Right direction,Own,Public transit,1
+2019,7,7,6,40,No,7,1,No,6,Not sure,Rent,Public transit,3
+2019,10,10,10,28,No,2,3,999,10,Right direction,Rent,Multiple Modes,3
+2019,9,9,8,29,No,5,3,No,7,Right direction,Rent,Car,3
+2019,7,8,8,40,No,3,1,No,5,Right direction,Rent,Public transit,15
+2019,7,7,6,63,No,6,2,No,6,Right direction,Own,Walk,39
+2019,5,6,4,61,No,7,2,No,6,Not sure,Rent,Car,18
+2019,8,8,9,40,No,6,2,No,9,Right direction,Own,Public transit,18
+2019,8,10,10,83,No,2,1,No,10,Not sure,Own,Car,35
+2019,999,8,9,37,Yes,3,3,No,3,Right direction,Rent,Bike,4.5
+2019,10,8,8,35,Yes,3,3,No,7,Not sure,Rent,Multiple Modes,4
+2019,8,9,9,33,No,3,3,No,7,Right direction,Rent,Bike,3
+2019,8,8,4,78,No,2,3,No,1,Wrong track,Own,Car,24
+2019,5,7,4,42,No,7,1,No,4,Wrong track,Rent,Public transit,1
+2019,10,10,9,57,Yes,7,2,No,9,Right direction,Own,Car,25
+2019,9,7,7,56,No,2,2,No,8,Wrong track,Rent,Bike,29
+2019,8,8,8,28,No,5,3,No,8,Right direction,Rent,Car,1
+2019,10,10,8,60,999,999,NA,No,1,Wrong track,Own,Car,26
+2019,10,10,8,60,999,999,NA,No,1,Wrong track,Own,Car,26
+2019,8,8,10,47,No,3,3,No,10,Not sure,Own,Multiple Modes,7
+2019,9,8,8,31,No,3,3,No,9,Right direction,Rent,Walk,5.5
+2019,7,7,7,33,No,3,3,No,7,Right direction,Rent,Walk,5.5
+2019,9,9,9,34,Yes,3,3,No,9,Right direction,Own,Public transit,3.5
+2019,7,7,9,77,No,5,1,Yes,9,999,Own,Multiple Modes,17

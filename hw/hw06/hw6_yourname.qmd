@@ -1,0 +1,366 @@
+---
+title: "HW 6: Bootstrap Distributions and Confidence Intervals"
+subtitle: "Math 141, Week 7"
+author: "Insert Your Name Here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: Friday, March 20th at 11:59pm on Gradescope
+
+In this homework assignment you will:
+
+- Derive confidence intervals from bootstrap distributions with both percentile and standard error methods
+- Practice creating and interpreting confidence intervals with varying levels of confidence
+- Interpret the probabilistic meaning of confidence intervals and avoid misconceptions
+
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your assignment**
+
+
+```{r echo = FALSE}
+# Load the necessary packages
+set.seed(123)
+library(tidyverse)
+library(infer)
+```
+
+
+## Exercise 1: Percentile-Method Confidence Intervals
+
+Suppose you calculate a bootstrap distribution based on 10,000 re-samples from a given sample. The bootstrap distribution is shown below, as well as the 0.025, 0.05, 0.25, 0.75, 0.95, and 0.975 quantiles of the bootstrap distribution (shown as vertical lines in the histogram as well).
+
+```{r fig.asp = 0.3, echo = F}
+bs_stats <- data.frame(x = rnorm(10000, 10 / 50, 0.05656854))
+quantiles <- round(quantile(bs_stats$x,
+                            c(0.025, 0.05, 0.25, 0.75, 0.95, 0.975)), 3)
+ggplot(bs_stats, aes(x)) +
+  geom_histogram(color = "white", bins = 25) +
+  scale_x_continuous(limits = c(0, .4)) + theme_bw() +
+  labs(title = "Bootstrap distribution based on sample of size n = 50",
+       x = "Bootstrap sample statistics") +
+  geom_vline(xintercept = quantiles,
+             color = "red",
+             linetype = 2)
+quantiles
+```
+
+
+
+**a.** Based on the histogram and table of quantiles, write down an appropriate confidence interval based on a (i) 95% confidence level, (ii) 90% confidence interval, and (iii) 50% confidence interval.
+
+********************************
+
+
+
+
+
+********************************
+
+
+
+**b.** What happens to the confidence interval width as the confidence level gets higher? Why?
+
+********************************
+
+
+
+
+
+
+********************************
+
+
+
+
+**c.** Would a 100% confidence interval be useful? 
+
+********************************
+
+
+
+
+
+
+********************************
+
+
+**d.** Suppose the norm in our discipline is to use 95% confidence intervals, and that our research collaborator is unhappy with how wide our confidence interval from (a) is. **Would increasing the number of bootstrap replicates help? Would taking more samples to increase our sample size help?**
+
+********************************
+
+
+
+
+
+
+********************************
+
+
+
+\newpage
+
+
+
+
+## Exercise 2: Confidence Interval Misconceptions I 
+
+You are trying to find out the true proportion of Oregon residents who got COVID between July 15 and October 15. Based on my bootstrap distribution, suppose I told you that an appropriate 99% confidence interval was (0.053, 0.349). Consider the following two interpretations:
+
+- Interpretation A: There is a 99% chance that the true proportion of Oregon residents who got COVID between July 15 and October 15 is between 0.053 and 0.349.
+
+- Interpretation B: For 99% of samples we could have collected, the true parameter will be inside the corresponding 99% confidence interval; we are 99% confident that the true proportion of Oregon residents who got COVID between July 15 and October 15 is between 0.053 and 0.349.
+
+Only one of these is correct.
+
+
+
+**a.** How do these interpretations differ? 
+
+********************************
+
+
+
+
+
+
+********************************
+
+
+
+**b.** Which interpretation is correct, and why?
+
+********************************
+
+
+
+
+
+
+
+********************************
+
+
+
+
+\newpage
+
+
+
+
+
+## Exercise 3: Confidence Interval Misconceptions II
+
+Suppose that a student is working on a statistics project using data on pulse rates collected from a random sample of 100 students from Reed college, and finds a 95% confidence interval for mean pulse rate to be 65.5 to 71.8. Discuss how each of the statements below would indicate an *improper* interpretation of this interval:
+
+
+
+**a.** "I am 95% sure that all students will have pulse rates between 65.5 and 71.8 beats per minute."
+
+*************************************************
+
+
+
+
+
+************************************************* 
+
+
+
+**b.** "I am 95% sure that the mean pulse rate for this sample of 100 students will fall between 65.5 and 71.8 beats per minute."
+
+*************************************************
+
+
+
+
+
+************************************************* 
+
+
+
+
+**c.** "There is a 95% probability that the average pulse rate of all students at this college is in the interval from 65.5 to 71.8 beats per minute."
+
+*************************************************
+
+
+
+
+
+************************************************* 
+
+
+
+
+
+**d.** "Of random samples of this size taken from students at Reed college, 95% will have mean pulse rates between 65.5 and 71.8 beats per minute."
+
+*************************************************
+
+
+
+
+
+************************************************* 
+
+
+
+
+\newpage
+
+
+
+
+## Exercise 4: Proportion of Emphathetic Rats
+
+In a recent study, a group of rats showed compassion in a way that surprised scientists: 23 of the 30 rats in the study freed another trapped rat in their cage, even when chocolate served as a distraction and even when the rats would then have to share the chocolate with their freed companion. (Rats, it turns out, love chocolate.) Rats did not open the cage when it was empty or when there was a stuffed animal inside, only when a fellow rat was trapped. We wish to use the sample to estimate the proportion of rats that show empathy in this way.
+
+**a.**   What population parameter do researchers wish to investigate? What is the sample statistic they can use to estimate the population parameter, and what is its value?
+
+*********************************************************************************
+
+
+
+
+
+
+*********************************************************************************
+
+
+
+**b.** Run the following code chunk to produce the sample of 30 observations that the researchers collected and create a bootstrap distribution of 5,000 bootstrap statistics. **Then, describe the shape, center, and spread of the distribution.**
+
+```{r fig.asp = 0.3, echo = F}
+set.seed(12)
+rats <- data.frame(empathy = c(rep("Yes", 23), rep("No", 7)))
+
+rats %>% rep_sample_n(size = 30, replace = TRUE, reps = 5000) %>%
+  group_by(replicate) %>%
+  summarize(stat = mean(empathy == "Yes")) %>%
+  ggplot(aes(x = stat)) +
+  geom_histogram(col = "white", bins = 15) +
+  ggtitle("Simulation-Based Bootstrap Distribution")
+
+```
+
+
+*********************************************************************************
+
+
+
+
+
+
+*********************************************************************************
+
+
+
+
+**c.** Based on your answer to part (b), would you have any concerns about using the **standard error bootstrap method** for confidence intervals?
+
+*********************************************************************************
+
+
+
+
+
+
+*********************************************************************************
+
+
+
+
+**d.** What percentiles would you need to construct a 92% confidence interval for the parameter of interest using the percentile method? **From eyeballing the plot in part (b), give a rough estimate of those percentiles.**
+
+*********************************************************************************
+ 
+
+
+
+
+
+*********************************************************************************
+
+
+
+**e.** Using your estimates from part (d), state and carefully interpret a 92% confidence interval for the parameter of interest.
+
+*********************************************************************************
+ 
+
+
+
+
+
+*********************************************************************************
+ 
+ 
+ 
+**f.**	Based on the confidence interval you calculated in part (e), is there evidence that a majority of rats will show empathy?  Justify your answer.
+
+*********************************************************************************
+
+
+
+
+
+*********************************************************************************
+
+
+
+
+## Exercise 5: Continuous Rat Empathy
+
+Suppose rat empathy was also measured on a continuous scale from 0-100. The chunk below uses the same process as Exercise 4 (b) to create two bootstrap distributions: one where the sample statistic is the **mean empathy rating** and one where the sample statistic is the **median empathy rating**. 
+
+```{r fig.asp = 0.3, echo = F}
+set.seed(12)
+rats <- data.frame(empathy = c(sample(51:100, 23, TRUE), sample(1:51, 7, TRUE)))
+
+rats_boot <- rats %>% rep_sample_n(size = 30, replace = TRUE, reps = 5000) %>%
+  group_by(replicate) %>%
+  summarize(median_stat = median(empathy),
+            mean_stat = mean(empathy))
+
+gg1 <- ggplot(rats_boot, aes(x = mean_stat)) +
+  geom_histogram(col = "white", bins = 15) +
+  ggtitle("Sample Mean")
+
+gg2 <- ggplot(rats_boot, aes(x = median_stat)) +
+  geom_histogram(col = "white", bins = 15) +
+  ggtitle("Sample Median")
+
+ggpubr::ggarrange(gg1, gg2, nrow = 1)
+
+```
+
+
+**a.** How do these distributions differ? Should we use the **standard error bootstrap method** to generate confidence intervals for either of these?
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+**b.** Could the percentile method for confidence intervals be appropriate for either of these bootstrap distributions?
+
+*********************************************************************************
+
+
+
+
+
+*********************************************************************************
+
+

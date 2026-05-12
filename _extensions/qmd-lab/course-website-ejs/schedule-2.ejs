@@ -1,0 +1,32 @@
+
+```{=html}
+
+<% for (const week of items) { %>
+  <h4>Week <%= week.week %></h4>
+  <div class="week-x-box">
+  <div class="daily-sched">
+
+  <% for (const day of week.days) { %>
+    <div class="date-cell">
+    <p><%= day['display-date'] %></p>
+    </div>
+    <div class="materials-cell">
+    <p><span class="daily-topic"><%= day.topic %></span><br>
+    <% if (day.docs && day.docs.length > 0) { %>
+      <% for (const doc of day.docs) { %>
+        <% if (!doc.draft){ %>
+          <a href="<%= doc.href %>" class="btn btn-success btn-sm"><%= doc.type %></a>
+        <% } %>
+      <% } %>
+    <% } %>
+    </p>
+    </div>
+    
+  <% } %>
+  
+  </div>
+
+  </div>
+<% } %>
+
+```

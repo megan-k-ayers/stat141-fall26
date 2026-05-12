@@ -1,0 +1,13 @@
+---
+date: 4/27/26
+editor: source
+---
+
+# Math 141: Readings for {{< meta date >}}
+
+## Reading 
+
+Before coming to lecture today, please read the following material: 
+
+-  IMS Ch 9
+

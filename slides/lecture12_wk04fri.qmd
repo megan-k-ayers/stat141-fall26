@@ -1,0 +1,714 @@
+---
+pagetitle: "Linear Models III: Categorical Predictors"
+editor: source
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+    filters:
+      - parse-latex
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = 'center')
+library(knitr)
+library(tidyverse)
+```
+
+::::: columns
+::: {.column .center width="50%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="50%"}
+
+<br>
+
+[Linear Models III: Categorical Predictors]{.custom-title .smaller}
+
+<br> <br>
+
+[Megan Ayers]{.custom-subtitle}
+
+[Math 141 \| Spring 2026 <br> Friday, Week 4]{.custom-subtitle}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+
+### Reminders/Announcements
+
+-   Please fill out the Week 4 feedback survey (link in Slack)
+-   Wednesday: we will have a **short** and **completion-based** learning check about coefficient interpretation. Please arrive on time! 
+
+
+### Goals for Today
+
+::::: columns
+::: column
+-   Recap: Simple linear regression model
+-   Broadening our idea of linear regression
+:::
+
+::: column
+-   Regression with a single, binary categorical explanatory variable
+-   Regression with a single categorical explanatory variable with more than 2 levels
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### Simple Linear Regression
+
+So far we've considered this model when:
+
+::: nonincremental
+-   Response variable $(y)$: quantitative
+
+-   Explanatory variable $(x)$: quantitative
+
+    -   Have only ONE explanatory variable.
+
+-   AND, $f()$ can be approximated by a line:
+:::
+
+$$ 
+\begin{align}
+y &= \beta_0 + \beta_1 x + \epsilon
+\end{align}
+$$
+
+------------------------------------------------------------------------
+
+### Linear Regression
+
+Linear regression is a flexible class of models that allow for:
+
+-   Both quantitative and categorical **explanatory** variables.
+
+-   **Multiple** explanatory variables.
+
+-   Where the **response variable is quantitative**.
+
+------------------------------------------------------------------------
+
+### Activity: Brunch Wait Times
+
+You're planning when to head to brunch, and want to understand how long you should expect to wait for a table. Info from your previous experiences is below:
+
+
+::::: columns
+::: {.column width=40%}
+```{=latex}
+\begin{center}
+\begin{tabular}{ c| c| c }
+ Day & Wait (min) & Arrival \\
+ \hline
+ 1 & 10 & Early \\  
+ 2 & 0 & Early \\
+ 3 & 5 & Early \\
+ 4 & 10 & Late \\
+ 5 & 20 & Late \\
+ 6 & 15 & Late \\
+\end{tabular}
+\end{center}
+```
+:::
+
+::: {.column width=60%}
+
+-   **Q1:** How long did you typically wait for a table?
+\vspace{1em}
+-   **Q2:** You think wait time varies by arrival time. Calculate average wait by arrival time (early or late). 
+\vspace{1em}
+-   **Q3:** How much longer did you wait when you arrived late rather than early, on average?
+\vspace{1em}
+-   **Q4:** Q3 can be re-framed as a simple linear regression! What are the explanatory and response variables? How is this different from regressions we’ve seen so far?
+
+```{r}
+#| echo: false
+countdown::countdown(5)
+```
+
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### Activity: Brunch Wait Times
+
+::::: columns
+::: {.column width=40%}
+```{=latex}
+\begin{center}
+\begin{tabular}{ c| c| c }
+ Day & Wait (min) & Arrival \\
+ \hline
+ 1 & 10 & Early \\  
+ 2 & 0 & Early \\
+ 3 & 5 & Early \\
+ 4 & 10 & Late \\
+ 5 & 20 & Late \\
+ 6 & 15 & Late \\
+\end{tabular}
+\end{center}
+```
+:::
+
+::: {.column width=60%}
+
+The simplest model would predict wait time using a constant value:
+
+$$
+y = \beta_0 + \epsilon
+$$
+
+- **Q**: What $\widehat{\beta}_0$ would minimize the sum of the squared residuals?
+- **A**: $\widehat{\beta}_0 = \bar{y}$, the sample mean! 
+
+::: fragment
+We can make a slightly more complicated model:
+
+$$
+y = \beta_0 + \beta_1x_\text{(arrived late)} + \epsilon
+$$
+where $x_\text{(arrived late)}$ is either 0 or 1.
+:::
+
+<!-- Make sure to write the answers on the board as they say them -->
+
+::: fragment
+$$
+\widehat{\text{Wait time}} = 5 + 10*x_\text{(arrived late)}
+$$
+:::
+
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### Linear Models with a Categorical Explanatory Variable with 2 Levels
+
+
+::::: columns
+::: {.column width=75%}
+-   Response variable $(y)$: quantitative
+
+-   Have 1 categorical explanatory variable $(w)$ with two categories
+
+-   $y$ is quantitative: so we need to convert $w$ into a numeric variable. Call this $x$, taking either the value 0  or 1.
+:::
+
+::: {.column width=25%}
+::: fragment
+```{r echo = FALSE}
+df <- data.frame(y = c(10, 15, 25, 7, 20),
+                 w = c("level A", "level A", "level B", "level A", "level B"),
+                 x = c(0, 0, 1, 0, 1))
+kableExtra::kable(df)
+```
+
+:::
+:::
+:::::
+
+-   Model form:
+
+::: fragment
+$$ 
+\begin{align}
+y &= \beta_0 + \beta_1 x + \epsilon
+\end{align}
+$$
+:::
+
+-   We often refer to categorical variables in linear models as **factors**
+-   **Think of $x$ like a switch**: our prediction changes depending on whether it's turned on ($x = 1$ when $w = \text{level B}$) or turned off ($x = 0$ when $w = \text{level A}$)
+
+------------------------------------------------------------------------
+
+### Example: Halloween Candy
+
+```{r}
+candy <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv")
+glimpse(candy)
+```
+
+What might be a good categorical explanatory variable of `winpercent`?
+
+------------------------------------------------------------------------
+
+### Exploratory Data Analysis
+
+Before building the model, let's explore and visualize the data!
+
+-   **Q**: What `dplyr` functions should we use to find the mean and sd of `winpercent` by the categories of `chocolate`?
+
+-   **Q**: What graph should we use to visualize the `winpercent` scores by `chocolate`?
+
+------------------------------------------------------------------------
+
+### Exploratory Data Analysis
+
+```{r}
+# Summarize
+candy %>%
+  group_by(chocolate) %>%
+  summarize(count = n(),
+            mean_win = mean(winpercent), 
+            sd_win = sd(winpercent))
+```
+
+------------------------------------------------------------------------
+
+### Exploratory Data Analysis
+
+```{r}
+#| output-location: column
+
+ggplot(candy, aes(x = factor(chocolate), 
+                   y = winpercent, 
+                  fill = factor(chocolate))) +
+  geom_boxplot() +
+  stat_summary(fun = mean,
+               geom = "point",
+               color = "yellow",
+               size = 4) +
+  guides(fill = "none") +
+  scale_fill_manual(values =
+                      c("0" = "deeppink",
+                        "1" = "chocolate4")) +
+  scale_x_discrete(labels = c("No", "Yes"),
+                   name =
+          "Does the candy contain chocolate?")
+```
+
+------------------------------------------------------------------------
+
+### Exploratory Data Analysis
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "1-4"
+
+ggplot(candy, aes(x = factor(chocolate), 
+                   y = winpercent, 
+                  fill = factor(chocolate))) +
+  geom_boxplot() +
+  stat_summary(fun = mean,
+               geom = "point",
+               color = "yellow",
+               size = 4) +
+  guides(fill = "none") +
+  scale_fill_manual(values =
+                      c("0" = "deeppink",
+                        "1" = "chocolate4")) +
+  scale_x_discrete(labels = c("No", "Yes"),
+                   name =
+          "Does the candy contain chocolate?")
+```
+
+------------------------------------------------------------------------
+
+### Exploratory Data Analysis
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "5-8"
+
+ggplot(candy, aes(x = factor(chocolate), 
+                   y = winpercent, 
+                  fill = factor(chocolate))) +
+  geom_boxplot() +
+  stat_summary(fun = mean,
+               geom = "point",
+               color = "yellow",
+               size = 4) +
+  guides(fill = "none") +
+  scale_fill_manual(values =
+                      c("0" = "deeppink",
+                        "1" = "chocolate4")) +
+  scale_x_discrete(labels = c("No", "Yes"),
+                   name =
+          "Does the candy contain chocolate?")
+```
+
+------------------------------------------------------------------------
+
+### Exploratory Data Analysis
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "9"
+
+ggplot(candy, aes(x = factor(chocolate), 
+                   y = winpercent, 
+                  fill = factor(chocolate))) +
+  geom_boxplot() +
+  stat_summary(fun = mean,
+               geom = "point",
+               color = "yellow",
+               size = 4) +
+  guides(fill = "none") +
+  scale_fill_manual(values =
+                      c("0" = "deeppink",
+                        "1" = "chocolate4")) +
+  scale_x_discrete(labels = c("No", "Yes"),
+                   name =
+          "Does the candy contain chocolate?")
+```
+
+------------------------------------------------------------------------
+
+### Exploratory Data Analysis
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "10-12"
+
+ggplot(candy, aes(x = factor(chocolate), 
+                   y = winpercent, 
+                  fill = factor(chocolate))) +
+  geom_boxplot() +
+  stat_summary(fun = mean,
+               geom = "point",
+               color = "yellow",
+               size = 4) +
+  guides(fill = "none") +
+  scale_fill_manual(values =
+                      c("0" = "deeppink",
+                        "1" = "chocolate4")) +
+  scale_x_discrete(labels = c("No", "Yes"),
+                   name =
+          "Does the candy contain chocolate?")
+```
+
+------------------------------------------------------------------------
+
+### Exploratory Data Analysis
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "13-15"
+
+ggplot(candy, aes(x = factor(chocolate), 
+                   y = winpercent, 
+                  fill = factor(chocolate))) +
+  geom_boxplot() +
+  stat_summary(fun = mean,
+               geom = "point",
+               color = "yellow",
+               size = 4) +
+  guides(fill = "none") +
+  scale_fill_manual(values =
+                      c("0" = "deeppink",
+                        "1" = "chocolate4")) +
+  scale_x_discrete(labels = c("No", "Yes"),
+                   name =
+          "Does the candy contain chocolate?")
+```
+
+------------------------------------------------------------------------
+
+### Fit the Linear Regression Model
+
+Model Form:
+
+$$ 
+\begin{align}
+y &= \beta_0 + \beta_1 x + \epsilon
+\end{align}
+$$
+
+When $x = 0$:
+
+<br>
+
+
+When $x = 1$:
+
+::: {.fragment}
+
+```{r}
+mod <- lm(winpercent ~ chocolate, data = candy)
+library(moderndive)
+get_regression_table(mod)
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Notes
+
+-   When the explanatory variable is categorical, $\beta_0$ and $\beta_1$ no longer represent the intercept and slope.
+
+-   Now $\beta_0$ represents the (population) mean of the response variable when $x = 0$.
+
+-   And, $\beta_1$ represents the change in the (population) mean response going from $x = 0$ to $x = 1$.
+
+-   Can also do prediction:
+
+::: fragment
+```{r}
+new_candy <- data.frame(chocolate = c(0, 1))
+predict(mod, newdata = new_candy)
+```
+:::
+
+
+
+
+------------------------------------------------------------------------
+
+
+## New example: Palmer Penguins
+
+```{r}
+library(palmerpenguins)
+```
+
+
+
+![](img/penguins.png){fig-align="center"}
+
+
+## Take a look at the data
+
+```{r}
+glimpse(penguins)
+```
+
+We'd like to predict a penguin's bill length based on their species.
+
+**Response variable**?
+
+**Explanatory variable**?
+
+## Exploratory data analysis
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+```{r}
+penguins %>%
+  group_by(species) %>%
+  summarize(
+    avg_bill_length = mean(bill_length_mm,
+                           na.rm = TRUE)
+    )
+```
+
+:::
+
+:::{.column width=50%}
+
+```{r}
+ggplot(penguins, 
+       aes(x = species,
+           y = bill_length_mm, 
+           fill = species)) +
+  geom_boxplot() +
+  scale_fill_manual(values = c("steelblue",
+                               "goldenrod", 
+                               "plum3")) +
+  guides(fill = "none") +
+  theme_bw()
+```
+
+
+:::
+
+::::
+
+:::{.fragment}
+How do we handle more than 2 groups???
+:::
+
+
+# Boardwork
+
+------------------------------------------------------------------------
+
+
+## Fit the model in R
+
+:::{.fragment}
+$$
+y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsilon
+$$
+:::
+
+:::{.fragment}
+
+R automatically makes species indicators for us and chooses a **reference level**.
+
+```{r}
+penguin_mod <- lm(bill_length_mm ~ species, penguins)
+get_regression_table(penguin_mod)
+```
+
+:::
+
+
+- **Q:** What is the equation for the fitted model?
+
+:::{.fragment}
+\begin{align*}
+\widehat{y} &= \widehat{\beta}_0 + \widehat{\beta}_1 \cdot x_{species:Chinstrap} + \widehat{\beta}_2 \cdot x_{species:Gentoo} \\
+ &= 38.8 + 10.0 \cdot x_{species:Chinstrap} + 8.71 \cdot x_{species:Gentoo}
+\end{align*}
+:::
+
+
+
+------------------------------------------------------------------------
+
+
+## Remember to diagnose your models!
+
+:::{.fragment}
+
+```{r}
+library(moderndive)
+res <- get_regression_points(penguin_mod)
+ggplot(res, aes(x = bill_length_mm_hat, y = residual)) +
+  geom_point()
+```
+
+:::
+
+## Remember to diagnose your models!
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+```{r}
+ggplot(res, aes(x = residual)) +
+  geom_histogram()
+```
+
+:::
+
+::: {.column width=50%}
+
+```{r}
+ggplot(res, aes(sample = residual)) +
+  geom_qq() +
+  geom_qq_line()
+```
+
+:::
+
+::::
+
+
+------------------------------------------------------------------------
+
+
+### Multiple Linear Regression: A peak into next week
+
+Recall our penguin model
+
+$$
+y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsilon
+$$
+
+:::{.fragment}
+Even though we are using one predictor (species), we now have $\beta_0,~ \beta_1,$ **and** $\beta_2$!
+:::
+
+-   We **recoded** the species predictor into two binary predictors
+-   We are actually doing **multiple** linear regression now
+-   **Next week**: We'll formalize and extend multiple linear regression
+
+<br>
+
+-   Categorical explanatory variables are tricky! Revisit these examples, more practice with HW 04 Exercise 3
+
+
+------------------------------------------------------------------------
+
+## Activity: Changing Reference Level
+
+We can change the **reference level** if we want.
+
+```{r}
+penguins$species <- relevel(penguins$species, ref = "Chinstrap")
+penguin_mod <- lm(bill_length_mm ~ species, penguins)
+get_regression_table(penguin_mod)
+```
+
+<br> <br>
+
+::: fragment
+Get in groups of ~5 and find a spot on one of the boards.
+:::
+
+- **Q1:** Write down the equation for this fitted model.
+- **Q2:** Draw a few rows of the data frame with the variables used by the model.
+- **Q3:** How is the interpretation of $\beta_0$ and $\widehat{\beta}_0$ different now?
+- **Q4:** How should we interpret the other two coefficients?
+
+
+------------------------------------------------------------------------
+
+## Activity: Changing Reference Level (Answers) {.smaller}
+
+::: nonincremental
+
+- **Q1:** Write down the equation for this fitted model.
+
+$$
+\widehat{Y} = 48.8 - 10.0 x_{species:Adelie} - 1.3 x_{species:Gentoo}
+$$
+
+- **Q2:** Draw a few rows of the data frame with the variables used by the model.
+
+```{r echo = FALSE}
+penguins <- penguins %>%
+  mutate(x_adelie = case_when(species == "Adelie" ~ 1, TRUE ~ 0),
+         x_gentoo = case_when(species == "Gentoo" ~ 1, TRUE ~ 0)) %>%
+  na.omit() %>%
+  group_by(species) %>%
+  sample_n(2)
+head(penguins[, c("bill_length_mm", "species", "x_adelie", "x_gentoo")])
+
+```
+
+<br>
+
+- **Q3:** How is the interpretation of $\beta_0$ and $\widehat{\beta}_0$ different now?
+    - $\beta_0$ ($\widehat{\beta}_0$) now represents (estimates) the population mean bill length for Chinstrap penguins, not Adelie penguins
+
+<br>
+
+- **Q4:** How should we interpret the other two coefficients?
+    - They now represent the predicted change in bill lengths for Adelie and Gentoo penguins on average, relative to the predicted bill length for Chinstrap penguins.
+
+:::
+
+------------------------------------------------------------------------

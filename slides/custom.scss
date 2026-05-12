@@ -1,0 +1,142 @@
+/*-- scss:defaults --*/
+@import url(https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Fira+Mono&display=swap);
+
+$font-family-serif: 'Source Serif 4';
+$font-family-sans-serif: 'Source Sans Pro';
+$presentation-heading-font: 'Source Serif 4';
+
+// $presentation-font-size-root: 38px;
+
+// Reed College Primary Colors
+$reed-red: #A70E16;
+$reed-black: #000000;
+
+// Reed College Secondary Colors
+$adirondack: #E85A37;
+$no2-pencil: #FFC846;
+$reactor-core: #DFE7E7;
+$blue-bridge: #3F6574;
+$golden-laurel: #BF995D;
+$parchment: #FFF7E9;
+$canyon-fern: #7E8A65;
+$newsprint: #ECEAE4;
+
+// $body-bg: $reactor-core;
+// $presentation-background-color: $reactor-core;
+$presentation-heading-color: $reed-red;
+
+// $presentation-heading-color: $blue-bridge;
+$presentation-heading-font: 'Source Serif 4';
+$body-color: $blue-bridge;
+$link-color: $reed-red;
+$light-bg-text-color: $blue-bridge;
+$light-bg-link-color: $reed-red;
+$code-color: $adirondack;
+$code-block-border-left: $adirondack;
+
+/*-- scss:rules --*/
+// Reed-themed color classes
+.reed-red {
+  color: $reed-red;
+}
+.adirondack {
+  color: $adirondack;
+}
+.pencil-yellow {
+  color: $no2-pencil;
+}
+.blue-bridge {
+  color: $blue-bridge;
+}
+.golden-laurel {
+  color: $golden-laurel;
+}
+.canyon-fern {
+  color: $canyon-fern;
+}
+
+.center {
+text-align: center;
+}
+.centerh2 h2 {
+  text-align: center;
+}
+.reveal .custom-title {
+  font-family: 'Source Serif 4';
+  color: $reed-red;
+  font-size: 3em;
+  font-weight: 600;
+  text-align: center;
+  top: 20px
+}
+.reveal .custom-subtitle {
+  font-family: 'Source Serif 4';
+  color: $blue-bridge;
+  font-size: 1.5em;
+  font-weight: 400;
+  text-align: center
+}
+.inverse {
+  color: $parchment;
+  h1, h2, h3 {
+    color: $newsprint;
+    font-family: 'Source Serif 4';
+  }
+  a {
+    color: $parchment;
+  }
+  p code {
+    color: $no2-pencil;
+  }
+  .slide-background-content {
+    background-color: $reed-red;
+  }
+}
+strong {
+  font-weight: bold;
+  color: #DAA520;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Serif 4';
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: 'Source Serif 4' !important;
+}
+
+.reveal .blockquote {
+  border-left: solid 10px $reed-red;
+  padding-left: 1em;
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* font sizes */
+.reveal .larger {
+  font-size: 3em;
+  font-family: 'Source Serif 4';
+}
+.reveal .large {
+  font-size: 1.5em;
+  font-family: 'Source Serif 4';
+}
+.reveal .midi {
+  font-size: 1.2em;
+}
+.reveal .quote-source {
+  font-size: 0.9em;
+  font-family: 'Source Serif 4';
+  font-style: italic;
+}
+.reveal .small {
+  font-size: 0.75em;
+}

@@ -1,0 +1,165 @@
+---
+title: "Theory-Based Inference Summary"
+toc: false
+format: 
+  html:
+    page-layout: full
+---
+
+```{css, echo = FALSE}
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 84px;
+}
+```
+
+### Notation for Parameters and Statistics
+
+```{r, message=FALSE, warning=FALSE, echo = FALSE}
+library(knitr)
+library(kableExtra)
+symbols <- data.frame(Response = c("quantitative", "categorical",
+                                   "quantitative", "categorical",
+                                   "quantitative", "quantitative" 
+                                   # "quantitative", "categorical"
+                                   ),
+                         Explanatory = c("-", "-",
+                                         "categorical",
+                                         "categorical",
+                                         "quantitative",
+                                         "quant and/or cat"
+                                         # "categorical",
+                                         # "categorical"
+                                         ),
+                         Numerical_Quantity = c("mean", 
+                                                "proportion",
+                                                "difference in means",
+                                                "difference in proportions",
+                                                "correlation",
+                                                "regression coefficient"
+                                                # "difference in many means",
+                                                # "difference in many proportions"
+                                                ),
+                         Parameter = c("$\\mu$", "$p$", 
+                                       "$\\mu_1 - \\mu_2$",
+                                       "$p_1 - p_2$",
+                                       "$\\rho$",
+                                       "$\\beta$"
+                                       # "$F_{true}$",
+                                       # "$\\chi^2_{true}$"
+                                       ),
+                                       Statistic = c("$\\bar{x}$",
+                                                     "$\\hat{p}$",
+                                                     "$\\bar{x}_1 - \\bar{x}_2$",
+                                                     "$\\hat{p}_1 - \\hat{p}_2$",
+                                                     "$r$",
+                                                     "$\\hat{\\beta}$"
+                                                     # "$F$",
+                                                     # "$\\chi^2$"
+                                                     ))
+
+symbols %>% 
+  kableExtra::kbl(format="markdown") 
+
+```
+
+
+### Common Test Statistics and Approximate Distributions (Hypothesis Testing)
+
+```{r, message=FALSE, warning=FALSE, echo = FALSE}
+library(knitr)
+library(kableExtra)
+dists <- data.frame(Response = c("quantitative", "categorical",
+                                 "quantitative", "categorical",
+                                 # "quantitative",
+                                 "quantitative"
+                                 # "quantitative", "categorical"
+),
+Explanatory = c("-", "-",
+                "categorical",
+                "categorical",
+                # "quantitative",
+                "quant and/or cat"
+                # "categorical",
+                # "categorical"
+),
+Numerical_Quantity = c("mean", 
+                       "proportion",
+                       "difference in means",
+                       "difference in proportions",
+                       # "correlation",
+                       "regression coefficient"
+                       # "difference in many means",
+                       # "difference in many proportions"
+),
+Test_Statistic = c("$\\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$",
+                   "$\\frac{\\hat{p} - p_0}{\\sqrt{\\frac{p_0(1 - p_0)}{n}}}$",
+                   "$\\frac{\\bar{x}_1 - \\bar{x}_2 - 0}{\\sqrt{\\frac{s^2_1}{n_1} + \\frac{s^2_2}{n_2}}}$",
+                   "$(\\hat{p}_1 - \\hat{p}_2 - 0) / \\sqrt{\\frac{\\hat{p}_{pooled}(1 - \\hat{p}_{pooled})}{n_1} + \\frac{\\hat{p}_{pooled}(1 - \\hat{p}_{pooled})}{n_2}}$",
+                   # "$\\frac{r - 0}{\\sqrt{\\frac{1 - r^2}{n - 2}}}$",
+                   "$\\frac{\\hat{\\beta} - 0}{\\widehat{SE}(\\hat{\\beta})}$"
+                   # "$F = \\frac{\\mbox{avg. variation between groups}}{\\mbox{avg. variation within groups}}$",
+                   # "$\\chi^2 = \\sum_{cells}\\left(\\frac{\\mbox{observed - expected}}{\\sqrt{\\mbox{expected}}}\\right)^2$"
+),
+Distribution = c("$t(df = n - 1)$", "$N(0, 1)$", "$t(df = \\min(n_1, n_2) - 1)$",
+                 "$N(0, 1)$", # "$t(df = n - 2)$",
+                 "$t(df = n - p)$"
+                 # "$F(df1 = K - 1, df2 = n - K)$", "$\\chi^2(df = (k - 1)(j - 1))$"
+),
+Assumptions = c("$n \\geq 30$ or data are normal",
+                "10 successes, 10 failures",
+                "$n_1, n_2 \\geq 30$ or data are normal, independent samples",
+                "10 successes, 10 failures in each category, independent samples",
+                # "$n \\geq 30$",
+                "LINE conditions"
+                # "($n \\geq 30$ or data are normal) AND similar variability between groups",
+                # "5 oberservations in each cell"
+))
+
+dists %>% 
+  kableExtra::kbl(format="markdown") 
+
+```
+
+### Common Distribution-Based Confidence Interval Formulae
+
+```{r, message=FALSE, warning=FALSE, echo = FALSE}
+library(knitr)
+library(kableExtra)
+cis <- data.frame(Response = c("quantitative", "categorical",
+                                   "quantitative", "categorical",
+                                   # "quantitative",
+                               "quantitative"),
+                         Explanatory = c("-", "-",
+                                         "categorical",
+                                         "categorical",
+                                         # "quantitative", 
+                                         "quant and/or cat"),
+                         Numerical_Quantity = c("mean", 
+                                                "proportion",
+                                                "difference in means",
+                                                "difference in proportions",
+                                                # "correlation",
+                                                "regression coefficient"),
+                         Confidence_Interval = c("$\\bar{x} \\pm t^*s/\\sqrt{n}$",
+                                            "$\\hat{p} \\pm z^* \\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}$",
+                                            "$\\bar{x}_1 - \\bar{x}_2 \\pm t^* \\sqrt{\\frac{s^2_1}{n_1} + \\frac{s^2_2}{n_2}}$",
+                                            "$\\hat{p}_1 - \\hat{p}_2 \\pm z^* \\sqrt{\\frac{\\hat{p}_1(1 - \\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1 - \\hat{p}_2)}{n_2}}$",
+                                            # "$r \\pm t^* \\sqrt{\\frac{1 - r^2}{n - 2}}$",
+                                            "$\\hat{\\beta} \\pm t^* \\widehat{SE}(\\hat{\\beta})$"),
+                    Distribution = c("$t(df = n - 1)$", "$N(0, 1)$", "$t(df = \\min(n_1, n_2) - 1)$",
+                                     "$N(0, 1)$",
+                                     # "$t(df = n - 2)$",
+                                     "$t(df = n - p)$"),
+                  Assumptions = c("$n \\geq 30$ or data are normal",
+                                  "10 successes, 10 failures",
+                                  "$n_1, n_2 \\geq 30$ or data are normal, independent samples",
+                                  "10 successes, 10 failures in each category, independent samples",
+                                  # "$n \\geq 30$",
+                                  "LINE conditions"))
+
+cis %>% 
+  kableExtra::kbl(format="markdown")
+
+```
+
+

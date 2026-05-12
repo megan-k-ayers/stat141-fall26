@@ -1,0 +1,108 @@
+---
+pagetitle: "Lab 1: Intro to R, RStudio, Quarto"
+editor: source
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = 'center')
+library(knitr)
+library(tidyverse)
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Lab 1: Intro to R, RStudio, Quarto]{.custom-title}
+
+<br> <br> <br> <br>
+
+[Megan Ayers]{.custom-subtitle}
+
+[Math 141 \| Spring 2026 <br> Thursday, Week 1]{.custom-subtitle}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Announcements/reminders
+-   Course assistant office hours are posted on Moodle
+
+------------------------------------------------------------------------
+
+## Goals for Today
+
+::: nonincremental
+-   Get to know each other
+-   Take a tour of RStudio
+-   Run through `intro.qmd`
+-   Download the lab materials for today on RStudio Server and start the lab
+:::
+
+------------------------------------------------------------------------
+
+## Quick introductions
+::: nonincremental
+-   Name
+-   Pronouns
+-   Something you're excited for this semester (Reed-related or not)
+:::
+
+------------------------------------------------------------------------
+
+## Demo: Lab instructions and tour of RStudio.
+
+------------------------------------------------------------------------
+
+## Demo: `intro.qmd`
+
+**If you see a popup asking if you want to install a package called `detectors`, say yes.**
+
+------------------------------------------------------------------------
+
+## Open working time
+
+::: {.nonincremental .fragment}
+-   The lab will be due on Gradescope (as a **PDF**) on Tuesday February 3 at 11:59pm.
+-   Check out out your Gradescope account for this class **before Tuesday afternoon**.
+     - Course entry code: on the course website and Moodle.
+     - If you have any issues, send me an email **before Tuesday afternoon**.
+
+:::
+
+<br>
+
+::: {.nonincremental .fragment}
+**To-do:**
+
+1. Follow the lab instructions to access lab materials / RStudio Server.
+2. Review `intro.qmd`, if you'd like.
+3. Start the lab exercises in `lab01_yournamehere.qmd`.
+:::

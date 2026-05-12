@@ -1,0 +1,14 @@
+---
+date: 3/20/26
+editor: source
+---
+
+# Math 141: Readings for {{< meta date >}}
+
+## Reading 
+
+Before coming to lecture today, please read the following material: 
+
+-    Review 9.5.2 and 9.5.3, and read 9.7.3 including skimming the linked articles
+
+

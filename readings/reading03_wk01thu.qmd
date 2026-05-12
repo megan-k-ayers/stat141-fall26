@@ -1,0 +1,10 @@
+---
+date: 1/29/26
+editor: source
+---
+
+# Math 141: Readings for {{< meta date >}}
+
+Before coming to lab today, please read the following material: 
+
+-   MD Chapter 1 (skip section 1.1.1)
