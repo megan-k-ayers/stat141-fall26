@@ -1,13 +1,13 @@
 ---
-title: "Homework 1: Data Visualization"
+title: "Assignment 1: Data Visualization"
 subtitle: "Math 141"
 author: "Insert Your Name Here"
 format: pdf
 ---
 
-## Due: Friday, February 6th at 11:59pm on Gradescope as a **PDF**
+## Due: Thursday, September 10th at 9:00am on Gradescope as a **PDF**
 
-In this homework, you will practice:
+In this homework assignment, you will practice:
 
 1.  Describing and evaluating elements of data visualization
 2.  Interpreting and comparing examples of the five named graphs
@@ -18,8 +18,17 @@ In this homework, you will practice:
 
 I collaborated with...
 
-**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your homework assignment.**
+**Remember that you are not allowed to use non-course materials, including internet resources and generative AI models (like ChatGPT) on your homework assignment.**
 
+### When you have completed HW 1, follow this submission process:
+
+-   **Step 1**: Export the PDF (not the QMD) of your HW 1 from the RStudio Server. Within the Files tab in the lower right-hand window:
+    -   Check the box next to "hw01_yournamehere.pdf".
+    -   Click on the blue cog and select "Export..." and then "Download."
+-   **Step 2**: Within Gradescope (which you can access from the course website), click on HW 01 and select the option "Submit PDF."
+    -   Then "Select PDF" from where it was downloaded onto your computer and hit "Upload PDF."
+-   **Step 3**: Within the Question Outline, click on "Exercise 1" and then click on the pages that contain your solutions for Exercise 1. Repeat this process for each Problem. **If you do not assign pages to your submission, you will not receive full credit!**
+-   **Step 4**: Hit "Submit" and revel in the completion of a task! 
 
 # Exercises
 
@@ -41,7 +50,75 @@ For this problem, if you haven't already, please join the course Slack channel (
 -    Introduce yourself in #social, and post a picture of your favorite animal in #animals
 
 
-### Exercise 3: Describing and evaluating elements of graphics (Library of Congress)
+### Exercise 3: Somerville Data Frame
+
+Let's explore the `somerville` data frame, which is in the `somerville.csv` file. 
+
+Starting in 2011, officials from the city of Somerville, Massachusetts decided to start measuring residents' overall happiness and satisfaction with many aspects of life in Somerville; their goal was to become the first city in the United States to systematically track people's happiness. The Happiness Survey is an initiative of the Mayor's Office of Analytics and Innovation (SomerStat) and has the goal of supporting the local government's understanding of what makes Somerville a great place to live. 
+
+The happiness survey is sent out every two years to a random sample of Somerville households, with the instruction that each survey should be filled out by one person. The survey asks residents to rate their personal happiness, wellbeing, and satisfaction with City services. This combined dataset includes the survey responses from 2011 to 2019. 
+
+Run the code in the following chunk to load the `somerville` data.
+
+```{r, message = FALSE}
+somerville <- read.csv("data/somerville.csv")
+```
+
+
+Variables in the `somerville` data:
+
+  * `year`: year that response was collected
+  * `happy`: happiness rating, on a scale from 1 to 10 with 10 being most happy
+  * `satisfied_life`: rating for satisfaction with life in general, on a scale from 1 to 10 with 10 being most satisfied
+  * `satisfied_somerville`: rating for satisfaction with Somerville as a place to live, on a scale from 1 to 10 with 10 being most satisfied
+  * `age`: age in years
+  * `children_home`: whether respondent has children under 18 living at home
+  * `ward`: neighborhood ward the respondent lives in
+  * `precinct`: neighborhood precinct the respondent lives in
+  * `student`: whether respondent is a student
+  * `convenient_transport`: rating for how convenient it is to get to where you want to go, on a scale from 1 to 10 with 10 being most satisfied
+  * `direction_somerville`: whether respondent feels the City is headed in the right direction or is on the wrong track
+  * `housing`: whether respondent rents or owns their home
+  * `primary_transport`: primary form of transportation
+  * `lived_here`: years respondent has lived in Somerville
+
+You can use the `summary()` function on numerical variables to see summary statistics like the minimum and maximum values, and the `count()` function (from the `dplyr` package) to see the number of observations per category for categorical variables. See below for examples of the syntax:
+
+```{r}
+library(dplyr)
+summary(somerville$lived_here)
+count(somerville, primary_transport)
+```
+
+*Pro tip: Clicking on the name of the data frame in the Environment pane opens a spreadsheet window. In that window, you can sort the data frame by a particular variable by clicking on the arrows in that variable's column.*
+
+a. How many observations and variables are in the data? What does a row represent in the context of the data?
+
+
+
+
+
+b. Identify which variables are quantitative and which variables are categorical.
+
+
+
+
+c. Suppose that for the next version of the happiness survey, city officials would like to obtain data on race. Before recent changes, the U.S. Office of Management and Budget required the Census Bureau to have five minimum categories to the question asking respondents for racial identity: White, Black or African American, American Indian or Alaska Native, Asian, and Native Hawaiian or Other Pacific Islander. Discuss the extent to which these categories adequately represent the variable they describe. 
+
+
+
+
+d. Choose a categorical variable in the `somerville` data. Discuss the extent to which the given categories adequately represents the variable it describes. 
+
+
+
+
+
+e. Choose a quantitative variable in the `somerville` data, and discuss if the range of values given are reasonable. In other words, think about whether there are values that might be the result of data entry error (such as if someone was listed as being 50 feet tall) and comment on what an unreasonable value might look like.
+
+
+
+### Exercise 4: Describing and evaluating elements of graphics (Library of Congress)
 
 Check out the graphic entitled ["A Brief Visual History of MARC Cataloging at the Library of Congress"](http://sappingattention.blogspot.com/2017/05/a-brief-visual-history-of-marc.html) using the link. This unique visual was created by Benjamin M. Schmidt so that he could better understand the history of how the Library created their digital card catalogs. The many interesting visual artifacts of the graph also help highlight the significant physical work that was involved in the conversion to digital catalogs.
 
@@ -76,85 +153,7 @@ f. How could this graph be improved?
 
 
 
-## Exercise 4: Describing and evaluating elements of graphics (Climate Change Opinion)
-
-This graphic entitled "Americans in the hardest-hit regions want climate change to be a priority" was published in a 2021 [blog post](https://fivethirtyeight.com/features/how-you-view-climate-change-might-depend-on-where-you-live/) on FiveThirtyEight. The graphic is a map of the United States, and explores geographic differences in opinion with respect to climate action.
-
-![Taken from "How You View Climate Change Might Depend On Where You Live"](img/climate_change_priority.png)
-
-
-a. What are the variables in the **data** displayed in this graphic?  For each variable, specify if it is categorical or quantitative.
-
-
-
-
-b. How would you describe the **geom**etry being used to display the data?
-
-
-
-
-c. How are each of the variables represented via **aes**thetic elements in the graphic (e.g., x- and y-axis position, color, shape, etc.)?  
-
-
-
-
-d. Is other context provided?  If so, how does it help the viewer better understand the graphic's story?
-
-
-
-
-e. What does this graph do well?  
-
-
-
-
-f. How could this graph be improved?
-
-
-
-
-
-
-## Exercise 5: Describing and evaluating elements of graphics (NYT Graphs)
-
-Let's look at two NYTimes graphs that use the `geom` of boxes/rectangles and see what stories these graphs are telling.  The first of these figures (Figure 2) comes from the article ["How Working-Class Life Is Killing Americans, in Charts"](https://www.nytimes.com/interactive/2020/03/06/opinion/working-class-death-rate.html) and the second figure (Figure 3) comes from the article ["Some Colleges Have More Students From the Top 1 Percent Than the Bottom 60. Find Yours."](https://www.nytimes.com/interactive/2017/01/18/upshot/some-colleges-have-more-students-from-the-top-1-percent-than-the-bottom-60.html).
-
-
-![Taken from "How Working-Class Life Is Killing Americans, in Charts"](img/graphA.png)
-
-![Taken from "Some Colleges Have More Students From the Top 1 Percent Than the Bottom 60. Find Yours."](img/graphB.png)
-
-a.  For each graph (Figure 2 and Figure 3), what does a single box represent?
-
-
-
-
-b. What are the variables in the **data** displayed in each graphic?  For each variable, specify if it is categorical or quantitative.
-
-
-
-
-c. What are the **aesthetic**s of the **geom**? For each **aesthetic**, give the variable that sets the values of that **aesthetic**. Also, if there is any faceting, identify the variable that controls the faceting.  Do this for both graphs.
-
-
-
-
-d. For each graph, what story is the graph telling? Limit your answer to at most six sentences total.
-
-
-
-e. The size aesthetic is only used in one of the graphs; explain how size aids in interpreting that graph, referencing specific details from the graph to support your reasoning. Also, comment on why you think size isn't used in the other graph.
-
-
-
-
-f.  The color aesthetic is used in both graphs.  For each, identify the type of color palette and discuss whether or not you believe it in the appropriate color palette for the variable it represents.
-
-
-
-
-
-## Exercise 6: Interpreting and comparing the five named graphs
+## Exercise 5: Interpreting and comparing the five named graphs
 
 *This question is adapted from IMS Chapter 5.*
 
@@ -232,20 +231,6 @@ ggplot(nyc_marathon, aes(x = name)) +
   xlab("Name of winner") +
   ylab("Count") +
   theme_classic()
-
-```
-
-
-f. The barplot shows the count of marathon wins by winner nationality. At least one of the graphical issues from the previous plot is fixed here, but in what other ways could the plot could be improved to better communicate insights? Additionally, give one idea for adding context by incorporating another variable from the data set that was shown in previous parts of the problem (e.g. division/gender, time). 
-
-```{r}
-
-ggplot(nyc_marathon, aes(y = country)) +
-  geom_bar() +
-  xlab("Count") +
-  ylab("Country") +
-  theme_classic()
-
 
 ```
 

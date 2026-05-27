@@ -13,36 +13,119 @@ execute:
 
 In this homework assignment you will practice:
 
-- Interpreting and analyzing data using summary statistics
-- Reading code for data manipulation in `R`
-- Computing and interpreting probabilities from contingency tables 
+- Creating and interpreting `ggplot2` graphs.
+- Interpreting data using summary statistics
+- Understanding code for data manipulation in `R`
 
 
 # Exercises
 
-## Exercise 1: Airline Delay
 
-You’re shopping for a plane ticket and are deciding between three airlines that each have a flight to your destination and are all scheduled to leave at the same time and arrive at the same time. Below are the delays in arrival times (in minutes) for 10 flights from each of the three airlines (a negative number means the flight arrived early, 0 means the flight arrived exactly on time, a positive number means the flight arrived late):
+## Problem 1: Visualizing distributions of variables in `somerville`
 
-```{r, echo=F}
-airline1 <- c(-60, -45, -30, -15, 0, 0, 15, 30, 45, 60)
-airline2 <- c(0, 0, 5, 5, 5, 5, 5, 5, 10, 10)
-airline3 <- c(-10, -10, -10, -10, -10, -10,-10, -10, -10, 90)
-fakeairline <- data.frame(airline1, airline2, airline3)
-print(fakeairline)
+a. Create a histogram of the `satisfied_somerville` variable. You may need to play around with the number of bins to get a clear idea of the shape. Compute the mean, median, variance, and standard deviation of `satisfied_somerville` What do you notice about the distribution?
+
+
+
+b. Create a **faceted** histogram plot that shows how the distribution of scores for `satisfied_somerville` differs by response category for `direction_somerville`. 
+*Hint: You'll want to mess with the `bins` size to get a good sense of the distribution.*
+
+
+
+
+c. Create a boxplot that shows how the distribution of scores for `satisfied_somerville` differs by response category for `direction_somerville`.
+
+
+
+
+
+d. Compare and contrast what you learned from the boxplot in (a) and the histogram plot in (b).
+
+
+
+
+
+e. Which response category for `direction_somerville` tends to have the highest satisfaction score?  Does your answer imply that people who think Somerville is headed in the right direction are all very satisfied with Somerville? Use the boxplot in (a) and/or the histograms in (b) in your justification.
+
+
+
+
+
+
+## Problem 2: MWRA Visualization
+
+The [Massachusetts Water Resources Authority (MWRA) graph](https://www.mwra.com/biobot/biobotdata.htm) tracks the presence of COVID-19 in the Boston-area wastewater. Run the following `R` chunk to load the data.
+
+
+```{r}
+# Load the data
+wastewater <- read.csv("data/wastewater.csv")
+
+# Make date a date type (this helps date labels automatically look better)
+wastewater$Sample_date <- as.Date(wastewater$Sample_date)
 ```
 
-a. Describe each airline's delay record. What are their strengths? What are their weaknesses? Use summary statistic concepts to justify your response (you don't need to calculate them exactly, though it may help).
+a. Go to [https://www.mwra.com/biobot/biobotdata.htm](https://www.mwra.com/biobot/biobotdata.htm) and look at the first graph.  What are the geom**s**?  For each geom, discuss what variables are being mapped to the aesthetics of that geom.  
+
+Note: The graph doesn't indicate this but the line segments incorporate interval estimates (which we will learn in detail later in the semester) of the daily RNA copies per mL.  For now, when discussing these interval estimates, feel free to refer to the *lower bound of the interval estimate* and the *upper bound of the interval estimate*.
 
 
 
 
-b. Which airline would you choose? What characteristics of the airline most factored into your decision?
+
+b. Create a scatterplot of the copies/mL over time.  For now, don't include the moving average.
+
+```{r}
+# Hint: Before jumping into graphing, insert code to inspect the data 
+# and to find your variable names.
+
+# Create scatterplot
+
+```
 
 
 
 
-## Exercise 2: AQI Summary Statistics
+c. Modify your scatterplot to deal with the overplotting and to color your points based on the station. Similar to MWRA, let's use green and orange to color the points.
+
+```{r}
+# Modify scatterplot
+
+```
+
+
+
+
+d. Now add the seven day moving average lines to your scatterplot. (We will add in the uncertainty measures, the vertical line segments, later in the semester.)
+
+What is tricky here is that you will need to **change** what variable is mapped to `y` for your new `geom`.  We have provided some partially completed sample code below to help you get started.  Make sure to put that code in an R chunk below. 
+
+```
+# Add moving average to your graph
+___insert ggplot code from part b___ +
+  geom_---(mapping = aes(y = ---))
+```
+
+```{r}
+
+
+
+```
+
+
+
+
+e. Now give your graph from (e) nice labels and a title.
+
+```{r}
+
+
+
+```
+
+
+
+## Exercise 4: AQI Summary Statistics
 
 Daily air quality is measured by the air quality index (AQI) reported by the Environmental Protection Agency. This index reports the pollution level and what associated health effects might be a concern. The index is calculated for five major air pollutants regulated by the Clean Air Act and takes values from 0 to 300, where a higher value indicates lower air quality. AQI was reported for a sample of 91 days in 2011 in Durham, NC. The histogram below shows the distribution of the AQI values on these days.
 
@@ -83,9 +166,26 @@ d. Using the estimates of Q1, Q3, and IQR from part (c), would any of the days i
 
 
 
+### Exercise 4: Means, Medians, and Skewness
+
+*This question is from IMS Chapter 5.*
+
+The statistic $\frac{\bar{x}}{median}$ can be used as a measure of skewness. Suppose we have a distribution where all observations are greater than 0. What do you expect the shape of the distribution to be under the following conditions? Explain your reasoning.
+
+a. $\frac{\bar{x}}{median} = 1$
 
 
-## Exercise 3: `detectors` Wrangling and Analysis
+
+b. $\frac{\bar{x}}{median} < 1$
+
+
+
+c. $\frac{\bar{x}}{median} > 1$
+
+
+
+
+## Exercise 5: Explaining data wrangling code
 
 For this problem, let's revisit the `detectors` dataset from the article *"GPT Detectors Are Biased Against Non-Native English Writers"*^[**GPT Detectors Are Biased Against Non-Native English Writers.** *Weixin Liang*, *Mert Yuksekgonul*, *Yining Mao*, *Eric Wu*, *James Zou.* [CellPress Patterns](https://doi.org/10.1016/j.patter.2023.100779)].
 
@@ -115,127 +215,6 @@ ggplot(data = humans_only, mapping = aes(x = native, fill = .pred_class)) +
 
 
 
-
-
-
-
-b. Among non-native English speakers, how likely is each detector to classify their writing as being AI generated?  How about for the native English speakers? Use `R` to answer this question in the chunk below.
-
-Hints: 
-
-* Your wrangled data frame should have 28 rows. 
-* Consider grouping on more than 1 variable.
-* Run `print([your data frame name], n = 28)` to display the whole table.
-
-```{r}
-
-
-```
-
-
-c. From your graph in (a) and summary statistics in (b) draw two conclusions.
-
-
-
-
-### Exercise 4: Means, Medians, and Skewness
-
-*This question is from IMS Chapter 5.*
-
-The statistic $\frac{\bar{x}}{median}$ can be used as a measure of skewness. Suppose we have a distribution where all observations are greater than 0. What do you expect the shape of the distribution to be under the following conditions? Explain your reasoning.
-
-a. $\frac{\bar{x}}{median} = 1$
-
-
-
-b. $\frac{\bar{x}}{median} < 1$
-
-
-
-c. $\frac{\bar{x}}{median} > 1$
-
-
-
-
-## Exercise 5: COVID-19 Case Fatality Rates
-
-For this exercise, we will use data from a 2021 paper published by IEEE, [von Kugelgen J et al. 2021](10.1109/TAI.2021.3073088). This paper analyses case fatality rates of COVID-19 in Italy and China during 2020. 
-
-a. Run the chunk below to view data on COVID-19 cases and fatalities by age group in Italy (on March 9th) and China (on February 22). Using R, calculate the case fatality rate (the proportion of cases that resulted in fatality) for each age group in each country. What do you notice when comparing rates between the two countries?
-
-```{r}
-covid <- read.csv("data/italy_china_covid_comp.csv")
-print(covid)
-
-# Compute case fatality rates
-
-```
-
-
-
-b. Either using R, or by hand, calculate the overall case fatality rate within each country (not broken down by age). How do the overall case fatality rates compare between the two countries? Is this what you would expect based on part (a)? 
-
-
-
-
-c. These results are an example of **Simpson's Paradox**, a phenomenon where trends observed in aggregate comparisons reverse when we control for other variables. Run the chunk below to look at a barplot showing the number of COVID-19 cases per age group. How does this help explain what you observed in parts (a) and (b)?
-
-```{r}
-covid <- read.csv("data/italy_china_covid_comp.csv")
-
-ggplot(covid, aes(x = country, y = cases, fill = age, label = cases)) +
-  geom_col(position = "fill") +
-  xlab("Age Group") +
-  ylab("Number of cases") +
-  ggtitle("COVID-19 Cases by Age Group in\nChina (Feb 22 2020) and Italy (March 9 2020)") +
-  theme_classic() +
-  theme(plot.title = element_text(hjust = 0.5))
-
-```
-
-
-
-
-## Exercise 6: Some Interesting Survey Results
-
-In a previous year, students in Math 141 were asked two questions as part of a larger survey: "Are hot dogs sandwiches?" and "If dogs wore pants, would they wear them on their front legs, back legs, or on all four legs"? A summary of responses for 70 students is given below:
-
-|             | Hotdog is a sandwich | Hotdog is not a sandwich |
-|-------------|----------------------|---------------------------|
-| Front legs  |         1            |             1             |
-| Back legs   |        17            |            26             |
-| All 4 legs  |         9            |            16             |
-
-Suppose we randomly choose 1 student who completed this survey.
-
-a. Are the events "the student thinks a hotdog is not a sandwich" and "the student thinks dogs should wear pants on their back legs" mutually exclusive?
-
-
-
-
-
-b. What is the probability that the randomly chosen student thinks a hotdog is a sandwich?
-
-
-
-
-
-
-c. What is the probability that the randomly chosen student thinks a hotdog is a sandwich and thinks that dogs should wear pants on all 4 legs?
-
-
-
-
-
-
-d. What is the probability that the randomly chosen student thinks a hotdog is a sandwich given that the student thinks dogs should wear pants on all 4 legs?
-
-
-
-
-
-
-e. Is the event "the student thinks a hotdog is a sandwich" *independent* (in the statistical sense) of the event "the student thinks dogs should wear pants on their front legs"? Explain your reasoning. Do your statistical findings match your intuition about whether these events are related? 
 
 
 

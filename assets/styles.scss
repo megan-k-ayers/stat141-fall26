@@ -179,6 +179,7 @@ a {
 .week-x-box {
   display: grid;
   gap: 8px;
+  grid-template-columns: 2fr 1fr;
   border-radius: 3px;
   box-shadow: 0 0 0.5rem $reactor-core;
   background-color: $white;
@@ -230,6 +231,29 @@ a {
     }
   }
   
+  .resources {
+    border-left: 1px solid $reactor-core;
+    padding: 3px;
+    background-color: $parchment;
+    
+    h3, h4, h5, h6 {
+      color: $blue-bridge;
+      font-size: 1em;
+      margin-bottom: 0.5rem;
+    }
+    
+    ul, ol {
+      color: $blue-bridge;
+    }
+    
+    a {
+      color: $reed-red;
+      
+      &:hover {
+        color: $adirondack;
+      }
+    }
+  }
 }
 
 // Font size utility classes 

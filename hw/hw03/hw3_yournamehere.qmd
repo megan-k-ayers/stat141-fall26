@@ -27,6 +27,92 @@ I collaborated with...
 
 # Exercises
 
+
+## Exercise 5: COVID-19 Case Fatality Rates
+
+For this exercise, we will use data from a 2021 paper published by IEEE, [von Kugelgen J et al. 2021](10.1109/TAI.2021.3073088). This paper analyses case fatality rates of COVID-19 in Italy and China during 2020. 
+
+a. Run the chunk below to view data on COVID-19 cases and fatalities by age group in Italy (on March 9th) and China (on February 22). Using R, calculate the case fatality rate (the proportion of cases that resulted in fatality) for each age group in each country. What do you notice when comparing rates between the two countries?
+
+```{r}
+covid <- read.csv("data/italy_china_covid_comp.csv")
+print(covid)
+
+# Compute case fatality rates
+
+```
+
+
+
+b. Either using R, or by hand, calculate the overall case fatality rate within each country (not broken down by age). How do the overall case fatality rates compare between the two countries? Is this what you would expect based on part (a)? 
+
+
+
+
+c. These results are an example of **Simpson's Paradox**, a phenomenon where trends observed in aggregate comparisons reverse when we control for other variables. Run the chunk below to look at a barplot showing the number of COVID-19 cases per age group. How does this help explain what you observed in parts (a) and (b)?
+
+```{r}
+covid <- read.csv("data/italy_china_covid_comp.csv")
+
+ggplot(covid, aes(x = country, y = cases, fill = age, label = cases)) +
+  geom_col(position = "fill") +
+  xlab("Age Group") +
+  ylab("Number of cases") +
+  ggtitle("COVID-19 Cases by Age Group in\nChina (Feb 22 2020) and Italy (March 9 2020)") +
+  theme_classic() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+
+
+
+## Exercise 6: Some Interesting Survey Results
+
+In a previous year, students in Math 141 were asked two questions as part of a larger survey: "Are hot dogs sandwiches?" and "If dogs wore pants, would they wear them on their front legs, back legs, or on all four legs"? A summary of responses for 70 students is given below:
+
+|             | Hotdog is a sandwich | Hotdog is not a sandwich |
+|-------------|----------------------|---------------------------|
+| Front legs  |         1            |             1             |
+| Back legs   |        17            |            26             |
+| All 4 legs  |         9            |            16             |
+
+Suppose we randomly choose 1 student who completed this survey.
+
+a. Are the events "the student thinks a hotdog is not a sandwich" and "the student thinks dogs should wear pants on their back legs" mutually exclusive?
+
+
+
+
+
+b. What is the probability that the randomly chosen student thinks a hotdog is a sandwich?
+
+
+
+
+
+
+c. What is the probability that the randomly chosen student thinks a hotdog is a sandwich and thinks that dogs should wear pants on all 4 legs?
+
+
+
+
+
+
+d. What is the probability that the randomly chosen student thinks a hotdog is a sandwich given that the student thinks dogs should wear pants on all 4 legs?
+
+
+
+
+
+
+e. Is the event "the student thinks a hotdog is a sandwich" *independent* (in the statistical sense) of the event "the student thinks dogs should wear pants on their front legs"? Explain your reasoning. Do your statistical findings match your intuition about whether these events are related? 
+
+
+
+
+
+
 ### Exercise 1: Probability rules warmup
 
 Suppose A and B are events with P(A) = 0.3 and P(B) = 0.7.

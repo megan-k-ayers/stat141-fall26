@@ -25,7 +25,18 @@
   <% } %>
   
   </div>
-
+  <div class="resources">
+  <p><span">To-Do's</span></p>
+  <ul>
+  <% if (week.resources && week.resources.length > 0) { %>
+    <% for (const item of week.resources) { %>
+      <li><%= item %></li>
+    <% } %>
+  <% } else { %>
+    <li>None this week</li>
+  <% } %>
+  </ul>
+  </div>
   </div>
 <% } %>
 
