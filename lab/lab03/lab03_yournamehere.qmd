@@ -9,304 +9,121 @@ execute:
   message: false
 ---
 
-## Due: Tuesday, February 17th at 11:59pm on Gradescope
 
 In this lab, you will
-
-  - Demonstrate the Law of Large Numbers via simulation
+  - Practice data wrangling techniques to calculate summary statistics
   - Assess the independence of events in data
- - Implement different sampling strategies
-  - Interpret study findings from a visualization and reflect on generalizability
-  - Practice identifying different sampling strategies
+
   
 
-## Add any collaborators here!
+```{r}
+# Load the necessary packages
+library(lubridate)
+library(tidyverse)  # Includes ggplot2
+```
 
-I collaborated with...
 
-**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
 
 # Exercises
 
-### Detectors wrangling spillover
+### Exercise 1: COVID-19 Case Fatality Rates
 
-b. Among non-native English speakers, how likely is each detector to classify their writing as being AI generated?  How about for the native English speakers? Use `R` to answer this question in the chunk below.
+We will use data from a 2021 paper published by IEEE, [von Kugelgen J et al. 2021](10.1109/TAI.2021.3073088). This paper analyses case fatality rates of COVID-19 in Italy and China during 2020. 
 
-Hints: 
-
-* Your wrangled data frame should have 28 rows. 
-* Consider grouping on more than 1 variable.
-* Run `print([your data frame name], n = 28)` to display the whole table.
+a. Run the chunk below to view data on COVID-19 cases and fatalities by age group in Italy (on March 9th) and China (on February 22). What does a row represent? 
 
 ```{r}
+covid <- read.csv("data/italy_china_covid_comp.csv")
+print(covid)
+```
+
+
+
+b. Write `R` code to *filter* to only the rows corresponding to China. 
+
+```{r}
+
+# Your code below
 
 
 ```
 
 
-c. From your graph in (a) and summary statistics in (b) draw two conclusions.
+c. Using `R` in a new chunk below, *create a new column* that calculates the case fatality rate (the proportion of cases that resulted in fatality) for each row. What do you notice when comparing rates between the two countries?
 
 
 
 
-### Somerville data wrangling
 
-c. Use `count()`, `group_by`, and `mutate()` to reproduce the values shown from your plots in (b) as a contingency table and conditional proportion table.
+d. Using `R` in a new chunk below, now calculate the overall case fatality rate, but within each country (not broken down by age). *This will require you to chain together two `dplyr` functions*. How do the overall case fatality rates compare between the two countries? Is this what you would expect based on part (a)? 
 
-e. The label for "Multiple Modes" of transportation is long and sometimes spills over onto other labels. Use `mutate()` and `case_when()` to overwrite the `primary_transport` variable so that "Multiple Modes" is changed to just "Multiple," and other categories are left the same. Then, recreate the plot from (d).
 
-d. The "Not sure" category can seem ill-defined, and we may wish to focus on those who firmly believe Somerville is on the wrong track with those who believe it is on the right track without the distraction of the "not sure"s. Use `filter()` to remove those who aren't sure about the direction of Somerville, and save the result in a new data frame called `somerville2`. Then, recreate the graph from part (b) using `somerville2`. 
 
-c. Use `group_by()` and `summarize()` to calculate the **mean** value of `satisfied_somerville` for each level of `convenient_transport`. How do these values compare with what you observe in the graph?
 
+
+
+e. These results are an example of **Simpson's Paradox**, a phenomenon where trends observed in aggregate comparisons reverse when we control for other variables. Run the chunk below to look at a barplot showing the number of COVID-19 cases per age group. How does this help explain what you observed in parts (a) and (b)?
 
 ```{r}
+covid <- read.csv("data/italy_china_covid_comp.csv")
+
+ggplot(covid, aes(x = country, y = cases, fill = age, label = cases)) +
+  geom_col(position = "fill") +
+  xlab("Age Group") +
+  ylab("Number of cases") +
+  ggtitle("COVID-19 Cases by Age Group in\nChina (Feb 22 2020) and Italy (March 9 2020)") +
+  theme_classic() +
+  theme(plot.title = element_text(hjust = 0.5))
 
 ```
 
 
-```{r}
 
-# Contingency table
 
+## Exercise 2: Some Interesting Survey Results
 
-# Conditional proportions table
+In a previous year, students in Math 141 were asked two questions as part of a larger survey: "Are hot dogs sandwiches?" and "If dogs wore pants, would they wear them on their front legs, back legs, or on all four legs"? A summary of responses for 70 students is given below:
 
-```
+|             | Hotdog is a sandwich | Hotdog is not a sandwich |
+|-------------|----------------------|---------------------------|
+| Front legs  |         1            |             1             |
+| Back legs   |        17            |            26             |
+| All 4 legs  |         9            |            16             |
 
+Suppose we randomly choose 1 student who completed this survey.
 
+a. Are the events "the student thinks a hotdog is not a sandwich" and "the student thinks dogs should wear pants on their back legs" mutually exclusive?
 
-### Exercise 1: Winfall
 
-In 2003, the Michigan Lottery had a game called Winfall. For each ticket, you would pick six numbers between 1 and 49. Michigan Lottery would draw a six numbers: if you had all six numbers on your ticket, you won the jackpot. If you guessed fewer numbers, you won smaller amounts. If nobody won the jackpot for a while, there was a "roll-down," where on the next drawing, as long as no one had a ticket with all six numbers, the jackpot cash flowed into the lesser tiers of winners. Roll-downs happened every six weeks or so, and in these cases, tickets with 5 winning numbers won \$25,000, tickets with 4 winning numbers won \$1000, and tickets with 3 winning numbers won \$50.  
 
-A man named Jerry Selbee discovered a flaw (or, opportunity) in the math behind this roll-down structure. Mathematically, we **expect** the average winnings per ticket in this setup to be about \$2.31 (we'll learn why and what this formally means later in the semester). Importantly, a ticket only cost \$1, meaning that on average, a ticket-buyer should expect to earn $1.31! For this problem, imagine we're in Jerry's shoes and deciding how to use this information.
 
-(*I am not claiming it is a good idea to go buy a bunch of lottery tickets! This particular instance was an anomaly that was quickly corrected when discovered by the Michigan Lottery. Read more about it in this article: https://highline.huffingtonpost.com/articles/en/lotto-winners/, or watch the movie based on it.*)
 
-The function below simulates the lottery process. For a given number of tickets you purchase (`n`), it returns your profit across all tickets (net winnings - cost of the tickets). This code uses several R concepts we haven't learned, so don't worry if they are unfamiliar - feel free to treat it like a black box.
+b. What is the probability that the randomly chosen student thinks a hotdog is a sandwich?
 
-```{r}
 
-buy_tickets <- function(n) {
-  
-  # Draw our n tickets (assuming random selection of the numbers)
-  your_tickets <- replicate(n, sample(1:49, 6), simplify = FALSE)
-  
-  # Draw the winning ticket
-  winning_ticket <- sample(1:49, 6)
 
-  # For each of our n tickets, calculate how many of its numbers are in the
-  # winning ticket
-  wins <- sapply(your_tickets, function(a) sum(a %in% winning_ticket))
-  
-  # If 3 numbers are in the winning ticket, a ticket wins $50. If 4 numbers are
-  # in the winning ticket, a ticket wins $1000. If 5 numbers are in the winning
-  # ticket, a ticket wins $25000. Otherwise, we win $0. We
-  # subtract the price of the tickets from our winnings to get our profit.
-  profit <- sum(wins == 3) * 50 + sum(wins == 4) * 1000 +
-    sum(wins == 5) * 25000 - n
-  
-  return(profit)
-  
-}
 
-```
 
 
-**a. Intuitively, do you think you are likely to make money by buying one ticket? What if you buy 10, or 100?** Run `buy_tickets(n)` in the console repeatedly for each value `n` to get an anecdotal sense of how often you'll win money for buying `n` tickets.  
+c. What is the probability that the randomly chosen student thinks a hotdog is a sandwich and thinks that dogs should wear pants on all 4 legs?
 
--------------------------------------------------------------------------------
 
 
 
 
--------------------------------------------------------------------------------
 
+d. What is the probability that the randomly chosen student thinks a hotdog is a sandwich given that the student thinks dogs should wear pants on all 4 legs?
 
-**b.** The number of possible tickets is 13983816. The number of possible tickets with exactly 3 winning numbers is 246820. The number of possible tickets with exactly 4 winning numbers is 13545. The number of possible tickets with exactly 5 winning numbers is 258. **What is the probability of randomly selecting a ticket that wins something?**
 
--------------------------------------------------------------------------------
 
 
 
--------------------------------------------------------------------------------
 
+e. Is the event "the student thinks a hotdog is a sandwich" *independent* (in the statistical sense) of the event "the student thinks dogs should wear pants on their front legs"? Explain your reasoning. Do your statistical findings match your intuition about whether these events are related? 
 
-**c.** Suppose you and a group of friends decides to test a few ticket-buying strategies, with each strategy differing simply on the number of tickets you buy for each lottery day: 1 ticket, 100 tickets, 500 tickets, 2500 tickets, or 5000 tickets. Being patient people, you test each strategy during 200 different lottery days.
 
-The chunk below loads a data frame with the simulated profit per ticket results from testing these strategies (this is essentially a more systematic version of what you did in the console in part a). Each case of the data frame represents a single test of one of the strategies (ex. buying 100 tickets for one lottery day). **Using this data frame, create a new column that indicates whether or not your group made money for that day and strategy. Then, create a barplot showing how often each strategy made or lost money.** Choose a type of barplot that makes comparison easy across the different strategies.
 
-```{r}
-library(ggplot2)
-library(dplyr)
 
-profit_df <- read.csv("data/winfall_jackpot_sim.csv")
-profit_df$strategy <- factor(profit_df$strategy,
-                             levels = c("1 ticket(s)", "100 ticket(s)",
-                                        "500 ticket(s)", "2500 ticket(s)",
-                                        "5000 ticket(s)"))
-head(profit_df)
 
-### Your code below
 
-
-
-
-```
-
-
-**d.** For each of the ticket buying strategies, what is the minimum and maximum possible profit per ticket? 
-
--------------------------------------------------------------------------------
-
-
-
-
--------------------------------------------------------------------------------
-
-
-**e.** Jerry figured out that *in the long run*, ticket buyers should make money from playing Winfall on roll-down days. **What do you observe in the barplot in part (c)? How does this relate to the law of large numbers?** 
-
-*Fun fact: The first time Jerry tested his idea out, he bought 2200 tickets, and lost $50 (an average per ticket profit of -\$0.023). Next time he bought 8000 tickets, and won $15,700 (an average per ticket profit of \$0.963).*
-
--------------------------------------------------------------------------------
-
-
-
-
-
--------------------------------------------------------------------------------
-
-
-
-### Exercise 2: Titanic
-
-In this exercise we will explore the data set loaded below, which includes information about all of the passengers who were aboard the RMS Titanic when it sank. 
-
-```{r}
-titanic <- read.csv("data/Titanic-Dataset.csv")
-head(titanic)
-```
-
-
-**a.** Use R and probability rules to determine if survival was independent of gender. **Show the values of the probabilities that you calculate to make your argument. Would you expect these variables to be independent?**
-
-*Hint: If you get stuck on data wrangling code, first try writing pseudo-code like at the end of lecture on 2/4. Then, identify which of the dplyr functions can help you accomplish each step.*
-
--------------------------------------------------------------------------------
-
-
-
-
--------------------------------------------------------------------------------
-
-
-**b.** Use R and probability rules to determine if survival was independent of being in first class or not. **Show the values of the probabilities that you calculate to make your argument. Would you expect these variables to be independent?**
-
--------------------------------------------------------------------------------
-
-
-
-
--------------------------------------------------------------------------------
-
-
-**c.** Suppose we did not have access to this data set, and needed to estimate the overall survival rate by sampling names from the passenger list and following up with relatives. **In the chunk below, use `sample_n()` to draw a simple random sample of 100 passenger IDs, and use these to estimate the survival rate.**
-
--------------------------------------------------------------------------------
-
-
-
-
--------------------------------------------------------------------------------
-
-
-**d.** Instead, now perform a stratified sample based on these variables, where we sample 20 passengers within each gender x class category (you can do this by combining `group_by` and `sample_n` from `dplyr`). **What is the survival rate overall in this sample, and within each strata of the sample? Why might this sampling strategy be preferred to simple random sampling?**
-
--------------------------------------------------------------------------------
-
-
-
-
--------------------------------------------------------------------------------
-
-
-
-### Exercise 3: Bias in Course Evaluations
-
-In Exercises 3 and 4, you will explore studies that ask the question "Is there gender bias in course evaluations?"
-
-Let's start with the interactive data visualization called ["Gendered Language in Teacher Reviews"](https://benschmidt.org/profGender). Use the tool to explore at least one positive word (e.g., "intelligent", "engaging") and at least one negative word (e.g., "bossy", "mean").
-
-**a.**  Discuss the story the visualization tells, and describe the data visualization choices that were made to do so.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**b.**  Are the data used to create the data visualization from an observational study or an experiment? **Explain your reasoning.**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**c.**  Would you be comfortable generalizing these findings about gendered language in teaching evaluations to all college students in the US? **Explain your reasoning.**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-
-### Exercise 4: Voter ID Laws and Sampling
-
-Back in 2014, researchers investigated the impact of voter ID laws on potential voters in the midterm elections. The study involved three locations: Philadelphia, Northern Virginia, and Dallas County, Texas. Each location is divided up into voting precincts and each precinct has a polling site.
-
-In this problem, we will describe the data collection method of two locations and you will practice tying these methods to specific sampling techniques.
-
-**a.**  For Philadelphia, 30 precincts were randomly selected from all precincts in Philadelphia. For each selected precinct, Swarthmore College students interviewed every 3rd person leaving the polling site over a randomly selected hour. **Does this sampling design use cluster sampling, stratified sampling, neither, or both? Justify your answer.**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**b.**  For Dallas County, each polling site was categorized by the time of day interviews would take place (morning/mid-day/evening) and whether voters at that site were projected to have an overall high or low propensity of voting. Within each category, a random sample of precincts were selected and Southern Methodist University students interviewed every person leaving those polling places at the particular time of day (morning/mid-day/evening). **Does this sampling design use cluster sampling, stratified sampling, neither, or both? Justify your answer.**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**c.**  Why didn't the researchers just take a simple random sample of names (i.e., from a voter registration list) and then conduct exit polls on those people? Justify your answer.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**d.**  Suppose that for a particular state, precincts are known to be relatively heterogeneous; e.g., precincts tend to have different social demographics. **Would cluster sampling or stratified sampling be the recommended strategy for this state? Justify your answer.**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
 

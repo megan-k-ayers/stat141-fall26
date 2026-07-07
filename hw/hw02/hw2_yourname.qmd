@@ -141,7 +141,7 @@ ggplot(pm25_2011_durham, aes(x = daily_aqi_value))+
   theme_bw()
 ```
 
-a. Estimate the median AQI value of this sample based on the graph.
+a. Quantitatively describe the center of this sample's AQI distribution, based on the graph (you can eyeball this rather than using R).
 
 
 
@@ -154,7 +154,7 @@ b. Would you expect the mean AQI value of this sample to be higher or lower than
 
 
 
-c. Estimate Q1, Q3, and IQR for the distribution based on the graph.
+c. Estimate the Q1, Q3, and IQR (and median, if you haven't already) for the distribution based on the graph. What property of the distribution does the IQR measure? 
 
 
 

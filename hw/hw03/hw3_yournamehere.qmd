@@ -13,9 +13,8 @@ execute:
 
 
 In this homework assignment you will practice:
+- Using data wrangling techniques to answer different research questions
 - Applying probability rules and concepts
-- Distinguishing between experiments and observational studies
-- Assessing how study design and sampling strategies influence results and interpretation
 
 
 ### Add any collaborators here!
@@ -25,95 +24,112 @@ I collaborated with...
 **Remember that you are not allowed to use any generative AI models (like ChatGPT) on your assignment**
 
 
+
 # Exercises
 
 
-## Exercise 5: COVID-19 Case Fatality Rates
+### Exercise 1: Data wrangling with the `detectors` data set
 
-For this exercise, we will use data from a 2021 paper published by IEEE, [von Kugelgen J et al. 2021](10.1109/TAI.2021.3073088). This paper analyses case fatality rates of COVID-19 in Italy and China during 2020. 
-
-a. Run the chunk below to view data on COVID-19 cases and fatalities by age group in Italy (on March 9th) and China (on February 22). Using R, calculate the case fatality rate (the proportion of cases that resulted in fatality) for each age group in each country. What do you notice when comparing rates between the two countries?
+Run the chunk of code below to load and preprocess the `detectors` data set. Do not edit this chunk.
 
 ```{r}
-covid <- read.csv("data/italy_china_covid_comp.csv")
-print(covid)
+# Load libraries
+library(detectors)  # Grabs the data set
+library(ggplot2)    # For visualizations
+library(dplyr)      # For data wrangling
 
-# Compute case fatality rates
-
+# Wrangle data
+humans_only <- detectors %>%
+  filter(kind == "Human",
+         !is.na(native)) %>%
+  mutate(.pred_class = toupper(.pred_class))
+head(humans_only)
 ```
 
+a. In the new code chunk below, write `R` code to answer the following question: Among non-native English speakers, how likely is each detector to classify their writing as being AI generated?  How about for the native English speakers? 
 
+Hints: 
 
-b. Either using R, or by hand, calculate the overall case fatality rate within each country (not broken down by age). How do the overall case fatality rates compare between the two countries? Is this what you would expect based on part (a)? 
-
-
-
-
-c. These results are an example of **Simpson's Paradox**, a phenomenon where trends observed in aggregate comparisons reverse when we control for other variables. Run the chunk below to look at a barplot showing the number of COVID-19 cases per age group. How does this help explain what you observed in parts (a) and (b)?
+* Your wrangled data frame should have 28 rows. 
+* Consider grouping on more than 1 variable.
+* Run `print([your data frame name], n = 28)` to display the whole table.
 
 ```{r}
-covid <- read.csv("data/italy_china_covid_comp.csv")
 
-ggplot(covid, aes(x = country, y = cases, fill = age, label = cases)) +
-  geom_col(position = "fill") +
-  xlab("Age Group") +
-  ylab("Number of cases") +
-  ggtitle("COVID-19 Cases by Age Group in\nChina (Feb 22 2020) and Italy (March 9 2020)") +
-  theme_classic() +
-  theme(plot.title = element_text(hjust = 0.5))
 
 ```
 
 
 
 
-## Exercise 6: Some Interesting Survey Results
-
-In a previous year, students in Math 141 were asked two questions as part of a larger survey: "Are hot dogs sandwiches?" and "If dogs wore pants, would they wear them on their front legs, back legs, or on all four legs"? A summary of responses for 70 students is given below:
-
-|             | Hotdog is a sandwich | Hotdog is not a sandwich |
-|-------------|----------------------|---------------------------|
-| Front legs  |         1            |             1             |
-| Back legs   |        17            |            26             |
-| All 4 legs  |         9            |            16             |
-
-Suppose we randomly choose 1 student who completed this survey.
-
-a. Are the events "the student thinks a hotdog is not a sandwich" and "the student thinks dogs should wear pants on their back legs" mutually exclusive?
+b. From your summary statistics in (a), (supplemented by the corresponding graph from Exercise 5 HW 2, if you wish) draw two conclusions.
 
 
 
 
 
-b. What is the probability that the randomly chosen student thinks a hotdog is a sandwich?
+### Exercise 2: Somerville data wrangling
+
+In Problem 1b from Lab 2, we built two different types of bar graphs to visualize how people get around Somerville.  
+
+a. Use `count()`, `group_by`, and `mutate()` to reproduce the values shown from your plots in (b) as a contingency table and conditional proportion table.
+
+```{r}
+
+# Contingency table
+
+
+# Conditional proportions table
+
+```
 
 
 
+e. The label for "Multiple Modes" of transportation is long and sometimes spills over onto other labels. Use `mutate()` and `case_when()` to overwrite the `primary_transport` variable so that "Multiple Modes" is changed to just "Multiple," and other categories are left the same. Then, recreate the plot from (d).
 
+d. The "Not sure" category can seem ill-defined, and we may wish to focus on those who firmly believe Somerville is on the wrong track with those who believe it is on the right track without the distraction of the "not sure"s. Use `filter()` to remove those who aren't sure about the direction of Somerville, and save the result in a new data frame called `somerville2`. Then, recreate the graph from part (b) using `somerville2`. 
 
-
-c. What is the probability that the randomly chosen student thinks a hotdog is a sandwich and thinks that dogs should wear pants on all 4 legs?
-
-
-
-
-
-
-d. What is the probability that the randomly chosen student thinks a hotdog is a sandwich given that the student thinks dogs should wear pants on all 4 legs?
+c. Use `group_by()` and `summarize()` to calculate the **mean** value of `satisfied_somerville` for each level of `convenient_transport`. How do these values compare with what you observe in the graph?
 
 
 
 
 
 
-e. Is the event "the student thinks a hotdog is a sandwich" *independent* (in the statistical sense) of the event "the student thinks dogs should wear pants on their front legs"? Explain your reasoning. Do your statistical findings match your intuition about whether these events are related? 
+### Exercise 3: Titanic
+
+In this exercise we will explore the data set loaded below, which includes information about all of the passengers who were aboard the RMS Titanic when it sank. 
+
+```{r}
+titanic <- read.csv("data/Titanic-Dataset.csv")
+head(titanic)
+```
+
+
+**a.** Use R and probability rules to determine if survival was independent of gender. **Show the values of the probabilities that you calculate to make your argument. Would you expect these variables to be independent?**
+
+*Hint: If you get stuck on data wrangling code, first try writing pseudo-code like at the end of lecture on 2/4. Then, identify which of the dplyr functions can help you accomplish each step.*
+
+-------------------------------------------------------------------------------
 
 
 
 
+-------------------------------------------------------------------------------
 
 
-### Exercise 1: Probability rules warmup
+**b.** Use R and probability rules to determine if survival was independent of being in first class or not. **Show the values of the probabilities that you calculate to make your argument. Would you expect these variables to be independent?**
+
+-------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+### Exercise 4: Probability rules warmup
 
 Suppose A and B are events with P(A) = 0.3 and P(B) = 0.7.
 
@@ -158,7 +174,106 @@ Suppose A and B are events with P(A) = 0.3 and P(B) = 0.7.
 
 
 
-### Exercise 2: Is it ever Lupus?
+
+
+### Exercise 5: Winfall
+
+In 2003, the Michigan Lottery had a game called Winfall. For each ticket, you would pick six numbers between 1 and 49. Michigan Lottery would draw a six numbers: if you had all six numbers on your ticket, you won the jackpot. If you guessed fewer numbers, you won smaller amounts. If nobody won the jackpot for a while, there was a "roll-down," where on the next drawing, as long as no one had a ticket with all six numbers, the jackpot cash flowed into the lesser tiers of winners. Roll-downs happened every six weeks or so, and in these cases, tickets with 5 winning numbers won \$25,000, tickets with 4 winning numbers won \$1000, and tickets with 3 winning numbers won \$50.  
+
+A man named Jerry Selbee discovered a flaw (or, opportunity) in the math behind this roll-down structure. Mathematically, we **expect** the average winnings per ticket in this setup to be about \$2.31 (we'll learn why and what this formally means later in the semester). Importantly, a ticket only cost \$1, meaning that on average, a ticket-buyer should expect to earn $1.31! For this problem, imagine we're in Jerry's shoes and deciding how to use this information.
+
+(*I am not claiming it is a good idea to go buy a bunch of lottery tickets! This particular instance was an anomaly that was quickly corrected when discovered by the Michigan Lottery. Read more about it in this article: https://highline.huffingtonpost.com/articles/en/lotto-winners/, or watch the movie based on it.*)
+
+The function below simulates the lottery process. For a given number of tickets you purchase (`n`), it returns your profit across all tickets (net winnings - cost of the tickets). This code uses several R concepts we haven't learned, so don't worry if they are unfamiliar - feel free to treat it like a black box.
+
+```{r}
+
+buy_tickets <- function(n) {
+  
+  # Draw our n tickets (assuming random selection of the numbers)
+  your_tickets <- replicate(n, sample(1:49, 6), simplify = FALSE)
+  
+  # Draw the winning ticket
+  winning_ticket <- sample(1:49, 6)
+
+  # For each of our n tickets, calculate how many of its numbers are in the
+  # winning ticket
+  wins <- sapply(your_tickets, function(a) sum(a %in% winning_ticket))
+  
+  # If 3 numbers are in the winning ticket, a ticket wins $50. If 4 numbers are
+  # in the winning ticket, a ticket wins $1000. If 5 numbers are in the winning
+  # ticket, a ticket wins $25000. Otherwise, we win $0. We
+  # subtract the price of the tickets from our winnings to get our profit.
+  profit <- sum(wins == 3) * 50 + sum(wins == 4) * 1000 +
+    sum(wins == 5) * 25000 - n
+  
+  return(profit)
+  
+}
+
+```
+
+
+**a. Intuitively, do you think you are likely to make money by buying one ticket? What if you buy 10, or 100?** Run `buy_tickets(n)` in the console repeatedly for each value `n` to get an anecdotal sense of how often you'll win money for buying `n` tickets.  
+
+-------------------------------------------------------------------------------
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+**b.** The number of possible tickets is 13983816. The number of possible tickets with exactly 3 winning numbers is 246820. The number of possible tickets with exactly 4 winning numbers is 13545. The number of possible tickets with exactly 5 winning numbers is 258. **What is the probability of randomly selecting a ticket that wins something?**
+
+-------------------------------------------------------------------------------
+
+
+
+-------------------------------------------------------------------------------
+
+
+**c.** Suppose you and a group of friends decides to test a few ticket-buying strategies, with each strategy differing simply on the number of tickets you buy for each lottery day: 1 ticket, 100 tickets, 500 tickets, 2500 tickets, or 5000 tickets. Being patient people, you test each strategy during 200 different lottery days.
+
+The chunk below loads a data frame with the simulated profit per ticket results from testing these strategies (this is essentially a more systematic version of what you did in the console in part a). Each case of the data frame represents a single test of one of the strategies (ex. buying 100 tickets for one lottery day). **Using this data frame, create a new column that indicates whether or not your group made money for that day and strategy. Then, create a barplot showing how often each strategy made or lost money.** Choose a type of barplot that makes comparison easy across the different strategies.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+profit_df <- read.csv("data/winfall_jackpot_sim.csv")
+profit_df$strategy <- factor(profit_df$strategy,
+                             levels = c("1 ticket(s)", "100 ticket(s)",
+                                        "500 ticket(s)", "2500 ticket(s)",
+                                        "5000 ticket(s)"))
+head(profit_df)
+
+### Your code below
+
+
+
+
+```
+
+
+
+
+**d.** Jerry figured out that *in the long run*, ticket buyers should make money from playing Winfall on roll-down days. **What do you observe in the barplot in part (c)? How does this relate to the law of large numbers?** 
+
+*Fun fact: The first time Jerry tested his idea out, he bought 2200 tickets, and lost $50 (an average per ticket profit of -\$0.023). Next time he bought 8000 tickets, and won $15,700 (an average per ticket profit of \$0.963).*
+
+-------------------------------------------------------------------------------
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+
+
+
+### Exercise 6: Is it ever Lupus?
 
 Lupus is a medical phenomenon where antibodies that are supposed to attack foreign cells to prevent infections instead see plasma proteins as foreign bodies, leading to a high risk of blood clotting. It is believed that 2% of the population suffer from this disease. The test is 98% accurate if a person actually has the disease. The test is 74% accurate if a person does not have the disease. There is a line from the Fox television show House that is often used after a patient tests positive for Lupus: "It's never Lupus." **Do you think there is truth to this statement? Use appropriate probabilities to support your answer.**
 
@@ -176,239 +291,5 @@ Lupus is a medical phenomenon where antibodies that are supposed to attack forei
 
 
 
-### Exercise 3: Sampling Bias
 
-**a.** During World War II, the statistician Abraham Wald was asked to help the US military determine where to place more armor on bomber planes. Adding armor protects planes, but weighs a lot, so it must be used sparingly. Statistical data on aircraft damage showed that for the planes observed, the highest density of bullet holes and damage was near the fuselage, while the lowest density was near the motors. It's said that the military concluded that bullets tended to hit the fuselage most often, and planned to add more armor to the fuselage before consulting Wald. **Why would this have been a mistake? What would you recommend instead if you were in Wald's place?** 
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**b.** A survey is conducted on a simple random sample of 1,000 women who recently gave birth, asking them about whether or not they had health insurance. A follow-up survey about medical debt is conducted 2 years later, however, only 567 of these women are reached at the same address. The researcher reports that these 567 women are representative of all mothers. **What is the flaw in the researcher's reasoning? What should they have done different in conducting the study if they wanted to draw such strong conclusions?**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**c.** A conservation non-profit enrolls volunteer landowners in a program where landowners will receive financial compensation if they do not cut down any trees on their property over 5 years. The program participants comply and receive payment, and the program administrators conclude that the program prevented carbon emissions by preventing deforestation. **Why might these causal claims be misleading? What should they have done different in conducting the study if they wanted to draw such strong conclusions?**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**d.** *(From IMS Ch. 2)*  Suppose we want to estimate average household size, where a “household” is defined as people living together in the same dwelling, and sharing living accommodations. **If we select students at random at an elementary school and ask them what their family size is, will this be a good measure of household size? Or will our average be biased? If so, will it overestimate or underestimate the true value?**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-### Exercise 4: Observational study vs experiment
-
-Recall the conservation non-profit program described in Exercise 3 (c). Consider the following approaches that researchers may take to evaluate the effectiveness of this type of avoided deforestation program:
-
-1. Researchers compare outcomes from a large sample of those who already enrolled in the program to a large sample of those who did not. Both samples are representative with respect to geographic region, forest biomes, relative income of the landowner, and ownership type (public vs private land). 
-    
-2. Researchers apply for a grant to implement their own similar program with a smaller sample, in a specific region of Brazil. They invite applicants to the program, and enroll a random sample of the applicants in the program. Researchers then compare outcomes between those enrolled in the program, and the applicants who were not randomly selected to enroll.
-
-Compare these approaches by answering the following questions.
-
-
-
-**a.** Indicate whether each approach is a randomized experiment or an observational study.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**b.** Suppose our overarching research question is: do payment-based conservation programs prevent deforestation? **To what extent does each approach help us answer this question?**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**c.** As approaches to generating knowledge, what are the benefits of each, and what are the potential drawbacks? Take statistical considerations into account, but also think about the other demands and ethics of this type of research.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**d.** If you had the results of each study in front of you, which would you trust more? **Explain why.**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-### Exercise 5: UC Berkeley Study Assessment
-
-In a study of the relationship between socio-economic class and unethical behavior, 129 University of California undergraduates at Berkeley were asked to identify themselves as having low or high social-class by comparing themselves to others with the most (least) money, most (least) education, and most (least) respected jobs. They were also presented  with a jar of individually-wrapped candies and informed that they were for children in a nearby laboratory, but that they could take some if they wanted. Participants completed unrelated tasks and then reported the number of candies they had taken. It was found that those in the upper-class level took more candy than did those in the lower-class level.
-
-
-**a.** Identify the population of interest.
-  
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**b.** Identify the variables measured in the study and specify their types.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**c.** Identify the sample in the study.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**d.** Identify the research question.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**e.** Comment on whether the results of the study can be generalized to the population and if the findings of the study can be used to establish causal relationships.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-### Exercise 6: SAT Coaching Study Assessment
-
-Researchers are interested in determining whether coaching for college admissions exams has an effect on exam scores. The researches contact 100 high school junior students who have registered for the SAT exam, offering to provide 20 hours of free SAT coaching by knowledgeable tutors. Students are required to take one SAT practice exam before receiving coaching, and one practice exam after coaching concludes. 60 of the 100 students agree to be coached and complete the 20 hours of coaching. The remaining 40 students did not complete coaching, but still reported scores for a first and second practice test. Data on the scores for these students is stored in the `SAT` dataframe and can be loaded by running the following code chunk. (For this problem, it's **not** necessary to understand what each line of code below is doing)
-
-```{r echo = F}
-library(ggplot2)
-
-set.seed(11)
-n_coach <- 60
-n_noncoach <- 40
-n <- n_coach + n_noncoach
-
-student_id <- 1:n
-
-first_score_coach <- round( rnorm(n_coach, 1200, sd = 50), -1)
-second_score_coach <- first_score_coach + round(rnorm(n_coach, 25, sd = 20), -1)
-
-first_score_noncoach <- round( rnorm(n_noncoach, 1200, sd = 50), -1)
-second_score_noncoach <- first_score_noncoach + round(rnorm(n_noncoach, 10, sd = 20), -1)
-
-first_score <- c(first_score_coach, first_score_noncoach)
-second_score <- c(second_score_coach, second_score_noncoach)
-
-coached <- rep(c("yes","no"),  c(n_coach, n_noncoach))
-
-SAT <- data.frame(student_id, first_score, second_score, coached)
-```
-
-**a.** Does this investigation represent a random experiment or an observational study? Explain.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**b.** Explain why the researchers are interested in measuring the difference in first and second exam scores for both coached and non-coached students.
-  
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-  
-  
-**c.** The scatterplot below compares each student's first and second scores (color distinguishes coached and non-coached students). **Describe any trends you observed in the plot.**
-  
-```{r}
-ggplot(SAT, aes(x = first_score, y= second_score, color = coached)) +
-  geom_jitter(height = 2, width = 2) +
-  geom_smooth(method = "lm", se = F) + 
-  labs(title = "Comparison of First and Second Scores (with Trendline)")
-```
-  
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**d.** Explain why we would expect to see a relationship between pre- and post-coaching scores, regardless of the effect of coaching.
-  
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**e.** If coaching had no effect **on average** for SAT scores, what trends would we expect to observe in the scatterplot? Explain. 
-  
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**f.** Based on the information given in the statement of this exercise, do you think it would be reasonable to generalize any conclusions for this investigation to the population of all high school juniors who plan to take the SAT? **Why or why not?**
-  
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 ---
-title: "Lab 2: Data Visualization"
+title: "Lab 2: Data Visualization & Summary Statistics"
 subtitle: "Math 141"
 author: "Insert Your Name Here"
 format: pdf
@@ -14,18 +14,6 @@ In this lab, you will practice
 1. Creating and interpreting `ggplot2` graphs.
 2. Producing and interpreting summary statistics.
 
-## Add any collaborators here!
-
-I collaborated with...
-
-**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
-
-
-
-# Problems
-
-* For this lab, you don't need to worry about labels and a title for your plots **unless a question specifies otherwise**.
-* Run the following chunk to load the necessary packages.
 
 ```{r}
 # Load the necessary packages
@@ -33,6 +21,8 @@ library(lubridate)
 library(tidyverse)  # Includes ggplot2
 ```
 
+
+# Problems
 
 
 ## Problem 1: Visualizing `somerville` with barplots
