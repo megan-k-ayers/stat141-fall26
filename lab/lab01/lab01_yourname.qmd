@@ -21,14 +21,14 @@ Welcome to our first lab assignment! In this lab, you will practice:
 -   **Step 2**: Within Gradescope (which you can access from the course website), click on Lab 01 and select the option "Submit PDF."
     -   Then "Select PDF" from where it was downloaded onto your computer and hit "Upload PDF."
 -   **Step 3**: Within the Question Outline, click on "Exercise 1" and then click on the pages that contain your solutions for Exercise 1. Repeat this process for each Problem. **If you do not assign pages to your submission, you will not receive full credit!**
--   **Step 4**: Hit "Submit" and revel in the completion of a task! 
+-   **Step 4**: Hit "Submit" and revel in the completion of a task!
 
 
 ## ******** To-Do **********:
 
 - Integrate the previous warm up file I had with this, start from very basics.
 - Discuss dollar sign vs not needing it in dplyr
-- Make a problem about saving!!! 
+- Make a problem about saving!!!
 - Make a problem about rendering and finding the PDF and downloading it (if on server)
 - Make Problem 1a a "hello world" and have them practice the different ways of running the line of code.
 - Notes for which parts I want to do together on the screen, any timing for working together then showing results
@@ -45,34 +45,57 @@ In this problem, we will explore fundamental commands and behavior in R.
 a. In the R code chunk below, create a variable called `y` with the value 7. In R, we use `<-` to assign values to variable names, like `x <- 1`.
 *Pro tip: To run a single line of code, put the cursor on the same line as the code and hit Command+Enter (for a Mac) or Control+Enter (for a PC). To run all the code in a chunk, put the cursor on a line of code and hit Command+Shift+Enter (for a Mac) or Ctrl+Shift+Enter (for a PC).*
 
+*******************************************************************************
+
 ```{r}
 
 ```
 
+*******************************************************************************
+
+b. Below, create a new code chunk. Create another variable called `x` with the value of 5, and a third variable called `z` with the value of `x` multiplied by `y`.
+
+*******************************************************************************
 
 
-b. Below, create a new code chunk. Create another variable called `x` with the value of 5, and a third variable called `z` with the value of `x` multiplied by `y`. 
 
+*******************************************************************************
 
-c. Run the chunk below. Where does the answer appear? Find the console pane (usually the bottom left of the RStudio window), and run the same command, `2*50`, in the console. Where does the answer appear now? 
+c. Run the chunk below. Where does the answer appear? Find the console pane (usually the bottom left of the RStudio window), and run the same command, `2*50`, in the console. Where does the answer appear now?
 ```{r eval = F}
 2*50
 ```
 
+*******************************************************************************
 
+
+
+*******************************************************************************
 
 d. Create another new chunk below, and use the `sum()` function to add `x`, `y`, and `z`. If you aren't sure how to use `sum()`, try running `?sum` in the console to pull up the help page.
 
+*******************************************************************************
 
+
+
+*******************************************************************************
 
 e. Find the environment pane in your RStudio window (usually in the upper right). What do you see there?
 
+*******************************************************************************
 
+
+
+*******************************************************************************
 
 f. In the environment pane, click the little broom icon in the upper bar. Click yes on the
-window that opens. What happened to the environment? What happens if you now try to run your chunks from steps (b) or (d)? 
+window that opens. What happened to the environment? What happens if you now try to run your chunks from steps (b) or (d)?
+
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 g. Find the "Run" button at the upper right corner of this chunk, and select "Run all chunks above." What happened to the environment?
 
@@ -80,7 +103,11 @@ g. Find the "Run" button at the upper right corner of this chunk, and select "Ru
 
 ```
 
+*******************************************************************************
 
+
+
+*******************************************************************************
 
 h. Let's practice using exponents to create another variable, `s`. Run the chunk below one line at a time using Command+Enter (for a Mac) or Control+Enter (for a PC), and type out the value associated with each line. Why does each line affect the environment differently? Where did you find the values?
 
@@ -90,11 +117,19 @@ s <- 7^7
 7^5
 ```
 
+*******************************************************************************
 
+
+
+*******************************************************************************
 
 i. Finally, let's practice making a vector and creating character data types. In R, we create vectors using the function `c()`. For example, try running `c(1, 2, 3)` in the console. All elements of a vector must have the same data type (ex. all numeric, or all character). We create characters by writing `"some text"`. In a new chunk below, create a vector called `a` with three character elements, with each element representing one of your favorite genres of music. What information about this object is stored in the environment?
 
+*******************************************************************************
 
+
+
+*******************************************************************************
 
 ## Exercise 2
 
@@ -102,7 +137,11 @@ In this problem, we are going to explore an existing data frame in `R`.
 
 a.  For data frames in general, what does a row represent? What does a column represent?
 
+*******************************************************************************
 
+
+
+*******************************************************************************
 
 b.  Run the following code to load the `openintro` library/package and to grab the `yrbss` dataset.
 
@@ -120,7 +159,7 @@ c.  Run the following, and begin exploring the data called `yrbss`. (Leave in th
 *Pro tip: For datasets in packages, we can also run `?` followed by the dataset name to open up the documentation file in the Help pane that describes the dataset and provides information on the variables.*
 
 ```{r}
-#| eval: false  
+#| eval: false
 View(yrbss)
 ?yrbss
 ```
@@ -128,21 +167,32 @@ View(yrbss)
 
 d.  What does a row of the data frame represent? How many rows are in the data frame?
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 e.  What does a column of the data frame represent? How many columns are in the data frame?
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 f.  Is `age` recorded as a categorical or a quantitative variable? How about `hours_tv_per_school_day`? Explain your reasoning.
 
+*******************************************************************************
 
 
 
-g.  We will learn to be careful with how we treat missing values, which are typically labeled as `NA` in the date frame. What are two possible reasons why the the variable `text_while_driving_30d` might be recorded as `NA`? 
+*******************************************************************************
+
+g.  We will learn to be careful with how we treat missing values, which are typically labeled as `NA` in the date frame. What are two possible reasons why the the variable `text_while_driving_30d` might be recorded as `NA`?
+
+*******************************************************************************
 
 
 
-
+*******************************************************************************

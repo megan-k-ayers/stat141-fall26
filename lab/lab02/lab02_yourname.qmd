@@ -29,9 +29,9 @@ library(tidyverse)  # Includes ggplot2
 
 For Problems 1 and 2, we will use the `somerville` dataset that you started exploring in Homework 1. This version of the dataset in the `somerville_clean.csv` file has been cleaned, with the `999` values replaced with `NA`. The atypically large values for `age` have also been converted to `NA`.
 
-Starting in 2011, Somerville city officials decided to start measuring residents' overall happiness and satisfaction with many aspects of life in Somerville, MA; their goal was to become the first city in the United States to systematically track people's happiness. The Happiness Survey is an initiative of the Mayor's Office of Analytics and Innovation (SomerStat) and has the goal of supporting the local government's understanding of what makes Somerville a great place to live. 
+Starting in 2011, Somerville city officials decided to start measuring residents' overall happiness and satisfaction with many aspects of life in Somerville, MA; their goal was to become the first city in the United States to systematically track people's happiness. The Happiness Survey is an initiative of the Mayor's Office of Analytics and Innovation (SomerStat) and has the goal of supporting the local government's understanding of what makes Somerville a great place to live.
 
-The happiness survey is sent out every two years to a random sample of Somerville households, with the instruction that each survey should be filled out by one person. The survey asks residents to rate their personal happiness, wellbeing, and satisfaction with City services. This combined dataset includes the survey responses from 2011 to 2019. 
+The happiness survey is sent out every two years to a random sample of Somerville households, with the instruction that each survey should be filled out by one person. The survey asks residents to rate their personal happiness, wellbeing, and satisfaction with City services. This combined dataset includes the survey responses from 2011 to 2019.
 
 Run the code in the following chunk to load the cleaned version of the `somerville` data.
 
@@ -66,13 +66,14 @@ ggplot(data = ---, mapping = aes(x = ---)) +
   geom_---()
 ```
 
+*******************************************************************************
+
 ```{r}
 # Create bar graph
 
 ```
 
-
-
+*******************************************************************************
 
 b.  Create two bar plots of the variables `primary_transport` and `direction_somerville`:
     + For the first one, display the **counts** of each category of `direction_somerville` within `primary_transport` groups (bars).
@@ -80,25 +81,31 @@ b.  Create two bar plots of the variables `primary_transport` and `direction_som
 
 Compare and contrast the information provided in the two plots.
 
+*******************************************************************************
+
 ```{r}
 # Bar plot: Counts
 
 
 # Bar plot: Proportions
 
-
 ```
 
-
+*******************************************************************************
 
 c. Draw two conclusions from your graph in (b).
 
+*******************************************************************************
 
 
-d. Suppose that we don't like the default order of the categories of `direction_somerville`. It can be helpful to store categorical variables using the `factor` data type - this allows us to set the possible categories and their order explicitly. 
+
+*******************************************************************************
+
+d. Suppose that we don't like the default order of the categories of `direction_somerville`. It can be helpful to store categorical variables using the `factor` data type - this allows us to set the possible categories and their order explicitly.
 
 Run the code below to manually reorder the categories by turning `direction_somerville` into a factor (as well as remove observations that have missing values of `direction_somerville`). What do you think the default ordering of categories was? Recreate the bar graph of proportions from (b) with this new ordering for `direction_somerville` in the chunk below.
 
+*******************************************************************************
 
 ```{r}
 
@@ -117,26 +124,25 @@ somerville$direction_somerville <- factor(somerville$direction_somerville,
 
 ```
 
-
-
-
-
+*******************************************************************************
 
 ## Exercise 2: Visualizing `somerville` with scatterplots
 
-a. Create a scatterplot that shows the relationship between `satisfied_somerville` and `convenient_transport`, and where color is determined by `direction_somerville`. On the $x$-axis, put the variable that you think may *explain* the behavior of the other variable. 
+a. Create a scatterplot that shows the relationship between `satisfied_somerville` and `convenient_transport`, and where color is determined by `direction_somerville`. On the $x$-axis, put the variable that you think may *explain* the behavior of the other variable.
+
+*******************************************************************************
 
 
 
-
-
+*******************************************************************************
 
 b. It is difficult to detect a meaningful pattern in the scatterplot from part (a); since the responses were given as whole numbers on a 1 - 10 scale, many of the responses are overlaid on top of each other. Recreate the plot from part (a) by using `geom_jitter()` rather than the `geom` used previously and by making the `geom` somewhat transparent.
 
+*******************************************************************************
 
 
 
-
+*******************************************************************************
 
 ## Exercise 3: Airline Delay
 
@@ -150,15 +156,16 @@ airline3 <- c(-10, -10, -10, -10, -10, -10,-10, -10, -10, 90)
 
 a. Describe each airline's delay record by calculating summary statistics in R (recall the functions `mean()`, `var()`, `sd()`, `median()` from lecture). What each airline's strengths? What are their weaknesses?
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 b. Which airline would you choose? What characteristics of the airline most factored into your decision?
 
+*******************************************************************************
 
 
 
-
-
-
-
+*******************************************************************************

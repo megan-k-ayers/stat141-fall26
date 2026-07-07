@@ -18,7 +18,7 @@ In this homework assignment, you will practice:
 
 I collaborated with...
 
-**Remember that you are not allowed to use non-course materials, including internet resources and generative AI models (like ChatGPT) on your homework assignment.**
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 ### When you have completed HW 1, follow this submission process:
 
@@ -28,20 +28,25 @@ I collaborated with...
 -   **Step 2**: Within Gradescope (which you can access from the course website), click on HW 01 and select the option "Submit PDF."
     -   Then "Select PDF" from where it was downloaded onto your computer and hit "Upload PDF."
 -   **Step 3**: Within the Question Outline, click on "Exercise 1" and then click on the pages that contain your solutions for Exercise 1. Repeat this process for each Problem. **If you do not assign pages to your submission, you will not receive full credit!**
--   **Step 4**: Hit "Submit" and revel in the completion of a task! 
+-   **Step 4**: Hit "Submit" and revel in the completion of a task!
 
 # Exercises
 
 ## Exercise 1: Syllabus Check-in
 
-We are going to be covering a lot of ground this semester! One of my goals is for the course policies and logistical aspects to be clear and organized, so that we can focus as much of our time and attention on the material as possible. 
+We are going to be covering a lot of ground this semester! One of my goals is for the course policies and logistical aspects to be clear and organized, so that we can focus as much of our time and attention on the material as possible.
 
-With this in mind, please read the course syllabus in detail, if you haven't already. Write down three things that stand out to you (they can be positive or negative). They can be related to learning outcomes, policies, content, etc. If you have questions, write them down, and I (Megan) will respond to them. 
+With this in mind, please read the course syllabus in detail, if you haven't already. Write down three things that stand out to you (they can be positive or negative). They can be related to learning outcomes, policies, content, etc. If you have questions, write them down, and I (Megan) will respond to them.
 
+*******************************************************************************
+
+
+
+*******************************************************************************
 
 ## Exercise 2: Slack Introduction
 
-Slack will be a great place for you to ask and answer questions about course content and (non-urgent) logistics. Asking questions and answering questions from your peers will contribute positively towards your participation grade for the course. I also encourage you to use Slack to connect with your peers from the class to collaborate on assignments together. 
+Slack will be a great place for you to ask and answer questions about course content and (non-urgent) logistics. Asking questions and answering questions from your peers will contribute positively towards your participation grade for the course. I also encourage you to use Slack to connect with your peers from the class to collaborate on assignments together.
 
 For this problem, if you haven't already, please join the course Slack channel (the link can be found on Moodle), and do **one** (or more, if you want) of the following:
 
@@ -49,14 +54,19 @@ For this problem, if you haven't already, please join the course Slack channel (
 -    Give an answer to someone else's question
 -    Introduce yourself in #social, and post a picture of your favorite animal in #animals
 
+*******************************************************************************
+
+
+
+*******************************************************************************
 
 ## Exercise 3: Somerville Data Frame
 
-Let's explore the `somerville` data frame, which is in the `somerville.csv` file. 
+Let's explore the `somerville` data frame, which is in the `somerville.csv` file.
 
-Starting in 2011, officials from the city of Somerville, Massachusetts decided to start measuring residents' overall happiness and satisfaction with many aspects of life in Somerville; their goal was to become the first city in the United States to systematically track people's happiness. The Happiness Survey is an initiative of the Mayor's Office of Analytics and Innovation (SomerStat) and has the goal of supporting the local government's understanding of what makes Somerville a great place to live. 
+Starting in 2011, officials from the city of Somerville, Massachusetts decided to start measuring residents' overall happiness and satisfaction with many aspects of life in Somerville; their goal was to become the first city in the United States to systematically track people's happiness. The Happiness Survey is an initiative of the Mayor's Office of Analytics and Innovation (SomerStat) and has the goal of supporting the local government's understanding of what makes Somerville a great place to live.
 
-The happiness survey is sent out every two years to a random sample of Somerville households, with the instruction that each survey should be filled out by one person. The survey asks residents to rate their personal happiness, wellbeing, and satisfaction with City services. This combined dataset includes the survey responses from 2011 to 2019. 
+The happiness survey is sent out every two years to a random sample of Somerville households, with the instruction that each survey should be filled out by one person. The survey asks residents to rate their personal happiness, wellbeing, and satisfaction with City services. This combined dataset includes the survey responses from 2011 to 2019.
 
 Run the code in the following chunk to load the `somerville` data.
 
@@ -94,64 +104,95 @@ count(somerville, primary_transport)
 
 a. How many observations and variables are in the data? What does a row represent in the context of the data?
 
+*******************************************************************************
 
 
 
+*******************************************************************************
 
 b. Identify which variables are quantitative and which variables are categorical.
 
+*******************************************************************************
 
 
 
-c. Suppose that for the next version of the happiness survey, city officials would like to obtain data on race. Before recent changes, the U.S. Office of Management and Budget required the Census Bureau to have five minimum categories to the question asking respondents for racial identity: White, Black or African American, American Indian or Alaska Native, Asian, and Native Hawaiian or Other Pacific Islander. Discuss the extent to which these categories adequately represent the variable they describe. 
+*******************************************************************************
+
+c. Suppose that for the next version of the happiness survey, city officials would like to obtain data on race. Before recent changes, the U.S. Office of Management and Budget required the Census Bureau to have five minimum categories to the question asking respondents for racial identity: White, Black or African American, American Indian or Alaska Native, Asian, and Native Hawaiian or Other Pacific Islander. Discuss the extent to which these categories adequately represent the variable they describe.
+
+*******************************************************************************
 
 
 
+*******************************************************************************
 
-d. Choose a categorical variable in the `somerville` data. Discuss the extent to which the given categories adequately represents the variable it describes. 
+d. Choose a categorical variable in the `somerville` data. Discuss the extent to which the given categories adequately represents the variable it describes.
+
+*******************************************************************************
 
 
 
-
+*******************************************************************************
 
 e. Choose a quantitative variable in the `somerville` data, and discuss if the range of values given are reasonable. In other words, think about whether there are values that might be the result of data entry error (such as if someone was listed as being 50 feet tall) and comment on what an unreasonable value might look like.
 
+*******************************************************************************
 
+
+
+*******************************************************************************
 
 ## Exercise 4: Describing and evaluating elements of graphics (Library of Congress)
 
 Check out the graphic entitled ["A Brief Visual History of MARC Cataloging at the Library of Congress"](http://sappingattention.blogspot.com/2017/05/a-brief-visual-history-of-marc.html) using the link. This unique visual was created by Benjamin M. Schmidt so that he could better understand the history of how the Library created their digital card catalogs. The many interesting visual artifacts of the graph also help highlight the significant physical work that was involved in the conversion to digital catalogs.
 
-
 a. What are the variables in the **data** displayed in this graphic?  For each variable, specify if it is categorical or quantitative.
 
+*******************************************************************************
 
 
 
-b. How would you describe the **geom**etry being used to display the data? 
+*******************************************************************************
+
+b. How would you describe the **geom**etry being used to display the data?
+
+*******************************************************************************
 
 
 
+*******************************************************************************
 
 c. How are each of the variables represented via **aes**thetic elements in the graphic (e.g., x- and y-axis position, color, shape, etc.)?
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 d. Is other context provided?  If so, how does it help the viewer better understand the graphic's story?
 
+*******************************************************************************
 
 
 
-e. What does this graph do well?  
+*******************************************************************************
+
+e. What does this graph do well?
+
+*******************************************************************************
 
 
 
+*******************************************************************************
 
 f. How could this graph be improved?
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 ## Exercise 5: Interpreting and comparing the five named graphs
 
@@ -190,13 +231,19 @@ grid.arrange(g1, g2)
 
 a. What features of the distribution are apparent in the histogram and not the box plot? What features are apparent in the box plot but not in the histogram?
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 b. What may be the reason for the bimodal distribution? Explain.
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 c. How does the box plot shown below help you compare the distribution of marathon times for men and women?
 
@@ -208,21 +255,29 @@ ggplot(nyc_marathon, aes(x = time_hrs, y = division, color = division)) +
   theme_bw()
 ```
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 d. The time series plot shown below is another way to look at these data. Describe what is visible in this plot but not in the others.
 
 ```{r}
-    ggplot(nyc_marathon, aes(x = year, y = time_hrs, 
+    ggplot(nyc_marathon, aes(x = year, y = time_hrs,
                              color = division, shape = division)) +
       geom_point(size = 2) + geom_line() +
       labs(y = "Marathon time (hours)", x = "Year",color = "",shape = "") +
   theme_bw() + theme(legend.position = c(.85,.85))
 ```
 
+*******************************************************************************
 
-e. The barplot below shows the count of marathon wins per unique name in the data. What insights might this type of plot offer? What issues prevent you from making insights or gaining context? 
+
+
+*******************************************************************************
+
+e. The barplot below shows the count of marathon wins per unique name in the data. What insights might this type of plot offer? What issues prevent you from making insights or gaining context?
 
 ```{r}
 
@@ -234,6 +289,8 @@ ggplot(nyc_marathon, aes(x = name)) +
 
 ```
 
+*******************************************************************************
 
 
 
+*******************************************************************************

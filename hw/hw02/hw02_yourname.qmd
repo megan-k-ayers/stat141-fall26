@@ -18,6 +18,13 @@ In this homework assignment you will practice:
 - Understanding code for data manipulation in `R`
 
 
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
+
 # Exercises
 
 
@@ -25,32 +32,44 @@ In this homework assignment you will practice:
 
 a. Create a histogram of the `satisfied_somerville` variable. You may need to play around with the number of bins to get a clear idea of the shape. Compute the mean, median, variance, and standard deviation of `satisfied_somerville` What do you notice about the distribution?
 
+*******************************************************************************
 
 
-b. Create a **faceted** histogram plot that shows how the distribution of scores for `satisfied_somerville` differs by response category for `direction_somerville`. 
+
+*******************************************************************************
+
+b. Create a **faceted** histogram plot that shows how the distribution of scores for `satisfied_somerville` differs by response category for `direction_somerville`.
 *Hint: You'll want to mess with the `bins` size to get a good sense of the distribution.*
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 c. Create a boxplot that shows how the distribution of scores for `satisfied_somerville` differs by response category for `direction_somerville`.
 
+*******************************************************************************
 
 
 
+*******************************************************************************
 
 d. Compare and contrast what you learned from the boxplot in (a) and the histogram plot in (b).
 
+*******************************************************************************
 
 
 
+*******************************************************************************
 
 e. Which response category for `direction_somerville` tends to have the highest satisfaction score?  Does your answer imply that people who think Somerville is headed in the right direction are all very satisfied with Somerville? Use the boxplot in (a) and/or the histograms in (b) in your justification.
 
+*******************************************************************************
 
 
 
-
+*******************************************************************************
 
 ## Exercise 2: MWRA Visualization
 
@@ -65,40 +84,44 @@ wastewater <- read.csv("data/wastewater.csv")
 wastewater$Sample_date <- as.Date(wastewater$Sample_date)
 ```
 
-a. Go to [https://www.mwra.com/biobot/biobotdata.htm](https://www.mwra.com/biobot/biobotdata.htm) and look at the first graph.  What are the geom**s**?  For each geom, discuss what variables are being mapped to the aesthetics of that geom.  
+a. Go to [https://www.mwra.com/biobot/biobotdata.htm](https://www.mwra.com/biobot/biobotdata.htm) and look at the first graph.  What are the geom**s**?  For each geom, discuss what variables are being mapped to the aesthetics of that geom.
 
 Note: The graph doesn't indicate this but the line segments incorporate interval estimates (which we will learn in detail later in the semester) of the daily RNA copies per mL.  For now, when discussing these interval estimates, feel free to refer to the *lower bound of the interval estimate* and the *upper bound of the interval estimate*.
 
+*******************************************************************************
 
 
 
+*******************************************************************************
 
 b. Create a scatterplot of the copies/mL over time.  For now, don't include the moving average.
 
+*******************************************************************************
+
 ```{r}
-# Hint: Before jumping into graphing, insert code to inspect the data 
+# Hint: Before jumping into graphing, insert code to inspect the data
 # and to find your variable names.
 
 # Create scatterplot
 
 ```
 
-
-
+*******************************************************************************
 
 c. Modify your scatterplot to deal with the overplotting and to color your points based on the station. Similar to MWRA, let's use green and orange to color the points.
+
+*******************************************************************************
 
 ```{r}
 # Modify scatterplot
 
 ```
 
-
-
+*******************************************************************************
 
 d. Now add the seven day moving average lines to your scatterplot. (We will add in the uncertainty measures, the vertical line segments, later in the semester.)
 
-What is tricky here is that you will need to **change** what variable is mapped to `y` for your new `geom`.  We have provided some partially completed sample code below to help you get started.  Make sure to put that code in an R chunk below. 
+What is tricky here is that you will need to **change** what variable is mapped to `y` for your new `geom`.  We have provided some partially completed sample code below to help you get started.  Make sure to put that code in an R chunk below.
 
 ```
 # Add moving average to your graph
@@ -106,24 +129,27 @@ ___insert ggplot code from part b___ +
   geom_---(mapping = aes(y = ---))
 ```
 
+*******************************************************************************
+
 ```{r}
 
 
 
 ```
 
-
-
+*******************************************************************************
 
 e. Now give your graph from (e) nice labels and a title.
 
+*******************************************************************************
+
 ```{r}
 
 
 
 ```
 
-
+*******************************************************************************
 
 ## Exercise 3: AQI Summary Statistics
 
@@ -135,7 +161,7 @@ library(openintro)
 library(ggplot2)
 
 ggplot(pm25_2011_durham, aes(x = daily_aqi_value))+
-  geom_histogram(binwidth = 5, color = "white", fill = "steelblue") + 
+  geom_histogram(binwidth = 5, color = "white", fill = "steelblue") +
   scale_y_continuous(breaks = seq(0, 16, by = 2)) +
   labs(x = "Daily AQI") +
   theme_bw()
@@ -143,28 +169,35 @@ ggplot(pm25_2011_durham, aes(x = daily_aqi_value))+
 
 a. Quantitatively describe the center of this sample's AQI distribution, based on the graph (you can eyeball this rather than using R).
 
+*******************************************************************************
 
 
 
+*******************************************************************************
 
 b. Would you expect the mean AQI value of this sample to be higher or lower than the median? Explain your reasoning.
 
+*******************************************************************************
 
 
 
+*******************************************************************************
+
+c. Estimate the Q1, Q3, and IQR (and median, if you haven't already) for the distribution based on the graph. What property of the distribution does the IQR measure?
+
+*******************************************************************************
 
 
-c. Estimate the Q1, Q3, and IQR (and median, if you haven't already) for the distribution based on the graph. What property of the distribution does the IQR measure? 
 
-
-
-
-
+*******************************************************************************
 
 d. Using the estimates of Q1, Q3, and IQR from part (c), would any of the days in this sample be considered outliers?  Explain!
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 ## Exercise 4: Means, Medians, and Skewness
 
@@ -174,16 +207,27 @@ The statistic $\frac{\bar{x}}{median}$ can be used as a measure of skewness. Sup
 
 a. $\frac{\bar{x}}{median} = 1$
 
+*******************************************************************************
 
+
+
+*******************************************************************************
 
 b. $\frac{\bar{x}}{median} < 1$
 
+*******************************************************************************
 
+
+
+*******************************************************************************
 
 c. $\frac{\bar{x}}{median} > 1$
 
+*******************************************************************************
 
 
+
+*******************************************************************************
 
 ## Exercise 5: Explaining data wrangling code
 
@@ -209,17 +253,12 @@ ggplot(data = humans_only, mapping = aes(x = native, fill = .pred_class)) +
   facet_wrap(~detector) +
   labs(x = "Is English one of the native languages of the writer?",
        y = "Proportion of classifications",
-       fill = "Prediction") + 
+       fill = "Prediction") +
   scale_fill_manual(values = c("cornflowerblue", "violetred"))
 ```
 
+*******************************************************************************
 
 
 
-
-
-
-
-
-
-
+*******************************************************************************

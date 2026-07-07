@@ -21,14 +21,69 @@ In this homework assignment you will practice:
 
 I collaborated with...
 
-**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your assignment**
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 
 
 # Exercises
 
 
-## Exercise 1: Data wrangling with the `detectors` data set
+## Exercise 0: Final project group members
+
+Throughout the semester, you will work in groups of 3-5 on a project that answers a research question by using real-world data and techniques covered in our class. The project will culminate in a **a technical report due Monday December 14th at 9am, and a 10-minute presentation that each group will give during our final exam time slot**.
+
+Over the next week, decide who you would like your group members to be. They should be in your same lecture section so that you can collaborate during project work days. Write down the names of your group members below.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 1: Somerville data wrangling
+
+In Problem 1b from Lab 2, we built two different types of bar graphs to visualize how people get around Somerville.
+
+a. Use `count()`, `group_by`, and `mutate()` to reproduce the values shown from your plots in (b) as a contingency table and conditional proportion table.
+
+*******************************************************************************
+
+```{r}
+
+# Contingency table
+
+
+# Conditional proportions table
+
+```
+
+*******************************************************************************
+
+b. The label for "Multiple Modes" of transportation is long and sometimes spills over onto other labels. Use `mutate()` and `case_when()` to overwrite the `primary_transport` variable so that "Multiple Modes" is changed to just "Multiple," and other categories are left the same. Save the results in a *new data frame* called `somerville2`. Then, copy and paste the visualization code from Lab 2 Problem 1b, substituting in `somerville2` to recreate the plot.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+c. The "Not sure" category can seem ill-defined, and we may wish to focus on those who firmly believe Somerville is on the wrong track with those who believe it is on the right track without the distraction of the "not sure"s. Use `filter()` to remove those who aren't sure about the direction of Somerville, and save the result in a new data frame called `somerville3`. Then, recreate the graph again using `somerville3`.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+d. Use `group_by()` and `summarize()` to calculate the **mean** value of `satisfied_somerville` for each level of `primary_transport`. How do these values differ from the information shown in the barplot?
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 2: Data wrangling with the `detectors` data set
 
 Run the chunk of code below to load and preprocess the `detectors` data set. Do not edit this chunk.
 
@@ -46,61 +101,34 @@ humans_only <- detectors %>%
 head(humans_only)
 ```
 
-a. In the new code chunk below, write `R` code to answer the following question: Among non-native English speakers, how likely is each detector to classify their writing as being AI generated?  How about for the native English speakers? 
+a. In the new code chunk below, write `R` code to answer the following question: Among non-native English speakers, how likely is each detector to classify their writing as being AI generated?  How about for the native English speakers?
 
-Hints: 
+Hints:
 
-* Your wrangled data frame should have 28 rows. 
+* Your wrangled data frame should have 28 rows.
 * Consider grouping on more than 1 variable.
 * Run `print([your data frame name], n = 28)` to display the whole table.
 
+*******************************************************************************
+
 ```{r}
 
 
 ```
 
-
-
+*******************************************************************************
 
 b. From your summary statistics in (a), (supplemented by the corresponding graph from Exercise 5 HW 2, if you wish) draw two conclusions.
 
+*******************************************************************************
 
 
 
-
-## Exercise 2: Somerville data wrangling
-
-In Problem 1b from Lab 2, we built two different types of bar graphs to visualize how people get around Somerville.  
-
-a. Use `count()`, `group_by`, and `mutate()` to reproduce the values shown from your plots in (b) as a contingency table and conditional proportion table.
-
-```{r}
-
-# Contingency table
-
-
-# Conditional proportions table
-
-```
-
-
-
-b. The label for "Multiple Modes" of transportation is long and sometimes spills over onto other labels. Use `mutate()` and `case_when()` to overwrite the `primary_transport` variable so that "Multiple Modes" is changed to just "Multiple," and other categories are left the same. Save the results in a *new data frame* called `somerville2`. Then, copy and paste the visualization code from Lab 2 Problem 1b, substituting in `somerville2` to recreate the plot.
-
-
-c. The "Not sure" category can seem ill-defined, and we may wish to focus on those who firmly believe Somerville is on the wrong track with those who believe it is on the right track without the distraction of the "not sure"s. Use `filter()` to remove those who aren't sure about the direction of Somerville, and save the result in a new data frame called `somerville3`. Then, recreate the graph again using `somerville3`. 
-
-
-d. Use `group_by()` and `summarize()` to calculate the **mean** value of `satisfied_somerville` for each level of `primary_transport`. How do these values differ from the information shown in the barplot?
-
-
-
-
-
+*******************************************************************************
 
 ## Exercise 3: Titanic
 
-In this exercise we will explore the data set loaded below, which includes information about all of the passengers who were aboard the RMS Titanic when it sank. 
+In this exercise we will explore the data set loaded below, which includes information about all of the passengers who were aboard the RMS Titanic when it sank.
 
 ```{r}
 titanic <- read.csv("data/Titanic-Dataset.csv")
@@ -112,22 +140,22 @@ head(titanic)
 
 *Hint: If you get stuck on data wrangling code, first try writing pseudo-code like at the end of lecture on 2/4. Then, identify which of the dplyr functions can help you accomplish each step.*
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 **b.** Use R and probability rules to determine if survival was independent of being in first class or not. **Show the values of the probabilities that you calculate to make your argument. Would you expect these variables to be independent?**
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
@@ -137,50 +165,49 @@ Suppose A and B are events with P(A) = 0.3 and P(B) = 0.7.
 
 **a.**  Is it always possible to compute P(A and B) if you only know P(A) and P(B)? **Explain why or why not.**
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
 **b.**  Assuming that events A and B arise from independent random processes, find P(A and B) and P(A | B).
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-  
-  
-  
+*******************************************************************************
+
+
+
 **c.**  Suppose we are given that P(A and B) = 0.1. Are events A and B independent? **Explain.**
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
 
 **d.**  If we are given that P(A and B) = 0.1, what is P(A | B)?
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
+*******************************************************************************
 
 
 
 
 ## Exercise 5: Winfall
 
-In 2003, the Michigan Lottery had a game called Winfall. For each ticket, you would pick six numbers between 1 and 49. Michigan Lottery would draw a six numbers: if you had all six numbers on your ticket, you won the jackpot. If you guessed fewer numbers, you won smaller amounts. If nobody won the jackpot for a while, there was a "roll-down," where on the next drawing, as long as no one had a ticket with all six numbers, the jackpot cash flowed into the lesser tiers of winners. Roll-downs happened every six weeks or so, and in these cases, tickets with 5 winning numbers won \$25,000, tickets with 4 winning numbers won \$1000, and tickets with 3 winning numbers won \$50.  
+In 2003, the Michigan Lottery had a game called Winfall. For each ticket, you would pick six numbers between 1 and 49. Michigan Lottery would draw a six numbers: if you had all six numbers on your ticket, you won the jackpot. If you guessed fewer numbers, you won smaller amounts. If nobody won the jackpot for a while, there was a "roll-down," where on the next drawing, as long as no one had a ticket with all six numbers, the jackpot cash flowed into the lesser tiers of winners. Roll-downs happened every six weeks or so, and in these cases, tickets with 5 winning numbers won \$25,000, tickets with 4 winning numbers won \$1000, and tickets with 3 winning numbers won \$50.
 
 A man named Jerry Selbee discovered a flaw (or, opportunity) in the math behind this roll-down structure. Mathematically, we **expect** the average winnings per ticket in this setup to be about \$2.31 (we'll learn why and what this formally means later in the semester). Importantly, a ticket only cost \$1, meaning that on average, a ticket-buyer should expect to earn $1.31! For this problem, imagine we're in Jerry's shoes and deciding how to use this information.
 
@@ -191,53 +218,55 @@ The function below simulates the lottery process. For a given number of tickets 
 ```{r}
 
 buy_tickets <- function(n) {
-  
+
   # Draw our n tickets (assuming random selection of the numbers)
   your_tickets <- replicate(n, sample(1:49, 6), simplify = FALSE)
-  
+
   # Draw the winning ticket
   winning_ticket <- sample(1:49, 6)
 
   # For each of our n tickets, calculate how many of its numbers are in the
   # winning ticket
   wins <- sapply(your_tickets, function(a) sum(a %in% winning_ticket))
-  
+
   # If 3 numbers are in the winning ticket, a ticket wins $50. If 4 numbers are
   # in the winning ticket, a ticket wins $1000. If 5 numbers are in the winning
   # ticket, a ticket wins $25000. Otherwise, we win $0. We
   # subtract the price of the tickets from our winnings to get our profit.
   profit <- sum(wins == 3) * 50 + sum(wins == 4) * 1000 +
     sum(wins == 5) * 25000 - n
-  
+
   return(profit)
-  
+
 }
 
 ```
 
 
-**a. Intuitively, do you think you are likely to make money by buying one ticket? What if you buy 10, or 100?** Run `buy_tickets(n)` in the console repeatedly for each value `n` to get an anecdotal sense of how often you'll win money for buying `n` tickets.  
+**a. Intuitively, do you think you are likely to make money by buying one ticket? What if you buy 10, or 100?** Run `buy_tickets(n)` in the console repeatedly for each value `n` to get an anecdotal sense of how often you'll win money for buying `n` tickets.
 
--------------------------------------------------------------------------------
-
-
+*******************************************************************************
 
 
--------------------------------------------------------------------------------
+
+
+*******************************************************************************
 
 
 **b.** The number of possible tickets is 13983816. The number of possible tickets with exactly 3 winning numbers is 246820. The number of possible tickets with exactly 4 winning numbers is 13545. The number of possible tickets with exactly 5 winning numbers is 258. **What is the probability of randomly selecting a ticket that wins something?**
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 **c.** Suppose you and a group of friends decides to test a few ticket-buying strategies, with each strategy differing simply on the number of tickets you buy for each lottery day: 1 ticket, 100 tickets, 500 tickets, 2500 tickets, or 5000 tickets. Being patient people, you test each strategy during 200 different lottery days.
 
 The chunk below loads a data frame with the simulated profit per ticket results from testing these strategies (this is essentially a more systematic version of what you did in the console in part a). Each case of the data frame represents a single test of one of the strategies (ex. buying 100 tickets for one lottery day). **Using this data frame, create a new column that indicates whether or not your group made money for that day and strategy. Then, create a barplot showing how often each strategy made or lost money.** Choose a type of barplot that makes comparison easy across the different strategies.
+
+*******************************************************************************
 
 ```{r}
 library(ggplot2)
@@ -257,20 +286,19 @@ head(profit_df)
 
 ```
 
+*******************************************************************************
 
 
-
-**d.** Jerry figured out that *in the long run*, ticket buyers should make money from playing Winfall on roll-down days. **What do you observe in the barplot in part (c)? How does this relate to the law of large numbers?** 
+**d.** Jerry figured out that *in the long run*, ticket buyers should make money from playing Winfall on roll-down days. **What do you observe in the barplot in part (c)? How does this relate to the law of large numbers?**
 
 *Fun fact: The first time Jerry tested his idea out, he bought 2200 tickets, and lost $50 (an average per ticket profit of -\$0.023). Next time he bought 8000 tickets, and won $15,700 (an average per ticket profit of \$0.963).*
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
 
-
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
@@ -280,7 +308,7 @@ head(profit_df)
 Lupus is a medical phenomenon where antibodies that are supposed to attack foreign cells to prevent infections instead see plasma proteins as foreign bodies, leading to a high risk of blood clotting. It is believed that 2% of the population suffer from this disease. The test is 98% accurate if a person actually has the disease. The test is 74% accurate if a person does not have the disease. There is a line from the Fox television show House that is often used after a patient tests positive for Lupus: "It's never Lupus." **Do you think there is truth to this statement? Use appropriate probabilities to support your answer.**
 
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
@@ -289,9 +317,4 @@ Lupus is a medical phenomenon where antibodies that are supposed to attack forei
 
 
 
--------------------------------------------------------------------------------
-
-
-
-
-
+*******************************************************************************

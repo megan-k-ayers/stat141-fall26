@@ -543,7 +543,8 @@ scheduled-docs:
           #   - type: Slides
           #     href: slides/lecture39_wk14fri.qmd
       resources:
-            - 'Study for final exam'
+            - 'Studying for final exam'
             - 'Take final exam on *Tuesday* Dec 8 during lab'
-            - 'Wrap up final project reports and prepare presentation'
+            - 'Wrap up final project reports (due Monday Dec 14 at 9am)'
+            - 'Prepare final project presentation (final exam slot TBD)'
 
