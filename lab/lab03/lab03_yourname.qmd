@@ -1,6 +1,6 @@
 ---
-title: "Lab 3"
-subtitle: "Math 141"
+title: "Lab 3: Data Wrangling and Probability"
+subtitle: "Math 141, Week 3"
 author: "Your name here"
 format: pdf
 execute:
@@ -26,7 +26,7 @@ library(tidyverse)  # Includes ggplot2
 
 # Exercises
 
-### Exercise 1: COVID-19 Case Fatality Rates
+## Exercise 1: COVID-19 Case Fatality Rates
 
 We will use data from a 2021 paper published by IEEE, [von Kugelgen J et al. 2021](10.1109/TAI.2021.3073088). This paper analyses case fatality rates of COVID-19 in Italy and China during 2020. 
 
@@ -39,7 +39,7 @@ print(covid)
 
 
 
-b. Write `R` code to *filter* to only the rows corresponding to China. 
+b. Write `R` code to *filter* to only the rows corresponding to China using the `filter()` function. 
 
 ```{r}
 
@@ -49,13 +49,13 @@ b. Write `R` code to *filter* to only the rows corresponding to China.
 ```
 
 
-c. Using `R` in a new chunk below, *create a new column* that calculates the case fatality rate (the proportion of cases that resulted in fatality) for each row. What do you notice when comparing rates between the two countries?
+c. Using `R` in a new chunk below, *create a new column* using `mutate()` that calculates the case fatality rate (the proportion of cases that resulted in fatality) for each row. What do you notice when comparing rates between the two countries?
 
 
 
 
 
-d. Using `R` in a new chunk below, now calculate the overall case fatality rate, but within each country (not broken down by age). *This will require you to chain together two `dplyr` functions*. How do the overall case fatality rates compare between the two countries? Is this what you would expect based on part (a)? 
+d. Using `R` in a new chunk below, now calculate the overall case fatality rate, but within each country (not broken down by age). *This will require you to chain together two `dplyr` functions:* `group_by()` and `summarize()`. How do the overall case fatality rates compare between the two countries? Is this what you would expect based on part (a)? 
 
 
 

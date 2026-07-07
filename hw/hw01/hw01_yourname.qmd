@@ -1,7 +1,7 @@
 ---
-title: "Assignment 1: Data Visualization"
-subtitle: "Math 141"
-author: "Insert Your Name Here"
+title: "Homework 1: Getting Started"
+subtitle: "Math 141, Week 1"
+author: "Your name here"
 format: pdf
 ---
 
@@ -23,7 +23,7 @@ I collaborated with...
 ### When you have completed HW 1, follow this submission process:
 
 -   **Step 1**: Export the PDF (not the QMD) of your HW 1 from the RStudio Server. Within the Files tab in the lower right-hand window:
-    -   Check the box next to "hw01_yournamehere.pdf".
+    -   Check the box next to "hw01_yourname.pdf".
     -   Click on the blue cog and select "Export..." and then "Download."
 -   **Step 2**: Within Gradescope (which you can access from the course website), click on HW 01 and select the option "Submit PDF."
     -   Then "Select PDF" from where it was downloaded onto your computer and hit "Upload PDF."
@@ -32,14 +32,14 @@ I collaborated with...
 
 # Exercises
 
-### Exercise 1: Syllabus Check-in
+## Exercise 1: Syllabus Check-in
 
 We are going to be covering a lot of ground this semester! One of my goals is for the course policies and logistical aspects to be clear and organized, so that we can focus as much of our time and attention on the material as possible. 
 
 With this in mind, please read the course syllabus in detail, if you haven't already. Write down three things that stand out to you (they can be positive or negative). They can be related to learning outcomes, policies, content, etc. If you have questions, write them down, and I (Megan) will respond to them. 
 
 
-### Exercise 2: Slack Introduction
+## Exercise 2: Slack Introduction
 
 Slack will be a great place for you to ask and answer questions about course content and (non-urgent) logistics. Asking questions and answering questions from your peers will contribute positively towards your participation grade for the course. I also encourage you to use Slack to connect with your peers from the class to collaborate on assignments together. 
 
@@ -50,7 +50,7 @@ For this problem, if you haven't already, please join the course Slack channel (
 -    Introduce yourself in #social, and post a picture of your favorite animal in #animals
 
 
-### Exercise 3: Somerville Data Frame
+## Exercise 3: Somerville Data Frame
 
 Let's explore the `somerville` data frame, which is in the `somerville.csv` file. 
 
@@ -118,7 +118,7 @@ e. Choose a quantitative variable in the `somerville` data, and discuss if the r
 
 
 
-### Exercise 4: Describing and evaluating elements of graphics (Library of Congress)
+## Exercise 4: Describing and evaluating elements of graphics (Library of Congress)
 
 Check out the graphic entitled ["A Brief Visual History of MARC Cataloging at the Library of Congress"](http://sappingattention.blogspot.com/2017/05/a-brief-visual-history-of-marc.html) using the link. This unique visual was created by Benjamin M. Schmidt so that he could better understand the history of how the Library created their digital card catalogs. The many interesting visual artifacts of the graph also help highlight the significant physical work that was involved in the conversion to digital catalogs.
 

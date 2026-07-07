@@ -1,7 +1,7 @@
 ---
 title: "Lab 2: Data Visualization & Summary Statistics"
-subtitle: "Math 141"
-author: "Insert Your Name Here"
+subtitle: "Math 141, Week 2"
+author: "Your name here"
 format: pdf
 execute:
   echo: true
@@ -22,12 +22,12 @@ library(tidyverse)  # Includes ggplot2
 ```
 
 
-# Problems
+# Exercises
 
 
-## Problem 1: Visualizing `somerville` with barplots
+## Exercise 1: Visualizing `somerville` with barplots
 
-For Problems 1-4, we will use the `somerville` dataset that you started exploring in Lab 1. This version of the dataset in the `somerville_clean.csv` file has been cleaned, with the `999` values replaced with `NA`. The atypically large values for `age` have also been converted to `NA`.
+For Problems 1 and 2, we will use the `somerville` dataset that you started exploring in Homework 1. This version of the dataset in the `somerville_clean.csv` file has been cleaned, with the `999` values replaced with `NA`. The atypically large values for `age` have also been converted to `NA`.
 
 Starting in 2011, Somerville city officials decided to start measuring residents' overall happiness and satisfaction with many aspects of life in Somerville, MA; their goal was to become the first city in the United States to systematically track people's happiness. The Happiness Survey is an initiative of the Mayor's Office of Analytics and Innovation (SomerStat) and has the goal of supporting the local government's understanding of what makes Somerville a great place to live. 
 
@@ -122,7 +122,7 @@ somerville$direction_somerville <- factor(somerville$direction_somerville,
 
 
 
-## Problem 2: Visualizing `somerville` with scatterplots
+## Exercise 2: Visualizing `somerville` with scatterplots
 
 a. Create a scatterplot that shows the relationship between `satisfied_somerville` and `convenient_transport`, and where color is determined by `direction_somerville`. On the $x$-axis, put the variable that you think may *explain* the behavior of the other variable. 
 
@@ -138,7 +138,7 @@ b. It is difficult to detect a meaningful pattern in the scatterplot from part (
 
 
 
-## Problem 3: Airline Delay
+## Exercise 3: Airline Delay
 
 You’re shopping for a plane ticket and are deciding between three airlines that each have a flight to your destination and are all scheduled to leave at the same time and arrive at the same time. Below are the delays in arrival times (in minutes) for 10 flights from each of the three airlines (a negative number means the flight arrived early, 0 means the flight arrived exactly on time, a positive number means the flight arrived late):
 

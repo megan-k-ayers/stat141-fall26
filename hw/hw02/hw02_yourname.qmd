@@ -1,7 +1,7 @@
 ---
-title: "Homework 2"
-subtitle: "Math 141"
-author: "Insert Your Name Here"
+title: "Homework 2: Data Visualization & Summary Statistics"
+subtitle: "Math 141, Week 2"
+author: "Your name here"
 format: pdf
 execute:
   echo: true
@@ -21,7 +21,7 @@ In this homework assignment you will practice:
 # Exercises
 
 
-## Problem 1: Visualizing distributions of variables in `somerville`
+## Exercise 1: Visualizing distributions of variables in `somerville`
 
 a. Create a histogram of the `satisfied_somerville` variable. You may need to play around with the number of bins to get a clear idea of the shape. Compute the mean, median, variance, and standard deviation of `satisfied_somerville` What do you notice about the distribution?
 
@@ -52,7 +52,7 @@ e. Which response category for `direction_somerville` tends to have the highest 
 
 
 
-## Problem 2: MWRA Visualization
+## Exercise 2: MWRA Visualization
 
 The [Massachusetts Water Resources Authority (MWRA) graph](https://www.mwra.com/biobot/biobotdata.htm) tracks the presence of COVID-19 in the Boston-area wastewater. Run the following `R` chunk to load the data.
 
@@ -125,7 +125,7 @@ e. Now give your graph from (e) nice labels and a title.
 
 
 
-## Exercise 4: AQI Summary Statistics
+## Exercise 3: AQI Summary Statistics
 
 Daily air quality is measured by the air quality index (AQI) reported by the Environmental Protection Agency. This index reports the pollution level and what associated health effects might be a concern. The index is calculated for five major air pollutants regulated by the Clean Air Act and takes values from 0 to 300, where a higher value indicates lower air quality. AQI was reported for a sample of 91 days in 2011 in Durham, NC. The histogram below shows the distribution of the AQI values on these days.
 
@@ -166,7 +166,7 @@ d. Using the estimates of Q1, Q3, and IQR from part (c), would any of the days i
 
 
 
-### Exercise 4: Means, Medians, and Skewness
+## Exercise 4: Means, Medians, and Skewness
 
 *This question is from IMS Chapter 5.*
 

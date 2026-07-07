@@ -1,6 +1,7 @@
 ---
 title: "Lab 1: Introduction to R, RStudio, and Quarto"
-subtitle: "Math 141"
+subtitle: "Math 141, Week 1"
+author: "Your name here"
 format: pdf
 ---
 
@@ -15,7 +16,7 @@ Welcome to our first lab assignment! In this lab, you will practice:
 ### When you have completed Lab 1, follow this submission process:
 
 -   **Step 1**: Export the PDF (not the QMD) of your Lab 1 from the RStudio Server. Within the Files tab in the lower right-hand window:
-    -   Check the box next to "lab01_yournamehere.pdf".
+    -   Check the box next to "lab01_yourname.pdf".
     -   Click on the blue cog and select "Export..." and then "Download."
 -   **Step 2**: Within Gradescope (which you can access from the course website), click on Lab 01 and select the option "Submit PDF."
     -   Then "Select PDF" from where it was downloaded onto your computer and hit "Upload PDF."
@@ -35,11 +36,11 @@ Welcome to our first lab assignment! In this lab, you will practice:
 
 
 
-# Problems
+# Exercises
 
 
-## Problem 1
-In this problem, we will explore fundamental commands and behavior in R.  
+## Exercise 1
+In this problem, we will explore fundamental commands and behavior in R.
 
 a. In the R code chunk below, create a variable called `y` with the value 7. In R, we use `<-` to assign values to variable names, like `x <- 1`.
 *Pro tip: To run a single line of code, put the cursor on the same line as the code and hit Command+Enter (for a Mac) or Control+Enter (for a PC). To run all the code in a chunk, put the cursor on a line of code and hit Command+Shift+Enter (for a Mac) or Ctrl+Shift+Enter (for a PC).*
@@ -95,7 +96,7 @@ i. Finally, let's practice making a vector and creating character data types. In
 
 
 
-## Problem 2
+## Exercise 2
 
 In this problem, we are going to explore an existing data frame in `R`.
 
