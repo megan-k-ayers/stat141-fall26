@@ -1,0 +1,263 @@
+---
+title: "Homework 5: Multiple Linear Regression"
+subtitle: "Math 141, Week 5"
+author: "Your name here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: **MONDAY, March 9th** at 11:59pm on Gradescope
+
+In this homework assignment you will:
+
+- Practice interpreting regressions with categorical predictors
+- Practice interpreting and comparing multiple linear regression models
+
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
+
+```{r}
+#load the necessary packages
+library(tidyverse)
+library(gglm)
+library(moderndive)
+library(pdxTrees)
+```
+
+
+# Exercises
+
+## Exercise 0: Final Project - Dataset & Research Questions
+
+As a reminder, throughout the semester you will work in your project group to answer a research question using real-world data and techniques covered in class, culminating in a technical report and presentation.
+
+**a.** Describe the dataset your group is considering for the final project. Where does it come from, and what does a row/observation represent?
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**b.** List 2-3 draft research questions your group is considering. 
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**c.** Are there any concerns about this dataset (e.g., missing data, sample size, variables you wish you had) that might affect which research questions are feasible?
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 1: Factors (Categorical Predictors)
+
+We will again work with the `pdxTrees` data package. Run the following code chunk to obtain a data frame of the four parks closest to Reed, subsetted to only include trees of the `Genus` Pseudotsuga, Acer, Quercus, or Cornus.  This data frame includes some additional modification to clean up the data. The chunk also shows how many trees of each `Genus` are in the `near_reed` dataset.
+
+```{r}
+near_reed <- get_pdxTrees_parks() %>%
+  filter(Park %in% c("Crystal Springs Rhododendron Garden",
+                     "Kenilworth Park",
+                     "Eastmoreland Garden",
+                     "Berkeley Park")) %>%
+  mutate(Type = case_when(
+    Functional_Type == "BD" | Functional_Type == "CD" ~ "Deciduous",
+    Functional_Type == "ED" | Functional_Type == "CE" ~ "Evergreen"
+  )) %>%
+  mutate(Crown_Width = (Crown_Width_NS + Crown_Width_EW)/2) %>%
+  drop_na(Type)  %>%
+  filter(Genus %in% c("Pseudotsuga","Acer","Quercus","Cornus"))
+
+near_reed %>% group_by(Genus) %>% summarize(Count=n())
+
+```
+
+**a.** In the chunk below, construct a linear model to analyze the differences in the `Carbon_Sequestration_lb` for each level in `Genus`. **How many indicator variables are displayed in the regression table, and what are they? Which level of the `Genus` variable does not have an indicator variable?**
+
+*******************************************************************************
+
+```{r}
+
+
+```
+
+*******************************************************************************
+
+**b.** Write down the formula for the linear model for `Carbon_Sequestration_lb` as a function of `Genus`.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**c.** Compute the mean `Carbon_Sequestration_lb` for trees in each `Genus`. Then, identify where the value for the `Acer` genus appears in the regression table.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**d.** Demonstrate how the mean `Carbon_Sequestration_lb` for trees from the Cornus, Pseudotsuga, or Quercus genera can be calculated from the *regression table*.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**e.** By default, R chooses the alphabetically first level of the explanatory variable to serve as the baseline. However, the order can be changed in R using some extra code. In the following code chunk, we re-order the `Genus` variable so that the largest category, Pseudotsuga, is the *baseline* group.
+```{r, echo=T}
+near_reed <- near_reed %>%
+  mutate(Genus = fct_relevel(Genus, "Pseudotsuga","Acer","Quercus","Cornus"))
+```
+
+**Create a new linear model for `Carbon_Sequestration_lb` as a function of `Genus`. Comment on how the coefficients estimates have changed.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**f**. Suppose a particular tree is a Bigleaf Maple, which is in the Acer genus. **What is the predicted Carbon Sequestration using the model constructed in part (a)? What is the predicted Carbon Sequestration using the model constructed in part (e)? How do the predictions compare?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 2: Salary Regression Model
+
+In this exercise, you will use a regression model to investigate whether age explains the gap in salary between males and females in post-secondary education. (Note: Even *if* age explained the gap, **there is still a gap!** This is an indication of structural differences for men and women in the US.)
+
+Run the code below to load the same `SalaryGender` data you explored in hw04 Exercise 6.
+
+```{r}
+library(Lock5Data)
+data("SalaryGender")
+SalaryGender <- SalaryGender %>%
+  select(Gender, Age, Salary) %>%
+  mutate(Gender = ifelse(Gender == 0, "Female", "Male"))
+```
+
+**a.** The chunk below creates a linear model using the `SalaryGender` data frame. **Using the summary table, write the equation for the fitted model. Interpret each coefficient, and explain how their values validate your exploratory findings from hw04 Exercise 6.**
+
+```{r}
+lm_salary_gender <- lm(Salary ~ Age + Gender, data = SalaryGender)
+get_regression_table(lm_salary_gender)
+```
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**b.** Using your regression equation from part (a) of this exercise, calculate the model's prediction for the salary of a female teacher who is 30 years old. **Based on the exploratory visualizations in hw04 Exercise 6, is this an example of extrapolation?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 3: Assess Salary Regression Models
+
+**a.** The model created for the previous exercise is just one example of a model that we could fit using the data set. **Briefly explain how each of the four models below is different from each other.**
+
+```{r}
+
+m1 <- lm(Salary ~ Gender, data = SalaryGender)
+m2 <- lm(Salary ~ Age, data = SalaryGender)
+m3 <- lm(Salary ~ Age + Gender, data = SalaryGender)
+
+```
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**b.** Which of the three models helps us best answer our original research question? **Consider both $R^2$ and the types of relationships each model captures in your argument.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**c.** Investigating when linear regression model assumptions hold is important to consider when selecting the best model(s) from a collection of possible models. Run the chunk below, and assess the set of graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?**
+
+```{r}
+
+res <- bind_rows(get_regression_points(m1) %>%
+                    mutate(model = "Salary ~ Gender") %>%
+                   select(Salary, Salary_hat, residual, model),
+                  get_regression_points(m2) %>%
+                    mutate(model = "Salary ~ Age") %>%
+                   select(Salary, Salary_hat, residual, model),
+                  get_regression_points(m3) %>%
+                    mutate(model = "Salary ~ Age + Gender") %>%
+                   select(Salary, Salary_hat, residual, model))
+res$model <- factor(res$model, levels = c("Salary ~ Gender",
+                                          "Salary ~ Age",
+                                          "Salary ~ Age + Gender"))
+
+ggplot(res, aes(x = Salary_hat, y = residual)) +
+  geom_hline(aes(yintercept = 0), lty = 2, color = "gray") +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~model) +
+  labs(title = "Residuals vs Fitted Values") +
+  theme_classic()
+
+```
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**d.** Run the chunk below, and assess the next set of diagnostic graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?**
+
+```{r}
+
+ggplot(res, aes(x = residual)) +
+  geom_histogram(bins = 20, color = "white") +
+  facet_wrap(~model) +
+  labs(title = "Residual Histograms") +
+  theme_classic()
+
+```
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**e.** Would you feel comfortable using any of these models to argue that there is evidence of gender-based salary discrimination among college teachers in 2010?
+
+*******************************************************************************
+
+
+
+*******************************************************************************

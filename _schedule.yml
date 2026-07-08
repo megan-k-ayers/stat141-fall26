@@ -104,7 +104,7 @@ scheduled-docs:
           #     href: readings/reading09_wk03mon.qmd
           #   - type: Slides
           #     href: slides/lecture07_wk03mon.qmd
-        - topic: "Lab: Wrangling & Sampling, Quiz 1"
+        - topic: "Lab: Data Wrangling & Probability | Quiz 1"
           display-date: Thursday, Sept 17
           date: 9/17/26
           # docs:
@@ -144,7 +144,7 @@ scheduled-docs:
           #     href: readings/reading12_wk04mon.qmd
           #   - type: Slides
           #     href: slides/lecture10_wk04mon.qmd
-        - topic: "Lab: Linear Regression 1, Quiz 2"
+        - topic: "Lab: Sampling, Study Design & SLR | Quiz 2"
           display-date: Thursday, Sept 24
           date: 9/24/26
           # docs:
@@ -185,7 +185,7 @@ scheduled-docs:
           #     href: readings/reading15_wk05mon.qmd
           #   - type: Slides
           #     href: slides/lecture13_wk05mon.qmd
-        - topic: "Lab: Linear Regression 2, Quiz 3"
+        - topic: "Lab: Linear Regression | Quiz 3"
           display-date: Thursday, Oct 1
           date: 10/01/26
           # docs:
@@ -229,7 +229,7 @@ scheduled-docs:
           #     href: slides/lecture16_wk06mon.qmd
           #   - type: Midterm Review Sheet
           #     href: in_class/studyguide.pdf
-        - topic: "Lab: Sampling & Bootstrap Distributions, Quiz 4"
+        - topic: "Lab: Sampling & Bootstrap Distributions | Quiz 4"
           display-date: Thursday, Oct 8
           date: 10/08/26
           # docs:
@@ -270,7 +270,7 @@ scheduled-docs:
           #     href: slides/lecture19_wk07mon.qmd
           #   - type: Download HW06
           #     href: hw/hw06.zip
-        - topic: "Lab: Confidence Intervals, Quiz 5"
+        - topic: "Lab: Bootstrapping & Confidence Intervals | Quiz 5"
           display-date: Thursday, Oct 15
           date: 10/15/26
           # docs:
@@ -317,7 +317,7 @@ scheduled-docs:
           #     href: in_class/midterm_revisions_instructions.pdf
           #   - type: Slides
           #     href: slides/lecture22_wk08mon.qmd
-        - topic: "Lab: Hypothesis Testing, Quiz 6"
+        - topic: "Lab: Hypothesis Testing | Quiz 6"
           display-date: Thursday, Oct 29
           date: 10/29/26
           docs:
@@ -355,7 +355,7 @@ scheduled-docs:
           #     href: readings/reading28_wk10wed.qmd
           #   - type: Slides
           #     href: slides/lecture26_wk10wed.qmd
-        - topic: "Lab: Random Variables, Quiz 7"
+        - topic: "Lab: Random Variables | Quiz 7"
           display-date: Thursday, Nov 5
           date: 11/5/26
           # docs:
@@ -394,7 +394,7 @@ scheduled-docs:
           #     href: readings/reading31_wk11wed.qmd
           #   - type: Slides
           #     href: slides/lecture29_wk11wed.qmd
-        - topic: "Lab: Theory-Based Inference 1, Quiz 8"
+        - topic: "Lab: Theory-Based Inference 1 | Quiz 8"
           display-date: Thursday, Nov 12
           date: 11/12/26
           # docs:
@@ -431,7 +431,7 @@ scheduled-docs:
           #     href: readings/reading33_wk12mon.qmd
           #   - type: Slides
           #     href: slides/lecture31_wk12mon.qmd
-        - topic: "Lab: Theory-Based Inference 2, Quiz 9"
+        - topic: "Lab: Theory-Based Inference 2 | Quiz 9"
           display-date: Thursday, Nov 19
           date: 11/19/26
           # docs:
@@ -483,7 +483,7 @@ scheduled-docs:
 
     - week: 14
       days:
-        - topic: "Inference for Regression IV"
+        - topic: "Inference for Regression IV: Wrapping Up"
           display-date: Monday, Nov 29
           date: 11/29/26
           # docs:
@@ -530,7 +530,7 @@ scheduled-docs:
           # docs:
           #   - type: Slides
           #     href: slides/lecture38_wk14wed.qmd
-        - topic: "Lab: FINAL EXAM"
+        - topic: "Lab on TUESDAY: FINAL EXAM"
           display-date: Tuesday, Dec 8
           date: 12/08/26
           # docs:

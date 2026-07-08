@@ -159,7 +159,7 @@ head(titanic)
 
 
 
-## Exercise 4: Probability rules warmup
+## Exercise 4: Probability rules
 
 Suppose A and B are events with P(A) = 0.3 and P(B) = 0.7.
 

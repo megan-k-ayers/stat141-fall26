@@ -1,0 +1,344 @@
+---
+title: "Homework 4: Sampling, Study Design & SLR"
+subtitle: "Math 141, Week 4"
+author: "Your name here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: Friday, February 27th at 11:59pm on Gradescope
+
+
+In this homework assignment you will:
+
+- Review study design and sampling concepts
+- Practice distinguishing observational studies from randomized experiments, and identifying sources of bias
+- Practice identifying sampling strategies and their tradeoffs
+- Practice assessing regression model diagnostics and the limitations of extrapolation
+- Practice using visualizations to perform exploratory data analysis before building a regression model
+
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
+
+```{r}
+#load the necessary packages
+library(tidyverse)
+library(gglm)
+library(moderndive)
+library(pdxTrees)
+```
+
+
+# Exercises
+
+## Exercise 1: Assessing the Trees Near Reed Regression Model
+
+In lab04, you built a linear regression model predicting `Tree_Height` from `Crown_Width` using the `near_reed` dataset. Run the code below to reproduce your data and model from lab.
+
+```{r}
+near_reed <- get_pdxTrees_parks() %>%
+  filter(Park %in% c("Crystal Springs Rhododendron Garden",
+                      "Kenilworth Park",
+                      "Eastmoreland Garden",
+                      "Berkeley Park"),
+         !is.na(Functional_Type)) %>%
+  mutate(Crown_Width = (Crown_Width_EW + Crown_Width_NS) / 2 )
+
+tree_model <- lm(Tree_Height ~ Crown_Width, data = near_reed)
+get_regression_table(tree_model)
+```
+
+**a.** Based on our data and regression equation, do you think it would be a good idea to predict `Tree_Height` for a `Crown_Width` value of 150 feet? **Explain your reasoning.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**b.** Create a residual vs fitted plot for the model above. **Do the residuals appear to have relatively constant variability across the fitted values?**
+
+*Hint: The function `get_regression_points` used in slides from 2/18 may be helpful.*
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**c.** Create a histogram of the residual values and a QQ plot for the model above. **Does the distribution appear to be bell-shaped, unimodal, symmetric and centered at $0$? Does the QQ plot seem reasonable?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**d.** Does it seem likely that the independence assumption holds in this case? (Reminder: we usually assess this assumption by considering contextual evidence, rather than analyzing data.)
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 2: Sampling Bias
+
+**a.** During World War II, the statistician Abraham Wald was asked to help the US military determine where to place more armor on bomber planes. Adding armor protects planes, but weighs a lot, so it must be used sparingly. Statistical data on aircraft damage showed that for the planes observed, the highest density of bullet holes and damage was near the fuselage, while the lowest density was near the motors. It's said that the military concluded that bullets tended to hit the fuselage most often, and planned to add more armor to the fuselage before consulting Wald. **Why would this have been a mistake? What would you recommend instead if you were in Wald's place?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**b.** A survey is conducted on a simple random sample of 1,000 women who recently gave birth, asking them about whether or not they had health insurance. A follow-up survey about medical debt is conducted 2 years later, however, only 567 of these women are reached at the same address. The researcher reports that these 567 women are representative of all mothers. **What is the flaw in the researcher's reasoning? What should they have done different in conducting the study if they wanted to draw such strong conclusions?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**c.** A conservation non-profit enrolls volunteer landowners in a program where landowners will receive financial compensation if they do not cut down any trees on their property over 5 years. The program participants comply and receive payment, and the program administrators conclude that the program prevented carbon emissions by preventing deforestation. **Why might these causal claims be misleading? What should they have done different in conducting the study if they wanted to draw such strong conclusions?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**d.** *(From IMS Ch. 2)*  Suppose we want to estimate average household size, where a "household" is defined as people living together in the same dwelling, and sharing living accommodations. **If we select students at random at an elementary school and ask them what their family size is, will this be a good measure of household size? Or will our average be biased? If so, will it overestimate or underestimate the true value?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 3: Observational study vs experiment
+
+Recall the conservation non-profit program described in Exercise 2 (c). Consider the following approaches that researchers may take to evaluate the effectiveness of this type of avoided deforestation program:
+
+1. Researchers compare outcomes from a large sample of those who already enrolled in the program to a large sample of those who did not. Both samples are representative with respect to geographic region, forest biomes, relative income of the landowner, and ownership type (public vs private land).
+
+2. Researchers apply for a grant to implement their own similar program with a smaller sample, in a specific region of Brazil. They invite applicants to the program, and enroll a random sample of the applicants in the program. Researchers then compare outcomes between those enrolled in the program, and the applicants who were not randomly selected to enroll.
+
+Compare these approaches by answering the following questions.
+
+**a.** Indicate whether each approach is a randomized experiment or an observational study.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**b.** Suppose our overarching research question is: do payment-based conservation programs prevent deforestation? **To what extent does each approach help us answer this question?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**c.** As approaches to generating knowledge, what are the benefits of each, and what are the potential drawbacks? Take statistical considerations into account, but also think about the other demands and ethics of this type of research.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**d.** If you had the results of each study in front of you, which would you trust more? **Explain why.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 4: UC Berkeley Study Assessment
+
+In a study of the relationship between socio-economic class and unethical behavior, 129 University of California undergraduates at Berkeley were asked to identify themselves as having low or high social-class by comparing themselves to others with the most (least) money, most (least) education, and most (least) respected jobs. They were also presented  with a jar of individually-wrapped candies and informed that they were for children in a nearby laboratory, but that they could take some if they wanted. Participants completed unrelated tasks and then reported the number of candies they had taken. It was found that those in the upper-class level took more candy than did those in the lower-class level.
+
+
+**a.** Identify the population of interest.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**b.** Identify the variables measured in the study and specify their types.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**c.** Identify the sample in the study.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**d.** Identify the research question.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**e.** Comment on whether the results of the study can be generalized to the population and if the findings of the study can be used to establish causal relationships.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 5: Sampling Study Design
+
+A large college class has 160 students. All 160 students attend the lectures together, but the students are divided into 4 groups, each of 40 students, for lab sections. Each lab section is administered by a different teaching assistant. The professor wants to conduct a survey about how satisfied the students are with the course, and she believes that the lab section a student is in might affect the student's overall satisfaction with her course.
+
+**a.** What type of study is this, and why?
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**b.** Explain which of the following sampling strategies would be most appropriate for carrying out this study, **being sure to discuss the drawbacks of the methods you did not select**:
+
+i. Simple random sample
+ii. Stratified random sample
+iii. Cluster random sample.
+
+Keep in mind that the professor believes student satisfaction may vary based on their lab section.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 6: Exploratory Data Analysis for Regression
+
+We will study data on teacher salaries for this exercise. Our data is a sample of 100 post-secondary (i.e., college) teachers is collected from the 2010 American Community Survey Public Use Microdata Sample, as found in the `Lock5Data` R package. We are interested in exploring differences in salary based on gender (i.e., gender-based salary discrimination) among college teachers.
+
+For this exercise, we will focus on the role of exploratory data analysis for linear regression models. In hw05, you will build a regression model using this same data.
+
+Load the dataset using the following code:
+
+```{r}
+library(Lock5Data)
+data("SalaryGender")
+SalaryGender <- SalaryGender %>%
+  select(Gender, Age, Salary) %>%
+  mutate(Gender = ifelse(Gender == 0, "Female", "Male"))
+```
+
+The data includes three variables:
+
+1. Gender: Coded as a binary "Female" or "Male". It is not clear whether this truly reflects the gender identity of participants, or something different like biological sex. (We might assume that no participants with other gender identities were included, which limits our ability to generalize to the population at large.)
+2. Age: Age of participant, in years.
+3. Salary: Annual salary in thousands of US dollars.
+
+
+**a.** As stated above, we are interesting in exploring salary differences based on gender. It's important to start by thinking critically about the type of conclusions we can draw from this analysis, especially since we're analyzing data about a sensitive (and very important) topic. **What type of study is this data from, and what types of conclusions can be drawn as a result?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**b.** The chunk below creates exploratory visualizations of each variable: `Salary`, `Age`, and `Gender`. **Why is it important to perform this step before building a linear regression model? Based on the visualizations, give an insight about each variable.**
+
+```{r}
+g1 <- ggplot(data = SalaryGender, aes(x = Salary)) + geom_histogram(bins = 20) +
+  theme_bw() + labs(title = "Histogram of Salary", x = "Salary (thousands of dollars)")
+g2 <- ggplot(data = SalaryGender, aes(x = Age)) + geom_histogram(bins = 20) +
+  theme_bw() + labs(title = "Histogram of Age", x = "Age (years)")
+g3 <- ggplot(data = SalaryGender, aes(x = Gender)) + geom_bar() +
+  theme_bw() + labs(title = "Barchart of Gender")
+gridExtra::grid.arrange(g1, g2, g3, nrow = 2)
+```
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**c.** The chunk below investigates the bivariate relationship between `Salary` and `Gender.` **What trends do you observe, and how are they relevant to building our linear model?**
+
+```{r}
+ggplot(data = SalaryGender, aes(x = Gender, y = Salary)) + geom_boxplot() +
+  theme_bw() + labs(title = "Side-by-Side Boxplots of Salary by Gender")
+```
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**d.** Assess the scatterplot produced by the chunk below. **Describe what the graph is showing.**
+
+```{r}
+ggplot(SalaryGender, aes(x = Age, y = Salary)) + geom_point() +
+  geom_smooth(method = "lm", se = F) + theme_bw()
+```
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**e.** Calculate the correlation coefficient between `Salary` and `Age`, and **comment on the strength of the relationship**.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**f.** Assess the boxplots produced by the chunk below. **Describe what the graph is showing. Explain how insights from this graph and the graph from part (d) are relevant to building our linear model.** Keep in mind that our overall goal is to understand the relationship between salary and gender
+
+```{r}
+ggplot(SalaryGender, aes(x = Gender, y = Age)) +
+  geom_boxplot() +
+  theme_bw() +
+  labs(title = "Side-by-Side Boxplots of Age by Gender")
+```
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**g.** In a new chunk below, create a scatterplot of salary vs age, colored by gender. Add gender-specific trend lines by adding `+ geom_parallel_slopes(se = FALSE)`. **Comment on any trends observed.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************

@@ -1,5 +1,5 @@
 ---
-title: "Lab 4: Linear Regression"
+title: "Lab 4: Sampling, Study Design & SLR"
 subtitle: "Math 141, Week 4"
 author: "Your name here"
 format: pdf
@@ -16,15 +16,15 @@ In this lab, you will
 -   Conduct exploratory data analysis (EDA) techniques in R
 -   Build linear regression models with one dependent variable
 -   Interpret the estimated coefficients of linear regression models
--   Quantify the performance of linear regression models
 -   Use linear regression models to make new predictions
--   Explore how outliers affect linear regression models
+-   Interpret elements of a regression model diagram
+-   Assess experimental design and identify appropriate sampling strategies
 
-## Add any collaborators here!
+### Add any collaborators here!
 
 I collaborated with...
 
-**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 
 # Exercises
@@ -42,7 +42,7 @@ library(moderndive)
 
 ## Exercise 1: Anchoring Effect
 
-During the last lab, we collected data to see if our class exhibits an "anchoring effect". The anchoring effect is a cognitive bias in which an individual's decisions in an uncertain situation are reliant on the first piece of information received. Half of you received the number $x = 82$ and the other half the number $x = 531$ and then you took a survey. The numbers were handed out at random. We want to answer the following question: Does the number received serve as an anchor value for answering the second question?  In other words, does the number seem to serve as a starting point when estimating the number of dog breeds in the world? 
+During the last lab, we collected data to see if our class exhibits an "anchoring effect". The anchoring effect is a cognitive bias in which an individual's decisions in an uncertain situation are reliant on the first piece of information received. Half of you received the number $x = 82$ and the other half the number $x = 531$ and then you took a survey. The numbers were handed out at random. We want to answer the following question: Does the number received serve as an anchor value for answering the second question?  In other words, does the number seem to serve as a starting point when estimating the number of dog breeds in the world?
 
 As a reminder, [here is the survey with the survey questions](https://forms.gle/p3139QL3ZyFgTT9C9).
 
@@ -56,74 +56,125 @@ dogs <- dogs[, c("treatment", "n_breeds", "class")]
 head(dogs)
 ```
 
-
 **a.** What are the cases (i.e., observational units) in our study?
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
+*******************************************************************************
 
 **b.** Describe the response variable and the explanatory variable in our study.
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
+*******************************************************************************
 
 **c.** Does this study design have the potential to demonstrate a causal effect? **Explain your reasoning**.
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
+*******************************************************************************
 
 **d.** Describe how blindness and deception was used in this study. Do you think deception was important to incorporate into this study? Explain your reasoning.
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
+*******************************************************************************
 
 **e.** Construct a visualization showing the relationship between the response and explanatory variables. (*Hint*: Using `coord_cartesian()` to zoom into a specific portion of a plot may be helpful if there are outliers.) **Draw some conclusions based on the visualization; reference summary statistics to support your conclusions.**
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
-
+*******************************************************************************
 
 **f.** Do these data seem to indicate evidence of an anchoring effect? **Explain your answer.**
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
+*******************************************************************************
 
 **g.** To what extent could these results be reasonably generalized to some population? **Explain your reasoning.**
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
+*******************************************************************************
+
+## ******** NOTE TO SELF **********
+
+Sampling bias doesn't get covered anywhere else in this lab, but it does come up in hw04 Exercise 2 (Sampling Bias). Consider adding one more small part to Exercise 2 below that specifically asks students to identify a source of sampling bias, so the concept has some grounding here before the homework builds on it.
+
+## Exercise 2: Voter ID Laws and Sampling
+
+Back in 2014, researchers investigated the impact of voter ID laws on potential voters in the midterm elections. The study involved three locations: Philadelphia, Northern Virginia, and Dallas County, Texas. Each location is divided up into voting precincts and each precinct has a polling site.
+
+In this problem, we will describe the data collection method of two locations and you will practice tying these methods to specific sampling techniques.
+
+**a.**  For Philadelphia, 30 precincts were randomly selected from all precincts in Philadelphia. For each selected precinct, Swarthmore College students interviewed every 3rd person leaving the polling site over a randomly selected hour. **Does this sampling design use cluster sampling, stratified sampling, neither, or both? Justify your answer.**
+
+*******************************************************************************
 
 
 
+*******************************************************************************
 
-## Exercise 2: Regression with Trees Near Reed
+**b.**  For Dallas County, each polling site was categorized by the time of day interviews would take place (morning/mid-day/evening) and whether voters at that site were projected to have an overall high or low propensity of voting. Within each category, a random sample of precincts were selected and Southern Methodist University students interviewed every person leaving those polling places at the particular time of day (morning/mid-day/evening). **Does this sampling design use cluster sampling, stratified sampling, neither, or both? Justify your answer.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**c.**  Why didn't the researchers just take a simple random sample of names (i.e., from a voter registration list) and then conduct exit polls on those people? Justify your answer.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**d.**  Suppose that for a particular state, precincts are known to be relatively heterogeneous; e.g., precincts tend to have different social demographics. **Would cluster sampling or stratified sampling be the recommended strategy for this state? Justify your answer.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 3: Anatomy of a Regression
+
+The graph below shows the results of regressing a variable $y$ against a variable $x$ using five data points (the black points). The graph may be easier to view in the rendered PDF.
+
+![](img/regression_anatomy.png)
+
+Using the vocabulary of regression (fitted values, regression line, residuals, intercept coefficient, slope coefficient), **explain what each of the following elements on the graph correspond to**:
+
+i. The black solid line
+ii. The blue dotted line
+iii. The green solid vertical lines
+iv. The pink points
+v. The yellow square
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+## Exercise 4: Regression with Trees Near Reed
 
 This exercise uses data about trees from the parks near Reed. Run the code below to get the data.
 
@@ -131,7 +182,7 @@ This exercise uses data about trees from the parks near Reed. Run the code below
 # Grab trees near Reed
 near_reed <- get_pdxTrees_parks() %>%
   filter(Park %in% c("Crystal Springs Rhododendron Garden",
-                      "Kenilworth Park", 
+                      "Kenilworth Park",
                       "Eastmoreland Garden",
                       "Berkeley Park"),
          !is.na(Functional_Type))
@@ -148,154 +199,40 @@ near_reed <- near_reed %>%
 
 **a.** Generate a scatterplot with `Crown_Width` as the explanatory variable and `Tree_Height` as the response. Be sure to include an informative title and axis labels to your plot.
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
-
+*******************************************************************************
 
 **b.** Do you expect the correlation coefficient (for `Crown_Width` and `Tree_Height`) to be positive or negative? Write a code chunk testing your prediction.
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
-
+*******************************************************************************
 
 **c.** Using the `near_reed` data frame, run a linear regression using `Crown_Width` as the explanatory variable and `Tree_Height` as the outcome variable. Using `get_regression_table`, display a table of coefficients.
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
-
+*******************************************************************************
 
 **d.** Carefully interpret the estimated coefficients for the intercept and the slope term for Crown Width, *in context*.
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
-
+*******************************************************************************
 
 **e.** Make a numerical prediction for the `Tree_Height` for a tree that has 40 foot crown width, both using the formula for the linear model you created in the previous exercise **and** by using the `predict()` function.
 
--------------------------------------------------------------------------------
+*******************************************************************************
 
 
 
--------------------------------------------------------------------------------
-
-
-
-**f.** Based on our data and regression equation, do you think it would be a good idea to predict `Tree_Height` for a `Crown_Width` value of 150 feet? **Explain your reasoning.**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**g.** Create a residual vs fitted plot for your model from (c). **Do the residuals appear to have relatively constant variability across the fitted values?**
-
-*Hint: The function `get_regression_points` used in slides from 2/18 may be helpful.*
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**h.** Create a histogram of the residual values and a QQ plot for your model from (c). **Does the distribution appear to be bell-shaped, unimodal, symmetric and centered at $0$? Does the QQ plot seem reasonable?**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**i** Does it seem likely that the independence assumption holds in this case? (Reminder: we usually assess this assumption by considering contextual evidence, rather than analyzing data.)
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-## Exercise 3: Regression with Outliers
-
-This exercise uses movie budget, rating, and revenue data collected by Natalya Doris and [made available in this Github repository](https://github.com/ntdoris/movie-revenue-analysis). Run the chunk below and take a look at the extracted variables.
-
-```{r}
-movies <- read.csv("data/movies_cleaned.csv")
-head(movies)
-```
-
-
-**a.** Make a scatterplot to visualize the relationship between `production_budget` and `profit`. Make sure to handle *overplotting*. **What kind of relationship do you see? Is this what you would expect?**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-**b.** Use boxplots to visualize whether there are outliers in either the `production_budget` or `profit` variable. Then, have R display the movies that are the two largest outliers for each of the two variables.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**c.** Perform a regression where profit is the response and production budget is the explanatory variable, and interpret the coefficients.
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**d.** The movie *Avatar* (2009) happens to be the largest outlier for both variables. Remove this row from the data frame and run the same regression as before, using this updated data frame. **How much did removing this movie change the regression coefficients?**
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
-**e.** If the goal of our analysis is to *predict* the profit for an average movie, **which regression would you recommend we use**? If the goal of our analysis is to **understand the relationship** between budget and profit for English language movies, **which would you recommend we use**? 
-
-As a visual reference, below is a plot of the regression lines from (c) in blue (with *Avatar*) and (d) in black (without *Avatar*). 
-
-![](img/regression_comp.png){width=80%}
-
--------------------------------------------------------------------------------
-
-
-
--------------------------------------------------------------------------------
-
-
-
+*******************************************************************************
