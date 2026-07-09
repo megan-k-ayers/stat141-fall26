@@ -19,9 +19,6 @@ library(infer)
 library(openintro)
 ```
 
-## Due: Thursday, April 30th at 11:59pm on Gradescope
-
-
 In this lab, you will
 
   1. Recall how to build, interpret, and check assumptions for linear regression models

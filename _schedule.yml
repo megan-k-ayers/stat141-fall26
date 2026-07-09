@@ -288,6 +288,7 @@ scheduled-docs:
             - 'Submit assignment 6 (due Thurs 10/15 at 9am)'
             - 'Take Quiz 5 during lab'
             - 'Start assignment 7 (assigned 10/15)'
+            - 'Start working on final project EDA'
 
     - week: 8 (Fall Break)
       days:
@@ -334,7 +335,7 @@ scheduled-docs:
       resources:
             - 'Submit assignment 7 (due Thurs 10/29 at 9am)'
             - 'Take Quiz 6 during lab'
-            - 'Submit final project EDA (due Friday Oct 30 at 5pm)'
+            - 'Work on final project EDA (due Monday Nov 2 at 9am)'
             - 'Start assignment 8 (assigned 10/29)'
 
     - week: 10
@@ -372,6 +373,7 @@ scheduled-docs:
           #   - type: Download HW08
           #     href: hw/hw08.zip
       resources:
+            - 'Submit final project EDA (due Monday Nov 2 at 9am)'
             - 'Submit assignment 8 (due Thurs 11/5 at 9am)'
             - 'Take Quiz 7 during lab'
             - 'Start assignment 9 (assigned 11/5)'
@@ -412,6 +414,7 @@ scheduled-docs:
             - 'Submit assignment 9 (due Thurs 11/12 at 9am)'
             - 'Take Quiz 8 during lab'
             - 'Start assignment 10 (assigned 11/12)'
+            - 'Create final project report outline'
 
     - week: 12
       days:
@@ -449,6 +452,7 @@ scheduled-docs:
             - 'Submit assignment 10 (due Thurs 11/19 at 9am)'
             - 'Take Quiz 9 during lab'
             - 'Start assignment 11 (assigned 11/19)'
+            - 'Work on final project report'
 
     - week: 13
       days:
@@ -479,7 +483,7 @@ scheduled-docs:
       resources:
             - 'Submit final project report outline (due 11/24 at 5pm)'
             - 'Continue working on assignment 11'
-            - 'Start writing final project report'
+            - 'Work on final project report'
 
     - week: 14
       days:

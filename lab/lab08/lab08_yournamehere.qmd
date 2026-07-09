@@ -17,9 +17,6 @@ library(tidyverse)
 library(openintro)
 ```
 
-## Due: Tuesday, April 14th at 11:59pm on Gradescope
-
-
 In this lab, you will
 
   1. Practice generating Normal random variables as models for real data

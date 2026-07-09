@@ -1,0 +1,122 @@
+---
+title: "Lab 7: Confidence Intervals"
+subtitle: "Math 141, Week 7"
+author: "Your name here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+In this lab, you will
+
+  1. Construct confidence intervals using the SE and percentile method
+
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
+
+
+## An Important Note on Reproducibility
+
+You will take random samples and build sampling distributions in this lab, which means **you should set a seed using `set.seed(x)`** (where $x$ is replaced with any number of your choosing) **in each code chunk where you generate random values** to ensure that each time you render your document, you obtain an identical random sample to what you see when you're working on the lab.
+
+
+```{r, include=FALSE}
+# Do not edit this code block/chunk
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE, fig.width = 5, fig.height = 3)
+library(tidyverse)
+library(openintro)
+library(moderndive)
+library(infer)
+```
+
+
+
+
+\newpage
+
+
+
+
+
+# Exercises
+
+An [April 2022 Gallup poll](https://news.gallup.com/poll/391679/climate-change-proposals-favored-solid-majorities.aspx) was conducted on six programs that might be used to fight climate change. They were supported by 59% to 89% of respondents. We'll focus on the one that had the least support. The poll results state that 59% percent of respondents favor "Spending federal money to increase the number of electric vehicle charging stations in the U.S."
+
+For the purposes of this lab, we'll assume that a simple random sample of $n=500$ people was asked the question about increasing the number of electric vehicle charging stations in the U.S. Based on this sample, we'll investigate what we can infer about the underlying population parameter.
+
+
+
+## Exercise 1: Code for Simulation-Based Confidence Intervals
+
+**a.** The code below creates a data frame `sample_ev` with $n=500$ sample responses in the `ev_charging` column. 59% of this sample support "Spending federal money to increase the number of electric vehicle charging stations in the U.S." **Using `sample_ev`, create a bootstrap distribution with 5000 replicates called `boot_ev`, and plot it.**
+
+[Only code is needed for this question. *It may be helpful to adapt code from Lab 6 to get started. Be careful to adjust column names, sample sizes, etc. Remember that `quantile()` can help you find percentiles.*]
+
+*******************************************************************************
+
+```{r}
+sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500)))
+
+
+# Your work below. Don't forget to set your seed! 
+
+
+
+```
+
+
+
+*******************************************************************************
+
+
+
+**b.** Using the bootstrap distribution that you created above, calculate a 95% confidence interval for the proportion of US Adults who favor increasing the number of electric vehicle charging stations in the U.S. using the **PERCENTILE method.** 
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+**c.** Use the same sample and the same bootstrap distribution from part (a) -- `sample_ev` and `boot_ev` -- find a 95% confidence interval now using the **STANDARD ERROR method** for the proportion of US Adults who favor increasing the number of electric vehicle charging stations in the U.S.
+
+[Code only for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+**d.** Will the whole class get exactly the same confidence intervals as you did for either parts (b) or (c)? [Only text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+**e**. In 1-2 sentences, compare the intervals produced by the methods in parts (b) and (c) and explain whether we should expect them to coincide.
+
+[Text only for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+

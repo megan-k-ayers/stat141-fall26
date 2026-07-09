@@ -9,8 +9,6 @@ execute:
   message: false
 ---
 
-## Due: Wednesday, April 22nd at 11:59pm on Gradescope
-
 ```{r, include=FALSE, warning=FALSE, message=FALSE}
 # Do not edit this code block/chunk
 knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE, fig.width = 5, fig.height = 3)

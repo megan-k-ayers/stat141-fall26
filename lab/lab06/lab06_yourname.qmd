@@ -9,9 +9,6 @@ execute:
   message: false
 ---
 
-## Due: Tuesday, March 31st at 11:59pm on Gradescope
-
-
 In this lab, you will
 
   1. Sample from a population and compare parameters and statistics

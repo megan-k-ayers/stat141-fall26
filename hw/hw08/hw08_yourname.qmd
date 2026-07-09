@@ -1,0 +1,651 @@
+---
+title: "HW 8: Random Variables"
+subtitle: "Math 141, Week 10"
+author: "Insert Your Name Here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Assigned: Friday, April 3rd
+## Due: Friday, April 10th at 11:59pm on Gradescope
+
+In this homework assignment you will practice:
+
+- Computing expectation, variance, and standard deviation for discrete and continuous random variables
+- Calculating probabilities and quantiles using random variable distributions
+- Working with standardized Normal distributions
+
+
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your assignment**
+
+<!-- ============================================================
+     BELOW: pasted wholesale from lab07 Exercises 2-4 (null dist
+     lead in and hypothesis
+     testing content) and hw07 Block B (also hypothesis testing),
+     since students won't have had the hypothesis testing lecture
+     by week 7 (week 8 is Fall Break). Not yet renumbered or sorted
+     against the Exercises below or each other -- TBD.
+     ============================================================ -->
+
+<!-- --- from lab07 Exercise 2-4 --- -->
+
+## Exercise 2
+
+Suppose that somehow we actually know that the true parameter is that 60% of all US adults favor spending federal money to increase the number of electric vehicle charging stations in the U.S. Since we know the population parameter, we can compute the sampling distribution. A fake population (size 100,000) to sample from is set up in the code chunk below. **Plot a sampling distribution of 5000 samples of size 500 taken from the population, using the `rep_sample_n()` function.  Then, compare it to the plot of the simulation-based bootstrap distribution from part (a). Do the distributions have the same center? Spread? Shape?** 
+
+[Code and text for this question.]
+
+
+*******************************************************************************
+
+```{r}
+pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
+                                     rep("No", 0.4*100000)))
+
+# Your work below. Don't forget to set your seed! 
+
+
+
+```
+
+
+
+
+*******************************************************************************
+
+## Exercise 3
+
+**a.** We're interested in whether it's plausible that the true proportion of all US adults who favor spending federal money to increase the number of electric vehicle charging stations in the U.S. is actually 0.5. For policy reasons, we'd like to know if this survey gives us strong evidence the the proportion is actually more than 0.5 (a majority). Let p be the true proportion. **Write out the null and alternative hypotheses in terms of p.** [Only text for this question.]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**b.** Using simulation, create and display the null distribution. The null distribution is the sampling distribution *under the assumption that the null is true*, so you should follow the same idea as Exercise 2, but where p = 0.5. **Show the results in a histogram as you did in Exercise 2, and explain why the centers are different.** [Code and text for this question.]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**c.** Based on the test statistic from the actual survey ($\hat{p} = 0.59$), find the p-value, which is the proportion of simulated null distribution statistics that are at least as big as the test statistic (if there are any). **Describe the result and interpret your p-value.** If you're still in lab, discuss with someone near you. What was their p-value? [Code and text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**d.** Compare the p-value above to the significance level of alpha = 0.025. **Does this test give evidence to reject the null hypothesis?** [Only text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**e.** What would a Type I or Type II error mean in this context? Is it possible that you made either type of error in part (d)? [Only text for this question.]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+## Exercise 4
+
+Imagine you're a political pollster interested in inferring the proportion of voters who support Carmen Rubio for Portland mayor back in the November 2024 election. You conduct a survey of 200 likely voters and find that 88 of them support Ms. Rubio.
+
+**a.** Create a **90%** confidence interval for $p$, the overall proportion of likely Portland voters who support Carmen Rubio for mayor. [Only code]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**b.** Carefully interpret your confidence interval in context. What can you learn about Ms. Rubio's electoral chances from this confidence interval? [Only text]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**c.** Suppose we're also interested in knowing if it's plausible that Ms. Rubio will receive less than 50\% of the votes in the upcoming election for mayor. **To test this question, calculate a p-value** for the alternative hypothesis that $p<0.5$ vs. the null hypothesis that $p=0.50$ at the 0.05 level. [Only code]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**d.** Carefully interpret your p-value in context. What can you learn about Ms. Rubio's electoral chances from this hypothesis test? [Only text]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**e.** Consider your conclusions from 4(b) and 4(d). *In context*, what is different about your conclusions from the inferential procedures of confidence intervals and hypothesis tests? [Only text]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+**f.** You should have found a right endpoint for your 90% confidence interval of about 0.50 in (a), and a p-value of around 0.05 in (c). In other words, we are right at the "border" of evidence that 50% of voters support Ms. Rubio for mayor. **In your own words, explain why these two inferential procedures "align" in this sense.** [Only text]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+<!-- --- from hw07 Block B --- -->
+
+## Exercise 1: Hypothesis Testing Setup
+
+For each of the situations described in parts (a) - (c), do the following:
+
+  (i) Describe the null and alternative hypotheses (in words)
+  (ii) Describe the effects of a Type I and Type II error in context
+  (iii) Indicate whether it makes more sense to use a larger significance level (such as $\alpha = 0.10$) or a smaller significance level (such as $\alpha = 0.01$), and briefly explain your reasoning.
+
+
+**a.** A new drug with potentially dangerous side effects is tested to see if it is better than the drug currently in use. If it is found to be effective, it will be prescribed to millions of people.
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+**b.** Two slightly different versions of a statistics exercise are given to a 10am and 12pm section of Math 141 and the proportions of students in each class who get the question correct are recorded. We wish to determine whether one question was more difficult than the other.
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+**c.** You test whether taking a vitamin supplement reduces the duration of symptoms of the common cold. There are no (known) harmful side effects of the supplement.
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+## Exercise 2: Interpreting Results and Misconceptions
+
+After graduating, you decide to apply for positions as a statistical consultant. A friend who graduated a few years prior and already works in the field has sent you the following set of scenarios. If she is impressed by your responses, she will recommend your name to a hiring team. For each response, be sure to fully explain your reasoning.
+
+
+**a.** Melatonin pills are a popular remedy for providing insomnia relief. A company developed a new formulation of melatonin pill and conducted a randomized controlled trial on a random sample of 2,000 American adults who were already experiencing insomnia and using melatonin pills. A 95% confidence interval for mean increase in sleep hours per typical night was calculated based on data from the trial: (0.09, 0.13) hours. A hypothesis test for the null hypothesis of no effect resulted in $p$-value 0.0001. **Assess whether the evidence suggests the new formulation is a substantial improvement over melatonin pills currently available on the market. Limit your response to no more than five sentences.**
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+**b.**  The company would like to announce in a press release that based on these data there is only a 0.01% chance that their new melatonin pill is not actually effective, or in other words, that there is a 99.99% chance that their new formulation on average improves the amount of sleep in American adults with insomnia. **Explain why this statement is misleading.**
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+**c.**  Suppose that a researcher in environmental science is working on an analysis using data collected at 200 locations across the United States during January of 2024 and January of 2014. The researcher proposes the following approach: for each location, conduct a two-sided hypothesis test at the $\alpha = 0.05$ significance level to compare the mean temperature in January 2024 to the mean temperature in January 2014. He plans to conclude there is evidence of temperature warming for the locations at which mean temperature in January 2024 is significantly higher than mean temperature in January 2014, and specifically present only those significant results to his principal investigator. **Identify at least one aspect of this analysis plan that is problematic; explain your reasoning as to why there is an issue.**
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+**d.**  A recent study of $n = 20$ dogs investigated the effects of classical music on dog separation anxiety (measured on a 0-10 point scale) and found inconclusive results. Researchers were unable to reject the null hypothesis of zero effect. Researchers report that classical music reduced anxiety in the sample by an effect size of -2.5, and provide a 95% confidence interval of [-6.5, 1.5] and a p-value of $p = 0.34$ for $\alpha = 0.05$. **What are 2 distinct reasons why the study failed to reject the null hypothesis, and how could researchers adjust a future study to distinguish between these 2 cases?** You can assume that the study was perfectly implemented - failure to reject the null was not due to any sampling or implementation error or accident.
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+## Exercise 3: P-Value Pitfalls
+
+The pitfalls of $p$-values have been discussed for decades, and in 2016 the *ASA Statement on p-Values and Statistical Significance* was developed primarily to discuss what not to do with $p$-values.
+
+
+**a.**  To better understand the debate around the use of $p$-values, read the article "A Significant Problem" (written by Lydia Denworth) in the file `scientific_american_p_values.pdf`, available here with your assignment. (*No response required for part a.*)
+
+
+
+**b.**  Describe one reason why it is not advisable to label all results with p-values $p < 0.05$ as "significant" and all results with p-values $p \geq 0.05$ as not significant.
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+
+**c.**  Take a look at the section "Statistical Significance" on pages 2-4, which is intended to explain some concepts underpinning statistical significance in language accessible to those who have not taken a statistics course. **Describe in 2-3 sentences something you thought was explained/illustrated particularly well in this section.**
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+**d.** Try doing some $p$-hacking of your own with ["Hack Your Way To Scientific Glory"](https://stats.andrewheiss.com/hack-your-way/) to reach a "publishable" result. **How did you get to the statistically "significant" result?**
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+**e.**  One proposed reform involves requiring study authors to publicly pre-register their statistical analysis plans prior to any data collection and to report when they deviate from them. **Explain in 2-4 sentences why this approach can help guard against $p$-hacking.**
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+<!-- ============================================================
+     ABOVE: pasted wholesale from lab07/hw07. BELOW: original hw08
+     content ("Random Variables").
+     ============================================================ -->
+
+# Exercises
+
+
+## Exercise 1: Discrete Random Variables
+
+Supposed $X$ is a discrete random variable with the following distribution table:
+
+|      $X$       |    $P(X=x)$     | 
+|----------------|-----------------|
+|      -3        |       0.2       | 
+|       3        |       0.5       |   
+|       10       |       0.3       |  
+
+
+**a.** What is $E(X)$?
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**b.** What are $Var(X)$ and $SD(X)$?
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**c.** Suppose $Y = X^2$. What is the distribution table for $Y$?
+
+********************************************************
+
+|      $Y$       |       $P(Y=y)$       | 
+|----------------|----------------------|
+|                |                      |   
+|                |                      |  
+
+********************************************************
+
+
+
+**d.** What is $E(Y) = E(X^2)$?
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**e.** Using your answers for parts (a) and (d), calculate $E(X^2) - [E(X)]^2$. Compare your answer to what you got for $Var(X)$ in part (b).
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+
+\newpage
+
+
+
+
+## Exercise 2: Binomial Distribution
+
+A Gallup Poll found that 7% of teenagers (ages 13 to 17) suffer from arachnophobia and are extremely afraid of spiders. At a summer camp there are 10 teenagers sleeping in each tent. Assume that these 10 teenagers are independent of each other. 
+
+**a.** Let $X$ be the number of teenagers in a tent of 10 teenagers who suffer from arachnophobia. Precisely explain why $X$ follows a Binomial(n,p) distribution, and state what values $n$ and $p$ are.
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**b.** Calculate E(X), the expected number of teenagers in a tent who suffer from arachnophobia.
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**c.** Calculate the probability that at least one teenager suffers from arachnophobia. (*Hint: remember that the R functions `pbinom()`, `dbinom()`, and `qbinom()` can help you calculate quantities related to Binomial distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**d.** Calculate the probability that exactly 2 of them suffer from arachnophobia. (*Hint: remember that the R functions `pbinom()`, `dbinom()`, and `qbinom()` can help you calculate quantities related to Binomial distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**e.** Calculate the probability that at most 1 of them suffers from arachnophobia. (*Hint: remember that the R functions `pbinom()`, `dbinom()`, and `qbinom()` can help you calculate quantities related to Binomial distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+
+**f.** If the camp counselor wants to make sure no more than 1 teenager in each tent is afraid of spiders, does it seem reasonable for him to randomly assign teenagers to tents?
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+
+\newpage
+
+
+
+
+## Exercise 3: Continuous Random Variables
+
+Suppose the number of hours a particular student takes to complete a statistics exam is modeled by a continuous random variable $T$ with the following density function:
+
+```{r fig.width=6, echo = F}
+library(ggplot2)
+t <- seq(1, 3, by = 0.1)
+p <- ifelse(t <= 2, t - 1, 3 - t)
+density_df <- data.frame(t, p)
+ggplot(density_df, aes(x = t, y = p))+
+  geom_line()+
+  labs(x = "T", y = "density", title = "Density Function for Hours Spent on Exam")+
+  coord_fixed()+
+  scale_x_continuous(breaks = seq(1, 3, by = 0.25))
+```
+
+Models of this type arise frequently in settings where we have sparse information to model a continuous phenomenon (i.e. we may only have estimates for the minimum, maximum, and most likely values for the phenomenon).
+
+As a reminder, the probability that $T$ falls within some range will be the area under the density function for that range (e.g., $P(1.5 \leq T \leq 2)$ will be the area under the density function from 1.5 to 2). For each of the following parts of the problem, use *geometric reasoning* to compute areas (*you do not need to use calculus to answer any of these problems*). Recall that the area of a triangle is $A = 0.5*base*height$.
+
+
+**a.** Verify that the function plotted above indeed has area of 1. **Your explanation should be mathematical in nature, but please explain your thought process in words.**
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**b.** What is the probability that the student takes at most 2.5 hours to complete the exam? **Explain your reasoning.**
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**c.** What is the value of $t$ so that a student has probability $\frac{1}{8}$ of completing the exam before time $t$? **Explain your reasoning.**
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**d.** During what interval of length $1$ does the student have the largest probability of completing the exam. That is, find a number $a$ so that $P(a < T < a+1)$ is as large as possible. **Explain your reasoning.**
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+
+
+\newpage
+
+
+
+
+## Exercise 4: Normal Distribution Warm Up
+
+The average daily high temperature in June in Los Angeles (LA) is 77 degrees Fahrenheit, with a standard deviation of 5 degrees. Suppose that the temperatures in June closely follow a normal distribution, i.e., $F\sim \text{Normal}(\mu=77, \sigma=5)$.
+
+**a.** What is the probability of observing an 83 degree or higher day in LA during a randomly chosen day in June? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**b.** How cool are the coldest 10% of the days (days with lowest high temperature) during June in LA? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
+
+********************************************************
+
+
+
+
+
+********************************************************
+
+
+
+## Exercise 5: Normal Distribution and Z-scores
+
+In triathlons, it is common for racers to be placed into age and gender groups. Friends David and Mary both completed the Hermosa Beach Triathlon, where David competed in the Men, Ages 30 - 34 group while Mary competed in the Women, Ages 25 - 29 group. David completed the race in 1:22:28 (4948 seconds), while Mary completed the race in 1:31:53 (5513 seconds). Obviously David finished faster, but they are curious about how they did within their respective groups. Here is some
+information on the performance of their groups:
+
+  - The finishing times of the Men, Ages 30 - 34 group has a mean of 4313 seconds with a standard deviation of 583 seconds.
+  - The finishing times of the Women, Ages 25 - 29 group has a mean of 5261 seconds with a standard deviation of 807 seconds.
+  - The distributions of finishing times for both groups are approximately Normal.
+    
+Remember: a better performance corresponds to a faster finish.
+
+**a.** Write down the short-hand notation for these two normal distributions.
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**b.** Recall that we standardize Normal distributions by subtracting the mean $\mu$ from the random variable and dividing by the standard deviation $\sigma$. For any observation $x$ of a random variable, we call the quantity $Z = \frac{x - \mu}{\sigma}$ the "Z-score". **What are the Z-scores for David’s and Mary’s finishing times? What do these Z-scores tell you?**
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**c.** Did David or Mary rank better in their respective groups? Explain your reasoning.
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**d.** What percent of the triathletes did David finish faster than in his group? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**e.** What percent of the triathletes did Mary finish faster than in her group? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**f.** If the distributions of finishing times are not nearly normal, would your answers to any of the parts (b) - (e) change? Explain your reasoning.
+
+********************************************************
+
+
+
+********************************************************
+
+
