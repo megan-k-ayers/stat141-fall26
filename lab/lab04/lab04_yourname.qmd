@@ -9,8 +9,6 @@ execute:
   message: false
 ---
 
-## Due: Tuesday, February 24th at 11:59pm on Gradescope
-
 In this lab, you will
 
 -   Conduct exploratory data analysis (EDA) techniques in R
@@ -18,7 +16,7 @@ In this lab, you will
 -   Interpret the estimated coefficients of linear regression models
 -   Use linear regression models to make new predictions
 -   Interpret elements of a regression model diagram
--   Assess experimental design and identify appropriate sampling strategies
+-   Identify appropriate sampling strategies
 
 ### Add any collaborators here!
 
@@ -40,83 +38,11 @@ library(moderndive)
 ```
 
 
-## Exercise 1: Anchoring Effect
-
-During the last lab, we collected data to see if our class exhibits an "anchoring effect". The anchoring effect is a cognitive bias in which an individual's decisions in an uncertain situation are reliant on the first piece of information received. Half of you received the number $x = 82$ and the other half the number $x = 531$ and then you took a survey. The numbers were handed out at random. We want to answer the following question: Does the number received serve as an anchor value for answering the second question?  In other words, does the number seem to serve as a starting point when estimating the number of dog breeds in the world?
-
-As a reminder, [here is the survey with the survey questions](https://forms.gle/p3139QL3ZyFgTT9C9).
-
-Last semester, students in 141 participated in the same experiment. The chunk below loads the combined data from our class and last semester's class.
-
-
-```{r}
-# Load the data
-dogs <- read.csv("data/dogs_cleaned.csv")
-dogs <- dogs[, c("treatment", "n_breeds", "class")]
-head(dogs)
-```
-
-**a.** What are the cases (i.e., observational units) in our study?
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**b.** Describe the response variable and the explanatory variable in our study.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**c.** Does this study design have the potential to demonstrate a causal effect? **Explain your reasoning**.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**d.** Describe how blindness and deception was used in this study. Do you think deception was important to incorporate into this study? Explain your reasoning.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**e.** Construct a visualization showing the relationship between the response and explanatory variables. (*Hint*: Using `coord_cartesian()` to zoom into a specific portion of a plot may be helpful if there are outliers.) **Draw some conclusions based on the visualization; reference summary statistics to support your conclusions.**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**f.** Do these data seem to indicate evidence of an anchoring effect? **Explain your answer.**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**g.** To what extent could these results be reasonably generalized to some population? **Explain your reasoning.**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
 ## ******** NOTE TO SELF **********
 
-Sampling bias doesn't get covered anywhere else in this lab, but it does come up in hw04 Exercise 2 (Sampling Bias). Consider adding one more small part to Exercise 2 below that specifically asks students to identify a source of sampling bias, so the concept has some grounding here before the homework builds on it.
+Sampling bias doesn't get covered anywhere else in this lab, but it does come up in hw04 Exercise 2 (Sampling Bias). Consider adding one more small part to Exercise 1 below that specifically asks students to identify a source of sampling bias, so the concept has some grounding here before the homework builds on it.
 
-## Exercise 2: Voter ID Laws and Sampling
+## Exercise 1: Voter ID Laws and Sampling
 
 Back in 2014, researchers investigated the impact of voter ID laws on potential voters in the midterm elections. The study involved three locations: Philadelphia, Northern Virginia, and Dallas County, Texas. Each location is divided up into voting precincts and each precinct has a polling site.
 
@@ -154,7 +80,7 @@ In this problem, we will describe the data collection method of two locations an
 
 *******************************************************************************
 
-## Exercise 3: Anatomy of a Regression
+## Exercise 2: Anatomy of a Regression
 
 The graph below shows the results of regressing a variable $y$ against a variable $x$ using five data points (the black points). The graph may be easier to view in the rendered PDF.
 
@@ -174,7 +100,7 @@ v. The yellow square
 
 *******************************************************************************
 
-## Exercise 4: Regression with Trees Near Reed
+## Exercise 3: Regression with Trees Near Reed
 
 This exercise uses data about trees from the parks near Reed. Run the code below to get the data.
 

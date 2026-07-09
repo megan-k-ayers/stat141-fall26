@@ -9,7 +9,7 @@ execute:
   message: false
 ---
 
-## Due: Friday, February 27th at 11:59pm on Gradescope
+## Due: Thursday, October 1st at 9:00am on Gradescope as a **PDF**
 
 
 In this homework assignment you will:
@@ -18,7 +18,6 @@ In this homework assignment you will:
 - Practice distinguishing observational studies from randomized experiments, and identifying sources of bias
 - Practice identifying sampling strategies and their tradeoffs
 - Practice assessing regression model diagnostics and the limitations of extrapolation
-- Practice using visualizations to perform exploratory data analysis before building a regression model
 
 
 ### Add any collaborators here!
@@ -124,25 +123,23 @@ get_regression_table(tree_model)
 
 *******************************************************************************
 
-## Exercise 3: Observational study vs experiment
+## Exercise 3: Anchoring Effect
 
-Recall the conservation non-profit program described in Exercise 2 (c). Consider the following approaches that researchers may take to evaluate the effectiveness of this type of avoided deforestation program:
+During the last lab, we collected data to see if our class exhibits an "anchoring effect". The anchoring effect is a cognitive bias in which an individual's decisions in an uncertain situation are reliant on the first piece of information received. Half of you received the number $x = 82$ and the other half the number $x = 531$ and then you took a survey. The numbers were handed out at random. We want to answer the following question: Does the number received serve as an anchor value for answering the second question?  In other words, does the number seem to serve as a starting point when estimating the number of dog breeds in the world?
 
-1. Researchers compare outcomes from a large sample of those who already enrolled in the program to a large sample of those who did not. Both samples are representative with respect to geographic region, forest biomes, relative income of the landowner, and ownership type (public vs private land).
+As a reminder, [here is the survey with the survey questions](https://forms.gle/p3139QL3ZyFgTT9C9).
 
-2. Researchers apply for a grant to implement their own similar program with a smaller sample, in a specific region of Brazil. They invite applicants to the program, and enroll a random sample of the applicants in the program. Researchers then compare outcomes between those enrolled in the program, and the applicants who were not randomly selected to enroll.
-
-Compare these approaches by answering the following questions.
-
-**a.** Indicate whether each approach is a randomized experiment or an observational study.
-
-*******************************************************************************
+Last semester, students in 141 participated in the same experiment. The chunk below loads the combined data from our class and last semester's class.
 
 
+```{r}
+# Load the data
+dogs <- read.csv("data/dogs_cleaned.csv")
+dogs <- dogs[, c("treatment", "n_breeds", "class")]
+head(dogs)
+```
 
-*******************************************************************************
-
-**b.** Suppose our overarching research question is: do payment-based conservation programs prevent deforestation? **To what extent does each approach help us answer this question?**
+**a.** What are the cases (i.e., observational units) in our study?
 
 *******************************************************************************
 
@@ -150,7 +147,7 @@ Compare these approaches by answering the following questions.
 
 *******************************************************************************
 
-**c.** As approaches to generating knowledge, what are the benefits of each, and what are the potential drawbacks? Take statistical considerations into account, but also think about the other demands and ethics of this type of research.
+**b.** Describe the response variable and the explanatory variable in our study.
 
 *******************************************************************************
 
@@ -158,7 +155,39 @@ Compare these approaches by answering the following questions.
 
 *******************************************************************************
 
-**d.** If you had the results of each study in front of you, which would you trust more? **Explain why.**
+**c.** Does this study design have the potential to demonstrate a causal effect? **Explain your reasoning**.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**d.** Describe how blindness and deception was used in this study. Do you think deception was important to incorporate into this study? Explain your reasoning.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**e.** Construct a visualization showing the relationship between the response and explanatory variables. (*Hint*: Using `coord_cartesian()` to zoom into a specific portion of a plot may be helpful if there are outliers.) **Draw some conclusions based on the visualization; reference summary statistics to support your conclusions.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**f.** Do these data seem to indicate evidence of an anchoring effect? **Explain your answer.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**g.** To what extent could these results be reasonably generalized to some population? **Explain your reasoning.**
 
 *******************************************************************************
 
@@ -237,108 +266,3 @@ Keep in mind that the professor believes student satisfaction may vary based on 
 
 *******************************************************************************
 
-## Exercise 6: Exploratory Data Analysis for Regression
-
-We will study data on teacher salaries for this exercise. Our data is a sample of 100 post-secondary (i.e., college) teachers is collected from the 2010 American Community Survey Public Use Microdata Sample, as found in the `Lock5Data` R package. We are interested in exploring differences in salary based on gender (i.e., gender-based salary discrimination) among college teachers.
-
-For this exercise, we will focus on the role of exploratory data analysis for linear regression models. In hw05, you will build a regression model using this same data.
-
-Load the dataset using the following code:
-
-```{r}
-library(Lock5Data)
-data("SalaryGender")
-SalaryGender <- SalaryGender %>%
-  select(Gender, Age, Salary) %>%
-  mutate(Gender = ifelse(Gender == 0, "Female", "Male"))
-```
-
-The data includes three variables:
-
-1. Gender: Coded as a binary "Female" or "Male". It is not clear whether this truly reflects the gender identity of participants, or something different like biological sex. (We might assume that no participants with other gender identities were included, which limits our ability to generalize to the population at large.)
-2. Age: Age of participant, in years.
-3. Salary: Annual salary in thousands of US dollars.
-
-
-**a.** As stated above, we are interesting in exploring salary differences based on gender. It's important to start by thinking critically about the type of conclusions we can draw from this analysis, especially since we're analyzing data about a sensitive (and very important) topic. **What type of study is this data from, and what types of conclusions can be drawn as a result?**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**b.** The chunk below creates exploratory visualizations of each variable: `Salary`, `Age`, and `Gender`. **Why is it important to perform this step before building a linear regression model? Based on the visualizations, give an insight about each variable.**
-
-```{r}
-g1 <- ggplot(data = SalaryGender, aes(x = Salary)) + geom_histogram(bins = 20) +
-  theme_bw() + labs(title = "Histogram of Salary", x = "Salary (thousands of dollars)")
-g2 <- ggplot(data = SalaryGender, aes(x = Age)) + geom_histogram(bins = 20) +
-  theme_bw() + labs(title = "Histogram of Age", x = "Age (years)")
-g3 <- ggplot(data = SalaryGender, aes(x = Gender)) + geom_bar() +
-  theme_bw() + labs(title = "Barchart of Gender")
-gridExtra::grid.arrange(g1, g2, g3, nrow = 2)
-```
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**c.** The chunk below investigates the bivariate relationship between `Salary` and `Gender.` **What trends do you observe, and how are they relevant to building our linear model?**
-
-```{r}
-ggplot(data = SalaryGender, aes(x = Gender, y = Salary)) + geom_boxplot() +
-  theme_bw() + labs(title = "Side-by-Side Boxplots of Salary by Gender")
-```
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**d.** Assess the scatterplot produced by the chunk below. **Describe what the graph is showing.**
-
-```{r}
-ggplot(SalaryGender, aes(x = Age, y = Salary)) + geom_point() +
-  geom_smooth(method = "lm", se = F) + theme_bw()
-```
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**e.** Calculate the correlation coefficient between `Salary` and `Age`, and **comment on the strength of the relationship**.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**f.** Assess the boxplots produced by the chunk below. **Describe what the graph is showing. Explain how insights from this graph and the graph from part (d) are relevant to building our linear model.** Keep in mind that our overall goal is to understand the relationship between salary and gender
-
-```{r}
-ggplot(SalaryGender, aes(x = Gender, y = Age)) +
-  geom_boxplot() +
-  theme_bw() +
-  labs(title = "Side-by-Side Boxplots of Age by Gender")
-```
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**g.** In a new chunk below, create a scatterplot of salary vs age, colored by gender. Add gender-specific trend lines by adding `+ geom_parallel_slopes(se = FALSE)`. **Comment on any trends observed.**
-
-*******************************************************************************
-
-
-
-*******************************************************************************

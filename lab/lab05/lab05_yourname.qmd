@@ -1,7 +1,7 @@
 ---
 title: "Lab 5: Multiple Linear Regression"
 subtitle: "Math 141, Week 5"
-author: "Insert Your Name Here"
+author: "Your name here"
 format: pdf
 execute:
   echo: true
@@ -9,23 +9,19 @@ execute:
   message: false
 ---
 
-## Due: Tuesday, March 3rd at 11:59pm on Gradescope
-
-
 In this lab, you will
 
 1. Conduct exploratory data analysis (EDA) techniques in R with multiple predictors
 2. Build linear regression models with multiple predictors
 3. Interpret the estimated coefficients of multiple linear regression models
-4. Build and interpret linear regression models with interactions
-5. Assess how transformations can help satisfy LINE assumptions 
+4. Compare and assess multiple linear regression models
 
 
-## Add any collaborators here!
+### Add any collaborators here!
 
 I collaborated with...
 
-**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 ```{r}
 #load the necessary packages
@@ -34,224 +30,229 @@ library(pdxTrees)
 library(moderndive)
 ```
 
-## Exercises
+# Exercises
 
-## Exercise 1: Regression with Transformation
+## ******** NOTE TO SELF **********
 
-Problems 1 & 2 use an extended version of the [Opportunity Insights dataset](http://www.equality-of-opportunity.org/data/) (introduced in the activity from the *Data Wrangling* lecture) that has been joined with a dataset from The National Association of College and University Business Officers containing information on university endowment assets from 2016.\footnote{Specifically, the endowment data are from fiscal year 2016, which began on June 1, 2015 and ended on May 31, 2016. For the purposes of Math 141, it is fine to simply refer to these data as being collected in 2016.} The data are in the file `colleges_endow.Rdata`; for simplicity, the data frame is named `colleges`. The following table provides a list of the variables in the dataset and their descriptions. (Note: It is easier to read the table in the Rendered PDF document.)
+These next three exercises (EDA / Salary Regression Model / Assess Salary Regression Models) were moved here wholesale from hw05, unedited. They still read as full from-scratch exercises -- **rewrite them before this lab runs** to match the new pedagogical goal:
 
-\begin{center}
-\begin{tabular}{r|l}
-\textbf{Variable} & \textbf{Description} \\
-\hline
-\texttt{name} & name of college \\
-\texttt{region} & region, \texttt{1} for Northeast, \texttt{2} for Midwest, \texttt{3} for South, and \texttt{4} for West \\
-\texttt{state} & state \\
-\texttt{tier\_name} & tier defined by selectivity and type \\
-\texttt{type} & coded \texttt{1} for public, \texttt{2} for private non-profit, \texttt{3} for for-profit \\
-\texttt{exp\_instr\_pc\_2013} & instructional expenditures per student in 2013 \\
-\texttt{ipeds\_enrollment\_2013} & total undergraduate enrollment in Fall 2013 \\
-\texttt{sticker\_price\_2013} & average annual cost of attendance in 2013 \\
-\texttt{scorecard\_netprice\_2013} & net annual cost of attendance for bottom income quintile in 2013 \\
-\texttt{grad\_rate\_150\_p\_2013} & percentage of students graduating within 150\% of normal time in 2013 \\
-\texttt{avgfacsal\_2013} & average faculty salary in 2013 \\
-\texttt{sat\_avg\_2013} & average SAT scores (scaled to 1600) in 2013 \\
-\texttt{endowment\_pc\_2000} & endowment assets per student in 2000 \\
-\texttt{mr\_kq5\_pq1} & mobility rate, top 20\% of the income distribution \\
-\texttt{mr\_ktop1\_pq1} & mobility rate, top 1\% of the income distribution \\
-\texttt{par\_median} & median parent household income \\
-\texttt{par\_q1} & fraction of parents in first (bottom) income quintile \\
-\texttt{par\_q2} & fraction of parents in second income quintile \\
-\texttt{par\_q3} & fraction of parents in third income quintile \\
-\texttt{par\_q4} & fraction of parents in fourth income quintile \\
-\texttt{par\_q5} & fraction of parents in fifth (top) income quintile  \\
-\texttt{par\_top5pc} & fraction of parents in top 5\% of income distribution \\
-\texttt{par\_top1pc} & fraction of parents in top 1\% of income distribution \\
-\texttt{k\_median} & median child individual earnings in 2014 (at age 34) \\
-\texttt{k\_top5pc} & fraction of children in top 5\% of income distribution \\
-\texttt{k\_top1pc} & fraction of children in top 1\% of income distribution \\
-\texttt{fy2016\_endowment\_pc} & endowment assests per student in 2016 \\
-\texttt{fy2016\_endowment\_thousands} & total value of endowment in thousands USD in 2016 \\
-\end{tabular}
-\end{center}
+- `mlr_demo/mlr_demo.qmd` (now living in this lab05 folder as a standalone reference file, using the `house` dataset) is presented live at the start of lab (~15 min) and walks through the full EDA -> model -> LINE diagnostics -> adjusted R^2 workflow.
+- These three exercises should become a **shortened** exercise where students *adapt/repurpose the demo's code* for the `SalaryGender` setting, rather than building everything from scratch or answering fully independent prose questions. Point them at `mlr_demo/mlr_demo.qmd` to copy/adapt from.
+- The goal is intentional scaffolding: case study (watch) -> lab (adapt the code) -> hw (go deeper, independently, on `colleges`). Keep enough repetition that it reinforces the workflow, but cut what's now redundant with the demo (e.g., the full model-comparison-via-R^2 exercise probably overlaps too much with the demo's adjusted-R^2 section).
+- No bridge/callback text is needed pointing students back to this lab from hw05 -- decided that's unnecessary hand-holding given how much repetition/lecture exposure they'll already have had.
 
-Run the following R chunk to load the `colleges` data frame.
+## Exercise 1: Exploratory Data Analysis for Regression
 
-```{r, eval = TRUE}
-load("data/colleges_endow.Rdata")
+We will study data on teacher salaries for the rest of this homework assignment. Our data is a sample of 100 post-secondary (i.e., college) teachers is collected from the 2010 American Community Survey Public Use Microdata Sample, as found in the `Lock5Data` R package. We are interested in exploring differences in salary based on gender (i.e., gender-based salary discrimination) among college teachers.
+
+For this exercise, we will focus on the role of exploratory data analysis for linear regression models.
+
+Load the dataset using the following code:
+
+```{r}
+library(Lock5Data)
+data("SalaryGender")
+SalaryGender <- SalaryGender %>%
+  select(Gender, Age, Salary) %>%
+  mutate(Gender = ifelse(Gender == 0, "Female", "Male"))
 ```
 
-One metric of college access is net tuition price for low- and middle-income students after accounting for financial aid. The `scorecard_netprice_2013` variable contains data on the net annual cost of attendance for students with parental household income in the bottom quintile (in 2013); these data come from the U.S. Department of Education's College Scorecard. 
+The data includes three variables:
 
-A university's endowment refers to the financial assets invested by a university to support its educational and research mission; individuals and organizations can donate to contribute to a university's endowment. The `fy2016_endowment_pc` variable contains data on the monetary value of endowment assets per student (in 2016), measured in USD.
+1. Gender: Coded as a binary "Female" or "Male". It is not clear whether this truly reflects the gender identity of participants, or something different like biological sex. (We might assume that no participants with other gender identities were included, which limits our ability to generalize to the population at large.)
+2. Age: Age of participant, in years.
+3. Salary: Annual salary in thousands of US dollars.
 
-Let's investigate the association between college access and endowment assets by building a model for college access using endowment assets. 
 
-**a.** First, explore both the net tuition price variable and endowment assets variable individually. **Describe the distribution of each variable in the context of the data, referencing numerical and graphical summaries as needed.**
+**a.** As stated above, we are interesting in exploring salary differences based on gender. It's important to start by thinking critically about the type of conclusions we can draw from this analysis, especially since we're analyzing data about a sensitive (and very important) topic. **What type of study is this data from, and what types of conclusions can be drawn as a result?**
 
-********************************************************************
+*******************************************************************************
 
 
 
+*******************************************************************************
 
+**b.** The chunk below creates exploratory visualizations of each variable: `Salary`, `Age`, and `Gender`. **Why is it important to perform this step before building a linear regression model? Based on the visualizations, give an insight about each variable.**
 
-********************************************************************
+```{r}
+g1 <- ggplot(data = SalaryGender, aes(x = Salary)) + geom_histogram(bins = 20) +
+  theme_bw() + labs(title = "Histogram of Salary", x = "Salary (thousands of dollars)")
+g2 <- ggplot(data = SalaryGender, aes(x = Age)) + geom_histogram(bins = 20) +
+  theme_bw() + labs(title = "Histogram of Age", x = "Age (years)")
+g3 <- ggplot(data = SalaryGender, aes(x = Gender)) + geom_bar() +
+  theme_bw() + labs(title = "Barchart of Gender")
+gridExtra::grid.arrange(g1, g2, g3, nrow = 2)
+```
 
+*******************************************************************************
 
 
-**b.** Construct a plot showing the association between net tuition price and endowment assets. Be sure to map the response variable to the $y$-axis and the explanatory variable to the $x$-axis.
 
-********************************************************************
+*******************************************************************************
 
+**c.** The chunk below investigates the bivariate relationship between `Salary` and `Gender.` **What trends do you observe, and how are they relevant to building our linear model?**
 
+```{r}
+ggplot(data = SalaryGender, aes(x = Gender, y = Salary)) + geom_boxplot() +
+  theme_bw() + labs(title = "Side-by-Side Boxplots of Salary by Gender")
+```
 
+*******************************************************************************
 
-********************************************************************
 
 
+*******************************************************************************
 
-**c.** Describe what the plot in part (b) shows; i.e., based on the plot, **does there seem to be a relationship between college access and endowment assets? Does a line seem like a reasonable summary for the relationship between these variables?** Explain your reasoning.
+**d.** Assess the scatterplot produced by the chunk below. **Describe what the graph is showing.**
 
-********************************************************************
+```{r}
+ggplot(SalaryGender, aes(x = Age, y = Salary)) + geom_point() +
+  geom_smooth(method = "lm", se = F) + theme_bw()
+```
 
+*******************************************************************************
 
 
 
+*******************************************************************************
 
-********************************************************************
+**e.** Calculate the correlation coefficient between `Salary` and `Age`, and **comment on the strength of the relationship**.
 
+*******************************************************************************
 
-**d.** **Add a variable to the `colleges` dataset that contains the log-transformed version of `fy2016_endowment_pc` and name it `log_endow_pc`.** That is, if `fy2016_endowment_pc` equals \$1000, then the log-transformed version equals $\log(1000) = \ln(1000) = 6.908$. Statisticians tend to refer to natural log as just "log". The function in R to compute the (natural) log is `log()`.
 
-********************************************************************
 
+*******************************************************************************
 
+**f.** Assess the boxplots produced by the chunk below. **Describe what the graph is showing. Explain how insights from this graph and the graph from part (d) are relevant to building our linear model.** Keep in mind that our overall goal is to understand the relationship between salary and gender
 
+```{r}
+ggplot(SalaryGender, aes(x = Gender, y = Age)) +
+  geom_boxplot() +
+  theme_bw() +
+  labs(title = "Side-by-Side Boxplots of Age by Gender")
+```
 
+*******************************************************************************
 
-********************************************************************
 
 
-**e.** Recreate the plot from part (b), but use the log-transformed version of `fy2016_endowment_pc` rather than the original variable. 
+*******************************************************************************
 
-********************************************************************
+**g.** In a new chunk below, create a scatterplot of salary vs age, colored by gender. Add gender-specific trend lines by adding `+ geom_parallel_slopes(se = FALSE)`. **Comment on any trends observed.**
 
+*******************************************************************************
 
 
 
+*******************************************************************************
 
-********************************************************************
+## Exercise 2: Salary Regression Model
 
+In this exercise, you will use a regression model to investigate whether age explains the gap in salary between males and females in post-secondary education. (Note: Even *if* age explained the gap, **there is still a gap!** This is an indication of structural differences for men and women in the US.)
 
+**a.** The chunk below creates a linear model using the `SalaryGender` data frame. **Using the summary table, write the equation for the fitted model. Interpret each coefficient, and explain how their values validate your exploratory findings from Exercise 1.**
 
-**f.** Based on the plot in part (e), **does a line seem like a reasonable summary of the relationship between net tuition price and log-transformed endowment assets? If so, calculate the correlation coefficient and interpret the sign and magnitude.**
+```{r}
+lm_salary_gender <- lm(Salary ~ Age + Gender, data = SalaryGender)
+get_regression_table(lm_salary_gender)
+```
 
-********************************************************************
+*******************************************************************************
 
 
 
+*******************************************************************************
 
+**b.** Using your regression equation from part (a) of this exercise, calculate the model's prediction for the salary of a female teacher who is 30 years old. **Based on the exploratory visualizations in Exercise 1, is this an example of extrapolation?**
 
+*******************************************************************************
 
-********************************************************************
 
 
+*******************************************************************************
 
-**g.** Construct a simple linear regression model for net tuition price using the log-transformed endowment assets variable. **Print out the model coefficients table, and check the model diagnostics and comment on them.**
+## Exercise 3: Assess Salary Regression Models
 
-(*Hint: Recall that you have the demo files from last lab with example code for building a linear regression model and creating model diagnostic plots.*)
+**a.** The model created for the previous exercise is just one example of a model that we could fit using the data set. **Briefly explain how each of the four models below is different from each other.**
 
-********************************************************************
+```{r}
 
+m1 <- lm(Salary ~ Gender, data = SalaryGender)
+m2 <- lm(Salary ~ Age, data = SalaryGender)
+m3 <- lm(Salary ~ Age + Gender, data = SalaryGender)
 
+```
 
+*******************************************************************************
 
 
 
-********************************************************************
+*******************************************************************************
 
+**b.** Which of the three models helps us best answer our original research question? **Consider both $R^2$ and the types of relationships each model captures in your argument.**
 
+*******************************************************************************
 
-## Exercise 2: Regression Models with Equal vs Varying Slopes
 
-In this problem, we will investigate whether the relationship between net tuition price for low- and middle-income students and endowment value seems to differ for Ivy Plus schools versus other schools.
 
-**a.** Create a new variable that categorizes whether or not a school is Ivy Plus. (*Hint: Revisit the code in slide 25 from 2/4*)
+*******************************************************************************
 
-********************************************************************
+**c.** Investigating when linear regression model assumptions hold is important to consider when selecting the best model(s) from a collection of possible models. Run the chunk below, and assess the set of graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?**
 
+```{r}
 
+res <- bind_rows(get_regression_points(m1) %>%
+                    mutate(model = "Salary ~ Gender") %>%
+                   select(Salary, Salary_hat, residual, model),
+                  get_regression_points(m2) %>%
+                    mutate(model = "Salary ~ Age") %>%
+                   select(Salary, Salary_hat, residual, model),
+                  get_regression_points(m3) %>%
+                    mutate(model = "Salary ~ Age + Gender") %>%
+                   select(Salary, Salary_hat, residual, model))
+res$model <- factor(res$model, levels = c("Salary ~ Gender",
+                                          "Salary ~ Age",
+                                          "Salary ~ Age + Gender"))
 
+ggplot(res, aes(x = Salary_hat, y = residual)) +
+  geom_hline(aes(yintercept = 0), lty = 2, color = "gray") +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~model) +
+  labs(title = "Residuals vs Fitted Values") +
+  theme_classic()
 
+```
 
+*******************************************************************************
 
-********************************************************************
 
 
-**b.** Construct a plot showing the association between net tuition price and log-transformed endowment assets; color the points based on whether a school is in the Ivy Plus. **Describe what you see. How does the average net tuition price for low- and middle-income students at Ivy Plus schools compare to other schools?** 
+*******************************************************************************
 
-(*Hint: Revisit the code in slide 7 from 2/23 for creating the plot, and slide 30 on 2/4 for calculating group averages.*)
+**d.** Run the chunk below, and assess the next set of diagnostic graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?**
 
-********************************************************************
+```{r}
 
+ggplot(res, aes(x = residual)) +
+  geom_histogram(bins = 20, color = "white") +
+  facet_wrap(~model) +
+  labs(title = "Residual Histograms") +
+  theme_classic()
 
+```
 
+*******************************************************************************
 
 
 
+*******************************************************************************
 
-********************************************************************
+**e.** Would you feel comfortable using any of these models to argue that there is evidence of gender-based salary discrimination among college teachers in 2010?
 
+*******************************************************************************
 
-**c.** Construct a linear regression model for net tuition price using log-transformed endowment assets *and* whether a school is categorized as Ivy Plus. *Assume equal slopes in the model.* Print the model coefficients table **and interpret the coefficients in the context of the data. Be sure to comment on whether the intercept makes sense in this context.**
 
-********************************************************************
 
-
-
-
-
-
-********************************************************************
-
-
-
-**d.** In part (b), you estimated the difference in average net tuition price for low- to middle-income students at schools in the Ivy Plus versus schools not in the Ivy Plus. **Explain the reasoning behind why this difference is not equal to the coefficient for the Ivy Plus predictor variable in the model from part (c).**
-
-********************************************************************
-
-
-
-
-
-
-********************************************************************
-
-
-**e.** Construct a linear regression model for the net tuition price using log-transformed endowment assets and whether a school is categorized as Ivy Plus. *Assume varying slopes in the model.* Based on this model, **write out the formula for the regression line for just Ivy Plus schools and the formula for the regression line for just non-Ivy Plus schools**. Using these formulas, state **what is the estimated slope for schools in the Ivy Plus and what is the estimated slope for non-Ivy Plus schools.**
-
-********************************************************************
-
-
-
-
-
-
-********************************************************************
-
-
-
-**f.** Produce a plot that illustrates the linear model fit in part (e). Based on this plot and your previous analyses, is there evidence suggesting that making a donation to a school's endowment increases access for low- and middle-income students to the same extent at Ivy Plus schools as non-Ivy Plus schools? **Explain your reasoning.** 
-
-(*Hint: Revisit the code in slides 19-20 from 2/23*)
-
-********************************************************************
-
-
-
-
-
-********************************************************************
-
-
-
+*******************************************************************************
