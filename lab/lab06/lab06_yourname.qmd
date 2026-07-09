@@ -1,0 +1,302 @@
+---
+title: "Lab 6: Sampling Distributions"
+subtitle: "Math 141, Week 6"
+author: "Your name here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: Tuesday, March 31st at 11:59pm on Gradescope
+
+
+In this lab, you will
+
+  1. Sample from a population and compare parameters and statistics
+  2. Generate sampling distributions in R and calculate their properties
+  3. Learn about random seeds
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
+
+
+
+```{r echo = FALSE}
+# Load the necessary packages
+set.seed(123)
+library(tidyverse)
+library(infer)
+library(moderndive)
+library(ggplot2)
+library(dplyr)
+library(pdxTrees)
+```
+
+
+# Part I: Sampling Distributions Warmup
+
+Consider the following population of 5 dogs: Aoki (0.5 years), Bluto (2 years), Coco (2.5 years), Dexter (5 years), and Eggbert (8 years). In this question, you will explicitly calculate the sampling distribution for the **mean age of the dogs** (in years) under samples of different sizes.
+
+**a.** Calculate the sampling distribution for samples of size $n=1$. That is, write down the dogs in each of the 5 possible samples and their corresponding sample statistics. **Then, calculate the mean and standard error of the sampling distribution.**
+
+(*Hint: the `mean()` and `sd()` functions may be useful. You can write R calculations inline with this syntax: `r mean(c(1, 2, 3))`*.)
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**b.** Calculate the sampling distribution for samples of size $n=3$. That is, write down the dogs in each of the 10 possible samples and their corresponding sample statistics. **Then, calculate the mean and standard error of the sampling distribution.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+**c.** Calculate the sampling distribution for samples of size $n=5$. That is, write down the dogs in the single possible sample and its corresponding sample statistic. **Then, calculate the mean and standard error of the sampling distribution.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**d.** Calculate the population parameter.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**e.** Compare and contrast the sampling distributions and parameter you calculated, with respect to **center** and **spread**.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+
+# Part II: Sampling Distributions with Code
+
+### Background
+
+In this portion of the lab, we will gain experience sampling from a population in R. The **population** of interest will be all 964 Western Redcedar trees in Portland parks. As an analogy to the tactile sampling you did in class, we have a "deck" of 964 Western Redcedar trees, where each tree is a specific "card".
+
+If you get stuck as you are working through this lab, you may find it helpful to review sections 7.1-7.4 on sampling distributions and/or sections 8.1.1 and 8.2.0-8.2.1 on bootstrapping in the [ModernDive](https://moderndive.com/v2/) textbook.
+
+
+### Symbols and Notation 
+
+Symbol           | POPULATION/PARAMETER           | SAMPLE/STATISTIC
+---------------- | ------------------------------ | ------------------
+Number of cases  | $N$                            | $n$
+Proportion       | $p$                            | $\hat{p}$
+Standard error   | $SE$                           | $\widehat{SE}$
+
+
+### Setup
+
+Run the following code to load the data set, and subset it to only the **condition variable for Western Redcedars**. You may also want to take a look at the dataset, `trees` in the **viewer**.
+
+```{r}
+pdxTrees_parks <- get_pdxTrees_parks()
+trees <- pdxTrees_parks %>% 
+  filter(Common_Name == "Western Redcedar") %>% 
+  select(Condition)  # This takes just the column "Condition"
+```
+
+### Exploratory Data Analysis (EDA)
+
+The following shows the distribution of the different levels of `Condition` of the Western Redcedars in Portland parks (i.e., in our population of Western Redcedars).
+
+```{r}
+trees %>% 
+  group_by(Condition) %>% 
+  count()
+```
+
+ 
+### True population proportion $p$ of Western Redcedars
+
+Again, for this exercise, the **population** of interest will be **ALL** 964 Western Redcedar trees in Portland parks.  Since we have data on **ALL** 964 Western Redcedar trees in Portland parks, we can compute the **exact population proportion $p$ of Western Redcedars in good condition directly** like so, using **ALL** the data: 
+
+```{r}
+trees %>% 
+  summarize(N_Good = sum(Condition == "Good"),
+            N = n()) %>%
+  mutate(p = N_Good / N)
+  
+```
+
+> Note: We use $N$ for the size of the full population of 964 trees, and $p$ because we are calculating the TRUE population proportion $p$.
+
+Note that no inference to the population is needed in this case. Because we are observing the full population, we do not need to use a **sample** to try to infer something about the **true population proportion $p$** of Western Redcedars in good condition in Portland parks. We know that $p$ = 0.133. Of course, this lab is not a realistic reflection of a real life problem. We will *simulate* the act of sampling from this population to understand and study how factors like sample size influence **sampling variation**.
+
+
+### Setting a seed
+
+We will take some random samples in this lab. In order to make sure R takes the same random sample every time you run your code, you can do what is called **"setting a seed"**. Do this in any code chunk that you take a random sample! You can set a seed like so. Any number will do.
+
+```{r}
+set.seed(42)
+```
+
+### Estimating $\hat{p}$ from a single sample
+
+We are first going to use random sampling to **ESTIMATE** the true **population** proportion $p$ of the Western Redcedars in good condition with only a **sample** of $n=50$ trees. This will represent a situation of only having the resources to record 50 Western Redcedar trees in Portland parks. Be sure to look at the results in the viewer by clicking `n50_1rep` in the Environment after you run the chunk below.
+
+```{r}
+set.seed(42)  # Ensure we each get the same "random" sample
+n50_1rep <- trees %>%  # Use our population of trees
+  rep_sample_n(size = 50, reps = 1)  # Take one sample of size n = 50 from it
+```
+ 
+Next, let's calculate the **sample proportion** $\hat{p}$ of good condition Western Redcedars in our sample of 50 trees. 
+
+```{r}
+n50_1rep %>% # Use our sample
+  summarize(Good = sum(Condition == "Good"),  # Count # of "Good" trees in our sample
+            n = n()) %>%  # Count the total number of trees in our sample
+  mutate(p_hat = Good / n)  # Calculate our sample statistic: proportion of "good" condition trees in our sample.
+```
+
+This sample proportion $\hat{p}$ is an **ESTIMATE**, and our **best guess** of what the **true population** proportion $p$ of good condition Western Redcedars in Portland parks, based on a sample of only 50 trees.  It is reasonably close to the true population proportion $p = 0.133$ we calculated from the full population.
+
+
+
+
+## Exercise 1: Random Seeds
+
+Copy/paste the code from the previous two code chunks into a new code chunk below. Then, change the seed value in the `set.seed()` function so that it is something different from "42", and run the new code chunk to estimate $\hat{p}$.  **Ask two of your classmates what their estimate of $\hat{p}$ was. How do the $\hat{p}$ estimates from different samples compare?**
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+## Exercise 2: Sampling distribution of $\hat{p}$ for n = 50
+
+If you ran the code chunk that takes a random sample of $n=50$ trees a thousand more times with different seeds....and wrote down every $\hat{p}$ you got, you would have what is called a "sampling distribution". 
+
+<br> 
+
+> A sampling distribution shows every [or nearly every!] possible result a sampling statistic can have under every [or nearly every!] possible sample **of a given sample size** from a population.
+
+<br> 
+
+
+Instead of running the sampling code chunk for n = 50 over and over, we can "collect" 1000 samples of n = 50 really easily in R. The following code chunk takes 1000 **different** samples of n = 50 and stores them in the data frame `n50_1000rep`:
+
+```{r}
+set.seed(42)
+n50_1000rep <- trees %>% 
+  rep_sample_n(size = 50, reps = 1000)
+```
+
+ 
+Look at `n50_1000rep` in the data viewer to get a sense of these 1000 samples look like.
+
+
+**a.** In the object `n50_1000rep` that we just created, what is the name of the column that identifies which of the 1000 samples each row is from?
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**b.** What is the sample size n for each of the 1000 samples we took? (i.e. how many trees are sampled in each replicate)? [You need only answer with text, but could use code to arrive at your answer if you wish!]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+## Exercise 3: Visualize the sampling distribution of $\hat{p}$ for n = 50
+
+The following code chunk calculates the sample proportion $\hat{p}$ of good condition Western Redcedars for each of the **1000 samples** 
+
+```{r}
+p_hat_n50_1000rep <- n50_1000rep %>% 
+  group_by(replicate) %>% 
+  summarize(Good = sum(Condition == "Good"), 
+            n = n()) %>% 
+  mutate(p_hat = Good / n)
+```
+
+Take a look at the first five rows of the results:
+
+```{r}
+head(p_hat_n50_1000rep, 5)
+```
+
+We can plot the **sampling distribution** of these 1000 $\hat{p}$ estimates of good Western Redcedars using a histogram.
+
+```{r}
+sampling_n50_histogram <- ggplot(p_hat_n50_1000rep, aes(x = p_hat)) +
+  geom_histogram(binwidth = 0.02, color = "black", fill = "aquamarine3") +
+  labs(x = "Sample proportion of Western Redcedars in Good Condition", 
+       title = "Sampling distribution of p-hat based on n = 50") 
+sampling_n50_histogram
+```
+
+**Based on the histogram, provide an example of a very common value of $\hat{p}$. Additionally, provide an example of a very uncommon value. What makes these values "common" or "uncommon"?**
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+## Exercise 4: Mean and standard error of the sampling distribution of $\hat{p}$ for n = 50
+
+Finally, we can estimate the mean and standard deviation of the sampling distribution (statistics about statistics!).  We can do this by calculating the mean of all 1000 $\hat{p}$ estimates, and the standard error of the sampling distribution by calculating the standard deviation of all 1000 $\hat{p}$ values like so: 
+
+```{r}
+p_hat_n50_1000rep %>% 
+  summarize(Mean_p_hat = mean(p_hat), 
+            StandardError_p_hat = sd(p_hat))
+```
+
+Note that these particular values are *estimates*, because even though we have access to the population, this sampling distribution only includes 1000 simulated samples. The true sampling distribution will have many more!
+
+How is the estimated mean of our sampling distribution (`Mean_p_hat`) related to the true population mean, $p$? How is `Mean_p_hat` related to $\hat{p}$ based on our single sample?
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
