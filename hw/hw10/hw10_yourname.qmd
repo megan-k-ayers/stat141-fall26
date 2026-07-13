@@ -1,5 +1,5 @@
 ---
-title: "Homework 10: TBD"
+title: "Homework 10: Theory-Based Inference Practice"
 subtitle: "Math 141, Week 11"
 author: "Your name here"
 format: pdf
@@ -13,7 +13,7 @@ execute:
 
 In this homework assignment you will:
 
-- TBD
+- TBD (placeholder bullets from the empty skeleton -- needs bullets reflecting margin of error, success-failure condition, difference in proportions, inference for a single mean, and theory-based hypothesis testing content)
 
 
 ### Add any collaborators here!
@@ -145,6 +145,11 @@ atheism <- read.csv("data/atheism.csv")
 
 **a.** Find the sample proportion of atheists in Canada in *2012.* Recalling that the sample proportion of atheists in the US in 2012 from the lab, calculate the estimated *difference in proportions* of atheists in the US and Canada.
 
+*******************************************************************************
+
+
+
+*******************************************************************************
 
 **b.** Perform a hypothesis test (with $\alpha = 0.01$) to determine whether the true proportion of atheists in Canada and in the United States differed in 2012. Use *theory-based inference*, and be sure to write out: 
 
