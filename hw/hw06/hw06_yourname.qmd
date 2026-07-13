@@ -9,7 +9,7 @@ execute:
   message: false
 ---
 
-## Due: Friday, March 20th at 11:59pm on Gradescope
+## Due: Thursday, October 15th at 9:00am on Gradescope as a **PDF**
 
 In this homework assignment you will:
 
@@ -40,6 +40,8 @@ library(gridExtra)
 
 
 
+
+# Exercises
 
 ## Exercise 1: Sampling Distribution for n = 15
 In Lab 6, we used the `pdxtrees` data to practice working with sampling distributions in R. The chunk below loads the data set and subsets it to only the condition variable for Western Redcedars. Recall that we were interested in targeting the population proportion $p$ of Western Redcedars in good condition.

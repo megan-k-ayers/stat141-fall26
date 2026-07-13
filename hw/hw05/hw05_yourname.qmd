@@ -197,71 +197,71 @@ Let's investigate the association between college access and endowment assets by
 
 **a.** First, explore both the net tuition price variable and endowment assets variable individually. **Describe the distribution of each variable in the context of the data, referencing numerical and graphical summaries as needed.**
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 
 **b.** Construct a plot showing the association between net tuition price and endowment assets. Be sure to map the response variable to the $y$-axis and the explanatory variable to the $x$-axis.
 
-********************************************************************
+*******************************************************************************
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 
 **c.** Describe what the plot in part (b) shows; i.e., based on the plot, **does there seem to be a relationship between college access and endowment assets? Does a line seem like a reasonable summary for the relationship between these variables?** Explain your reasoning.
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 **d.** **Add a variable to the `colleges` dataset that contains the log-transformed version of `fy2016_endowment_pc` and name it `log_endow_pc`.** That is, if `fy2016_endowment_pc` equals \$1000, then the log-transformed version equals $\log(1000) = \ln(1000) = 6.908$. Statisticians tend to refer to natural log as just "log". The function in R to compute the (natural) log is `log()`.
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 **e.** Recreate the plot from part (b), but use the log-transformed version of `fy2016_endowment_pc` rather than the original variable. 
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 
 **f.** Based on the plot in part (e), **does a line seem like a reasonable summary of the relationship between net tuition price and log-transformed endowment assets? If so, calculate the correlation coefficient and interpret the sign and magnitude.**
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 
@@ -269,12 +269,12 @@ Let's investigate the association between college access and endowment assets by
 
 (*Hint: Recall that you have the demo files from last lab with example code for building a linear regression model.*)
 
-********************************************************************
+*******************************************************************************
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 
@@ -282,14 +282,14 @@ Let's investigate the association between college access and endowment assets by
 
 (*Hint: Recall that you have the demo files from last lab with example code for creating model diagnostic plots.*)
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 
@@ -299,21 +299,21 @@ In this problem, we will investigate whether the relationship between net tuitio
 
 **a.** Create a new variable that categorizes whether or not a school is Ivy Plus. (*Hint: Revisit the code in slide 25 from 2/4*)
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 **b.** Construct a plot showing the association between net tuition price and log-transformed endowment assets; color the points based on whether a school is in the Ivy Plus. **Describe what you see. How does the average net tuition price for low- and middle-income students at Ivy Plus schools compare to other schools?** 
 
 (*Hint: Revisit the code in slide 7 from 2/23 for creating the plot, and slide 30 on 2/4 for calculating group averages.*)
 
-********************************************************************
+*******************************************************************************
 
 
 
@@ -321,44 +321,44 @@ In this problem, we will investigate whether the relationship between net tuitio
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 **c.** Construct a linear regression model for net tuition price using log-transformed endowment assets *and* whether a school is categorized as Ivy Plus. *Assume equal slopes in the model.* Print the model coefficients table **and interpret the coefficients in the context of the data. Be sure to comment on whether the intercept makes sense in this context.**
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 
 **d.** In part (b), you estimated the difference in average net tuition price for low- to middle-income students at schools in the Ivy Plus versus schools not in the Ivy Plus. **Explain the reasoning behind why this difference is not equal to the coefficient for the Ivy Plus predictor variable in the model from part (c).**
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 **e.** Construct a linear regression model for the net tuition price using log-transformed endowment assets and whether a school is categorized as Ivy Plus. *Assume varying slopes in the model.* Based on this model, **write out the formula for the regression line for just Ivy Plus schools and the formula for the regression line for just non-Ivy Plus schools**. Using these formulas, state **what is the estimated slope for schools in the Ivy Plus and what is the estimated slope for non-Ivy Plus schools.**
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
 
-********************************************************************
+*******************************************************************************
 
 
 
@@ -366,10 +366,10 @@ In this problem, we will investigate whether the relationship between net tuitio
 
 (*Hint: Revisit the code in slides 19-20 from 2/23*)
 
-********************************************************************
+*******************************************************************************
 
 
 
 
 
-********************************************************************
+*******************************************************************************

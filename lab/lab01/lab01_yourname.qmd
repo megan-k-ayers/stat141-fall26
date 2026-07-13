@@ -13,6 +13,13 @@ Welcome to our first lab assignment! In this lab, you will practice:
 4.  Rendering a `Quarto` document.
 
 
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
+
 ### When you have completed Lab 1, follow this submission process:
 
 -   **Step 1**: Export the PDF (not the QMD) of your Lab 1 from the RStudio Server. Within the Files tab in the lower right-hand window:
