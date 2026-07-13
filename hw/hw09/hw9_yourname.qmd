@@ -41,6 +41,813 @@ I collaborated with...
 
 
 
+<!-- ============================================================
+     BELOW: pasted wholesale -- (1) all of lab08 (Normal Distribution,
+     fast-food data), and (2) hw08's original "Random Variables"
+     content (Block 3). Both moved here since hw08/lab08 (week 9,
+     despite the "08" numbering -- week 8 was Fall Break) is now
+     entirely about hypothesis testing. Not yet renumbered or sorted
+     against each other or the Exercises below -- TBD.
+     ============================================================ -->
+
+<!-- --- from lab08 (Normal Distribution) --- -->
+
+# Background
+
+
+In this lab, we'll investigate the probability distribution that is most central to applied statistics: the normal distribution. If we are investigating something (test statistic, sample average, sample proportion, etc.) that has a distribution that is normal (or nearly normal), that opens the door to many powerful statistical methods.
+
+Here we'll use the graphical tools of R to assess normality, calculate quantities from normal distributions, and also learn how to generate random numbers from a normal distribution.
+
+
+## The Data
+
+For the first section of the lab we'll be working with fast food data. This data set contains data on 515 menu items from some of the most popular fast food restaurants worldwide. Let's take a quick peek at the first few rows of the data.
+
+```{r}
+data(fastfood)
+glimpse(fastfood)
+```
+
+You'll see that for every observation there are 17 measurements, many of which are nutritional facts. We'll focus on just three columns to get started: restaurant, calories, calories from fat. And let's first focus on just products from McDonalds and Dairy Queen.
+
+```{r}
+mcdonalds <- fastfood %>%           # Data frame with just McDonald's data
+  filter(restaurant == "Mcdonalds")
+dairy_queen <- fastfood %>%         # Data frame with just Dairy Queen data
+  filter(restaurant == "Dairy Queen")
+```
+
+
+
+## Exercise 1: Visualizing the Empirical Distribution
+
+Make plots to visualize the *distribution* of the amount of *calories from fat* among the menu items at McDonald's and Dairy Queen (one plot per restaurant). **How do their centers, shapes, and spreads compare?** [*Code + written response required*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+\newpage
+
+
+
+## Exercise 2: Plotting Theoretical Distributions
+
+In your description of the distributions, did you use words like *bell-shaped* or *normal*? It's tempting to say so when faced with a unimodal symmetric distribution. To see how accurate that description is, we can plot a normal distribution curve on top of a histogram to see how closely the data follow a normal distribution.
+
+This normal curve should have the same mean and standard deviation as the data. We'll focus on calories from fat from Dairy Queen products, so let's store them as a separate object and then calculate some statistics that will be referenced later.
+
+```{r}
+dq_mean <- mean(dairy_queen$cal_fat)
+dq_sd <- sd(dairy_queen$cal_fat)
+```
+
+Next, we'll make a *density histogram* to use as the backdrop, and use `stat_function` to overlay a normal probability curve. The difference between a frequency histogram and a density histogram is that while in a frequency histogram the *heights* of the bars add up to the total number of observations, in a density histogram the *areas* of the bars add up to 1. This allows us to properly overlay a normal distribution curve over the histogram, since the curve is a normal probability density function that also has area under the curve of 1.
+
+Frequency and density histograms both display the same exact shape; they only differ in their y-axis. You can verify this by comparing the frequency histogram you constructed earlier and the density histogram created by the commands below.
+
+```{r}
+ggplot(data = dairy_queen, aes(x = cal_fat)) +
+  geom_histogram(aes(y = ..density..),  # Tells ggplot to make a *density* histogram
+                 color = "white", bins = 15) +
+  stat_function(fun = dnorm,  # Tells ggplot: take the `dnorm()` function and plot it...
+                args = c(mean = dq_mean, sd = dq_sd), # ... with this mean and sd
+                color = "tomato", lwd = 1)
+```
+
+The first layer of the plot above is a density histogram. The second layer is a statistical function: the density of the normal curve, `dnorm`. We specify that we want the curve to have the same mean and standard deviation as the column of calories from fat.
+
+
+**a.** Based on this plot, does it appear that the data follow a nearly normal distribution? **If you are unsure, describe which aspects may suggest normality, and which do not.** [*Only written response required*]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+**b.** Recreate the plot above for McDonalds instead of Dairy Queen. [*Only code required*]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+\newpage
+
+
+
+## Exercise 3: Evaluating Normality
+
+Eyeballing the shape of the histogram is one way to determine if the data appear to be nearly normally distributed, but it can be frustrating to decide just how close the histogram is to the curve.
+
+We've already learned an alternative approach: using a Q-Q plot!
+
+```{r}
+ggplot(data = dairy_queen, aes(sample = cal_fat)) +
+  geom_qq() +
+  geom_qq_line() +
+  labs(x = "theoretical", y = "sample")
+```
+
+We used this as a black box tool to evaluate the "Normality" assumption for linear models. Now we have the tools to understand what is going on under the hood. Q-Q stands for "quantile-quantile". The x-axis values correspond to the *quantiles of a theoretically normal curve with mean 0 and standard deviation 1* (i.e., the standard normal distribution). The y-axis values correspond to the *quantiles of the unstandardized sample data we're providing* (however, even if we were to standardize the sample data values, the Q-Q plot would look identical).
+
+A data set that is nearly normal will result in a probability plot where the points closely follow a diagonal line. Any deviations from normality leads to deviations of these points from that line.
+
+Above, the plot for Dairy Queen's calories from fat shows points that tend to follow the line but with some errant points towards the upper tail. We're left with the same problem that we encountered with the histogram above: **how close is close enough**?
+
+A useful way to address this question is to rephrase it as: what do probability plots look like for data that I *know* came from a normal distribution? We can answer this by simulating data from a normal distribution using `rnorm`.
+
+```{r}
+set.seed(123)
+sim_norm <- rnorm(n = nrow(dairy_queen), mean = dq_mean, sd = dq_sd)
+sim_norm_df <- data.frame(sim_norm)
+```
+
+The first argument of `rnorm()` indicates how many numbers you'd like to generate, which we specify to be the same number of menu items in the `dairy_queen` data set using the `nrow()` function. The last two arguments determine the mean and standard deviation of the normal distribution from which the simulated sample will be generated.
+
+
+**a.** Make a Q-Q plot of `sim_norm`. What should we expect to see? Why do all of the points not fall perfectly along the line? [*Code + written response required*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**b.** How does the plot from part (a) compare to the Q-Q plot for the real data? [*Only written response required*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**c.** Even better than comparing the original plot to a single plot generated from a normal distribution is to compare it to plots from several samples. The code below shows the Q-Q plot corresponding to the original Dairy Queen data in the top left corner, and the Q-Q plots of 8 different simulated normal data samples. **Does the Q-Q plot for the calories from fat stand out from the plots created with simulated Normal data? That is, do the plots provide evidence that the calories from fat are nearly normal?** [*Only written response required*]
+
+```{r}
+set.seed(123)
+sim_data8 <- data.frame(value = rnorm(n = 8*nrow(dairy_queen), mean = dq_mean,
+                                      sd = dq_sd),
+                        sample = paste("Sim", rep(1:8, each = nrow(dairy_queen))))
+comp_data <- rbind(data.frame(value =  dairy_queen$cal_fat,
+                              sample = "REAL"),
+                   sim_data8)
+ggplot(comp_data, aes(sample = value)) +
+  geom_qq() +
+  geom_qq_line() +
+  labs(x = "theoretical", y = "sample") +
+  facet_wrap(~sample)
+```
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+
+**d.** Using the same technique from part (c), determine whether or not the calories from **McDonald's** menu appear to come from a normal distribution. [*Code + written response required*]
+
+*******************************************************************************
+
+```{r}
+
+# Calculate mean and SD of empirical distribution
+
+
+# Generate 8 samples from Normal distributions with the same mean and SD, and
+# make comparative Q-Q plots.
+
+
+```
+
+
+
+*******************************************************************************
+
+
+
+\newpage
+
+
+
+
+# Exercise 4: Normal Probabilities
+
+Now we have a collection of tools to judge whether or not a variable is normally distributed.
+Why should we care?
+
+Statisticians know a lot about the normal distribution! Once you decide that a random variable is approximately normal, you can readily answer all sorts of questions about that variable related to probability. For example, consider the question *"What is the probability that a randomly chosen Dairy Queen product has more than 600 calories from fat?"*
+
+If we assume that the calories from fat from Dairy Queen's menu are normally distributed (a very close approximation is also okay), we can find this probability by calculating a probability in the Normal distribution. In R, this is done in one step with the function `pnorm()`.
+
+```{r}
+1 - pnorm(q = 600, mean = dq_mean, sd = dq_sd)
+```
+
+Note that the function `pnorm()` gives the area under the normal curve *less than a given value*, `q`, for a normal distribution with a given mean and standard deviation. Since we're interested in the probability that a Dairy Queen item has *more than* 600 calories from fat, we have to take one minus that probability.
+
+Assuming a normal distribution has allowed us to calculate a *theoretical probability*. If we want to calculate the probability *empirically*, we simply need to determine how many observations fall above 600 then divide this number by the total sample size.
+
+```{r}
+dairy_queen %>%
+  filter(cal_fat > 600) %>%
+  summarise(percent = n() / nrow(dairy_queen))
+```
+
+Although the probabilities are not exactly the same, they aren't terribly far apart. The closer that your distribution is to being normal, the more accurate the theoretical probabilities will be.
+
+
+**a.** Are the values returned from `pnorm()` random or deterministic? **Briefly explain why (1-2 sentences).** [*Only written response required*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**b.** Using both the empirical approach and the theoretical approach, calculate the probability that a randomly chosen item from McDonalds will have more than 1000 calories (measured in the `calories` column). Do the same to calculate the probability that a randomly chosen item from Dairy Queen will have more than 1000 calories. (*four calculations in all*). **Which restaurant had a closer agreement between the two methods?** [*Code + written response required*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+\newpage
+
+
+
+## Exercise 5: Q-Q Plots for all Restaurants
+
+Now let's consider the `sodium` variable across all restaurants in the dataset `fastfood`. Adjust the Q-Q plot code used above to work with `sodium` instead of `cal_fat`. Add the layer, `facet_wrap(~restaurant, scales = "free")` to create a Q-Q plot for each restaurant in the `fastfood` dataset. **Which one has a distribution that is the closest to Normal?** [*Code + written response required*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+\newpage
+
+
+
+## Exercise 6: Visualizing Skew
+
+Q-Q plots can be used to simultaneously assess normality and visualize skewness. Make a Q-Q plot for the total carbohydrates from *Sonic*. Based on this Q-Q plot, is this variable left skewed, symmetric, or right skewed? **Use a histogram to confirm your findings.** [*Code + written response required*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+\newpage
+
+
+
+
+# Exercise 7: Computing Inverse Probabilities
+
+The Graduate Record Exam (GRE) is a standardized test which serves as an admission requirement for many graduate schools, and has an analytic writing section and two multiple choice sections: Verbal Reasoning and Quantitative Reasoning. Due to forced Normalization in scores, both sections are approximately Normal. In a given year, suppose the mean score for Verbal Reasoning section was 462 with a standard deviation of 119, and the mean score for the Quantitative Reasoning was 584 with a standard deviation of 151.
+
+We will use the above information to explore the use of the R functions `pnorm` and `qnorm`.
+
+ * `pnorm(q)` will return the **cumulative probability**, or cumulative area under the normal curve to the *left* of a given point on the x-axis, $q$. 
+ * `qnorm(p)` will return the **quantile** (on the x-axis) of a given **cumulative probability** $p$. I.e. it will find the point $q$ where $p*100$ percent of the area under the curve is to the left of $q$.
+
+By default, the curve considered is the *standard* normal distribution (see the slides from 4/3 for a refresher), but we can change the center and standard deviation of the normal distribution considered by adding `mean` and `sd` parameters. 
+
+
+### Using `pnorm`
+
+For instance, say a student earns a score of 650 on the Verbal Reasoning section of the exam. We often describe the cumulative probability to the *left* of this score as the student's *percentile*. We can calculate this using `pnorm()`:
+
+```{r}
+pnorm(650, mean = 462, sd = 119)
+```
+
+We see that this student is in the 94th percentile.  That is, 94% of the values in the distribution of verbal reasoning scores are to the left of 650.  This is shown as the shaded region in the visualization below.
+
+```{r, echo=FALSE}
+min_val <- 0
+max_val <- 1000
+
+score <- 650
+m <- 462
+std <- 119
+
+ggplot(data.frame(x = c(min_val, max_val)), aes(x = x)) +
+  stat_function(fun = dnorm, args = list(mean = m, sd = std)) +
+  stat_function(fun = dnorm, args = list(mean = m, sd = std),
+                xlim = c(min_val, score), geom = "area", fill = "dodgerblue", 
+                alpha = .9) +
+  scale_x_continuous(name = "Score", breaks = seq(min_val, max_val, std)) +
+  scale_y_continuous(name = "", breaks = NULL)
+
+```
+
+If we wanted to know what percentage of students scored **better** than 650, we calculate 1 minus the percentage to the left of the value.
+
+```{r}
+1 - pnorm(650, mean = 462, sd = 119)
+```
+
+The visualization below shows that this is, appropriately, in the right tail of the distribution.
+
+```{r, echo=FALSE}
+ggplot(data.frame(x = c(min_val, max_val)), aes(x = x)) +
+  stat_function(fun = dnorm, args = list(mean = m, sd = std)) +
+  stat_function(fun = dnorm, args = list(mean = m, sd = std),
+                xlim = c(score, max_val), geom = "area", fill = "dodgerblue",
+                alpha = .9) +
+  scale_x_continuous(name = "Score", breaks = seq(min_val, max_val, std)) +
+  scale_y_continuous(name = "", breaks = NULL)
+```
+
+
+### Using `qnorm`
+
+Now lets imagine that a student is told that they scored in the 57% percentile on the Quantitative Reasoning section of the exam. We can use `qnorm` to do the reverse of our previous task: find the score (the "inverse probability") for this student given their "percentile" value.
+
+```{r}
+qnorm(0.57, mean = 584, sd = 151)
+```
+
+This student's score is thus a 610.
+
+
+
+**a.** What is the percentage of the students who score between 590 and 630 on the Quantitative Reasoning section? (*Hint: draw a picture of the area under the curve corresponding to this quantity, and consider how we can calculate it using either `pnorm` or `qnorm`.*) [*Only code required*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**b.** What is the probability that a randomly selected student earns obtains a score greater than 600 on both multiple choice sections? **Assume (somewhat unrealistically!), that scores on the two sections are independent**. [*Only code required*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**c.** What score is needed on the Verbal Reasoning section to place in the **top** 10%? What score is needed to place in the top 10% on the Quantitative Reasoning section? [*Code + brief written response to distinguish which value is which*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+\newpage
+
+
+
+
+## Exercise 8: Standard Normal
+
+Often it is useful to work with the *Standard Normal*.  This is a normal distribution with a mean of 0 and a standard deviation of 1.  If we know that a value, $x$, is drawn from a normal distribution with a mean of $\mu$ and a standard deviation of $\sigma$, we can standardize it using the following formula:
+$$
+z = \frac{x - \mu}{\sigma}
+$$
+These standardized values are called **z-scores**.  We can calculate the z-score for the student who scored a 650 on the Verbal Reasoning section of the exam.
+
+```{r}
+score = 650
+mu = 462
+sigma = 119
+
+(score - mu) / sigma
+```
+
+Note that for scores that are less than the mean, the z-score will be negative. Imagine a student scored a 550 on the Quantitative Reasoning section.
+
+```{r}
+score = 550
+mu = 584
+sigma = 151
+
+(score - mu) / sigma
+```
+
+They have a z-score of -0.23. 
+
+
+**a.** A college senior scores 620 on the Verbal Reasoning section and 670 on the Quantitative Reasoning section. Calculate the student's z-scores for each section. [*Code + brief written response to distinguish which value is which*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**b.** In general, how should we interpret z-scores? (*Hint: think about why normalizing the standard deviation to 1 and mean to 0 is useful*). On which section did the student in the previous part do better on (relative to the student's peers)? [*Only written response is required*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+
+**c.** Find the student's score percentiles for the two sections. [*Code + brief written response to distinguish which value is which*]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+
+<!-- --- from hw08 Block 3 (Random Variables) --- -->
+
+## Exercise 1: Discrete Random Variables
+
+Supposed $X$ is a discrete random variable with the following distribution table:
+
+|      $X$       |    $P(X=x)$     | 
+|----------------|-----------------|
+|      -3        |       0.2       | 
+|       3        |       0.5       |   
+|       10       |       0.3       |  
+
+
+**a.** What is $E(X)$?
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**b.** What are $Var(X)$ and $SD(X)$?
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**c.** Suppose $Y = X^2$. What is the distribution table for $Y$?
+
+********************************************************
+
+|      $Y$       |       $P(Y=y)$       | 
+|----------------|----------------------|
+|                |                      |   
+|                |                      |  
+
+********************************************************
+
+
+
+**d.** What is $E(Y) = E(X^2)$?
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**e.** Using your answers for parts (a) and (d), calculate $E(X^2) - [E(X)]^2$. Compare your answer to what you got for $Var(X)$ in part (b).
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+
+\newpage
+
+
+
+
+## Exercise 2: Binomial Distribution
+
+A Gallup Poll found that 7% of teenagers (ages 13 to 17) suffer from arachnophobia and are extremely afraid of spiders. At a summer camp there are 10 teenagers sleeping in each tent. Assume that these 10 teenagers are independent of each other. 
+
+**a.** Let $X$ be the number of teenagers in a tent of 10 teenagers who suffer from arachnophobia. Precisely explain why $X$ follows a Binomial(n,p) distribution, and state what values $n$ and $p$ are.
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**b.** Calculate E(X), the expected number of teenagers in a tent who suffer from arachnophobia.
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**c.** Calculate the probability that at least one teenager suffers from arachnophobia. (*Hint: remember that the R functions `pbinom()`, `dbinom()`, and `qbinom()` can help you calculate quantities related to Binomial distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**d.** Calculate the probability that exactly 2 of them suffer from arachnophobia. (*Hint: remember that the R functions `pbinom()`, `dbinom()`, and `qbinom()` can help you calculate quantities related to Binomial distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**e.** Calculate the probability that at most 1 of them suffers from arachnophobia. (*Hint: remember that the R functions `pbinom()`, `dbinom()`, and `qbinom()` can help you calculate quantities related to Binomial distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+
+**f.** If the camp counselor wants to make sure no more than 1 teenager in each tent is afraid of spiders, does it seem reasonable for him to randomly assign teenagers to tents?
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+
+\newpage
+
+
+
+
+## Exercise 3: Continuous Random Variables
+
+Suppose the number of hours a particular student takes to complete a statistics exam is modeled by a continuous random variable $T$ with the following density function:
+
+```{r fig.width=6, echo = F}
+library(ggplot2)
+t <- seq(1, 3, by = 0.1)
+p <- ifelse(t <= 2, t - 1, 3 - t)
+density_df <- data.frame(t, p)
+ggplot(density_df, aes(x = t, y = p))+
+  geom_line()+
+  labs(x = "T", y = "density", title = "Density Function for Hours Spent on Exam")+
+  coord_fixed()+
+  scale_x_continuous(breaks = seq(1, 3, by = 0.25))
+```
+
+Models of this type arise frequently in settings where we have sparse information to model a continuous phenomenon (i.e. we may only have estimates for the minimum, maximum, and most likely values for the phenomenon).
+
+As a reminder, the probability that $T$ falls within some range will be the area under the density function for that range (e.g., $P(1.5 \leq T \leq 2)$ will be the area under the density function from 1.5 to 2). For each of the following parts of the problem, use *geometric reasoning* to compute areas (*you do not need to use calculus to answer any of these problems*). Recall that the area of a triangle is $A = 0.5*base*height$.
+
+
+**a.** Verify that the function plotted above indeed has area of 1. **Your explanation should be mathematical in nature, but please explain your thought process in words.**
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**b.** What is the probability that the student takes at most 2.5 hours to complete the exam? **Explain your reasoning.**
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**c.** What is the value of $t$ so that a student has probability $\frac{1}{8}$ of completing the exam before time $t$? **Explain your reasoning.**
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**d.** During what interval of length $1$ does the student have the largest probability of completing the exam. That is, find a number $a$ so that $P(a < T < a+1)$ is as large as possible. **Explain your reasoning.**
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+
+
+\newpage
+
+
+
+
+## Exercise 4: Normal Distribution Warm Up
+
+The average daily high temperature in June in Los Angeles (LA) is 77 degrees Fahrenheit, with a standard deviation of 5 degrees. Suppose that the temperatures in June closely follow a normal distribution, i.e., $F\sim \text{Normal}(\mu=77, \sigma=5)$.
+
+**a.** What is the probability of observing an 83 degree or higher day in LA during a randomly chosen day in June? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**b.** How cool are the coldest 10% of the days (days with lowest high temperature) during June in LA? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
+
+********************************************************
+
+
+
+
+
+********************************************************
+
+
+
+## Exercise 5: Normal Distribution and Z-scores
+
+In triathlons, it is common for racers to be placed into age and gender groups. Friends David and Mary both completed the Hermosa Beach Triathlon, where David competed in the Men, Ages 30 - 34 group while Mary competed in the Women, Ages 25 - 29 group. David completed the race in 1:22:28 (4948 seconds), while Mary completed the race in 1:31:53 (5513 seconds). Obviously David finished faster, but they are curious about how they did within their respective groups. Here is some
+information on the performance of their groups:
+
+  - The finishing times of the Men, Ages 30 - 34 group has a mean of 4313 seconds with a standard deviation of 583 seconds.
+  - The finishing times of the Women, Ages 25 - 29 group has a mean of 5261 seconds with a standard deviation of 807 seconds.
+  - The distributions of finishing times for both groups are approximately Normal.
+    
+Remember: a better performance corresponds to a faster finish.
+
+**a.** Write down the short-hand notation for these two normal distributions.
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**b.** Recall that we standardize Normal distributions by subtracting the mean $\mu$ from the random variable and dividing by the standard deviation $\sigma$. For any observation $x$ of a random variable, we call the quantity $Z = \frac{x - \mu}{\sigma}$ the "Z-score". **What are the Z-scores for David’s and Mary’s finishing times? What do these Z-scores tell you?**
+
+********************************************************
+
+
+
+
+********************************************************
+
+
+
+**c.** Did David or Mary rank better in their respective groups? Explain your reasoning.
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**d.** What percent of the triathletes did David finish faster than in his group? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**e.** What percent of the triathletes did Mary finish faster than in her group? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**f.** If the distributions of finishing times are not nearly normal, would your answers to any of the parts (b) - (e) change? Explain your reasoning.
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+
+<!-- ============================================================
+     ABOVE: pasted wholesale from lab08/hw08. BELOW: original hw09
+     content ("Theory-based Inference").
+     ============================================================ -->
+
 # Exercises
 
 

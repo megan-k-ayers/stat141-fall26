@@ -1,0 +1,135 @@
+---
+title: "Lab 8: Hypothesis Testing"
+subtitle: "Math 141, Week 9"
+author: "Your name here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r, include=FALSE}
+# Do not edit this code block/chunk
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE, fig.width = 5, fig.height = 3)
+library(tidyverse)
+library(infer)
+```
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
+
+# Exercises
+
+## Exercise 1: EV Poll Sampling Distribution
+
+Recall the exercise from Lab 7. A Gallup poll from 2022 stated that 59% percent of respondents favor "Spending federal money to increase the number of electric vehicle charging stations in the U.S."
+
+For the purposes of the lab, we assumed that a simple random sample of $n=500$ people was asked the question about increasing the number of electric vehicle charging stations in the U.S. Based on this sample, we began investigating what we can infer about the underlying population parameter.
+
+
+**a.** Suppose that somehow we actually know the true parameter: that **60%** of all US adults favor spending federal money to increase the number of electric vehicle charging stations in the U.S. Since we know the population parameter, we can compute the sampling distribution, instead of relying on a bootstrap distribution to estimate it. A fake population (of a pretend size 100,000) to sample from is set up in the code chunk below. **Create and plot a sampling distribution of 5000 samples of size 500 taken from the population, using the `rep_sample_n()` function.**
+
+[Code for this question.]
+
+*******************************************************************************
+
+```{r}
+pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
+                                     rep("No", 0.4*100000)))
+
+# Your work below. Don't forget to set your seed!
+
+
+
+```
+
+
+*******************************************************************************
+
+
+**b.** How and why is the distribution from part (a) different from the bootstrap distribution that we worked with in Lab 7?
+
+[Text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**c.** How are sampling distributions and null distributions related?
+
+[Text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+## Exercise 2: EV Poll Hypothesis Testing
+
+**a.** We're interested in whether it's plausible that the true proportion of all US adults who favor spending federal money to increase the number of electric vehicle charging stations in the U.S. is actually 0.5. For policy reasons, we'd like to know if this survey gives us strong evidence the the proportion is actually more than 0.5 (a majority). Let p be the true proportion. **Write out the null and alternative hypotheses in terms of p.** [Only text for this question.]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**b.** Using simulation, create and display the null distribution. The null distribution is the sampling distribution *under the assumption that the null is true*, so you should follow the same idea as Exercise 1, but where p = 0.5. **Show the results in a histogram as you did in Exercise 1, and explain why the centers are different.** [Code and text for this question.]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**c.** Based on the test statistic from the actual survey ($\hat{p} = 0.59$), find the p-value, which is the proportion of simulated null distribution statistics that are at least as big as the test statistic (if there are any). **Describe the result and interpret your p-value.** Discuss with someone near you. What was their p-value? [Code and text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**d.** Compare the p-value above to the significance level of alpha = 0.025. **Does this test give evidence to reject the null hypothesis?** [Only text for this question.]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**e.** What would a Type I or Type II error mean in this context? Is it possible that you made either type of error in part (d)? [Only text for this question.]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
