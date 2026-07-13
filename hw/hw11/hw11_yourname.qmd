@@ -1,5 +1,5 @@
 ---
-title: "Homework 11: Reflection + TBD"
+title: "Homework 11: Inference for Regression in R"
 subtitle: "Math 141, Week 12"
 author: "Your name here"
 format: pdf
@@ -9,11 +9,12 @@ execute:
   message: false
 ---
 
-## Due: TBD
+## Assigned: Thursday, November 19th
+## Due: **TUESDAY**, December 2nd at 9:00am on Gradescope as a **PDF**
 
 In this homework assignment you will:
 
-- TBD (placeholder bullets from the empty skeleton -- needs bullets reflecting metacognition + theory-based inference practice content)
+- Do inference for regression with both simulation-based and theory-based methods
 
 
 ### Add any collaborators here!
@@ -75,7 +76,7 @@ data(evals)
 
 In lab, we assessed a simple linear regression that used the beauty score to predict the instructor evaluation score. However, it could be the case that beauty has different effects on evaluations depending on the professor's gender. In order to see if beauty is a meaningful predictor of professor score after we've accounted for the gender of the professor, we should build a model that includes both beauty and gender terms.
 
-**a.** Use `lm()` to create a regression model predicting `score` as a function of `bty_avg` and `gender`. Display the estimated coefficients using the `get_regresion_table()` function. [Code only for this question]
+**a.** Use `lm()` to create a regression model predicting `score` as a function of `bty_avg` and `gender`. Display the estimated coefficients using the `get_regression_table()` function. [Code only for this question]
 
 *******************************************************************************
 

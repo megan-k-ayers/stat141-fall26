@@ -9,6 +9,9 @@ execute:
   message: false
 ---
 
+## Assigned: Thursday, October 29th
+## Due: Thursday, November 5th at 9:00am on Gradescope as a **PDF**
+
 In this homework assignment you will:
 
 - Demonstrate proficiency with the concepts: null and alternative hypothesis, p-value, type I and II errors, power, and how these relate to specific research questions

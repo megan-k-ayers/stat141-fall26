@@ -9,7 +9,8 @@ execute:
   message: false
 ---
 
-## Due: TBD
+## Assigned: Thursday, November 12th
+## Due: Thursday, November 19th at 9:00am on Gradescope as a **PDF**
 
 In this homework assignment you will:
 

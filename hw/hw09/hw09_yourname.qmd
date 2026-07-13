@@ -20,8 +20,8 @@ library(infer)
 set.seed(1)
 ```
 
-## Assigned: Friday, April 17th
-## Due: Friday, April 24th at 11:59pm on Gradescope
+## Assigned: Thursday, November 5th
+## Due: Thursday, November 12th at 9:00am on Gradescope as a **PDF**
 
 In this homework assignment you will:
 
