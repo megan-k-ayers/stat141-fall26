@@ -1,7 +1,7 @@
 ---
-title: "HW 9: Theory-based Inference"
-subtitle: "Math 141, Week 12"
-author: "Insert Your Name Here"
+title: "Homework 9: Random Variables and the Normal Distribution"
+subtitle: "Math 141, Week 10"
+author: "Your name here"
 format: pdf
 execute:
   echo: true
@@ -25,19 +25,14 @@ set.seed(1)
 
 In this homework assignment you will:
 
-- Reflect on connections and challenges in this semester's course material
-- Determine what statistic is most appropriate for answering a particular
-  research question with theory-based inference
-- Perform inference based on theory of distributions of random variables
-- Interpret inference results and assess relevant assumptions
-
+- TBD (placeholder bullets left over from the old "Theory-based Inference" content -- needs new bullets reflecting Random Variables / Normal Distribution content)
 
 
 ### Add any collaborators here!
 
 I collaborated with...
 
-**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your assignment**
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 
 
@@ -57,54 +52,54 @@ Supposed $X$ is a discrete random variable with the following distribution table
 
 **a.** What is $E(X)$?
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 **b.** What are $Var(X)$ and $SD(X)$?
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 **c.** Suppose $Y = X^2$. What is the distribution table for $Y$?
 
-********************************************************
+*******************************************************************************
 
 |      $Y$       |       $P(Y=y)$       | 
 |----------------|----------------------|
 |                |                      |   
 |                |                      |  
 
-********************************************************
+*******************************************************************************
 
 
 
 **d.** What is $E(Y) = E(X^2)$?
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 **e.** Using your answers for parts (a) and (d), calculate $E(X^2) - [E(X)]^2$. Compare your answer to what you got for $Var(X)$ in part (b).
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
@@ -132,34 +127,34 @@ As a reminder, the probability that $T$ falls within some range will be the area
 
 **a.** Verify that the function plotted above indeed has area of 1. **Your explanation should be mathematical in nature, but please explain your thought process in words.**
 
-********************************************************
+*******************************************************************************
 
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 **b.** What is the probability that the student takes at most 2.5 hours to complete the exam? **Explain your reasoning.**
 
-********************************************************
+*******************************************************************************
 
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 **c.** What is the value of $t$ so that a student has probability $\frac{1}{8}$ of completing the exam before time $t$? **Explain your reasoning.**
 
-********************************************************
+*******************************************************************************
 
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
@@ -175,28 +170,28 @@ The average daily high temperature in June in Los Angeles (LA) is 77 degrees Fah
 
 **a.** What is the probability of observing an 83 degree or higher day in LA during a randomly chosen day in June? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
 
-********************************************************
+*******************************************************************************
 
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 **b.** How cool are the coldest 10% of the days (days with lowest high temperature) during June in LA? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
 
-********************************************************
+*******************************************************************************
 
 
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
-# Exercise 4: Computing Inverse Probabilities
+## Exercise 4: Computing Inverse Probabilities
 
 The Graduate Record Exam (GRE) is a standardized test which serves as an admission requirement for many graduate schools, and has an analytic writing section and two multiple choice sections: Verbal Reasoning and Quantitative Reasoning. Due to forced Normalization in scores, both sections are approximately Normal. In a given year, suppose the mean score for Verbal Reasoning section was 462 with a standard deviation of 119, and the mean score for the Quantitative Reasoning was 584 with a standard deviation of 151.
 
@@ -520,7 +515,7 @@ ggplot(comp_data, aes(sample = value)) +
 
 
 
-# Exercise 8: Normal Probabilities
+## Exercise 8: Normal Probabilities
 
 Now we have a collection of tools to judge whether or not a variable is normally distributed.
 Why should we care?

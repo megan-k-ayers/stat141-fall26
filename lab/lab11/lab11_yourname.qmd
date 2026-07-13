@@ -1,6 +1,6 @@
 ---
 title: "Lab 11: Inference for Regression in R"
-subtitle: "Math 141, Week 11"
+subtitle: "Math 141, Week 12"
 author: "Your name here"
 format: pdf
 execute:
@@ -58,83 +58,83 @@ We have observations on 21 different variables, some categorical and some numeri
 
 **a.** We will start by investigating the data with simple linear regression. First, make a scatterplot of `score` (our response variable) by `bty_avg` (our explanatory variable) and **display a regression line**. [Code only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
 **b.** Use `lm()` to create a regression model predicting `score` as a function of `bty_avg`, and display the estimated coefficients using the `get_regression_table()` function. [Code only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
 **c.** Write down the equation for the **fitted** linear model, being sure to include the estimated coefficients in the equation. [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
 **d.** Interpret the (i) intercept and the (ii) slope on `bty_avg`, *in context*. Remember to be precise about your language, and revisit the linear regression slides for a refresher if needed (ex. slides 17-18 on 2/23). [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
 **e.** Formally assess whether `bty_avg` is a meaningful predictor of `score` by stating a set of two hypotheses, writing down a *theory-based* p-value (your previous code should have given it to you!), and interpreting that p-value. [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 **f.** State and interpret the *theory-based* 95% confidence interval for the `bty_avg` coefficient. **How does this result align with your conclusion from the previous part?** [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
 **g.** Is `bty_avg` a "practically significant" predictor of `score`? In other words, does `bty_avg` have a "big" effect on `score`? [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
@@ -152,44 +152,44 @@ It could be the case that beauty has different effects on evaluations depending 
 
 **a.** Use `lm()` to create a regression model predicting `score` as a function of `bty_avg` and `gender`. Display the estimated coefficients using the `get_regresion_table()` function. [Code only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
 **b.** Write down the equation for the linear model, being sure to include the estimated coefficients in the equation. [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
 **c.** Interpret the (i) intercept and the (ii) slope on `bty_avg` *in context*. [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 **d.** Now that we're controlling for `gender`, have the results of the hypothesis test for whether `bty_avg` is a meaningful predictor of `score` changed? **How should we interpret this?**  [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
@@ -209,11 +209,11 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
   geom_parallel_slopes(se = FALSE)
 ```
 
-*********************************************************************************
+*******************************************************************************
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
@@ -225,44 +225,44 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
 
 **a.** Create a new model that includes `age`, `bty_avg`, and `gender`, to predict `score`, and display the regression table. [Code only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
 **b.** The slope on `age` in the model constructed in Exercise 3(a) is a relatively small number. Does this mean that `age` is not a useful predictor for this model? Explain, appealing to both formal inference and the context. [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
 **c.** Using plots and contextual knowledge, assess if the model constructed in Exercise 3(a) satisfies **each** of the LINE conditions. [Code and text for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 **d.** Based on your checks for the LINE assumptions, should we rely on theory-based inference, or take a simulation-based approach? Explain. [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
@@ -278,11 +278,11 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
 
 (*Hint: An example of code for simulation-based inference for regression can be found in the slides from 4/15. When adapting this code, make sure you are grabbing the estimate for `bty_avg` - check the order of your coefficients in Exercise 3a.*)
 
-*********************************************************************************
+*******************************************************************************
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
@@ -290,18 +290,18 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
 
 **b.** Conduct a hypothesis test of the coefficient for `bty_avg` being equal or not equal to 0 using the bootstrap distribution you just created. Use a significance level of $\alpha = 0.01$. **Be sure to state your hypotheses, calculate a p-value, and interpret the p-value in context.** [Code and text for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
-*********************************************************************************
+*******************************************************************************
 
 
 
 **c.** Do you think it would be reasonable to generalize these conclusions to a larger population? Would it be reasonable to draw causal conclusions about how beauty and student evaluation scores are related? Explain. [Text only for this question]
 
-*********************************************************************************
+*******************************************************************************
 
 
 
-*********************************************************************************
+*******************************************************************************

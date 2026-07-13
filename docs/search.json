@@ -341,5 +341,166 @@
     "title": "STAT 141",
     "section": "Next time",
     "text": "Next time\n\nContinuous random variables\nThe Central Limit Theorem!"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#goals-for-today",
+    "href": "slides/lecture29_wk11wed.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\nDiscuss activity from last lecture\nConsider inference for a difference in two proportions\nPractice on clinical trials data"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#recap-theory-based-inference-for-one-proportion",
+    "href": "slides/lecture29_wk11wed.html#recap-theory-based-inference-for-one-proportion",
+    "title": "STAT 141",
+    "section": "Recap: Theory-Based Inference for One Proportion",
+    "text": "Recap: Theory-Based Inference for One Proportion\nSuppose we want to perform inference on a proportion, \\(p\\).\n\nEx: To understand proportion of Reedies who are vegetarians, we survey \\(n\\) students.\n\nPopulation: All Reedies\nParameter: \\(p\\) = Proportion of all Reedies who are vegetarians\nSample: \\(n\\) Reedies we surveyed\nStatistic: \\(\\widehat{p}\\) = Proportion of \\(n\\) sampled Reedies who are vegetarians\n\nWe were able to rewrite \\(\\widehat{p}\\) as a sample mean, so by CLT with “large enough” \\(n\\), \\[\\widehat{p} \\sim \\text{Normal}\\Bigg(\\ \\mu = p, \\ \\sigma = \\sqrt{\\frac{p(1-p)}{n}}\\ \\Bigg)\\]\n\n“Large Enough”: 10 or more “successes”, and 10 or more “failures” \nWe use this to (i) construct confidence intervals, and (ii) conduct hypothesis tests"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#activity-from-last-lecture",
+    "href": "slides/lecture29_wk11wed.html#activity-from-last-lecture",
+    "title": "STAT 141",
+    "section": "Activity from last lecture",
+    "text": "Activity from last lecture\n\n\nIn a SRS of 60 Reedies, 45 have watched the Lord of the Rings trilogy. Create a 80% confidence interval for the true proportion of Reedies who have watched LOTR using theory-based inference.\n\n\nCarefully go through each step of the inference procedure.\nSketch and write down the assumed sampling distribution of the statistic\nCalculate confidence interval (use R)\nInterpret your confidence interval in context.\n\n\n\n\nIn a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a hypothesis test using theory-based inference.\n\n\nCarefully go through each step of the inference procedure.\nSketch and write down the null distribution\nCalculate p-value (use R)\nUse your p-value to make a conclusion with \\(\\alpha=0.10\\)"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#answers-confidence-intervals",
+    "href": "slides/lecture29_wk11wed.html#answers-confidence-intervals",
+    "title": "STAT 141",
+    "section": "Answers (Confidence Intervals)",
+    "text": "Answers (Confidence Intervals)\nIn a SRS of 60 Reedies, 45 have watched the Lord of the Rings trilogy. Create a 80% confidence interval for the true proportion of Reedies who have watched LOTR using theory-based inference.\n\n\n\nCollect Data: In a sample of 60 students, 45 watched LOTR\nPoint Estimate: We estimate \\(\\widehat{p} = 45/60 = 0.75\\)\nGet Sampling Distribution:\n\n\n\\[\\text{Normal}(0.75,\\ \\sqrt{0.75(1-0.75)/60})\\]\n\n\n\n\n\n\n\n\n\n\n\n\nGet confidence interval:\nNeed 0.1 and 0.9 quantiles for 80% confidence interval\n\n\n\nqnorm(c(0.1, 0.9), 0.75, sqrt(0.75*0.25/60))\n\n[1] 0.6783591 0.8216409\n\n\n\n\nWe are 80% confident that between 67.8% and 82.2% of Reedies have watched LOTR"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#answers-hypothesis-testing",
+    "href": "slides/lecture29_wk11wed.html#answers-hypothesis-testing",
+    "title": "STAT 141",
+    "section": "Answers (Hypothesis Testing)",
+    "text": "Answers (Hypothesis Testing)\nIn a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a hypothesis test using theory-based inference.\n\n\n\nState Hypotheses: \\(H_0: p=0.6\\); \\(H_a: p&gt;0.6\\)\nNull Distribution:\n\n\\[\\text{Normal}(0.6,\\sqrt{0.6(1-0.6)/30})\\]\n\n\n\n\n\n\n\n\n\n\n\nCollect Data: \\(\\widehat{p}=20/30=0.667\\)\nCalculate P-Value: Area under null distribution curve to the right of \\(\\widehat{p}\\)\n\n\n\n1 - pnorm(20/30, 0.6, sqrt(0.6*(1 - 0.6) / 30))\n\n[1] 0.2280283\n\n\n\n\nConclusion: Because 0.228 &gt; 0.10, we fail to reject \\(H_0\\) that 60% of birds in the Reed canyon are crows."
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#difference-in-proportions-1",
+    "href": "slides/lecture29_wk11wed.html#difference-in-proportions-1",
+    "title": "STAT 141",
+    "section": "Difference in Proportions",
+    "text": "Difference in Proportions\nToday, we’ll perform inference on a difference in proportions, \\(p_1 - p_2\\)\n\n“Differences in proportions” come up all the time in the real world:\n\ne.g., Compare the effectiveness of two drugs\ne.g., Study if Portlanders support drug decriminalization more or less than Seattleites\n\n\n\n\nTo answer these questions, we use similar inference procedures, but need to…\n\nCollect two samples: 1 for each group\nDerive a new sampling distribution using the CLT"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#example-comparing-drug-a-to-drug-b",
+    "href": "slides/lecture29_wk11wed.html#example-comparing-drug-a-to-drug-b",
+    "title": "STAT 141",
+    "section": "Example: Comparing Drug A to Drug B",
+    "text": "Example: Comparing Drug A to Drug B\n\nEx: Is Drug A more effective at curing heart disease than Drug B?\n\nWe conduct an SRS of \\(n\\) adults who have heart disease\nWe randomly assign these adults to either take Drug A, or Drug B\nDrug A group has \\(n_1\\) patients\nWe compare proportions of adults who were cured with Drug A versus Drug B\n\n\n\n\nDiscuss with Neighbor(s): In this setting, what are the:\n\nPopulation(s)\nParameter\nSample(s)\nStatistic"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#example-comparing-drug-a-to-drug-b-1",
+    "href": "slides/lecture29_wk11wed.html#example-comparing-drug-a-to-drug-b-1",
+    "title": "STAT 141",
+    "section": "Example: Comparing Drug A to Drug B",
+    "text": "Example: Comparing Drug A to Drug B\n\nPopulation(s): Overall, sampling from adults who have heart disease\n\nPopulation 1: More specifically, adults with heart disease when they receive drug A\nPopulation 2: More specifically, adults with heart disease when they receive drug B\n\n\n\n\nParameter: The parameter is: \\(p_1 - p_2\\) = Difference in recovery rates for all adults with heart disease, where\n\n\\(p_1\\)=Proportion who would recover with Drug A\n\\(p_2\\)=Proportion who would recover with Drug B\n\n\n\n\nSample(s): Of the \\(n\\) total that we sampled,\n\nSample 1: \\(n_1\\) people we gave Drug A\nSample 2: \\(n - n_1\\) people we gave Drug B\n\n\n\n\nStatistic: the statistic is: \\(\\widehat{p}_1 - \\widehat{p}_2\\) = Difference in recovery rates between our samples, where\n\n\\(\\widehat{p}_1\\)=Proportion who recovered in the Drug A group (Sample 1)\n\\(\\widehat{p}_2\\)=Proportion who recovered in the Drug B group (Sample 2)"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#sampling-distribution-of-widehatp_1---widehatp_2",
+    "href": "slides/lecture29_wk11wed.html#sampling-distribution-of-widehatp_1---widehatp_2",
+    "title": "STAT 141",
+    "section": "Sampling Distribution of \\(\\widehat{p}_1 - \\widehat{p}_2\\)",
+    "text": "Sampling Distribution of \\(\\widehat{p}_1 - \\widehat{p}_2\\)\nWe know the (large-sample) sampling distributions of \\(\\widehat{p}_1\\) and \\(\\widehat{p}_2\\) individually: \\[\n  \\begin{align*}\n    \\widehat{p}_1 &\\sim \\text{Normal} \\biggr( p_1, \\sqrt{\\frac{p_1(1-p_1)}{n_1}} \\biggr) \\\\\n    \\widehat{p}_2 &\\sim \\text{Normal} \\biggr( p_2, \\sqrt{\\frac{p_2(1-p_2)}{n_2}} \\biggr)\n  \\end{align*}\n\\]\n\nBut what is the sampling distribution of \\(\\widehat{p}_1 - \\widehat{p}_2\\)?\nNotice: Our statistic (\\(\\widehat{p}_1 - \\widehat{p}_2\\)) is the difference between two normally distributed statistics\n\nWhat happens when you subtract two normal distributions (i.e., bell-curves)?"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#subtracting-bell-curves",
+    "href": "slides/lecture29_wk11wed.html#subtracting-bell-curves",
+    "title": "STAT 141",
+    "section": "Subtracting Bell Curves",
+    "text": "Subtracting Bell Curves\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInspect the distributions of:\n\n\\(X\\) (in blue)\n\\(Y\\) (in red)\n\\(X - Y\\) (in purple)\n\n\nDiscuss with Neighbor(s):\n\nWhat are the means of \\(X\\) and \\(Y\\)?\nWhat is the mean of \\(X - Y\\)?\nHow do the spreads of the distributions compare?"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#subtracting-bell-curves-1",
+    "href": "slides/lecture29_wk11wed.html#subtracting-bell-curves-1",
+    "title": "STAT 141",
+    "section": "Subtracting Bell Curves",
+    "text": "Subtracting Bell Curves\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ: What are the means of \\(X\\) and \\(Y\\)?\n\n\n10 for \\(X\\)\n7 for \\(Y\\)\n\n\nQ: What is the mean of \\(X - Y\\)?\n\n\n\\(10 - 7 = \\boxed{3}\\)\ni.e., “Mean of \\(X\\)” - “Mean of \\(Y\\)”\n\n\nQ: How do the spreads of the distributions compare?\n\n\n\\(X\\) and \\(Y\\) are about the same\n\\(X-Y\\) has higher spread/variance"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#subtracting-independent-normal-distributions",
+    "href": "slides/lecture29_wk11wed.html#subtracting-independent-normal-distributions",
+    "title": "STAT 141",
+    "section": "Subtracting (Independent) Normal Distributions",
+    "text": "Subtracting (Independent) Normal Distributions\nDifferences of Normal Distributions: Given two independent normal distributions\n\\[\n  \\begin{align*}\n    X \\sim \\text{Normal}(\\mu_X, \\sigma_X) \\qquad \\text{and} \\qquad Y \\sim \\text{Normal}(\\mu_Y, \\sigma_Y)\n  \\end{align*}\n\\]\nThen,\n\\[\n  \\begin{align*}\n    \\color{red}{\\boxed{X - Y \\sim \\text{Normal} \\left( \\mu_X - \\mu_Y, \\sqrt{\\sigma_X^2  + \\sigma_Y^2} \\right) }}\n  \\end{align*}\n\\]\n\nMean: Difference in the means of the two distributions\nSD: A “combination” of the SDs of the two distributions (that is larger)"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#sampling-distribution-of-widehatp_1---widehatp_2-1",
+    "href": "slides/lecture29_wk11wed.html#sampling-distribution-of-widehatp_1---widehatp_2-1",
+    "title": "STAT 141",
+    "section": "Sampling Distribution of \\(\\widehat{p}_1 - \\widehat{p}_2\\)",
+    "text": "Sampling Distribution of \\(\\widehat{p}_1 - \\widehat{p}_2\\)\nSo if:\n\\[\n  \\begin{align*}\n    \\widehat{p}_1 &\\sim \\text{Normal} \\biggr( \\mu = \\color{red}{p_1}, \\sigma = \\color{red}{\\sqrt{\\frac{p_1(1-p_1)}{n_1}}} \\biggr) \\\\\n    \\widehat{p}_2 &\\sim \\text{Normal} \\biggr( \\mu = \\color{red}{p_2}, \\sigma = \\color{red}{\\sqrt{\\frac{p_2(1-p_2)}{n_2}}} \\biggr)\n  \\end{align*}\n\\]\nSince \\(\\widehat{p}_1\\) and \\(\\widehat{p}_2\\) are independent,\n\n\\[\\boxed{\\widehat{p}_1 - \\widehat{p}_2 \\sim \\text{Normal}\\Bigg(\\ \\mu = \\color{red}{p_1-p_2}, \\ \\sigma = \\color{red}{\\sqrt{\\frac{p_1(1-p_1)}{n_1}+ \\frac{p_2(1-p_2)}{n_2}} }\\ \\Bigg)}\\]"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#theoretical-sampling-distribution-of-a-difference-in-proportions",
+    "href": "slides/lecture29_wk11wed.html#theoretical-sampling-distribution-of-a-difference-in-proportions",
+    "title": "STAT 141",
+    "section": "Theoretical Sampling Distribution of a Difference in Proportions",
+    "text": "Theoretical Sampling Distribution of a Difference in Proportions\n\n\n\nTheorem: Normality of difference in proportions\n\n\nThe difference in proportions \\(\\widehat{p}_1 - \\widehat{p}_2\\) is approximately Normal when:\n\nEach sample has at least 10 “successes” and at least 10 “failures”\nThe two samples are independent of each other\n\nThen in this case, \\[\\widehat{p}_1 - \\widehat{p}_2 \\approx \\text{Normal}\\Bigg(\\mu = p_1-p_2, \\sigma = \\sqrt{\\frac{p_1(1-p_1)}{n_1}+\\frac{p_2(1-p_2)}{n_2}}\\Bigg)\\]\n\n\n\n\nNote: Need \\(\\geq 10\\) successes and failures in both samples\nNote: We have to check something new: that the samples are independent"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison",
+    "href": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison",
+    "title": "STAT 141",
+    "section": "Confidence Intervals: Drug Comparison",
+    "text": "Confidence Intervals: Drug Comparison\nEx: What is the difference in recovery rates for Drug A and Drug B?\n\nLet’s find a 95% confidence interval for \\(p_1 - p_2\\)\n\n\n\n\nCollect Data:\n\nDrug A Group: \\(n_1=50\\); 20 patients are cured\nDrug B Group: \\(n_2=80\\); 15 patients are cured\n\n\nStatistic:\n\n\\(\\widehat{p}_1 = 20/50 = 0.40\\) and \\(\\widehat{p}_2 = 15/80 = 0.1875\\)\n\\(\\boxed{\\widehat{p}_1-\\widehat{p}_2 = 0.2125}\\)\n\n\n\n\nSampling Distribution:\n\n\nTheory-based sampling distribution of \\(\\widehat{p}_1-\\widehat{p}_2\\):\n\n\\[\\text{Normal}\\Bigg(p_1-p_2,\\sqrt{\\frac{p_1(1-p_1)}{n_1}+ \\frac{p_2(1-p_2)}{n_2}} \\Bigg)\\]\n\n\n\nQ: We don’t know true \\(p_1, p_2\\)… how do we get rid of them?"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison-1",
+    "href": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison-1",
+    "title": "STAT 141",
+    "section": "Confidence Intervals: Drug Comparison",
+    "text": "Confidence Intervals: Drug Comparison\nEx: What is the difference in recovery rates for Drug A and Drug B?\n\nLet’s find a 95% confidence interval for \\(p_1 - p_2\\)\n\n\n\n\nCollect Data:\n\nDrug A Group: \\(n_1=50\\); 20 patients are cured\nDrug B Group: \\(n_2=80\\); 15 patients are cured\n\n\nStatistic:\n\n\\(\\widehat{p}_1 = 20/50 = 0.40\\) and \\(\\widehat{p}_2 = 15/80 = 0.1875\\)\n\\(\\boxed{\\widehat{p}_1-\\widehat{p}_2 = 0.2125}\\)\n\n\n\n\nSampling Distribution:\nQ: We don’t know true \\(p_1, p_2\\)… how do we get rid of them?\n\nPlug-in \\(\\widehat{p}_1, \\ \\widehat{p}_2\\) for \\(p_1, p_2\\)!\n\n\\[\\textbf{Normal} \\left( \\color{red}{\\widehat{p}_1}-\\color{red}{\\widehat{p}_2},\\sqrt{\\frac{\\color{red}{\\widehat{p}_1}(1-\\color{red}{\\widehat{p}_1})}{n_1}+ \\frac{\\color{red}{\\widehat{p}_2}(1-\\color{red}{\\widehat{p}_2})}{n_2}} \\right)\\]"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison-2",
+    "href": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison-2",
+    "title": "STAT 141",
+    "section": "Confidence Intervals: Drug Comparison",
+    "text": "Confidence Intervals: Drug Comparison\nWe want a 95% confidence interval for \\(p_1 - p_2\\)\n\\[\\text{Normal}\\Bigg(p_1-p_2,\\sqrt{\\frac{p_1(1-p_1)}{n_1}+ \\frac{p_2(1-p_2)}{n_2}} \\Bigg)\\]\n\n\n\n\n\n\n\n\n\n\n\n\nGet confidence interval: Middle 95% is \\((0.05, \\ 0.37)\\) (can use qnorm() like usual)\n\n“We are 95% confident that Drug A is between 5% and 37% more effective than Drug B.”"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison",
+    "href": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison",
+    "title": "STAT 141",
+    "section": "Hypothesis Testing: Drug Comparison",
+    "text": "Hypothesis Testing: Drug Comparison\nEx: Is Drug A more effective than Drug B?\n\n\nQ: How should we define \\(H_0\\) and \\(H_a\\) so that they get at this research question?\n\nReminder: Our parameter here is \\(p_1 - p_2\\)\n\n\n\n\\[\n\\begin{align*}\nH_0: p_1 = p_2 &\\implies p_1 - p_2 = 0\\\\\nH_a: p_1 &gt; p_2 &\\implies p_1 - p_2 &gt; 0\n\\end{align*}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-1",
+    "href": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-1",
+    "title": "STAT 141",
+    "section": "Hypothesis Testing: Drug Comparison",
+    "text": "Hypothesis Testing: Drug Comparison\nEx: Is Drug A more effective than Drug B?\nHypotheses:\n\\[\n\\begin{align*}\nH_0: p_1 = p_2 &\\implies p_1 - p_2 = 0\\\\\nH_a: p_1 &gt; p_2 &\\implies p_1 - p_2 &gt; 0\n\\end{align*}\n\\]\n\nNull Distribution: By the CLT, \\[\\widehat{p}_1 - \\widehat{p}_2 \\approx \\text{Normal}\\Bigg(\\mu = p_1-p_2, \\sigma = \\sqrt{\\frac{p_1(1-p_1)}{n_1}+\\frac{p_2(1-p_2)}{n_2}}\\Bigg)\\]\n\n\nQ: How we use \\(H_0\\) to get rid of unknown \\(p_1\\) and \\(p_2\\)?\n\nIf \\(H_0\\) is true, then \\(p_1 - p_2 = 0\\)\nUnder \\(H_0\\), there is no expected difference between groups: Thus, we can plug in a pooled proportion, \\[\\text{Pooled Proportion} = \\color{red}{\\widehat{p}_{\\text{pool}} = \\frac{\\#\\text{Successes}_1 + \\#\\text{Successes}_2}{n_1 + n_2}}\\] for \\(p_1\\) and \\(p_2\\)."
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-2",
+    "href": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-2",
+    "title": "STAT 141",
+    "section": "Hypothesis Testing: Drug Comparison",
+    "text": "Hypothesis Testing: Drug Comparison\nEx: Is Drug A more effective than Drug B?\nHypotheses: \\(H_0: p_1-p_2=0\\)     vs.     \\(H_a: p_1 - p_2 &gt;0\\)\nNull Distribution:\n\\(\\widehat{p}_1 - \\widehat{p}_2 \\approx \\text{Normal}\\Bigg(\\mu = \\color{red}{0}, \\sigma = \\sqrt{\\frac{\\color{red}{\\widehat{p}_{\\text{pool}}}(1-\\color{red}{\\widehat{p}_{\\text{pool}}})}{n_1}+\\frac{\\color{red}{\\widehat{p}_{\\text{pool}}}(1-\\color{red}{\\widehat{p}_{\\text{pool}}})}{n_2}}\\Bigg)\\)\nData:\n\nDrug A Group: \\(n_1=50\\); 20 patients are cured\nDrug B Group: \\(n_2=80\\); 15 patients are cured\nTest Statistic: \\(\\widehat{p}_1-\\widehat{p}_2 = \\frac{20}{50}-\\frac{15}{80} = 0.2125\\)\nPooled Proportion: \\(\\widehat{p}_{\\text{pool}} = \\frac{20+15}{50+80} = 0.27\\)"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-3",
+    "href": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-3",
+    "title": "STAT 141",
+    "section": "Hypothesis Testing: Drug Comparison",
+    "text": "Hypothesis Testing: Drug Comparison\nCalculate and Interpret P-Value:\n\n\n\n\n\n\n\n\n\n\n\n\\(\\text{Normal}\\Bigg(\\mu = \\color{red}{0}, \\sigma = \\sqrt{\\frac{\\color{red}{\\widehat{p}_{\\text{pool}}}(1-\\color{red}{\\widehat{p}_{\\text{pool}}})}{n_1}+\\frac{\\color{red}{\\widehat{p}_{\\text{pool}}}(1-\\color{red}{\\widehat{p}_{\\text{pool}}})}{n_2}}\\Bigg)\\)\n\n\nTest Statistic: \\(\\widehat{p}_1-\\widehat{p}_2 = 0.2125\\)\nP-value = 0.003 (we can still find this using pnorm())\nWith a rejection level of \\(\\alpha = 0.01\\), we would reject \\(H_0\\).\nWe claim Drug A is more effective than Drug B."
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#recap",
+    "href": "slides/lecture29_wk11wed.html#recap",
+    "title": "STAT 141",
+    "section": "Recap",
+    "text": "Recap\n\n\n\nTheorem: Normality of difference in proportions\n\n\nThe difference in proportions \\(\\widehat{p}_1 - \\widehat{p}_2\\) is approximately Normal when:\n\nEach sample has at least 10 “successes” and at least 10 “failures”\nThe two samples are independent of each other\n\nThen in this case, \\[\\widehat{p}_1 - \\widehat{p}_2 \\approx \\text{Normal}\\Bigg(\\mu = p_1-p_2, \\sigma = \\sqrt{\\frac{p_1(1-p_1)}{n_1}+\\frac{p_2(1-p_2)}{n_2}}\\Bigg)\\]\n\n\n\n\n\n\\[\\textbf{Confidence Intervals}\\]\n\\[\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\]\n\\[\\text{Sampling Distribution}\\] \\[(\\textbf{Plug in }\\color{red}{\\widehat{p}_1}\\text{ and }\\color{red}{\\widehat{p}_2})\\]\n\\[\\textbf{Normal}\\Bigg(\\color{red}{\\widehat{p}_1}-\\color{red}{\\widehat{p}_2}, \\sqrt{\\frac{\\color{red}{\\widehat{p}_1}(1-\\color{red}{\\widehat{p}_1})}{n_1}+\\frac{\\color{red}{\\widehat{p}_2}(1-\\color{red}{\\widehat{p}_2})}{n_2}}\\Bigg)\\]\n\n\\[\\textbf{Hypothesis Testing}\\] \\[(H_0: p_1 - p_2 = d_0)\\] \\[\\text{Null Distribution}\\] \\[(\\textbf{Plug-in null value, }\\color{red}{d_0}\\text{, and }\\color{red}{\\widehat{p}_{\\mathrm{pool}}})\\]\n\\[ \\hspace{-0.30in} \\text{Normal}\\Bigg( \\color{red}{d_0}, \\sqrt{\\frac{\\color{red}{\\widehat{p}_{\\mathrm{pool}}}(1-\\color{red}{\\widehat{p}_{\\mathrm{pool}}})}{n_1}+\\frac{\\color{red}{\\widehat{p}_{\\mathrm{pool}}}(1-\\color{red}{\\widehat{p}_{\\mathrm{pool}}})}{n_2}}\\Bigg)\\]"
+  },
+  {
+    "objectID": "slides/lecture29_wk11wed.html#next-time",
+    "href": "slides/lecture29_wk11wed.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time",
+    "text": "Next time\n\nTheory-based inference with means"
   }
 ]

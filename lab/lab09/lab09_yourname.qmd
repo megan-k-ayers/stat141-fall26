@@ -1,7 +1,7 @@
 ---
-title: "Lab 9: Theory-Based Inference"
-subtitle: "Math 141, Week 12"
-author: "Insert Your Name Here"
+title: "Lab 9: Random Variables"
+subtitle: "Math 141, Week 10"
+author: "Your name here"
 format: pdf
 execute:
   echo: true
@@ -23,12 +23,14 @@ In this lab, you will
 
   1. ...
 
-## Add any collaborators here!
+### Add any collaborators here!
 
 I collaborated with...
 
-**Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
+
+# Exercises
 
 ## Exercise 1: Arachnopobia and the Binomial Distribution
 
@@ -36,62 +38,62 @@ A Gallup Poll found that 7% of teenagers (ages 13 to 17) suffer from arachnophob
 
 **a.** Let $X$ be the number of teenagers in a tent of 10 teenagers who suffer from arachnophobia. Precisely explain why $X$ follows a Binomial(n,p) distribution, and state what values $n$ and $p$ are.
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 **b.** Using what we've learned about the Binomial distribution, calculate E(X), the expected number of teenagers in a tent who suffer from arachnophobia.
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 **c.** Using R, calculate the probability that at least one teenager suffers from arachnophobia. (*Hint: remember that the R functions `pbinom()` and `dbinom()` can help you calculate quantities related to Binomial distributions.*)
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 **d.** Using R, calculate the probability that exactly 2 of them suffer from arachnophobia. (*Hint: remember that the R functions `pbinom()` and `dbinom()` can help you calculate quantities related to Binomial distributions.*)
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 **e.** Using R, calculate the probability that at most 1 of them suffers from arachnophobia. (*Hint: remember that the R functions `pbinom()` and `dbinom()` can help you calculate quantities related to Binomial distributions.*)
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
 
 **f.** If the camp counselor wants to make sure no more than 1 teenager in each tent is afraid of spiders, does it seem reasonable for him to randomly assign teenagers to tents?
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
@@ -121,11 +123,11 @@ gg + geom_ribbon(data = subset(dd, t > 0 & t <= 1), aes(ymax = p),
                  ymin = 0, fill = "red", alpha = .75)
 ```
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 **b.** By eye, calcualte $P(X \leq 2)$.
@@ -135,11 +137,11 @@ gg + geom_ribbon(data = subset(dd, t > 0 & t <= 2), aes(ymax = p),
                  ymin = 0, fill = "red", alpha = .75)
 ```
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 **c.** By eye, calculate $P(2 \leq X \leq 3)$.
@@ -149,11 +151,11 @@ gg + geom_ribbon(data = subset(dd, t > 2 & t <= 3), aes(ymax = p),
                  ymin = 0, fill = "red", alpha = .75)
 ```
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 ## Exercise 3: Probabilities and Quantiles
@@ -174,20 +176,20 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 In a new chunk below, use `R` to calculate $P(X \leq 1)$, i.e. the area to the *left* of the blue dashed line. 
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 **b.** Below, play around with calculating probabilities for various points under the Normal distribution above. What happens when you use smaller versus larger values of `q` in `pnorm(q)`?
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 
@@ -195,11 +197,11 @@ In a new chunk below, use `R` to calculate $P(X \leq 1)$, i.e. the area to the *
 
 Use `qnorm()` to calculate the **0.85** quantile of our Normal distribution above. Does it make sense to you that this value is close to the blue dashed line above? 
 
-********************************************************
+*******************************************************************************
 
 
 
-********************************************************
+*******************************************************************************
 
 
 **d.** Using the `ggplot` above as a reference, on the board, sketch a picture visualizing the quantity returned by `pnorm(-2)`.

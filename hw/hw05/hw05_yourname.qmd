@@ -9,7 +9,7 @@ execute:
   message: false
 ---
 
-## Due: Thursday, OCtober 8th at 9:00am on Gradescope as a **PDF**
+## Due: Thursday, October 8th at 9:00am on Gradescope as a **PDF**
 
 In this homework assignment you will:
 

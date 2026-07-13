@@ -1,0 +1,182 @@
+---
+title: "Lab 10: Theory-Based Inference"
+subtitle: "Math 141, Week 11"
+author: "Your name here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r, include=FALSE, warning=FALSE, message=FALSE}
+# Do not edit this code block/chunk
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE, fig.width = 5, fig.height = 3)
+library(tidyverse)
+library(knitr)
+library(moderndive)
+library(infer)
+library(openintro)
+```
+
+In this lab, you will
+
+  1. Make theory-based inferences on summary statistics in R
+  2. Explore data to determine whether assumptions for theory-based inference are met
+  3. Compare theory-based inference methods with simulation-based methods
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
+
+## Background
+
+In August of 2012, news outlets ranging from the [\textcolor{blue}{Washington Post}](http://www.washingtonpost.com/national/on-faith/poll-shows-atheism-on-the-rise-in-the-us/2012/08/13/90020fd6-e57d-11e1-9739-eef99c5fb285_story.html) to the [\textcolor{blue}{Huffington Post}](http://www.huffingtonpost.com/2012/08/14/atheism-rise-religiosity-decline-in-america_n_1777031.html) ran a story about the rise of atheism in America. The source for the story was a global poll that asked people, “Irrespective of whether you attend a place of worship or not, would you say you are a religious person, not a religious person or a convinced atheist?” This type of question, which asks people to classify themselves in one way or another, is common in polling and generates categorical data. In this lab we take a look at the atheism survey and explore what's at play when making inference about population proportions using categorical data.
+
+
+The press release for the poll, conducted by WIN-Gallup International, can be accessed
+[\textcolor{blue}{here}](https://irtshdf.fr/wp-content/uploads/2019/12/Gallup-International-um-tru-og-truleysi-2012.pdf). Take a moment to review the report then address the following questions.
+
+
+
+## Exercise 1: Interpreting the Athiesm Report
+
+**a.** In the first paragraph of the report, several key findings are reported. Do these percentages appear to be *sample statistics* (derived from the data sample) or *population parameters*? **Explain your reasoning.** [Text only for this part]
+    
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+
+**b.** The title of the report is “Global Index of Religiosity and Atheism”. To generalize the report's findings to the global human population, what must we assume about the sampling method? Does that seem like a reasonable assumption? [Text only for this part]
+    
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**c.** Turn your attention to Table 6 (pages 14 and 15), which reports the sample size and response percentages for all 57 countries. While this is a useful format to summarize the data, we will base our analysis on the original data set of individual responses to the survey. Load this data set into R with the following command.
+
+```{r }
+atheism <- read.csv("data/atheism.csv")
+```
+
+What does each row of Table 6 correspond to? What does each row of `atheism` correspond to? [Text only for this part]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+
+**d.** To investigate the link between these two ways of organizing this data, take a look at the estimated proportion of atheists in the **United States** in **2012**. Towards the bottom of Table 6, we see that this is reported to be 5%. **Show how we can arrive at the same number (up to rounding) using the `atheism` data.** [Code only for this part]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+\newpage
+
+
+
+## Exercise 2: Hypothesis Testing for Proportions
+
+Table 6 provides *statistics*, that is, calculations made from the sample of 51,927 people who were surveyed. What we'd like, though, is insight into the population *parameters*. You answer the question, “What proportion of people in your sample reported being atheists?” with a statistic; this also provides an estimate for the question “What proportion of people on earth would report being atheists?” which is a question about a parameter.
+
+Although formal confidence intervals and hypothesis tests don't show up in the report, suggestions of inference appear at the bottom of page 6: “In general, the error margin for surveys of this kind is +/- 3-5% at 95% confidence”. Let's practice providing more formalized results.
+
+**Suppose that the status quo established by religion scholars is that the proportion of atheists in the United States was 3\% of the population.** We'll perform a hypothesis test to determine if this assumption and our observed statistic are consistent.
+
+
+**a.** Write out the rule-of-thumb conditions required by *theory-based inference* to perform a hypothesis test for the proportion of atheists in the United States in 2012. Are you confident all conditions are met? [Text only for this part]
+    
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+**b**. Write out the null and alternative hypotheses. [Text only for this part]
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+
+
+
+**c.** Using tools from *theory-based inference*, your hypotheses, and the statistic observed from Exercise 2, calculate the p-value.  Then, write a conclusion about your test *in context* by referencing your calculated p-value and the stated hypotheses. [Text and code for this part]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+## Exercise 3: Confidence Intervals for Proportions
+
+**a.** It is often good practice to report both confidence intervals and p-values in statistical analyses. Let's do this for the proportion of atheists in the US in 2012. First, write out the theory-based sampling distribution that we can assume $\hat{p}$ to follow, based on the reported sample.
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+**b.** Using theory-based inference methods in R, calculate an 80% confidence confidence interval for the proportion of atheists in the US in 2012.
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
