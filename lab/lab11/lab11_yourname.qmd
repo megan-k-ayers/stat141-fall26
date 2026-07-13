@@ -1,0 +1,307 @@
+---
+title: "Lab 11: Inference for Regression in R"
+subtitle: "Math 141, Week 11"
+author: "Your name here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+In this lab, you will
+
+  1. Recall how to build, interpret, and check assumptions for linear regression models
+  2. Do inference for regression with both simulation-based and theory-based methods
+
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
+
+```{r}
+#load the necessary packages
+library(tidyverse)
+library(knitr)
+library(moderndive)
+library(infer)
+library(openintro)
+```
+
+
+# Exercises
+
+# Background: Grading the Professor
+
+Many college courses conclude by giving students the opportunity to evaluate the course and the instructor anonymously. The use of these student evaluations as an indicator of course quality and teaching effectiveness is often criticized because these measures may reflect the influence of non-teaching related characteristics. The article titled, [“Beauty in the classroom: instructors’ pulchritude and putative pedagogical productivity” by Hamermesh and Parker](https://www.sciencedirect.com/science/article/pii/S0272775704001165) found that instructors who are viewed to be better looking receive higher instructional ratings. **In this lab we will analyze the data from this study in order to learn what goes into a positive professor evaluation.**
+
+The data were gathered from end of semester student evaluations for a large sample of professors from the University of Texas at Austin. In addition, six students rated the professors’ physical appearance. The result is a data frame where each row contains a different course and columns represent variables about the courses and professors. Let's load the data:
+
+```{r}
+data(evals)
+```
+
+We have observations on 21 different variables, some categorical and some numerical. The meaning of each variable can be found by bringing up the help file (select the help file in the `moderndive` package):
+
+```{r eval = F}
+?evals
+```
+
+
+
+
+
+## Exercise 1: Simple Linear Regression of score vs beauty
+
+**a.** We will start by investigating the data with simple linear regression. First, make a scatterplot of `score` (our response variable) by `bty_avg` (our explanatory variable) and **display a regression line**. [Code only for this question]
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+
+**b.** Use `lm()` to create a regression model predicting `score` as a function of `bty_avg`, and display the estimated coefficients using the `get_regression_table()` function. [Code only for this question]
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+
+**c.** Write down the equation for the **fitted** linear model, being sure to include the estimated coefficients in the equation. [Text only for this question]
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+
+**d.** Interpret the (i) intercept and the (ii) slope on `bty_avg`, *in context*. Remember to be precise about your language, and revisit the linear regression slides for a refresher if needed (ex. slides 17-18 on 2/23). [Text only for this question]
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+
+**e.** Formally assess whether `bty_avg` is a meaningful predictor of `score` by stating a set of two hypotheses, writing down a *theory-based* p-value (your previous code should have given it to you!), and interpreting that p-value. [Text only for this question]
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+**f.** State and interpret the *theory-based* 95% confidence interval for the `bty_avg` coefficient. **How does this result align with your conclusion from the previous part?** [Text only for this question]
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+
+**g.** Is `bty_avg` a "practically significant" predictor of `score`? In other words, does `bty_avg` have a "big" effect on `score`? [Text only for this question]
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+
+\newpage
+
+
+
+
+
+
+## Exercise 2: Incorporating Gender
+
+It could be the case that beauty has different effects on evaluations depending on the professor's gender. In order to see if beauty is a meaningful predictor of professor score after we've accounted for the gender of the professor, we should build a model that includes both beauty and gender terms.
+
+**a.** Use `lm()` to create a regression model predicting `score` as a function of `bty_avg` and `gender`. Display the estimated coefficients using the `get_regresion_table()` function. [Code only for this question]
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+
+**b.** Write down the equation for the linear model, being sure to include the estimated coefficients in the equation. [Text only for this question]
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+
+**c.** Interpret the (i) intercept and the (ii) slope on `bty_avg` *in context*. [Text only for this question]
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+**d.** Now that we're controlling for `gender`, have the results of the hypothesis test for whether `bty_avg` is a meaningful predictor of `score` changed? **How should we interpret this?**  [Text only for this question]
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+**e.** Using the regression table from Exercise 2 part (a), answer the following:
+
+(i) What is the equation of the line corresponding to male professors?  
+
+(ii) What is the equation of the line corresponding to female professors?
+
+(iii) For two professors who received the same beauty rating, which gender tends to have the higher course evaluation score? 
+
+The following code chunk plots the regression lines from the multiple regression model corresponding to male and to female professors. You don't need to include this in your response, but the graph may provide intuition for the answers you report.  [Text only for this question]
+
+```{r}
+ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
+  geom_point() +
+  geom_parallel_slopes(se = FALSE)
+```
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+\newpage
+
+
+
+## Exercise 3: Incorporating Age
+
+**a.** Create a new model that includes `age`, `bty_avg`, and `gender`, to predict `score`, and display the regression table. [Code only for this question]
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+
+**b.** The slope on `age` in the model constructed in Exercise 3(a) is a relatively small number. Does this mean that `age` is not a useful predictor for this model? Explain, appealing to both formal inference and the context. [Text only for this question]
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+
+**c.** Using plots and contextual knowledge, assess if the model constructed in Exercise 3(a) satisfies **each** of the LINE conditions. [Code and text for this question]
+
+*********************************************************************************
+
+
+
+
+*********************************************************************************
+
+
+
+**d.** Based on your checks for the LINE assumptions, should we rely on theory-based inference, or take a simulation-based approach? Explain. [Text only for this question]
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+
+\newpage
+
+
+
+
+## Exercise 4: Simulation-based Inference for Regression
+
+**a.** Regardless of what you found in Exercise 3, we will now use bootstrapping to conduct inference on parameters of the model we constructed there. Construct a 80% confidence interval for the coefficient for `bty_avg` using the bootstrap with `reps = 1000` and the percentile method (this may take a minute to run). **Be sure to state the confidence interval, and interpret the confidence interval in the context of what your statistic represents.**  [Code and text for this question]
+
+(*Hint: An example of code for simulation-based inference for regression can be found in the slides from 4/15. When adapting this code, make sure you are grabbing the estimate for `bty_avg` - check the order of your coefficients in Exercise 3a.*)
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+
+
+**b.** Conduct a hypothesis test of the coefficient for `bty_avg` being equal or not equal to 0 using the bootstrap distribution you just created. Use a significance level of $\alpha = 0.01$. **Be sure to state your hypotheses, calculate a p-value, and interpret the p-value in context.** [Code and text for this question]
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+**c.** Do you think it would be reasonable to generalize these conclusions to a larger population? Would it be reasonable to draw causal conclusions about how beauty and student evaluation scores are related? Explain. [Text only for this question]
+
+*********************************************************************************
+
+
+
+*********************************************************************************

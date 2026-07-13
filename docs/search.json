@@ -1,0 +1,345 @@
+[
+  {
+    "objectID": "slides/lecture27_wk10fri.html#hw-announcement",
+    "href": "slides/lecture27_wk10fri.html#hw-announcement",
+    "title": "STAT 141",
+    "section": "HW Announcement",
+    "text": "HW Announcement\n\nHW 8 is posted\n\nIt is due in 2 weeks, on Friday April 17th 11:59pm.\nAfter today we will have covered all relevant lecture material\nIn the next lab we’ll practice related R functions more\nMy suggestion: start on non-R problems now, save 2c-f, 4, 5d-e for after the next lab"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#goals-for-today",
+    "href": "slides/lecture27_wk10fri.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for Today",
+    "text": "Goals for Today\n\nAnswers from last class activity\nDiscuss continuous random variables\nIntroduce the normal distribution\nDiscuss the Central Limit Theorem!"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#activity-survey-of-portlanders",
+    "href": "slides/lecture27_wk10fri.html#activity-survey-of-portlanders",
+    "title": "STAT 141",
+    "section": "Activity: Survey of Portlanders",
+    "text": "Activity: Survey of Portlanders\nSuppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief.\n\nAssume your belief is true. Let \\(X\\) be the number of survey respondents who think the city should install more bike lanes. Does \\(X\\) follow a Binomial distribution? If so, what are \\(n\\) and \\(p\\)?\nCalculate the expected value and standard deviation of \\(X\\) (still assuming your belief is true)\nSuppose you conducted the survey and found 30 respondents wanted more bike lanes. What’s the probability that \\(X\\geq 30\\)? (use R!)\nDraw the connection between the probability you calculated and a hypothesis test."
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#activity-survey-of-portlanders-answers",
+    "href": "slides/lecture27_wk10fri.html#activity-survey-of-portlanders-answers",
+    "title": "STAT 141",
+    "section": "Activity: Survey of Portlanders (Answers)",
+    "text": "Activity: Survey of Portlanders (Answers)\nSuppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief.\n\nAssume your belief is true. Let \\(X\\) be the number of survey respondents who think the city should install more bike lanes. Does \\(X\\) follow a Binomial distribution? If so, what are \\(n\\) and \\(p\\)?\n\n\\(X\\) follows a Binomial(\\(n=50,p=0.4\\)) distribution.\n\nCalculate the expected value and standard deviation of \\(X\\) (assuming your belief)\n\n\n\\[E[X] = (50)(.4) = 20\\] \\[SD[X] = \\sqrt{(50)(.4)(1-.4)} = 3.46\\]\n\n\nSuppose you conducted the survey and found 30 respondents wanted more bike lanes. What’s the probability that \\(X\\geq 30\\)? (use R!)\n\n\\(P[X\\geq30] = 1 - \\texttt{pbinom}(29,~ 50,~ 0.4) = 0.0033\\)\n\nDraw the connection between the probability you calculated and a hypothesis test.\n\nWe are testing \\(H_0: p=0.4\\) vs. \\(H_a: p&gt;0.4\\)\nTest statistic: \\(\\hat{p}=30/50\\)\np-value = 0.0033"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#the-distribution-of-a-continuous-variable",
+    "href": "slides/lecture27_wk10fri.html#the-distribution-of-a-continuous-variable",
+    "title": "STAT 141",
+    "section": "The Distribution of a Continuous Variable",
+    "text": "The Distribution of a Continuous Variable\nIf \\(X\\) is a continuous random variable, it can take on any value in an interval.\n\ne.g., \\(0\\leq X\\leq 10\\) or \\(-\\infty &lt; X &lt; \\infty\\)\n\n\nRecall: For discrete random variables, we could list the probability of each possible outcome.\n\nFor continuous random variables, this won’t work. There are an uncountable number of outcomes!\n\n\n\nInstead, we represent relative chances of different possible outcomes using a density function \\(f(x)\\)\n\n\n\n\\(f(x) \\geq 0\\) for all possible \\(X\\)\nThe total area under the function is \\(1\\)\n\\(P(a\\leq X\\leq b)\\) is the area under \\(f\\) between \\(a\\) and \\(b\\)"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#density-curve",
+    "href": "slides/lecture27_wk10fri.html#density-curve",
+    "title": "STAT 141",
+    "section": "Density Curve",
+    "text": "Density Curve\nSuppose \\(X\\) is a random variable representing the time (in seconds) it takes for a particle to experience radioactive decay, where \\[\nf(x) = e^{-x} \\qquad \\textrm{for } x\\geq 0\n\\]\n\n\n\n\n\n\n\n\n\n\n\nThe probability that it takes between \\(1\\) and \\(2\\) seconds to decay is the area under the curve between \\(1\\) and \\(2\\). \\(P(1 &lt; T &lt; 2) =\\)"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#density-curve-1",
+    "href": "slides/lecture27_wk10fri.html#density-curve-1",
+    "title": "STAT 141",
+    "section": "Density Curve",
+    "text": "Density Curve\nSuppose \\(X\\) is a random variable representing the time (in seconds) it takes for a particle to experience radioactive decay, where \\[\nf(x) = e^{-x} \\qquad \\textrm{for } x\\geq 0\n\\]\n\n\n\n\n\n\n\n\n\n\nThe probability that it takes between \\(1\\) and \\(2\\) seconds to decay is the area under the curve between \\(1\\) and \\(2\\). \\(P(1 &lt; T &lt; 2) = \\color{red}{0.232}\\)"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables",
+    "href": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables",
+    "title": "STAT 141",
+    "section": "Practice with Continuous Random Variables",
+    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1)\\)\n\\(P(X \\leq 2)\\)\n\\(P(2 \\leq X \\leq 3)\\)"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-1",
+    "href": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-1",
+    "title": "STAT 141",
+    "section": "Practice with Continuous Random Variables",
+    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1) = 1 * 0.4 = \\boxed{0.4}\\)\n\\(P(X \\leq 2)\\)\n\\(P(2 \\leq X \\leq 3)\\)"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-2",
+    "href": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-2",
+    "title": "STAT 141",
+    "section": "Practice with Continuous Random Variables",
+    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1) = 1 * 0.4 = \\boxed{0.4}\\)\n\\(P(X \\leq 2) = 2 * 0.4 = \\boxed{0.8}\\)\n\\(P(2 \\leq X \\leq 3)\\)"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-3",
+    "href": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-3",
+    "title": "STAT 141",
+    "section": "Practice with Continuous Random Variables",
+    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1) = 1 * 0.4 = \\boxed{0.4}\\)\n\\(P(X \\leq 2) = 2 * 0.4 = \\boxed{0.8}\\)\n\\(P(2 \\leq X \\leq 3) = \\frac{1}{2} * 1 * 0.4 = \\boxed{0.2}\\)"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#mean-and-variance",
+    "href": "slides/lecture27_wk10fri.html#mean-and-variance",
+    "title": "STAT 141",
+    "section": "Mean and Variance",
+    "text": "Mean and Variance\nContinuous variables have a mean, variance, and standard deviation too!\n\n\nWe can’t use the same definition as for discrete random variables. \\[E[X] = \\sum_x xP[X=x]\\]\n\n\n\n\nThere are infinitely many values\nWith infinitely many, each specific value has probability 0 of occurring\n\n\n\nInstead, we have to use calculus to define mean and variance: \\[\n\\begin{align}\nE[X] &= \\int x f(x) \\, dx\\\\\n\\mathrm{Var}(X) &= \\int (x - \\mu)^2 f(x) \\, dx\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#mean-and-variance-1",
+    "href": "slides/lecture27_wk10fri.html#mean-and-variance-1",
+    "title": "STAT 141",
+    "section": "Mean and Variance",
+    "text": "Mean and Variance\n\\[\n\\begin{align}\nE[X] &= \\int x f(x) \\, dx\\\\\n\\mathrm{Var}(X) &= \\int (x - \\mu)^2 f(x) \\, dx\\\\\n\\mathrm{SD}(X) &=\\sqrt{\\mathrm{Var}(X)}\n\\end{align}\n\\]\n\n\nThese integrals are tools to meaningfully average infinitely many values\n(We won’t compute any integrals in this class!)\n\n\n\nAs always…\n\nthe mean of a random variable represents a typical value.\nthe standard deviation represents the typical size of deviations from the mean."
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#the-normal-distribution-1",
+    "href": "slides/lecture27_wk10fri.html#the-normal-distribution-1",
+    "title": "STAT 141",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\nThe Normal distribution is defined by two parameters:\n\nMean, \\(\\mu\\)\nStandard deviation, \\(\\sigma\\)\n\n\nSuppose \\(X\\) follows a Normal(\\(\\mu\\),\\(\\sigma\\)) distribution. The density function is\n\n\n\\[f(x) = \\frac{1}{\\sqrt{2 \\pi \\sigma^2}} \\cdot\\exp \\left(\\frac{-(x-\\mu)^2}{2\\sigma^2}\\right)\\]\n\n(Don’t memorize this!)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis is the official name for “bell curves”!"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#calculating-probabilities",
+    "href": "slides/lecture27_wk10fri.html#calculating-probabilities",
+    "title": "STAT 141",
+    "section": "Calculating Probabilities",
+    "text": "Calculating Probabilities\nR has built-in functions for calculating probabilities from a normal distribution.\n\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\n\n\\(P(X &lt; 80) =\\)\n\n\npnorm(q = 80, mean = 75, sd = 5)\n\n[1] 0.8413447"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#calculating-probabilities-1",
+    "href": "slides/lecture27_wk10fri.html#calculating-probabilities-1",
+    "title": "STAT 141",
+    "section": "Calculating Probabilities",
+    "text": "Calculating Probabilities\nR has built-in functions for calculating probabilities from a normal distribution.\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\\(P(X \\geq 80) = P(X&gt;80)=\\)\n\n\n1-pnorm(q = 80, mean = 75, sd = 5)\n\n[1] 0.1586553"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#calculating-probabilities-2",
+    "href": "slides/lecture27_wk10fri.html#calculating-probabilities-2",
+    "title": "STAT 141",
+    "section": "Calculating Probabilities",
+    "text": "Calculating Probabilities\nR has built-in functions for calculating probabilities from a normal distribution.\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\\(P(70 \\leq X \\leq 80) = P(X\\leq 80) - P(X\\leq 70) =\\)\n\n\npnorm(q = 80, mean = 75, sd = 5) - pnorm(q = 70, mean = 75, sd = 5)\n\n[1] 0.6826895"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#finding-quantiles",
+    "href": "slides/lecture27_wk10fri.html#finding-quantiles",
+    "title": "STAT 141",
+    "section": "Finding Quantiles",
+    "text": "Finding Quantiles\nWe can also use R to find quantiles of a Normal distribution.\n\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\n\nThe 0.95 quantile is the value \\(c\\) such that \\(P(X&lt;c) = 0.95\\)\n\n\nqnorm(p = 0.95, mean = 75, sd = 5)\n\n[1] 83.22427"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#scale-and-translation-invariance",
+    "href": "slides/lecture27_wk10fri.html#scale-and-translation-invariance",
+    "title": "STAT 141",
+    "section": "Scale and Translation Invariance",
+    "text": "Scale and Translation Invariance\nSuppose \\(X\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\) and \\(Y\\sim\\text{Normal}(\\mu=2,\\sigma=0.25)\\).\n\n\n\n\n\n\n\n\n\n\n\\(X\\) and \\(Y\\) have different means, heights, and widths…\n\nBut the same shapes!"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#scale-and-translation-invariance-1",
+    "href": "slides/lecture27_wk10fri.html#scale-and-translation-invariance-1",
+    "title": "STAT 141",
+    "section": "Scale and Translation Invariance",
+    "text": "Scale and Translation Invariance\nSuppose \\(X\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\) and \\(Y\\sim\\text{Normal}(\\mu=2,\\sigma=0.25)\\).\n\n\n\n\n\n\n\n\n\n\\(X\\) and \\(Y\\) have different means, heights, and widths…\n\nBut the same shapes!"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#scale-and-translation-invariance-2",
+    "href": "slides/lecture27_wk10fri.html#scale-and-translation-invariance-2",
+    "title": "STAT 141",
+    "section": "Scale and Translation Invariance",
+    "text": "Scale and Translation Invariance\nSuppose \\(X\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\) and \\(Y\\sim\\text{Normal}(\\mu=2,\\sigma=0.25)\\).\n\n\n\n\n\n\n\n\n\n\\(X\\) and \\(Y\\) have different means, heights, and widths…\n\nBut the same shapes!"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#standardization",
+    "href": "slides/lecture27_wk10fri.html#standardization",
+    "title": "STAT 141",
+    "section": "Standardization",
+    "text": "Standardization\n\n\n\nTheorem: Standardization\n\n\nSuppose \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\). Then, \\(Z = \\frac{X - \\mu}{\\sigma}\\) is a Normal random variable with mean 0 and standard deviation 1.\n\n\n\n\nStandard Normal: a Normal random variable with mean \\(0\\) and standard deviation \\(1\\).\n\nWe call the process of subtracting off \\(\\mu\\) and dividing by \\(\\sigma\\), standardizing.\n\n\n\n\nUseful Fact: If \\(X\\sim\\text{Normal}(\\mu=100,\\sigma=10)\\) and \\(Z\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\), then,\n\n\n\n\\[P\\Big[X &lt; 90\\Big] = P\\Big[X&lt;\\text{ 1 SD below }\\mu\\Big] = P\\Big[Z&lt;-1\\Big]\\]\n\n\nMore Generally: If \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\) and \\(Z\\sim\\text{Normal}(0,1)\\), then \\[\nP(X \\leq x) = P\\left(Z \\leq \\frac{x-\\mu}{\\sigma}\\right)\n\\]"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#practice-with-standard-normals",
+    "href": "slides/lecture27_wk10fri.html#practice-with-standard-normals",
+    "title": "STAT 141",
+    "section": "Practice with Standard Normals",
+    "text": "Practice with Standard Normals\nMore Generally: If \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\) and \\(Z\\sim\\text{Normal}(0,1)\\), then\n\\[\nP(X \\leq x) = P\\left(Z \\leq \\frac{x-\\mu}{\\sigma}\\right)\n\\]\n\nPractice: For each of the following, rewrite \\(P(X \\leq x)\\) as \\(P(Z \\leq z)\\) for some \\(z\\).\n\n\\(P(X \\leq 10)\\) where \\(X\\sim\\text{Normal}(\\mu=5,\\sigma=5)\\)\n\\(P(X \\leq 15)\\) where \\(X\\sim\\text{Normal}(\\mu=20,\\sigma=10)\\)"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#practice-with-standard-normals-1",
+    "href": "slides/lecture27_wk10fri.html#practice-with-standard-normals-1",
+    "title": "STAT 141",
+    "section": "Practice with Standard Normals",
+    "text": "Practice with Standard Normals\nMore Generally: If \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\) and \\(Z\\sim\\text{Normal}(0,1)\\), then\n\\[\nP(X \\leq x) = P\\left(Z \\leq \\frac{x-\\mu}{\\sigma}\\right)\n\\]\n\nPractice: For each of the following, rewrite \\(P(X \\leq x)\\) as \\(P(Z \\leq z)\\) for some \\(z\\).\n\n\\(P(X \\leq 10)\\) where \\(X\\sim\\text{Normal}(\\mu=5,\\sigma=5)\\)\n\n\n\\(\\frac{10 - \\mu}{\\sigma} = \\frac{10 - 5}{5} = 1 = z\\), so \\(\\color{red}{P(X \\leq 10) = P(Z \\leq 1)}\\)\n\n\n\\(P(X \\leq 15)\\) where \\(X\\sim\\text{Normal}(\\mu=20,\\sigma=10)\\)\n\n\n\\(\\frac{15 - \\mu}{\\sigma} = \\frac{15 - 20}{10} = -0.5 = z\\), so \\(\\color{red}{P(X \\leq 15) = P(Z \\leq -0.5)}\\)"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#daily-temperatures",
+    "href": "slides/lecture27_wk10fri.html#daily-temperatures",
+    "title": "STAT 141",
+    "section": "Daily Temperatures",
+    "text": "Daily Temperatures\nSuppose we’re astronomers studying four far away planets: Naboo, Tatooine, Coruscant, and Dagobah. We have the daily temperature on each of these planets over 200 days:"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#random-sample-means-n10",
+    "href": "slides/lecture27_wk10fri.html#random-sample-means-n10",
+    "title": "STAT 141",
+    "section": "Random Sample Means (n=10)",
+    "text": "Random Sample Means (n=10)\nSuppose we repeatedly take samples of 10 days from each planet, and compute the average temperature \\(\\bar{x}\\) for each sample (these are sampling distributions):\n\n\n\n\n\n\n\n\n\n\nQ: What does the distribution of sample means look like?"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#random-sample-means-n50",
+    "href": "slides/lecture27_wk10fri.html#random-sample-means-n50",
+    "title": "STAT 141",
+    "section": "Random Sample Means (n=50)",
+    "text": "Random Sample Means (n=50)\nSuppose we repeatedly take samples of 50 days from each planet, and compute the average temperature \\(\\bar{x}\\) for each sample (these are sampling distributions):\n\n\n\n\n\n\n\n\n\nQ: What does the distribution of sample means look like?"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#sampling-distributions-are-approximately-normal",
+    "href": "slides/lecture27_wk10fri.html#sampling-distributions-are-approximately-normal",
+    "title": "STAT 141",
+    "section": "Sampling Distributions are Approximately Normal",
+    "text": "Sampling Distributions are Approximately Normal\nThe sampling distribution for each planet appeared approximately Normal with \\(n=50\\), regardless of the shape of the population distribution."
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#sampling-distributions-are-approximately-normal-1",
+    "href": "slides/lecture27_wk10fri.html#sampling-distributions-are-approximately-normal-1",
+    "title": "STAT 141",
+    "section": "Sampling Distributions are Approximately Normal",
+    "text": "Sampling Distributions are Approximately Normal\nThe sampling distribution for each planet appeared approximately Normal with \\(n=50\\), regardless of the shape of the population distribution.\n\n\n\n\n\n\n\n\n\nWe’ve seen this before! As \\(n\\) increases,\n\nSampling distributions become more Normal\nVariance decreases\nMean doesn’t change; it is the parameter."
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#the-central-limit-theorem-clt",
+    "href": "slides/lecture27_wk10fri.html#the-central-limit-theorem-clt",
+    "title": "STAT 141",
+    "section": "The Central Limit Theorem (CLT)",
+    "text": "The Central Limit Theorem (CLT)\n\n\n\nTheorem: Central Limit Theorem\n\n\nSuppose a simple random sample of size \\(n\\) is drawn from a population with finite mean \\(\\mu\\) and finite standard deviation \\(\\sigma\\). Let \\(\\bar{x}\\) be the sample mean. When \\(n\\) is large, then approximately \\[\\bar{x} \\sim Normal\\Big(\\mu, \\frac{\\sigma}{\\sqrt{n}}\\Big)\\]\n\n\n\n\nA proof of the CLT requires more advanced techniques in probability (See Math 391).\nWe have gained intuition already for the CLT by examining sampling distributions!\nWe will use the CLT to conduct hypothesis tests/confidence intervals without simulation.\n\n\n\nEven when the world is strange and chaotic at the individual level, averages follow clear, predictable rules that we can use to draw conclusions!"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#the-clt-is-a-big-deal",
+    "href": "slides/lecture27_wk10fri.html#the-clt-is-a-big-deal",
+    "title": "STAT 141",
+    "section": "The CLT is a BIG deal!",
+    "text": "The CLT is a BIG deal!\n\nWhen conducting inference, our statistic is often a sample mean\n\nA proportion is a sample mean of sorts too!\n\n\n\n\nFor nearly any population distribution, the sample mean is approximately Normal\n\n\n\nThe CLT gives a formula to calculate the mean and variance of a sample mean.\n\nWe can estimate these using our data\nWe can quickly approximate what the sampling distribution looks like!"
+  },
+  {
+    "objectID": "slides/lecture27_wk10fri.html#next-week",
+    "href": "slides/lecture27_wk10fri.html#next-week",
+    "title": "STAT 141",
+    "section": "Next week:",
+    "text": "Next week:\n\nWe’ll use the approximate distribution of the sample statistic (given by the CLT) to construct confidence intervals and to conduct hypothesis tests!"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#goals-for-today",
+    "href": "slides/lecture26_wk10wed.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for Today",
+    "text": "Goals for Today\n\nContinue our discussion of expected value and variance\nIntroduce the Bernoulli distribution\nIntroduce the Binomial distribution"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#review-expected-value-variance-and-standard-deviation",
+    "href": "slides/lecture26_wk10wed.html#review-expected-value-variance-and-standard-deviation",
+    "title": "STAT 141",
+    "section": "Review: Expected Value, Variance, and Standard Deviation",
+    "text": "Review: Expected Value, Variance, and Standard Deviation\nThe expected value (or mean) of a discrete random variable \\(X\\) is \\[\n\\mu = E[X] = \\sum_{i =1}^n x_i P(X = x_i)\n\\] where \\(x_1, \\dots, x_n\\) are all the values X could potentially take.\n\nThe variance and standard deviation of a discrete random variable \\(X\\) with mean \\(E(X) = \\mu\\) is \\[\n\\sigma^2 = \\mathrm{Var}(X) = \\sum_{i =1}^n (x_i-\\mu)^2 P(X = x_i)\n\\] \\[\n\\sigma = \\textrm{SD}(X) = \\sqrt{\\mathrm{Var}(X)}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#review-rules-for-expected-value-and-variance",
+    "href": "slides/lecture26_wk10wed.html#review-rules-for-expected-value-and-variance",
+    "title": "STAT 141",
+    "section": "Review: Rules for Expected Value and Variance",
+    "text": "Review: Rules for Expected Value and Variance\n\n\n\n\n\n\nTheorem: Expectation of Sum\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Then \\[\nE(X + Y) = E(X) + E(Y)\n\\]\n\n\n\n\n\n\n\n\nTheorem: Scalar Multiplication with Expectation\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\nE(cX) = cE(X)\n\\]\n\n\n\n\n\n\n\n\n\nTheorem: Variance of Sum for Independent Random Variables\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Additionally, let \\(X\\) and \\(Y\\) be independent. Then \\[\n\\mathrm{Var}(X + Y) = \\mathrm{Var}(X) + \\mathrm{Var}(Y)\n\\]\n\n\n\n\n\n\n\n\nTheorem: Scalar Multiplication with Variance\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\n\\mathrm{Var}(cX) = c^2\\mathrm{Var}(X)\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#recall-one-coin-flip",
+    "href": "slides/lecture26_wk10wed.html#recall-one-coin-flip",
+    "title": "STAT 141",
+    "section": "Recall: One Coin Flip",
+    "text": "Recall: One Coin Flip\nConsider a random variable \\(X\\) which is the number of heads in a single coin flip.\n\nQ: What are the possible values for \\(X\\)? What are the probabilities each value of \\(X\\)?\n\n\n\n\\(X = 1\\) (H) with \\(P(X=1) = \\frac{1}{2}\\)\n\\(X = 0\\) (T) with \\(P(X=0) = \\frac{1}{2}\\)\n\n\n\nQ: Compute the expected value and variance for \\(X\\) (the number of heads in a single coin flip)\n\n\n\\[\nE[X] = (0)\\frac{1}{2} +  (1)\\frac{1}{2} = \\frac{1}{2}\n\\]\n\n\n\\[\nVar[X] = (0-1/2)^2\\frac{1}{2} +  (1-1/2)^2\\frac{1}{2} = \\frac{1}{4}\n\\]\n\n\nThis distribution has a name!\n\n\\(X\\) is called a Bernoulli random variable!"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#n-weighted-coin-tosses-expected-value-and-variance",
+    "href": "slides/lecture26_wk10wed.html#n-weighted-coin-tosses-expected-value-and-variance",
+    "title": "STAT 141",
+    "section": "\\(n\\) “weighted coin tosses”: Expected Value and Variance",
+    "text": "\\(n\\) “weighted coin tosses”: Expected Value and Variance\nLet \\(X\\) be the number of successes in \\(n\\) independent Bernoulli(\\(p\\)) random variables.\nQ: What are \\(E(X)\\) and \\(\\mathrm{Var}(X)\\)?\n\nHint: We know, from the Bernoulli distribution, that if \\(X_1\\) is the number of heads in a single weighted coin flip with success probability \\(p\\), \\[E(X_1)=p \\quad \\text{ and } \\quad \\text{Var}(X_1)= p (1 - p)\\]"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#n-weighted-coin-tosses-expected-value-and-variance-1",
+    "href": "slides/lecture26_wk10wed.html#n-weighted-coin-tosses-expected-value-and-variance-1",
+    "title": "STAT 141",
+    "section": "\\(n\\) “weighted coin tosses”: Expected Value and Variance",
+    "text": "\\(n\\) “weighted coin tosses”: Expected Value and Variance\nLet \\(X\\) be the number of heads in \\(n\\) independent Bernoulli(\\(p\\)) random variables.\nAnswer: Let \\(X_1\\) = Heads in 1st toss, \\(\\dots\\) , \\(X_n\\) = Heads in \\(n\\)th toss: \\[\n  X = X_1 + \\dots + X_n = \\sum_{i=1}^n X_i\n\\]\n\\[\n\\begin{align}\n  E(X) &= E \\left( \\sum_{i=1}^n X_i \\right) =  \\sum_{i=1}^n E(X_i) = \\sum_{i=1}^n p = np\\\\\n  \\mathrm{Var}(X) &=  \\mathrm{Var}\\left( \\sum_{i=1}^n X_i \\right) =  \\sum_{i=1}^n  \\mathrm{Var}(X_i) = \\sum_{i=1}^n p(1-p) = np(1-p)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#n-coin-toss-probabilities",
+    "href": "slides/lecture26_wk10wed.html#n-coin-toss-probabilities",
+    "title": "STAT 141",
+    "section": "\\(n\\) coin toss probabilities?",
+    "text": "\\(n\\) coin toss probabilities?\nWe’ve calculated Expectation and Variance for the number of heads in \\(n\\) coin tosses.\n\n\nBut what about the probability that there are \\(k\\) heads in the \\(n\\) tosses?\n\n\n\nFor example, What’s the probability of \\(k=2\\) heads in \\(n=3\\) coin tosses?\n\n\n\nLet’s break down the problem: What are the possible outcomes?\n\n\n\n\\[\n\\begin{align}\n\\text{TTT} & \\implies X=0 \\quad& \\text{TTH or THT or HTT} & \\implies X=1\\\\\n\\text{HHH} & \\implies X=3 \\quad& \\text{THH or HTH or HHT} & \\implies X=2\\\\\n\\end{align}\n\\]\n\n\n\nThere are \\(8\\) possible sequences from 3 coin flips, each with equal probability.\n\n\n\nThe random variable \\(X\\) has \\(4\\) possible outcomes: 0, 1, 2, or 3. Those probabilities are: \\[\n\\begin{align}\nP(X=0) &= \\frac{1}{8} \\quad&\\quad P(X=1) &= \\frac{3}{8}\\\\\nP(X=3) &= \\frac{1}{8} \\quad&\\quad P(X=2) &= \\frac{3}{8}\\\\\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#coin-tosses-probabilities",
+    "href": "slides/lecture26_wk10wed.html#coin-tosses-probabilities",
+    "title": "STAT 141",
+    "section": "3 coin tosses probabilities",
+    "text": "3 coin tosses probabilities\nThe random variable \\(X\\) has \\(4\\) possible outcomes: 0, 1, 2, or 3. Those probabilities are: \\[\n\\begin{align}\nP(X=0) &= \\frac{1}{8} \\quad&\\quad P(X=1) &= \\frac{3}{8}\\\\\nP(X=3) &= \\frac{1}{8} \\quad&\\quad P(X=2) &= \\frac{3}{8}\\\\\n\\end{align}\n\\]\n\nNotice that the probability of \\(k\\) heads in \\(n\\) coin flips is\n\\[P[X=k] = \\big(\\text{Number of ways to get k heads}\\big) \\times \\big(\\text{Prob of each flip sequence}\\big)\\]\n\n\nFor example, we found that in \\(n=3\\) coin tosses,\n\n3 ways to get 2 heads\nEach sequence of 3 coin flips has probability \\(\\frac12\\times\\frac12\\times\\frac12=\\frac18\\)\nThus, \\(P(X=2) = \\frac38\\)"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#generalization-1",
+    "href": "slides/lecture26_wk10wed.html#generalization-1",
+    "title": "STAT 141",
+    "section": "Generalization 1",
+    "text": "Generalization 1\nFirst: What if \\(n\\) and \\(k\\) are bigger?\n\nIn this case, it’s hard to individually count all the different flip sequences\n\n\n\nInstead, we can rely on a handy formula: The number of ways to get \\(k\\) “successes” in \\(n\\) “trials” is \\[{n\\choose k} = \\frac{n!}{k!(n-k)!}\\] We read this as “n choose k”\n\n\n\nThe exclamation point is a factorial: \\[\n\\begin{align}\n  0! &= 1\\\\\n  1! &= 1\\\\\n  2! &= 2\\times 1=2\\\\\n  3! &= 3\\times2\\times1=6\\\\\n  4! &= 4\\times3\\times2\\times1=24\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#generalization-1-1",
+    "href": "slides/lecture26_wk10wed.html#generalization-1-1",
+    "title": "STAT 141",
+    "section": "Generalization 1",
+    "text": "Generalization 1\nFirst: What if \\(n\\) and \\(k\\) are bigger?\n\nIn this case, it’s hard to individually count all the different flip sequences\nInstead, we can rely on a handy formula: The number of ways to get \\(k\\) “successes” in \\(n\\) “trials” is \\[{n\\choose k} = \\frac{n!}{k!(n-k)!}\\] We read this as “n choose k”\n\n\nSo in our example of 2 heads in 3 flips:\n\n\\[\\text{# of ways to choose 2 things out of 3 things} = {3\\choose2} = \\frac{3!}{2! \\cdot 1!} = \\frac{3 \\cdot 2}{2} = 3\\]"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#generalization-2",
+    "href": "slides/lecture26_wk10wed.html#generalization-2",
+    "title": "STAT 141",
+    "section": "Generalization 2",
+    "text": "Generalization 2\nSecond: What if the probability of “success” changes?\n\nIn other words, how can we generalize to the sum of Bernoulli(\\(p\\)) case from the sum of the Bernoulli(\\(p=0.5\\)) case?\n\n\n\nIn this case, the probability of getting a particular sequence of \\(k\\) “successes” in \\(n\\) independent trials is: \\[p^k\\times(1-p)^{n-k}\\]\n\n\n\n\nThere are \\(k\\) “successes”, each with probability \\(p \\; \\rightarrow \\; p^k\\)\nThere are \\(n-k\\) “failures”, each with probability \\(1-p \\; \\rightarrow \\; (1-p)^{n-k}\\)"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#binomial-distribution-putting-it-all-together",
+    "href": "slides/lecture26_wk10wed.html#binomial-distribution-putting-it-all-together",
+    "title": "STAT 141",
+    "section": "Binomial Distribution: Putting it all together",
+    "text": "Binomial Distribution: Putting it all together\nThus, the probability of observing \\(k\\) successes in \\(n\\) independent Bernoulli trials with probability of success \\(p\\) is\n\\[P[X=k] = {n \\choose k}p^k(1-p)^{n-k}\\]\nIn this case, we say \\(X \\sim \\text{Binomial}(n,~p)\\). Or, in words: \\(X\\) follows a binomial distribution with \\(n\\) trials each with \\(p\\) probability of success\n\nHow to tell if your distribution is a Binomial?\n\nNumber of trials, \\(n\\), must be fixed.\nEach trial must be Bernoulli and independent, with success probability \\(p\\) (\\(p\\) must stay the same for each trial!).\nWe must be counting the number of successes."
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#expectation-and-variance-of-binomial",
+    "href": "slides/lecture26_wk10wed.html#expectation-and-variance-of-binomial",
+    "title": "STAT 141",
+    "section": "Expectation and Variance of Binomial",
+    "text": "Expectation and Variance of Binomial\nIf \\(X \\sim \\text{Binomial}(n,~p)\\), then:\n\n\\[\n\\begin{align}\n    E(X) &= np \\\\\n    Var(X) &= np(1-p)\n\\end{align}\n\\]\n\n\nNote that we derived this earlier before we knew what a Binomial was, just by using Theorems about sums of random variables!"
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#calculating-binomial-probabilities-dbinom",
+    "href": "slides/lecture26_wk10wed.html#calculating-binomial-probabilities-dbinom",
+    "title": "STAT 141",
+    "section": "Calculating Binomial Probabilities: dbinom()",
+    "text": "Calculating Binomial Probabilities: dbinom()\nIf \\(X\\) is a binomial random variable with \\(n\\) trials and probability of success \\(p\\), we can use R to calculate the probabilities with the dbinom() function\n\n\ne.g., \\(P(X = 2)\\) where \\(n=3\\) and \\(p=0.5\\) (2 heads in 3 fair coin tosses)\n\n\ndbinom(x = 2, size = 3, prob = 0.5)\n\n[1] 0.375\n\n\n\n\n\ne.g., \\(P(X = 10)\\) where \\(n=15\\) and \\(p=0.7\\)\n\n\ndbinom(x = 10, size = 15, prob = 0.7)\n\n[1] 0.2061304\n\n\n\n\n\ndbinom() takes in an observable value of a Binomial random variable, and returns the probability of observing it."
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#calculating-binomial-probabilities-pbinom",
+    "href": "slides/lecture26_wk10wed.html#calculating-binomial-probabilities-pbinom",
+    "title": "STAT 141",
+    "section": "Calculating Binomial Probabilities: pbinom()",
+    "text": "Calculating Binomial Probabilities: pbinom()\nWe can also calculate \\(P(X \\leq k)\\) with pbinom()\n\n\ne.g., \\(P(X \\leq 2)\\) where \\(n=3\\) and \\(p=0.5\\) (2 or fewer heads in 3 fair coin tosses)\n\n\npbinom(q = 2, size = 3, prob = 0.5)\n\n[1] 0.875\n\n\n\n\nCan also calculate \\(P(X &gt; k)\\) by doing 1 - pbinom():\n\n\n\ne.g., \\(P(X &gt; 2)\\) where \\(n=3\\) and \\(p=0.5\\) (more than 2 heads in 3 fair coin tosses)\n\n\n1 - pbinom(q = 2, size = 3, prob = 0.5)\n\n[1] 0.125\n\n\n\n\n\ne.g., \\(P(X \\geq 2)\\) where \\(n=3\\) and \\(p=0.5\\)\n\n\n1 - pbinom(q = 1, size = 3, prob = 0.5)\n\n[1] 0.5\n\n\n\n\n\npbinom() takes in an observable value of a Binomial random variable, and returns the probability of observing it or something smaller."
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#activity-survey-of-portlanders",
+    "href": "slides/lecture26_wk10wed.html#activity-survey-of-portlanders",
+    "title": "STAT 141",
+    "section": "Activity: Survey of Portlanders",
+    "text": "Activity: Survey of Portlanders\nSuppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief.\n\nAssume your belief is true. Let \\(X\\) be the number of survey respondents who think the city should install more bike lanes. Does \\(X\\) follow a Binomial distribution? If so, what are \\(n\\) and \\(p\\)?\nCalculate the expected value and standard deviation of \\(X\\) (still assuming your belief is true)\nSuppose you conducted the survey and found 30 respondents wanted more bike lanes. What’s the probability that \\(X\\geq 30\\)? (use R!)\nDraw the connection between the probability you calculated and a hypothesis test."
+  },
+  {
+    "objectID": "slides/lecture26_wk10wed.html#next-time",
+    "href": "slides/lecture26_wk10wed.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time",
+    "text": "Next time\n\nContinuous random variables\nThe Central Limit Theorem!"
+  }
+]

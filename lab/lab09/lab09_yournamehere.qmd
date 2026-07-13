@@ -21,9 +21,7 @@ library(openintro)
 
 In this lab, you will
 
-  1. Make theory-based inferences on summary statistics in R
-  2. Explore data to determine whether assumptions for theory-based inference are met
-  3. Compare theory-based inference methods with simulation-based methods
+  1. ...
 
 ## Add any collaborators here!
 
@@ -32,278 +30,188 @@ I collaborated with...
 **Remember that you are not allowed to use any generative AI models (like ChatGPT) on your lab.**
 
 
+## Exercise 1: Arachnopobia and the Binomial Distribution
 
-## Background
+A Gallup Poll found that 7% of teenagers (ages 13 to 17) suffer from arachnophobia and are extremely afraid of spiders. At a summer camp there are 10 teenagers sleeping in each tent. Assume that these 10 teenagers are independent of each other. 
 
-In August of 2012, news outlets ranging from the [\textcolor{blue}{Washington Post}](http://www.washingtonpost.com/national/on-faith/poll-shows-atheism-on-the-rise-in-the-us/2012/08/13/90020fd6-e57d-11e1-9739-eef99c5fb285_story.html) to the [\textcolor{blue}{Huffington Post}](http://www.huffingtonpost.com/2012/08/14/atheism-rise-religiosity-decline-in-america_n_1777031.html) ran a story about the rise of atheism in America. The source for the story was a global poll that asked people, “Irrespective of whether you attend a place of worship or not, would you say you are a religious person, not a religious person or a convinced atheist?” This type of question, which asks people to classify themselves in one way or another, is common in polling and generates categorical data. In this lab we take a look at the atheism survey and explore what's at play when making inference about population proportions using categorical data.
+**a.** Let $X$ be the number of teenagers in a tent of 10 teenagers who suffer from arachnophobia. Precisely explain why $X$ follows a Binomial(n,p) distribution, and state what values $n$ and $p$ are.
 
-
-## The Report
-
-The press release for the poll, conducted by WIN-Gallup International, can be accessed
-[\textcolor{blue}{here}](https://irtshdf.fr/wp-content/uploads/2019/12/Gallup-International-um-tru-og-truleysi-2012.pdf). Take a moment to review the report then address the following questions.
+********************************************************
 
 
 
-
-
-## Exercise 1: Interpreting the Report
-
-**a.** In the first paragraph of the report, several key findings are reported. Do these percentages appear to be *sample statistics* (derived from the data sample) or *population parameters*? **Explain your reasoning.** [Text only for this part]
-    
-**************************************************
+********************************************************
 
 
 
+**b.** Using what we've learned about the Binomial distribution, calculate E(X), the expected number of teenagers in a tent who suffer from arachnophobia.
 
-**************************************************
-
-
-
-
-
-**b.** The title of the report is “Global Index of Religiosity and Atheism”. To generalize the report's findings to the global human population, what must we assume about the sampling method? Does that seem like a reasonable assumption? [Text only for this part]
-    
-**************************************************
+********************************************************
 
 
 
-
-**************************************************
-
-
-
-\newpage
+********************************************************
 
 
 
-## Exercise 2: Data Tabulation
+**c.** Using R, calculate the probability that at least one teenager suffers from arachnophobia. (*Hint: remember that the R functions `pbinom()` and `dbinom()` can help you calculate quantities related to Binomial distributions.*)
 
-Turn your attention to Table 6 (pages 14 and 15), which reports the sample size and response percentages for all 57 countries. While this is a useful format to summarize the data, we will base our analysis on the original data set of individual responses to the survey. Load this data set into R with the following command.
+********************************************************
 
-```{r }
-atheism <- read.csv("data/atheism.csv")
+
+
+********************************************************
+
+
+
+**d.** Using R, calculate the probability that exactly 2 of them suffer from arachnophobia. (*Hint: remember that the R functions `pbinom()` and `dbinom()` can help you calculate quantities related to Binomial distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+**e.** Using R, calculate the probability that at most 1 of them suffers from arachnophobia. (*Hint: remember that the R functions `pbinom()` and `dbinom()` can help you calculate quantities related to Binomial distributions.*)
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+
+**f.** If the camp counselor wants to make sure no more than 1 teenager in each tent is afraid of spiders, does it seem reasonable for him to randomly assign teenagers to tents?
+
+********************************************************
+
+
+
+********************************************************
+
+
+
+# Mini-Lecture: Continuous Random Variables 
+
+
+
+## Exercise 2: Practice with Continuous Random Variables 
+
+Let $X$ be a continuous random variable with the density function visualized below.
+
+```{r fig.height=3, echo = F}
+t <- seq(0, 3, length = 200)
+p <- rep(0, 200)
+p[t <= 2] <- 0.4
+p[t > 2] <- -0.4 * t[t > 2] + 1.20
+
+dd <- data.frame(t, p)
+(gg <- ggplot(dd, aes(x = t, y = p)) + geom_area(fill = "gray", color = "black") +
+  labs(x = "X", y = "Density", title = "Density of X"))
 ```
 
+**a.** By eye, calculate $P(X \leq 1)$ (visualized below).
 
-**a.** What does each row of Table 6 correspond to? What does each row of `atheism` correspond to? [Text only for this part]
+```{r fig.height=3, echo = F}
+gg + geom_ribbon(data = subset(dd, t > 0 & t <= 1), aes(ymax = p),
+                 ymin = 0, fill = "red", alpha = .75)
+```
 
-**************************************************
+********************************************************
 
 
 
-**************************************************
+********************************************************
 
 
+**b.** By eye, calcualte $P(X \leq 2)$.
 
+```{r fig.height=3, echo = F}
+gg + geom_ribbon(data = subset(dd, t > 0 & t <= 2), aes(ymax = p),
+                 ymin = 0, fill = "red", alpha = .75)
+```
 
-**b.** To investigate the link between these two ways of organizing this data, take a look at the estimated proportion of atheists in the **United States** in **2012**. Towards the bottom of Table 6, we see that this is reported to be 5%. **Show how we can arrive at the same number (up to rounding) using the `atheism` data.** [Code only for this part]
+********************************************************
 
-**************************************************
 
 
+********************************************************
 
 
+**c.** By eye, calculate $P(2 \leq X \leq 3)$.
 
-**************************************************
+```{r fig.height=3, echo = F}
+gg + geom_ribbon(data = subset(dd, t > 2 & t <= 3), aes(ymax = p),
+                 ymin = 0, fill = "red", alpha = .75)
+```
 
+********************************************************
 
-\newpage
 
 
+********************************************************
 
-## Exercise 3: Inference on Proportions
 
-Table 6 provides *statistics*, that is, calculations made from the sample of 51,927 people who were surveyed. What we'd like, though, is insight into the population *parameters*. You answer the question, “What proportion of people in your sample reported being atheists?” with a statistic; this also provides an estimate for the question “What proportion of people on earth would report being atheists?” which is a question about a parameter.
+## Exercise 3: Probabilities and Quantiles
 
-Although formal confidence intervals and hypothesis tests don't show up in the report, suggestions of inference appear at the bottom of page 6: “In general, the error margin for surveys of this kind is +/- 3-5% at 95% confidence”. Let's practice providing more formalized results.
+For Exercise 1, we can use `pbinom()` to easily calculate probabilities like $P(X \leq k)$ when $X$ follows a *Binomial* distribution. We can use `R` to make similar calculations for continuous random variable distributions! 
 
-Suppose religion scholars thought that the proportion of atheists in the United States was 3\% of the population. We'll perform a hypothesis test to determine if this assumption and our observed statistic are consistent.
+Tomorrow, we'll learn about the *Normal* distribution (colloquially, bell-shaped curves). `R` follows similar naming conventions, so if $X$ follows a Normal distribution and we want to calculate a **cumulative probability** $P(X \leq q)$, we can use `pnorm(q, mu, sigma)`, where `mu` and `sigma` are distribution parameters representing the mean and standard deviation of $X$ (we'll learn more about this tomorrow). For now, we'll assume that `mu = 0` and `sigma = 1`, which are the default settings in `R` when we just call `pnorm(q)`. 
 
-
-**a.** Write out the rule-of-thumb conditions required by *theory-based inference* to perform a hypothesis test for the proportion of atheists in the United States in 2012. Are you confident all conditions are met? [Text only for this part]
-    
-**************************************************
-
-
-
-
-**************************************************
-
-
-
-
-**b**. Write out the null and alternative hypotheses. [Text only for this part]
-
-**************************************************
-
-
-
-
-
-**************************************************
-
-
-
-
-
-**c.** Using tools from *theory-based inference*, calculate the p-value given your hypotheses.  Then, write a conclusion about your test *in context* by referencing your calculated p-value and the stated hypotheses. [Text and code for this part]
-
-**************************************************
-
-
-
-
-**************************************************
-
-
-
-
-**d.** Perform the hypothesis test using simulation-based methods (i.e., resampling -- reviewing Lab 7 may be helpful!). **How does this result compare with the Normal approximation result?** [Text and code for this part]
-
-**************************************************
-
-
-
-
-**************************************************
-
-
-
-\newpage
-
-
-
-## Exercise 4: How does the proportion affect the margin of error?
-Let's take a brief detour. Imagine you've set out to survey 1000 people on two questions: Do you have brown eyes? Are you left-handed? Since both of these sample proportions were calculated from the same sample size, they should have the same margin of error, right? Nope! While the margin of error does change with sample size, it is also affected by the proportion.
-
-Think back to the formula for the standard error:
-
-$$SE = \sqrt{\frac{p(1-p)}{n}}$$
-This is then used in the formula for the margin of error for a 95% confidence interval:
-
-$$ME = 1.96\cdot SE = 1.96\cdot \sqrt{\frac{p(1-p)}{n}}$$
-
-Since the population proportion $p$ is in this $ME$ formula, it should make sense that the margin of error is in some way dependent on the population proportion. We can visualize this relationship by creating a plot of $ME$ vs. $p$.
-
-Since sample size is irrelevant to this discussion, let's just set it to some value ($n = 1000$) and use this value in the following calculations:
+**a.** The chunk below visualizes a Normal random variable $X$ (with `mu = 0` and `sigma = 1`), and a vertical line representing $X = 1$.
 
 ```{r}
-n <- 1000
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm, geom = "area", fill = "magenta4", alpha = 0.25) +
+  stat_function(fun = dnorm, color = "magenta4", lwd = 1) +
+  geom_vline(aes(xintercept = 1), color = "dodgerblue", lwd = 1, lty = 2) +
+  labs(title = "", x = "X", y = "")
 ```
 
-The first step is to make a variable `p` that is a sequence from 0 to 1 with each number incremented by 0.01. We can then create a vector of the margin of error (`me`) associated with each of these values of `p` using the familiar approximate formula ($ME = 2 \times SE$).
+In a new chunk below, use `R` to calculate $P(X \leq 1)$, i.e. the area to the *left* of the blue dashed line. 
 
-```{r}
-p <- seq(0, 1, 0.01)
-me <- 2 * sqrt(p * (1 - p)/n)
-```
+********************************************************
 
-Lastly, we combine these vectors into a dataframe so that we can visualize it either using `geom_point()` or `geom_line()` (or both!).
 
-```{r}
-dd <- data.frame(p = p, me = me)
-```
 
+********************************************************
 
 
-**a.** Use `ggplot` to plot the relationship between `p` and `me`. [Code only for this part]
+**b.** Below, play around with calculating probabilities for various points under the Normal distribution above. What happens when you use smaller versus larger values of `q` in `pnorm(q)`?
 
-**************************************************
+********************************************************
 
 
 
+********************************************************
 
 
-**************************************************
 
+**c.** Soon in this class, we'll be very interested in calculating **quantiles** of distributions like this one. For example, we might want to find the 0.95 quantile, or the point $q$ where 95% of the area under the curve is to the left of $q$. Lucky for us, `R` has functions to help us do this for several distributions. For this normal distribution, `qnorm(p)` will return the **quantile** (on the x-axis) of a given **cumulative probability** $p$ (it will give us $q$ such that $P(X \leq q) = p$).
 
+Use `qnorm()` to calculate the **0.85** quantile of our Normal distribution above. Does it make sense to you that this value is close to the blue dashed line above? 
 
+********************************************************
 
-**b.** Describe the relationship shown in the plot you created above. **Then, state for which value of `p` the margin of error maximized**. [Text only for this part]
 
-**************************************************
 
+********************************************************
 
 
+**d.** Using the `ggplot` above as a reference, on the board, sketch a picture visualizing the quantity returned by `pnorm(-2)`.
 
-**************************************************
 
 
+**e.** Using the `ggplot` above as a reference, on the board, sketch a picture visualizing the quantity returned by `qnorm(0.5)`.
 
-\newpage
 
 
 
-## Exercise 5: Difference in Proportions
 
-Back to the report! Find the sample proportion of atheists in Canada in 2012. Then perform a hypothesis test (with $\alpha = 0.01$) to determine whether the true proportion of atheists in Canada and in the United States differed in 2012. Use *theory-based inference*, and be sure to write out: 
 
-i. The hypotheses you're testing
-ii. Your test statistic
-iii. Your p-value
-iv. Your final conclusion
 
-You should use a combination of code and text to show and explain your work.
-
-*********************************************************************************
-
-
-
-
-*********************************************************************************
-
-
-
-\newpage
-
-
-
-## Exercise 6: Inference with a Single Mean
-
-Let's return to the combined [Opportunity Insights dataset](http://www.equality-of-opportunity.org/data/) and college endowment data set from Lab 5. For the purpose of this lab, let's proceed as if this is a random sample of elite colleges in the U.S, and that we want to make inferences about the *average* endowment assets per student in 2016 across all elite colleges.
-
-```{r}
-load("data/colleges_endow.Rdata")
-```
-
-
-
-**a.** Create a histogram of the `fy2016_endowment_pc` column, which contains data on the monetary value of endowment assets per student (in 2016), measured in USD. **Does it appear approximately Normal? Even if not, what allows us to still proceed with theory-based inference for the average endowment value?** [Text and code for this part]
-
-**********************************************************************
-
-
-
-
-**********************************************************************
-
-
-
-**b.** Using *theory-based inference*, calculate a 95% confidence interval for the average endowment assets per student. Interpret the interval **in context**. [Text and code for this part]
-
-**********************************************************************
-
-
-
-
-
-**********************************************************************
-
-
-
-**c.** Create a bootstrap distribution of the sample mean using our sample of `fy2016_endowment_pc` (isolated in the chunk below as `endow_sample`). **Does this distribution appear to be approximately Normal? Use the percentile method to generate a 95% confidence interval and compare to your previous result in part (b).** [Text and code for this part]
-
-**********************************************************************
-
-```{r}
-endow_sample <- data.frame(fy2016_endowment_pc = colleges$fy2016_endowment_pc)
-
-### Your work below
-
-```
-
-
-
-**********************************************************************
 

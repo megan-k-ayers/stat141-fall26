@@ -1,0 +1,235 @@
+---
+title: "Homework 11: TBD"
+subtitle: "Math 141, Week 11"
+author: "Your name here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: TBD
+
+In this homework assignment you will:
+
+- TBD
+
+
+### Add any collaborators here!
+
+I collaborated with...
+
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
+
+```{r}
+#load the necessary packages
+library(tidyverse)
+```
+
+
+# Exercises
+
+
+## Exercise 0: Metacognition
+
+We've covered a lot of ground this semester! Here's a brief summary of topics, grouped into 5 units:
+
+  + Unit 1: Data visualization, summary statistics, probability, sampling methods, study design
+  + Unit 2: Linear regression (simple and multiple), quantitative and categorical explanatory variables, interaction effects
+  + Unit 3: Sampling distributions, bootstrap distributions, confidence intervals, hypothesis testing
+  + Unit 4: Random variables, the Central Limit Theorem, theory-based inference for proportions, means, difference in proportions, difference in means
+  + Unit 5: Inference for regression with theory and bootstrapping
+  
+  
+**a.** Pick 3 distinct "pairs" of topics from *different* units. For each pair, describe in 1-2 complete sentences how the concepts in those units are related. (ex. Data visualization and linear regression are related, because we should always use data visualization techniques to assess LINE assumptions. Residual plots and y-vs-x scatterplots help us assess linearity and equal variance, and histograms or Q-Q plots help us assess normality.) 
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+
+**b.** Which of the 3 topics did you find most challenging? For each topic, identify one related homework or lab exercise that you want to revisit before the final exam. 
+
+*********************************************************************************
+
+
+
+
+
+*********************************************************************************
+
+
+
+
+\newpage
+
+
+
+
+## Exercise 1: Anchoring Experiment
+
+During the Lab 3, we collected data to see if our class exhibits an "anchoring effect". The anchoring effect is a cognitive bias in which an individual's decisions in an uncertain situation are reliant on the first piece of information received. Half of you received the number $x = 82$ and the other half the number $x = 531$, and then you took a survey that asked you to guess how many dog breeds there are in the world. The numbers were handed out at random. Recall that we've qualitatively investigated the following question: Does the number received serve as an anchor value for answering the second question?  In other words, does the number seem to serve as a starting point when estimating the number of dog breeds in the world? Remember that last semester, students in 141 participated in the same experiment. In this exercise we'll work again with the pooled data across both semesters.
+
+In previous exercises and activities, we've looked for evidence of an anchoring bias in an exploratory manner, without using formal statistical inference procedures. But now, we have the tools to do this! 
+
+```{r}
+# Load the data
+dogs <- read.csv("data/dogs_cleaned.csv")
+dogs <- dogs %>% 
+  mutate(treatment = factor(treatment)) %>%
+  select(treatment, n_breeds)
+head(dogs)
+```
+
+
+
+**a.** Let's start by addressing the question: "Did this experiment demonstrate that an anchoring effect exists?" To answer this question, **(1)** are we looking to perform inference on a single proportion, a difference in proportions, a single mean, or a difference in means? And **(2)** why is a hypothesis test more relevant than a confidence interval for this specific question? [Text only for this question]
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+
+**b.** What are the two implied populations of this investigation? What are the two samples? [Text only for this question]
+
+***********************************************
+
+
+
+***********************************************
+
+
+
+
+**c.** State null and alternative hypotheses that could answer the research question based on the type of data collected in this investigation. Keep in mind that if an anchoring effect exists, we expect higher priming numbers to result in higher responses. [Text only for this question]
+
+***********************************************
+
+
+
+***********************************************
+
+
+
+
+
+**d.** Write down the conditions for using theory-based methods to carry out this hypothesis test. Then, explain why you think they have or have not been met in this situation. [Text only for this question]
+
+*********************************************************************************
+
+
+
+*********************************************************************************
+
+
+
+
+**e.** Regardless of your answers to the previous question, we will use theory-based methods to assess the hypotheses in part (c). **Compute the relevant standardized test statistic. What distribution does the test statistic follow, if the null hypothesis is true?** [Text and code for this question]
+
+***********************************************
+
+
+
+***********************************************
+
+
+
+
+**f.** Compute the p-value for the test statistic you found in the previous part, given your hypotheses from part (c). Then make a conclusion at the $\alpha = 0.05$ significance level, **in context**. [Text and code for this question]
+
+***********************************************
+
+
+
+
+***********************************************
+
+
+
+
+**g.** Create a 95% confidence interval for our test statistic using theoretical methods. [Code only for this question]
+
+***********************************************
+
+
+
+
+***********************************************
+
+
+
+**h.** Given all of the results above, including the effect size, confidence interval, and p-value, do you think there is *any* evidence of an anchoring effect worth investigating further? [Text only for this question]
+
+***********************************************
+
+
+
+
+
+***********************************************
+
+
+
+\newpage
+
+
+
+## Exercise 2: Success-failure condition
+
+We emphasized in lecture that you must always check conditions before making inferences. For inference on proportions, the sample proportion can be assumed to be nearly normal if it is based upon a random sample of independent observations and if both $np \geq 10$ and $n(1 - p) \geq 10$. This rule of thumb is easy enough to follow, but it makes one wonder: what's so special about the number 10?
+
+The short answer is: nothing! You could argue that we would be fine with 9 or that we really should be using 11. What is the “best” value for such a rule of thumb is, at least to some degree, arbitrary (similar to how $\alpha = 0.05$ is relatively arbitrary). However, we often observe that when $np$ and $n(1-p)$ reaches 10, the sampling distribution is sufficiently normal to use confidence intervals and hypothesis tests that are based on that approximation.
+
+We can investigate the interplay between $n$ and $p$ and the shape of the sampling distribution of $\hat{p}$ by using simulations. Play around with the following app to investigate how the shape, center, and spread of the distribution of $\hat{p}$ changes as $n$ and $p$ changes.
+
+Link to app:
+<https://ismay.shinyapps.io/shinyDist/>
+
+
+**a.** Describe the sampling distribution of sample proportions at $n = 300$ and $p = 0.1$. Be sure to note the center, spread, and shape (eyeball the relevant numeric summary statistics for center and spread). [Text only for this question]
+    
+**************************************************
+
+
+
+**************************************************
+
+
+
+
+**b.** Keep $n$ constant at $n=100$, change $p$. How does the shape, center, and spread of the sampling distribution vary as $p$ changes? You might want to adjust min and max for the x-axis for a better view of the distribution. [Text only for this question]
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+
+**c.** Now fix $p$ at $0.05$ and change $n$. How does $n$ appear to affect the distribution of $\hat{p}$? [Text only for this question]
+
+**************************************************
+
+
+
+
+**************************************************
+
+
+
+
+
+
