@@ -27,10 +27,16 @@ I collaborated with...
 ```{r}
 #load the necessary packages
 library(tidyverse)
+library(knitr)
+library(moderndive)
+library(infer)
+library(openintro)
 ```
 
 
 # Exercises
+
+# !!!!!! TODO: MORE PRACTICE MAKING INFERENCES FROM REGRESSION TABLE!! !!!!!!!
 
 
 ## Exercise 1: Metacognition

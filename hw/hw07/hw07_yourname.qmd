@@ -27,6 +27,14 @@ I collaborated with...
 **Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 
+```{r setup, include=FALSE}
+# Do not modify this chunk.
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE, fig.align = "center")
+library(tidyverse)
+library(infer)
+set.seed(1)
+```
+
 
 # Exercises
 

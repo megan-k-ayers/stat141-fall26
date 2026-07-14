@@ -155,9 +155,10 @@ atheism <- read.csv("data/atheism.csv")
 **b.** Perform a hypothesis test (with $\alpha = 0.01$) to determine whether the true proportion of atheists in Canada and in the United States differed in 2012. Use *theory-based inference*, and be sure to write out: 
 
 i. The hypotheses you're testing
-ii. Your test statistic
-iii. Your p-value
-iv. Your final conclusion
+ii. Whether conditions for theory-based inference have been met
+iii. Your test statistic
+iv. Your p-value
+v. Your final conclusion
 
 You should use a combination of code and text to show and explain your work.
 
@@ -216,7 +217,7 @@ load("data/colleges_endow.Rdata")
 
 
 
-**b.** Using *theory-based inference*, calculate a 95% confidence interval for the average endowment assets per student. Interpret the interval **in context**. [Text and code for this part]
+**b.** Using *theory-based inference and the PERCENTILE method*, calculate a 95% confidence interval for the average endowment assets per student. Interpret the interval **in context**. [Text and code for this part]
 
 *******************************************************************************
 
