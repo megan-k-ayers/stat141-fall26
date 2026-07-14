@@ -106,7 +106,7 @@ near_reed %>% group_by(Genus) %>% summarize(Count=n())
 
 *******************************************************************************
 
-**c.** Compute the mean `Carbon_Sequestration_lb` for trees in each `Genus`. Then, identify where the value for the `Acer` genus appears in the regression table.
+**c.** Using data wrangling functions, compute the mean `Carbon_Sequestration_lb` for trees in each `Genus`. Then, identify where the value for the `Acer` genus appears in the regression table.
 
 *******************************************************************************
 
@@ -122,7 +122,15 @@ near_reed %>% group_by(Genus) %>% summarize(Count=n())
 
 *******************************************************************************
 
-**e.** By default, R chooses the alphabetically first level of the explanatory variable to serve as the baseline. However, the order can be changed in R using some extra code. In the following code chunk, we re-order the `Genus` variable so that the largest category, Pseudotsuga, is the *baseline* group.
+**e.** Given your findings from parts (b)-(d), interpret the coefficient for the `Cornus` genus.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+**f.** By default, R chooses the alphabetically first level of the explanatory variable to serve as the baseline. However, the order can be changed in R using some extra code. In the following code chunk, we re-order the `Genus` variable so that the largest category, Pseudotsuga, is the *baseline* group.
 ```{r, echo=T}
 near_reed <- near_reed %>%
   mutate(Genus = fct_relevel(Genus, "Pseudotsuga","Acer","Quercus","Cornus"))
@@ -136,7 +144,7 @@ near_reed <- near_reed %>%
 
 *******************************************************************************
 
-**f**. Suppose a particular tree is a Bigleaf Maple, which is in the Acer genus. **What is the predicted Carbon Sequestration using the model constructed in part (a)? What is the predicted Carbon Sequestration using the model constructed in part (e)? How do the predictions compare?**
+**g**. Suppose a particular tree is a Bigleaf Maple, which is in the Acer genus. **What is the predicted Carbon Sequestration using the model constructed in part (a)? What is the predicted Carbon Sequestration using the model constructed in part (e)? How do the predictions compare?**
 
 *******************************************************************************
 

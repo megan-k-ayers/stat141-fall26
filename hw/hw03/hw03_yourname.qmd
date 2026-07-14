@@ -13,6 +13,7 @@ execute:
 
 
 In this homework assignment you will practice:
+
 - Using data wrangling techniques to answer different research questions
 - Applying probability rules and concepts
 

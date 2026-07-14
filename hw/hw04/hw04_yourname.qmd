@@ -89,6 +89,16 @@ get_regression_table(tree_model)
 
 *******************************************************************************
 
+
+**e.** List out the assumptions required for linear regression, and write whether or not those assumptions have been met for this model (*Hint*: reference the graphs you made above and at the end of Lab 4 for this model).
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
 ## Exercise 2: Sampling Bias
 
 **a.** During World War II, the statistician Abraham Wald was asked to help the US military determine where to place more armor on bomber planes. Adding armor protects planes, but weighs a lot, so it must be used sparingly. Statistical data on aircraft damage showed that for the planes observed, the highest density of bullet holes and damage was near the fuselage, while the lowest density was near the motors. It's said that the military concluded that bullets tended to hit the fuselage most often, and planned to add more armor to the fuselage before consulting Wald. **Why would this have been a mistake? What would you recommend instead if you were in Wald's place?**

@@ -30,7 +30,7 @@ I collaborated with...
 
 ## Exercise 1: Visualizing distributions of variables in `somerville`
 
-a. Create a histogram of the `satisfied_somerville` variable. You may need to play around with the number of bins to get a clear idea of the shape. Compute the mean, median, variance, and standard deviation of `satisfied_somerville` What do you notice about the distribution?
+a. Create a histogram of the `satisfied_somerville` variable. You may need to play around with the number of bins to get a clear idea of the shape. Compute the mean, median, variance, and standard deviation of `satisfied_somerville`. What do you notice about the distribution?
 
 *******************************************************************************
 
