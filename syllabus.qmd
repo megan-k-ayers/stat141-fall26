@@ -121,21 +121,23 @@ We'll have a variety of assignments, activities, and assessments for this course
     - Lab assignments will be made available for download from the course website before each lab. 
     - Lab assignments will be turned in via Gradescope at the end of your section's lab time. They will be assessed as part of your participation grade, but you will not receive feedback or a score for them. 
     - No late labs will be accepted.
-    - Solutions for lab assignments will be posted at the end of the day on Thursdays as a reference for the following homework assignment.
+    - Lab assignments will count for a small portion of your grade, but will be very important for preparing for the upcoming homework assignment and quiz.
 
 -   **Homework assignments**:
     - Every week we will have a homework assignment. Homework assignments will be posted on the course website on Thursday mornings. 
     - These will be turned in via Gradescope by **9:00am on Thursay of the following week**.
-    - Engaging with homework assignments and discussing them in office hours will be the best way to study for the next week's quiz.
     - Homework assignments will largely build on and/or further practice content from that week's lab, and may also cover additional material from lecture. 
     - You will receive detailed feedback on your homework assignments, and scores will be assigned based on completion and effort.
+    - Homework assignments represent a higher proportion of your grade than labs, but a relatively small proportion overall. 
+    - Engaging with homework assignments and discussing them in office hours will be the best way to study for the next week's quiz!
 
 -   **Quizzes**:
     - Almost every week at the beginning of lab we will have a short quiz, based closely on the material from the last week's homework assignment.
+    - Overall, quizzes have the largest impact on your grade. However, there will be 10 quizzes throughout the semester, so each individual quiz will be relatively low-stakes.
     - Quizzes will be taken on paper and will be entirely closed-notes. 
     - While you will not be asked to write code in R during quizzes, you may be asked to write pseudo-code, describe coding steps qualitatively, or explain code shown to you. 
-    - You will have the opportunity to submit quiz revisions, and make-up quizzes (in the event of absences) for partial credit.
-    - Your two lowest quiz grades will be dropped, but dropped quizzes may only include one that you were absent for and did not make up.
+    - You will have the opportunity to submit quiz revisions within 1 week of feedback being posted, and to submit make-up quizzes (in the event of absences) for partial credit.
+    - Your two lowest quiz grades will be dropped, but dropped quizzes may not include quizzes that you were absent for **and did not make up**.
     
 -   **In-class activities**:
     - During lecture and lab, we will include some in-class activities. Including but not limited to: 
@@ -153,9 +155,6 @@ We'll have a variety of assignments, activities, and assessments for this course
     - The final exam will be 60 minutes long, and will be held on December 8th (the last Tuesday of class, which follows lab schedule due to the Thanksgiving break).
     - No late exams will be accepted.
         
--   **Final Project**:
-
-
 
 ## Attendance
 
@@ -199,11 +198,22 @@ We expect everyone to act and interact in ways that contribute to an open, welco
 
 **Late work policy**:
 
-To help with various circumstances (expected and unexpected), you have up to 4 additional lab extensions days and 4 additional homework extension days that you can use as you need, no questions asked. You are free to distribute the extension days to different assignments as you wish (e.g., 1 additional day for 4 labs, 4 additional days for 1 lab) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). Lab extension days may only be used for lab assignments, and homework extension days may only be used for homework assignments. When you use extension days, it may take longer for you to receive feedback on that assignment. 
+* **Quizzes**: Since quizzes are taken in-person during lab, a missed quiz will be assigned a score of 0. However, you have the opportunity to make up a missed quiz outside of class for up to 50% partial credit by submitting a quiz revision. To help with various circumstances expected and unexpected, quizzes that have been made up are eligible to be dropped from your final grade, no questions asked (the two lowest quiz scores *from attempted quizzes* will be dropped at the end of the semester).
 
-If you need to use any extension days, send Megan an **email** (not a Slack message) with the title: "Math 141 Extension Days" that includes the assignment that you are using an extension for, and the number of day(s) used. 
+* **Homeworks**: To be considered for full credit, homework assignments must be submitted by their deadline. Late homework assignments will be accepted for up to 50% partial credit at any time before the end of the last day of class, Wednesday December 9th at 11:59pm. Late submissions of homework assignments are not guaranteed timely or detailed feedback - you are encouraged to meet with Megan or course assistants in office hours to clarify any questions or discuss solutions from any late homework assignments.
 
-If you have used all of your extension days and submit an additional assignment late, you may still submit your assignment (via Gradescope, or email if the Gradescope assignment is closed) for a grade worth up to 50% of the maximum possible grade of the original assignment. For example, if a lab is worth 100 points, and you submit it late without using extension days, your maximum possible grade for that assignment will be 50 points. It may take several weeks for assignments to be graded in these cases, and detailed feedback will not be given.
+* **Labs**: Lab assignments will be due at the end of each lab section and will count towards a small participation grade. In the event of a lab absence, you are highly encouraged to prepare for homework assignments by completing labs on your own, but late submissions of lab assignments will not be accepted.
+
+* **Exam**: The final exam cannot be made up, except in cases with academic accommodations.  
+
+
+
+
+<!-- To help with various circumstances (expected and unexpected), you have up to 4 additional lab extensions days and 4 additional homework extension days that you can use as you need, no questions asked. You are free to distribute the extension days to different assignments as you wish (e.g., 1 additional day for 4 labs, 4 additional days for 1 lab) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). Lab extension days may only be used for lab assignments, and homework extension days may only be used for homework assignments. When you use extension days, it may take longer for you to receive feedback on that assignment.  -->
+
+<!-- If you need to use any extension days, send Megan an **email** (not a Slack message) with the title: "Math 141 Extension Days" that includes the assignment that you are using an extension for, and the number of day(s) used.  -->
+
+<!-- If you have used all of your extension days and submit an additional assignment late, you may still submit your assignment (via Gradescope, or email if the Gradescope assignment is closed) for a grade worth up to 50% of the maximum possible grade of the original assignment. For example, if a lab is worth 100 points, and you submit it late without using extension days, your maximum possible grade for that assignment will be 50 points. It may take several weeks for assignments to be graded in these cases, and detailed feedback will not be given. -->
 
 
 **Collaboration Policy and Academic Honesty**:
