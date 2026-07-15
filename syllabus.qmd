@@ -17,9 +17,9 @@ editor:
 **Lecture and Lab Instructor**: Megan Ayers (she/her) 
 
 -   Email: [meganayers@reed.edu](mailto:meganayers@reed.edu)
--   Office hours: See [Moodle](XXX) for weekly office hour times and locations. I am also happy to meet by appointment if you have conflicts during the scheduled times. Please [email me](mailto:meganayers@reed.edu) or send me a Slack message to find a time to meet. 
+-   Office hours: See [Moodle](XXX) for weekly office hour times and locations. I am also happy to meet ad hoc by appointment if you have conflicts during the scheduled times. Please [email me](mailto:meganayers@reed.edu) or send me a Slack message to find a time to meet. 
 
-**Course Assistants**: We have course assistants for STAT 141 this semester. A course assistant will be present at each lab section. Further, each course assistant will hold office hours during the week. Times and locations of course assistant office hours can be found on [Moodle](XXX). Feel free to go to any course assistant's office hours, even if they are not the course assistant for your lab section. 
+**Course Assistants**: We have X course assistants for STAT 141 this semester! A course assistant will be present at each lab section. Further, each course assistant will hold office hours during the week. Times and locations of course assistant office hours can be found on [Moodle](XXX). Feel free to go to any course assistant's office hours, even if they are not the course assistant for your lab section. 
 
 
 **Links and course resources**:
@@ -114,34 +114,46 @@ By the end of the course, you will have improved your data acumen and your abili
 
 ## Assignments, activities, and exams
 
-We'll have a variety of assignments, activities, and exams for this course. In particular: 
+We'll have a variety of assignments, activities, and assessments for this course. In particular: 
 
 -   **Lab assignments**:
-    - Almost every week, we will have a lab assignment. The lab assignments will be assigned on Thursday at lab time and **due the following week on Tuesday by 11:59pm**. 
+    - Every week we will have a lab assignment. The lab assignments will be assigned and worked on collaboratively during lab time on Thursdays. They are designed to help you practice and ask questions about concepts and skills, particularly in R, that you will build on in the following homework assignment.  
     - Lab assignments will be made available for download from the course website before each lab. 
-    - Lab assignments will mostly include computational questions and involve R, but may also include theoretical questions.
-    - These lab assignments will be turned in via Gradescope. 
+    - Lab assignments will be turned in via Gradescope at the end of your section's lab time. They will be assessed as part of your participation grade, but you will not receive feedback or a score for them. 
+    - No late labs will be accepted.
+    - Solutions for lab assignments will be posted at the end of the day on Thursdays as a reference for the following homework assignment.
 
--   **Homework assignments** and **readings**:
-    - Almost every week, we will have a homework assignment. Homework assignments will be posted on the course website on Fridays. 
-    - These will be turned in via Gradescope by **11:59pm on Friday of the following week**, unless otherwise instructed.
-    - Homework assignments will mostly include theoretical and conceptual questions, but may include some computational questions involving R. 
-    - Almost every class, we will have an assigned reading to complete before the beginning of each class. Homework assignments may refer to parts of the reading.
+-   **Homework assignments**:
+    - Every week we will have a homework assignment. Homework assignments will be posted on the course website on Thursday mornings. 
+    - These will be turned in via Gradescope by **9:00am on Thursay of the following week**.
+    - Engaging with homework assignments and discussing them in office hours will be the best way to study for the next week's quiz.
+    - Homework assignments will largely build on and/or further practice content from that week's lab, and may also cover additional material from lecture. 
+    - You will receive detailed feedback on your homework assignments, and scores will be assigned based on completion and effort.
 
+-   **Quizzes**:
+    - Almost every week at the beginning of lab we will have a short quiz, based closely on the material from the last week's homework assignment.
+    - Quizzes will be taken on paper and will be entirely closed-notes. 
+    - While you will not be asked to write code in R during quizzes, you may be asked to write pseudo-code, describe coding steps qualitatively, or explain code shown to you. 
+    - You will have the opportunity to submit quiz revisions, and make-up quizzes (in the event of absences) for partial credit.
+    - Your two lowest quiz grades will be dropped, but dropped quizzes may only include one that you were absent for and did not make up.
     
 -   **In-class activities**:
     - During lecture and lab, we will include some in-class activities. Including but not limited to: 
         - group activities,
         - independent activities,
-        - low-stakes quizzes.
+        - participation-based learning assessments.
+        
+-   **Readings**:
+    - Readings will be posted ahead of every lecture. 
+    - Readings are highly encouraged for deep engagement with course material and commitment of concepts to long-term memory.
+    - The content in readings may seem repetitive with lecture content - this is by design! The more frequently you encounter and think through concepts, the better you will remember them, and the more deeply you will be able to engage with future material in the course that builds on them.
     
--   **Exams**:
-    - We'll have a midterm exam and final exam for this course. Each exam will consist of an in-person written exam. 
-    - The midterm exam will take place on Thursday 3/12 during lab time. You will have 60 minutes to complete the exam. 
-    - The final exam slot is now officially scheduled for:
-        - *S01, S02, and S03*: Monday, May 11 from 6-9pm
-        - *S11, S12, and S13*: Thursday, May 14 from 6-9pm
+-   **Final Exam**:
+    - We'll one exam (a final exam) for this course. The exam will consist of an in-person written exam. 
+    - The final exam will be 60 minutes long, and will be held on December 8th (the last Tuesday of class, which follows lab schedule due to the Thanksgiving break).
     - No late exams will be accepted.
+        
+-   **Final Project**:
 
 
 
