@@ -29,18 +29,6 @@ I collaborated with...
 # Exercises
 
 
-## Exercise 0: Final project group members
-
-Throughout the semester, you will work in groups of 3-5 on a project that answers a research question by using real-world data and techniques covered in our class. The project will culminate in a **a technical report due Monday December 14th at 9am, and a 10-minute presentation that each group will give during our final exam time slot**.
-
-Over the next week, decide who you would like your group members to be. They should be in your same lecture section so that you can collaborate during project work days. Write down the names of your group members below.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
 ## Exercise 1: Somerville data wrangling
 
 In Problem 1b from Lab 2, we built two different types of bar graphs to visualize how people get around Somerville.

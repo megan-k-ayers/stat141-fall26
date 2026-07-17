@@ -37,35 +37,8 @@ library(pdxTrees)
 
 # Exercises
 
-## Exercise 1: Final Project - Dataset & Research Questions
 
-As a reminder, throughout the semester you will work in your project group to answer a research question using real-world data and techniques covered in class, culminating in a technical report and presentation.
-
-**a.** Describe the dataset your group is considering for the final project. Where does it come from, and what does a row/observation represent?
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**b.** List 2-3 draft research questions your group is considering. 
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**c.** Are there any concerns about this dataset (e.g., missing data, sample size, variables you wish you had) that might affect which research questions are feasible?
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-## Exercise 2: Factors (Categorical Predictors)
+## Exercise 1: Factors (Categorical Predictors)
 
 We will again work with the `pdxTrees` data package. Run the following code chunk to obtain a data frame of the four parks closest to Reed, subsetted to only include trees of the `Genus` Pseudotsuga, Acer, Quercus, or Cornus.  This data frame includes some additional modification to clean up the data. The chunk also shows how many trees of each `Genus` are in the `near_reed` dataset.
 
@@ -152,7 +125,7 @@ near_reed <- near_reed %>%
 
 *******************************************************************************
 
-## Exercise 3: Regression with Transformation
+## Exercise 2: Regression with Transformation
 
 Problems 3 & 4 use an extended version of the [Opportunity Insights dataset](http://www.equality-of-opportunity.org/data/) (introduced in the activity from the *Data Wrangling* lecture) that has been joined with a dataset from The National Association of College and University Business Officers containing information on university endowment assets from 2016.\footnote{Specifically, the endowment data are from fiscal year 2016, which began on June 1, 2015 and ended on May 31, 2016. For the purposes of Math 141, it is fine to simply refer to these data as being collected in 2016.} The data are in the file `colleges_endow.Rdata`; for simplicity, the data frame is named `colleges`. The following table provides a list of the variables in the dataset and their descriptions. (Note: It is easier to read the table in the Rendered PDF document.)
 
@@ -301,7 +274,7 @@ Let's investigate the association between college access and endowment assets by
 
 
 
-## Exercise 4: Regression Models with Equal vs Varying Slopes
+## Exercise 3: Regression Models with Equal vs Varying Slopes
 
 In this problem, we will investigate whether the relationship between net tuition price for low- and middle-income students and endowment value seems to differ for Ivy Plus schools versus other schools.
 

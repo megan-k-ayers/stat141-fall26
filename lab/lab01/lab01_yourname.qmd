@@ -38,6 +38,7 @@ I collaborated with...
 - Make a problem about saving!!!
 - Make a problem about rendering and finding the PDF and downloading it (if on server)
 - Make Problem 1a a "hello world" and have them practice the different ways of running the line of code.
+- Make a problem about debugging
 - Notes for which parts I want to do together on the screen, any timing for working together then showing results
 
 
@@ -46,7 +47,7 @@ I collaborated with...
 # Exercises
 
 
-## Exercise 1
+## Exercise 1: R Fundamentals
 In this problem, we will explore fundamental commands and behavior in R.
 
 a. In the R code chunk below, create a variable called `y` with the value 7. In R, we use `<-` to assign values to variable names, like `x <- 1`.
@@ -138,7 +139,7 @@ i. Finally, let's practice making a vector and creating character data types. In
 
 *******************************************************************************
 
-## Exercise 2
+## Exercise 2: Exploring Data Frames
 
 In this problem, we are going to explore an existing data frame in `R`.
 

@@ -502,5 +502,54 @@
     "title": "STAT 141",
     "section": "Next time",
     "text": "Next time\n\nTheory-based inference with means"
+  },
+  {
+    "objectID": "slides/lecture15_wk05fri.html#decks-of-cards",
+    "href": "slides/lecture15_wk05fri.html#decks-of-cards",
+    "title": "STAT 141",
+    "section": "Decks of cards",
+    "text": "Decks of cards\n\n\nIf we count:\n\nAces as 1\nJacks as 11\nQueens as 12\nKings as 13\n\nThe distribution of numbers in a deck of cards looks like:"
+  },
+  {
+    "objectID": "slides/lecture15_wk05fri.html#drawing-cards-population-sample-parameter-and-statistic",
+    "href": "slides/lecture15_wk05fri.html#drawing-cards-population-sample-parameter-and-statistic",
+    "title": "STAT 141",
+    "section": "Drawing cards: Population, Sample, Parameter, and Statistic",
+    "text": "Drawing cards: Population, Sample, Parameter, and Statistic\n\n\n\nToday, we’re going to be:\n\nRandomly drawing 10 cards from a deck of cards\nCalculating the average value of our 10 cards\n\n\n\n\nQ: What is the sample? What is the population?\nQ: What is the statistic? What is the parameter?"
+  },
+  {
+    "objectID": "slides/lecture15_wk05fri.html#discussion",
+    "href": "slides/lecture15_wk05fri.html#discussion",
+    "title": "STAT 141",
+    "section": "Discussion",
+    "text": "Discussion\n\n\n\nWhat is the true average card value in a deck of cards?\nHow does the distribution of sample means compare to the distribution of card values in a deck of cards?\nWhat is the relationship between the centers of the two distributions?\nWhich distribution appears to have more variability?\nHow do the shapes of the two distributions compare? Why do they differ?"
+  },
+  {
+    "objectID": "slides/lecture15_wk05fri.html#sampling-overview-1",
+    "href": "slides/lecture15_wk05fri.html#sampling-overview-1",
+    "title": "STAT 141",
+    "section": "Sampling Overview",
+    "text": "Sampling Overview\n\nThe distribution of a data set allows us to quantify the shape, center, and spread of the data.\nWhile a single observation in a data set may appear arbitrary… repeated trials often show that outcomes follow certain patterns."
+  },
+  {
+    "objectID": "slides/lecture15_wk05fri.html#sampling-overview-2",
+    "href": "slides/lecture15_wk05fri.html#sampling-overview-2",
+    "title": "STAT 141",
+    "section": "Sampling Overview",
+    "text": "Sampling Overview\n\nThe distribution of a data set allows us to quantify the shape, center, and spread of the data.\nWhile a single observation in a data set may appear arbitrary… repeated trials often show that outcomes follow certain patterns."
+  },
+  {
+    "objectID": "slides/lecture15_wk05fri.html#sampling-overview-3",
+    "href": "slides/lecture15_wk05fri.html#sampling-overview-3",
+    "title": "STAT 141",
+    "section": "Sampling Overview",
+    "text": "Sampling Overview\n\n\nWe know that a variable from a population has a distribution\n\ne.g., the distribution of card values in a deck of cards\n\n\n\n\n\n\n\n\n\n\n\n\n\nMoral of Today: Statistics (e.g., mean of variable in a sample) have distributions too!!\n\nHow? We only have ONE statistic – the statistic from the ONE sample we drew\nDistribution is over all the possible samples we could have drawn (we just see 1)\n\nImplication: Statistics themselves have a mean, standard deviation, 5-number summary\n\nThe mean tells us the statistic’s typical value in a randomly chosen sample.\nThe standard deviation tells us how the statistic fluctuates from sample to sample.\n\nVery Powerful: e.g., Can use this distribution to give plausible ranges for the parameter and a sense of uncertainty in a given statistic."
+  },
+  {
+    "objectID": "slides/lecture15_wk05fri.html#statistical-inference",
+    "href": "slides/lecture15_wk05fri.html#statistical-inference",
+    "title": "STAT 141",
+    "section": "Statistical Inference",
+    "text": "Statistical Inference\n\nGoal: Draw conclusions about the population based on the sample.\n\nWe’ve seen how to calculate a statistic from our sample\nBut different samples give different statistics: how do we know whether to trust the one we have?\nSampling distributions show how widely our statistic can range across samples\nThis helps us understand how much to trust any single statistic"
   }
 ]

@@ -122,7 +122,6 @@ scheduled-docs:
             - 'Submit assignment 2 (due Thurs 9/17 at 9am)'
             - 'Take Quiz 1 during lab'
             - 'Start assignment 3 (assigned 9/17)'
-            - 'Start thinking about final project group members'
 
     - week: 4
       days:
@@ -202,14 +201,13 @@ scheduled-docs:
           #   - type: Slides
           #     href: slides/lecture14_wk05wed.qmd
       resources:
-            - 'Start thinking about final project data sets & research questions'
             - 'Submit assignment 4 (due Thurs 10/01 at 9am)'
             - 'Take Quiz 3 during lab'
             - 'Start assignment 5 (assigned 10/01)'
 
     - week: 6
       days:
-        - topic: "Sampling Distributions I: Introduction"
+        - topic: "Linear Models VI: Case Study"
           display-date: Monday, Oct 5
           date: 10/05/26
           # docs:
@@ -219,7 +217,7 @@ scheduled-docs:
           #     href: slides/lecture15_wk05fri.qmd
           #   - type: Download HW05
           #     href: hw/hw05.zip
-        - topic: "Sampling Distributions II: Properties"
+        - topic: "Sampling Distributions I: Introduction"
           display-date: Wednesday, Oct 7
           date: 10/07/26
           # docs:
@@ -229,7 +227,7 @@ scheduled-docs:
           #     href: slides/lecture16_wk06mon.qmd
           #   - type: Midterm Review Sheet
           #     href: in_class/studyguide.pdf
-        - topic: "Lab: Sampling & Bootstrap Distributions | Quiz 4"
+        - topic: "Lab: Metacognition | Quiz 4 (online - Megan away for workshop)"
           display-date: Thursday, Oct 8
           date: 10/08/26
           # docs:
@@ -237,7 +235,7 @@ scheduled-docs:
           #     href: readings/reading23_wk06thu.qmd
           #   - type: Download Lab
           #     href: labs/lab06.zip
-        - topic: "Bootstrapping"
+        - topic: "Sampling Distributions II: Properties"
           display-date: Friday, Oct 9
           date: 10/09/26
           # docs:
@@ -247,12 +245,12 @@ scheduled-docs:
           #     href: slides/lecture17_wk06wed.qmd
       resources:
             - 'Submit assignment 5 (due Thurs 10/08 at 9am)'
-            - 'Take Quiz 4 during lab'
-            - 'Start assignment 6 (assigned 10/08)'
+            - 'Take Quiz 4 online (but at regular lab time)'
+            - 'Metacognition assignment'
 
     - week: 7
       days:
-        - topic: "Project Work Day - Starting EDA"
+        - topic: "Bootstrapping"
           display-date: Monday, Oct 12
           date: 10/12/26
           # docs:
@@ -260,7 +258,7 @@ scheduled-docs:
           #     href: readings/reading23_wk07fri.qmd
           #   - type: Slides
           #     href: slides/lecture21_wk07fri.qmd
-        - topic: "Confidence Intervals I: Introduction" 
+        - topic: "Sampling vs Bootstrapping Distributions"
           display-date: Wednesday, Oct 14
           date: 10/14/26
           # docs:
@@ -270,13 +268,13 @@ scheduled-docs:
           #     href: slides/lecture19_wk07mon.qmd
           #   - type: Download HW06
           #     href: hw/hw06.zip
-        - topic: "Lab: Bootstrapping & Confidence Intervals | Quiz 5"
+        - topic: "Lab: Sampling & Bootstrap Distributions | No Quiz"
           display-date: Thursday, Oct 15
           date: 10/15/26
           # docs:
           #   - type: 
           #     href: 
-        - topic: "Confidence Intervals II: Misconceptions and Changing Levels"  
+        - topic: "Confidence Intervals I: Introduction" 
           display-date: Friday, Oct 16
           date: 10/16/26
           # docs:
@@ -285,22 +283,18 @@ scheduled-docs:
           #   - type: Slides
           #     href: slides/lecture20_wk07wed.qmd
       resources:
-            - 'Submit assignment 6 (due Thurs 10/15 at 9am)'
-            - 'Take Quiz 5 during lab'
-            - 'Start assignment 7 (assigned 10/15)'
-            - 'Start working on final project EDA'
+            - 'Start assignment 6 (assigned 10/15)'
 
     - week: 8 (Fall Break)
       days:
         - topic: "No Class"
           display-date: Saturday, Oct 17 - Sunday, Oct 25
       resources:
-            - 'Work on final project EDA (optional)'
-            - 'Work on assignment 7 (optional)'
+            - 'Work on assignment 6 (optional)'
    
     - week: 9
       days:
-        - topic: "Hypothesis Testing I: Introduction"
+        - topic: "Confidence Intervals II: Misconceptions and Changing Levels"
           display-date: Monday, Oct 26
           date: 10/26/26
           # docs:
@@ -308,7 +302,7 @@ scheduled-docs:
           #     href: readings/reading23_wk07fri.qmd
           #   - type: Slides
           #     href: slides/lecture21_wk07fri.qmd
-        - topic: "Hypothesis Testing II: Null Distributions"
+        - topic: "Hypothesis Testing I: Introduction"
           display-date: Wednesday, Oct 28
           date: 10/28/26
           # docs:
@@ -318,13 +312,13 @@ scheduled-docs:
           #     href: in_class/midterm_revisions_instructions.pdf
           #   - type: Slides
           #     href: slides/lecture22_wk08mon.qmd
-        - topic: "Lab: Hypothesis Testing | Quiz 6"
+        - topic: "Lab: Bootstrapping & Confidence Intervals | Quiz 5"
           display-date: Thursday, Oct 29
           date: 10/29/26
           docs:
           #   - type: Download Lab
           #     href: labs/lab06.zip
-        - topic: "Hypothesis Testing III: Types of Errors, P-Values"
+        - topic: "Hypothesis Testing II: Null Distributions"
           display-date: Friday, Oct 30
           date: 10/30/26
           # docs:
@@ -333,14 +327,13 @@ scheduled-docs:
           #   - type: Slides
           #     href: slides/lecture23_wk08wed.qmd
       resources:
-            - 'Submit assignment 7 (due Thurs 10/29 at 9am)'
-            - 'Take Quiz 6 during lab'
-            - 'Work on final project EDA (due Monday Nov 2 at 9am)'
-            - 'Start assignment 8 (assigned 10/29)'
+            - 'Submit assignment 6 (due Thurs 10/29 at 9am)'
+            - 'Take Quiz 5 during lab'
+            - 'Start assignment 7 (assigned 10/29)'
 
     - week: 10
       days:
-        - topic: "Random Variables I: Introduction"
+        - topic: "Hypothesis Testing III: Types of Errors"
           display-date: Monday, Nov 2
           date: 11/02/26
           # docs:
@@ -348,7 +341,7 @@ scheduled-docs:
           #     href: readings/reading27_wk10mon.qmd
           #   - type: Slides
           #     href: slides/lecture25_wk10mon.qmd
-        - topic: "Random Variables II: Discrete Distributions"
+        - topic: "P-Value Pitfalls"
           display-date: Wednesday, Nov 4
           date: 11/04/26
           # docs:
@@ -356,13 +349,13 @@ scheduled-docs:
           #     href: readings/reading28_wk10wed.qmd
           #   - type: Slides
           #     href: slides/lecture26_wk10wed.qmd
-        - topic: "Lab: Random Variables | Quiz 7"
+        - topic: "Lab: Hypothesis Testing | Quiz 6"
           display-date: Thursday, Nov 5
           date: 11/5/26
           # docs:
           #   - type: Download Lab
           #     href: labs/lab07.zip
-        - topic: "Random Variables III: Continuous Distributions & the CLT"
+        - topic: "Random Variables I: Introduction"
           display-date: Friday, Nov 6
           date: 11/06/26
           # docs:
@@ -373,14 +366,13 @@ scheduled-docs:
           #   - type: Download HW08
           #     href: hw/hw08.zip
       resources:
-            - 'Submit final project EDA (due Monday Nov 2 at 9am)'
-            - 'Submit assignment 8 (due Thurs 11/5 at 9am)'
-            - 'Take Quiz 7 during lab'
-            - 'Start assignment 9 (assigned 11/5)'
+            - 'Submit assignment 7 (due Thurs 11/5 at 9am)'
+            - 'Take Quiz 6 during lab'
+            - 'Start assignment 8 (assigned 11/5)'
 
     - week: 11
       days:
-        - topic: "Theory-based Inference I: Intro"
+        - topic: "Random Variables II: Discrete Distributions"
           display-date: Monday, Nov 9
           date: 11/09/26
           # docs:
@@ -388,7 +380,7 @@ scheduled-docs:
           #     href: readings/reading30_wk11mon.qmd
           #   - type: Slides
           #     href: slides/lecture28_wk11mon.qmd
-        - topic: "Theory-based Inference II: Proportions"
+        - topic: "Random Variables III: Continuous Distributions & the CLT"
           display-date: Wednesday, Nov 11
           date: 11/11/26
           # docs:
@@ -396,13 +388,13 @@ scheduled-docs:
           #     href: readings/reading31_wk11wed.qmd
           #   - type: Slides
           #     href: slides/lecture29_wk11wed.qmd
-        - topic: "Lab: Theory-Based Inference 1 | Quiz 8"
+        - topic: "Lab: Random Variables | Quiz 7"
           display-date: Thursday, Nov 12
           date: 11/12/26
           # docs:
           #   - type: Download Lab
           #     href: labs/lab08.zip
-        - topic: "Project Work Day - Report Outline"
+        - topic: "Theory-based Inference I: Intro"
           display-date: Friday, Nov 13
           date: 11/13/26
           # docs:
@@ -411,14 +403,13 @@ scheduled-docs:
           #   - type: Slides
           #     href: slides/lecture25_wk10mon.qmd
       resources:
-            - 'Submit assignment 9 (due Thurs 11/12 at 9am)'
-            - 'Take Quiz 8 during lab'
-            - 'Start assignment 10 (assigned 11/12)'
-            - 'Create final project report outline'
+            - 'Submit assignment 8 (due Thurs 11/12 at 9am)'
+            - 'Take Quiz 7 during lab'
+            - 'Start assignment 9 (assigned 11/12)'
 
     - week: 12
       days:
-        - topic: "Theory-based Inference III: Means"
+        - topic: "Theory-based Inference II: Proportions"
           display-date: Monday, Nov 16
           date: 11/16/26
           # docs:
@@ -426,7 +417,7 @@ scheduled-docs:
           #     href: readings/reading32_wk11fri.qmd
           #   - type: Slides
           #     href: slides/lecture30_wk11fri.qmd
-        - topic: "Theory-based Inference IV: Difference in Means"
+        - topic: "Theory-based Inference III: Means"
           display-date: Wednesday, Nov 18
           date: 11/18/26
           # docs:
@@ -434,13 +425,13 @@ scheduled-docs:
           #     href: readings/reading33_wk12mon.qmd
           #   - type: Slides
           #     href: slides/lecture31_wk12mon.qmd
-        - topic: "Lab: Theory-Based Inference 2 | Quiz 9"
+        - topic: "Lab: Theory-Based Inference | Quiz 8"
           display-date: Thursday, Nov 19
           date: 11/19/26
           # docs:
           #   - type: Download Lab
           #     href: labs/lab09.zip
-        - topic: "Inference for Regression I: Recap and SLR"
+        - topic: "Theory-based Inference IV: Difference in Means"
           display-date: Friday, Nov 20
           date: 11/20/26
           # docs:
@@ -449,14 +440,13 @@ scheduled-docs:
           #   - type: Slides
           #     href: slides/lecture32_wk12wed.qmd
       resources:
-            - 'Submit assignment 10 (due Thurs 11/19 at 9am)'
-            - 'Take Quiz 9 during lab'
-            - 'Start assignment 11 (assigned 11/19)'
-            - 'Work on final project report'
+            - 'Submit assignment 9 (due Thurs 11/19 at 9am)'
+            - 'Take Quiz 8 during lab'
+            - 'Start assignment 10 (assigned 11/19)'
 
     - week: 13
       days:
-        - topic: "Inference for Regression II: MLR"
+        - topic: "Inference for Regression I: Recap and SLR"
           display-date: Monday, Nov 23
           date: 11/23/26
           # docs:
@@ -466,7 +456,7 @@ scheduled-docs:
           #     href: slides/lecture33_wk12fri.qmd
           #   - type: Download HW09
           #     href: hw/hw09.zip
-        - topic: "Inference for Regression III: ANOVA"
+        - topic: "Inference for Regression II: MLR"
           display-date: Wednesday, Nov 25
           date: 11/25/26
           # docs:
@@ -481,13 +471,11 @@ scheduled-docs:
           display-date: Friday, Nov 27
           date: 11/27/26
       resources:
-            - 'Submit final project report outline (due 11/24 at 5pm)'
-            - 'Continue working on assignment 11'
-            - 'Work on final project report'
+            - 'Continue working on assignment 10'
 
     - week: 14
       days:
-        - topic: "Inference for Regression IV: Wrapping Up"
+        - topic: "Inference for Regression III: ANOVA"
           display-date: Monday, Nov 29
           date: 11/29/26
           # docs:
@@ -497,7 +485,7 @@ scheduled-docs:
           #     href: slides/lecture35_wk13wed.qmd
           #   - type: Activity
           #     href: in_class/inference_for_regression.zip
-        - topic: "Quiz 10 & Final Exam/Project Presentation Info"
+        - topic: "Inference for Regression IV: Wrapping Up"
           display-date: Wednesday, Dec 2
           date: 12/02/26
           # docs:
@@ -505,13 +493,13 @@ scheduled-docs:
           #     href: readings/reading38_wk13fri.qmd
           #   - type: Slides
           #     href: slides/lecture36_wk13fri.qmd
-        - topic: "Lab: Course Wrap Up & Final Exam Review"
+        - topic: "Lab: Inference for Regression | Quiz 9"
           display-date: Thursday, Dec 3
           date: 12/03/26
           docs:
             # - type: Download Lab
             #   href: labs/lab10.zip
-        - topic: "Project Work Day - Wrapping up Report"
+        - topic: "Chi-Squared Tests"
           display-date: Friday, Dec 4
           date: 12/04/26
           # docs:
@@ -522,33 +510,32 @@ scheduled-docs:
           #   - type: Exam Review Sheet
           #     href: in_class/final_review_sheet.pdf
       resources:
-            - 'Submit assignment 11 (due *TUES* 12/02 at 9am)'
-            - 'Take Quiz 10 during *lecture on TUES 12/02*'
-            - 'Studying for final exam'
+            - 'Submit assignment 10 (due Thurs 12/03 at 9am)'
+            - 'Take Quiz 9 during lab'
+            - 'Start assignment 11 (assigned 12/03)'
           
     - week: 15
       days:  
-        - topic: "Final Exam Review"
+        - topic: "Course Wrap Up"
           display-date: Monday, Dec 7
           date: 12/07/26
           # docs:
           #   - type: Slides
           #     href: slides/lecture38_wk14wed.qmd
-        - topic: "Lab on TUESDAY: FINAL EXAM"
+        - topic: "Lab on TUESDAY: Final Exam Review"
           display-date: Tuesday, Dec 8
           date: 12/08/26
           # docs:
           #    - type: Review Exercises
           #      href: in_class/lab_review_session.pdf
-        - topic: "Project Work Day - Presentation Prep"
+        - topic: "Final Exam Review | Quiz 10"
           display-date: Wednesday, Dec 9
           date: 12/09/26
           # docs:
           #   - type: Slides
           #     href: slides/lecture39_wk14fri.qmd
       resources:
+            - 'Submit assignment 11 (due **WEDNESDAY** 12/09 at 9am)'
+            - 'Take Quiz 10 during **lecture on Wednesday**'
             - 'Studying for final exam'
-            - 'Take final exam on *Tuesday* Dec 8 during lab'
-            - 'Wrap up final project reports (due Monday Dec 14 at 9am)'
-            - 'Prepare final project presentation (final exam slot TBD)'
 
