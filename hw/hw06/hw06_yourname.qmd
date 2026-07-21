@@ -191,7 +191,18 @@ boostrap_n50_histogram <- ggplot(p_hat_n50_1000bootstrap_rep, aes(x = p_hat)) +
 boostrap_n50_histogram
 ```
 
-Remember that bootstrap distributions are used to approximate sampling distributions. Below, we show both a theoretical sampling distribution (for $n=50$, recreated from Lab 6) and a corresponding bootstrap distribution (based on a single sample of size $n=50$, created above).
+
+**a.** What distinguishes bootstrap distributions from sampling distributions? What part of the code above makes the result a *bootstrap* distribution?
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+**b.** Remember that bootstrap distributions are used to approximate sampling distributions. Below, we show both a theoretical sampling distribution (for $n=50$, recreated from Lab 6) and a corresponding bootstrap distribution (based on a single sample of size $n=50$, created above).
 
 ```{r warning=FALSE, message=FALSE}
 set.seed(42)
@@ -219,7 +230,7 @@ grid.arrange(sampling_n50_histogram +
              ncol = 1)
 ```
 
-How do these two distributions compare? Consider similarities/differences based on their shape, center, and spread. 
+**How do these two distributions compare? Consider similarities/differences based on their shape, center, and spread.**
 
 *******************************************************************************
 
@@ -332,15 +343,6 @@ In each of the following scenarios, (i) identify the population, (ii) identify t
 
 
 **c.** Based on the same image of the bootstrap distribution above, give what your best guess would be for the value of the parameter of interest. 
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-**d.** What are the two main differences between a bootstrap distribution and a sampling distribution?
 
 *******************************************************************************
 
