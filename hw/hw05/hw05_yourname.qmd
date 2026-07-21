@@ -199,7 +199,7 @@ Let's investigate the association between college access and endowment assets by
 
 
 
-**c.** Describe what the plot in part (b) shows; i.e., based on the plot, **does there seem to be a relationship between college access and endowment assets? Does a line seem like a reasonable summary for the relationship between these variables?** Explain your reasoning.
+**c.** Based on the plot, **does there seem to be a relationship between college access and endowment assets? Does a line seem like a reasonable summary for the relationship between these variables?** Explain your reasoning.
 
 *******************************************************************************
 
@@ -248,8 +248,6 @@ Let's investigate the association between college access and endowment assets by
 
 **g.** Construct a simple linear regression model for net tuition price using the log-transformed endowment assets variable. **Print out the model coefficients table.**
 
-(*Hint: Recall that you have the demo files from last lab with example code for building a linear regression model.*)
-
 *******************************************************************************
 
 
@@ -260,8 +258,6 @@ Let's investigate the association between college access and endowment assets by
 
 
 **h.** Check the model diagnostics for the model from part (g), and **comment on them.**
-
-(*Hint: Recall that you have the demo files from last lab with example code for creating model diagnostic plots.*)
 
 *******************************************************************************
 
@@ -292,7 +288,7 @@ In this problem, we will investigate whether the relationship between net tuitio
 
 **b.** Construct a plot showing the association between net tuition price and log-transformed endowment assets; color the points based on whether a school is in the Ivy Plus. **Describe what you see. How does the average net tuition price for low- and middle-income students at Ivy Plus schools compare to other schools?** 
 
-(*Hint: Revisit the code in slide 7 from 2/23 for creating the plot, and slide 30 on 2/4 for calculating group averages.*)
+(*Hint: The code from exercise part 1(g) from Lab 5 might be helpful here!*)
 
 *******************************************************************************
 

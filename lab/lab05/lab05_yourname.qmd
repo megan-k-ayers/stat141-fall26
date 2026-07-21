@@ -32,15 +32,6 @@ library(moderndive)
 
 # Exercises
 
-## ******** NOTE TO SELF **********
-
-These next three exercises (EDA / Salary Regression Model / Assess Salary Regression Models) were moved here wholesale from hw05, unedited. They still read as full from-scratch exercises -- **rewrite them before this lab runs** to match the new pedagogical goal:
-
-- `mlr_demo/mlr_demo.qmd` (now living in this lab05 folder as a standalone reference file, using the `house` dataset) is presented live at the start of lab (~15 min) and walks through the full EDA -> model -> LINE diagnostics -> adjusted R^2 workflow.
-- These three exercises should become a **shortened** exercise where students *adapt/repurpose the demo's code* for the `SalaryGender` setting, rather than building everything from scratch or answering fully independent prose questions. Point them at `mlr_demo/mlr_demo.qmd` to copy/adapt from.
-- The goal is intentional scaffolding: case study (watch) -> lab (adapt the code) -> hw (go deeper, independently, on `colleges`). Keep enough repetition that it reinforces the workflow, but cut what's now redundant with the demo (e.g., the full model-comparison-via-R^2 exercise probably overlaps too much with the demo's adjusted-R^2 section).
-- No bridge/callback text is needed pointing students back to this lab from hw05 -- decided that's unnecessary hand-holding given how much repetition/lecture exposure they'll already have had.
-
 ## Exercise 1: Exploratory Data Analysis for Regression
 
 We will study data on teacher salaries for the rest of this homework assignment. Our data is a sample of 100 post-secondary (i.e., college) teachers is collected from the 2010 American Community Survey Public Use Microdata Sample, as found in the `Lock5Data` R package. We are interested in exploring differences in salary based on gender (i.e., gender-based salary discrimination) among college teachers.
@@ -201,15 +192,21 @@ m3 <- lm(Salary ~ Age + Gender, data = SalaryGender)
 **c.** Investigating when linear regression model assumptions hold is important to consider when selecting the best model(s) from a collection of possible models. Run the chunk below, and assess the set of graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?**
 
 ```{r}
+# Use get_regression_points to grab preditions (aka "fitted values"), residuals
+# for each model.
+m1_pts <- get_regression_points(m1)
+m2_pts <- get_regression_points(m2)
+m3_pts <- get_regression_points(m3)
 
-res <- bind_rows(get_regression_points(m1) %>%
-                    mutate(model = "Salary ~ Gender") %>%
+
+# These next two commands are not usually needed, but here they help us compare
+# the three different models directly within the same data frame (and therefore
+# the same ggplot).
+res <- bind_rows(m1_pts %>% mutate(model = "Salary ~ Gender") %>%
                    select(Salary, Salary_hat, residual, model),
-                  get_regression_points(m2) %>%
-                    mutate(model = "Salary ~ Age") %>%
+                 m2_pts %>% mutate(model = "Salary ~ Age") %>%
                    select(Salary, Salary_hat, residual, model),
-                  get_regression_points(m3) %>%
-                    mutate(model = "Salary ~ Age + Gender") %>%
+                 m3_pts %>% mutate(model = "Salary ~ Age + Gender") %>%
                    select(Salary, Salary_hat, residual, model))
 res$model <- factor(res$model, levels = c("Salary ~ Gender",
                                           "Salary ~ Age",
@@ -218,8 +215,7 @@ res$model <- factor(res$model, levels = c("Salary ~ Gender",
 ggplot(res, aes(x = Salary_hat, y = residual)) +
   geom_hline(aes(yintercept = 0), lty = 2, color = "gray") +
   geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  facet_wrap(~model) +
+  facet_wrap(~model) +  # This line shows us one plot per model - usually we don't include it
   labs(title = "Residuals vs Fitted Values") +
   theme_classic()
 
@@ -237,7 +233,7 @@ ggplot(res, aes(x = Salary_hat, y = residual)) +
 
 ggplot(res, aes(x = residual)) +
   geom_histogram(bins = 20, color = "white") +
-  facet_wrap(~model) +
+  facet_wrap(~model) +  # This line shows us one plot per model - usually we don't include it
   labs(title = "Residual Histograms") +
   theme_classic()
 
