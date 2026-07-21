@@ -96,73 +96,68 @@ A Gallup Poll found that 7% of teenagers (ages 13 to 17) suffer from arachnophob
 *******************************************************************************
 
 
+## Exercise 2: Practice with Continuous Random Variables
 
-# Mini-Lecture: Continuous Random Variables 
+Suppose the number of hours a particular student takes to complete a statistics exam is modeled by a continuous random variable $T$ with the following density function:
 
-
-
-## Exercise 2: Practice with Continuous Random Variables 
-
-Let $X$ be a continuous random variable with the density function visualized below.
-
-```{r fig.height=3, echo = F}
-t <- seq(0, 3, length = 200)
-p <- rep(0, 200)
-p[t <= 2] <- 0.4
-p[t > 2] <- -0.4 * t[t > 2] + 1.20
-
-dd <- data.frame(t, p)
-(gg <- ggplot(dd, aes(x = t, y = p)) + geom_area(fill = "gray", color = "black") +
-  labs(x = "X", y = "Density", title = "Density of X"))
+```{r fig.width=6, echo = F}
+library(ggplot2)
+t <- seq(1, 3, by = 0.1)
+p <- ifelse(t <= 2, t - 1, 3 - t)
+density_df <- data.frame(t, p)
+ggplot(density_df, aes(x = t, y = p))+
+  geom_line()+
+  labs(x = "T", y = "density", title = "Density Function for Hours Spent on Exam")+
+  coord_fixed()+
+  scale_x_continuous(breaks = seq(1, 3, by = 0.25))
 ```
 
-**a.** By eye, calculate $P(X \leq 1)$ (visualized below).
+Models of this type arise frequently in settings where we have sparse information to model a continuous phenomenon (i.e. we may only have estimates for the minimum, maximum, and most likely values for the phenomenon).
 
-```{r fig.height=3, echo = F}
-gg + geom_ribbon(data = subset(dd, t > 0 & t <= 1), aes(ymax = p),
-                 ymin = 0, fill = "red", alpha = .75)
-```
-
-*******************************************************************************
+As a reminder, the probability that $T$ falls within some range will be the area under the density function for that range (e.g., $P(1.5 \leq T \leq 2)$ will be the area under the density function from 1.5 to 2). For each of the following parts of the problem, use *geometric reasoning* to compute areas (*you do not need to use calculus to answer any of these problems*). Recall that the area of a triangle is $A = 0.5*base*height$.
 
 
+**a.** Verify that the function plotted above indeed has area of 1. **Your explanation should be mathematical in nature, but please explain your thought process in words.**
 
 *******************************************************************************
 
-
-**b.** By eye, calcualte $P(X \leq 2)$.
-
-```{r fig.height=3, echo = F}
-gg + geom_ribbon(data = subset(dd, t > 0 & t <= 2), aes(ymax = p),
-                 ymin = 0, fill = "red", alpha = .75)
-```
-
-*******************************************************************************
 
 
 
 *******************************************************************************
 
 
-**c.** By eye, calculate $P(2 \leq X \leq 3)$.
 
-```{r fig.height=3, echo = F}
-gg + geom_ribbon(data = subset(dd, t > 2 & t <= 3), aes(ymax = p),
-                 ymin = 0, fill = "red", alpha = .75)
-```
+**b.** What is the probability that the student takes at most 2.5 hours to complete the exam? **Explain your reasoning.**
 
 *******************************************************************************
 
 
 
+
 *******************************************************************************
+
+
+
+**c.** What is the value of $t$ so that a student has probability $\frac{1}{8}$ of completing the exam before time $t$? **Explain your reasoning.**
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+
 
 
 ## Exercise 3: Probabilities and Quantiles
 
-For Exercise 1, we can use `pbinom()` to easily calculate probabilities like $P(X \leq k)$ when $X$ follows a *Binomial* distribution. We can use `R` to make similar calculations for continuous random variable distributions! 
+For Exercise 1, we can use `pbinom()` to easily calculate probabilities like $P(X \leq k)$ when $X$ follows a *Binomial* distribution. We can (and will, a lot!) use `R` to make similar calculations for continuous random variable distributions, like the *Normal* distribution.
 
-Tomorrow, we'll learn about the *Normal* distribution (colloquially, bell-shaped curves). `R` follows similar naming conventions, so if $X$ follows a Normal distribution and we want to calculate a **cumulative probability** $P(X \leq q)$, we can use `pnorm(q, mu, sigma)`, where `mu` and `sigma` are distribution parameters representing the mean and standard deviation of $X$ (we'll learn more about this tomorrow). For now, we'll assume that `mu = 0` and `sigma = 1`, which are the default settings in `R` when we just call `pnorm(q)`. 
+`R` follows similar naming conventions, so if $X$ follows a Normal distribution and we want to calculate a **cumulative probability** $P(X \leq q)$, we can use `pnorm(q, mu, sigma)`, where `mu` and `sigma` are the mean and standard deviation parameters. For now, let's assume that `mu = 0` and `sigma = 1`, which are the default settings in `R` when we just call `pnorm(q)`. 
 
 **a.** The chunk below visualizes a Normal random variable $X$ (with `mu = 0` and `sigma = 1`), and a vertical line representing $X = 1$.
 
@@ -193,7 +188,7 @@ In a new chunk below, use `R` to calculate $P(X \leq 1)$, i.e. the area to the *
 
 
 
-**c.** Soon in this class, we'll be very interested in calculating **quantiles** of distributions like this one. For example, we might want to find the 0.95 quantile, or the point $q$ where 95% of the area under the curve is to the left of $q$. Lucky for us, `R` has functions to help us do this for several distributions. For this normal distribution, `qnorm(p)` will return the **quantile** (on the x-axis) of a given **cumulative probability** $p$ (it will give us $q$ such that $P(X \leq q) = p$).
+**c.** Soon in this class, we'll be very interested in calculating **quantiles** of theoretical distributions like this one for inference purposes. For example, we might want to find the 0.95 quantile, or the point $q$ where 95% of the area under the curve is to the left of $q$. Lucky for us, `R` has functions to help us do this for several types of theoretical distributions. For this normal distribution, `qnorm(p)` will return the **quantile** (on the x-axis) of a given **cumulative probability** $p$ (it will give us $q$ such that $P(X \leq q) = p$).
 
 Use `qnorm()` to calculate the **0.85** quantile of our Normal distribution above. Does it make sense to you that this value is close to the blue dashed line above? 
 
