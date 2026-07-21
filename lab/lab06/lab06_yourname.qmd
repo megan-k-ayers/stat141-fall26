@@ -233,6 +233,15 @@ Look at `n50_1000rep` in the data viewer to get a sense of these 1000 samples lo
 
 
 
+**c.** What is the point of taking these different samples? In your own words, what are we trying to learn?  
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
 
 ## Exercise 3: Visualize the sampling distribution of $\hat{p}$ for n = 50
 
@@ -262,7 +271,19 @@ sampling_n50_histogram <- ggplot(p_hat_n50_1000rep, aes(x = p_hat)) +
 sampling_n50_histogram
 ```
 
-**Based on the histogram, provide an example of a very common value of $\hat{p}$. Additionally, provide an example of a very uncommon value. What makes these values "common" or "uncommon"?**
+
+**a.** Based on the histogram, provide an example of a very common value of $\hat{p}$. Additionally, provide an example of a very uncommon value. What makes these values "common" or "uncommon"?
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+
+**b.** In the first code chunk of this exercise, what are `group_by()` and `summarize()` and `mutate()` each doing for us, in the context of sampling distributions? 
 
 *******************************************************************************
 
@@ -285,7 +306,17 @@ p_hat_n50_1000rep %>%
 
 Note that these particular values are *estimates*, because even though we have access to the population, this sampling distribution only includes 1000 simulated samples. The true sampling distribution will have many more!
 
-How is the estimated mean of our sampling distribution (`Mean_p_hat`) related to the true population mean, $p$? How is `Mean_p_hat` related to $\hat{p}$ based on our single sample?
+**a.** How is the estimated mean of our sampling distribution (`Mean_p_hat`) related to the true population mean, $p$? How is `Mean_p_hat` related to $\hat{p}$ based on our single sample?
+
+*******************************************************************************
+
+
+
+
+
+*******************************************************************************
+
+**b.** What is `summarize()` doing for us in this exercise's code chunk, in the context of sampling distributions? 
 
 *******************************************************************************
 
@@ -298,7 +329,7 @@ How is the estimated mean of our sampling distribution (`Mean_p_hat`) related to
 
 ## Exercise 5: Thinking ahead to implementing bootstrapping
 
-No response is required to this question, but let's discuss these questions as a group during the last 5ish minutes of class as we look ahead to the homework assignment.
+No response is required to these questions, but let's discuss them as a group during the last 5ish minutes of class, as we look ahead to the homework assignment.
 
 * What are the main features that differ between bootstrap distributions and sampling distributions?
 

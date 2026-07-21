@@ -55,7 +55,7 @@ trees <- pdxTrees_parks %>%
 
 Let's practice adapting the code from lab to estimate a sampling distribution for samples of size $n=15$. (HINT: For this exercise, **you may copy/paste the code provided to you in lab**, making minor changes for this new sample size of 15.)
 
-**a.** Use the `rep_sample_n` function to collect 1000 virtual samples of size *n* = 15. Save these 1000 virtual samples into an object named `my_n15_1000rep`. Use **seed 910** to generate your sample. **Include your code, but you don't need to print the output of the code.**
+**a.** Use the `rep_sample_n` function to collect 1000 virtual samples of size *n* = 15 from our population. Save these 1000 virtual samples into an object named `my_n15_1000rep`. Use **seed 910** to generate your sample. **Include your code, but you don't need to print the output of the code.**
 
 *******************************************************************************
 
@@ -110,7 +110,7 @@ Let's practice adapting the code from lab to estimate a sampling distribution fo
 
 
 
-**f.** Which sampling distribution looked more normally distributed (bell shaped and symmetric): the one built on n = 15 or 50?
+**f.** Which sampling distribution looked more bell shaped and symmetric: the one built on n = 15 or 50?
 
 *******************************************************************************
 
