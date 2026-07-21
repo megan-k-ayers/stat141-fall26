@@ -54,7 +54,7 @@ We have observations on 21 different variables, some categorical and some numeri
 
 
 
-## Exercise 1: Simple Linear Regression of score vs beauty
+## Exercise 1: Inference for simple Linear Regression of score vs beauty
 
 **a.** We will start by investigating the data with simple linear regression. First, make a scatterplot of `score` (our response variable) by `bty_avg` (our explanatory variable) and **display a regression line**. [Code only for this question]
 

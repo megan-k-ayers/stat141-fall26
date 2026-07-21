@@ -36,8 +36,6 @@ library(openintro)
 
 # Exercises
 
-# !!!!!! TODO: MORE PRACTICE MAKING INFERENCES FROM REGRESSION TABLE!! !!!!!!!
-
 
 ## Exercise 1: Metacognition
 
@@ -115,7 +113,7 @@ In lab, we assessed a simple linear regression that used the beauty score to pre
 
 
 
-**d.** Now that we're controlling for `gender`, have the results of the hypothesis test for whether `bty_avg` is a meaningful predictor of `score` changed? **How should we interpret this?**  [Text only for this question]
+**d.** Now that we're controlling for `gender` (compared to Lab 11, where we didn't), state the relevant hypotheses and interpret the results of the hypothesis test for whether `bty_avg` is a meaningful predictor of `score`. You should appeal to the provided p-value and state what it means in context.  [Text only for this question]
 
 *******************************************************************************
 
@@ -124,8 +122,16 @@ In lab, we assessed a simple linear regression that used the beauty score to pre
 *******************************************************************************
 
 
+**e.** Does your answer from the previous part (2d) change what you think we should conclude about the relationship between `bty_avg` and `score`? 
 
-**e.** Using the regression table from Exercise 2 part (a), answer the following:
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+**f.** Using the regression table from Exercise 2 part (a), answer the following:
 
 (i) What is the equation of the line corresponding to male professors?  
 
@@ -165,8 +171,17 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
 
 
 
+**b.** State and interpret the *theory-based* 95% confidence interval for the `bty_avg` coefficient, now that we are controlling for both `age` and `gender`. [Text only for this question]
 
-**b.** The slope on `age` in the model constructed in Exercise 3(a) is a relatively small number. Does this mean that `age` is not a useful predictor for this model? Explain, appealing to both formal inference and the context. [Text only for this question]
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**c.** The slope on `age` in the model constructed in Exercise 3(a) is a relatively small number. Does this mean that `age` is not a useful predictor for this model? Explain, appealing to both formal inference and the context. [Text only for this question]
 
 *******************************************************************************
 
@@ -176,19 +191,18 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
 
 
 
-
-**c.** Using plots and contextual knowledge, assess if the model constructed in Exercise 3(a) satisfies **each** of the LINE conditions. [Code and text for this question]
-
-*******************************************************************************
-
-
-
+**d.** Using plots and contextual knowledge, assess if the model constructed in Exercise 3(a) satisfies **each** of the LINE conditions. [Code and text for this question]
 
 *******************************************************************************
 
 
 
-**d.** Based on your checks for the LINE assumptions, should we rely on theory-based inference, or take a simulation-based approach? Explain. [Text only for this question]
+
+*******************************************************************************
+
+
+
+**e.** Based on your checks for the LINE assumptions, should we rely on theory-based inference, or take a simulation-based approach? Explain. [Text only for this question]
 
 *******************************************************************************
 
