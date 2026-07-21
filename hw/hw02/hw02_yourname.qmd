@@ -231,9 +231,9 @@ c. $\frac{\bar{x}}{median} > 1$
 
 ## Exercise 5: Explaining data wrangling code
 
-For this problem, let's revisit the `detectors` dataset from the article *"GPT Detectors Are Biased Against Non-Native English Writers"*^[**GPT Detectors Are Biased Against Non-Native English Writers.** *Weixin Liang*, *Mert Yuksekgonul*, *Yining Mao*, *Eric Wu*, *James Zou.* [CellPress Patterns](https://doi.org/10.1016/j.patter.2023.100779)].
+For this problem, we'll look at the `detectors` dataset from the article *"GPT Detectors Are Biased Against Non-Native English Writers"*^[**GPT Detectors Are Biased Against Non-Native English Writers.** *Weixin Liang*, *Mert Yuksekgonul*, *Yining Mao*, *Eric Wu*, *James Zou.* [CellPress Patterns](https://doi.org/10.1016/j.patter.2023.100779)].
 
-a.  The code from the **Magic** section of the `intro.qmd` document has been adapted below. Give a line-by-line explanation of what the code does, using language accessible to someone who hasn't had prior coding experience.
+a.  The code following code does some data wrangling to produce a graphic. Starting with `humans_only <- detectors %>%`, give a line-by-line explanation of what the code does, using language accessible to someone who hasn't had prior coding experience.
 
 ```{r}
 # Load libraries
