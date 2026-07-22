@@ -1,6 +1,6 @@
 ---
 title: "Lab 1: Introduction to R, RStudio, and Quarto"
-subtitle: "Math 141, Week 1"
+subtitle: "STAT 141, Week 1"
 author: "Your name here"
 format: pdf
 ---
@@ -17,7 +17,7 @@ Welcome to our first lab assignment! In this lab, you will practice:
 
 I collaborated with...
 
-**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this class. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+**Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this course. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 
 ### When you have completed Lab 1, follow this submission process:
@@ -27,12 +27,12 @@ I collaborated with...
     -   Click on the blue cog and select "Export..." and then "Download."
 -   **Step 2**: Within Gradescope (which you can access from the course website), click on Lab 01 and select the option "Submit PDF."
     -   Then "Select PDF" from where it was downloaded onto your computer and hit "Upload PDF."
--   **Step 3**: Within the Question Outline, click on "Exercise 1" and then click on the pages that contain your solutions for Exercise 1. Repeat this process for each Problem. **If you do not assign pages to your submission, you will not receive full credit!**
+-   **Step 3**: Within the Question Outline, click on "Exercise 1 Part (a)" and then click on the pages that contain your solutions for Exercise 1 Part (a). Repeat this process for each Problem. **If you do not assign pages to your submission, you will not receive full credit! Assigning pages makes the graders' work much easier!**
 -   **Step 4**: Hit "Submit" and revel in the completion of a task!
 
 
 
-# First off: Why Quarto? 
+## First off: Why Quarto? 
 
 Quarto is an open-source tool for writing about our data work. We will complete all class assignments in "Quarto Markdown Files", which have a `.qmd` extension.
 
@@ -41,13 +41,27 @@ Quarto is an open-source tool for writing about our data work. We will complete 
     -   When you render the Quarto file, you get a single nicely formatted mixed-media output document. Some of the output options include PDF, HTML, and MS Word.  We will output to PDF in STAT 141.
     -   You can insert math symbols (with what is called Latex code): $\mu$.
 -   When editing a Quarto document, you can choose between the Source editor or the Visual editor. I recommend testing out both.
-    -   **Source editor**: Shows the raw markdown syntax when editing (Megan's personal preference).
+    -   **Source editor**: Shows the raw markdown syntax when editing.
     -   **Visual editor**: Provides a word processor type interface when editing.
+
+
+## Why R and RStudio? 
+
+There are lots of programming languages out there, so why are we using `R`? There are many reasons, including:
+
+-   `R` is a language and environment specifically made for statistical computing and graphics. While other languages may be more general, the specificity of `R` makes statistical programming tasks easier. 
+
+-   `R` is the programming language of choice for statistics research in both academia and many industries. New statistical methods are very often implemented in `R` first. 
+
+-   `RStudio` (the application or window that we're in right now, where we'll work with `R`) allows for highly interactive workflows, which is very useful when performing data analyses.
+
+-   `R` and `RStudio` are free, open-source tools, with a huge ecosystem of packages available to users and a very active community. 
+
 
 
 ## R code and output
 
-To include `R` code and output, you need to create an `R` **chunk**. Here's an example `R` chunk:
+All of our Quarto (aka `.qmd`) files for assignments will include some amount of `R` code. To include `R` code and output in a file, you need to create an `R` **chunk**. Here's an example `R` chunk:
 
 ```{r}
 print("Hello, world!")
@@ -70,7 +84,9 @@ print("Hello, world!")
 ## Exercise 1: R Fundamentals
 In this problem, we will explore fundamental commands and behavior in R.
 
-**a.** In R, we use `<-` to assign values to variable names, like `x <- 3`. This saves `x` as an object in our environment, so that we can use it again later. In the R code chunk below, create a variable called `y` with the value 7. (*Note: ticks `---` are used to format text as inline code. Their purpose is purely for formatting text when we're writing about code - when you're actually coding in R inside of chunks, you shouldn't use them.*)
+**a.** In R, we use `<-` to assign values to variable names, like `x <- 3`. This saves `x` as an object in our environment, so that we can use it again later. In the R code chunk below, create a variable called `y` with the value 7. 
+
+(*Note: the ticks `` around `y` are used to format text as inline code. Their purpose is purely for formatting text when we're writing about code. When you're actually coding in R inside of chunks, you shouldn't use them.*)
 
 *******************************************************************************
 
@@ -82,15 +98,15 @@ In this problem, we will explore fundamental commands and behavior in R.
 
 
 
-**b.** As discussed above, there are several ways to run code in RStudio. Practice these again on this code chunk, and study how R is performing algebra with the following commands (which may be easier if you run the code line-by-line).
+**b.** As discussed above, there are several ways to run code in RStudio. Practice these again on this code chunk, and study how R is performing algebra within the following lines.
 
 *******************************************************************************
 
 ```{r}
 
-x <- 3
-
 ### R as a calculator
+
+x <- 3        # Assign a variable named "x" the numeric value 3
 
 3 + 3         # We can add numbers in R like this
 3 + x
@@ -115,7 +131,7 @@ x^3
 *******************************************************************************
 
 
-**c.** The chunk above shows two useful things we can do in R chunks. (1) We can use R like a calculator to do algebra with numbers and/or variables. (2) We can leave ourselves and our collaborators notes, called comments. These start with at least one `#`. Comments aren't executed as code, but they are very helpful for organizing and explaining our work in R. To practice using both of these below, calculate 10 times 5 divided by 2, all subtracted from 30. Practice using comments by adding a commented line below your computation that says the answer to this calculation.
+**c.** The chunk above shows two useful things we can do with `R` code (1) We can use R like a calculator to do algebra with numbers and/or variables. (2) We can leave ourselves and our collaborators notes, called comments. Comments start with at least one `#`. Comments aren't commands that get executed, but they are very helpful for organizing and explaining our work in R. To practice using both of these features of `R` below, write out the calculation 10 times 5 divided by 2, all subtracted from 30. Practice using comments by adding a commented line below your computation that says the answer to this calculation.
 
 *******************************************************************************
 
@@ -126,7 +142,11 @@ x^3
 *******************************************************************************
 
 
-**d.** We've made several edits to this file. You might notice that the file name in the file tab to the upper left ends with a star ("\*"), and is bolded a brighter color (maybe red or blue). **This means that your file is not saved, which is dangerous!** To make sure that your work is saved, click the save icon (the light blue floppy disk) right below the file name, or press Command+S (Mac) or Ctrl+S (PC). It is important to get in the habit of saving often to make sure you don't lose your hard work. 
+**d.** We've made several edits to this file. You might notice that the file name in the file tab to the upper left ends with a star ("\*"), and is bolded a brighter color (maybe red or blue). **This means that your file is not saved, which is dangerous!** To make sure that your work is saved, click the save icon (the light blue floppy disk) right below the file name, or press Command+S (Mac) or Ctrl+S (PC). It is really important to get in the habit of saving often to make sure you don't lose your hard work.  
+
+
+
+**e.** Below, create a new code chunk. You can do this by either typing out the opening ticks and `{r}` and the closing ticks, or by using the shortcut  Command+Option+I on Mac, or Ctrl+Alt+I on Windows. Inside this chunk, *overwrite* the variable called `x` with the value of 5, and create another variable called `z` with the value of `x` multiplied by `y`.
 
 *******************************************************************************
 
@@ -135,16 +155,7 @@ x^3
 *******************************************************************************
 
 
-**e.** Below, create a new code chunk. You can do this by either typing out the ticks and `{r}` and closing ticks, or use the shortcut  Command+Option+I on Mac, or Ctrl+Alt+I on Windows. Inside this chunk, *overwrite* the variable called `x` with the value of 5, and another variable called `z` with the value of `x` multiplied by `y`.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-**f**. Run the chunk below. Where does the answer appear? Find the console pane (usually the bottom left of the RStudio window), and run the same command, `2*50`, in the console. Where does the answer appear now?
+**f.** Run the chunk below. Where does the answer appear? Find the console pane (usually the bottom left of the RStudio window), and run the same command, `2*50`, in the console. Where does the answer appear now?
 ```{r eval = F}
 2*50
 ```
@@ -156,7 +167,7 @@ x^3
 *******************************************************************************
 
 
-**f.** Sometimes, we'll want to do math with many numbers. For example, we may want the sum of a long sequence of numbers, which we won't want to write out using `+`. Luckily, `R` has many built in *functions* that help us do calculations like this. To add 1, 2, and 3, we can use the function `sum()` and write: `sum(1, 2, 3)`. This is equivalent to `1 + 2 + 3`. Create another new chunk below, and use the `sum()` function to add the variables `x`, `y`, and `z` that you created above. *You should not use `+` at all here! `sum()` will add the elements you give it.*
+**g.** Sometimes, we'll want to do math with many numbers. For example, we may want the sum of a long sequence of numbers, which we won't want to write out using `+`. Luckily, `R` has many built in *functions* that help us do calculations like this. To add 1, 2, and 3, we can use the function `sum()` and write: `sum(1, 2, 3)`. This is equivalent to `1 + 2 + 3`. Create another new chunk below, and use the `sum()` function to add the variables `x`, `y`, and `z` that you created above. *You should not use `+` at all here! `sum()` will add the elements you give it.*
 
 *******************************************************************************
 
@@ -165,9 +176,10 @@ x^3
 *******************************************************************************
 
 
-**g.** It's easy enough to write out `1 + 2 + 3`. Functions like `sum()` really come in handy when we are working with many numbers, usually stored in *vectors*. The chunk below creates a variable called `myvec`, which is a vector containing the numbers 0 through 100. As shown below, we can use the `sum()` function to add up all of the numbers in `myvec`, simply by passing the vector to the `sum()` function. Add a new line at the bottom of this chunk. Using the same idea, use a new function, `mean()`, to take the average of the values in `myvec`. 
+**h.** It's easy enough to write out `1 + 2 + 3`. Functions like `sum()` really come in handy when we are working with many numbers, usually stored in *vectors*. The chunk below creates a variable called `myvec`, which is a vector containing the numbers 0 through 100. As shown below, we can use the `sum()` function to add up all of the numbers in `myvec`, simply by passing the vector to the `sum()` function. Add a new line at the bottom of this chunk. Using the same idea, use the function `mean()` to take the average of the values in `myvec`. 
 
 *******************************************************************************
+
 ```{r}
 myvec <- 0:100
 sum(myvec)
@@ -175,11 +187,11 @@ sum(myvec)
 
 *******************************************************************************
 
-**h.** By the end of the semester, we will have learned many functions! Every function in `R` has a documentation or "Help" page, which can be useful for remembering what a particular function does, or what syntax it expects. To pull up the "Help" page for a function, we can run `?--the function name--` in the console. For example, try running `?mean` in the console to pull up its help page. 
+**i.** By the end of the semester, we will have learned many functions! Every function in `R` has a documentation or "Help" page, which can be useful for remembering what a particular function does, or what syntax it expects. To pull up the "Help" page for a function, we can run `?--the function name--` in the console. For example, try running `?mean` in the console to pull up its help page. 
 
 
 
-**i**. Okay, we've made a lot of edits to the file! As you work on your assignments, it's a good idea to **Render** your file into a PDF, which is the format you'll need to submit assignments in. Clicking the **Render** button above tells `R` that you want to compile the contents of the Quarto document into an output document. Find this **Render** button and click it. You may get a message to install some `R` packages. Allow it. You may also get a message about allowing popups. Allow them. Check out the output file. This file is saved in the same directory as your Quarto (qmd) file but with a different extension (pdf).
+**j**. Okay, we've made a lot of edits to the file! As you work on your assignments, it's a good idea to not only save frequently, but to also **Render** your file into a PDF, which is the format you'll need to submit assignments in. Clicking the **Render** button above tells `R` that you want to compile the contents of the Quarto document into an output document. Find this **Render** button and click it. You may get a message to install some `R` packages. Allow it. You may also get a message about allowing popups. Allow them. Find the output file. This file is saved in the same directory as your Quarto (qmd) file but with a different extension (pdf).
 
 
 
@@ -188,15 +200,15 @@ sum(myvec)
 
 It can take some time to understand the workflow for interacting with `R` and Quarto documents. That is okay! I recommend the following workflow:
 
--   Make changes to the Quarto document (ex. solve 1-3 subparts of an assignment).
+-   Make changes to the Quarto document (ex. solve 1-3 subparts of an assignment). Hit Command+S (Mac) or Ctrl+S (PC) any time you've made enough changes that you'd be inconvenienced if you lost them suddenly!
 
 -   If the changes involve new `R` code, then run the code (using one of the options tested above) to make sure the code behaves how you are expecting. Keep iterating until you are happy with the code.
 
 -   Click "Render" to render the document.
 
--   At some point in the semester (but especially now, when you're starting out), this step will result in an error message! Error messages show up in red in the Console. Your file cannot be rendered if there is an error. When this happens, try not to panic. Debugging is a constant part of coding. Read the error message, and try to find the error and fix it. If you're stuck and not in lab, ask for help on Slack, from your peers, or in office hours. 
+-   At some point in the semester (but especially now, when you're starting out), the previous step will result in an error message. Error messages show up in red in the Console, and your file cannot be rendered if there is an error. When this happens, take a deep breath, read the error message, try to find where it says the error is coming from, and try to fix it. If you're stuck, ask for help from your peers, on Slack, or in office hours.
 
--   If your file renders without an error, look over the output PDF.
+-   If your file renders without an error, yay, that's a success! However, a file can render properly but still have non-error-generating formatting issues. Look over the output PDF and check:
 
     -   Is the code displaying how you want?
 
@@ -205,6 +217,7 @@ It can take some time to understand the workflow for interacting with `R` and Qu
     -   Does the output look correct and legible?
 
 -   If the output document looks good, start back at the top and make new changes. If not, go back to your code and problem-solve.
+
 
 
 ## Exercise 2: The R Environment
@@ -217,16 +230,8 @@ It can take some time to understand the workflow for interacting with `R` and Qu
 
 *******************************************************************************
 
-**b.** In the environment pane, click the little broom icon in the upper bar. Click yes on the
-window that opens. What happened to the environment? What happens if you now try to run your chunks from Exercise 1 step (f)?
 
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**c.** Now is a good time to see what happens when you want to render your file, but there is an error in your code. Try hitting "Render." Find the error message in the console. What is it telling you? How does this relate to what's going on with the environment? 
+**b.** In the environment pane, click the little broom icon in the upper bar. Click yes on the window that opens. What happened to the environment? What happens if you now try to run your chunks from Exercise 1 step (g)?
 
 *******************************************************************************
 
@@ -235,7 +240,16 @@ window that opens. What happened to the environment? What happens if you now try
 *******************************************************************************
 
 
-**d.** This kind of error is very common. Let's fix it for our case. Find the "Run" buttons at the upper right corner of this chunk, and select "Run all chunks above." What happened to the environment? 
+**c.** Now is a good time to test our workflow when faced with an error in your code. Find the error message in the console, if you haven't already. What is it telling you? How does this relate to what's going on with the environment? 
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+**d.** This kind of error is very common. Let's fix it for our case. Find the "Run" buttons at the upper right corner of the chunk below, and select "Run all chunks above." What happened to the environment? 
 
 ```{r}
 
@@ -247,16 +261,8 @@ window that opens. What happened to the environment? What happens if you now try
 
 *******************************************************************************
 
-**e.** Try clicking "Render" again. Did it work this time?
 
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-**f.** Let's practice using exponents again to create another variable, `s`. Run the chunk below one line at a time using Command+Enter (for a Mac) or Control+Enter (for a PC), and write out the value associated with each line below. Why does each line affect the environment differently? Where did you find the values?
+**e.** Let's practice using exponents again to create another variable, `s`. Run the chunk below one line at a time using Command+Enter (for a Mac) or Control+Enter (for a PC), and write out the value associated with each line between the stars below. Why does each line affect the environment differently? Where did you find the values?
 
 ```{r eval = F}
 s <- 7^7
@@ -271,7 +277,7 @@ s <- 7^7
 *******************************************************************************
 
 
-**g**. Finally, let's practice making a vector, and creating **character** data types. In R, we can create vectors using the function `c()`. For example, try running `c(1, 2, 3)` in the console. All elements of a vector must have the same data type (ex. all numeric, or all character). We create characters by writing `"some text"`. In a new chunk below, create a vector called `a` with three character elements, with each element representing one of your favorite genres of music. What information about this object is stored in the environment?
+**f**. Finally, let's practice making a vector, and creating **character** data types. This requires knowing how to do two things. *Thing A:* In `R`, we can create vectors using the function `c()`. For example, try running `c(1, 2, 3)` in the console. All elements of a vector must have the same data type (ex. all numeric, or all character). *Thing B:* We can create character variables by writing `"some text"`, where we use quotes "" to tell `R` that we want a character variable. **In a new chunk below**, create a vector called `a` with three character elements, with each element representing one of your favorite genres of music. What information about this object is stored in the environment?
 
 *******************************************************************************
 
@@ -284,7 +290,7 @@ s <- 7^7
 
 -   **Useful definition**: People refer to the `R` session that loads without any add-ons as **base R**.
 
--   Base `R` contains lots of useful commands to analyze data, as well as some data sets. However, people have developed new commands and new data sets which are not packaged in this standard version of the program. Therefore, people create **packages** which contain these new objects.
+-   Base `R` contains lots of useful commands to analyze data, as well as some data sets. However, people have developed new commands and new data sets which are not packaged in this standard version of the program. Therefore, people create extra **packages** which contain these new objects.
 
 -   Whenever we want to use the commands or load the data from a package, we need to load the package itself first.
 
@@ -295,9 +301,9 @@ s <- 7^7
 library(openintro)
 ```
 
--   Go to the **Packages** tab in the lower right. Notice that `openintro` is listed and if you ran the code above, then it is loaded so the box next to `openintro` should be checked.
+-   Go to the **Packages** tab in the lower right. Notice that `openintro` is listed, and if you ran the code above, then it is loaded, as indicated by a checked box next to `openintro`.
 
--   You only need to install a package once, but you need to load a package (using the `library()` function) every time you want to use the commands in the package. If you are using RStudio Server, almost all of the packages that you'll need should already be installed.
+-   You only need to install a package once, but you need to load a package (using the `library()` function) every time you want to use the commands in the package. Lab and homework assignments will include setup chunks at the top of each file that load the necessary packages. If you are using RStudio Server, almost all of the packages that you'll need should already be installed.
 
 
 
@@ -312,6 +318,7 @@ In this problem, we are going to explore an existing data frame in `R`.
 
 
 *******************************************************************************
+
 
 **b.**  Run the following code to grab the `yrbss` dataset, which is contained in the `openintro` package that we already loaded.
 
@@ -339,6 +346,7 @@ View(yrbss)
 
 *******************************************************************************
 
+
 **e.**  What does a column of the data frame represent? How many columns are in the data frame?
 
 *******************************************************************************
@@ -346,6 +354,7 @@ View(yrbss)
 
 
 *******************************************************************************
+
 
 **f.**  Is `age` recorded as a categorical or a quantitative variable? How about `hours_tv_per_school_day`? Explain your reasoning.
 
@@ -355,6 +364,7 @@ View(yrbss)
 
 *******************************************************************************
 
+
 **g.**  We will learn to be careful with how we treat missing values, which are typically labeled as `NA` in the date frame. What are two possible reasons why the the variable `text_while_driving_30d` might be recorded as `NA`?
 
 *******************************************************************************
@@ -363,18 +373,19 @@ View(yrbss)
 
 *******************************************************************************
 
-**h.**  One way to look at or work with a single variable is by using `$` to extract it. Uncomment the first line and run the chunk below, which extracts just the `age` column as a vector, and takes its average. When you're done checking it out, re-comment the first line so that your PDF doesn't include all 13,000+ ages! 
+
+**h.**  One way to look at or work with a single variable is by using `$` to extract it, like `--data frame name--$--column name--`. Uncomment the first line, which extracts just the `age` column as a vector, and run it. Test out the line below, which takes the average of the column. When you're done running these, re-comment the first line so that your PDF doesn't include a very long list of ages! 
 
 *******************************************************************************
 
 ```{r}
-# yrbss$age         # This command extracts age
+# yrbss$age         # This command extracts the age column
 mean(yrbss$age, na.rm = TRUE)   # We can combine this extraction with a function
 ```
 
-
 *******************************************************************************
 
-**i.** Render your file, and carefully check your PDF one last time before following the instructions for submission at the beginning of the lab. As we move forward in the class with assignments, you are responsible for making sure to check that the formatting and content of your PDF reflects the work in your `.qmd` file. 
+
+**i.** Render your file, and carefully check your PDF one last time before following the instructions for submission at the beginning of the lab. When you submit assignments, you are responsible for making sure to check that the formatting and content of your PDF reflects the work in your `.qmd` file. 
 
 
