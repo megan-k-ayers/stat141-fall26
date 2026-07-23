@@ -14,8 +14,8 @@ execute:
 In this homework assignment you will practice:
 
 - Creating and interpreting `ggplot2` graphs.
-- Interpreting data using summary statistics
-- Understanding code for data manipulation in `R`
+- Interpreting data using summary statistics.
+- Understanding code for data manipulation in `R`.
 
 
 ### Add any collaborators here!
@@ -25,29 +25,25 @@ I collaborated with...
 **Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this course. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 
+
 # Exercises
 
 
-## Exercise 1: Visualizing distributions of variables in `somerville`
+## Exercise 1: Visualizing distributions of quantitative variables in `somerville`
 
-a. Create a histogram of the `satisfied_somerville` variable. You may need to play around with the number of bins to get a clear idea of the shape. Compute the mean, median, variance, and standard deviation of `satisfied_somerville`. What do you notice about the distribution?
+In this exercise, we'll build on the work that we were doing in lab with the `somerville` data, and will practice making more types of graphs. Run the chunk below to read in the `somerville` data again, and to remove some missing values.
 
-*******************************************************************************
+```{r, message = FALSE}
+library(tidyverse)
 
-
-
-*******************************************************************************
-
-b. Create a **faceted** histogram plot that shows how the distribution of scores for `satisfied_somerville` differs by response category for `direction_somerville`.
-*Hint: You'll want to mess with the `bins` size to get a good sense of the distribution.*
-
-*******************************************************************************
+somerville <- read.csv("data/somerville_clean.csv")
+somerville <- somerville %>%
+  filter(!is.na(satisfied_somerville),
+         !is.na(direction_somerville))
+```
 
 
-
-*******************************************************************************
-
-c. Create a boxplot that shows how the distribution of scores for `satisfied_somerville` differs by response category for `direction_somerville`.
+**a.** Create a histogram of the `satisfied_somerville` variable. You may need to play around with the number of bins to get a clear idea of the shape. [Only code is needed for this question]
 
 *******************************************************************************
 
@@ -55,7 +51,9 @@ c. Create a boxplot that shows how the distribution of scores for `satisfied_som
 
 *******************************************************************************
 
-d. Compare and contrast what you learned from the boxplot in (a) and the histogram plot in (b).
+
+
+**b.** Compute the mean, median, variance, and standard deviation of `satisfied_somerville` using `R`. What do you these statistics and the graph you made above tell you about the distribution? [Code and text is needed for this question]
 
 *******************************************************************************
 
@@ -63,13 +61,39 @@ d. Compare and contrast what you learned from the boxplot in (a) and the histogr
 
 *******************************************************************************
 
-e. Which response category for `direction_somerville` tends to have the highest satisfaction score?  Does your answer imply that people who think Somerville is headed in the right direction are all very satisfied with Somerville? Use the boxplot in (a) and/or the histograms in (b) in your justification.
+
+
+**c.** Create a **faceted** histogram plot that shows how the distribution of scores for `satisfied_somerville` differs by response category for `direction_somerville`. [Only code is needed for this question]
+
+*Hint: There is example code for plotting with facets in the "Data Visualization: the 5 Named Graphs" slides*
 
 *******************************************************************************
 
 
 
 *******************************************************************************
+
+
+
+**d.** Create a boxplot that shows how the distribution of scores for `satisfied_somerville` differs by response category for `direction_somerville`. [Only code is needed for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**e.** Which response category for `direction_somerville` tends to have the highest satisfaction score?  Does your answer imply that people who think Somerville is headed in the right direction are all very satisfied with Somerville? Use the boxplot in (a) and/or the histograms in (b) in your justification. [Only text is needed for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
 
 ## Exercise 2: MWRA Visualization
 
@@ -81,77 +105,116 @@ The [Massachusetts Water Resources Authority (MWRA) graph](https://www.mwra.com/
 wastewater <- read.csv("data/wastewater.csv")
 
 # Make date a date type (this helps date labels automatically look better)
-wastewater$Sample_date <- as.Date(wastewater$Sample_date)
-```
+wastewater <- wastewater %>% 
+  mutate(Sample_date = as.Date(wastewater$Sample_date))
 
-a. Go to [https://www.mwra.com/biobot/biobotdata.htm](https://www.mwra.com/biobot/biobotdata.htm) and look at the first graph.  What are the geom**s**?  For each geom, discuss what variables are being mapped to the aesthetics of that geom.
-
-Note: The graph doesn't indicate this but the line segments incorporate interval estimates (which we will learn in detail later in the semester) of the daily RNA copies per mL.  For now, when discussing these interval estimates, feel free to refer to the *lower bound of the interval estimate* and the *upper bound of the interval estimate*.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-b. Create a scatterplot of the copies/mL over time.  For now, don't include the moving average.
-
-*******************************************************************************
-
-```{r}
-# Hint: Before jumping into graphing, insert code to inspect the data
-# and to find your variable names.
-
-# Create scatterplot
+# Drop some missing values
+wastewater <- wastewater %>%
+  na.omit()
 
 ```
 
-*******************************************************************************
+**a.** Go to [https://www.mwra.com/biobot/biobotdata.htm](https://www.mwra.com/biobot/biobotdata.htm) and look at the first graph.  What are the geom**s**?  For each geom, discuss what variables are being mapped to the aesthetics of that geom. [Only text is needed for this question]
 
-c. Modify your scatterplot to deal with the overplotting and to color your points based on the station. Similar to MWRA, let's use green and orange to color the points.
-
-*******************************************************************************
-
-```{r}
-# Modify scatterplot
-
-```
+Note: The graph doesn't indicate this but the line segments incorporate interval estimates (which we will learn in detail later in the semester) of the daily RNA copies per mL. For now, when discussing these interval estimates, feel free to refer to the *lower bound of the interval estimate* and the *upper bound of the interval estimate*.
 
 *******************************************************************************
 
-d. Now add the seven day moving average lines to your scatterplot. (We will add in the uncertainty measures, the vertical line segments, later in the semester.)
+
+
+*******************************************************************************
+
+
+
+**b.** Create a scatterplot of the copies/mL over time.  For now, don't include the moving average. [Only code is needed for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**c.** Modify your scatterplot to deal with the *overplotting*, and to color your points based on the station. Similar to MWRA, let's use green and orange to color the points. [Only code is needed for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**d.** Now add the seven day moving average lines to your scatterplot. (We will add in the uncertainty measures, the vertical line segments, later in the semester.)
 
 What is tricky here is that you will need to **change** what variable is mapped to `y` for your new `geom`.  We have provided some partially completed sample code below to help you get started.  Make sure to put that code in an R chunk below.
 
 ```
 # Add moving average to your graph
-___insert ggplot code from part b___ +
+___insert ggplot code from part c___ +
   geom_---(mapping = aes(y = ---))
 ```
 
-*******************************************************************************
-
-```{r}
-
-
-
-```
+[Only code is needed for this question]
 
 *******************************************************************************
 
-e. Now give your graph from (e) nice labels and a title.
+
 
 *******************************************************************************
 
-```{r}
-
-
-
-```
+e. Now give your graph from (e) nice labels and a title. [Only code is needed for this question]
 
 *******************************************************************************
 
-## Exercise 3: AQI Summary Statistics
+
+
+*******************************************************************************
+
+
+
+## Exercise 3: Choosing the right type of graph
+
+**a.** In general, what kind(s) of graph(s) is(are) useful for visualizing a single quantitative variable? [Text only for this question.]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**b.** In general, what kind(s) of graph(s) is(are) useful for visualizing a single categorical variable with a count of how many times each of its categories appear? [Text only for this question.]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+**c.** In general, what kind(s) of graph(s) is(are) useful for visualizing the relationship between a quantitative *and* a categorical variable? [Text only for this question.] 
+
+*******************************************************************************
+
+Students might say barplot here, which can work when the quantitative variable is already aggregated for each category of the categorical variable. But if we want to see how the non-aggregated distribution of a continuous variable varies according to the categories, we'd want to do something like a faceted histogram or side-by-side boxplot.
+
+*******************************************************************************
+
+
+**d.** In general, what kind(s) of graph(s) is(are) useful for visualizing the relationship between two quantitative variables? [Text only for this question.] 
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+## Exercise 4: AQI Summary Statistics
 
 Daily air quality is measured by the air quality index (AQI) reported by the Environmental Protection Agency. This index reports the pollution level and what associated health effects might be a concern. The index is calculated for five major air pollutants regulated by the Clean Air Act and takes values from 0 to 300, where a higher value indicates lower air quality. AQI was reported for a sample of 91 days in 2011 in Durham, NC. The histogram below shows the distribution of the AQI values on these days.
 
@@ -167,7 +230,7 @@ ggplot(pm25_2011_durham, aes(x = daily_aqi_value))+
   theme_bw()
 ```
 
-a. Quantitatively describe the center of this sample's AQI distribution, based on the graph (you can eyeball this rather than using R).
+**a.** Quantitatively describe the center of this sample's AQI distribution, based on the graph (you can eyeball this rather than using R). [Response should include at least text for this question]
 
 *******************************************************************************
 
@@ -175,7 +238,9 @@ a. Quantitatively describe the center of this sample's AQI distribution, based o
 
 *******************************************************************************
 
-b. Would you expect the mean AQI value of this sample to be higher or lower than the median? Explain your reasoning.
+
+
+**b.** Would you expect the mean AQI value of this sample to be higher or lower than the median? Explain your reasoning. [Response should include only text]
 
 *******************************************************************************
 
@@ -183,7 +248,9 @@ b. Would you expect the mean AQI value of this sample to be higher or lower than
 
 *******************************************************************************
 
-c. Estimate the Q1, Q3, and IQR (and median, if you haven't already) for the distribution based on the graph. What property of the distribution does the IQR measure?
+
+
+**c.** Estimate the Q1, Q3, and IQR (and median, if you haven't already) for the distribution based on the graph. What property of the distribution does the IQR measure? [Response should include at least text for this question]
 
 *******************************************************************************
 
@@ -191,7 +258,9 @@ c. Estimate the Q1, Q3, and IQR (and median, if you haven't already) for the dis
 
 *******************************************************************************
 
-d. Using the estimates of Q1, Q3, and IQR from part (c), would any of the days in this sample be considered outliers?  Explain!
+
+
+**d.** Using the estimates of Q1, Q3, and IQR from part (c), would any of the days in this sample be considered outliers?  Explain! [Response should include only text, but you can use R like a calculator in the console if you'd like]
 
 *******************************************************************************
 
@@ -199,21 +268,17 @@ d. Using the estimates of Q1, Q3, and IQR from part (c), would any of the days i
 
 *******************************************************************************
 
-## Exercise 4: Means, Medians, and Skewness
+
+
+## Exercise 5: Means, Medians, and Skewness
 
 *This question is from IMS Chapter 5.*
 
-The statistic $\frac{\bar{x}}{median}$ can be used as a measure of skewness. Suppose we have a distribution where all observations are greater than 0. What do you expect the shape of the distribution to be under the following conditions? Explain your reasoning.
+The statistic $\frac{\bar{x}}{median}$ can be used as a measure of skewness (to see the formatted equation, hover your cursor over equation, or find it in the rendered PDF). 
 
-a. $\frac{\bar{x}}{median} = 1$
+Suppose we have a distribution where all observations are greater than 0. What do you expect the shape of the distribution to be under the following conditions? Explain your reasoning. These responses only require text.
 
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-b. $\frac{\bar{x}}{median} < 1$
+**a.** $\frac{\bar{x}}{median} = 1$
 
 *******************************************************************************
 
@@ -221,7 +286,9 @@ b. $\frac{\bar{x}}{median} < 1$
 
 *******************************************************************************
 
-c. $\frac{\bar{x}}{median} > 1$
+
+
+**b.** $\frac{\bar{x}}{median} < 1$
 
 *******************************************************************************
 
@@ -229,18 +296,35 @@ c. $\frac{\bar{x}}{median} > 1$
 
 *******************************************************************************
 
-## Exercise 5: Explaining data wrangling code
 
-For this problem, we'll look at the `detectors` dataset from the article *"GPT Detectors Are Biased Against Non-Native English Writers"*^[**GPT Detectors Are Biased Against Non-Native English Writers.** *Weixin Liang*, *Mert Yuksekgonul*, *Yining Mao*, *Eric Wu*, *James Zou.* [CellPress Patterns](https://doi.org/10.1016/j.patter.2023.100779)].
 
-a.  The code following code does some data wrangling to produce a graphic. Starting with `humans_only <- detectors %>%`, give a line-by-line explanation of what the code does, using language accessible to someone who hasn't had prior coding experience.
+**c.** $\frac{\bar{x}}{median} > 1$
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+## Exercise 6: Explaining data wrangling code
+
+For this problem, we'll look at the `detectors` dataset from the article *"GPT Detectors Are Biased Against Non-Native English Writers"*^[**GPT Detectors Are Biased Against Non-Native English Writers.** *Weixin Liang*, *Mert Yuksekgonul*, *Yining Mao*, *Eric Wu*, *James Zou.* [CellPress Patterns](https://doi.org/10.1016/j.patter.2023.100779)]. Run the chunk below to load the data, and to make sure the relevant packages are loaded.
 
 ```{r}
 # Load libraries
 library(detectors)  # Grabs the data set
 library(ggplot2)    # For visualizations
 library(dplyr)      # For data wrangling
+```
 
+Once the data is loaded, you can familiarize yourself with the columns in the data set by running `?detectors` in the console.
+
+
+This final code chunk does some data wrangling to produce a graphic. Starting with `humans_only <- detectors %>%`, give a line-by-line explanation of what the code does, using language accessible to someone who hasn't had prior coding experience. [Response should include only text and references to the code here]
+
+```{r}
 # Wrangle data
 humans_only <- detectors %>%
   filter(kind == "Human",

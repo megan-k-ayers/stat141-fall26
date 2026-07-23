@@ -65,7 +65,7 @@ Variables in the `somerville` data:
 
 
 
-a. Let's start by getting a sense of how people get around Somerville.  Fill in the blanks (`---`) to create a **bar graph** of the variable `primary_transport`. Make sure to put the completed code into an R chunk.
+**a.** Let's start by getting a sense of how people get around Somerville.  Fill in the blanks (`---`) to create a **bar graph** of the variable `primary_transport`. Make sure to put the completed code into an R chunk.  [Only code is needed for this question]
 
 
 ```
@@ -82,11 +82,13 @@ ggplot(data = ---, mapping = aes(x = ---)) +
 
 *******************************************************************************
 
-b.  Create two bar plots of the variables `primary_transport` and `direction_somerville`:
+
+
+**b.**  Create two bar plots of the variables `primary_transport` and `direction_somerville`:
     + For the first one, display the **counts** of each category of `direction_somerville` within `primary_transport` groups (bars).
     + For the second one, display the **proportions** of each category of `direction_somerville` within `primary_transport` groups (bars).
 
-Compare and contrast the information provided in the two plots.
+Compare and contrast the information provided in the two plots.  [Code and text are needed for this question]
 
 *******************************************************************************
 
@@ -98,19 +100,23 @@ Compare and contrast the information provided in the two plots.
 
 ```
 
-*******************************************************************************
-
-c. Draw two conclusions from your graph in (b).
-
-*******************************************************************************
-
 
 
 *******************************************************************************
 
-d. Suppose that we don't like the default order of the categories of `direction_somerville`. It can be helpful to store categorical variables using the `factor` data type - this allows us to set the possible categories and their order explicitly.
+**c.** Draw two conclusions from your graph in (b).  [Only text is needed for this question]
 
-Run the code below to manually reorder the categories by turning `direction_somerville` into a factor (as well as remove observations that have missing values of `direction_somerville`). What do you think the default ordering of categories was? Recreate the bar graph of proportions from (b) with this new ordering for `direction_somerville` in the chunk below.
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**d.** Suppose that we don't like the default order of the categories of `direction_somerville`. It can be helpful to store categorical variables using the `factor` data type - this allows us to set the possible categories and their order explicitly.
+
+Run the code below to manually reorder the categories by turning `direction_somerville` into a factor (as well as remove observations that have missing values of `direction_somerville`). What do you think the default ordering of categories was? Recreate the bar graph of proportions from (b) with this new ordering for `direction_somerville` in the chunk below. [Text and code are needed for this question]
 
 *******************************************************************************
 
@@ -120,7 +126,7 @@ Run the code below to manually reorder the categories by turning `direction_some
 somerville <- somerville %>%
   filter(!is.na(direction_somerville))
 
-# Reorder the categories of population_trend
+# Reorder the categories of `direction_somerville`
 somerville$direction_somerville <- factor(somerville$direction_somerville,
                                           levels = c("Wrong track",
                                                      "Not sure",
@@ -131,25 +137,31 @@ somerville$direction_somerville <- factor(somerville$direction_somerville,
 
 ```
 
+
+
 *******************************************************************************
+
+
 
 ## Exercise 2: Visualizing `somerville` with scatterplots
 
-a. Create a scatterplot that shows the relationship between `satisfied_somerville` and `convenient_transport`, and where color is determined by `direction_somerville`. On the $x$-axis, put the variable that you think may *explain* the behavior of the other variable.
+**a.** Create a scatterplot that shows the relationship between `satisfied_somerville` and `convenient_transport`, and where color is determined by `direction_somerville`. On the $x$-axis, put the variable that you think may *explain* the behavior of the other variable. [Only code is needed for this question]
+
+*******************************************************************************
+
 
 *******************************************************************************
 
 
 
-*******************************************************************************
-
-b. It is difficult to detect a meaningful pattern in the scatterplot from part (a); since the responses were given as whole numbers on a 1 - 10 scale, many of the responses are overlaid on top of each other. Recreate the plot from part (a) by using `geom_jitter()` rather than the `geom` used previously and by making the `geom` somewhat transparent.
+**b.** It is difficult to detect a meaningful pattern in the scatterplot from part (a); since the responses were given as whole numbers on a 1 - 10 scale, many of the responses are overlaid on top of each other. Recreate the plot from part (a) by using a new geom, `geom_jitter()`, rather than the `geom` used previously and by making the `geom` somewhat transparent to avoid overplotting. [Only code is needed for this question]
 
 *******************************************************************************
 
 
-
 *******************************************************************************
+
+
 
 ## Exercise 3: Airline Delay
 
@@ -161,18 +173,29 @@ airline2 <- c(0, 0, 5, 5, 5, 5, 5, 5, 10, 10)
 airline3 <- c(-10, -10, -10, -10, -10, -10,-10, -10, -10, 90)
 ```
 
-a. Describe each airline's delay record by calculating summary statistics in R (recall the functions `mean()`, `var()`, `sd()`, `median()` from lecture). What each airline's strengths? What are their weaknesses?
+**a.** Describe each airline's delay record by calculating summary statistics in R (recall the functions `mean()`, `var()`, `sd()`, `median()` from lecture). What each airline's strengths? What are their weaknesses?
+
+*******************************************************************************
+
 
 *******************************************************************************
 
 
 
-*******************************************************************************
-
-b. Which airline would you choose? What characteristics of the airline most factored into your decision?
+**b.** Which airline would you choose? What characteristics of the airline most factored into your decision?
 
 *******************************************************************************
 
 
+*******************************************************************************
+
+
+
+**c.** In general, what is the difference between the mean and the median? When should we expect them to be different?
 
 *******************************************************************************
+
+
+*******************************************************************************
+
+
