@@ -20,7 +20,7 @@ I collaborated with...
 **Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this course. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 
-### When you have completed Lab 1, follow this submission process:
+### At the end of Lab 1, follow this submission process:
 
 -   **Step 1 (RStudio Server)**: Export the PDF (not the QMD) of your Lab 1 from the RStudio Server. Within the Files tab in the lower right-hand window:
     -   Check the box next to "lab01_yourname.pdf".
@@ -206,7 +206,11 @@ It can take some time to understand the workflow for interacting with `R` and Qu
 
 -   Click "Render" to render the document.
 
--   At some point in the semester (but especially now, when you're starting out), the previous step will result in an error message. Error messages show up in red in the Console, and your file cannot be rendered if there is an error. When this happens, take a deep breath, read the error message, try to find where it says the error is coming from, and try to fix it. If you're stuck, ask for help from your peers, on Slack, or in office hours.
+-   At some point in the semester (but especially now, when you're starting out), the previous step will result in an error message. Error messages show up in red in the Console, and your file cannot be rendered if there is an error. When this happens, take a deep breath, read the error message, try to find where it says the error is coming from, and try to fix it. If you're stuck:
+  
+    - Ask for help from your peers, on Slack, or in office hours.
+    
+    - If you are up against a deadline and need to submit what you have, comment out the code causing the error by putting # in front those lines of code.
 
 -   If your file renders without an error, yay, that's a success! However, a file can render properly but still have non-error-generating formatting issues. Look over the output PDF and check:
 

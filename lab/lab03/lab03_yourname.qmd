@@ -11,8 +11,8 @@ execute:
 
 
 In this lab, you will
-  - Practice data wrangling techniques to calculate summary statistics
-  - Assess the independence of events in data
+  - Practice using data wrangling functions
+  - Practice applying probability rules to answer questions about data
 
 
 ### Add any collaborators here!
@@ -25,7 +25,7 @@ I collaborated with...
 ```{r}
 # Load the necessary packages
 library(lubridate)
-library(tidyverse)  # Includes ggplot2
+library(tidyverse)  # Includes ggplot2 and dplyr
 ```
 
 
@@ -36,7 +36,7 @@ library(tidyverse)  # Includes ggplot2
 
 We will use data from a 2021 paper published by IEEE, [von Kugelgen J et al. 2021](10.1109/TAI.2021.3073088). This paper analyses case fatality rates of COVID-19 in Italy and China during 2020.
 
-a. Run the chunk below to view data on COVID-19 cases and fatalities by age group in Italy (on March 9th) and China (on February 22). What does a row represent?
+**a.** Run the chunk below to view data on COVID-19 cases and fatalities by age group in Italy (on March 9th) and China (on February 22). What does a row represent? [Text only for this question]
 
 ```{r}
 covid <- read.csv("data/italy_china_covid_comp.csv")
@@ -49,20 +49,9 @@ print(covid)
 
 *******************************************************************************
 
-b. Write `R` code to *filter* to only the rows corresponding to China using the `filter()` function.
-
-*******************************************************************************
-
-```{r}
-
-# Your code below
 
 
-```
-
-*******************************************************************************
-
-c. Using `R` in a new chunk below, *create a new column* using `mutate()` that calculates the case fatality rate (the proportion of cases that resulted in fatality) for each row. What do you notice when comparing rates between the two countries?
+**b.** Write `R` code to *filter* to only the rows corresponding to China using the `filter()` function. Be careful not to overwrite the original `covid` data frame. [Code only for this question]
 
 *******************************************************************************
 
@@ -70,7 +59,9 @@ c. Using `R` in a new chunk below, *create a new column* using `mutate()` that c
 
 *******************************************************************************
 
-d. Using `R` in a new chunk below, now calculate the overall case fatality rate, but within each country (not broken down by age). *This will require you to chain together two `dplyr` functions:* `group_by()` and `summarize()`. How do the overall case fatality rates compare between the two countries? Is this what you would expect based on part (a)?
+
+
+**c.** Using `R` in a new chunk below, *create a new column* in `covid` using `mutate()` that calculates the case fatality rate (the proportion of cases that resulted in fatality) for each of the 16 rows. What do you notice when comparing rates between the two countries? [Text and code for this question]
 
 *******************************************************************************
 
@@ -78,7 +69,18 @@ d. Using `R` in a new chunk below, now calculate the overall case fatality rate,
 
 *******************************************************************************
 
-e. These results are an example of **Simpson's Paradox**, a phenomenon where trends observed in aggregate comparisons reverse when we control for other variables. Run the chunk below to look at a barplot showing the number of COVID-19 cases per age group. How does this help explain what you observed in parts (a) and (b)?
+
+**d.** Using `R` in a new chunk below, now calculate the overall case fatality rate within each country (not broken down by age). *This will require you to chain together two `dplyr` functions:* `group_by()` and `summarize()`. How do the overall case fatality rates compare between the two countries? Is this what you would expect based on part (c)? [Text and code for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**e.** These results are an example of **Simpson's Paradox**, a phenomenon where trends observed in aggregate comparisons reverse when we control for other variables. Run the chunk below to look at a barplot showing the number of COVID-19 cases per age group. How does this help explain what you observed in parts (c) and (d)? [Only text is needed for this question]
 
 ```{r}
 covid <- read.csv("data/italy_china_covid_comp.csv")
@@ -99,9 +101,11 @@ ggplot(covid, aes(x = country, y = cases, fill = age, label = cases)) +
 
 *******************************************************************************
 
+
+
 ## Exercise 2: Some Interesting Survey Results
 
-In a previous year, students in Math 141 were asked two questions as part of a larger survey: "Are hot dogs sandwiches?" and "If dogs wore pants, would they wear them on their front legs, back legs, or on all four legs"? A summary of responses for 70 students is given below:
+In a previous year, students in Stat 141 were asked two questions as part of a larger survey: "Are hot dogs sandwiches?" and "If dogs wore pants, would they wear them on their front legs, back legs, or on all four legs"? A summary of responses for 70 students is given below:
 
 |             | Hotdog is a sandwich | Hotdog is not a sandwich |
 |-------------|----------------------|---------------------------|
@@ -111,7 +115,7 @@ In a previous year, students in Math 141 were asked two questions as part of a l
 
 Suppose we randomly choose 1 student who completed this survey.
 
-a. Are the events "the student thinks a hotdog is not a sandwich" and "the student thinks dogs should wear pants on their back legs" mutually exclusive?
+**a.** Are the events "the student thinks a hotdog is not a sandwich" and "the student thinks dogs should wear pants on their back legs" *mutually exclusive*? [Only text is needed for this question, though you can use `R` as a calculator to help you answer it.]
 
 *******************************************************************************
 
@@ -119,7 +123,9 @@ a. Are the events "the student thinks a hotdog is not a sandwich" and "the stude
 
 *******************************************************************************
 
-b. What is the probability that the randomly chosen student thinks a hotdog is a sandwich?
+
+
+**b.** What is the probability that the randomly chosen student thinks a hotdog is a sandwich? [Only text is needed for this question, though you can use `R` as a calculator to help you answer it.]
 
 *******************************************************************************
 
@@ -127,7 +133,9 @@ b. What is the probability that the randomly chosen student thinks a hotdog is a
 
 *******************************************************************************
 
-c. What is the probability that the randomly chosen student thinks a hotdog is a sandwich and thinks that dogs should wear pants on all 4 legs?
+
+
+**c.** What is the probability that the randomly chosen student thinks a hotdog is a sandwich *and* thinks that dogs should wear pants on all 4 legs? [Only text is needed for this question, though you can use `R` as a calculator to help you answer it.]
 
 *******************************************************************************
 
@@ -135,7 +143,9 @@ c. What is the probability that the randomly chosen student thinks a hotdog is a
 
 *******************************************************************************
 
-d. What is the probability that the randomly chosen student thinks a hotdog is a sandwich given that the student thinks dogs should wear pants on all 4 legs?
+
+
+**d.** What is the probability that the randomly chosen student thinks a hotdog is a sandwich *given* that the student thinks dogs should wear pants on all 4 legs? [Only text is needed for this question, though you can use `R` as a calculator to help you answer it.]
 
 *******************************************************************************
 
@@ -143,7 +153,9 @@ d. What is the probability that the randomly chosen student thinks a hotdog is a
 
 *******************************************************************************
 
-e. Is the event "the student thinks a hotdog is a sandwich" *independent* (in the statistical sense) of the event "the student thinks dogs should wear pants on their front legs"? Explain your reasoning. Do your statistical findings match your intuition about whether these events are related?
+
+
+**e.** Is the event "the student thinks a hotdog is a sandwich" *independent* (in the statistical sense) of the event "the student thinks dogs should wear pants on their front legs"? Explain your reasoning. Do your statistical findings match your intuition about whether these events are related? [Only text is needed for this question, though you can use `R` as a calculator to help you answer it.]
 
 *******************************************************************************
 
