@@ -11,10 +11,10 @@ execute:
 
 In this lab, you will
 
-1. Conduct exploratory data analysis (EDA) techniques in R with multiple predictors
-2. Build linear regression models with multiple predictors
+1. Review exploratory data analysis (EDA) techniques in R with multiple predictors
+2. Assess linear regression models with multiple predictors
 3. Interpret the estimated coefficients of multiple linear regression models
-4. Compare and assess multiple linear regression models
+4. Compare and assess linear regression models
 
 
 ### Add any collaborators here!
@@ -23,8 +23,10 @@ I collaborated with...
 
 **Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this course. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
+
+Run the chunk below to load the necessary packages.
+
 ```{r}
-#load the necessary packages
 library(tidyverse)
 library(pdxTrees)
 library(moderndive)
@@ -55,7 +57,7 @@ The data includes three variables:
 3. Salary: Annual salary in thousands of US dollars.
 
 
-**a.** As stated above, we are interesting in exploring salary differences based on gender. It's important to start by thinking critically about the type of conclusions we can draw from this analysis, especially since we're analyzing data about a sensitive (and very important) topic. **What type of study is this data from, and what types of conclusions can be drawn as a result?**
+**a.** As stated above, we are interesting in exploring salary differences based on gender. It's important to start by thinking critically about the type of conclusions we can draw from this analysis, especially since we're analyzing data about a sensitive (and very important) topic. **What type of study is this data from, and what types of conclusions can be drawn as a result?** [Text only for this question]
 
 *******************************************************************************
 
@@ -63,7 +65,9 @@ The data includes three variables:
 
 *******************************************************************************
 
-**b.** The chunk below creates exploratory visualizations of each variable: `Salary`, `Age`, and `Gender`. **Why is it important to perform this step before building a linear regression model? Based on the visualizations, give an insight about each variable.**
+
+
+**b.** The chunk below creates exploratory visualizations of each variable: `Salary`, `Age`, and `Gender`. **Why is it important to perform this step before building a linear regression model? Based on the visualizations, give an insight about each variable.** [Text only for this question]
 
 ```{r}
 g1 <- ggplot(data = SalaryGender, aes(x = Salary)) + geom_histogram(bins = 20) +
@@ -81,7 +85,9 @@ gridExtra::grid.arrange(g1, g2, g3, nrow = 2)
 
 *******************************************************************************
 
-**c.** The chunk below investigates the bivariate relationship between `Salary` and `Gender.` **What trends do you observe, and how are they relevant to building our linear model?**
+
+
+**c.** The chunk below investigates the bivariate relationship between `Salary` and `Gender.` **What trends do you observe, and how are they relevant to building our linear model?** [Text only for this question]
 
 ```{r}
 ggplot(data = SalaryGender, aes(x = Gender, y = Salary)) + geom_boxplot() +
@@ -94,7 +100,9 @@ ggplot(data = SalaryGender, aes(x = Gender, y = Salary)) + geom_boxplot() +
 
 *******************************************************************************
 
-**d.** Assess the scatterplot produced by the chunk below. **Describe what the graph is showing.**
+
+
+**d.** Assess the scatterplot produced by the chunk below. **Describe what the graph is showing.** [Text only for this question]
 
 ```{r}
 ggplot(SalaryGender, aes(x = Age, y = Salary)) + geom_point() +
@@ -107,7 +115,9 @@ ggplot(SalaryGender, aes(x = Age, y = Salary)) + geom_point() +
 
 *******************************************************************************
 
-**e.** Calculate the correlation coefficient between `Salary` and `Age`, and **comment on the strength of the relationship**.
+
+
+**e.** Calculate the correlation coefficient between `Salary` and `Age`, and **comment on the strength of the relationship**. [Code and text for this question]
 
 *******************************************************************************
 
@@ -115,14 +125,9 @@ ggplot(SalaryGender, aes(x = Age, y = Salary)) + geom_point() +
 
 *******************************************************************************
 
-**f.** Assess the boxplots produced by the chunk below. **Describe what the graph is showing. Explain how insights from this graph and the graph from part (d) are relevant to building our linear model.** Keep in mind that our overall goal is to understand the relationship between salary and gender
 
-```{r}
-ggplot(SalaryGender, aes(x = Gender, y = Age)) +
-  geom_boxplot() +
-  theme_bw() +
-  labs(title = "Side-by-Side Boxplots of Age by Gender")
-```
+
+**f.** Now create a plot to investigate the bivariate relationship between `Age` and `Gender`. **Describe what your graph shows. Explain how insights from this graph and the graph from part (d) are relevant to building our linear model.** Keep in mind that our overall goal is to understand the relationship between salary and gender. [Code and text for this question]
 
 *******************************************************************************
 
@@ -130,19 +135,23 @@ ggplot(SalaryGender, aes(x = Gender, y = Age)) +
 
 *******************************************************************************
 
-**g.** In a new chunk below, create a scatterplot of salary vs age, colored by gender. Add gender-specific trend lines by adding `+ geom_parallel_slopes(se = FALSE)`. **Comment on any trends observed.**
+
+
+**g.** In a new chunk below, create a scatterplot of salary vs age, colored by gender. Add gender-specific trend lines by adding `+ geom_parallel_slopes(se = FALSE)`. **Comment on any trends observed.** [Code and text for this question]
 
 *******************************************************************************
 
 
 
 *******************************************************************************
+
+
 
 ## Exercise 2: Salary Regression Model
 
-In this exercise, you will use a regression model to investigate whether age explains the gap in salary between males and females in post-secondary education. (Note: Even *if* age explained the gap, **there is still a gap!** This is an indication of structural differences for men and women in the US.)
+In this exercise, you will use a regression model to investigate whether age explains the gap in salary between males and females in post-secondary education. (Note: Even *if* age explained the gap, **there is still a gap!** This would be an indication of structural differences for men and women in the US.)
 
-**a.** The chunk below creates a linear model using the `SalaryGender` data frame. **Using the summary table, write the equation for the fitted model. Interpret each coefficient, and explain how their values validate your exploratory findings from Exercise 1.**
+**a.** The chunk below creates a linear model using the `SalaryGender` data frame. **Using the summary table, write the equation for the fitted model. Interpret each coefficient, and explain how their values validate your exploratory findings from Exercise 1.** [Only text needed for this question]
 
 ```{r}
 lm_salary_gender <- lm(Salary ~ Age + Gender, data = SalaryGender)
@@ -155,22 +164,33 @@ get_regression_table(lm_salary_gender)
 
 *******************************************************************************
 
-**b.** Using your regression equation from part (a) of this exercise, calculate the model's prediction for the salary of a female teacher who is 30 years old. **Based on the exploratory visualizations in Exercise 1, is this an example of extrapolation?**
+
+
+**b.** Using your regression equation from part (a) of this exercise, calculate the model's prediction for the salary of a female teacher who is 30 years old. **Based on the exploratory visualizations in Exercise 1, is this an example of extrapolation?** [Code and text for this question]
 
 *******************************************************************************
 
 
 
 *******************************************************************************
+
+
 
 ## Exercise 3: Assess Salary Regression Models
 
-**a.** The model created for the previous exercise is just one example of a model that we could fit using the data set. **Briefly explain how each of the four models below is different from each other.**
+**a.** The model created for the previous exercise is just one example of a model that we could fit using the data set. In the chunk below, add a model named `m1` that predicts `Salary` using only `Gender`, and a model named `m2` that predicts `Salary` using only `Age`. [Only code for this question]
+
+*******************************************************************************
 
 ```{r}
 
-m1 <- lm(Salary ~ Gender, data = SalaryGender)
-m2 <- lm(Salary ~ Age, data = SalaryGender)
+# Create m1 here
+
+
+# Create m2 here
+
+
+# Recreate our previous model as m3 here
 m3 <- lm(Salary ~ Age + Gender, data = SalaryGender)
 
 ```
@@ -179,9 +199,7 @@ m3 <- lm(Salary ~ Age + Gender, data = SalaryGender)
 
 
 
-*******************************************************************************
-
-**b.** Which of the three models helps us best answer our original research question? **Consider both $R^2$ and the types of relationships each model captures in your argument.**
+**b.** Which of the three models helps us best answer our original research question? **Consider both $R^2$ and the types of relationships each model captures in your argument.** Recall that you can find the $R^2$ of a model by using `get_regression_summaries()`. [Code and text for this question]
 
 *******************************************************************************
 
@@ -189,19 +207,22 @@ m3 <- lm(Salary ~ Age + Gender, data = SalaryGender)
 
 *******************************************************************************
 
-**c.** Investigating when linear regression model assumptions hold is important to consider when selecting the best model(s) from a collection of possible models. Run the chunk below, and assess the set of graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?**
 
-```{r}
-# Use get_regression_points to grab preditions (aka "fitted values"), residuals
-# for each model.
-m1_pts <- get_regression_points(m1)
-m2_pts <- get_regression_points(m2)
-m3_pts <- get_regression_points(m3)
+**c.** To further investigate these models, let's work more closely with their predictions (aka fitted values) and residuals. Use `get_regression_points()` three separate times to grab a data frame with these sets of values from each of the models `m1`, `m2`, and `m3`. Assign these data frames (the output of `get_regression_points()` for each model) the names `m1_pts`, `m2_pts`, and `m3_pts`. [Code only for this question]
+
+*******************************************************************************
 
 
+
+*******************************************************************************
+
+
+**d.** Investigating when linear regression model assumptions hold is important to consider when selecting the best model(s) from a collection of possible models. **Remove eval=FALSE** at the top of the chunk below once you've finished 3(a), and run the chunk to assess the set of graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?** [Text only for this question]
+
+```{r eval=FALSE}
 # These next two commands are not usually needed, but here they help us compare
-# the three different models directly within the same data frame (and therefore
-# the same ggplot).
+# the three different models directly within the a shard data frame (and 
+# then the same ggplot).
 res <- bind_rows(m1_pts %>% mutate(model = "Salary ~ Gender") %>%
                    select(Salary, Salary_hat, residual, model),
                  m2_pts %>% mutate(model = "Salary ~ Age") %>%
@@ -215,7 +236,7 @@ res$model <- factor(res$model, levels = c("Salary ~ Gender",
 ggplot(res, aes(x = Salary_hat, y = residual)) +
   geom_hline(aes(yintercept = 0), lty = 2, color = "gray") +
   geom_point() +
-  facet_wrap(~model) +  # This line shows us one plot per model - usually we don't include it
+  facet_wrap(~model) +  # This gets us one plot per model - usually we don't include it
   labs(title = "Residuals vs Fitted Values") +
   theme_classic()
 
@@ -227,25 +248,17 @@ ggplot(res, aes(x = Salary_hat, y = residual)) +
 
 *******************************************************************************
 
-**d.** Run the chunk below, and assess the next set of diagnostic graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?**
 
-```{r}
 
+**e.** When you've finished 3(c), **remove eval=FALSE** at the top of the chunk below and assess the next set of diagnostic graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?** [Text only for this question]
+
+```{r eval=FALSE}
 ggplot(res, aes(x = residual)) +
   geom_histogram(bins = 20, color = "white") +
-  facet_wrap(~model) +  # This line shows us one plot per model - usually we don't include it
+  facet_wrap(~model) +  # This gets us one plot per model - usually we don't include it
   labs(title = "Residual Histograms") +
   theme_classic()
-
 ```
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**e.** Would you feel comfortable using any of these models to argue that there is evidence of gender-based salary discrimination among college teachers in 2010?
 
 *******************************************************************************
 

@@ -14,9 +14,9 @@ execute:
 In this homework assignment you will:
 
 - Practice interpreting regressions with categorical predictors
-- Practice using visualizations to perform exploratory data analysis and assess linearity before building a regression model
+- Practice using visualizations to perform EDA and inform regression models
 - Practice applying transformations to help satisfy LINE assumptions
-- Build and interpret linear regression models with interactions
+- Build and interpret linear regression models with fixed and varying slopes
 
 
 ### Add any collaborators here!
@@ -26,8 +26,9 @@ I collaborated with...
 **Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this course. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 
+Run the chunk below to load the necessary packages.
+
 ```{r}
-#load the necessary packages
 library(tidyverse)
 library(gglm)
 library(moderndive)
@@ -40,7 +41,7 @@ library(pdxTrees)
 
 ## Exercise 1: Factors (Categorical Predictors)
 
-We will again work with the `pdxTrees` data package. Run the following code chunk to obtain a data frame of the four parks closest to Reed, subsetted to only include trees of the `Genus` Pseudotsuga, Acer, Quercus, or Cornus.  This data frame includes some additional modification to clean up the data. The chunk also shows how many trees of each `Genus` are in the `near_reed` dataset.
+We will again work with the `pdxTrees` data package. Run the following code chunk to obtain a data frame of the four parks closest to Reed, subsetted to only include trees of the `Genus` Pseudotsuga, Acer, Quercus, or Cornus.  There are some additional modifications to clean up the data. The chunk also shows how many trees of each `Genus` are in the `near_reed` dataset.
 
 ```{r}
 near_reed <- get_pdxTrees_parks() %>%
@@ -60,18 +61,7 @@ near_reed %>% group_by(Genus) %>% summarize(Count=n())
 
 ```
 
-**a.** In the chunk below, construct a linear model to analyze the differences in the `Carbon_Sequestration_lb` for each level in `Genus`. **How many indicator variables are displayed in the regression table, and what are they? Which level of the `Genus` variable does not have an indicator variable?**
-
-*******************************************************************************
-
-```{r}
-
-
-```
-
-*******************************************************************************
-
-**b.** Write down the formula for the linear model for `Carbon_Sequestration_lb` as a function of `Genus`.
+**a.** In the chunk below, construct a linear model to analyze the differences in `Carbon_Sequestration_lb` by `Genus`. **How many indicator variables are displayed in the regression table, and what are they? Which level of the `Genus` variable does not have an indicator variable?** [Code and text for this question]
 
 *******************************************************************************
 
@@ -79,7 +69,9 @@ near_reed %>% group_by(Genus) %>% summarize(Count=n())
 
 *******************************************************************************
 
-**c.** Using data wrangling functions, compute the mean `Carbon_Sequestration_lb` for trees in each `Genus`. Then, identify where the value for the `Acer` genus appears in the regression table.
+
+
+**b.** Write down the formula for the linear model for `Carbon_Sequestration_lb` as a function of `Genus`. [Only text/math for this question]
 
 *******************************************************************************
 
@@ -87,7 +79,9 @@ near_reed %>% group_by(Genus) %>% summarize(Count=n())
 
 *******************************************************************************
 
-**d.** Demonstrate how the mean `Carbon_Sequestration_lb` for trees from the Cornus, Pseudotsuga, or Quercus genera can be calculated from the *regression table*.
+
+
+**c.** Using *data wrangling* functions, compute the mean `Carbon_Sequestration_lb` for trees in each level of `Genus`. Then, identify where the value for the `Acer` genus appears in the regression table. [Code and text for this question]
 
 *******************************************************************************
 
@@ -95,13 +89,27 @@ near_reed %>% group_by(Genus) %>% summarize(Count=n())
 
 *******************************************************************************
 
-**e.** Given your findings from parts (b)-(d), interpret the coefficient for the `Cornus` genus.
+
+
+**d.** Demonstrate how the mean `Carbon_Sequestration_lb` for trees from the Cornus, Pseudotsuga, or Quercus genus can be calculated from the *regression table*. [Text/math for this question]
 
 *******************************************************************************
 
 
 
 *******************************************************************************
+
+
+
+**e.** Given your findings from parts (b)-(d), carefully interpret the coefficient for the `Cornus` genus. [Only text for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
 
 **f.** By default, R chooses the alphabetically first level of the explanatory variable to serve as the baseline. However, the order can be changed in R using some extra code. In the following code chunk, we re-order the `Genus` variable so that the largest category, Pseudotsuga, is the *baseline* group.
 ```{r, echo=T}
@@ -109,7 +117,7 @@ near_reed <- near_reed %>%
   mutate(Genus = fct_relevel(Genus, "Pseudotsuga","Acer","Quercus","Cornus"))
 ```
 
-**Create a new linear model for `Carbon_Sequestration_lb` as a function of `Genus`. Comment on how the coefficients estimates have changed.**
+**Create a new linear model for `Carbon_Sequestration_lb` as a function of `Genus`. Comment on how and why the coefficients estimates have changed.** [Code and text for this question]
 
 *******************************************************************************
 
@@ -117,17 +125,21 @@ near_reed <- near_reed %>%
 
 *******************************************************************************
 
-**g**. Suppose a particular tree is a Bigleaf Maple, which is in the Acer genus. **What is the predicted Carbon Sequestration using the model constructed in part (a)? What is the predicted Carbon Sequestration using the model constructed in part (e)? How do the predictions compare?**
+
+
+**g**. Suppose a particular tree is a Bigleaf Maple, which is in the Acer genus. **What is the predicted Carbon Sequestration using the model constructed in part (a)? What is the predicted Carbon Sequestration using the model constructed in part (f)? How do the predictions compare?** [Text/math only for this question]
 
 *******************************************************************************
 
 
 
 *******************************************************************************
+
+
 
 ## Exercise 2: Regression with Transformation
 
-Problems 3 & 4 use an extended version of the [Opportunity Insights dataset](http://www.equality-of-opportunity.org/data/) (introduced in the activity from the *Data Wrangling* lecture) that has been joined with a dataset from The National Association of College and University Business Officers containing information on university endowment assets from 2016.\footnote{Specifically, the endowment data are from fiscal year 2016, which began on June 1, 2015 and ended on May 31, 2016. For the purposes of Math 141, it is fine to simply refer to these data as being collected in 2016.} The data are in the file `colleges_endow.Rdata`; for simplicity, the data frame is named `colleges`. The following table provides a list of the variables in the dataset and their descriptions. (Note: It is easier to read the table in the Rendered PDF document.)
+Problems 2 & 3 use an extended version of the [Opportunity Insights dataset](http://www.equality-of-opportunity.org/data/) (introduced in the activity from the *Data Wrangling* lecture) that has been joined with a dataset from The National Association of College and University Business Officers containing information on university endowment assets from 2016.\footnote{Specifically, the endowment data are from fiscal year 2016, which began on June 1, 2015 and ended on May 31, 2016. For the purposes of Stat 141, it is fine to simply refer to these data as being collected in 2016.} The data are in the file `colleges_endow.Rdata`; for simplicity, the data frame is named `colleges`. The following table provides a list of the variables in the dataset and their descriptions. (Note: It is easier to read the table in the Rendered PDF document.)
 
 \begin{center}
 \begin{tabular}{r|l}
@@ -176,56 +188,18 @@ A university's endowment refers to the financial assets invested by a university
 
 Let's investigate the association between college access and endowment assets by building a model for college access using endowment assets. 
 
-**a.** First, explore both the net tuition price variable and endowment assets variable individually. **Describe the distribution of each variable in the context of the data, referencing numerical and graphical summaries as needed.**
+**a.** We'll explore both the net tuition price variable and the endowment assets variable individually using `R`. What kind of graphs and summary statistics would be useful for doing this?  [Text only for this question]
 
 *******************************************************************************
-
-
-
-
-
-*******************************************************************************
-
-
-
-**b.** Construct a plot showing the association between net tuition price and endowment assets. Be sure to map the response variable to the $y$-axis and the explanatory variable to the $x$-axis.
-
-*******************************************************************************
-
 
 
 
 *******************************************************************************
 
 
-
-**c.** Based on the plot, **does there seem to be a relationship between college access and endowment assets? Does a line seem like a reasonable summary for the relationship between these variables?** Explain your reasoning.
-
-*******************************************************************************
-
-
-
-
+**b.**  Use `R` to implement the graphs and summary statistics you discuss in part (a) to explore the distribution of each of these variables. **Describe the distribution of each variable in the context of the data, referencing both your numerical and graphical summaries.** [Text and code for this question]
 
 *******************************************************************************
-
-
-**d.** **Add a variable to the `colleges` dataset that contains the log-transformed version of `fy2016_endowment_pc` and name it `log_endow_pc`.** That is, if `fy2016_endowment_pc` equals \$1000, then the log-transformed version equals $\log(1000) = \ln(1000) = 6.908$. Statisticians tend to refer to natural log as just "log". The function in R to compute the (natural) log is `log()`.
-
-*******************************************************************************
-
-
-
-
-
-*******************************************************************************
-
-
-**e.** Recreate the plot from part (b), but use the log-transformed version of `fy2016_endowment_pc` rather than the original variable. 
-
-*******************************************************************************
-
-
 
 
 
@@ -233,23 +207,9 @@ Let's investigate the association between college access and endowment assets by
 
 
 
-**f.** Based on the plot in part (e), **does a line seem like a reasonable summary of the relationship between net tuition price and log-transformed endowment assets? If so, calculate the correlation coefficient and interpret the sign and magnitude.**
+**c.** Construct a plot showing the bivariate relationship between net tuition price and endowment assets. Be sure to map the response variable to the $y$-axis and the explanatory variable to the $x$-axis. [Code only for this question]
 
 *******************************************************************************
-
-
-
-
-
-
-*******************************************************************************
-
-
-
-**g.** Construct a simple linear regression model for net tuition price using the log-transformed endowment assets variable. **Print out the model coefficients table.**
-
-*******************************************************************************
-
 
 
 
@@ -257,12 +217,57 @@ Let's investigate the association between college access and endowment assets by
 
 
 
-**h.** Check the model diagnostics for the model from part (g), and **comment on them.**
+**d.** Based on the plot, **does there seem to be a relationship between college access and endowment assets? Does a line seem like a reasonable summary for the relationship between these variables?** Explain your reasoning. [Text only for this question]
 
 *******************************************************************************
 
 
 
+*******************************************************************************
+
+
+**e.** **Add a variable to the `colleges` dataset that contains the log-transformed version of `fy2016_endowment_pc` and name it `log_endow_pc`.** That is, if `fy2016_endowment_pc` equals \$1000, then the log-transformed version equals $\log(1000) = \ln(1000) = 6.908$. Statisticians tend to refer to natural log as just "log". The function in R to compute the (natural) log is `log()`. [Code only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+**f.** Recreate the plot from part (c), but use the log-transformed version of `fy2016_endowment_pc` rather than the original variable. [Code only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**g.** Based on the plot in part (f), **does a line seem like a reasonable summary of the relationship between net tuition price and log-transformed endowment assets? If so, calculate the correlation coefficient and interpret the sign and magnitude.** [Code and text for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**h.** Construct a simple linear regression model for net tuition price using the log-transformed endowment assets variable. **Print out the model coefficients table.** [Code only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**i.** Check the model diagnostics for the model from part (h), and **comment on them.** [Code and text for this question]
+
+*******************************************************************************
 
 
 
@@ -272,41 +277,29 @@ Let's investigate the association between college access and endowment assets by
 
 ## Exercise 3: Regression Models with Equal vs Varying Slopes
 
-In this problem, we will investigate whether the relationship between net tuition price for low- and middle-income students and endowment value seems to differ for Ivy Plus schools versus other schools.
+In this problem, we will continue working with the same data set from Exercise 2 to investigate whether the relationship between net tuition price for low- and middle-income students and endowment value seems to differ for Ivy Plus schools versus other schools.
 
-**a.** Create a new variable that categorizes whether or not a school is Ivy Plus. (*Hint: Revisit the code in slide 25 from 2/4*)
-
-*******************************************************************************
-
-
-
-
-
+**a.** Using *data wrangling* functions, create a new variable that categorizes whether or not a school is Ivy Plus. [Code only for this question]
 
 *******************************************************************************
-
-
-**b.** Construct a plot showing the association between net tuition price and log-transformed endowment assets; color the points based on whether a school is in the Ivy Plus. **Describe what you see. How does the average net tuition price for low- and middle-income students at Ivy Plus schools compare to other schools?** 
-
-(*Hint: The code from exercise part 1(g) from Lab 5 might be helpful here!*)
-
-*******************************************************************************
-
-
-
-
 
 
 
 *******************************************************************************
 
 
-**c.** Construct a linear regression model for net tuition price using log-transformed endowment assets *and* whether a school is categorized as Ivy Plus. *Assume equal slopes in the model.* Print the model coefficients table **and interpret the coefficients in the context of the data. Be sure to comment on whether the intercept makes sense in this context.**
+**b.** Construct a plot showing the association between net tuition price and log-transformed endowment assets; color the points based on whether a school is in the Ivy Plus. (1) Describe what you see, then (2), using data wrangling functions, assess how the average net tuition price for these students at Ivy Plus schools compares to other schools.** [Code and text for this question]
 
 *******************************************************************************
 
 
 
+*******************************************************************************
+
+
+**c.** Construct a multiple linear regression model for net tuition price using log-transformed endowment assets *and* whether a school is categorized as Ivy Plus. *Assume equal slopes in the model.* Print the model coefficients table. [Code only for this question]
+
+*******************************************************************************
 
 
 
@@ -314,24 +307,9 @@ In this problem, we will investigate whether the relationship between net tuitio
 
 
 
-**d.** In part (b), you estimated the difference in average net tuition price for low- to middle-income students at schools in the Ivy Plus versus schools not in the Ivy Plus. **Explain the reasoning behind why this difference is not equal to the coefficient for the Ivy Plus predictor variable in the model from part (c).**
+**d.** Interpret each model coefficient from 3(c) in the context of the data. Be sure to comment on whether the intercept makes sense in this context. [Text only for this question]
 
 *******************************************************************************
-
-
-
-
-
-
-*******************************************************************************
-
-
-**e.** Construct a linear regression model for the net tuition price using log-transformed endowment assets and whether a school is categorized as Ivy Plus. *Assume varying slopes in the model.* Based on this model, **write out the formula for the regression line for just Ivy Plus schools and the formula for the regression line for just non-Ivy Plus schools**. Using these formulas, state **what is the estimated slope for schools in the Ivy Plus and what is the estimated slope for non-Ivy Plus schools.**
-
-*******************************************************************************
-
-
-
 
 
 
@@ -339,14 +317,104 @@ In this problem, we will investigate whether the relationship between net tuitio
 
 
 
-**f.** Produce a plot that illustrates the linear model fit in part (e). Based on this plot and your previous analyses, is there evidence suggesting that making a donation to a school's endowment increases access for low- and middle-income students to the same extent at Ivy Plus schools as non-Ivy Plus schools? **Explain your reasoning.** 
-
-(*Hint: Revisit the code in slides 19-20 from 2/23*)
+**e.** In part (b), you used data wrangling functions to estimate the difference in average net tuition price for low- to middle-income students at schools in the Ivy Plus versus schools not in the Ivy Plus. **Explain the reasoning behind why this difference is not equal to the coefficient for the Ivy Plus predictor variable in the model from part (c).** [Text only for this question]
 
 *******************************************************************************
 
 
 
+*******************************************************************************
+
+
+
+**f.** Construct a linear regression model for the net tuition price using log-transformed endowment assets and whether a school is categorized as Ivy Plus. *Assume varying slopes in this model.* [Code only for this question]
+
+*******************************************************************************
+
 
 
 *******************************************************************************
+
+
+
+**g.** Based on the model from 3(f), **write out the formula for the regression line for just Ivy Plus schools and the formula for the regression line for just non-Ivy Plus schools**. Using these formulas, state **what is the estimated slope for schools in the Ivy Plus and what is the estimated slope for non-Ivy Plus schools.** [Text only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**h.** Produce a plot that illustrates the linear model fit in part (f) and analyzed in (g). Based on this plot and your analysis, is there evidence suggesting that making a donation to a school's endowment increases access for low- and middle-income students to the same extent at Ivy Plus schools as non-Ivy Plus schools? **Explain your reasoning.**  [Code and text for this question]
+
+(*Hint: geom_smooth() may be useful here.*)
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+# Exercise 4: A Bigger Model for Big Trees
+
+For this problem, we'll return to the `pdxTrees` dataset once more. 
+
+Suppose that we wish to predict tree height using multiple linear regression. Ideally, we want our model to be parsimonious, accurate, and sensible at the same time. This kind of task typically does not have one correct answer - there may be many sufficient models. The model created in the chunk below is one example of a model we could create for tree_height.
+
+```{r}
+# Grab trees near Reed
+near_reed <- get_pdxTrees_parks() %>%
+  filter(Park %in% c("Crystal Springs Rhododendron Garden",
+                      "Kenilworth Park", 
+                      "Eastmoreland Garden",
+                      "Berkeley Park"),
+         !is.na(Functional_Type)) %>%
+  mutate(Crown_Width = (Crown_Width_NS + Crown_Width_EW)/2)
+
+big_model <- lm(Tree_Height ~ Carbon_Sequestration_lb + DBH + Crown_Width +
+                  Native*DBH, near_reed)
+get_regression_table(big_model)
+get_regression_summaries(big_model)
+
+```
+
+**a.** Write out the equation for this fitted model. [Only text/math for this question.]
+
+********************************************************************
+
+
+
+********************************************************************
+
+
+
+**b.** Based on the information provided from the chunk at the beginning of the exercise, discuss whether you think this is a "good" model. Consider in particular our goals of having a model that is both parsimonious and accurate. [Text and code for this question]
+
+********************************************************************
+
+
+
+********************************************************************
+
+
+
+**c.** If we were to compare this model to others with many more variables, should we use $R^2$ or adjusted $R^2$? [Text only for this question]
+
+********************************************************************
+
+
+
+********************************************************************
+
+
+
+**d.** What is the difference in how we should interpret the coefficients on `DBH:NativeYes` versus `DBH`? [Text only for this question]
+
+********************************************************************
+
+
+
+********************************************************************
