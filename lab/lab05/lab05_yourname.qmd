@@ -28,7 +28,6 @@ Run the chunk below to load the necessary packages.
 
 ```{r}
 library(tidyverse)
-library(pdxTrees)
 library(moderndive)
 ```
 
