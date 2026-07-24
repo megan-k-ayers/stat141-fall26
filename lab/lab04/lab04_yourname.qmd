@@ -11,12 +11,11 @@ execute:
 
 In this lab, you will
 
+-   Practice identifying different sampling strategies
 -   Conduct exploratory data analysis (EDA) techniques in R
 -   Build linear regression models with one dependent variable
 -   Interpret the estimated coefficients of linear regression models
 -   Use linear regression models to make new predictions
--   Interpret elements of a regression model diagram
--   Identify appropriate sampling strategies
 
 ### Add any collaborators here!
 
@@ -27,72 +26,33 @@ I collaborated with...
 
 # Exercises
 
-- For this lab, you don't need to worry about labels and a title for your plots **unless a question specifies otherwise**.
-- Run the following chunk to load the necessary packages.
+Run the following chunk to load the necessary packages.
 
 ```{r}
-#load the necessary packages
 library(tidyverse)
 library(pdxTrees)
 library(moderndive)
 ```
 
 
-## ******** NOTE TO SELF **********
-
-Sampling bias doesn't get covered anywhere else in this lab, but it does come up in hw04 Exercise 2 (Sampling Bias). Consider adding one more small part to Exercise 1 below that specifically asks students to identify a source of sampling bias, so the concept has some grounding here before the homework builds on it.
-
-## Exercise 1: Voter ID Laws and Sampling
-
-Back in 2014, researchers investigated the impact of voter ID laws on potential voters in the midterm elections. The study involved three locations: Philadelphia, Northern Virginia, and Dallas County, Texas. Each location is divided up into voting precincts and each precinct has a polling site.
-
-In this problem, we will describe the data collection method of two locations and you will practice tying these methods to specific sampling techniques.
-
-**a.**  For Philadelphia, 30 precincts were randomly selected from all precincts in Philadelphia. For each selected precinct, Swarthmore College students interviewed every 3rd person leaving the polling site over a randomly selected hour. **Does this sampling design use cluster sampling, stratified sampling, neither, or both? Justify your answer.**
-
-*******************************************************************************
 
 
+## Exercise 1: Anatomy of a Regression
 
-*******************************************************************************
-
-**b.**  For Dallas County, each polling site was categorized by the time of day interviews would take place (morning/mid-day/evening) and whether voters at that site were projected to have an overall high or low propensity of voting. Within each category, a random sample of precincts were selected and Southern Methodist University students interviewed every person leaving those polling places at the particular time of day (morning/mid-day/evening). **Does this sampling design use cluster sampling, stratified sampling, neither, or both? Justify your answer.**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**c.**  Why didn't the researchers just take a simple random sample of names (i.e., from a voter registration list) and then conduct exit polls on those people? Justify your answer.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**d.**  Suppose that for a particular state, precincts are known to be relatively heterogeneous; e.g., precincts tend to have different social demographics. **Would cluster sampling or stratified sampling be the recommended strategy for this state? Justify your answer.**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-## Exercise 2: Anatomy of a Regression
-
-The graph below shows the results of regressing a variable $y$ against a variable $x$ using five data points (the black points). The graph may be easier to view in the rendered PDF.
+The graph below shows the results of regressing a variable $y$ against a variable $x$ using five data points in black. The graph may be easier to view in the rendered PDF.
 
 ![](img/regression_anatomy.png)
 
-Using the vocabulary of regression (fitted values, regression line, residuals, intercept coefficient, slope coefficient), **explain what each of the following elements on the graph correspond to**:
+Using the vocabulary of regression (fitted values, data values, regression line, residuals, intercept coefficient, slope coefficient), **explain what each of the following elements on the graph correspond to**:
 
 i. The black solid line
 ii. The blue dotted line
 iii. The green solid vertical lines
 iv. The pink points
 v. The yellow square
+vi. The black points
+
+*Use a sentence per element to provide an explanation for what each element represents or measures.*
 
 *******************************************************************************
 
@@ -100,7 +60,9 @@ v. The yellow square
 
 *******************************************************************************
 
-## Exercise 3: Regression with Trees Near Reed
+
+
+## Exercise 2: Regression with Trees Near Reed
 
 This exercise uses data about trees from the parks near Reed. Run the code below to get the data.
 
@@ -115,7 +77,7 @@ near_reed <- get_pdxTrees_parks() %>%
 ```
 
 
-The crown of a tree refers to its total above-ground parts, including stems, branches, and leaves. In the `near_reed` dataframe, `Crown_Width_EW` represents the greatest width of the crown in the east-west direction, while `Crown_Width_NS` represents the greatest width of the crown in the north-south direction. The code below adds a new variable to the `near_reed` dataframe called `Crown_Width` which is the average of `Crown_Width_EW` and `Crown_Width_NS`.
+The crown of a tree refers to its total above-ground parts, including stems, branches, and leaves. In the `near_reed` data frame, `Crown_Width_EW` represents the greatest width of the crown in the east-west direction, while `Crown_Width_NS` represents the greatest width of the crown in the north-south direction. The code below adds a new variable to the `near_reed` data frame called `Crown_Width` which is the average of `Crown_Width_EW` and `Crown_Width_NS`.
 
 ```{r}
 near_reed <- near_reed %>%
@@ -123,7 +85,7 @@ near_reed <- near_reed %>%
 ```
 
 
-**a.** Generate a scatterplot with `Crown_Width` as the explanatory variable and `Tree_Height` as the response. Be sure to include an informative title and axis labels to your plot.
+**a.** Generate a scatterplot with `Crown_Width` as the explanatory variable and `Tree_Height` as the response. Be sure to include an informative title and axis labels to your plot using `labs()`. [Code only for this question]
 
 *******************************************************************************
 
@@ -131,15 +93,10 @@ near_reed <- near_reed %>%
 
 *******************************************************************************
 
-**b.** Do you expect the correlation coefficient (for `Crown_Width` and `Tree_Height`) to be positive or negative? Write a code chunk testing your prediction.
-
-*******************************************************************************
 
 
+**b.** Do you expect the correlation coefficient (for `Crown_Width` and `Tree_Height`) to be positive or negative? Write a code chunk testing your prediction. [Code and text for this question]
 
-*******************************************************************************
-
-**c.** Using the `near_reed` data frame, run a linear regression using `Crown_Width` as the explanatory variable and `Tree_Height` as the outcome variable. Using `get_regression_table`, display a table of coefficients.
 
 *******************************************************************************
 
@@ -147,7 +104,9 @@ near_reed <- near_reed %>%
 
 *******************************************************************************
 
-**d.** Carefully interpret the estimated coefficients for the intercept and the slope term for Crown Width, *in context*.
+
+
+**c.** Using the `near_reed` data frame, run a linear regression using `Crown_Width` as the explanatory variable and `Tree_Height` as the outcome variable. Pass the model to the `get_regression_table()` function to display a table of coefficients. [Code only for this question]
 
 *******************************************************************************
 
@@ -155,10 +114,79 @@ near_reed <- near_reed %>%
 
 *******************************************************************************
 
-**e.** Make a numerical prediction for the `Tree_Height` for a tree that has 40 foot crown width, both using the formula for the linear model you created in the previous exercise **and** by using the `predict()` function.
+
+
+**d.** Carefully interpret the estimated coefficients for the intercept and the slope term for Crown Width, *in context*. [Text only for this question]
 
 *******************************************************************************
 
 
 
 *******************************************************************************
+
+
+
+**e.** Write out the equation for the regression line, aka the "fitted model."
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**f.** Make a numerical prediction for the `Tree_Height` for a tree that has 40 foot crown width, both using the formula for the linear model you created above **and** by using the `predict()` function. [Code is needed for this question, and you should write your final answer out in text.]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+## Exercise 3: Voter ID Laws and Sampling
+
+Back in 2014, researchers investigated the impact of voter ID laws on potential voters in the midterm elections. The study involved three locations: Philadelphia, Northern Virginia, and Dallas County, Texas. Each location is divided up into voting precincts and each precinct has a polling site.
+
+In this problem, we will describe the data collection method of two locations and you will practice tying these methods to specific sampling techniques.
+
+**a.**  For Philadelphia, 30 precincts were randomly selected from all precincts in Philadelphia. For each selected precinct, Swarthmore College students interviewed every 3rd person leaving the polling site over a randomly selected hour. **Does this sampling design use cluster sampling, stratified sampling, neither, or both? Justify your answer.** 
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**b.**  For Dallas County, each polling site was categorized by the time of day interviews would take place (morning/mid-day/evening) and whether voters at that site were projected to have an overall high or low propensity of voting. Within each category, a random sample of precincts were selected and Southern Methodist University students interviewed every person leaving those polling places at the particular time of day (morning/mid-day/evening). **Does this sampling design use cluster sampling, stratified sampling, neither, or both? Justify your answer.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**c.**  Why didn't the researchers just take a simple random sample of names (i.e., from a voter registration list) and then conduct exit polls on those people? Justify your answer.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**d.**  Suppose that for a particular state, precincts are known to be relatively heterogeneous; e.g., precincts tend to have different social demographics. **Would cluster sampling or stratified sampling be the recommended strategy for this state? Justify your answer.**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+

@@ -27,8 +27,9 @@ I collaborated with...
 **Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this course. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 
+Run the following chunk to load the necessary packages.
+
 ```{r}
-#load the necessary packages
 library(tidyverse)
 library(gglm)
 library(moderndive)
@@ -38,9 +39,225 @@ library(pdxTrees)
 
 # Exercises
 
-## Exercise 1: Assessing the Trees Near Reed Regression Model
 
-In lab04, you built a linear regression model predicting `Tree_Height` from `Crown_Width` using the `near_reed` dataset. Run the code below to reproduce your data and model from lab.
+## Exercise 1: Sampling Bias
+
+**a.** During World War II, the statistician Abraham Wald was asked to help the US military determine where to place more armor on bomber planes. Adding armor protects planes, but weighs a lot, so it must be used sparingly. Statistical data on aircraft damage showed that *for the planes observed*, the *highest density of bullet holes and damage was near the fuselage, while the lowest density was near the motors*. It's said that the military concluded that bullets tended to hit the fuselage most often, and planned to add more armor to the fuselage before consulting Wald. **Why would this have been a mistake? What would you recommend instead if you were in Wald's place?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**b.** A survey is conducted on a simple random sample of 1,000 individuals who recently gave birth, asking them about whether or not they had health insurance. A follow-up survey about medical debt is conducted 2 years later, however, only 567 of these individuals are reached at the same address. The researcher reports that these 567 individuals are representative of individuals who give birth. **What is the flaw in the researcher's reasoning? What should they have done different in conducting the study if they wanted to draw such strong conclusions?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**c.** A conservation non-profit enrolls volunteer landowners in a program where landowners will receive financial compensation if they do not cut down any trees on their property over 5 years. The program participants comply and receive payment, and the program administrators conclude that the program prevented deforestation. **Why might these causal claims be misleading? What should they have done different in conducting the study if they wanted to draw such strong conclusions?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**d.** Suppose we want to estimate average household size, where a "household" is defined as people living together in the same dwelling, and sharing living accommodations. **If we select students at random at an elementary school and ask them what their family size is, will this be a good measure of household size? Or will our average be biased? If so, will it overestimate or underestimate the true value?**
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+## Exercise 2: Anchoring Effect
+
+During the Lab 2 we collected data to see if our class exhibits an "anchoring effect". The anchoring effect is a cognitive bias in which an individual's decisions in an uncertain situation are reliant on the first piece of information received. Half of you received the number $x = 82$ and the other half the number $x = 531$ and then you took a survey. The numbers were handed out at random. We want to answer the following question: Does the number received serve as an anchor value for answering the second question?  In other words, does the number seem to serve as a starting point when estimating the number of dog breeds in the world?
+
+As a reminder, [here is the survey with the survey questions](https://forms.gle/p3139QL3ZyFgTT9C9).
+
+Last year, students in 141 participated in the same experiment. The chunk below loads the combined data from our class and last semester's class, and does some cleaning.
+
+
+```{r}
+# Load the data
+dogs <- read.csv("data/dogs_cleaned.csv")
+dogs <- dogs %>% select("treatment", "n_breeds", "class") %>%
+  mutate(treatment = factor(treatment))
+head(dogs)
+```
+
+**a.** What are the cases (i.e., observational units) in our study? [Text only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**b.** Describe the response variable and the explanatory variable in our study. [Text only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**c.** Does this study design have the potential to demonstrate a causal effect? **Explain your reasoning**. [Text only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**d.** Describe whether deception and/or blindness were used in this study. Do you think either was important to incorporate into this study? Explain your reasoning. [Text only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**e.** Construct a visualization showing the relationship between the response and explanatory variables. (*Hint*: Using `coord_cartesian()` to zoom into a specific portion of a plot may be helpful if there are outliers.) **Draw some conclusions based on the visualization AND calculate summary statistics to support your conclusions.** [Text and code for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**f.** Do these data seem to indicate evidence of an anchoring effect? **Explain your answer.** [Text only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**g.** To what extent could these results be reasonably generalized to some population? **Explain your reasoning.** [Text only for this question]
+ 
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+## Exercise 3: UC Berkeley Study Assessment
+
+In a study of the relationship between socio-economic class and unethical behavior, 129 University of California undergraduates at Berkeley were asked to identify themselves as having low or high social-class by comparing themselves to others with the most (least) money, most (least) education, and most (least) respected jobs. They were also presented  with a jar of individually-wrapped candies and informed that they were for children in a nearby laboratory, but that they could take some if they wanted. Participants completed unrelated tasks and then reported the number of candies they had taken. It was found that those in the upper-class level took more candy than did those in the lower-class level.
+
+
+**a.** Identify the population of interest.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**b.** Identify the variables measured in the study and specify their types (categorical, quantitative, or identification).
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**c.** Identify the sample in the study.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**d.** Identify the research question.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**e.** Comment on whether the results of the study can be generalized to the population and if the findings of the study can be used to establish causal relationships.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+## Exercise 4: Sampling Study Design
+
+A large college class has 160 students. All 160 students attend the lectures together, but the students are divided into 4 groups, each of 40 students, for lab sections. Each lab section is administered by a different teaching assistant. The professor wants to conduct a survey about how satisfied the students are with the course, and she believes that the lab section a student is in might affect the student's overall satisfaction with her course.
+
+**a.** What type of study is this, and why?
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**b.** Explain which of the following sampling strategies would be most appropriate for carrying out this study, **being sure to discuss the drawbacks of the methods you did not select**:
+
+i. Simple random sample
+ii. Stratified random sample
+iii. Cluster random sample.
+
+Keep in mind that the professor believes student satisfaction may vary based on their lab section.
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+
+## Exercise 5: Assessing the Trees Near Reed Regression Model
+
+In Lab 4, you built a linear regression model predicting `Tree_Height` from `Crown_Width` using the `near_reed` dataset. Run the code below to reproduce the data and model from lab.
 
 ```{r}
 near_reed <- get_pdxTrees_parks() %>%
@@ -55,33 +272,7 @@ tree_model <- lm(Tree_Height ~ Crown_Width, data = near_reed)
 get_regression_table(tree_model)
 ```
 
-**a.** Based on our data and regression equation, do you think it would be a good idea to predict `Tree_Height` for a `Crown_Width` value of 150 feet? **Explain your reasoning.**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**b.** Create a residual vs fitted plot for the model above. **Do the residuals appear to have relatively constant variability across the fitted values?**
-
-*Hint: The function `get_regression_points` used in slides from 2/18 may be helpful.*
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**c.** Create a histogram of the residual values and a QQ plot for the model above. **Does the distribution appear to be bell-shaped, unimodal, symmetric and centered at $0$? Does the QQ plot seem reasonable?**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**d.** Does it seem likely that the independence assumption holds in this case? (Reminder: we usually assess this assumption by considering contextual evidence, rather than analyzing data.)
+**a.** Based on our data and regression equation, do you think it would be a good idea to predict `Tree_Height` for a `Crown_Width` value of 150 feet? **Explain your reasoning.** [Text only for this question]
 
 *******************************************************************************
 
@@ -90,7 +281,10 @@ get_regression_table(tree_model)
 *******************************************************************************
 
 
-**e.** List out the assumptions required for linear regression, and write whether or not those assumptions have been met for this model (*Hint*: reference the graphs you made above and at the end of Lab 4 for this model).
+
+**b.** Create a residual vs fitted plot for the model above. **Do the residuals appear to have relatively constant variability across the fitted values?** [Code and text for this question]
+
+*Hint: The function `get_regression_points()` may be helpful.*
 
 *******************************************************************************
 
@@ -99,17 +293,8 @@ get_regression_table(tree_model)
 *******************************************************************************
 
 
-## Exercise 2: Sampling Bias
 
-**a.** During World War II, the statistician Abraham Wald was asked to help the US military determine where to place more armor on bomber planes. Adding armor protects planes, but weighs a lot, so it must be used sparingly. Statistical data on aircraft damage showed that for the planes observed, the highest density of bullet holes and damage was near the fuselage, while the lowest density was near the motors. It's said that the military concluded that bullets tended to hit the fuselage most often, and planned to add more armor to the fuselage before consulting Wald. **Why would this have been a mistake? What would you recommend instead if you were in Wald's place?**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**b.** A survey is conducted on a simple random sample of 1,000 women who recently gave birth, asking them about whether or not they had health insurance. A follow-up survey about medical debt is conducted 2 years later, however, only 567 of these women are reached at the same address. The researcher reports that these 567 women are representative of all mothers. **What is the flaw in the researcher's reasoning? What should they have done different in conducting the study if they wanted to draw such strong conclusions?**
+**c.** Create a histogram of the residual values and a QQ plot for the model above. **Does the distribution appear to be bell-shaped, unimodal, symmetric and centered at $0$? Does the QQ plot seem reasonable?** [Code and text for this question]
 
 *******************************************************************************
 
@@ -117,158 +302,9 @@ get_regression_table(tree_model)
 
 *******************************************************************************
 
-**c.** A conservation non-profit enrolls volunteer landowners in a program where landowners will receive financial compensation if they do not cut down any trees on their property over 5 years. The program participants comply and receive payment, and the program administrators conclude that the program prevented carbon emissions by preventing deforestation. **Why might these causal claims be misleading? What should they have done different in conducting the study if they wanted to draw such strong conclusions?**
 
-*******************************************************************************
 
-
-
-*******************************************************************************
-
-**d.** *(From IMS Ch. 2)*  Suppose we want to estimate average household size, where a "household" is defined as people living together in the same dwelling, and sharing living accommodations. **If we select students at random at an elementary school and ask them what their family size is, will this be a good measure of household size? Or will our average be biased? If so, will it overestimate or underestimate the true value?**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-## Exercise 3: Anchoring Effect
-
-During the last lab, we collected data to see if our class exhibits an "anchoring effect". The anchoring effect is a cognitive bias in which an individual's decisions in an uncertain situation are reliant on the first piece of information received. Half of you received the number $x = 82$ and the other half the number $x = 531$ and then you took a survey. The numbers were handed out at random. We want to answer the following question: Does the number received serve as an anchor value for answering the second question?  In other words, does the number seem to serve as a starting point when estimating the number of dog breeds in the world?
-
-As a reminder, [here is the survey with the survey questions](https://forms.gle/p3139QL3ZyFgTT9C9).
-
-Last semester, students in 141 participated in the same experiment. The chunk below loads the combined data from our class and last semester's class.
-
-
-```{r}
-# Load the data
-dogs <- read.csv("data/dogs_cleaned.csv")
-dogs <- dogs[, c("treatment", "n_breeds", "class")]
-head(dogs)
-```
-
-**a.** What are the cases (i.e., observational units) in our study?
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**b.** Describe the response variable and the explanatory variable in our study.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**c.** Does this study design have the potential to demonstrate a causal effect? **Explain your reasoning**.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**d.** Describe how blindness and deception was used in this study. Do you think deception was important to incorporate into this study? Explain your reasoning.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**e.** Construct a visualization showing the relationship between the response and explanatory variables. (*Hint*: Using `coord_cartesian()` to zoom into a specific portion of a plot may be helpful if there are outliers.) **Draw some conclusions based on the visualization; reference summary statistics to support your conclusions.**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**f.** Do these data seem to indicate evidence of an anchoring effect? **Explain your answer.**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**g.** To what extent could these results be reasonably generalized to some population? **Explain your reasoning.**
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-## Exercise 4: UC Berkeley Study Assessment
-
-In a study of the relationship between socio-economic class and unethical behavior, 129 University of California undergraduates at Berkeley were asked to identify themselves as having low or high social-class by comparing themselves to others with the most (least) money, most (least) education, and most (least) respected jobs. They were also presented  with a jar of individually-wrapped candies and informed that they were for children in a nearby laboratory, but that they could take some if they wanted. Participants completed unrelated tasks and then reported the number of candies they had taken. It was found that those in the upper-class level took more candy than did those in the lower-class level.
-
-
-**a.** Identify the population of interest.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**b.** Identify the variables measured in the study and specify their types.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**c.** Identify the sample in the study.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**d.** Identify the research question.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**e.** Comment on whether the results of the study can be generalized to the population and if the findings of the study can be used to establish causal relationships.
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-## Exercise 5: Sampling Study Design
-
-A large college class has 160 students. All 160 students attend the lectures together, but the students are divided into 4 groups, each of 40 students, for lab sections. Each lab section is administered by a different teaching assistant. The professor wants to conduct a survey about how satisfied the students are with the course, and she believes that the lab section a student is in might affect the student's overall satisfaction with her course.
-
-**a.** What type of study is this, and why?
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-**b.** Explain which of the following sampling strategies would be most appropriate for carrying out this study, **being sure to discuss the drawbacks of the methods you did not select**:
-
-i. Simple random sample
-ii. Stratified random sample
-iii. Cluster random sample.
-
-Keep in mind that the professor believes student satisfaction may vary based on their lab section.
+**d.** List out the assumptions required for linear regression, and write whether or not those assumptions have been met for this model based on: the graphs and observations you made above, the graph related to this model in Lab 4, and the problem context. [Text only for this question]
 
 *******************************************************************************
 
