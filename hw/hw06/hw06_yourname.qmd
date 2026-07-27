@@ -1,6 +1,6 @@
 ---
 title: "Homework 6: Sampling and Bootstrap Distributions"
-subtitle: "STAT 141, Week 6"
+subtitle: "STAT 141, Week 7"
 author: "Your name here"
 format: pdf
 execute:
@@ -9,7 +9,7 @@ execute:
   message: false
 ---
 
-## Due: Thursday, October 15th at 9:00am on Gradescope as a **PDF**
+## Due: Thursday, October 29th at 9:00am on Gradescope as a **PDF**
 
 In this homework assignment you will:
 
@@ -44,7 +44,7 @@ library(gridExtra)
 # Exercises
 
 ## Exercise 1: Sampling Distribution for n = 15
-In Lab 6, we used the `pdxtrees` data to practice working with sampling distributions in R. The chunk below loads the data set and subsets it to only the condition variable for Western Redcedars. Recall that we were interested in targeting the population proportion $p$ of Western Redcedars in good condition.
+In Lab 6, we used `pdxtrees` data to practice working with sampling distributions in `R`. The chunk below loads the data set and subsets it to only the condition variable for Western Redcedars. Recall that we were interested in the population proportion $p$ of Western Redcedars in good condition.
 
 ```{r}
 pdxTrees_parks <- get_pdxTrees_parks()
@@ -55,11 +55,9 @@ trees <- pdxTrees_parks %>%
 
 Let's practice adapting the code from lab to estimate a sampling distribution for samples of size $n=15$. (HINT: For this exercise, **you may copy/paste the code provided to you in lab**, making minor changes for this new sample size of 15.)
 
-**a.** Use the `rep_sample_n` function to collect 1000 virtual samples of size *n* = 15 from our population. Save these 1000 virtual samples into an object named `my_n15_1000rep`. Use **seed 910** to generate your sample. **Include your code, but you don't need to print the output of the code.**
+**a.** Use the `rep_sample_n` function to collect 1000 virtual samples of size *n* = 15 from our population. Save these 1000 virtual samples into an object named `my_n15_1000rep`. Use **seed 910** to generate your sample. **Include your code, but you don't need to print the output of the code.** [Code only for this question]
 
 *******************************************************************************
-
-
 
 
  
@@ -67,31 +65,9 @@ Let's practice adapting the code from lab to estimate a sampling distribution fo
 
 
 
-**b.** Calculate sample proportion $\hat{p}$ of good condition Western Redcedars for each replicate of your n = 15 sampling. **Include your code, but you don't need to print the output of the code.** 
+**b.** Calculate sample proportion $\hat{p}$ of good condition Western Redcedars for each replicate of your n = 15 sampling. Save these sample proportions into an object named `p_hat_n15_1000rep`. **Include your code, but you don't need to print the output of the code.** [Code only for this question]
 
 *******************************************************************************
-
-
-
-
-*******************************************************************************
-
-
-
-**c.** Explain in words how each line of the code from (b) relates to the process of creating a sampling distribution.
-
-*******************************************************************************
-
-
-
-
-*******************************************************************************
-
-
-**d.** Visualize the sampling distribution of $\hat{p}$ from your 1000 samples of size n = 15 using a histogram.
-
-*******************************************************************************
-
 
 
 
@@ -99,21 +75,38 @@ Let's practice adapting the code from lab to estimate a sampling distribution fo
 
 
 
-**e.** Compare the means and standard errors of your sampling distribution for samples of size $n=15$ and for $n=50$ from the lab by visual inspection of the histograms (no need to calculate these numbers specifically!). Explain why these similarities or differences are expected. [Only text for this part]
+**c.** Explain in words how each line of your code from (a) and (b) relates to the process of creating a sampling distribution. [Text only for this question]
 
 *******************************************************************************
 
 
 
+*******************************************************************************
+
+
+**d.** Visualize the sampling distribution of $\hat{p}$ from your 1000 samples of size n = 15 using a histogram. You may need to adjust the `binwidth` parameter to get a nice looking histogram. [Code only for this question]
 
 *******************************************************************************
 
 
 
-**f.** Which sampling distribution looked more bell shaped and symmetric: the one built on n = 15 or 50?
+*******************************************************************************
+
+
+
+**e.** Compare the means and standard errors of the sampling distribution you just made for samples of size $n=15$ and the sampling distribution for $n=50$ from the lab by visual inspection of the histograms (no need to calculate these numbers specifically!). Explain why these similarities or differences are expected. [Only text for this part]
 
 *******************************************************************************
 
+
+
+*******************************************************************************
+
+
+
+**f.** Which sampling distribution looked more bell shaped and symmetric: the one built on n = 15 or 50? [Only text for this part]
+
+*******************************************************************************
 
 
 
@@ -125,11 +118,9 @@ Let's practice adapting the code from lab to estimate a sampling distribution fo
 
 ## Exercise 2: Practicality of Sampling Distributions
 
-In your own words, why can't we usually create sampling distributions in the real world?
+In your own words, why can't we usually create sampling distributions in the real world? [Only text for this part]
 
 *******************************************************************************
-
-
 
 
 
@@ -139,20 +130,19 @@ In your own words, why can't we usually create sampling distributions in the rea
 
 ## Exercise 3: Bootstrapping Procedure
 
-**a**. Bootstrapping is a practical way to approximate a sampling distribution, but while using only a single sample. In your own words, explain the steps required for the bootstrapping procedure that we learned in class.
+**a**. Bootstrapping is a practical way to approximate a sampling distribution, but while using only a single sample. In your own words, explain the steps required for the bootstrapping procedure that we learned in class. [Only text for this part]
 
 *******************************************************************************
 
 
 
-
 *******************************************************************************
 
 
-**b**. In your own words, what does it mean to sample "with replacement"? Why would sampling "without replacement" not make sense if we want to understand variability in sample statistics?
+
+**b**. In your own words, what does it mean to sample "with replacement"? Why would sampling "without replacement" not make sense if we want to understand variability in sample statistics? [Only text for this part]
 
 *******************************************************************************
-
 
 
 
@@ -165,8 +155,17 @@ In your own words, why can't we usually create sampling distributions in the rea
 Imagine that instead of having access to the entire population of Western Redcedars in Portland parks, we only have access to the following sample.
 
 ```{r}
+set.seed(222)
 our_sample50 <- trees %>% # Take the population of trees
-  rep_sample_n(size = 50, reps = 1) # Take ONE sample of size n = 50
+  rep_sample_n(size = 50, reps = 1) %>% # Take ONE sample of size n = 50
+  ungroup() %>% select(Condition)
+```
+
+Let's see what the sample proportion of good condition trees is in this sample. Recall that the true population proportion for the population `trees` is about 0.133. 
+
+```{r}
+our_sample50 %>% summarize(Good = sum(Condition == "Good"), n = n()) %>%
+  mutate(prop = Good / n)
 ```
 
 
@@ -175,31 +174,33 @@ The following code can be used to carry out the bootstrap procedure, based on th
 ```{r}
 set.seed(42) # Ensure we each get the same "random" sample
 
-n50_1000bootstrap_rep <- our_sample50 %>%  # Take our one *sample*
-  rep_sample_n(size = 50, replace=TRUE, reps = 1000)  # Take 1000 samples of size n=50, with replacement
+n50_1000boot_rep <- our_sample50 %>%  # Take our one *sample*
+  rep_sample_n(size = 50,  # Take 1000 samples of size n=50, with replacement
+               replace = TRUE, 
+               reps = 1000)  
 
-p_hat_n50_1000bootstrap_rep <- n50_1000bootstrap_rep %>% # Take our bootstrap samples...
-  group_by(replicate...1) %>% # ... and for each bootstrap sample...
-  summarize(Good = sum(Condition == "Good"), # ...calculate the number of "good" condition trees...
-            n = n()) %>% # ...and the total number of trees in the bootstrap sample...
-  mutate(p_hat = Good / n) # ...and ultimately, our sample statistic in our bootstrap sample.
+p_hat_n50_1000boot_rep <- n50_1000boot_rep %>% # Take our bootstrap samples...
+  group_by(replicate) %>% # ... and for each bootstrap sample...
+  summarize(Good = sum(Condition == "Good"), # find the # of "good" trees...
+            n = n()) %>% # ...and the total # of trees in the bootstrap sample...
+  mutate(p_hat = Good / n) # ...and calculate each bootstrap statistic.
 
-boostrap_n50_histogram <- ggplot(p_hat_n50_1000bootstrap_rep, aes(x = p_hat)) +
+bootstrap_n50_histogram <- ggplot(p_hat_n50_1000boot_rep, aes(x = p_hat)) +
   geom_histogram(binwidth = 0.02, color = "black", fill = "lightblue3") +
   labs(x = "Sample proportion of Western Redcedars in Good Condition", 
        title = "Bootstrap distribution of p-hat based on n = 50") 
-boostrap_n50_histogram
+bootstrap_n50_histogram
 ```
 
 
-**a.** What distinguishes bootstrap distributions from sampling distributions? What part of the code above makes the result a *bootstrap* distribution?
+**a.** What distinguishes bootstrap distributions from sampling distributions? What part of the code above makes the result a *bootstrap* distribution? [Only text for this part]
 
 *******************************************************************************
 
 
 
-
 *******************************************************************************
+
 
 
 **b.** Remember that bootstrap distributions are used to approximate sampling distributions. Below, we show both a theoretical sampling distribution (for $n=50$, recreated from Lab 6) and a corresponding bootstrap distribution (based on a single sample of size $n=50$, created above).
@@ -222,48 +223,48 @@ grid.arrange(sampling_n50_histogram +
                geom_vline(xintercept = mean(p_hat_n50_1000rep$p_hat),
                           color = "red") +
                scale_x_continuous(limits = c(0, 0.3)),
-             boostrap_n50_histogram +
+             bootstrap_n50_histogram +
                labs(title = "Bootstrap Distribution, n=50") +
-               geom_vline(xintercept = mean(p_hat_n50_1000bootstrap_rep$p_hat),
+               geom_vline(xintercept = mean(p_hat_n50_1000boot_rep$p_hat),
                           color = "red") +
                scale_x_continuous(limits = c(0, 0.3)),
              ncol = 1)
 ```
 
-**How do these two distributions compare? Consider similarities/differences based on their shape, center, and spread.**
+**How do these two distributions compare? Consider similarities/differences based on their shape, center, and spread.** [Only text for this part]
 
 *******************************************************************************
 
 
 
-
-
 *******************************************************************************
+
 
 
 ## Exercise 5: Creating a Bootstrap for n=15
 
-**a**. Using the above provided code for a bootstrap distribution based on a sample of size $n=50$, create and display a bootstrap distribution based on the following sample of size $n=15$. 
+**a**. Using the above provided code for a bootstrap distribution based on a sample of size $n=50$, create and display a bootstrap distribution based on the following sample of size $n=15$. Note again that you may need to adjust `binwidth` to get your distribution to look nice. [Code only for this question.]
 
 *******************************************************************************
 
 ```{r}
-our_sample15 <- trees %>% # Take the population of trees
-  rep_sample_n(size = 15, reps = 1) # Take ONE sample of size n = 15
+set.seed(141)
 
+our_sample15 <- trees %>% # Take the population of trees
+  rep_sample_n(size = 15, reps = 1) %>% # Take ONE sample of size n = 15
+  ungroup() %>% select(Condition)  # Grabbing just the tree Condition
 
 ### Your code below
 
 
 ```
 
-
 *******************************************************************************
 
 
-**b**. How does the bootstrap distribution that you just created compare to: (1) the sampling distribution for $n=15$ from lab, (2) the sampling distribution for $n=50$ in Lab 6, and (3) the bootstrap distribution (for $n=50$)? Consider similarities/differences based on their shape, center, and spread.
+**b**. How does the bootstrap distribution that you just created compare to: (1) the sampling distribution for $n=15$ from lab, (2) the sampling distribution for $n=50$ in Lab 6, and (3) the bootstrap distribution (for $n=50$)? Consider similarities/differences based on their shape, center, and spread. [Only text needed for this question, but you may use code to help visualize.]
 
-(*You may wish to visualize all four distributions together. Code to do so is prepared for you below, but depending on names chosen for your saved variables, you may need to adapt it.*)
+(*You may wish to visualize all four distributions together. Code to do so is prepared for you below, but it expects you to have saved your histograms and bootstrap statistic data frames with specific names. Each `geom_vline()` command is meant to show the mean of the sampling distribution statistics or bootstrap statistics.*)
 
 *******************************************************************************
 
@@ -272,22 +273,25 @@ our_sample15 <- trees %>% # Take the population of trees
 #                labs(title = "Sampling Distribution, n=15") +
 #                geom_vline(xintercept = mean(p_hat_n15_1000rep$p_hat),
 #                           color = "red") +
-#                scale_x_continuous(limits = c(0, 0.3)),
+#                scale_x_continuous(limits = c(-0.1, 0.6)),
+#              
 #              sampling_n50_histogram + ## Our histogram from sampling n=50
 #                labs(title = "Sampling Distribution, n=50") +
 #                geom_vline(xintercept = mean(p_hat_n50_1000rep$p_hat),
 #                           color = "red") +
-#                scale_x_continuous(limits = c(0, 0.3)),
-#              boostrap_n15_histogram + ## Your histogram from bootstrap n=15
+#                scale_x_continuous(limits = c(-0.1, 0.6)),
+#              
+#              bootstrap_n15_histogram + ## Your histogram from bootstrap n=15 - CHECK
 #                labs(title = "Bootstrap Distribution, n=15") +
-#                geom_vline(xintercept = mean(p_hat_n15_1000bootstrap_rep$p_hat),
+#                geom_vline(xintercept = mean(p_hat_n15_1000boot_rep$p_hat), # CHECK
 #                           color = "red") +
-#                scale_x_continuous(limits = c(0, 0.3)),
-#              boostrap_n50_histogram + ## Your histogram from bootstrap n=50
+#                scale_x_continuous(limits = c(-0.1, 0.6)),
+#              
+#              bootstrap_n50_histogram + ## Your histogram from bootstrap n=50 - CHECK
 #                labs(title = "Bootstrap Distribution, n=50") +
-#                geom_vline(xintercept = mean(p_hat_n50_1000bootstrap_rep$p_hat),
+#                geom_vline(xintercept = mean(p_hat_n50_1000boot_rep$p_hat), # CHECK
 #                           color = "red") +
-#                scale_x_continuous(limits = c(0, 0.3)),
+#                scale_x_continuous(limits = c(-0.1, 0.6)),
 #              ncol = 2)
 ```
 
@@ -301,7 +305,7 @@ our_sample15 <- trees %>% # Take the population of trees
 
 In each of the following scenarios, (i) identify the population, (ii) identify the parameter of interest, (iii) identify the sample, (iv) identify and calculate the statistic, and (v) state whether or not the sample is representative of the population.
 
-**a.** Suppose you are an epidemiologist looking to understand Covid rates in Oregon over the last 3 months. Specifically, you would like to estimate the proportion of Oregon residents who had Covid between July 1 and October 1 of this year. To answer the question, you randomly sample 50 Oregon residents and ask each if they had Covid in that time period. 10 of the 50 individuals in your sample had Covid between July 1 and October 1.
+**a.** Suppose you are an epidemiologist looking to understand Covid rates in Oregon over the last 3 months. Specifically, you would like to estimate the proportion of Oregon residents who had Covid between July 15 and October 15 of this year. To answer the question, you randomly sample 50 Oregon residents and ask each if they had Covid in that time period. 10 of the 50 individuals in your sample had Covid between July 15 and October 15. [Text only for this question]
 
 *******************************************************************************
 
@@ -309,7 +313,9 @@ In each of the following scenarios, (i) identify the population, (ii) identify t
 
 *******************************************************************************
 
-**b.** Suppose you are a naval engineer interested in understanding how resilient ships are to collisions with icebergs. Specifically, you would like to estimate the proportion of ships which would sink if they struck an iceberg. To answer this question, you randomly sample 10 historic ships from the US Naval Museum and see if each had sunk after a collision with an iceberg. None of the 10 historic ships in your sample had sunk after a collision with an iceberg.
+
+
+**b.** Suppose you are a naval engineer interested in understanding how resilient historic naval ships are to collisions with icebergs. Specifically, you would like to estimate the proportion of these ships which would sink if they struck an iceberg. To answer this question, you randomly sample 10 historic ships from the US Naval Museum and see if each had sunk after a collision with an iceberg. None of the 10 historic ships in your sample had sunk after a collision with an iceberg. [Text only for this question]
 
 *******************************************************************************
 
@@ -322,7 +328,7 @@ In each of the following scenarios, (i) identify the population, (ii) identify t
 ## Exercise 7: Quick Learning Checks
 
 
-**a.** A sampling distribution is made up of many values. What does one value in a sampling distribution represent? What causes values to differ?
+**a.** A sampling distribution is made up of many values. What does one value in a sampling distribution represent? What causes values to differ? [Text only for this question]
 
 *******************************************************************************
 
@@ -331,7 +337,8 @@ In each of the following scenarios, (i) identify the population, (ii) identify t
 *******************************************************************************
 
 
-**b.** The following image shows a bootstrap distribution (you may need to render your PDF to see it). Based on the distribution, would you say it was common or uncommon to see a value close to 0.6 across bootstrap statistics? How about a value of 0.3? 
+
+**b.** The following image shows a bootstrap distribution (you may need to render your PDF to see it). Based on the distribution, would you say it was common or uncommon to see a value close to 0.6 across bootstrap statistics? How about a value of 0.3?  [Text only for this question]
 
 ![](img/bootstrap_dist.png){width=5in, height=2in}
 
@@ -342,7 +349,8 @@ In each of the following scenarios, (i) identify the population, (ii) identify t
 *******************************************************************************
 
 
-**c.** Based on the same image of the bootstrap distribution above, give what your best guess would be for the value of the parameter of interest. 
+
+**c.** Based on the same image of the bootstrap distribution above, give what your best guess would be for the value of the parameter of interest.  [Text only for this question]
 
 *******************************************************************************
 

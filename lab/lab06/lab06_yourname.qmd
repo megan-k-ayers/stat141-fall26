@@ -1,6 +1,6 @@
 ---
 title: "Lab 6: Sampling Distributions"
-subtitle: "STAT 141, Week 6"
+subtitle: "STAT 141, Week 7"
 author: "Your name here"
 format: pdf
 execute:
@@ -40,7 +40,7 @@ library(pdxTrees)
 
 Consider the following population of 5 dogs: Aoki (0.5 years), Bluto (2 years), Coco (2.5 years), Dexter (5 years), and Eggbert (8 years). In this question, you will explicitly calculate the sampling distribution for the **mean age of the dogs** (in years) under samples of different sizes.
 
-**a.** Calculate the sampling distribution for samples of size $n=1$. That is, write down the dogs in each of the 5 possible samples and their corresponding sample statistics. **Then, calculate the mean and standard error of the sampling distribution.**
+**a.** Calculate the sampling distribution for samples of size $n=1$. That is, write down the dogs in each of the 5 possible samples and their corresponding sample statistics. **Then, calculate the mean and standard error of the sampling distribution.** [Only text is needed for this question, but you can use code to help if you want.]
 
 (*Hint: the `mean()` and `sd()` functions may be useful. You can write R calculations inline with this syntax: `r mean(c(1, 2, 3))`*.)
 
@@ -50,7 +50,9 @@ Consider the following population of 5 dogs: Aoki (0.5 years), Bluto (2 years), 
 
 *******************************************************************************
 
-**b.** Calculate the sampling distribution for samples of size $n=3$. That is, write down the dogs in each of the 10 possible samples and their corresponding sample statistics. **Then, calculate the mean and standard error of the sampling distribution.**
+
+
+**b.** Calculate the sampling distribution for samples of size $n=2$. That is, write down the dogs in each of the 10 possible samples and their corresponding sample statistics. **Then, calculate the mean and standard error of the sampling distribution.** [Only text is needed for this question, but you can use code to help if you want.]
 
 *******************************************************************************
 
@@ -59,7 +61,8 @@ Consider the following population of 5 dogs: Aoki (0.5 years), Bluto (2 years), 
 *******************************************************************************
 
 
-**c.** Calculate the sampling distribution for samples of size $n=5$. That is, write down the dogs in the single possible sample and its corresponding sample statistic. **Then, calculate the mean and standard error of the sampling distribution.**
+
+**c.** Calculate the sampling distribution for samples of size $n=4$. That is, write down the dogs in each of the 5 possible samples and their corresponding sample statistics. **Then, calculate the mean and standard error of the sampling distribution.** [Only text is needed for this question, but you can use code to help if you want.]
 
 *******************************************************************************
 
@@ -67,7 +70,9 @@ Consider the following population of 5 dogs: Aoki (0.5 years), Bluto (2 years), 
 
 *******************************************************************************
 
-**d.** Calculate the population parameter.
+
+
+**d.** Calculate the sampling distribution for samples of size $n=5$. That is, write down the dogs in the single possible sample and its corresponding sample statistic. **Then, calculate the mean and standard error of the sampling distribution.** [Only text is needed for this question, but you can use code to help if you want.]
 
 *******************************************************************************
 
@@ -75,7 +80,19 @@ Consider the following population of 5 dogs: Aoki (0.5 years), Bluto (2 years), 
 
 *******************************************************************************
 
-**e.** Compare and contrast the sampling distributions and parameter you calculated, with respect to **center** and **spread**.
+
+
+**e.** Calculate the population parameter. [Only text is needed for this question, but you can use code to help if you want.]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**f.** Compare and contrast the sampling distributions and parameter you calculated, with respect to **center** and **spread**. [Only text is needed for this question, but you can use code to help if you want.]
 
 *******************************************************************************
 
@@ -106,7 +123,7 @@ Standard error   | $SE$                           | $\widehat{SE}$
 
 ### Setup
 
-Run the following code to load the data set, and subset it to only the **condition variable for Western Redcedars**. You may also want to take a look at the dataset, `trees` in the **viewer**.
+Run the following code to load the data set and subset it to only the **condition variable for Western Redcedars**. You may also want to take a look at the dataset, `trees` in the **viewer**.
 
 ```{r}
 pdxTrees_parks <- get_pdxTrees_parks()
@@ -114,6 +131,7 @@ trees <- pdxTrees_parks %>%
   filter(Common_Name == "Western Redcedar") %>% 
   select(Condition)  # This takes just the column "Condition"
 ```
+
 
 ### Exploratory Data Analysis (EDA)
 
@@ -151,6 +169,7 @@ We will take some random samples in this lab. In order to make sure R takes the 
 set.seed(42)
 ```
 
+
 ### Estimating $\hat{p}$ from a single sample
 
 We are first going to use random sampling to **ESTIMATE** the true **population** proportion $p$ of the Western Redcedars in good condition with only a **sample** of $n=50$ trees. This will represent a situation of only having the resources to record 50 Western Redcedar trees in Portland parks. Be sure to look at the results in the viewer by clicking `n50_1rep` in the Environment after you run the chunk below.
@@ -170,17 +189,16 @@ n50_1rep %>% # Use our sample
   mutate(p_hat = Good / n)  # Calculate our sample statistic: proportion of "good" condition trees in our sample.
 ```
 
-This sample proportion $\hat{p}$ is an **ESTIMATE**, and our **best guess** of what the **true population** proportion $p$ of good condition Western Redcedars in Portland parks, based on a sample of only 50 trees.  It is reasonably close to the true population proportion $p = 0.133$ we calculated from the full population.
+This sample proportion $\hat{p}$ is an **ESTIMATE**, and our **best guess** of the **true population** proportion $p$ of good condition Western Redcedars in Portland parks, based on a sample of only 50 trees.  It is reasonably close to the true population proportion $p = 0.133$ we calculated from the full population.
 
 
 
 
 ## Exercise 1: Random Seeds
 
-Copy/paste the code from the previous two code chunks into a new code chunk below. Then, change the seed value in the `set.seed()` function so that it is something different from "42", and run the new code chunk to estimate $\hat{p}$.  **Ask two of your classmates what their estimate of $\hat{p}$ was. How do the $\hat{p}$ estimates from different samples compare?**
+Copy/paste the code from the previous two code chunks into a new code chunk below. Then, change the seed value in the `set.seed()` function so that it is something different from "42", and run the new code chunk to estimate $\hat{p}$.  **Ask two of your classmates what their estimate of $\hat{p}$ was. How do the $\hat{p}$ estimates from different samples compare?** [Code and text for this question]
 
 *******************************************************************************
-
 
 
 
@@ -190,7 +208,7 @@ Copy/paste the code from the previous two code chunks into a new code chunk belo
 
 ## Exercise 2: Sampling distribution of $\hat{p}$ for n = 50
 
-If you ran the code chunk that takes a random sample of $n=50$ trees a thousand more times with different seeds....and wrote down every $\hat{p}$ you got, you would have what is called a "sampling distribution". 
+If you ran the code chunk that takes a random sample of $n=50$ trees a thousand more times with different seeds....and wrote down every $\hat{p}$ you got, we would be approximating what is called a "sampling distribution". 
 
 <br> 
 
@@ -211,10 +229,9 @@ n50_1000rep <- trees %>%
 Look at `n50_1000rep` in the data viewer to get a sense of these 1000 samples look like.
 
 
-**a.** In the object `n50_1000rep` that we just created, what is the name of the column that identifies which of the 1000 samples each row is from?
+**a.** In the object `n50_1000rep` that we just created, what is the name of the column that identifies which of the 1000 samples each row is from? [Text only for this question]
 
 *******************************************************************************
-
 
 
 
@@ -228,19 +245,18 @@ Look at `n50_1000rep` in the data viewer to get a sense of these 1000 samples lo
 
 
 
+*******************************************************************************
+
+
+
+**c.** What is the point of taking these different samples? In your own words, what are we trying to learn? [Text only for this question]
 
 *******************************************************************************
 
 
 
-**c.** What is the point of taking these different samples? In your own words, what are we trying to learn?  
-
 *******************************************************************************
 
-
-
-
-*******************************************************************************
 
 
 ## Exercise 3: Visualize the sampling distribution of $\hat{p}$ for n = 50
@@ -272,31 +288,19 @@ sampling_n50_histogram
 ```
 
 
-**a.** Based on the histogram, provide an example of a very common value of $\hat{p}$. Additionally, provide an example of a very uncommon value. What makes these values "common" or "uncommon"?
+Based on the histogram, provide an example of a very common value of $\hat{p}$. Additionally, provide an example of a very uncommon value. What makes these values "common" or "uncommon"? [Text only for this question]
 
 *******************************************************************************
 
 
 
-
-
 *******************************************************************************
 
-
-**b.** In the first code chunk of this exercise, what are `group_by()` and `summarize()` and `mutate()` each doing for us, in the context of sampling distributions? 
-
-*******************************************************************************
-
-
-
-
-
-*******************************************************************************
 
 
 ## Exercise 4: Mean and standard error of the sampling distribution of $\hat{p}$ for n = 50
 
-Finally, we can estimate the mean and standard deviation of the sampling distribution (statistics about statistics!).  We can do this by calculating the mean of all 1000 $\hat{p}$ estimates, and the standard error of the sampling distribution by calculating the standard deviation of all 1000 $\hat{p}$ values like so: 
+Finally, we can estimate the mean and standard deviation of the sampling distribution (statistics about statistics!).  We can do this by calculating the mean of all 1000 $\hat{p}$ estimates, and the standard error of the sampling distribution by calculating the standard deviation of all 1000 $\hat{p}$. There are two ways that we've seen of doing this in class. We can use `dplyr` data wrangling functions: 
 
 ```{r}
 p_hat_n50_1000rep %>% 
@@ -304,27 +308,43 @@ p_hat_n50_1000rep %>%
             StandardError_p_hat = sd(p_hat))
 ```
 
+Or, we can arrive at the same answers using base `R` summary statistic functions:
+
+```{r}
+mean(p_hat_n50_1000rep$p_hat)
+sd(p_hat_n50_1000rep$p_hat)
+```
+
 Note that these particular values are *estimates*, because even though we have access to the population, this sampling distribution only includes 1000 simulated samples. The true sampling distribution will have many more!
 
-**a.** How is the estimated mean of our sampling distribution (`Mean_p_hat`) related to the true population mean, $p$? How is `Mean_p_hat` related to $\hat{p}$ based on our single sample?
+**a.** How is the estimated mean of our sampling distribution (`Mean_p_hat`) related to the true population mean, $p$? How is `Mean_p_hat` related to the $\hat{p}$ based on our initial single sample? [Text only for this question]
 
 *******************************************************************************
 
 
 
-
-
-*******************************************************************************
-
-**b.** What is `summarize()` doing for us in this exercise's code chunk, in the context of sampling distributions? 
-
 *******************************************************************************
 
 
 
+**b.** What is `summarize()` doing for us in this exercise's first code chunk, in the context of sampling distributions? How are rows "summarized" over in this case, compared to in Exercise 3? [Text only for this question]
+
+*******************************************************************************
+
 
 
 *******************************************************************************
+
+
+
+**c.** In a single new chunk below, copy and paste the relevant code above into one workflow that takes our "population" and produces (1) the histogram of the sampling distribution for samples with $n=50$ and (2) the mean and standard deviation of this sampling distribution. Use comments and make edits as needed to help to your future self remember how the code works. *This will serve as a helpful reference for your upcoming homework assignment!* [Code only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
 
 
 ## Exercise 5: Thinking ahead to implementing bootstrapping

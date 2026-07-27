@@ -476,7 +476,7 @@ scheduled-docs:
     - week: 14
       days:
         - topic: "Inference for Regression III: ANOVA"
-          display-date: Monday, Nov 29
+          display-date: Monday, Nov 30
           date: 11/29/26
           # docs:
           #   - type: Reading
