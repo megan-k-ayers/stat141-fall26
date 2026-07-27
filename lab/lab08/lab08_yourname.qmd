@@ -1,6 +1,6 @@
 ---
 title: "Lab 8: Hypothesis Testing"
-subtitle: "STAT 141, Week 9"
+subtitle: "STAT 141, Week 10"
 author: "Your name here"
 format: pdf
 execute:
@@ -15,6 +15,14 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE, fig.width = 5
 library(tidyverse)
 library(infer)
 ```
+
+
+In this lab assignment you will:
+- Review writing code for sampling distributions
+- Review the connection between sampling and null distributions
+- Practice performing a simulation-based hypothesis test
+
+
 
 ### Add any collaborators here!
 
@@ -32,11 +40,13 @@ Recall the exercise from Lab 7. A Gallup poll from 2022 stated that 59% percent 
 For the purposes of the lab, we assumed that a simple random sample of $n=500$ people was asked the question about increasing the number of electric vehicle charging stations in the U.S. Based on this sample, we began investigating what we can infer about the underlying population parameter.
 
 
-**a.** Suppose that somehow we actually know the true parameter: that **60%** of all US adults favor spending federal money to increase the number of electric vehicle charging stations in the U.S. Since we know the population parameter, we can compute the sampling distribution, instead of relying on a bootstrap distribution to estimate it. A fake population (of a pretend size 100,000) to sample from is set up in the code chunk below. **Create and plot a sampling distribution of 5000 samples of size 500 taken from the population, using the `rep_sample_n()` function.**
+**a.** Suppose that somehow we actually know the true parameter: that **60%** of all US adults favor spending federal money to increase the number of electric vehicle charging stations in the U.S. Since we know the population parameter, we can compute the *sampling distribution*, instead of relying on a bootstrap distribution to estimate it. A fake population (of a pretend size 100,000) to sample from is set up in the code chunk below. **Create and plot a sampling distribution using 5000 samples of size 500 taken from the population, using the `rep_sample_n()` function.**
 
 [Code for this question.]
 
 *******************************************************************************
+
+*Note for CAs: If students are stuck for how to approach this problem, remind them that they created several sampling distributions for lab and HW 6. The code they used there can be readily adapted for this case.*
 
 ```{r}
 pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
@@ -45,19 +55,17 @@ pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
 # Your work below. Don't forget to set your seed!
 
 
-
 ```
-
 
 *******************************************************************************
 
 
-**b.** How and why is the distribution from part (a) different from the bootstrap distribution that we worked with in Lab 7?
+
+**b.** In what ways is the distribution from part (a) different from the bootstrap distribution that we worked with in Lab 7?
 
 [Text for this question.]
 
 *******************************************************************************
-
 
 
 
@@ -73,7 +81,6 @@ pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
 
 
 
-
 *******************************************************************************
 
 
@@ -81,7 +88,7 @@ pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
 
 ## Exercise 2: EV Poll Hypothesis Testing
 
-**a.** We're interested in whether it's plausible that the true proportion of all US adults who favor spending federal money to increase the number of electric vehicle charging stations in the U.S. is actually 0.5. For policy reasons, we'd like to know if this survey gives us strong evidence the the proportion is actually more than 0.5 (a majority). Let p be the true proportion. **Write out the null and alternative hypotheses in terms of p.** [Only text for this question.]
+**a.** Suppose the status quo belief is that only half of US adults favor spending federal money to increae the number of electric vehicle charging stations in the U.S. For policy reasons, we'd like to know if the survey discussed in Exercise 1 gives us strong evidence this proportion is actually more than 0.5 (a majority). Let p be the true proportion. **Write out the relevant null and alternative hypotheses in terms of p.** [Only text for this question.]
 
 *******************************************************************************
 
@@ -91,7 +98,9 @@ pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
 
 
 
-**b.** Using simulation, create and display the null distribution. The null distribution is the sampling distribution *under the assumption that the null is true*, so you should follow the same idea as Exercise 1, but where p = 0.5. **Show the results in a histogram as you did in Exercise 1, and explain why the centers are different.** [Code and text for this question.]
+**b.** Using simulation, create and display the relevant null distribution. It will be helpful to save the statistics in your null distribution in an object for later use. Show the results in a histogram as you did in Exercise 1, and *explain why the centers are different*. [Code and text for this question.]
+
+(*Hint*: The null distribution is the sampling distribution *under the assumption that the null is true*, so you should follow the same idea as Exercise 1, but where **p = 0.5**.)
 
 *******************************************************************************
 
@@ -107,16 +116,13 @@ pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
 
 
 
-
 *******************************************************************************
-
 
 
 
 **d.** Compare the p-value above to the significance level of alpha = 0.025. **Does this test give evidence to reject the null hypothesis?** [Only text for this question.]
 
 *******************************************************************************
-
 
 
 
@@ -127,8 +133,6 @@ pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
 **e.** What would a Type I or Type II error mean in this context? Is it possible that you made either type of error in part (d)? [Only text for this question.]
 
 *******************************************************************************
-
-
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Homework 8: Hypothesis Testing"
-subtitle: "STAT 141, Week 9"
+subtitle: "STAT 141, Week 10"
 author: "Your name here"
 format: pdf
 execute:
@@ -9,12 +9,13 @@ execute:
   message: false
 ---
 
-## Assigned: Thursday, October 29th
-## Due: Thursday, November 5th at 9:00am on Gradescope as a **PDF**
+## Assigned: Thursday, November 5th
+## Due: Thursday, November 12th at 9:00am on Gradescope as a **PDF**
 
 In this homework assignment you will:
 
-- Demonstrate proficiency with the concepts: null and alternative hypothesis, p-value, type I and II errors, power, and how these relate to specific research questions
+- Demonstrate proficiency with hypothesis testing concepts: null and alternative hypothesis, p-value, type I and II errors, power, and how these relate to specific research questions
+- Perform a simulation-based hypothesis test
 - Consider some pitfalls associated with p-values
 
 
@@ -54,18 +55,18 @@ For each of the situations described in parts (a) - (c), do the following:
 
 
 
-
-*******************************************************************************
-
-
-**b.** Two slightly different versions of a statistics exercise are given to a 10am and 12pm section of Math 141 and the proportions of students in each class who get the question correct are recorded. We wish to determine whether one question was more difficult than the other.
-
 *******************************************************************************
 
 
 
+**b.** Two slightly different versions of a statistics exercise are given to a 10am and 11am section of Stat 141, and the proportions of students in each class who get the question correct are recorded. We wish to determine whether one question was more difficult than the other.
 
 *******************************************************************************
+
+
+
+*******************************************************************************
+
 
 
 **c.** You test whether taking a vitamin supplement reduces the duration of symptoms of the common cold. There are no (known) harmful side effects of the supplement.
@@ -74,8 +75,8 @@ For each of the situations described in parts (a) - (c), do the following:
 
 
 
-
 *******************************************************************************
+
 
 
 ## Exercise 2: Interpreting Results and Misconceptions
@@ -83,10 +84,9 @@ For each of the situations described in parts (a) - (c), do the following:
 After graduating, you decide to apply for positions as a statistical consultant. A friend who graduated a few years prior and already works in the field has sent you the following set of scenarios. If she is impressed by your responses, she will recommend your name to a hiring team. For each response, be sure to fully explain your reasoning.
 
 
-**a.** Melatonin pills are a popular remedy for providing insomnia relief. A company developed a new formulation of melatonin pill and conducted a randomized controlled trial on a random sample of 2,000 American adults who were already experiencing insomnia and using melatonin pills. A 95% confidence interval for mean increase in sleep hours per typical night was calculated based on data from the trial: (0.09, 0.13) hours. A hypothesis test for the null hypothesis of no effect resulted in $p$-value 0.0001. **Assess whether the evidence suggests the new formulation is a substantial improvement over melatonin pills currently available on the market. Limit your response to no more than five sentences.**
+**a.** Melatonin pills are a popular remedy for providing insomnia relief. A company developed a new formulation of melatonin pill and conducted a randomized controlled trial on a random sample of 2,000 American adults who were already experiencing insomnia and using melatonin pills. A 95% confidence interval for mean increase in sleep hours per typical night was calculated based on data from the trial: (0.09, 0.13) hours. A hypothesis test for the null hypothesis of no effect resulted in $p$-value of 0.0001. **Assess whether the evidence suggests the new formulation is a meaningful, substantial improvement over melatonin pills currently available on the market. Limit your response to no more than five sentences.**
 
 *******************************************************************************
-
 
 
 
@@ -98,8 +98,7 @@ After graduating, you decide to apply for positions as a statistical consultant.
 
 *******************************************************************************
 
-
-
+ 
 
 *******************************************************************************
 
@@ -111,30 +110,39 @@ After graduating, you decide to apply for positions as a statistical consultant.
 
 
 
-
-*******************************************************************************
-
-
-**d.**  A recent study of $n = 20$ dogs investigated the effects of classical music on dog separation anxiety (measured on a 0-10 point scale) and found inconclusive results. Researchers were unable to reject the null hypothesis of zero effect. Researchers report that classical music reduced anxiety in the sample by an effect size of -2.5, and provide a 95% confidence interval of [-6.5, 1.5] and a p-value of $p = 0.34$ for $\alpha = 0.05$. **What are 2 distinct possible reasons for why the study could have failed to reject the null hypothesis, and how could researchers adjust a future study to distinguish between these 2 cases?** You can assume that the study was perfectly implemented - failure to reject the null was not due to any sampling or implementation error or accident. (Note: the p-value being too high is not a reason for failure, it's how we know it failed!)
-
 *******************************************************************************
 
 
 
+**d.**  A recent study of $n = 20$ dogs investigated the effects of classical music on dog separation anxiety (measured on a 0-10 point scale) and found inconclusive results. Researchers were unable to reject the null hypothesis of zero effect. Researchers report that classical music reduced anxiety in the sample by an effect size of -2.5, and provide a 95% confidence interval of [-6.5, 1.5] and a p-value of $p = 0.34$ for $\alpha = 0.05$. **What are the 2 distinct possible reasons for why the study failed to reject the null hypothesis, and how could researchers adjust a future study to distinguish between these 2 cases?** You can assume that the study was perfectly implemented - failure to reject the null was not due to any sampling or implementation error or accident. (Note: the p-value being too high is not a reason for failure, it's how we know the test failed!)
 
 *******************************************************************************
+
+
+
+*******************************************************************************
+
 
 
 ## Exercise 3: Mayor Election Hypothesis Testing
 
 Imagine you're a political pollster interested in inferring the **proportion of voters who support Carmen Rubio for Portland mayor** back in the November 2024 election. You conduct a survey of 200 likely voters and find that 88 of them support Ms. Rubio.
 
-**a.** In labs 7 and 8, you practiced working with code we saw in lecture to construct confidence intervals and perform hypothesis testing using simulation-based methods. This exercise will ask you to adapt and apply these methods to a new setting. Review examples from lecture and/or lab, and in your own words, list general steps for constructing confidence intervals **and** for performing hypothesis testing using simulation-based methods.
+**a.** In labs 7 and 8, you practiced working with code we saw in lecture to construct confidence intervals and perform hypothesis testing using simulation-based methods. This exercise will ask you to adapt and apply these methods to a new setting. Review examples from lecture and/or lab, and in your own words, list general steps for constructing confidence intervals **and** for performing hypothesis testing using simulation-based methods. 
+
+[Text only for this question]
+
+*******************************************************************************
 
 
 
+*******************************************************************************
 
-**b.** Using the survey results below and simulation-based methods, create a **90%** confidence interval for $p$, the overall proportion of likely Portland voters who support Carmen Rubio for mayor. [Only code]
+
+
+**b.** Using the survey results below and *simulation-based methods*, create a **90%** confidence interval for $p$, the overall proportion of likely Portland voters who support Carmen Rubio for mayor. 
+
+[Only code for this question]
 
 *******************************************************************************
 
@@ -145,28 +153,29 @@ sample_mayor <- data.frame(rubio = c(rep("Yes", 88),
 # Your work below. Don't forget to set your seed!
 
 
-
 ```
 
 *******************************************************************************
 
 
 
-**c.** Carefully interpret your confidence interval in context. What can you learn about Ms. Rubio's electoral chances from this confidence interval? [Only text]
+**c.** Carefully interpret your confidence interval in context. What can you learn about Ms. Rubio's electoral chances from this confidence interval? 
+
+[Only text]
 
 *******************************************************************************
 
 
 
-
 *******************************************************************************
 
 
 
-**d.** Suppose we're also interested in knowing if it's plausible that Ms. Rubio will receive less than 50\% of the votes in the upcoming election for mayor. **To test this question, follow the hypothesis testing steps to calculate a simulation-based p-value** for the alternative hypothesis that $p<0.5$ vs. the null hypothesis that $p=0.50$ at the 0.05 level. [Only code]
+**d.** Suppose we're also interested in testing if it's plausible that Ms. Rubio will receive less than 50\% of the votes in the upcoming election for mayor. **To test this question, follow the hypothesis testing steps to calculate a simulation-based p-value** for the alternative hypothesis that $p<0.5$ vs. the null hypothesis that $p=0.50$ at the 0.05 level. 
+
+[Only code]
 
 *******************************************************************************
-
 
 
 
@@ -180,7 +189,6 @@ sample_mayor <- data.frame(rubio = c(rep("Yes", 88),
 
 
 
-
 *******************************************************************************
 
 
@@ -191,8 +199,6 @@ sample_mayor <- data.frame(rubio = c(rep("Yes", 88),
 
 
 
-
-
 *******************************************************************************
 
 
@@ -200,8 +206,6 @@ sample_mayor <- data.frame(rubio = c(rep("Yes", 88),
 **g.** You should have found a right endpoint for your 90% confidence interval of about 0.50 in (a), and a p-value of around 0.05 in (c). In other words, we are right at the "border" of evidence that 50% of voters support Ms. Rubio for mayor. **In your own words, explain why these two inferential procedures "align" in this sense.** [Only text]
 
 *******************************************************************************
-
-
 
 
 
@@ -225,16 +229,13 @@ The pitfalls of $p$-values have been discussed for decades, and in 2016 the *ASA
 
 
 
-
 *******************************************************************************
-
 
 
 
 **c.**  Take a look at the section "Statistical Significance" on pages 2-4, which is intended to explain some concepts underpinning statistical significance in language accessible to those who have not taken a statistics course. **Describe in 2-3 sentences something you thought was explained/illustrated particularly well in this section.**
 
 *******************************************************************************
-
 
 
 
@@ -248,7 +249,6 @@ The pitfalls of $p$-values have been discussed for decades, and in 2016 the *ASA
 
 
 
-
 *******************************************************************************
 
 
@@ -258,5 +258,5 @@ The pitfalls of $p$-values have been discussed for decades, and in 2016 the *ASA
 
 
 
-
 *******************************************************************************
+
