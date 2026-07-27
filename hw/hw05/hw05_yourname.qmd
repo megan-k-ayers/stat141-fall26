@@ -297,7 +297,7 @@ In this problem, we will continue working with the same data set from Exercise 2
 *******************************************************************************
 
 
-**c.** Construct a multiple linear regression model for net tuition price using log-transformed endowment assets *and* whether a school is categorized as Ivy Plus. *Assume equal slopes in the model.* Print the model coefficients table. [Code only for this question]
+**c.** Construct a *multiple linear regression model* for net tuition price using log-transformed endowment assets *and* whether a school is categorized as Ivy Plus. *Assume equal slopes in the model.* Print the model coefficients table. [Code only for this question]
 
 *******************************************************************************
 
@@ -327,7 +327,7 @@ In this problem, we will continue working with the same data set from Exercise 2
 
 
 
-**f.** Construct a linear regression model for the net tuition price using log-transformed endowment assets and whether a school is categorized as Ivy Plus. *Assume varying slopes in this model.* [Code only for this question]
+**f.** Construct a multiple linear regression model for the net tuition price using log-transformed endowment assets and whether a school is categorized as Ivy Plus. *Assume varying slopes in this model.* [Code only for this question]
 
 *******************************************************************************
 

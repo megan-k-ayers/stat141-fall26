@@ -1,6 +1,6 @@
 ---
 title: "Lab 7: Confidence Intervals"
-subtitle: "STAT 141, Week 7"
+subtitle: "STAT 141, Week 9"
 author: "Your name here"
 format: pdf
 execute:
@@ -24,7 +24,7 @@ I collaborated with...
 
 ## An Important Note on Reproducibility
 
-You will take random samples and build sampling distributions in this lab, which means **you should set a seed using `set.seed(x)`** (where $x$ is replaced with any number of your choosing) **in each code chunk where you generate random values** to ensure that each time you render your document, you obtain an identical random sample to what you see when you're working on the lab.
+You will take random samples and build bootstrap distributions in this lab, which means **you should set a seed using `set.seed(x)`** (where $x$ is replaced with any number of your choosing) **in each code chunk where you generate random values.** This ensures that each time you render your document, you obtain an identical random sample to what you see when you're working on the lab.
 
 
 ```{r, include=FALSE}
@@ -38,10 +38,7 @@ library(infer)
 
 
 
-
 \newpage
-
-
 
 
 
@@ -55,9 +52,9 @@ For the purposes of this lab, we'll assume that a simple random sample of $n=500
 
 ## Exercise 1: Code for Simulation-Based Confidence Intervals
 
-**a.** The code below creates a data frame `sample_ev` with $n=500$ sample responses in the `ev_charging` column. 59% of this sample support "Spending federal money to increase the number of electric vehicle charging stations in the U.S." **Using `sample_ev`, create a bootstrap distribution with 5000 replicates called `boot_ev`, and plot it.**
+**a.** The code below creates a data frame `sample_ev` with $n=500$ sample responses in the `ev_charging` column. 59% of this sample say "Yes", they support "Spending federal money to increase the number of electric vehicle charging stations in the U.S." **Using `sample_ev`, create a bootstrap distribution with 5000 replicates called `boot_ev`, and plot it.**
 
-[Only code is needed for this question. *It may be helpful to adapt code from Lab 6 to get started. Be careful to adjust column names, sample sizes, etc. Remember that `quantile()` can help you find percentiles.*]
+[Only code is needed for this question. *It may be helpful to adapt your code from Homework 6 to get started. Be careful to adjust column names, sample sizes, etc.]
 
 *******************************************************************************
 
@@ -71,23 +68,22 @@ sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500))
 
 ```
 
+*******************************************************************************
+
+
+
+**b.** Using the bootstrap distribution that you created above, calculate a 95% confidence interval for the proportion of US Adults who favor increasing the number of electric vehicle charging stations in the U.S. using the **percentile method.** [Only code is needed for this question.]
+
+*******************************************************************************
+
+
 
 
 *******************************************************************************
 
 
 
-**b.** Using the bootstrap distribution that you created above, calculate a 95% confidence interval for the proportion of US Adults who favor increasing the number of electric vehicle charging stations in the U.S. using the **PERCENTILE method.** 
-
-*******************************************************************************
-
-
-
-
-*******************************************************************************
-
-
-**c.** Use the same sample and the same bootstrap distribution from part (a) -- `sample_ev` and `boot_ev` -- find a 95% confidence interval now using the **STANDARD ERROR method** for the proportion of US Adults who favor increasing the number of electric vehicle charging stations in the U.S.
+**c.** Use the same sample and the same bootstrap distribution from part (a) -- `sample_ev` and `boot_ev` -- to find a 95% confidence interval, now using the **standard error method**.
 
 [Code only for this question.]
 
@@ -95,8 +91,8 @@ sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500))
 
 
 
-
 *******************************************************************************
+
 
 
 **d.** Will the whole class get exactly the same confidence intervals as you did for either parts (b) or (c)? [Only text for this question.]
@@ -105,8 +101,8 @@ sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500))
 
 
 
-
 *******************************************************************************
+
 
 
 **e**. In 1-2 sentences, compare the intervals produced by the methods in parts (b) and (c) and explain whether we should expect them to coincide.
@@ -115,6 +111,17 @@ sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500))
 
 *******************************************************************************
 
+
+
+*******************************************************************************
+
+
+
+**f**. Interpret one of your confidence intervals carefully, in the context of the data.
+
+[Text only for this question.]
+
+*******************************************************************************
 
 
 
