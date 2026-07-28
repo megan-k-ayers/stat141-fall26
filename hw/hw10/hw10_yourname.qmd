@@ -1,6 +1,6 @@
 ---
-title: "Homework 10: Theory-Based Inference Practice"
-subtitle: "STAT 141, Week 11"
+title: "Homework 10: Theory-Based Inference"
+subtitle: "STAT 141, Week 12"
 author: "Your name here"
 format: pdf
 execute:
@@ -9,12 +9,14 @@ execute:
   message: false
 ---
 
-## Assigned: Thursday, November 12th
-## Due: Thursday, November 19th at 9:00am on Gradescope as a **PDF**
+## Assigned: Thursday, November 19th
+## Due: Thursday, December 3rd at 9:00am on Gradescope as a **PDF**
 
 In this homework assignment you will:
 
-- TBD (placeholder bullets from the empty skeleton -- needs bullets reflecting margin of error, success-failure condition, difference in proportions, inference for a single mean, and theory-based hypothesis testing content)
+1. Make theory-based inferences for summary statistics in R
+2. Assess data to determine whether assumptions for theory-based inference are met
+3. Compare theory-based inference methods with simulation-based methods
 
 
 ### Add any collaborators here!
@@ -25,16 +27,18 @@ I collaborated with...
 
 
 ```{r}
-#load the necessary packages
+# Load the necessary packages
 library(tidyverse)
+library(infer)
 ```
 
 
 # Exercises
 
+
 ## Exercise 1: How does the proportion affect the margin of error?
 
-Imagine you've set out to survey 1000 people on two questions: Do you have brown eyes? Are you left-handed? In both cases, our parameter of interest is a single proportion. Since both sample proportions from our surveys were calculated from the same sample size, they should have the same margin of error, right? Nope! While the margin of error does change with sample size, it is also affected by the proportion.
+Imagine you've set out to survey 1000 people on two questions: Do you have brown eyes? Are you left-handed? In both cases, our parameter of interest is a single proportion. Since both sample proportions from our surveys were calculated from the same sample size, they should have the same margin of error, right? **Nope!** While the margin of error does change with sample size, it is also affected by the population proportion.
 
 Think back to the formula for the standard error:
 
@@ -51,7 +55,7 @@ Since sample size is irrelevant to this discussion, let's just set it to some va
 n <- 1000
 ```
 
-The first step is to make a variable `p` that is a sequence from 0 to 1 with each number incremented by 0.01. We can then create a vector of the margin of error (`me`) associated with each of these values of `p` using the familiar approximate formula ($ME = 2 \times SE$).
+The first step to visualize this is to make a variable `p` that is a sequence from 0 to 1 with each number incremented by 0.01. We can then create a vector of the margin of error (`me`) associated with each of these values of `p` using the familiar approximate formula ($ME = 2 \times SE$).
 
 ```{r}
 p <- seq(0, 1, 0.01)
@@ -72,10 +76,7 @@ dd <- data.frame(p = p, me = me)
 
 
 
-
-
 *******************************************************************************
-
 
 
 
@@ -83,6 +84,17 @@ dd <- data.frame(p = p, me = me)
 
 *******************************************************************************
 
+
+
+*******************************************************************************
+
+
+
+**c.** Based on what we've learned here, which of the surveys would you expect to have a smaller standard error: the one estimating the proportion of brown-eyed adults, or the one estimating the proportion of left-handed adults? [Text only for this part]
+
+(*Note*: An estimated 45% of US adults have brown eyes, and an estimated 10%-12% are left-handed.)
+
+*******************************************************************************
 
 
 
@@ -96,13 +108,13 @@ We emphasized in lecture that you must always check conditions before making inf
 
 The short answer is: nothing! You could argue that we would be fine with 9 or that we really should be using 11. What is the “best” value for such a rule of thumb is, at least to some degree, arbitrary (similar to how $\alpha = 0.05$ is relatively arbitrary). However, we often observe that when $np$ and $n(1-p)$ reaches 10, the sampling distribution is sufficiently normal to use confidence intervals and hypothesis tests that are based on that approximation.
 
-We can investigate the interplay between $n$ and $p$ and the shape of the sampling distribution of $\hat{p}$ by using simulations. Play around with the following app to investigate how the shape, center, and spread of the distribution of $\hat{p}$ changes as $n$ and $p$ changes.
+We can investigate the interplay between $n$ and $p$ and the shape of the sampling distribution of $\hat{p}$ by using simulations. We've written a simple app to do this in `R`. To use it, open the `app.R` file in this homework folder, and without changing anything in the file, click "Run App" (towards the right corner on the bar where you normally see "Render").
 
-Link to app:
-<https://ismay.shinyapps.io/shinyDist/>
+Play around with the app to investigate how the shape, center, and spread of the distribution of $\hat{p}$ changes as $n$ and $p$ changes.
 
 
-**a.** Describe the sampling distribution of sample proportions at $n = 300$ and $p = 0.1$. Be sure to note the center, spread, and shape (eyeball the relevant numeric summary statistics for center and spread). [Text only for this question]
+
+**a.** Describe the sampling distribution of sample proportions at $n = 300$ and $p = 0.1$. Be sure to note the center, spread, and shape (eyeball the relevant numeric summary statistics for center and spread). You might want to adjust min and max for the x-axis for a better view of the distribution. [Text only for this question]
     
 *******************************************************************************
 
@@ -112,16 +124,13 @@ Link to app:
 
 
 
-
-**b.** Keep $n$ constant at $n=100$, change $p$. How does the shape, center, and spread of the sampling distribution vary as $p$ changes? You might want to adjust min and max for the x-axis for a better view of the distribution. [Text only for this question]
+**b.** Keep $n$ constant at $n=100$, change $p$. How does the shape, center, and spread of the sampling distribution vary as $p$ changes? Remember to update the min and max settings for the x-axis if you adjusted them. [Text only for this question]
 
 *******************************************************************************
-
 
 
 
 *******************************************************************************
-
 
 
 
@@ -131,26 +140,29 @@ Link to app:
 
 
 
-
 *******************************************************************************
+
 
 
 ## Exercise 3: Theory-Based Inference for Difference in Proportions
 
-This exercise continues our work with the atheism survey data from Lab 10, now focusing on inference for a **difference in proportions**, rather than inference for a single proportion. Load the data set again by running the chunk below.
+This exercise continues our work with the atheism survey data from Lab 10, now focusing on inference for a **difference in proportions**, rather than inference for a single proportion. Load the data set again by running the chunk below. You can also revisit
+[\textcolor{blue}{the report from the poll here}](https://irtshdf.fr/wp-content/uploads/2019/12/Gallup-International-um-tru-og-truleysi-2012.pdf).
 
 ```{r }
 atheism <- read.csv("data/atheism.csv")
 ```
 
 
-**a.** Find the sample proportion of atheists in Canada in *2012.* Recalling that the sample proportion of atheists in the US in 2012 from the lab, calculate the estimated *difference in proportions* of atheists in the US and Canada.
+**a.** Find the sample proportion of atheists in Canada in *2012.* Recalling that we found 50 out of 1002 respondents reported being atheists in the US in 2012, calculate the estimated *difference in proportions* of atheists in the US and Canada. [Code + text to distinguish your answers for this question]
 
 *******************************************************************************
 
 
 
 *******************************************************************************
+
+
 
 **b.** Perform a hypothesis test (with $\alpha = 0.01$) to determine whether the true proportion of atheists in Canada and in the United States differed in 2012. Use *theory-based inference*, and be sure to write out: 
 
@@ -166,28 +178,38 @@ You should use a combination of code and text to show and explain your work.
 
 
 
-
-*******************************************************************************
-
-
-**c.** If we wanted to do a simulation-based version of the hypothesis test from (b), what would we change? Explain precisely what null distribution we could use (though you do not need to write code to do it). 
-
 *******************************************************************************
 
 
 
-
-*******************************************************************************
-
-
-**d.** Using theory-based inference methods, construct a 90% confidence interval for this difference in proportions.
+**c.** If we wanted to do a simulation-based version of the hypothesis test from (b), what would we change? Be precise about describing the simulation aspect of this, but you do not need to write code to do it. 
 
 *******************************************************************************
 
 
 
+*******************************************************************************
+
+
+
+**d.** Using theory-based inference methods, construct a 90% confidence interval for this difference in proportions using *percentiles*. [Only code is needed for this question]
 
 *******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**e.** If we wanted to create a simulation-based version of the confidence interval from (d), what would we change? Be precise about describing the simulation aspect of this, but you do not need to write code to do it. 
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
 
 
 
@@ -212,24 +234,21 @@ load("data/colleges_endow.Rdata")
 
 
 
+*******************************************************************************
+
+
+
+**b.** Using theory-based inference and *the standard error method*, calculate a 90% confidence interval for the *average endowment assets per student*. Interpret the interval **in context**. [Text and code for this part]
 
 *******************************************************************************
 
 
 
-**b.** Using *theory-based inference and the PERCENTILE method*, calculate a 95% confidence interval for the average endowment assets per student. Interpret the interval **in context**. [Text and code for this part]
-
 *******************************************************************************
 
 
 
-
-
-*******************************************************************************
-
-
-
-**c.** Create a bootstrap distribution of the sample mean using our sample of `fy2016_endowment_pc` (isolated in the chunk below as `endow_sample`). **Does this distribution appear to be approximately Normal? Use the percentile method to generate a 95% confidence interval and compare to your previous result in part (b).** [Text and code for this part]
+**c.** Create a bootstrap distribution of the sample mean using our sample of `fy2016_endowment_pc` (isolated in the chunk below as `endow_sample`). **Does this distribution appear to be approximately Normal? Use the percentile method to generate a 90% confidence interval and compare to your previous result in part (b).** [Text and code for this part]
 
 *******************************************************************************
 
@@ -238,28 +257,28 @@ endow_sample <- data.frame(fy2016_endowment_pc = colleges$fy2016_endowment_pc)
 
 ### Your work below
 
+
+
 ```
-
-
 
 *******************************************************************************
 
 
+
 ## Exercise 5: Anchoring Experiment
 
-During the Lab 3, we collected data to see if our class exhibits an "anchoring effect". The anchoring effect is a cognitive bias in which an individual's decisions in an uncertain situation are reliant on the first piece of information received. Half of you received the number $x = 82$ and the other half the number $x = 531$, and then you took a survey that asked you to guess how many dog breeds there are in the world. The numbers were handed out at random. Recall that we've qualitatively investigated the following question: Does the number received serve as an anchor value for answering the second question?  In other words, does the number seem to serve as a starting point when estimating the number of dog breeds in the world? Remember that last semester, students in 141 participated in the same experiment. In this exercise we'll work again with the pooled data across both semesters.
+During the Lab 2, we collected data to see if our class exhibits an "anchoring effect". The anchoring effect is a cognitive bias in which an individual's decisions in an uncertain situation are reliant on the first piece of information received. Half of you received the number $x = 82$ and the other half the number $x = 531$, and then you took a survey that asked you to guess how many dog breeds there are in the world. The numbers were handed out at random. Recall that we've qualitatively investigated the following question: Does the number received serve as an anchor value for answering the second question?  In other words, does the number seem to serve as a starting point when estimating the number of dog breeds in the world? Remember that last year, students in 141 participated in the same experiment. In this exercise we'll work again with the pooled data across all semesters.
 
-In previous exercises and activities, we've looked for evidence of an anchoring bias in an exploratory manner, without using formal statistical inference procedures. But now, we have the tools to do this! 
+In previous exercises and activities, we've looked for evidence of an anchoring bias in an exploratory manner, without using formal statistical inference procedures. But now, we have the tools we need to conduct formal statistical inference! 
 
 ```{r}
-# Load the data
+# Load and clean the data
 dogs <- read.csv("data/dogs_cleaned.csv")
 dogs <- dogs %>% 
   mutate(treatment = factor(treatment)) %>%
   select(treatment, n_breeds)
 head(dogs)
 ```
-
 
 
 **a.** Let's start by addressing the question: "Did this experiment demonstrate that an anchoring effect exists?" To answer this question, **(1)** are we looking to perform inference on a single proportion, a difference in proportions, a single mean, or a difference in means? And **(2)** why is a hypothesis test more relevant than a confidence interval for this specific question? [Text only for this question]
@@ -269,7 +288,6 @@ head(dogs)
 
 
 *******************************************************************************
-
 
 
 
@@ -283,16 +301,13 @@ head(dogs)
 
 
 
-
-**c.** State null and alternative hypotheses that could answer the research question based on the type of data collected in this investigation. Keep in mind that if an anchoring effect exists, we expect higher priming numbers to result in higher responses. [Text only for this question]
-
-*******************************************************************************
-
-
+**c.** State null and alternative hypotheses that could answer the research question based on the type of data collected in this investigation. Keep in mind that if an anchoring effect exists, we do expect higher priming numbers to result in higher responses. [Text only for this question]
 
 *******************************************************************************
 
 
+
+*******************************************************************************
 
 
 
@@ -306,34 +321,29 @@ head(dogs)
 
 
 
+**e.** Regardless of your answers to the previous question, we will use theory-based methods to assess the hypotheses in part (c). Compute the relevant *standardized test statistic*. What distribution does the test statistic follow, if the null hypothesis is true? [Text and code for this question]
 
-**e.** Regardless of your answers to the previous question, we will use theory-based methods to assess the hypotheses in part (c). **Compute the relevant standardized test statistic. What distribution does the test statistic follow, if the null hypothesis is true?** [Text and code for this question]
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**f.** Using theory-based methods, compute the p-value for the test statistic you found in the previous part, given your hypotheses from part (c). Then make a conclusion at the $\alpha = 0.05$ significance level, **in context**. [Text and code for this question]
 
 *******************************************************************************
 
 
 
 *******************************************************************************
-
-
-
-
-**f.** Compute the p-value for the test statistic you found in the previous part, given your hypotheses from part (c). Then make a conclusion at the $\alpha = 0.05$ significance level, **in context**. [Text and code for this question]
-
-*******************************************************************************
-
-
-
-
-*******************************************************************************
-
 
 
 
 **g.** Create a 95% confidence interval for our test statistic *using the SE method* for theory-based inference. [Code only for this question]
 
 *******************************************************************************
-
 
 
 
@@ -347,11 +357,5 @@ head(dogs)
 
 
 
-
-
 *******************************************************************************
-
-
-
-
 

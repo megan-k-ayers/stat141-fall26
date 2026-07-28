@@ -1,6 +1,6 @@
 ---
 title: "Lab 10: Theory-Based Inference"
-subtitle: "STAT 141, Week 11"
+subtitle: "STAT 141, Week 12"
 author: "Your name here"
 format: pdf
 execute:
@@ -21,15 +21,16 @@ library(openintro)
 
 In this lab, you will
 
-  1. Make theory-based inferences on summary statistics in R
-  2. Explore data to determine whether assumptions for theory-based inference are met
-  3. Compare theory-based inference methods with simulation-based methods
+  1. Interpret a survey report and frame its questions and claims using theory-based inference
+  2. Make theory-based inferences for summary statistics in `R`
+
 
 ### Add any collaborators here!
 
 I collaborated with...
 
 **Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this course. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
+
 
 
 # Exercises
@@ -52,10 +53,7 @@ The press release for the poll, conducted by WIN-Gallup International, can be ac
 
 
 
-
 *******************************************************************************
-
-
 
 
 
@@ -65,12 +63,11 @@ The press release for the poll, conducted by WIN-Gallup International, can be ac
 
 
 
-
 *******************************************************************************
 
 
 
-**c.** Turn your attention to Table 6 (pages 14 and 15), which reports the sample size and response percentages for all 57 countries. While this is a useful format to summarize the data, we will base our analysis on the original data set of individual responses to the survey. Load this data set into R with the following command.
+**c.** Turn your attention to Table 6 (pages 14 and 15), which reports the sample size and response percentages for all 57 countries. While this is a useful format to summarize the data, we will base our analysis on the original data set of individual responses to the survey. Load this data set into `R` with the following command.
 
 ```{r }
 atheism <- read.csv("data/atheism.csv")
@@ -86,12 +83,9 @@ What does each row of Table 6 correspond to? What does each row of `atheism` cor
 
 
 
-
 **d.** To investigate the link between these two ways of organizing this data, take a look at the estimated proportion of atheists in the **United States** in **2012**. Towards the bottom of Table 6, we see that this is reported to be 5%. **Show how we can arrive at the same number (up to rounding) using the `atheism` data.** [Code only for this part]
 
 *******************************************************************************
-
-
 
 
 
@@ -108,18 +102,16 @@ Table 6 provides *statistics*, that is, calculations made from the sample of 51,
 
 Although formal confidence intervals and hypothesis tests don't show up in the report, suggestions of inference appear at the bottom of page 6: “In general, the error margin for surveys of this kind is +/- 3-5% at 95% confidence”. Let's practice providing more formalized results.
 
-**Suppose that the status quo established by religion scholars is that the proportion of atheists in the United States was 3\% of the population.** We'll perform a hypothesis test to determine if this assumption and our observed statistic are consistent.
+**Suppose that the status quo established by religion scholars was that the proportion of atheists in the United States in 2012 was 3\% of the population.** We'll perform a hypothesis test to determine if this assumption and our observed statistic are consistent.
 
 
-**a.** Write out the rule-of-thumb conditions required by *theory-based inference* to perform a hypothesis test for the proportion of atheists in the United States in 2012. Are you confident all conditions are met? [Text only for this part]
+**a.** Write out the rule-of-thumb conditions required by *theory-based inference* to perform a hypothesis test for the proportion of atheists in the United States in 2012. Are you confident all conditions are met? [Only text is needed for this part, but you can use code to support your answer.]
     
 *******************************************************************************
 
 
 
-
 *******************************************************************************
-
 
 
 
@@ -129,40 +121,25 @@ Although formal confidence intervals and hypothesis tests don't show up in the r
 
 
 
+*******************************************************************************
 
+
+
+**c.** Using tools from *theory-based inference*, your hypotheses, and the statistic observed above, calculate the p-value.  Then, write a conclusion about your test *in context* by referencing your calculated p-value and the stated hypotheses. [Text and code for this part]
 
 *******************************************************************************
 
 
 
-
-
-**c.** Using tools from *theory-based inference*, your hypotheses, and the statistic observed from Exercise 2, calculate the p-value.  Then, write a conclusion about your test *in context* by referencing your calculated p-value and the stated hypotheses. [Text and code for this part]
-
 *******************************************************************************
 
-
-
-
-*******************************************************************************
 
 
 ## Exercise 3: Confidence Intervals for Proportions
 
-**a.** It is often good practice to report both confidence intervals and p-values in statistical analyses. Let's do this for the proportion of atheists in the US in 2012. First, write out the theory-based sampling distribution that we can assume $\hat{p}$ to follow, based on the reported sample.
+**a.** It is good practice to report both confidence intervals and p-values in statistical analyses. Let's do this for the proportion of atheists in the US in 2012. First, write out the theory-based sampling distribution that we can assume $\hat{p}$ to follow, based on the reported sample. [Text only for this part]
 
 *******************************************************************************
-
-
-
-
-*******************************************************************************
-
-
-**b.** Using theory-based inference methods in R, calculate an 80% confidence confidence interval for the proportion of atheists in the US in 2012.
-
-*******************************************************************************
-
 
 
 
@@ -170,15 +147,11 @@ Although formal confidence intervals and hypothesis tests don't show up in the r
 
 
 
+**b.** Using theory-based inference methods in R, calculate an 80% confidence confidence interval for the proportion of atheists in the US in 2012. [Code only for this part]
+
+*******************************************************************************
 
 
 
-
-
-
-
-
-
-
-
+*******************************************************************************
 
