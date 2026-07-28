@@ -1,6 +1,6 @@
 ---
 title: "Homework 9: Random Variables"
-subtitle: "STAT 141, Week 10"
+subtitle: "STAT 141, Week 11"
 author: "Your name here"
 format: pdf
 execute:
@@ -21,12 +21,15 @@ library(infer)
 set.seed(1)
 ```
 
-## Assigned: Thursday, November 5th
-## Due: Thursday, November 12th at 9:00am on Gradescope as a **PDF**
+## Assigned: Thursday, November 12th
+## Due: Thursday, November 19th at 9:00am on Gradescope as a **PDF**
 
 In this homework assignment you will:
 
-- TBD (placeholder bullets left over from the old "Theory-based Inference" content -- needs new bullets reflecting Random Variables / Normal Distribution content)
+- Calculate the expectation, variance, and standard deviation of random variables
+- Calculate probabilities and quantiles for Normal distributions in `R`
+- Calculate and interpret z-scores
+- Use visualizations to assess Normality
 
 
 ### Add any collaborators here!
@@ -36,6 +39,7 @@ I collaborated with...
 **Remember that you are not allowed to use any internet resources or generative AI models (like ChatGPT or Claude) on your assignment. While there are many ways to achieve tasks in R, you may only use packages and functions that have been covered in this course. If you are unsure of how to approach an exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.**
 
 \newpage
+
 
 # Exercises
 
@@ -51,7 +55,7 @@ Supposed $X$ is a discrete random variable with the following distribution table
 |       10       |       0.3       |  
 
 
-**a.** What is $E(X)$?
+**a.** What is $E(X)$? [Only text/math is needed for this question]
 
 *******************************************************************************
 
@@ -61,7 +65,7 @@ Supposed $X$ is a discrete random variable with the following distribution table
 
 
 
-**b.** What are $Var(X)$ and $SD(X)$?
+**b.** What are $Var(X)$ and $SD(X)$? [Only text/math is needed for this question]
 
 *******************************************************************************
 
@@ -71,7 +75,7 @@ Supposed $X$ is a discrete random variable with the following distribution table
 
 
 
-**c.** Suppose $Y = X^2$. What is the distribution table for $Y$?
+**c.** Suppose $Y = X^2$. What is the distribution table for $Y$? [Only text/math is needed for this question]
 
 *******************************************************************************
 
@@ -84,7 +88,7 @@ Supposed $X$ is a discrete random variable with the following distribution table
 
 
 
-**d.** What is $E(Y) = E(X^2)$?
+**d.** What is $E(Y) = E(X^2)$? [Only text/math is needed for this question]
 
 *******************************************************************************
 
@@ -94,7 +98,7 @@ Supposed $X$ is a discrete random variable with the following distribution table
 
 
 
-**e.** Using your answers for parts (a) and (d), calculate $E(X^2) - [E(X)]^2$. Compare your answer to what you got for $Var(X)$ in part (b).
+**e.** Using your answers for parts (a) and (d), calculate $E(X^2) - [E(X)]^2$. Compare your answer to what you got for $Var(X)$ in part (b). [Only text/math is needed for this question]
 
 *******************************************************************************
 
@@ -107,26 +111,24 @@ Supposed $X$ is a discrete random variable with the following distribution table
 \newpage
 
 
+
 ## Exercise 2: Normal Distribution Warm Up
 
 The average daily high temperature in June in Los Angeles (LA) is 77 degrees Fahrenheit, with a standard deviation of 5 degrees. Suppose that the temperatures in June closely follow a normal distribution, i.e., $F\sim \text{Normal}(\mu=77, \sigma=5)$.
 
-**a.** What is the probability of observing an 83 degree or higher day in LA during a randomly chosen day in June? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
+**a.** What is the probability of observing an 83 degree or higher day in LA during a randomly chosen day in June? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*) [Code + text to state your answer clearly is needed for this question]
 
 *******************************************************************************
 
 
 
-
 *******************************************************************************
 
 
 
-**b.** How cool are the coldest 10% of the days (days with lowest high temperature) during June in LA? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*)
+**b.** How cool are the coldest 10% of the days (days with lowest high temperature) during June in LA? (*Hint: remember that the R functions `pnorm()`, `dnorm()`, and `qnorm()` can help you calculate quantities related to Normal distributions.*) [Code + text to state your answer clearly is needed for this question]
 
 *******************************************************************************
-
-
 
 
 
@@ -138,12 +140,12 @@ The average daily high temperature in June in Los Angeles (LA) is 77 degrees Fah
 
 The Graduate Record Exam (GRE) is a standardized test which serves as an admission requirement for many graduate schools, and has an analytic writing section and two multiple choice sections: Verbal Reasoning and Quantitative Reasoning. Due to forced Normalization in scores, both sections are approximately Normal. In a given year, suppose the mean score for Verbal Reasoning section was 462 with a standard deviation of 119, and the mean score for the Quantitative Reasoning was 584 with a standard deviation of 151.
 
-We will use the above information to explore the use of the R functions `pnorm` and `qnorm`.
+We will use the above information to continue exploring the use of the R functions `pnorm` and `qnorm`. As a reminder:
 
- * `pnorm(q)` will return the **cumulative probability**, or cumulative area under the normal curve to the *left* of a given point on the x-axis, $q$. 
+ * `pnorm(q)` will return the **cumulative probability** $P[X \leq q]$ for $X \sim \text{Normal}(0, 1)$, i.e. the cumulative area under the normal curve to the *left* of a given point on the x-axis, $q$.
  * `qnorm(p)` will return the **quantile** (on the x-axis) of a given **cumulative probability** $p$. I.e. it will find the point $q$ where $p*100$ percent of the area under the curve is to the left of $q$.
 
-By default, the curve considered is the *standard* normal distribution (see the slides from 4/3 for a refresher), but we can change the center and standard deviation of the normal distribution considered by adding `mean` and `sd` parameters. 
+By default, the curve considered is the *standard* normal distribution but we can change the center and standard deviation of the normal distribution considered by adding `mean` and `sd` parameters. 
 
 
 ### Using `pnorm`
@@ -201,38 +203,33 @@ Now lets imagine that a student is told that they scored in the 57% percentile o
 qnorm(0.57, mean = 584, sd = 151)
 ```
 
-This student's score is thus a 610.
+This student's score is thus a 610. 
 
 
 
-**a.** What is the percentage of the students who score between 590 and 630 on the Quantitative Reasoning section? (*Hint: draw a picture of the area under the curve corresponding to this quantity, and consider how we can calculate it using either `pnorm` or `qnorm`.*) [*Only code required*]
-
-*******************************************************************************
-
-
-
+**a.** What is the percentage of the students who score between 590 and 630 on the Quantitative Reasoning section? (*Hint: draw a picture of the area under the curve corresponding to this quantity, and consider how we can calculate it using either `pnorm` or `qnorm`.*) [Only code required]
 
 *******************************************************************************
 
 
 
+*******************************************************************************
 
-**b.** What is the probability that a randomly selected student earns obtains a score greater than 600 on both multiple choice sections? **Assume (somewhat unrealistically!), that scores on the two sections are independent**. [*Only code required*]
+
+
+**b.** What is the probability that a randomly selected student earns obtains a score greater than 600 on both multiple choice sections? **Assume (somewhat unrealistically!), that scores on the two sections are independent**. [Only code required]
 
 *******************************************************************************
 
 
 
-
 *******************************************************************************
-
 
 
 
 **c.** What score is needed on the Verbal Reasoning section to place in the **top** 10%? What score is needed to place in the top 10% on the Quantitative Reasoning section? [*Code + brief written response to distinguish which value is which*]
 
 *******************************************************************************
-
 
 
 
@@ -247,7 +244,7 @@ This student's score is thus a 610.
 
 ## Exercise 4: Standard Normal
 
-Often it is useful to work with the *Standard Normal*.  This is a normal distribution with a mean of 0 and a standard deviation of 1.  If we know that a value, $x$, is drawn from a normal distribution with a mean of $\mu$ and a standard deviation of $\sigma$, we can standardize it using the following formula:
+Often it is useful to work with the *Standard Normal*.  This is a normal distribution with a mean of 0 and a standard deviation of 1.  If we know that a value $x$ is drawn from a normal distribution with a mean of $\mu$ and a standard deviation of $\sigma$, we can standardize it using the following formula:
 $$
 z = \frac{x - \mu}{\sigma}
 $$
@@ -280,9 +277,7 @@ They have a z-score of -0.23.
 
 
 
-
 *******************************************************************************
-
 
 
 
@@ -290,23 +285,20 @@ They have a z-score of -0.23.
 
 *******************************************************************************
 
-
-
-
-*******************************************************************************
-
-
-
-
-
-**c.** Find the student's score percentiles for the two sections. [*Code + brief written response to distinguish which value is which*]
+ 
 
 *******************************************************************************
 
 
 
+**c.** Find the student's score percentiles for the two sections. You can use either their raw scores or their z-scores. [*Code + brief written response to distinguish which value is which*]
 
 *******************************************************************************
+
+
+
+*******************************************************************************
+
 
 
 ## Exercise 5: Checking Normality in Fast Food Data
@@ -318,7 +310,7 @@ data(fastfood)
 glimpse(fastfood)
 ```
 
-You'll see that for every observation there are 17 measurements, many of which are nutritional facts. We'll focus on just three columns to get started: restaurant, calories, calories from fat. And let's first focus on just products from McDonalds and Dairy Queen.
+You'll see that for every observation there are 17 measurements, many of which are nutritional facts. We'll focus on just three columns to get started: restaurant, calories, calories from fat. And let's focus on just products from McDonalds and Dairy Queen.
 
 ```{r}
 mcdonalds <- fastfood %>%           # Data frame with just McDonald's data
@@ -334,8 +326,8 @@ dairy_queen <- fastfood %>%         # Data frame with just Dairy Queen data
 
 
 
-
 *******************************************************************************
+
 
 
 **b.** In your description of the distributions, did you use words like *bell-shaped* or *normal*? It's tempting to say so when faced with a unimodal symmetric distribution. To see how accurate that description is, we can plot a normal distribution curve on top of a histogram to see how closely the data follow a normal distribution.
@@ -347,7 +339,7 @@ dq_mean <- mean(dairy_queen$cal_fat)
 dq_sd <- sd(dairy_queen$cal_fat)
 ```
 
-Next, we'll make a *density histogram* to use as the backdrop, and use `stat_function` to overlay a normal probability curve. The difference between a frequency histogram and a density histogram is that while in a frequency histogram the *heights* of the bars add up to the total number of observations, in a density histogram the *areas* of the bars add up to 1. This allows us to properly overlay a normal distribution curve over the histogram, since the curve is a normal probability density function that also has area under the curve of 1.
+Next, we'll make a *density histogram* with our empirical data to use as the backdrop, and use `stat_function` to overlay a theoretical normal probability curve. The difference between a frequency histogram and a density histogram is that while in a frequency histogram the *heights* of the bars add up to the total number of observations, in a density histogram the *areas* of the bars add up to 1. This allows us to properly overlay a normal distribution curve over the histogram, since the curve is a normal probability density function that also has area under the curve of 1.
 
 Frequency and density histograms both display the same exact shape; they only differ in their y-axis. You can verify this by comparing the frequency histogram you constructed earlier and the density histogram created by the commands below.
 
@@ -360,8 +352,7 @@ ggplot(data = dairy_queen, aes(x = cal_fat)) +
                 color = "tomato", lwd = 1)
 ```
 
-The first layer of the plot above is a density histogram. The second layer is a statistical function: the density of the normal curve, `dnorm`. We specify that we want the curve to have the same mean and standard deviation as the column of calories from fat.
-
+The first layer of the plot above is a density histogram: the data from Dairy Queen that we observe. The second layer is a statistical function: the theoretical density of the normal curve, `dnorm`. We specify that we want the curve to have the same mean and standard deviation as the column of calories from fat. You can think of this as us finding the theoretical Normal distribution that *best fits* our data according to its mean and standard deviation.
 
 Based on this plot, does it appear that the data follow a nearly normal distribution? **If you are unsure, describe which aspects may suggest normality, and which do not.** [*Only written response required*]
 
@@ -369,14 +360,13 @@ Based on this plot, does it appear that the data follow a nearly normal distribu
 
 
 
-
-
 *******************************************************************************
+
 
 
 ## Exercise 6: Checking Normality with Q-Q Plots
 
-Eyeballing the shape of the histogram is one way to determine if the data appear to be nearly normally distributed, but it can be frustrating to decide just how close the histogram is to the curve.
+Eyeballing the shape of the histogram is one way to determine if the data appear to be nearly normally distributed, but it can be frustrating to decide just how close the histogram is to the curve. It's especially tricky when we don't have a very large sample - there are only 42 values in the histogram above.
 
 We've already learned an alternative approach: using a Q-Q plot!
 
@@ -404,15 +394,13 @@ sim_norm_df <- data.frame(sim_norm)
 The first argument of `rnorm()` indicates how many numbers you'd like to generate, which we specify to be the same number of menu items in the `dairy_queen` data set using the `nrow()` function. The last two arguments determine the mean and standard deviation of the normal distribution from which the simulated sample will be generated.
 
 
-**a.** Make a Q-Q plot of `sim_norm`. What should we expect to see? Why do all of the points not fall perfectly along the line? [*Code + written response required*]
+**a.** Make a Q-Q plot of `sim_norm`. What should we expect to see? Why do all of the points not fall perfectly along the line, even though this data is drawn from a true Normal distribution? [*Code + written response required*]
 
 *******************************************************************************
 
 
 
-
 *******************************************************************************
-
 
 
 
@@ -422,9 +410,7 @@ The first argument of `rnorm()` indicates how many numbers you'd like to generat
 
 
 
-
 *******************************************************************************
-
 
 
 
@@ -453,7 +439,6 @@ ggplot(comp_data, aes(sample = value)) +
 
 
 
-
 *******************************************************************************
 
 
@@ -461,6 +446,7 @@ ggplot(comp_data, aes(sample = value)) +
 ## Exercise 7: Normal Probabilities
 
 Now we have a collection of tools to judge whether or not a variable is normally distributed.
+
 Why should we care?
 
 Statisticians know a lot about the normal distribution! Once you decide that a random variable is approximately normal, you can readily answer all sorts of questions about that variable related to probability. For example, consider the question *"What is the probability that a randomly chosen Dairy Queen product has more than 600 calories from fat?"*
@@ -473,7 +459,7 @@ If we assume that the calories from fat from Dairy Queen's menu are normally dis
 
 Note that the function `pnorm()` gives the area under the normal curve *less than a given value*, `q`, for a normal distribution with a given mean and standard deviation. Since we're interested in the probability that a Dairy Queen item has *more than* 600 calories from fat, we have to take one minus that probability.
 
-Assuming a normal distribution has allowed us to calculate a *theoretical probability*. If we want to calculate the probability *empirically*, we simply need to determine how many observations fall above 600 then divide this number by the total sample size.
+Assuming a normal distribution has allowed us to calculate a *theoretical probability*, based on the theoretical normal distribution that we claim our data comes from. If we want to calculate the probability *empirically*, we simply need to determine how many observations fall above 600 then divide this number by the total sample size.
 
 ```{r}
 dairy_queen %>%
@@ -483,7 +469,6 @@ dairy_queen %>%
 
 Although the probabilities are not exactly the same, they aren't terribly far apart. The closer that your distribution is to being normal, the more accurate the theoretical probabilities will be.
 
-
 Using both the empirical approach and the theoretical approach, calculate the probability that a randomly chosen item from **McDonalds** will have more than 1000 calories (measured in the `calories` column). Do the same to calculate the probability that a randomly chosen item from Dairy Queen will have more than 1000 calories. (*four calculations in all*). **Which restaurant had a closer agreement between the two methods?** 
 
 [Code + written response required]
@@ -492,9 +477,5 @@ Using both the empirical approach and the theoretical approach, calculate the pr
 
 
 
-
 *******************************************************************************
-
-
-
 
