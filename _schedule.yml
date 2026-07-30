@@ -15,7 +15,7 @@ scheduled-docs:
           date: 8/31/26
           docs:
             - type: Reading
-              href: readings/reading01_wk01mon.qmd
+              href: readings/reading01.qmd
             - type: Slides
               href: slides/lecture01_wk01mon.qmd
         - topic: "Data Visualization Introduction"
@@ -23,7 +23,7 @@ scheduled-docs:
           date: 9/2/26
           docs:
             - type: Reading
-              href: readings/reading02_wk01wed.qmd
+              href: readings/reading02.qmd
             - type: Slides
               href: slides/lecture02_wk01wed.qmd
         - topic: "Lab: Introduction to R, RStudio, and Quarto"
@@ -31,7 +31,7 @@ scheduled-docs:
           date: 9/3/26
           docs:
             - type: Reading
-              href: readings/reading03_wk01thu.qmd
+              href: readings/reading03.qmd
             - type: Lab Instructions
               href: readings/lab_instr_01.qmd
             - type: Download Lab
@@ -43,7 +43,7 @@ scheduled-docs:
           date: 9/4/26
           docs:
             - type: Reading
-              href: readings/reading04_wk01fri.qmd
+              href: readings/reading04.qmd
             - type: Slides
               href: slides/lecture03_wk01fri.qmd
             - type: Download HW01
@@ -61,7 +61,7 @@ scheduled-docs:
           date: 9/9/26
           docs:
             - type: Reading
-              href: readings/reading05_wk02wed.qmd
+              href: readings/reading05.qmd
             - type: Slides
               href: slides/lecture04_wk02wed.qmd
         - topic: "Lab: Data Visualization & Summary Statistics"
@@ -69,7 +69,7 @@ scheduled-docs:
           date: 9/10/26
           docs:
             - type: Reading
-              href: readings/reading06_wk02thu.qmd
+              href: readings/reading06.qmd
             - type: Download Lab
               href: lab/lab02.zip
         - topic: "Data Wrangling"
@@ -77,7 +77,7 @@ scheduled-docs:
           date: 9/11/26
           docs:
             - type: Reading
-              href: readings/reading07_wk02wed.qmd
+              href: readings/reading07.qmd
             - type: Slides
               href: slides/lecture05_wk02wed.qmd
       resources:
@@ -91,7 +91,7 @@ scheduled-docs:
           date: 9/14/26
           docs:
               - type: Reading
-                href: readings/reading08_wk02fri.qmd
+                href: readings/reading08.qmd
               - type: Slides
                 href: slides/lecture06_wk02fri.qmd
               - type: Download HW02
@@ -101,7 +101,7 @@ scheduled-docs:
           date: 9/16/26
           docs:
             - type: Reading
-              href: readings/reading09_wk03mon.qmd
+              href: readings/reading09.qmd
             - type: Slides
               href: slides/lecture07_wk03mon.qmd
         - topic: "Lab: Data Wrangling & Probability | Quiz 1"
@@ -115,7 +115,7 @@ scheduled-docs:
           date: 9/18/26
           docs:
             - type: Reading
-              href: readings/reading10_wk03wed.qmd
+              href: readings/reading10.qmd
             - type: Slides
               href: slides/lecture08_wk03wed.qmd
       resources:
@@ -130,7 +130,7 @@ scheduled-docs:
           date: 9/21/26
           docs:
             - type: Reading
-              href: readings/reading11_wk03fri.qmd
+              href: readings/reading11.qmd
             - type: Slides
               href: slides/lecture09_wk03fri.qmd
             - type: Download HW03
@@ -140,7 +140,7 @@ scheduled-docs:
           date: 9/23/26
           docs:
             - type: Reading
-              href: readings/reading12_wk04mon.qmd
+              href: readings/reading12.qmd
             - type: Slides
               href: slides/lecture10_wk04mon.qmd
         - topic: "Lab: Sampling, Study Design & SLR | Quiz 2"
@@ -156,7 +156,7 @@ scheduled-docs:
           date: 9/25/26
           docs:
             - type: Reading
-              href: readings/reading13_wk04wed.qmd
+              href: readings/reading13.qmd
             - type: Slides
               href: slides/lecture11_wk04wed.qmd
       resources:
@@ -171,7 +171,7 @@ scheduled-docs:
           date: 9/28/26
           docs:
             - type: Reading
-              href: readings/reading14_wk04fri.qmd
+              href: readings/reading14.qmd
             - type: Slides
               href: slides/lecture12_wk04fri.qmd
             - type: Download HW04
@@ -181,7 +181,7 @@ scheduled-docs:
           date: 9/30/26
           docs:
             - type: Reading
-              href: readings/reading15_wk05mon.qmd
+              href: readings/reading15.qmd
             - type: Slides
               href: slides/lecture13_wk05mon.qmd
         - topic: "Lab: Linear Regression | Quiz 3"
@@ -195,7 +195,7 @@ scheduled-docs:
           date: 10/02/26
           docs:
             - type: Reading
-              href: readings/reading16_wk05wed.qmd
+              href: readings/reading16.qmd
             - type: Slides
               href: slides/lecture14_wk05wed.qmd
       resources:
@@ -210,7 +210,7 @@ scheduled-docs:
           date: 10/05/26
           docs:
             - type: Reading
-              href: readings/reading17_wk05fri.qmd
+              href: readings/reading17.qmd
             - type: Slides
               href: slides/lecture15_wk05fri.qmd
             - type: Download HW05
@@ -220,7 +220,7 @@ scheduled-docs:
           date: 10/07/26
           docs:
             - type: Reading
-              href: readings/reading18_wk06mon.qmd
+              href: readings/reading18.qmd
             - type: Slides
               href: slides/lecture16_wk06mon.qmd
             - type: Midterm Review Sheet
@@ -230,7 +230,7 @@ scheduled-docs:
           date: 10/08/26
           docs:
             - type: Reading
-              href: readings/reading19_wk06thu.qmd
+              href: readings/reading19.qmd
             - type: Download Lab
               href: lab/lab06.zip
         - topic: "Sampling Distributions II: Properties"
@@ -238,7 +238,7 @@ scheduled-docs:
           date: 10/09/26
           docs:
             - type: Reading
-              href: readings/reading20_wk06wed.qmd
+              href: readings/reading20.qmd
             - type: Slides
               href: slides/lecture17_wk06wed.qmd
       resources:
@@ -253,7 +253,7 @@ scheduled-docs:
           date: 10/12/26
           docs:
             - type: Reading
-              href: readings/reading21_wk07fri.qmd
+              href: readings/reading21.qmd
             - type: Slides
               href: slides/lecture21_wk07fri.qmd
         - topic: "Sampling vs Bootstrapping Distributions"
@@ -261,7 +261,7 @@ scheduled-docs:
           date: 10/14/26
           docs:
             - type: Reading
-              href: readings/reading22_wk07mon.qmd
+              href: readings/reading22.qmd
             - type: Slides
               href: slides/lecture19_wk07mon.qmd
             - type: Download HW06
@@ -277,7 +277,7 @@ scheduled-docs:
           date: 10/16/26
           docs:
             - type: Reading
-              href: readings/reading23_wk07wed.qmd
+              href: readings/reading23.qmd
             - type: Slides
               href: slides/lecture20_wk07wed.qmd
       resources:
@@ -297,7 +297,7 @@ scheduled-docs:
           date: 10/26/26
           docs:
             - type: Reading
-              href: readings/reading24_wk07fri.qmd
+              href: readings/reading24.qmd
             - type: Slides
               href: slides/lecture21_wk07fri.qmd
         - topic: "Hypothesis Testing I: Introduction"
@@ -305,7 +305,7 @@ scheduled-docs:
           date: 10/28/26
           docs:
             - type: Reading
-              href: readings/reading25_wk08mon.qmd
+              href: readings/reading25.qmd
             - type: Slides
               href: slides/lecture22_wk08mon.qmd
         - topic: "Lab: Bootstrapping & Confidence Intervals | Quiz 5"
@@ -319,7 +319,7 @@ scheduled-docs:
           date: 10/30/26
           docs:
             - type: Reading
-              href: readings/reading26_wk08wed.qmd
+              href: readings/reading26.qmd
             - type: Slides
               href: slides/lecture23_wk08wed.qmd
       resources:
@@ -334,7 +334,7 @@ scheduled-docs:
           date: 11/02/26
           docs:
             - type: Reading
-              href: readings/reading27_wk10mon.qmd
+              href: readings/reading27.qmd
             - type: Slides
               href: slides/lecture25_wk10mon.qmd
         - topic: "P-Value Pitfalls"
@@ -342,7 +342,7 @@ scheduled-docs:
           date: 11/04/26
           docs:
             - type: Reading
-              href: readings/reading28_wk10wed.qmd
+              href: readings/reading28.qmd
             - type: Slides
               href: slides/lecture26_wk10wed.qmd
         - topic: "Lab: Hypothesis Testing | Quiz 6"
@@ -356,7 +356,7 @@ scheduled-docs:
           date: 11/06/26
           docs:
             - type: Reading
-              href: readings/reading29_wk10fri.qmd
+              href: readings/reading29.qmd
             - type: Slides
               href: slides/lecture27_wk10fri.qmd
             - type: Download HW08
@@ -373,7 +373,7 @@ scheduled-docs:
           date: 11/09/26
           docs:
             - type: Reading
-              href: readings/reading30_wk11mon.qmd
+              href: readings/reading30.qmd
             - type: Slides
               href: slides/lecture28_wk11mon.qmd
         - topic: "Random Variables III: Continuous Distributions & the CLT"
@@ -381,7 +381,7 @@ scheduled-docs:
           date: 11/11/26
           docs:
             - type: Reading
-              href: readings/reading31_wk11wed.qmd
+              href: readings/reading31.qmd
             - type: Slides
               href: slides/lecture29_wk11wed.qmd
         - topic: "Lab: Random Variables | Quiz 7"
@@ -395,7 +395,7 @@ scheduled-docs:
           date: 11/13/26
           docs:
             - type: Reading
-              href: readings/reading32_wk10mon.qmd
+              href: readings/reading32.qmd
             - type: Slides
               href: slides/lecture25_wk10mon.qmd
       resources:
@@ -410,7 +410,7 @@ scheduled-docs:
           date: 11/16/26
           docs:
             - type: Reading
-              href: readings/reading33_wk11fri.qmd
+              href: readings/reading33.qmd
             - type: Slides
               href: slides/lecture30_wk11fri.qmd
         - topic: "Theory-based Inference III: Means"
@@ -418,7 +418,7 @@ scheduled-docs:
           date: 11/18/26
           docs:
             - type: Reading
-              href: readings/reading34_wk12mon.qmd
+              href: readings/reading34.qmd
             - type: Slides
               href: slides/lecture31_wk12mon.qmd
         - topic: "Lab: Theory-Based Inference | Quiz 8"
@@ -432,7 +432,7 @@ scheduled-docs:
           date: 11/20/26
           docs:
             - type: Reading
-              href: readings/reading35_wk12wed.qmd
+              href: readings/reading35.qmd
             - type: Slides
               href: slides/lecture32_wk12wed.qmd
       resources:
@@ -447,7 +447,7 @@ scheduled-docs:
           date: 11/23/26
           docs:
             - type: Reading
-              href: readings/reading36_wk12fri.qmd
+              href: readings/reading36.qmd
             - type: Slides
               href: slides/lecture33_wk12fri.qmd
             - type: Download HW09
@@ -457,7 +457,7 @@ scheduled-docs:
           date: 11/25/26
           docs:
             - type: Reading
-              href: readings/reading37_wk13mon.qmd
+              href: readings/reading37.qmd
             - type: Slides
               href: slides/lecture34_wk13mon.qmd
         - topic: "No Class (Thanksgiving Break)"
@@ -476,7 +476,7 @@ scheduled-docs:
           date: 11/29/26
           docs:
             - type: Reading
-              href: readings/reading38_wk13wed.qmd
+              href: readings/reading38.qmd
             - type: Slides
               href: slides/lecture35_wk13wed.qmd
             - type: Activity
@@ -486,7 +486,7 @@ scheduled-docs:
           date: 12/02/26
           docs:
             - type: Reading
-              href: readings/reading39_wk13fri.qmd
+              href: readings/reading39.qmd
             - type: Slides
               href: slides/lecture36_wk13fri.qmd
         - topic: "Lab: Inference for Regression | Quiz 9"
@@ -500,7 +500,7 @@ scheduled-docs:
           date: 12/04/26
           docs:
             - type: Reading
-              href: readings/reading40_wk14mon.qmd
+              href: readings/reading40.qmd
             - type: Slides
               href: slides/lecture37_wk14mon.qmd
             - type: Exam Review Sheet
