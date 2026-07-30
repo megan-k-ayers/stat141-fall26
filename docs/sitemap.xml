@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>XXX SITE URL HERE XXX/syllabus.html</loc>
+    <lastmod>2026-07-30T21:57:51.708Z</lastmod>
+  </url>
+  <url>
     <loc>XXX SITE URL HERE XXX/index.html</loc>
     <lastmod>2026-05-12T01:39:02.002Z</lastmod>
   </url>
   <url>
-    <loc>XXX SITE URL HERE XXX/slides/lecture27_wk10fri.html</loc>
-    <lastmod>2026-04-03T16:48:30.513Z</lastmod>
-  </url>
-  <url>
-    <loc>XXX SITE URL HERE XXX/slides/lecture26_wk10wed.html</loc>
-    <lastmod>2026-04-01T20:58:32.467Z</lastmod>
-  </url>
-  <url>
-    <loc>XXX SITE URL HERE XXX/slides/lecture29_wk11wed.html</loc>
-    <lastmod>2026-04-08T20:10:05.592Z</lastmod>
-  </url>
-  <url>
-    <loc>XXX SITE URL HERE XXX/slides/lecture15_wk05fri.html</loc>
-    <lastmod>2026-03-12T20:46:51.080Z</lastmod>
+    <loc>XXX SITE URL HERE XXX/office_hours.html</loc>
+    <lastmod>2026-07-30T20:17:27.417Z</lastmod>
   </url>
 </urlset>

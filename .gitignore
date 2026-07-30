@@ -1,5 +1,6 @@
 /.quarto/
 **/*.quarto_ipynb
 quiz/
-lab-solutions/
-hw-solutions/
+*lab-solutions/
+*hw-solutions/
+*quiz-solutions/

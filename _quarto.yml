@@ -7,6 +7,11 @@ project:
     - "!labs/*"
     - "!hw/*"
     - "!slides/combined_slides.qmd"
+    - "!hw-solutions/"
+    - "!lab-solutions/"
+    - "!quiz/"
+    - "!quiz-solutions"
+    - "!in_class/"
 
 website:
   title: "STAT 141"
@@ -24,10 +29,6 @@ website:
         text: Syllabus
       - href: office_hours.qmd
         text: Office Hours
-      # - href: slides/all_slides_wk1-7.pdf
-      #   text: Combined Slides PDF (Wks 1-7)
-      # - href: slides/all_slides_wk8+.pdf
-      #   text: Combined Slides PDF (Wks 8+)
       # - href: inference_cheatsheet.qmd
       #   text: Inference Summary Tables
     tools:

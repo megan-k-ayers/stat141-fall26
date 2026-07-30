@@ -1,555 +1,86 @@
 [
   {
-    "objectID": "slides/lecture27_wk10fri.html#hw-announcement",
-    "href": "slides/lecture27_wk10fri.html#hw-announcement",
-    "title": "STAT 141",
-    "section": "HW Announcement",
-    "text": "HW Announcement\n\nHW 8 is posted\n\nIt is due in 2 weeks, on Friday April 17th 11:59pm.\nAfter today we will have covered all relevant lecture material\nIn the next lab we’ll practice related R functions more\nMy suggestion: start on non-R problems now, save 2c-f, 4, 5d-e for after the next lab"
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Lecture and Lab Instructor: Megan Ayers (she/her)\n\nEmail: meganayers@reed.edu\nOffice hours: See Moodle for weekly office hour times and locations. I am also happy to meet ad hoc by appointment if you have conflicts during the scheduled times. Please email me or send me a Slack message to find a time to meet.\n\nCourse Assistants: We have X course assistants for STAT 141 this semester! A course assistant will be present at each lab section. Further, each course assistant will hold office hours during the week. Times and locations of course assistant office hours can be found on Moodle. Feel free to go to any course assistant’s office hours, even if they are not the course assistant for your lab section.\nLinks and course resources:\nThe course website, link-here, includes information on the course, lecture slides, public course materials, and links to all other course resources:\n\nTextbooks (links on this Syllabus page)\nRStudio Server, for working on homework and lab assignments\nSlack, for course correspondence,\nGradescope, for turning in assignments, and\nMoodle, (sparingly) for information about meetings and private course materials\n\nNote that the entire course website (including lecture slide material) is searchable!! This may come in handy when completing assignments. Click on the magnifying glass icon in the upper right corner of the website to search.\nMeeting Times:\nWe’ll have a lecture-style meeting three times a week, and a lab meeting once a week. Please see the course Moodle page or the Reed schedule of classes to verify the times and locations for your section.\nCommunication: I am most easily reached over email on weekdays between 9am and 5pm. I will do my best to answer your email within one school day. For urgent matters, please email me rather than sending a Slack message. For non-urgent course-related questions, particularly questions that fellow classmates or course assistants may know the answer to, your question may be answered more quickly in a public channel on Slack, which I will also monitor."
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#goals-for-today",
-    "href": "slides/lecture27_wk10fri.html#goals-for-today",
-    "title": "STAT 141",
-    "section": "Goals for Today",
-    "text": "Goals for Today\n\nAnswers from last class activity\nDiscuss continuous random variables\nIntroduce the normal distribution\nDiscuss the Central Limit Theorem!"
+    "objectID": "syllabus.html#useful-information",
+    "href": "syllabus.html#useful-information",
+    "title": "Syllabus",
+    "section": "",
+    "text": "Lecture and Lab Instructor: Megan Ayers (she/her)\n\nEmail: meganayers@reed.edu\nOffice hours: See Moodle for weekly office hour times and locations. I am also happy to meet ad hoc by appointment if you have conflicts during the scheduled times. Please email me or send me a Slack message to find a time to meet.\n\nCourse Assistants: We have X course assistants for STAT 141 this semester! A course assistant will be present at each lab section. Further, each course assistant will hold office hours during the week. Times and locations of course assistant office hours can be found on Moodle. Feel free to go to any course assistant’s office hours, even if they are not the course assistant for your lab section.\nLinks and course resources:\nThe course website, link-here, includes information on the course, lecture slides, public course materials, and links to all other course resources:\n\nTextbooks (links on this Syllabus page)\nRStudio Server, for working on homework and lab assignments\nSlack, for course correspondence,\nGradescope, for turning in assignments, and\nMoodle, (sparingly) for information about meetings and private course materials\n\nNote that the entire course website (including lecture slide material) is searchable!! This may come in handy when completing assignments. Click on the magnifying glass icon in the upper right corner of the website to search.\nMeeting Times:\nWe’ll have a lecture-style meeting three times a week, and a lab meeting once a week. Please see the course Moodle page or the Reed schedule of classes to verify the times and locations for your section.\nCommunication: I am most easily reached over email on weekdays between 9am and 5pm. I will do my best to answer your email within one school day. For urgent matters, please email me rather than sending a Slack message. For non-urgent course-related questions, particularly questions that fellow classmates or course assistants may know the answer to, your question may be answered more quickly in a public channel on Slack, which I will also monitor."
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#activity-survey-of-portlanders",
-    "href": "slides/lecture27_wk10fri.html#activity-survey-of-portlanders",
-    "title": "STAT 141",
-    "section": "Activity: Survey of Portlanders",
-    "text": "Activity: Survey of Portlanders\nSuppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief.\n\nAssume your belief is true. Let \\(X\\) be the number of survey respondents who think the city should install more bike lanes. Does \\(X\\) follow a Binomial distribution? If so, what are \\(n\\) and \\(p\\)?\nCalculate the expected value and standard deviation of \\(X\\) (still assuming your belief is true)\nSuppose you conducted the survey and found 30 respondents wanted more bike lanes. What’s the probability that \\(X\\geq 30\\)? (use R!)\nDraw the connection between the probability you calculated and a hypothesis test."
+    "objectID": "syllabus.html#learning-outcomes",
+    "href": "syllabus.html#learning-outcomes",
+    "title": "Syllabus",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\nIn this course, you will learn how to think critically with data by engaging in the entire data analysis process through theory, computation, and practice. While most of our time will be spent learning techniques related to the Exploration and Visualization step and the Modeling and Inference step, you will also practice the other important components of analyzing data. Furthermore, since computation is an integral part of modern statistical work, you will learn to write R code – leveraging the RStudio user interface – to analyze data and will become familiar with several tidyverse R packages. You will also develop a reproducible and shareable workflow by using Quarto documents for all analyses.\nBy the end of the course, you will have improved your data acumen and your ability to think statistically. More concretely, you will be better able to accomplish the following tasks, which have been broken down by steps of the data analysis workflow:\n\n\n\n\n\nQuestion formulation:\n\nTranslate a research problem into a set of questions that can be answered with data.\nFormulate data questions as measurable statements about statistics and parameters.\n\nData acquisition:\n\nDetermine the necessary data to conduct analyses.\nReflect on how design structures and data collection impact potential conclusions.\nIdentify potential ethical concerns surrounding data collection and data privacy.\n\nData wrangling:\n\nExplore datasets to determine what wrangling may be required (e.g., removing missing values, filtering out variables or observations, collapsing categories of a categorical variable).\nApply basic data wrangling operations.\n\nExploration and Visualization:\n\nUnderstand key principles of designing and creating effective data visualizations.\nCreate graphs from data, and appropriately draw conclusions from graphs.\nCompute and interpret summary statistics.\n\nModeling and Inference:\n\nUnderstand and be able to explain key probabilistic and inferential concepts, such as, sampling, variability, random variables, distributions, confidence, and significance.\nUse probability theory and data to recognize patterns and associations between variables.\nCreate and assess the appropriateness of linear regression models for a given problem and set of data.\nAppropriately apply and draw inferences from a statistical analysis using both simulation-based and theory-based methods, including quantifying and interpreting the uncertainty in model estimates.\nConsider the ethical implications of various modeling practices.\n\nCommunicating Findings:\n\nDevelop a reproducible workflow using Quarto documents.\nInterpret and communicate results of statistical analyses effectively for both a statistical and a non-statistical audience.\nBe able to reflect on the data involved in an analysis and show a curiosity for other ways of examining and thinking about the data."
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#activity-survey-of-portlanders-answers",
-    "href": "slides/lecture27_wk10fri.html#activity-survey-of-portlanders-answers",
-    "title": "STAT 141",
-    "section": "Activity: Survey of Portlanders (Answers)",
-    "text": "Activity: Survey of Portlanders (Answers)\nSuppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief.\n\nAssume your belief is true. Let \\(X\\) be the number of survey respondents who think the city should install more bike lanes. Does \\(X\\) follow a Binomial distribution? If so, what are \\(n\\) and \\(p\\)?\n\n\\(X\\) follows a Binomial(\\(n=50,p=0.4\\)) distribution.\n\nCalculate the expected value and standard deviation of \\(X\\) (assuming your belief)\n\n\n\\[E[X] = (50)(.4) = 20\\] \\[SD[X] = \\sqrt{(50)(.4)(1-.4)} = 3.46\\]\n\n\nSuppose you conducted the survey and found 30 respondents wanted more bike lanes. What’s the probability that \\(X\\geq 30\\)? (use R!)\n\n\\(P[X\\geq30] = 1 - \\texttt{pbinom}(29,~ 50,~ 0.4) = 0.0033\\)\n\nDraw the connection between the probability you calculated and a hypothesis test.\n\nWe are testing \\(H_0: p=0.4\\) vs. \\(H_a: p&gt;0.4\\)\nTest statistic: \\(\\hat{p}=30/50\\)\np-value = 0.0033"
+    "objectID": "syllabus.html#learning-materials-tools",
+    "href": "syllabus.html#learning-materials-tools",
+    "title": "Syllabus",
+    "section": "Learning Materials & Tools",
+    "text": "Learning Materials & Tools\nTextbooks: We’ll use three textbooks for our course, all of which are freely available online:\n\nStatistical Inference via Data Science: A ModernDive into R and the tidyverse, Second Edition\n\nReading abbreviation: MD\n\nIntroduction to Modern Statistics, Second Edition\n\nReading abbreviation: IMS\n\nOpenIntro Statistics, Fourth Edition\n\nReading abbreviation: OI\n\n\nTechnologies (R, RStudio, and Quarto): R is a free and open source programming language, RStudio is an Integrated Development Environment (IDE) which allows for streamlined use of the R programming language, and Quarto is a markdown language that allows for reproducible documents that include R code, text, images, and much more! We will access these technologies via the RStudio Server for this course. A laptop that can access the internet and use the RStudio Server is required for this course."
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#the-distribution-of-a-continuous-variable",
-    "href": "slides/lecture27_wk10fri.html#the-distribution-of-a-continuous-variable",
-    "title": "STAT 141",
-    "section": "The Distribution of a Continuous Variable",
-    "text": "The Distribution of a Continuous Variable\nIf \\(X\\) is a continuous random variable, it can take on any value in an interval.\n\ne.g., \\(0\\leq X\\leq 10\\) or \\(-\\infty &lt; X &lt; \\infty\\)\n\n\nRecall: For discrete random variables, we could list the probability of each possible outcome.\n\nFor continuous random variables, this won’t work. There are an uncountable number of outcomes!\n\n\n\nInstead, we represent relative chances of different possible outcomes using a density function \\(f(x)\\)\n\n\n\n\\(f(x) \\geq 0\\) for all possible \\(X\\)\nThe total area under the function is \\(1\\)\n\\(P(a\\leq X\\leq b)\\) is the area under \\(f\\) between \\(a\\) and \\(b\\)"
+    "objectID": "syllabus.html#assignments-activities-and-exams",
+    "href": "syllabus.html#assignments-activities-and-exams",
+    "title": "Syllabus",
+    "section": "Assignments, activities, and exams",
+    "text": "Assignments, activities, and exams\nWe’ll have a variety of assignments, activities, and assessments for this course. In particular:\n\nLab assignments:\n\nEvery week we will have a lab assignment. The lab assignments will be worked on collaboratively during lab time on Thursdays, where you will be able to ask the instructor and the course assistant questions. They are designed to help you practice implementing concepts and tasks from lecture, particularly those that relate to coding in R. The following homework assignment will build on questions covered in lab.\n\nLab assignments will be made available for download from the course website before each lab.\nYou will submit the progress you made on each lab assignment via Gradescope at the end of your section’s lab time. Labs will be assessed as part of your participation grade, and while you may receive some feedback on your lab work, you will not receive a numeric score.\n\nLate labs will not be accepted, though you are expected to complete them on your own to prepare for homework assignments even if you miss lab.\nLab assignments will count for a small portion of your grade, but will be very important for preparing for the upcoming homework assignment and quiz.\n\nHomework assignments:\n\nEvery week we will have a homework assignment. Homework assignments will be posted on the course website on Thursday mornings.\nThese will be turned in via Gradescope by 9:00am on Thursay of the following week.\nHomework assignments will largely build on or continue content from that week’s lab, and may also cover additional material from lecture.\nYou will receive detailed feedback on your homework assignments, and scores will be assigned based on completion and effort.\nHomework assignments represent a higher proportion of your grade than labs, but a relatively small proportion overall.\nEngaging with homework assignments and discussing them in office hours will be the best way to study for the next week’s quiz!\nCompletion grades and feedback are given based on your submitted PDF, and regrade requests will not be accepted. Be sure to check that your rendered PDF legibly displays all of your work before submitting homework assignments to avoid formatting issue frustration!\n\nQuizzes:\n\nAlmost every week at the beginning of lab we will have a short quiz, based closely on the material from the last week’s homework assignment.\nCumulatively, quizzes have the largest impact on your grade. However, there will be 10 quizzes throughout the semester, so each individual quiz will be relatively low-stakes.\nQuizzes will be taken on paper and will be entirely closed-notes.\nWhile you will not be asked to write code in R during quizzes, you may be asked to write pseudo-code, describe coding steps qualitatively, or explain code that is shown to you.\nYou will have the opportunity to submit quiz revisions within 1 week of feedback being posted, and to submit make-up quizzes (in the event of absences) for partial credit.\nYour two lowest quiz grades will be dropped, but dropped quizzes may not include quizzes that you were absent for if you did not submit a make up quiz.\n\nIn-class activities:\n\nLectures and labs will often involve some in-class activities. Including but not limited to:\n\ngroup activities,\nindependent activities,\nparticipation-based learning assessments.\n\n\nReadings:\n\nReadings will be posted ahead of every lecture. These may include a mix of content from the course textbooks and content from past lectures to review.\nReadings are highly encouraged for deep engagement with course material and commitment of concepts to long-term memory.\nThe content in readings may seem repetitive with lecture content - this is by design! The more frequently you encounter and think through concepts that are presented in different ways, the better you will remember them, and the more deeply you will be able to engage with future material in the course that builds on them.\n\nFinal Exam:\n\nWe’ll have one exam (a final exam) for this course. The exam will consist of an in-person written exam.\nThe final exam period will be three hours, and will be held during finals week (the official finals schedule is TBD).\nNo late exams will be accepted."
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#density-curve",
-    "href": "slides/lecture27_wk10fri.html#density-curve",
-    "title": "STAT 141",
-    "section": "Density Curve",
-    "text": "Density Curve\nSuppose \\(X\\) is a random variable representing the time (in seconds) it takes for a particle to experience radioactive decay, where \\[\nf(x) = e^{-x} \\qquad \\textrm{for } x\\geq 0\n\\]\n\n\n\n\n\n\n\n\n\n\n\nThe probability that it takes between \\(1\\) and \\(2\\) seconds to decay is the area under the curve between \\(1\\) and \\(2\\). \\(P(1 &lt; T &lt; 2) =\\)"
+    "objectID": "syllabus.html#attendance",
+    "href": "syllabus.html#attendance",
+    "title": "Syllabus",
+    "section": "Attendance",
+    "text": "Attendance\nBeing actively present in lectures and labs is very important in this course. This requires attendance, and can look like:\n\nActive listening\nContributing to small group or classroom level discussions\nContributing to discussions on Slack.\n\nBeing consistently absent, late to class, or being consistently distracted during class (ex. using cell phone or doing homework during lecture), or consistently not participating in group work will have a negative impact on your participation grade."
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#density-curve-1",
-    "href": "slides/lecture27_wk10fri.html#density-curve-1",
-    "title": "STAT 141",
-    "section": "Density Curve",
-    "text": "Density Curve\nSuppose \\(X\\) is a random variable representing the time (in seconds) it takes for a particle to experience radioactive decay, where \\[\nf(x) = e^{-x} \\qquad \\textrm{for } x\\geq 0\n\\]\n\n\n\n\n\n\n\n\n\n\nThe probability that it takes between \\(1\\) and \\(2\\) seconds to decay is the area under the curve between \\(1\\) and \\(2\\). \\(P(1 &lt; T &lt; 2) = \\color{red}{0.232}\\)"
+    "objectID": "syllabus.html#distribution-requirements",
+    "href": "syllabus.html#distribution-requirements",
+    "title": "Syllabus",
+    "section": "Distribution Requirements",
+    "text": "Distribution Requirements\nThis course can be used towards your Group III, “Natural, Mathematical, and Psychological Science” requirement. It accomplishes the following learning goals for the group:\n\nUse and evaluate quantitative data or modeling, or use logical/mathematical reasoning to evaluate, test or prove statements.\nGiven a problem or question, formulate a hypothesis or conjecture, and design an experiment, collect data or use mathematical reasoning to test or validate it.\nCollect, analyze, and interpret data.\n\nThis course does not satisfy the “primary data collection and analysis” requirement."
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables",
-    "href": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables",
-    "title": "STAT 141",
-    "section": "Practice with Continuous Random Variables",
-    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1)\\)\n\\(P(X \\leq 2)\\)\n\\(P(2 \\leq X \\leq 3)\\)"
+    "objectID": "syllabus.html#course-climate",
+    "href": "syllabus.html#course-climate",
+    "title": "Syllabus",
+    "section": "Course Climate",
+    "text": "Course Climate\nWe expect everyone in this class to strive to foster a learning environment that is equitable, inclusive, and welcoming. If you experience any barriers to learning, please come to Professor Megan Ayers or a college administrator with your concerns.\nCode of Conduct:\nWe expect all members of Math 141 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.\nWe expect everyone to act and interact in ways that contribute to an open, welcoming, inclusive, and healthy community of learners. You can contribute to a positive learning environment by demonstrating empathy and kindness, being respectful of differing viewpoints and experiences, and giving and gracefully accepting constructive feedback.1"
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-1",
-    "href": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-1",
-    "title": "STAT 141",
-    "section": "Practice with Continuous Random Variables",
-    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1) = 1 * 0.4 = \\boxed{0.4}\\)\n\\(P(X \\leq 2)\\)\n\\(P(2 \\leq X \\leq 3)\\)"
+    "objectID": "syllabus.html#policies",
+    "href": "syllabus.html#policies",
+    "title": "Syllabus",
+    "section": "Policies",
+    "text": "Policies\nTechnology policy:\n\nFor some parts of the course, we will ask you to use your phone/tablet/computer to engage with course material (ex. you’ll be asked to take attendance via online survey at the start of lecture, and to use your laptop to work on lab assignments and occasionally during lecture).\nWe ask that you do not wear headphones at any point during labs or lectures.\nDuring other parts of the course, we will ask you to put away all devices, including phones, laptops, and headphones. This will primarily apply to time when the instructor is actively lecturing: please plan to take notes during lectures by hand. Note that all lecture slides will be made available on the course website.\n\nWhy this policy? It is super easy to become distracted by other things on your devices while you are typing notes! App and social media developers are literally trying their very best to distract us all, all of the time. I (Megan) admit that I am easily distracted and am constantly a victim of this. Let’s remove the opportunity for distraction during lecture so that we can all focus and engage with the course material.\n\nAdvice for note taking during lecture:\n\nYou don’t need to transcribe everything that is on the slides or that I say, especially because slides will all be posted online. Focus on summarizing content and ideas in your own words, recording any questions you have, and emphasizing any insights that helped you make sense of a concept.\nReference the slide number when taking each note so that you can contextualize it with the slides when reviewing your notes. It may be particularly helpful to make list of slides where code examples are provided for different tasks.\n\n\nLate work policy:\n\nQuizzes: Since quizzes are taken in-person during lab, a missed quiz will be assigned a score of 0. However, you have the opportunity to make up a missed quiz outside of class for up to 50% partial credit by submitting a quiz revision. To help with various circumstances expected and unexpected, quizzes that have been made up outside of class are eligible to be dropped from your final grade, no questions asked (the two lowest quiz scores from attempted quizzes will be dropped at the end of the semester).\nHomeworks: To be considered for full credit, homework assignments must be submitted by their deadline. Late homework assignments will be accepted for up to 50% partial credit at any time before the end of the last day of class, Wednesday December 9th at 11:59pm. Late submissions of homework assignments are not guaranteed timely or detailed feedback - you are encouraged to meet with Megan or course assistants in office hours to clarify any questions or discuss solutions from any late homework assignments.\nLabs: Lab assignments will be due at the end of each lab section and will count towards a small participation grade. You will have a grace period until the end of the day to submit your lab in the case of a rendering error. In the event of a lab absence, you are expected to prepare for homework assignments by completing labs on your own, but late submissions of lab assignments will not be accepted.\nExam: The final exam cannot be made up, except in cases with academic accommodations.\n\n\n\n\nCollaboration Policy and Academic Honesty:\nWorking with your classmates on difficult and interesting problems can not only help your learning, but also help you get to know each other! Therefore, I highly encourage you to collaborate on assignments. But, every piece of work you do must be your own. Copying other people’s work or code is not acceptable (whether they are in the course or not), nor is allowing other people to copy and paste your own work. The Honor Principle must guide your conduct in this class.\nIf you choose to collaborate with a classmate, you must add their name to the top of your assignment, and list them as a collaborator, e.g.:\nCollaborator(s): Michael Pearce, Lenny Wainstein, Grayson White\nBut what is collaboration?:\nFor STAT 141, collaboration can look like: working with classmates together on a given problem, doing scratch work, helping each other get un-stuck on a part of a problem, and even coming to a solution. However, you must write up your own problem solutions individually and cannot copy other’s solutions (even those who you have collaborated with). You are expected to be able to explain your submitted solutions. Further, copying code from a collaborator, classmate, an internet resource, or a generative AI tool (see the following section) is strictly prohibited.\nAI and Internet Use Policy:\nArtificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. If you have questions about whether a tool is allowed for this course, ask the Instructor before using it.\nWhile there are many ways to achieve tasks in R, and many helpful internet resources for learning about them, this course is designed to be self contained, and you may only use functions and packages that have been covered in this course on your assignments. You may use online documentation resources to refresh yourself or learn more about functions that have been introduced in class. If you have questions at any point about other functions or packages, I (Megan) am happy to discuss! If you are unsure of how to approach a particular exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel."
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-2",
-    "href": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-2",
-    "title": "STAT 141",
-    "section": "Practice with Continuous Random Variables",
-    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1) = 1 * 0.4 = \\boxed{0.4}\\)\n\\(P(X \\leq 2) = 2 * 0.4 = \\boxed{0.8}\\)\n\\(P(2 \\leq X \\leq 3)\\)"
+    "objectID": "syllabus.html#acknowledgements",
+    "href": "syllabus.html#acknowledgements",
+    "title": "Syllabus",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThank you to Grayson White for allowing me to largely reuse the website structure he developed for Stat 141, and many of the related course materials (which in turn were influenced by the work of many others). Thank you to Michael Pearce and Lenny Wainstein, whose previous Stat 141 course materials have also been adapted for this course."
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-3",
-    "href": "slides/lecture27_wk10fri.html#practice-with-continuous-random-variables-3",
-    "title": "STAT 141",
-    "section": "Practice with Continuous Random Variables",
-    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1) = 1 * 0.4 = \\boxed{0.4}\\)\n\\(P(X \\leq 2) = 2 * 0.4 = \\boxed{0.8}\\)\n\\(P(2 \\leq X \\leq 3) = \\frac{1}{2} * 1 * 0.4 = \\boxed{0.2}\\)"
+    "objectID": "syllabus.html#footnotes",
+    "href": "syllabus.html#footnotes",
+    "title": "Syllabus",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
-    "objectID": "slides/lecture27_wk10fri.html#mean-and-variance",
-    "href": "slides/lecture27_wk10fri.html#mean-and-variance",
-    "title": "STAT 141",
-    "section": "Mean and Variance",
-    "text": "Mean and Variance\nContinuous variables have a mean, variance, and standard deviation too!\n\n\nWe can’t use the same definition as for discrete random variables. \\[E[X] = \\sum_x xP[X=x]\\]\n\n\n\n\nThere are infinitely many values\nWith infinitely many, each specific value has probability 0 of occurring\n\n\n\nInstead, we have to use calculus to define mean and variance: \\[\n\\begin{align}\nE[X] &= \\int x f(x) \\, dx\\\\\n\\mathrm{Var}(X) &= \\int (x - \\mu)^2 f(x) \\, dx\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#mean-and-variance-1",
-    "href": "slides/lecture27_wk10fri.html#mean-and-variance-1",
-    "title": "STAT 141",
-    "section": "Mean and Variance",
-    "text": "Mean and Variance\n\\[\n\\begin{align}\nE[X] &= \\int x f(x) \\, dx\\\\\n\\mathrm{Var}(X) &= \\int (x - \\mu)^2 f(x) \\, dx\\\\\n\\mathrm{SD}(X) &=\\sqrt{\\mathrm{Var}(X)}\n\\end{align}\n\\]\n\n\nThese integrals are tools to meaningfully average infinitely many values\n(We won’t compute any integrals in this class!)\n\n\n\nAs always…\n\nthe mean of a random variable represents a typical value.\nthe standard deviation represents the typical size of deviations from the mean."
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#the-normal-distribution-1",
-    "href": "slides/lecture27_wk10fri.html#the-normal-distribution-1",
-    "title": "STAT 141",
-    "section": "The Normal Distribution",
-    "text": "The Normal Distribution\nThe Normal distribution is defined by two parameters:\n\nMean, \\(\\mu\\)\nStandard deviation, \\(\\sigma\\)\n\n\nSuppose \\(X\\) follows a Normal(\\(\\mu\\),\\(\\sigma\\)) distribution. The density function is\n\n\n\\[f(x) = \\frac{1}{\\sqrt{2 \\pi \\sigma^2}} \\cdot\\exp \\left(\\frac{-(x-\\mu)^2}{2\\sigma^2}\\right)\\]\n\n(Don’t memorize this!)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis is the official name for “bell curves”!"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#calculating-probabilities",
-    "href": "slides/lecture27_wk10fri.html#calculating-probabilities",
-    "title": "STAT 141",
-    "section": "Calculating Probabilities",
-    "text": "Calculating Probabilities\nR has built-in functions for calculating probabilities from a normal distribution.\n\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\n\n\\(P(X &lt; 80) =\\)\n\n\npnorm(q = 80, mean = 75, sd = 5)\n\n[1] 0.8413447"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#calculating-probabilities-1",
-    "href": "slides/lecture27_wk10fri.html#calculating-probabilities-1",
-    "title": "STAT 141",
-    "section": "Calculating Probabilities",
-    "text": "Calculating Probabilities\nR has built-in functions for calculating probabilities from a normal distribution.\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\\(P(X \\geq 80) = P(X&gt;80)=\\)\n\n\n1-pnorm(q = 80, mean = 75, sd = 5)\n\n[1] 0.1586553"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#calculating-probabilities-2",
-    "href": "slides/lecture27_wk10fri.html#calculating-probabilities-2",
-    "title": "STAT 141",
-    "section": "Calculating Probabilities",
-    "text": "Calculating Probabilities\nR has built-in functions for calculating probabilities from a normal distribution.\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\\(P(70 \\leq X \\leq 80) = P(X\\leq 80) - P(X\\leq 70) =\\)\n\n\npnorm(q = 80, mean = 75, sd = 5) - pnorm(q = 70, mean = 75, sd = 5)\n\n[1] 0.6826895"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#finding-quantiles",
-    "href": "slides/lecture27_wk10fri.html#finding-quantiles",
-    "title": "STAT 141",
-    "section": "Finding Quantiles",
-    "text": "Finding Quantiles\nWe can also use R to find quantiles of a Normal distribution.\n\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\n\nThe 0.95 quantile is the value \\(c\\) such that \\(P(X&lt;c) = 0.95\\)\n\n\nqnorm(p = 0.95, mean = 75, sd = 5)\n\n[1] 83.22427"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#scale-and-translation-invariance",
-    "href": "slides/lecture27_wk10fri.html#scale-and-translation-invariance",
-    "title": "STAT 141",
-    "section": "Scale and Translation Invariance",
-    "text": "Scale and Translation Invariance\nSuppose \\(X\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\) and \\(Y\\sim\\text{Normal}(\\mu=2,\\sigma=0.25)\\).\n\n\n\n\n\n\n\n\n\n\n\\(X\\) and \\(Y\\) have different means, heights, and widths…\n\nBut the same shapes!"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#scale-and-translation-invariance-1",
-    "href": "slides/lecture27_wk10fri.html#scale-and-translation-invariance-1",
-    "title": "STAT 141",
-    "section": "Scale and Translation Invariance",
-    "text": "Scale and Translation Invariance\nSuppose \\(X\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\) and \\(Y\\sim\\text{Normal}(\\mu=2,\\sigma=0.25)\\).\n\n\n\n\n\n\n\n\n\n\\(X\\) and \\(Y\\) have different means, heights, and widths…\n\nBut the same shapes!"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#scale-and-translation-invariance-2",
-    "href": "slides/lecture27_wk10fri.html#scale-and-translation-invariance-2",
-    "title": "STAT 141",
-    "section": "Scale and Translation Invariance",
-    "text": "Scale and Translation Invariance\nSuppose \\(X\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\) and \\(Y\\sim\\text{Normal}(\\mu=2,\\sigma=0.25)\\).\n\n\n\n\n\n\n\n\n\n\\(X\\) and \\(Y\\) have different means, heights, and widths…\n\nBut the same shapes!"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#standardization",
-    "href": "slides/lecture27_wk10fri.html#standardization",
-    "title": "STAT 141",
-    "section": "Standardization",
-    "text": "Standardization\n\n\n\nTheorem: Standardization\n\n\nSuppose \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\). Then, \\(Z = \\frac{X - \\mu}{\\sigma}\\) is a Normal random variable with mean 0 and standard deviation 1.\n\n\n\n\nStandard Normal: a Normal random variable with mean \\(0\\) and standard deviation \\(1\\).\n\nWe call the process of subtracting off \\(\\mu\\) and dividing by \\(\\sigma\\), standardizing.\n\n\n\n\nUseful Fact: If \\(X\\sim\\text{Normal}(\\mu=100,\\sigma=10)\\) and \\(Z\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\), then,\n\n\n\n\\[P\\Big[X &lt; 90\\Big] = P\\Big[X&lt;\\text{ 1 SD below }\\mu\\Big] = P\\Big[Z&lt;-1\\Big]\\]\n\n\nMore Generally: If \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\) and \\(Z\\sim\\text{Normal}(0,1)\\), then \\[\nP(X \\leq x) = P\\left(Z \\leq \\frac{x-\\mu}{\\sigma}\\right)\n\\]"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#practice-with-standard-normals",
-    "href": "slides/lecture27_wk10fri.html#practice-with-standard-normals",
-    "title": "STAT 141",
-    "section": "Practice with Standard Normals",
-    "text": "Practice with Standard Normals\nMore Generally: If \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\) and \\(Z\\sim\\text{Normal}(0,1)\\), then\n\\[\nP(X \\leq x) = P\\left(Z \\leq \\frac{x-\\mu}{\\sigma}\\right)\n\\]\n\nPractice: For each of the following, rewrite \\(P(X \\leq x)\\) as \\(P(Z \\leq z)\\) for some \\(z\\).\n\n\\(P(X \\leq 10)\\) where \\(X\\sim\\text{Normal}(\\mu=5,\\sigma=5)\\)\n\\(P(X \\leq 15)\\) where \\(X\\sim\\text{Normal}(\\mu=20,\\sigma=10)\\)"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#practice-with-standard-normals-1",
-    "href": "slides/lecture27_wk10fri.html#practice-with-standard-normals-1",
-    "title": "STAT 141",
-    "section": "Practice with Standard Normals",
-    "text": "Practice with Standard Normals\nMore Generally: If \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\) and \\(Z\\sim\\text{Normal}(0,1)\\), then\n\\[\nP(X \\leq x) = P\\left(Z \\leq \\frac{x-\\mu}{\\sigma}\\right)\n\\]\n\nPractice: For each of the following, rewrite \\(P(X \\leq x)\\) as \\(P(Z \\leq z)\\) for some \\(z\\).\n\n\\(P(X \\leq 10)\\) where \\(X\\sim\\text{Normal}(\\mu=5,\\sigma=5)\\)\n\n\n\\(\\frac{10 - \\mu}{\\sigma} = \\frac{10 - 5}{5} = 1 = z\\), so \\(\\color{red}{P(X \\leq 10) = P(Z \\leq 1)}\\)\n\n\n\\(P(X \\leq 15)\\) where \\(X\\sim\\text{Normal}(\\mu=20,\\sigma=10)\\)\n\n\n\\(\\frac{15 - \\mu}{\\sigma} = \\frac{15 - 20}{10} = -0.5 = z\\), so \\(\\color{red}{P(X \\leq 15) = P(Z \\leq -0.5)}\\)"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#daily-temperatures",
-    "href": "slides/lecture27_wk10fri.html#daily-temperatures",
-    "title": "STAT 141",
-    "section": "Daily Temperatures",
-    "text": "Daily Temperatures\nSuppose we’re astronomers studying four far away planets: Naboo, Tatooine, Coruscant, and Dagobah. We have the daily temperature on each of these planets over 200 days:"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#random-sample-means-n10",
-    "href": "slides/lecture27_wk10fri.html#random-sample-means-n10",
-    "title": "STAT 141",
-    "section": "Random Sample Means (n=10)",
-    "text": "Random Sample Means (n=10)\nSuppose we repeatedly take samples of 10 days from each planet, and compute the average temperature \\(\\bar{x}\\) for each sample (these are sampling distributions):\n\n\n\n\n\n\n\n\n\n\nQ: What does the distribution of sample means look like?"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#random-sample-means-n50",
-    "href": "slides/lecture27_wk10fri.html#random-sample-means-n50",
-    "title": "STAT 141",
-    "section": "Random Sample Means (n=50)",
-    "text": "Random Sample Means (n=50)\nSuppose we repeatedly take samples of 50 days from each planet, and compute the average temperature \\(\\bar{x}\\) for each sample (these are sampling distributions):\n\n\n\n\n\n\n\n\n\nQ: What does the distribution of sample means look like?"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#sampling-distributions-are-approximately-normal",
-    "href": "slides/lecture27_wk10fri.html#sampling-distributions-are-approximately-normal",
-    "title": "STAT 141",
-    "section": "Sampling Distributions are Approximately Normal",
-    "text": "Sampling Distributions are Approximately Normal\nThe sampling distribution for each planet appeared approximately Normal with \\(n=50\\), regardless of the shape of the population distribution."
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#sampling-distributions-are-approximately-normal-1",
-    "href": "slides/lecture27_wk10fri.html#sampling-distributions-are-approximately-normal-1",
-    "title": "STAT 141",
-    "section": "Sampling Distributions are Approximately Normal",
-    "text": "Sampling Distributions are Approximately Normal\nThe sampling distribution for each planet appeared approximately Normal with \\(n=50\\), regardless of the shape of the population distribution.\n\n\n\n\n\n\n\n\n\nWe’ve seen this before! As \\(n\\) increases,\n\nSampling distributions become more Normal\nVariance decreases\nMean doesn’t change; it is the parameter."
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#the-central-limit-theorem-clt",
-    "href": "slides/lecture27_wk10fri.html#the-central-limit-theorem-clt",
-    "title": "STAT 141",
-    "section": "The Central Limit Theorem (CLT)",
-    "text": "The Central Limit Theorem (CLT)\n\n\n\nTheorem: Central Limit Theorem\n\n\nSuppose a simple random sample of size \\(n\\) is drawn from a population with finite mean \\(\\mu\\) and finite standard deviation \\(\\sigma\\). Let \\(\\bar{x}\\) be the sample mean. When \\(n\\) is large, then approximately \\[\\bar{x} \\sim Normal\\Big(\\mu, \\frac{\\sigma}{\\sqrt{n}}\\Big)\\]\n\n\n\n\nA proof of the CLT requires more advanced techniques in probability (See Math 391).\nWe have gained intuition already for the CLT by examining sampling distributions!\nWe will use the CLT to conduct hypothesis tests/confidence intervals without simulation.\n\n\n\nEven when the world is strange and chaotic at the individual level, averages follow clear, predictable rules that we can use to draw conclusions!"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#the-clt-is-a-big-deal",
-    "href": "slides/lecture27_wk10fri.html#the-clt-is-a-big-deal",
-    "title": "STAT 141",
-    "section": "The CLT is a BIG deal!",
-    "text": "The CLT is a BIG deal!\n\nWhen conducting inference, our statistic is often a sample mean\n\nA proportion is a sample mean of sorts too!\n\n\n\n\nFor nearly any population distribution, the sample mean is approximately Normal\n\n\n\nThe CLT gives a formula to calculate the mean and variance of a sample mean.\n\nWe can estimate these using our data\nWe can quickly approximate what the sampling distribution looks like!"
-  },
-  {
-    "objectID": "slides/lecture27_wk10fri.html#next-week",
-    "href": "slides/lecture27_wk10fri.html#next-week",
-    "title": "STAT 141",
-    "section": "Next week:",
-    "text": "Next week:\n\nWe’ll use the approximate distribution of the sample statistic (given by the CLT) to construct confidence intervals and to conduct hypothesis tests!"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#goals-for-today",
-    "href": "slides/lecture26_wk10wed.html#goals-for-today",
-    "title": "STAT 141",
-    "section": "Goals for Today",
-    "text": "Goals for Today\n\nContinue our discussion of expected value and variance\nIntroduce the Bernoulli distribution\nIntroduce the Binomial distribution"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#review-expected-value-variance-and-standard-deviation",
-    "href": "slides/lecture26_wk10wed.html#review-expected-value-variance-and-standard-deviation",
-    "title": "STAT 141",
-    "section": "Review: Expected Value, Variance, and Standard Deviation",
-    "text": "Review: Expected Value, Variance, and Standard Deviation\nThe expected value (or mean) of a discrete random variable \\(X\\) is \\[\n\\mu = E[X] = \\sum_{i =1}^n x_i P(X = x_i)\n\\] where \\(x_1, \\dots, x_n\\) are all the values X could potentially take.\n\nThe variance and standard deviation of a discrete random variable \\(X\\) with mean \\(E(X) = \\mu\\) is \\[\n\\sigma^2 = \\mathrm{Var}(X) = \\sum_{i =1}^n (x_i-\\mu)^2 P(X = x_i)\n\\] \\[\n\\sigma = \\textrm{SD}(X) = \\sqrt{\\mathrm{Var}(X)}\n\\]"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#review-rules-for-expected-value-and-variance",
-    "href": "slides/lecture26_wk10wed.html#review-rules-for-expected-value-and-variance",
-    "title": "STAT 141",
-    "section": "Review: Rules for Expected Value and Variance",
-    "text": "Review: Rules for Expected Value and Variance\n\n\n\n\n\n\nTheorem: Expectation of Sum\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Then \\[\nE(X + Y) = E(X) + E(Y)\n\\]\n\n\n\n\n\n\n\n\nTheorem: Scalar Multiplication with Expectation\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\nE(cX) = cE(X)\n\\]\n\n\n\n\n\n\n\n\n\nTheorem: Variance of Sum for Independent Random Variables\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Additionally, let \\(X\\) and \\(Y\\) be independent. Then \\[\n\\mathrm{Var}(X + Y) = \\mathrm{Var}(X) + \\mathrm{Var}(Y)\n\\]\n\n\n\n\n\n\n\n\nTheorem: Scalar Multiplication with Variance\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\n\\mathrm{Var}(cX) = c^2\\mathrm{Var}(X)\n\\]"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#recall-one-coin-flip",
-    "href": "slides/lecture26_wk10wed.html#recall-one-coin-flip",
-    "title": "STAT 141",
-    "section": "Recall: One Coin Flip",
-    "text": "Recall: One Coin Flip\nConsider a random variable \\(X\\) which is the number of heads in a single coin flip.\n\nQ: What are the possible values for \\(X\\)? What are the probabilities each value of \\(X\\)?\n\n\n\n\\(X = 1\\) (H) with \\(P(X=1) = \\frac{1}{2}\\)\n\\(X = 0\\) (T) with \\(P(X=0) = \\frac{1}{2}\\)\n\n\n\nQ: Compute the expected value and variance for \\(X\\) (the number of heads in a single coin flip)\n\n\n\\[\nE[X] = (0)\\frac{1}{2} +  (1)\\frac{1}{2} = \\frac{1}{2}\n\\]\n\n\n\\[\nVar[X] = (0-1/2)^2\\frac{1}{2} +  (1-1/2)^2\\frac{1}{2} = \\frac{1}{4}\n\\]\n\n\nThis distribution has a name!\n\n\\(X\\) is called a Bernoulli random variable!"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#n-weighted-coin-tosses-expected-value-and-variance",
-    "href": "slides/lecture26_wk10wed.html#n-weighted-coin-tosses-expected-value-and-variance",
-    "title": "STAT 141",
-    "section": "\\(n\\) “weighted coin tosses”: Expected Value and Variance",
-    "text": "\\(n\\) “weighted coin tosses”: Expected Value and Variance\nLet \\(X\\) be the number of successes in \\(n\\) independent Bernoulli(\\(p\\)) random variables.\nQ: What are \\(E(X)\\) and \\(\\mathrm{Var}(X)\\)?\n\nHint: We know, from the Bernoulli distribution, that if \\(X_1\\) is the number of heads in a single weighted coin flip with success probability \\(p\\), \\[E(X_1)=p \\quad \\text{ and } \\quad \\text{Var}(X_1)= p (1 - p)\\]"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#n-weighted-coin-tosses-expected-value-and-variance-1",
-    "href": "slides/lecture26_wk10wed.html#n-weighted-coin-tosses-expected-value-and-variance-1",
-    "title": "STAT 141",
-    "section": "\\(n\\) “weighted coin tosses”: Expected Value and Variance",
-    "text": "\\(n\\) “weighted coin tosses”: Expected Value and Variance\nLet \\(X\\) be the number of heads in \\(n\\) independent Bernoulli(\\(p\\)) random variables.\nAnswer: Let \\(X_1\\) = Heads in 1st toss, \\(\\dots\\) , \\(X_n\\) = Heads in \\(n\\)th toss: \\[\n  X = X_1 + \\dots + X_n = \\sum_{i=1}^n X_i\n\\]\n\\[\n\\begin{align}\n  E(X) &= E \\left( \\sum_{i=1}^n X_i \\right) =  \\sum_{i=1}^n E(X_i) = \\sum_{i=1}^n p = np\\\\\n  \\mathrm{Var}(X) &=  \\mathrm{Var}\\left( \\sum_{i=1}^n X_i \\right) =  \\sum_{i=1}^n  \\mathrm{Var}(X_i) = \\sum_{i=1}^n p(1-p) = np(1-p)\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#n-coin-toss-probabilities",
-    "href": "slides/lecture26_wk10wed.html#n-coin-toss-probabilities",
-    "title": "STAT 141",
-    "section": "\\(n\\) coin toss probabilities?",
-    "text": "\\(n\\) coin toss probabilities?\nWe’ve calculated Expectation and Variance for the number of heads in \\(n\\) coin tosses.\n\n\nBut what about the probability that there are \\(k\\) heads in the \\(n\\) tosses?\n\n\n\nFor example, What’s the probability of \\(k=2\\) heads in \\(n=3\\) coin tosses?\n\n\n\nLet’s break down the problem: What are the possible outcomes?\n\n\n\n\\[\n\\begin{align}\n\\text{TTT} & \\implies X=0 \\quad& \\text{TTH or THT or HTT} & \\implies X=1\\\\\n\\text{HHH} & \\implies X=3 \\quad& \\text{THH or HTH or HHT} & \\implies X=2\\\\\n\\end{align}\n\\]\n\n\n\nThere are \\(8\\) possible sequences from 3 coin flips, each with equal probability.\n\n\n\nThe random variable \\(X\\) has \\(4\\) possible outcomes: 0, 1, 2, or 3. Those probabilities are: \\[\n\\begin{align}\nP(X=0) &= \\frac{1}{8} \\quad&\\quad P(X=1) &= \\frac{3}{8}\\\\\nP(X=3) &= \\frac{1}{8} \\quad&\\quad P(X=2) &= \\frac{3}{8}\\\\\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#coin-tosses-probabilities",
-    "href": "slides/lecture26_wk10wed.html#coin-tosses-probabilities",
-    "title": "STAT 141",
-    "section": "3 coin tosses probabilities",
-    "text": "3 coin tosses probabilities\nThe random variable \\(X\\) has \\(4\\) possible outcomes: 0, 1, 2, or 3. Those probabilities are: \\[\n\\begin{align}\nP(X=0) &= \\frac{1}{8} \\quad&\\quad P(X=1) &= \\frac{3}{8}\\\\\nP(X=3) &= \\frac{1}{8} \\quad&\\quad P(X=2) &= \\frac{3}{8}\\\\\n\\end{align}\n\\]\n\nNotice that the probability of \\(k\\) heads in \\(n\\) coin flips is\n\\[P[X=k] = \\big(\\text{Number of ways to get k heads}\\big) \\times \\big(\\text{Prob of each flip sequence}\\big)\\]\n\n\nFor example, we found that in \\(n=3\\) coin tosses,\n\n3 ways to get 2 heads\nEach sequence of 3 coin flips has probability \\(\\frac12\\times\\frac12\\times\\frac12=\\frac18\\)\nThus, \\(P(X=2) = \\frac38\\)"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#generalization-1",
-    "href": "slides/lecture26_wk10wed.html#generalization-1",
-    "title": "STAT 141",
-    "section": "Generalization 1",
-    "text": "Generalization 1\nFirst: What if \\(n\\) and \\(k\\) are bigger?\n\nIn this case, it’s hard to individually count all the different flip sequences\n\n\n\nInstead, we can rely on a handy formula: The number of ways to get \\(k\\) “successes” in \\(n\\) “trials” is \\[{n\\choose k} = \\frac{n!}{k!(n-k)!}\\] We read this as “n choose k”\n\n\n\nThe exclamation point is a factorial: \\[\n\\begin{align}\n  0! &= 1\\\\\n  1! &= 1\\\\\n  2! &= 2\\times 1=2\\\\\n  3! &= 3\\times2\\times1=6\\\\\n  4! &= 4\\times3\\times2\\times1=24\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#generalization-1-1",
-    "href": "slides/lecture26_wk10wed.html#generalization-1-1",
-    "title": "STAT 141",
-    "section": "Generalization 1",
-    "text": "Generalization 1\nFirst: What if \\(n\\) and \\(k\\) are bigger?\n\nIn this case, it’s hard to individually count all the different flip sequences\nInstead, we can rely on a handy formula: The number of ways to get \\(k\\) “successes” in \\(n\\) “trials” is \\[{n\\choose k} = \\frac{n!}{k!(n-k)!}\\] We read this as “n choose k”\n\n\nSo in our example of 2 heads in 3 flips:\n\n\\[\\text{# of ways to choose 2 things out of 3 things} = {3\\choose2} = \\frac{3!}{2! \\cdot 1!} = \\frac{3 \\cdot 2}{2} = 3\\]"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#generalization-2",
-    "href": "slides/lecture26_wk10wed.html#generalization-2",
-    "title": "STAT 141",
-    "section": "Generalization 2",
-    "text": "Generalization 2\nSecond: What if the probability of “success” changes?\n\nIn other words, how can we generalize to the sum of Bernoulli(\\(p\\)) case from the sum of the Bernoulli(\\(p=0.5\\)) case?\n\n\n\nIn this case, the probability of getting a particular sequence of \\(k\\) “successes” in \\(n\\) independent trials is: \\[p^k\\times(1-p)^{n-k}\\]\n\n\n\n\nThere are \\(k\\) “successes”, each with probability \\(p \\; \\rightarrow \\; p^k\\)\nThere are \\(n-k\\) “failures”, each with probability \\(1-p \\; \\rightarrow \\; (1-p)^{n-k}\\)"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#binomial-distribution-putting-it-all-together",
-    "href": "slides/lecture26_wk10wed.html#binomial-distribution-putting-it-all-together",
-    "title": "STAT 141",
-    "section": "Binomial Distribution: Putting it all together",
-    "text": "Binomial Distribution: Putting it all together\nThus, the probability of observing \\(k\\) successes in \\(n\\) independent Bernoulli trials with probability of success \\(p\\) is\n\\[P[X=k] = {n \\choose k}p^k(1-p)^{n-k}\\]\nIn this case, we say \\(X \\sim \\text{Binomial}(n,~p)\\). Or, in words: \\(X\\) follows a binomial distribution with \\(n\\) trials each with \\(p\\) probability of success\n\nHow to tell if your distribution is a Binomial?\n\nNumber of trials, \\(n\\), must be fixed.\nEach trial must be Bernoulli and independent, with success probability \\(p\\) (\\(p\\) must stay the same for each trial!).\nWe must be counting the number of successes."
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#expectation-and-variance-of-binomial",
-    "href": "slides/lecture26_wk10wed.html#expectation-and-variance-of-binomial",
-    "title": "STAT 141",
-    "section": "Expectation and Variance of Binomial",
-    "text": "Expectation and Variance of Binomial\nIf \\(X \\sim \\text{Binomial}(n,~p)\\), then:\n\n\\[\n\\begin{align}\n    E(X) &= np \\\\\n    Var(X) &= np(1-p)\n\\end{align}\n\\]\n\n\nNote that we derived this earlier before we knew what a Binomial was, just by using Theorems about sums of random variables!"
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#calculating-binomial-probabilities-dbinom",
-    "href": "slides/lecture26_wk10wed.html#calculating-binomial-probabilities-dbinom",
-    "title": "STAT 141",
-    "section": "Calculating Binomial Probabilities: dbinom()",
-    "text": "Calculating Binomial Probabilities: dbinom()\nIf \\(X\\) is a binomial random variable with \\(n\\) trials and probability of success \\(p\\), we can use R to calculate the probabilities with the dbinom() function\n\n\ne.g., \\(P(X = 2)\\) where \\(n=3\\) and \\(p=0.5\\) (2 heads in 3 fair coin tosses)\n\n\ndbinom(x = 2, size = 3, prob = 0.5)\n\n[1] 0.375\n\n\n\n\n\ne.g., \\(P(X = 10)\\) where \\(n=15\\) and \\(p=0.7\\)\n\n\ndbinom(x = 10, size = 15, prob = 0.7)\n\n[1] 0.2061304\n\n\n\n\n\ndbinom() takes in an observable value of a Binomial random variable, and returns the probability of observing it."
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#calculating-binomial-probabilities-pbinom",
-    "href": "slides/lecture26_wk10wed.html#calculating-binomial-probabilities-pbinom",
-    "title": "STAT 141",
-    "section": "Calculating Binomial Probabilities: pbinom()",
-    "text": "Calculating Binomial Probabilities: pbinom()\nWe can also calculate \\(P(X \\leq k)\\) with pbinom()\n\n\ne.g., \\(P(X \\leq 2)\\) where \\(n=3\\) and \\(p=0.5\\) (2 or fewer heads in 3 fair coin tosses)\n\n\npbinom(q = 2, size = 3, prob = 0.5)\n\n[1] 0.875\n\n\n\n\nCan also calculate \\(P(X &gt; k)\\) by doing 1 - pbinom():\n\n\n\ne.g., \\(P(X &gt; 2)\\) where \\(n=3\\) and \\(p=0.5\\) (more than 2 heads in 3 fair coin tosses)\n\n\n1 - pbinom(q = 2, size = 3, prob = 0.5)\n\n[1] 0.125\n\n\n\n\n\ne.g., \\(P(X \\geq 2)\\) where \\(n=3\\) and \\(p=0.5\\)\n\n\n1 - pbinom(q = 1, size = 3, prob = 0.5)\n\n[1] 0.5\n\n\n\n\n\npbinom() takes in an observable value of a Binomial random variable, and returns the probability of observing it or something smaller."
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#activity-survey-of-portlanders",
-    "href": "slides/lecture26_wk10wed.html#activity-survey-of-portlanders",
-    "title": "STAT 141",
-    "section": "Activity: Survey of Portlanders",
-    "text": "Activity: Survey of Portlanders\nSuppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief.\n\nAssume your belief is true. Let \\(X\\) be the number of survey respondents who think the city should install more bike lanes. Does \\(X\\) follow a Binomial distribution? If so, what are \\(n\\) and \\(p\\)?\nCalculate the expected value and standard deviation of \\(X\\) (still assuming your belief is true)\nSuppose you conducted the survey and found 30 respondents wanted more bike lanes. What’s the probability that \\(X\\geq 30\\)? (use R!)\nDraw the connection between the probability you calculated and a hypothesis test."
-  },
-  {
-    "objectID": "slides/lecture26_wk10wed.html#next-time",
-    "href": "slides/lecture26_wk10wed.html#next-time",
-    "title": "STAT 141",
-    "section": "Next time",
-    "text": "Next time\n\nContinuous random variables\nThe Central Limit Theorem!"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#goals-for-today",
-    "href": "slides/lecture29_wk11wed.html#goals-for-today",
-    "title": "STAT 141",
-    "section": "Goals for today",
-    "text": "Goals for today\n\nDiscuss activity from last lecture\nConsider inference for a difference in two proportions\nPractice on clinical trials data"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#recap-theory-based-inference-for-one-proportion",
-    "href": "slides/lecture29_wk11wed.html#recap-theory-based-inference-for-one-proportion",
-    "title": "STAT 141",
-    "section": "Recap: Theory-Based Inference for One Proportion",
-    "text": "Recap: Theory-Based Inference for One Proportion\nSuppose we want to perform inference on a proportion, \\(p\\).\n\nEx: To understand proportion of Reedies who are vegetarians, we survey \\(n\\) students.\n\nPopulation: All Reedies\nParameter: \\(p\\) = Proportion of all Reedies who are vegetarians\nSample: \\(n\\) Reedies we surveyed\nStatistic: \\(\\widehat{p}\\) = Proportion of \\(n\\) sampled Reedies who are vegetarians\n\nWe were able to rewrite \\(\\widehat{p}\\) as a sample mean, so by CLT with “large enough” \\(n\\), \\[\\widehat{p} \\sim \\text{Normal}\\Bigg(\\ \\mu = p, \\ \\sigma = \\sqrt{\\frac{p(1-p)}{n}}\\ \\Bigg)\\]\n\n“Large Enough”: 10 or more “successes”, and 10 or more “failures” \nWe use this to (i) construct confidence intervals, and (ii) conduct hypothesis tests"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#activity-from-last-lecture",
-    "href": "slides/lecture29_wk11wed.html#activity-from-last-lecture",
-    "title": "STAT 141",
-    "section": "Activity from last lecture",
-    "text": "Activity from last lecture\n\n\nIn a SRS of 60 Reedies, 45 have watched the Lord of the Rings trilogy. Create a 80% confidence interval for the true proportion of Reedies who have watched LOTR using theory-based inference.\n\n\nCarefully go through each step of the inference procedure.\nSketch and write down the assumed sampling distribution of the statistic\nCalculate confidence interval (use R)\nInterpret your confidence interval in context.\n\n\n\n\nIn a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a hypothesis test using theory-based inference.\n\n\nCarefully go through each step of the inference procedure.\nSketch and write down the null distribution\nCalculate p-value (use R)\nUse your p-value to make a conclusion with \\(\\alpha=0.10\\)"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#answers-confidence-intervals",
-    "href": "slides/lecture29_wk11wed.html#answers-confidence-intervals",
-    "title": "STAT 141",
-    "section": "Answers (Confidence Intervals)",
-    "text": "Answers (Confidence Intervals)\nIn a SRS of 60 Reedies, 45 have watched the Lord of the Rings trilogy. Create a 80% confidence interval for the true proportion of Reedies who have watched LOTR using theory-based inference.\n\n\n\nCollect Data: In a sample of 60 students, 45 watched LOTR\nPoint Estimate: We estimate \\(\\widehat{p} = 45/60 = 0.75\\)\nGet Sampling Distribution:\n\n\n\\[\\text{Normal}(0.75,\\ \\sqrt{0.75(1-0.75)/60})\\]\n\n\n\n\n\n\n\n\n\n\n\n\nGet confidence interval:\nNeed 0.1 and 0.9 quantiles for 80% confidence interval\n\n\n\nqnorm(c(0.1, 0.9), 0.75, sqrt(0.75*0.25/60))\n\n[1] 0.6783591 0.8216409\n\n\n\n\nWe are 80% confident that between 67.8% and 82.2% of Reedies have watched LOTR"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#answers-hypothesis-testing",
-    "href": "slides/lecture29_wk11wed.html#answers-hypothesis-testing",
-    "title": "STAT 141",
-    "section": "Answers (Hypothesis Testing)",
-    "text": "Answers (Hypothesis Testing)\nIn a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a hypothesis test using theory-based inference.\n\n\n\nState Hypotheses: \\(H_0: p=0.6\\); \\(H_a: p&gt;0.6\\)\nNull Distribution:\n\n\\[\\text{Normal}(0.6,\\sqrt{0.6(1-0.6)/30})\\]\n\n\n\n\n\n\n\n\n\n\n\nCollect Data: \\(\\widehat{p}=20/30=0.667\\)\nCalculate P-Value: Area under null distribution curve to the right of \\(\\widehat{p}\\)\n\n\n\n1 - pnorm(20/30, 0.6, sqrt(0.6*(1 - 0.6) / 30))\n\n[1] 0.2280283\n\n\n\n\nConclusion: Because 0.228 &gt; 0.10, we fail to reject \\(H_0\\) that 60% of birds in the Reed canyon are crows."
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#difference-in-proportions-1",
-    "href": "slides/lecture29_wk11wed.html#difference-in-proportions-1",
-    "title": "STAT 141",
-    "section": "Difference in Proportions",
-    "text": "Difference in Proportions\nToday, we’ll perform inference on a difference in proportions, \\(p_1 - p_2\\)\n\n“Differences in proportions” come up all the time in the real world:\n\ne.g., Compare the effectiveness of two drugs\ne.g., Study if Portlanders support drug decriminalization more or less than Seattleites\n\n\n\n\nTo answer these questions, we use similar inference procedures, but need to…\n\nCollect two samples: 1 for each group\nDerive a new sampling distribution using the CLT"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#example-comparing-drug-a-to-drug-b",
-    "href": "slides/lecture29_wk11wed.html#example-comparing-drug-a-to-drug-b",
-    "title": "STAT 141",
-    "section": "Example: Comparing Drug A to Drug B",
-    "text": "Example: Comparing Drug A to Drug B\n\nEx: Is Drug A more effective at curing heart disease than Drug B?\n\nWe conduct an SRS of \\(n\\) adults who have heart disease\nWe randomly assign these adults to either take Drug A, or Drug B\nDrug A group has \\(n_1\\) patients\nWe compare proportions of adults who were cured with Drug A versus Drug B\n\n\n\n\nDiscuss with Neighbor(s): In this setting, what are the:\n\nPopulation(s)\nParameter\nSample(s)\nStatistic"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#example-comparing-drug-a-to-drug-b-1",
-    "href": "slides/lecture29_wk11wed.html#example-comparing-drug-a-to-drug-b-1",
-    "title": "STAT 141",
-    "section": "Example: Comparing Drug A to Drug B",
-    "text": "Example: Comparing Drug A to Drug B\n\nPopulation(s): Overall, sampling from adults who have heart disease\n\nPopulation 1: More specifically, adults with heart disease when they receive drug A\nPopulation 2: More specifically, adults with heart disease when they receive drug B\n\n\n\n\nParameter: The parameter is: \\(p_1 - p_2\\) = Difference in recovery rates for all adults with heart disease, where\n\n\\(p_1\\)=Proportion who would recover with Drug A\n\\(p_2\\)=Proportion who would recover with Drug B\n\n\n\n\nSample(s): Of the \\(n\\) total that we sampled,\n\nSample 1: \\(n_1\\) people we gave Drug A\nSample 2: \\(n - n_1\\) people we gave Drug B\n\n\n\n\nStatistic: the statistic is: \\(\\widehat{p}_1 - \\widehat{p}_2\\) = Difference in recovery rates between our samples, where\n\n\\(\\widehat{p}_1\\)=Proportion who recovered in the Drug A group (Sample 1)\n\\(\\widehat{p}_2\\)=Proportion who recovered in the Drug B group (Sample 2)"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#sampling-distribution-of-widehatp_1---widehatp_2",
-    "href": "slides/lecture29_wk11wed.html#sampling-distribution-of-widehatp_1---widehatp_2",
-    "title": "STAT 141",
-    "section": "Sampling Distribution of \\(\\widehat{p}_1 - \\widehat{p}_2\\)",
-    "text": "Sampling Distribution of \\(\\widehat{p}_1 - \\widehat{p}_2\\)\nWe know the (large-sample) sampling distributions of \\(\\widehat{p}_1\\) and \\(\\widehat{p}_2\\) individually: \\[\n  \\begin{align*}\n    \\widehat{p}_1 &\\sim \\text{Normal} \\biggr( p_1, \\sqrt{\\frac{p_1(1-p_1)}{n_1}} \\biggr) \\\\\n    \\widehat{p}_2 &\\sim \\text{Normal} \\biggr( p_2, \\sqrt{\\frac{p_2(1-p_2)}{n_2}} \\biggr)\n  \\end{align*}\n\\]\n\nBut what is the sampling distribution of \\(\\widehat{p}_1 - \\widehat{p}_2\\)?\nNotice: Our statistic (\\(\\widehat{p}_1 - \\widehat{p}_2\\)) is the difference between two normally distributed statistics\n\nWhat happens when you subtract two normal distributions (i.e., bell-curves)?"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#subtracting-bell-curves",
-    "href": "slides/lecture29_wk11wed.html#subtracting-bell-curves",
-    "title": "STAT 141",
-    "section": "Subtracting Bell Curves",
-    "text": "Subtracting Bell Curves\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInspect the distributions of:\n\n\\(X\\) (in blue)\n\\(Y\\) (in red)\n\\(X - Y\\) (in purple)\n\n\nDiscuss with Neighbor(s):\n\nWhat are the means of \\(X\\) and \\(Y\\)?\nWhat is the mean of \\(X - Y\\)?\nHow do the spreads of the distributions compare?"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#subtracting-bell-curves-1",
-    "href": "slides/lecture29_wk11wed.html#subtracting-bell-curves-1",
-    "title": "STAT 141",
-    "section": "Subtracting Bell Curves",
-    "text": "Subtracting Bell Curves\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ: What are the means of \\(X\\) and \\(Y\\)?\n\n\n10 for \\(X\\)\n7 for \\(Y\\)\n\n\nQ: What is the mean of \\(X - Y\\)?\n\n\n\\(10 - 7 = \\boxed{3}\\)\ni.e., “Mean of \\(X\\)” - “Mean of \\(Y\\)”\n\n\nQ: How do the spreads of the distributions compare?\n\n\n\\(X\\) and \\(Y\\) are about the same\n\\(X-Y\\) has higher spread/variance"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#subtracting-independent-normal-distributions",
-    "href": "slides/lecture29_wk11wed.html#subtracting-independent-normal-distributions",
-    "title": "STAT 141",
-    "section": "Subtracting (Independent) Normal Distributions",
-    "text": "Subtracting (Independent) Normal Distributions\nDifferences of Normal Distributions: Given two independent normal distributions\n\\[\n  \\begin{align*}\n    X \\sim \\text{Normal}(\\mu_X, \\sigma_X) \\qquad \\text{and} \\qquad Y \\sim \\text{Normal}(\\mu_Y, \\sigma_Y)\n  \\end{align*}\n\\]\nThen,\n\\[\n  \\begin{align*}\n    \\color{red}{\\boxed{X - Y \\sim \\text{Normal} \\left( \\mu_X - \\mu_Y, \\sqrt{\\sigma_X^2  + \\sigma_Y^2} \\right) }}\n  \\end{align*}\n\\]\n\nMean: Difference in the means of the two distributions\nSD: A “combination” of the SDs of the two distributions (that is larger)"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#sampling-distribution-of-widehatp_1---widehatp_2-1",
-    "href": "slides/lecture29_wk11wed.html#sampling-distribution-of-widehatp_1---widehatp_2-1",
-    "title": "STAT 141",
-    "section": "Sampling Distribution of \\(\\widehat{p}_1 - \\widehat{p}_2\\)",
-    "text": "Sampling Distribution of \\(\\widehat{p}_1 - \\widehat{p}_2\\)\nSo if:\n\\[\n  \\begin{align*}\n    \\widehat{p}_1 &\\sim \\text{Normal} \\biggr( \\mu = \\color{red}{p_1}, \\sigma = \\color{red}{\\sqrt{\\frac{p_1(1-p_1)}{n_1}}} \\biggr) \\\\\n    \\widehat{p}_2 &\\sim \\text{Normal} \\biggr( \\mu = \\color{red}{p_2}, \\sigma = \\color{red}{\\sqrt{\\frac{p_2(1-p_2)}{n_2}}} \\biggr)\n  \\end{align*}\n\\]\nSince \\(\\widehat{p}_1\\) and \\(\\widehat{p}_2\\) are independent,\n\n\\[\\boxed{\\widehat{p}_1 - \\widehat{p}_2 \\sim \\text{Normal}\\Bigg(\\ \\mu = \\color{red}{p_1-p_2}, \\ \\sigma = \\color{red}{\\sqrt{\\frac{p_1(1-p_1)}{n_1}+ \\frac{p_2(1-p_2)}{n_2}} }\\ \\Bigg)}\\]"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#theoretical-sampling-distribution-of-a-difference-in-proportions",
-    "href": "slides/lecture29_wk11wed.html#theoretical-sampling-distribution-of-a-difference-in-proportions",
-    "title": "STAT 141",
-    "section": "Theoretical Sampling Distribution of a Difference in Proportions",
-    "text": "Theoretical Sampling Distribution of a Difference in Proportions\n\n\n\nTheorem: Normality of difference in proportions\n\n\nThe difference in proportions \\(\\widehat{p}_1 - \\widehat{p}_2\\) is approximately Normal when:\n\nEach sample has at least 10 “successes” and at least 10 “failures”\nThe two samples are independent of each other\n\nThen in this case, \\[\\widehat{p}_1 - \\widehat{p}_2 \\approx \\text{Normal}\\Bigg(\\mu = p_1-p_2, \\sigma = \\sqrt{\\frac{p_1(1-p_1)}{n_1}+\\frac{p_2(1-p_2)}{n_2}}\\Bigg)\\]\n\n\n\n\nNote: Need \\(\\geq 10\\) successes and failures in both samples\nNote: We have to check something new: that the samples are independent"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison",
-    "href": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison",
-    "title": "STAT 141",
-    "section": "Confidence Intervals: Drug Comparison",
-    "text": "Confidence Intervals: Drug Comparison\nEx: What is the difference in recovery rates for Drug A and Drug B?\n\nLet’s find a 95% confidence interval for \\(p_1 - p_2\\)\n\n\n\n\nCollect Data:\n\nDrug A Group: \\(n_1=50\\); 20 patients are cured\nDrug B Group: \\(n_2=80\\); 15 patients are cured\n\n\nStatistic:\n\n\\(\\widehat{p}_1 = 20/50 = 0.40\\) and \\(\\widehat{p}_2 = 15/80 = 0.1875\\)\n\\(\\boxed{\\widehat{p}_1-\\widehat{p}_2 = 0.2125}\\)\n\n\n\n\nSampling Distribution:\n\n\nTheory-based sampling distribution of \\(\\widehat{p}_1-\\widehat{p}_2\\):\n\n\\[\\text{Normal}\\Bigg(p_1-p_2,\\sqrt{\\frac{p_1(1-p_1)}{n_1}+ \\frac{p_2(1-p_2)}{n_2}} \\Bigg)\\]\n\n\n\nQ: We don’t know true \\(p_1, p_2\\)… how do we get rid of them?"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison-1",
-    "href": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison-1",
-    "title": "STAT 141",
-    "section": "Confidence Intervals: Drug Comparison",
-    "text": "Confidence Intervals: Drug Comparison\nEx: What is the difference in recovery rates for Drug A and Drug B?\n\nLet’s find a 95% confidence interval for \\(p_1 - p_2\\)\n\n\n\n\nCollect Data:\n\nDrug A Group: \\(n_1=50\\); 20 patients are cured\nDrug B Group: \\(n_2=80\\); 15 patients are cured\n\n\nStatistic:\n\n\\(\\widehat{p}_1 = 20/50 = 0.40\\) and \\(\\widehat{p}_2 = 15/80 = 0.1875\\)\n\\(\\boxed{\\widehat{p}_1-\\widehat{p}_2 = 0.2125}\\)\n\n\n\n\nSampling Distribution:\nQ: We don’t know true \\(p_1, p_2\\)… how do we get rid of them?\n\nPlug-in \\(\\widehat{p}_1, \\ \\widehat{p}_2\\) for \\(p_1, p_2\\)!\n\n\\[\\textbf{Normal} \\left( \\color{red}{\\widehat{p}_1}-\\color{red}{\\widehat{p}_2},\\sqrt{\\frac{\\color{red}{\\widehat{p}_1}(1-\\color{red}{\\widehat{p}_1})}{n_1}+ \\frac{\\color{red}{\\widehat{p}_2}(1-\\color{red}{\\widehat{p}_2})}{n_2}} \\right)\\]"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison-2",
-    "href": "slides/lecture29_wk11wed.html#confidence-intervals-drug-comparison-2",
-    "title": "STAT 141",
-    "section": "Confidence Intervals: Drug Comparison",
-    "text": "Confidence Intervals: Drug Comparison\nWe want a 95% confidence interval for \\(p_1 - p_2\\)\n\\[\\text{Normal}\\Bigg(p_1-p_2,\\sqrt{\\frac{p_1(1-p_1)}{n_1}+ \\frac{p_2(1-p_2)}{n_2}} \\Bigg)\\]\n\n\n\n\n\n\n\n\n\n\n\n\nGet confidence interval: Middle 95% is \\((0.05, \\ 0.37)\\) (can use qnorm() like usual)\n\n“We are 95% confident that Drug A is between 5% and 37% more effective than Drug B.”"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison",
-    "href": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison",
-    "title": "STAT 141",
-    "section": "Hypothesis Testing: Drug Comparison",
-    "text": "Hypothesis Testing: Drug Comparison\nEx: Is Drug A more effective than Drug B?\n\n\nQ: How should we define \\(H_0\\) and \\(H_a\\) so that they get at this research question?\n\nReminder: Our parameter here is \\(p_1 - p_2\\)\n\n\n\n\\[\n\\begin{align*}\nH_0: p_1 = p_2 &\\implies p_1 - p_2 = 0\\\\\nH_a: p_1 &gt; p_2 &\\implies p_1 - p_2 &gt; 0\n\\end{align*}\n\\]"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-1",
-    "href": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-1",
-    "title": "STAT 141",
-    "section": "Hypothesis Testing: Drug Comparison",
-    "text": "Hypothesis Testing: Drug Comparison\nEx: Is Drug A more effective than Drug B?\nHypotheses:\n\\[\n\\begin{align*}\nH_0: p_1 = p_2 &\\implies p_1 - p_2 = 0\\\\\nH_a: p_1 &gt; p_2 &\\implies p_1 - p_2 &gt; 0\n\\end{align*}\n\\]\n\nNull Distribution: By the CLT, \\[\\widehat{p}_1 - \\widehat{p}_2 \\approx \\text{Normal}\\Bigg(\\mu = p_1-p_2, \\sigma = \\sqrt{\\frac{p_1(1-p_1)}{n_1}+\\frac{p_2(1-p_2)}{n_2}}\\Bigg)\\]\n\n\nQ: How we use \\(H_0\\) to get rid of unknown \\(p_1\\) and \\(p_2\\)?\n\nIf \\(H_0\\) is true, then \\(p_1 - p_2 = 0\\)\nUnder \\(H_0\\), there is no expected difference between groups: Thus, we can plug in a pooled proportion, \\[\\text{Pooled Proportion} = \\color{red}{\\widehat{p}_{\\text{pool}} = \\frac{\\#\\text{Successes}_1 + \\#\\text{Successes}_2}{n_1 + n_2}}\\] for \\(p_1\\) and \\(p_2\\)."
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-2",
-    "href": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-2",
-    "title": "STAT 141",
-    "section": "Hypothesis Testing: Drug Comparison",
-    "text": "Hypothesis Testing: Drug Comparison\nEx: Is Drug A more effective than Drug B?\nHypotheses: \\(H_0: p_1-p_2=0\\)     vs.     \\(H_a: p_1 - p_2 &gt;0\\)\nNull Distribution:\n\\(\\widehat{p}_1 - \\widehat{p}_2 \\approx \\text{Normal}\\Bigg(\\mu = \\color{red}{0}, \\sigma = \\sqrt{\\frac{\\color{red}{\\widehat{p}_{\\text{pool}}}(1-\\color{red}{\\widehat{p}_{\\text{pool}}})}{n_1}+\\frac{\\color{red}{\\widehat{p}_{\\text{pool}}}(1-\\color{red}{\\widehat{p}_{\\text{pool}}})}{n_2}}\\Bigg)\\)\nData:\n\nDrug A Group: \\(n_1=50\\); 20 patients are cured\nDrug B Group: \\(n_2=80\\); 15 patients are cured\nTest Statistic: \\(\\widehat{p}_1-\\widehat{p}_2 = \\frac{20}{50}-\\frac{15}{80} = 0.2125\\)\nPooled Proportion: \\(\\widehat{p}_{\\text{pool}} = \\frac{20+15}{50+80} = 0.27\\)"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-3",
-    "href": "slides/lecture29_wk11wed.html#hypothesis-testing-drug-comparison-3",
-    "title": "STAT 141",
-    "section": "Hypothesis Testing: Drug Comparison",
-    "text": "Hypothesis Testing: Drug Comparison\nCalculate and Interpret P-Value:\n\n\n\n\n\n\n\n\n\n\n\n\\(\\text{Normal}\\Bigg(\\mu = \\color{red}{0}, \\sigma = \\sqrt{\\frac{\\color{red}{\\widehat{p}_{\\text{pool}}}(1-\\color{red}{\\widehat{p}_{\\text{pool}}})}{n_1}+\\frac{\\color{red}{\\widehat{p}_{\\text{pool}}}(1-\\color{red}{\\widehat{p}_{\\text{pool}}})}{n_2}}\\Bigg)\\)\n\n\nTest Statistic: \\(\\widehat{p}_1-\\widehat{p}_2 = 0.2125\\)\nP-value = 0.003 (we can still find this using pnorm())\nWith a rejection level of \\(\\alpha = 0.01\\), we would reject \\(H_0\\).\nWe claim Drug A is more effective than Drug B."
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#recap",
-    "href": "slides/lecture29_wk11wed.html#recap",
-    "title": "STAT 141",
-    "section": "Recap",
-    "text": "Recap\n\n\n\nTheorem: Normality of difference in proportions\n\n\nThe difference in proportions \\(\\widehat{p}_1 - \\widehat{p}_2\\) is approximately Normal when:\n\nEach sample has at least 10 “successes” and at least 10 “failures”\nThe two samples are independent of each other\n\nThen in this case, \\[\\widehat{p}_1 - \\widehat{p}_2 \\approx \\text{Normal}\\Bigg(\\mu = p_1-p_2, \\sigma = \\sqrt{\\frac{p_1(1-p_1)}{n_1}+\\frac{p_2(1-p_2)}{n_2}}\\Bigg)\\]\n\n\n\n\n\n\\[\\textbf{Confidence Intervals}\\]\n\\[\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\]\n\\[\\text{Sampling Distribution}\\] \\[(\\textbf{Plug in }\\color{red}{\\widehat{p}_1}\\text{ and }\\color{red}{\\widehat{p}_2})\\]\n\\[\\textbf{Normal}\\Bigg(\\color{red}{\\widehat{p}_1}-\\color{red}{\\widehat{p}_2}, \\sqrt{\\frac{\\color{red}{\\widehat{p}_1}(1-\\color{red}{\\widehat{p}_1})}{n_1}+\\frac{\\color{red}{\\widehat{p}_2}(1-\\color{red}{\\widehat{p}_2})}{n_2}}\\Bigg)\\]\n\n\\[\\textbf{Hypothesis Testing}\\] \\[(H_0: p_1 - p_2 = d_0)\\] \\[\\text{Null Distribution}\\] \\[(\\textbf{Plug-in null value, }\\color{red}{d_0}\\text{, and }\\color{red}{\\widehat{p}_{\\mathrm{pool}}})\\]\n\\[ \\hspace{-0.30in} \\text{Normal}\\Bigg( \\color{red}{d_0}, \\sqrt{\\frac{\\color{red}{\\widehat{p}_{\\mathrm{pool}}}(1-\\color{red}{\\widehat{p}_{\\mathrm{pool}}})}{n_1}+\\frac{\\color{red}{\\widehat{p}_{\\mathrm{pool}}}(1-\\color{red}{\\widehat{p}_{\\mathrm{pool}}})}{n_2}}\\Bigg)\\]"
-  },
-  {
-    "objectID": "slides/lecture29_wk11wed.html#next-time",
-    "href": "slides/lecture29_wk11wed.html#next-time",
-    "title": "STAT 141",
-    "section": "Next time",
-    "text": "Next time\n\nTheory-based inference with means"
-  },
-  {
-    "objectID": "slides/lecture15_wk05fri.html#decks-of-cards",
-    "href": "slides/lecture15_wk05fri.html#decks-of-cards",
-    "title": "STAT 141",
-    "section": "Decks of cards",
-    "text": "Decks of cards\n\n\nIf we count:\n\nAces as 1\nJacks as 11\nQueens as 12\nKings as 13\n\nThe distribution of numbers in a deck of cards looks like:"
-  },
-  {
-    "objectID": "slides/lecture15_wk05fri.html#drawing-cards-population-sample-parameter-and-statistic",
-    "href": "slides/lecture15_wk05fri.html#drawing-cards-population-sample-parameter-and-statistic",
-    "title": "STAT 141",
-    "section": "Drawing cards: Population, Sample, Parameter, and Statistic",
-    "text": "Drawing cards: Population, Sample, Parameter, and Statistic\n\n\n\nToday, we’re going to be:\n\nRandomly drawing 10 cards from a deck of cards\nCalculating the average value of our 10 cards\n\n\n\n\nQ: What is the sample? What is the population?\nQ: What is the statistic? What is the parameter?"
-  },
-  {
-    "objectID": "slides/lecture15_wk05fri.html#discussion",
-    "href": "slides/lecture15_wk05fri.html#discussion",
-    "title": "STAT 141",
-    "section": "Discussion",
-    "text": "Discussion\n\n\n\nWhat is the true average card value in a deck of cards?\nHow does the distribution of sample means compare to the distribution of card values in a deck of cards?\nWhat is the relationship between the centers of the two distributions?\nWhich distribution appears to have more variability?\nHow do the shapes of the two distributions compare? Why do they differ?"
-  },
-  {
-    "objectID": "slides/lecture15_wk05fri.html#sampling-overview-1",
-    "href": "slides/lecture15_wk05fri.html#sampling-overview-1",
-    "title": "STAT 141",
-    "section": "Sampling Overview",
-    "text": "Sampling Overview\n\nThe distribution of a data set allows us to quantify the shape, center, and spread of the data.\nWhile a single observation in a data set may appear arbitrary… repeated trials often show that outcomes follow certain patterns."
-  },
-  {
-    "objectID": "slides/lecture15_wk05fri.html#sampling-overview-2",
-    "href": "slides/lecture15_wk05fri.html#sampling-overview-2",
-    "title": "STAT 141",
-    "section": "Sampling Overview",
-    "text": "Sampling Overview\n\nThe distribution of a data set allows us to quantify the shape, center, and spread of the data.\nWhile a single observation in a data set may appear arbitrary… repeated trials often show that outcomes follow certain patterns."
-  },
-  {
-    "objectID": "slides/lecture15_wk05fri.html#sampling-overview-3",
-    "href": "slides/lecture15_wk05fri.html#sampling-overview-3",
-    "title": "STAT 141",
-    "section": "Sampling Overview",
-    "text": "Sampling Overview\n\n\nWe know that a variable from a population has a distribution\n\ne.g., the distribution of card values in a deck of cards\n\n\n\n\n\n\n\n\n\n\n\n\n\nMoral of Today: Statistics (e.g., mean of variable in a sample) have distributions too!!\n\nHow? We only have ONE statistic – the statistic from the ONE sample we drew\nDistribution is over all the possible samples we could have drawn (we just see 1)\n\nImplication: Statistics themselves have a mean, standard deviation, 5-number summary\n\nThe mean tells us the statistic’s typical value in a randomly chosen sample.\nThe standard deviation tells us how the statistic fluctuates from sample to sample.\n\nVery Powerful: e.g., Can use this distribution to give plausible ranges for the parameter and a sense of uncertainty in a given statistic."
-  },
-  {
-    "objectID": "slides/lecture15_wk05fri.html#statistical-inference",
-    "href": "slides/lecture15_wk05fri.html#statistical-inference",
-    "title": "STAT 141",
-    "section": "Statistical Inference",
-    "text": "Statistical Inference\n\nGoal: Draw conclusions about the population based on the sample.\n\nWe’ve seen how to calculate a statistic from our sample\nBut different samples give different statistics: how do we know whether to trust the one we have?\nSampling distributions show how widely our statistic can range across samples\nThis helps us understand how much to trust any single statistic"
+    "objectID": "office_hours.html",
+    "href": "office_hours.html",
+    "title": "Office Hours",
+    "section": "",
+    "text": "The times and locations of office hours can be found on Moodle - UPDATE LINK under “General.”\nPlease stop by during office hours to introduce yourself or ask some questions about the course!\nWe offer two types of office hours for STAT 141:\n\nInstructor office hours are a great place to ask questions about the content or course in general. They’re also a great place to get help on problems that you are stuck on.\nCourse Assistant office hours are a great place to work on your assignments with fellow students and seek the help of the course assistants whenever you get stuck.\n\nFurther, each Reed student is entitled to one hour of individual tutoring per course per week. This is an incredible resource that is available to you! You can sign up for individual tutoring in IRIS."
   }
 ]
