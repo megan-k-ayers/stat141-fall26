@@ -1077,7 +1077,11 @@ is **approximately standard normal (i.e., mean 0 and SD 1) as $n$ gets large eno
 
 
 
-- This means we can use `pnorm()` to get our p-values! The bootstrap is helping us estimate the SE for our z-score. 
+- This means we can use `pnorm()` to get our p-values! 
+    - The bootstrap is helping us estimate the SE for our z-score. 
+    - We need to use the bootstrap because we can't trust the `lm()` theory-based SE estimates when these assumptions are violated.
+
+- We could go *fully* simulation-based and avoid even assuming that $Z$ is approximately Normal - this just requires extra coding.
 
 
 ------------------------------------------------------------------------

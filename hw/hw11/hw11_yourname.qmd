@@ -1,6 +1,6 @@
 ---
 title: "Homework 11: Inference for Regression in R"
-subtitle: "STAT 141, Week 12"
+subtitle: "STAT 141, Week 14"
 author: "Your name here"
 format: pdf
 execute:
@@ -9,11 +9,13 @@ execute:
   message: false
 ---
 
-## Assigned: Thursday, November 19th
-## Due: **TUESDAY**, December 2nd at 9:00am on Gradescope as a **PDF**
+## Assigned: Thursday, December 3rd
+## Due: **WEDNESDAY**, December 9th at **10:00am** on Gradescope as a **PDF**
+
 
 In this homework assignment you will:
 
+- Recall how to build, interpret, and assess the assumptions of various linear regression models
 - Do inference for regression with both simulation-based and theory-based methods
 
 
@@ -25,7 +27,7 @@ I collaborated with...
 
 
 ```{r}
-#load the necessary packages
+# Load the necessary packages
 library(tidyverse)
 library(knitr)
 library(moderndive)
@@ -45,7 +47,7 @@ We've covered a lot of ground this semester! Here's a brief summary of topics, g
   + Unit 2: Linear regression (simple and multiple), quantitative and categorical explanatory variables, interaction effects
   + Unit 3: Sampling distributions, bootstrap distributions, confidence intervals, hypothesis testing
   + Unit 4: Random variables, the Central Limit Theorem, theory-based inference for proportions, means, difference in proportions, difference in means
-  + Unit 5: Inference for regression with theory and bootstrapping
+  + Unit 5: Inference for regression with theory-based and simulation-based inference
   
   
 **a.** Pick 3 distinct "pairs" of topics from *different* units. For each pair, describe in 1-2 complete sentences how the concepts in those units are related. (ex. Data visualization and linear regression are related, because we should always use data visualization techniques to assess LINE assumptions. Residual plots and y-vs-x scatterplots help us assess linearity and equal variance, and histograms or Q-Q plots help us assess normality.) 
@@ -58,16 +60,14 @@ We've covered a lot of ground this semester! Here's a brief summary of topics, g
 
 
 
-
 **b.** Which of the 3 topics did you find most challenging? For each topic, identify one related homework or lab exercise that you want to revisit before the final exam. 
 
 *******************************************************************************
 
 
 
-
-
 *******************************************************************************
+
 
 
 ## Exercise 2: Incorporating Gender
@@ -86,9 +86,7 @@ In lab, we assessed a simple linear regression that used the beauty score to pre
 
 
 
-
 *******************************************************************************
-
 
 
 
@@ -102,7 +100,6 @@ In lab, we assessed a simple linear regression that used the beauty score to pre
 
 
 
-
 **c.** Interpret the (i) intercept and the (ii) slope on `bty_avg` *in context*. [Text only for this question]
 
 *******************************************************************************
@@ -113,7 +110,7 @@ In lab, we assessed a simple linear regression that used the beauty score to pre
 
 
 
-**d.** Now that we're controlling for `gender` (compared to Lab 11, where we didn't), state the relevant hypotheses and interpret the results of the hypothesis test for whether `bty_avg` is a meaningful predictor of `score`. You should appeal to the provided p-value and state what it means in context.  [Text only for this question]
+**d.** Now that we're controlling for `gender` (compared to Lab 11, where we didn't), discuss how the relevant hypotheses have changed, and interpret the results of the theory-based hypothesis test for whether `bty_avg` is a meaningful predictor of `score`. You should appeal to the provided p-value and state what it means in context in your discussion.  [Text only for this question]
 
 *******************************************************************************
 
@@ -122,16 +119,8 @@ In lab, we assessed a simple linear regression that used the beauty score to pre
 *******************************************************************************
 
 
-**e.** Does your answer from the previous part (2d) change what you think we should conclude about the relationship between `bty_avg` and `score`? 
 
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-**f.** Using the regression table from Exercise 2 part (a), answer the following:
+**e.** Using the regression table from Exercise 2 part (a), answer the following:
 
 (i) What is the equation of the line corresponding to male professors?  
 
@@ -139,7 +128,7 @@ In lab, we assessed a simple linear regression that used the beauty score to pre
 
 (iii) For two professors who received the same beauty rating, which gender tends to have the higher course evaluation score? 
 
-The following code chunk plots the regression lines from the multiple regression model corresponding to male and to female professors. You don't need to include this in your response, but the graph may provide intuition for the answers you report.  [Text only for this question]
+The following code chunk plots the regression lines from the multiple regression model corresponding to male and to female professors. You don't need to appeal to this in your response, but the graph may provide intuition for the answers you report.  [Text only for this question]
 
 ```{r}
 ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
@@ -197,7 +186,6 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
 
 
 
-
 *******************************************************************************
 
 
@@ -212,9 +200,7 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
 
 
 
-
 \newpage
-
 
 
 
@@ -222,7 +208,7 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
 
 **a.** Regardless of what you found in Exercise 3, we will now use bootstrapping to conduct inference on parameters of the model we constructed there. Construct a 80% confidence interval for the coefficient for `bty_avg` using the bootstrap with `reps = 1000` and the percentile method (this may take a minute to run). **Be sure to state the confidence interval, and interpret the confidence interval in the context of what your statistic represents.**  [Code and text for this question]
 
-(*Hint: An example of code for simulation-based inference for regression can be found in the slides from 4/15. When adapting this code, make sure you are grabbing the estimate for `bty_avg` - check the order of your coefficients in Exercise 3a.*)
+(*Hint: An example of code for simulation-based inference for regression can be found in the "Inference for Regression I" slides. When adapting this code, make sure you are grabbing the estimate for `bty_avg` - check the order of your coefficients in Exercise 3a.*)
 
 *******************************************************************************
 
@@ -232,9 +218,7 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
 
 
 
-
-
-**b.** Conduct a hypothesis test of the coefficient for `bty_avg` being equal or not equal to 0 using the bootstrap distribution you just created. Use a significance level of $\alpha = 0.01$. **Be sure to state your hypotheses, calculate a p-value, and interpret the p-value in context.** [Code and text for this question]
+**b.** Conduct a hypothesis test of the coefficient for `bty_avg` being equal or not equal to 0 using the bootstrap distribution you just created. Recall that with a large enough sample size, we can adapt our `pnorm` approach to incorporate information from the bootstrap. Use a significance level of $\alpha = 0.01$. **Be sure to state your hypotheses, calculate a p-value, and interpret the p-value in context.** [Code and text for this question]
 
 *******************************************************************************
 
@@ -251,4 +235,3 @@ ggplot(evals, aes(x = bty_avg, y = score, color = gender)) +
 
 
 *******************************************************************************
-

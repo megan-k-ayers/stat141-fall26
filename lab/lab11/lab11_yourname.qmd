@@ -1,6 +1,6 @@
 ---
 title: "Lab 11: Inference for Regression in R"
-subtitle: "STAT 141, Week 12"
+subtitle: "STAT 141, Week 14"
 author: "Your name here"
 format: pdf
 execute:
@@ -11,8 +11,8 @@ execute:
 
 In this lab, you will
 
-  1. Recall how to build, interpret, and check assumptions for linear regression models
-  2. Do inference for regression with both simulation-based and theory-based methods
+  1. Recall how to build and interpret linear regression models
+  2. Do inference for regression with theory-based methods
 
 
 ### Add any collaborators here!
@@ -23,7 +23,7 @@ I collaborated with...
 
 
 ```{r}
-#load the necessary packages
+# Load the necessary packages
 library(tidyverse)
 library(knitr)
 library(moderndive)
@@ -53,25 +53,21 @@ We have observations on 21 different variables, some categorical and some numeri
 
 
 
+## Exercise 1: Inference for simple linear regression of score vs beauty
 
-## Exercise 1: Inference for simple Linear Regression of score vs beauty
-
-**a.** We will start by investigating the data with simple linear regression. First, make a scatterplot of `score` (our response variable) by `bty_avg` (our explanatory variable) and **display a regression line**. [Code only for this question]
+**a.** We will start by investigating the data with simple linear regression. First, use `ggplot` to make a scatterplot of `score` (our response variable) by `bty_avg` (our explanatory variable) and *display a regression line*. [Code only for this question]
 
 *******************************************************************************
-
 
 
 
 *******************************************************************************
-
 
 
 
 **b.** Use `lm()` to create a regression model predicting `score` as a function of `bty_avg`, and display the estimated coefficients using the `get_regression_table()` function. [Code only for this question]
 
 *******************************************************************************
-
 
 
 
@@ -86,7 +82,6 @@ We have observations on 21 different variables, some categorical and some numeri
 
 
 
-
 *******************************************************************************
 
 
@@ -98,16 +93,13 @@ We have observations on 21 different variables, some categorical and some numeri
 
 
 
-
 *******************************************************************************
-
 
 
 
 **e.** Formally assess whether `bty_avg` is a meaningful predictor of `score` by stating a set of two hypotheses, writing down a *theory-based* p-value (your previous code should have given it to you!), and interpreting that p-value. [Text only for this question]
 
 *******************************************************************************
-
 
 
 
@@ -121,9 +113,7 @@ We have observations on 21 different variables, some categorical and some numeri
 
 
 
-
 *******************************************************************************
-
 
 
 
@@ -133,8 +123,4 @@ We have observations on 21 different variables, some categorical and some numeri
 
 
 
-
 *******************************************************************************
-
-
-
