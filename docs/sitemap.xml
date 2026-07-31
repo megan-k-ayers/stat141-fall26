@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>XXX SITE URL HERE XXX/syllabus.html</loc>
+    <lastmod>2026-07-30T21:57:51.708Z</lastmod>
+  </url>
+  <url>
+    <loc>XXX SITE URL HERE XXX/inference_cheatsheet.html</loc>
+    <lastmod>2026-05-01T16:02:42.678Z</lastmod>
+  </url>
+  <url>
     <loc>XXX SITE URL HERE XXX/index.html</loc>
     <lastmod>2026-05-12T01:39:02.002Z</lastmod>
+  </url>
+  <url>
+    <loc>XXX SITE URL HERE XXX/office_hours.html</loc>
+    <lastmod>2026-07-30T20:17:27.417Z</lastmod>
   </url>
 </urlset>
