@@ -1,0 +1,980 @@
+---
+pagetitle: "Linear Models II: Accuracy and Assumptions"
+editor: source
+draft: true
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = 'center')
+library(knitr)
+library(tidyverse)
+library(cowplot)
+library(moderndive)
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Linear Models II: Accuracy and Assumptions]{.custom-title}
+
+<br> <br> 
+
+[Megan Ayers]{.custom-subtitle}
+
+[Stat 141 \| Fall 2026 <br> Wednesday, Week 4]{.custom-subtitle}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### Announcements
+
+::: {.fragment .nonincremental}
+
+-   Fill out the [Week 4 Survey](https://tinyurl.com/4wk-survey)
+
+![https://tinyurl.com/4wk-survey](img/4wk-survey-qr.png){width=20%}
+
+:::
+
+------------------------------------------------------------------------
+
+### Goals for Today
+
+-   Recall simple linear regression
+-   Do simple linear regression in R
+-   Discuss model assumptions for linear regression
+-   Assess accuracy of linear regression models
+-   Discuss "extrapolation"
+
+------------------------------------------------------------------------
+
+## Form of the Model
+
+<br><br><br>
+
+$$
+y = f(x) + \epsilon
+$$
+
+where $\epsilon$ represents an error term.
+
+<br><br><br>
+
+**Goal:**
+
+-   Determine a reasonable form for $f()$. (Ex: Line, curve, ...)
+
+-   Estimate $f()$ with $\widehat{f}()$ using the data.
+
+-   Generate predicted values: $\widehat y = \widehat{f}(x)$.
+
+------------------------------------------------------------------------
+
+
+### Simple Linear Regression Model
+
+$$
+y = \beta_0 + \beta_1 x + \epsilon
+$$
+
+Consider this model when:
+
+-   Response variable $(y)$: quantitative
+
+-   Explanatory variable $(x)$: quantitative
+
+    -   Have only ONE explanatory variable.
+
+-   AND, $f()$ can be approximated by a line.
+
+-   Need to determine the best **estimates** of $\beta_0$ and $\beta_1$.
+
+------------------------------------------------------------------------
+
+#### Distinguishing between the **population** and the **sample**
+
+::::: columns
+::: column
+$$ 
+y = \beta_0 + \beta_1 x + \epsilon
+$$
+
+-   Parameters:
+    -   Based on the **population**
+    -   Unknown then if don't have data on the whole population
+    -   EX: $\beta_0$ and $\beta_1$
+:::
+
+::: column
+$$
+\widehat{y} = \widehat{ \beta}_0 + \widehat{\beta}_1 x
+$$
+
+-   Statistics:
+    -   Based on the **sample** data
+    -   Known
+    -   Usually estimate a population parameter
+    -   EX: $\widehat{\beta}_0$ and $\widehat{\beta}_1$
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Regression goals
+
+Linear regression is used for 2 main tasks:
+
+-   **Explaining** relationships between variables in a data set so that we can **infer** relationships in the population
+    -   Ex. We observe that a sample of Reed students who sleep more have higher test scores
+    -   Based on this positive relationship in the sample, we might infer that sleep is associated with higher test scores for similar students **in general**
+    -   We focus most on **coefficients**
+-   **Predicting** values of the response variable based on values of the explanatory variable
+    -   Ex. Using data from 1960-2015, we predict the atmosphere will contain 410 ppm CO2 in 2025
+    -   We focus most on **fitted values** and **residuals**
+
+
+------------------------------------------------------------------------
+
+
+### Our Modeling Goal
+
+Recall our modeling goal: **predict win percentage by using the sugar percentage variable**.
+
+```{r}
+#| output-location: column
+candy <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv") %>%
+  mutate(sugarpercent = sugarpercent*100)
+
+ggplot(data = candy, 
+       mapping = aes(x = sugarpercent,
+                     y = winpercent)) +
+  geom_point(alpha = 0.6, size = 4, 
+             color = "chocolate4") +
+  geom_smooth(method = "lm", se = FALSE,
+              color = "deeppink2")
+```
+
+------------------------------------------------------------------------
+
+### Method of Least Squares
+
+:::::: columns
+:::: column
+-   Want residuals to be small.
+
+-   Minimize a function of the residuals.
+
+-   Minimize:
+
+::: fragment
+$$
+\sum_{i = 1}^n e^2_i
+$$
+:::
+::::
+
+::: column
+```{r, echo=FALSE, eval = TRUE}
+ggplot(data = candy, 
+       mapping = aes(x = sugarpercent,
+                     y = winpercent)) +
+  geom_point(alpha = 0.6, size = 4, 
+             color = "chocolate4") +
+  stat_smooth(method = "lm", se = FALSE,
+              color = "deeppink2") +
+  annotate("segment", x = candy$sugarpercent, 
+           xend = candy$sugarpercent, 
+           y = candy$winpercent, yend = 44.6094 + .1192*candy$sugarpercent, 
+           color = "darkblue", arrow = arrow(length = unit(0.03, "npc"))) + 
+  geom_point()
+  
+```
+:::
+::::::
+
+------------------------------------------------------------------------
+
+### Method of Least Squares
+
+After minimizing the sum of squared residuals, you get the following equations:
+
+Get the following equations:
+
+$$ 
+\begin{align}
+\widehat{\beta}_1 &= \frac{ \sum_{i = 1}^n (x_i - \bar{x}) (y_i - \bar{y})}{ \sum_{i = 1}^n (x_i - \bar{x})^2} \\
+\widehat{\beta}_0 &= \bar{y} - \widehat{\beta}_1 \bar{x}
+\end{align}
+$$ where
+
+$$
+\begin{align}
+\bar{y} = \frac{1}{n} \sum_{i = 1}^n y_i \quad \mbox{and} \quad \bar{x} = \frac{1}{n} \sum_{i = 1}^n x_i
+\end{align}
+$$
+
+- Note: A large slope does **not necessarily** indicate strong correlation, and a small slope does **not necessarily** indicate lack of correlation.
+
+------------------------------------------------------------------------
+
+### Method of Least Squares
+
+Then we can estimate the whole function with:
+
+$$
+\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
+$$
+
+Called the **least squares line**, **regression line**, or the **line of best fit**.
+
+------------------------------------------------------------------------
+
+### Constructing the Simple Linear Regression Model in R
+
+We can use the `lm()` function to construct the simple linear regression model in R and the `get_regression_table()` function from `moderndive` to interpret it.
+
+::: {.fragment}
+
+```{r, R.options=list(pillar.sigfig = 5)}
+mod <- lm(winpercent ~ sugarpercent, data = candy)
+get_regression_table(mod)
+```
+
+:::
+
+:::{.fragment}
+What is the fitted model form? 
+:::
+
+:::{.fragment}
+\begin{align*}
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
+   &= 44.6094 + 0.1192 \times x_{sugarpercent}
+\end{align*}
+::: 
+
+------------------------------------------------------------------------
+
+We can use the `lm()` function to construct the simple linear regression model in R and the `get_regression_table()` function to interpret it.
+
+::: {.fragment}
+
+```{r, R.options=list(pillar.sigfig = 5)}
+mod <- lm(winpercent ~ sugarpercent, data = candy)
+get_regression_table(mod)
+```
+
+:::
+
+
+:::{.fragment}
+**Q:** How do we interpret the coefficients?
+:::
+
+------------------------------------------------------------------------
+
+### Coefficient Interpretation
+
+\begin{align*}
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
+   &= 44.6094 + 0.1192 \times x_{sugarpercent}
+\end{align*}
+
+We need to be precise and careful when interpreting estimated coefficients! 
+  
+-   **Intercept:** We [expect/predict]{.underline} $y$ to be $\widehat{\beta}_0$ [on average]{.underline} when $x = 0$.
+
+-   **Slope:** For a one-unit increase in $x$, we [expect/predict]{.underline} $y$ to change by $\widehat{\beta}_1$ units [on average]{.underline}.
+
+:::{.fragment}
+
+**These interpretations are non-specific to the context of our model, but when we are interpreting coefficients, we always need to interpret the coefficients in context**
+
+:::
+
+------------------------------------------------------------------------
+
+### Coefficient Interpretation: In Context
+
+\begin{align*}
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
+   &= 44.6094 + 0.1192 \times x_{sugarpercent}
+\end{align*}
+
+-   **Intercept:** We [expect/predict]{.underline} a candy's win percentage to be 44.6094 [on average]{.underline} when their sugar percentage is 0.
+
+-   **Slope:** For a one-unit increase in sugar percentage, we [expect/predict]{.underline} the win percentage of a candy to change by 0.1192 units [on average]{.underline}.
+
+
+
+------------------------------------------------------------------------
+
+### Prediction, Interpolation, and Extrapolation
+
+```{r}
+new_cases <- data.frame(sugarpercent = c(22, 77, 150))
+predict(mod, newdata = new_cases)
+```
+
+-   We didn't have any treats in our sample with a sugar percentage of 77%. Can we still make this prediction?
+    -   Called **interpolation**
+
+<br>
+
+-   We didn't have any treats in our sample with a sugar percentage of 150%. Can we still make this prediction?
+    -   Called **extrapolation**
+
+------------------------------------------------------------------------
+
+### Cautions
+
+::::: columns
+::: column
+-   Careful to only predict values within the range of $x$ values in the sample.
+
+-   Make sure to investigate **outliers**: observations that fall far from the cloud of points.
+    - High leverage points: extreme *predictor* value
+:::
+
+::: column
+```{r, echo = FALSE}
+set.seed(13681)
+x <- c(runif(50, 0, 10))
+y1 <- c(3 + 1*x + rnorm(50, 0))
+dat1 <- data_frame(x = c(x, 20), y = c(y1, 20))
+x2 <- c(x, 20)
+y2 <- c(y1, 5)
+dat <- data_frame(x = x2, y = y2) 
+p1 <- ggplot(dat, aes(x, y)) + geom_point() + 
+  stat_smooth(method = "lm", se = FALSE, color = "turquoise4", linewidth = 2) +
+  stat_smooth(method = "lm", se = FALSE, data = dat[-51,], color = "deeppink3", linewidth = 2)
+p2 <- ggplot(dat1, aes(x, y)) + geom_point() + 
+  stat_smooth(method = "lm", se = FALSE, color = "turquoise4", linewidth = 2) +
+  stat_smooth(method = "lm", se = FALSE, data = dat[-51,], color = "deeppink3", linewidth = 2)
+plot_grid(p1, p2, ncol = 2)
+```
+:::
+:::::
+
+
+------------------------------------------------------------------------
+
+### A closer look at our model
+
+```{r, R.options=list(pillar.sigfig = 5)}
+get_regression_table(mod)
+```
+
+
+\begin{align*}
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
+   &= 44.6094 + 0.1192 \times x_{sugarpercent}
+\end{align*}
+
+
+:::{.fragment}
+What assumptions have we made?
+:::
+
+------------------------------------------------------------------------
+
+## Linear Regression Assumptions {.smaller}
+
+We can *always* find the line of best fit to explore data, but...
+
+
+:::{.fragment}
+**To make accurate predictions or inferences, certain conditions should be met.**
+:::
+
+:::{.fragment}
+To responsibly use linear regression tools for prediction or inference, we require:
+:::
+
+:::{.fragment .nonincremental}
+1. **Linearity:** The relationship between explanatory and response variables must be approximately linear
+    
+    - Check using scatterplot of data, or **residual plot**
+::: 
+
+:::{.fragment .nonincremental}
+2. **Independence:** The observations should be independent of one another.
+
+    - Can check by considering data context, and
+    - sometimes by looking at scatterplots/**residual plots**
+::: 
+
+:::{.fragment .nonincremental}
+3. **Normality:** The distribution of residuals should be *approximately* bell-shaped, unimodal, symmetric, and centered at 0 at every "slice" of the explanatory variable
+
+    - Simple check: look at **histogram of residuals**
+    - Better to use a **Q-Q plot**
+:::  
+
+:::{.fragment .nonincremental}
+4. **Equal Variability:** Variance of residuals should be roughly constant across data set. Also called "homoscedasticity". Models that violate this assumption are sometimes called "heteroscedastic"
+    
+    - Check using **residual plot**.
+:::  
+
+
+------------------------------------------------------------------------
+  
+## A cute way to remember this: **"LINE"**  
+
+
+1. **L**inearity
+    
+2. **I**ndependence
+
+3. **N**ormality
+    
+4. **E**qual Variability
+
+<br>
+
+- We assess these using **diagnostic plots** (`y` vs `x` scatterplot, residual plot, residual histogram, q-q plot)
+- Later in the course, we'll learn why **I**, **N**, and **E** are required for **inference**
+
+------------------------------------------------------------------------
+
+## Assessing conditions: Linearity
+
+::: smaller
+**Linearity:** The relationship between explanatory and response variables must be approximately linear
+
+```{r echo=FALSE, fig.height = 3.5}
+library(gridExtra)
+set.seed(10)
+x <- rnorm(100, 0, 2)
+y1 <- x + rnorm(100)
+y2 <- x^2 + x + rnorm(100)
+
+my_df <- data.frame(x,y1,y2)
+
+g1 <- ggplot(my_df, aes(x = x, y = y1))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+labs(x = "x", y = "y", title = "Linear")
+g2 <- ggplot(my_df, aes(x = x, y = y2))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+labs(x = "x", y = "y", title = "Non-Linear")
+grid.arrange(g1,g2, ncol = 2)
+```
+
+-   Points should be evenly distributed above and below the regression line **at each "slice" of x**
+-   If data is non-linear:
+    -   Slope does not adequately describe relationship and predictions can be very inaccurate
+    -   More advanced modeling techniques should be used instead (take STAT 243)
+:::
+
+------------------------------------------------------------------------
+
+## Assessing conditions: Linearity
+    
+```{r echo=FALSE}
+library(moderndive)
+lm1 <- lm(data = my_df, y1 ~ x)
+lm2 <- lm(data = my_df, y2 ~ x)
+
+res1 <- get_regression_points(lm1)
+res2 <- get_regression_points(lm2)
+
+g1 <- ggplot(res1, aes(x = y1_hat, y = residual))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+labs(x = "fitted value", y = "residual", title = "Linear")
+g2 <- ggplot(res2, aes(x = y2_hat, y = residual))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+labs(x = "fitted value", y = "residual", title = "Non-Linear")
+grid.arrange(g1,g2, ncol = 2)
+```
+
+-   **Residual plots** can also be useful for checking linearity
+-   These plot model **residuals** against the **fitted values**
+-   We don't want to see any trends here 
+
+--------------------------------------------------------------------
+
+## Assessing conditions: Linearity (Code Example)
+    
+```{r fig.height = 4.5}
+library(moderndive)
+
+# Creating the model
+lm1 <- lm(data = my_df, y1 ~ x)
+
+# *** Pulling out model inputs, residuals, and fitted values ***
+res1 <- get_regression_points(lm1)  
+
+# Plotting residuals vs fitted values
+(g1 <- ggplot(res1, aes(x = y1_hat, y = residual)) + 
+  geom_point() + 
+  theme_bw() + 
+  geom_smooth(method = "lm", se = F) + 
+  labs(x = "fitted value", y = "residual", title = "Linear"))
+```
+
+------------------------------------------------------------------------
+
+## Assessing conditions: Independence
+
+::: smaller
+**Independence**: The observations should be independent of one another
+
+```{r echo = FALSE}
+set.seed(218)
+
+# Setting 1
+n <- 50
+
+time <-seq(0,1, length.out = n)
+
+rho <- 0.5
+error <- rnorm(1)
+for(i in 2:n){
+  temp <- rho * error[i-1] + sqrt(1 - rho^2) * rnorm(1)
+  error <- c(error, temp)
+} # end of i
+
+y <- time + error
+
+my_df <- data.frame(time,y)
+
+g1 <- 
+  ggplot(my_df, aes(x = time, y = y)) + 
+  geom_point() + 
+  theme_bw() + 
+  geom_smooth(method = "lm", se = F)+
+  labs(x = "time", y = "y", title = "Non-independence: Example 1")
+
+# Setting 2
+n <- 150
+
+re <- c(-2, 0, 2)
+
+group1 <- rep("Group A", n/3)
+group2 <- rep("Group B", n/3)
+group3 <- rep("Group C", n/3)
+
+x1 <- re[1] + rnorm(n/3)
+x2 <- re[2] + rnorm(n/3)
+x3 <- re[3] + rnorm(n/3)
+
+y1 <- x1 + rnorm(n/3, sd=3)
+y2 <- x2 + rnorm(n/3, sd=1)
+y3 <- x3 + rnorm(n/3, sd=5.5)
+
+group <- c(group1, group2, group3)
+x <- c(x1, x2, x3)
+y <- c(y1, y2, y3)
+
+my_df <- data.frame(x,y, group)
+
+temp <- lm(y ~ x)
+
+g2 <- 
+  ggplot(my_df, aes(x = x, y = y, color=group)) + 
+  geom_point() + 
+  theme_bw() + 
+  geom_abline(a=temp$coefficients[1], b=temp$coefficients[2]) +
+  labs(x = "x", y = "y", title = "Non-independence: Example 2")
+
+
+grid.arrange(g1,g2, ncol = 2)
+```
+
+-   If observations are not independent, inference about the population may be misleading.
+-   We usually assess independence qualitatively
+    -   Are observations inherently connected? (Beyond variables in the model)
+
+:::
+
+------------------------------------------------------------------------
+
+## Assessing conditions: Normality (of residuals)
+
+::: smaller
+**Normality:** The distribution of residuals should be bell-shaped, unimodal, symmetric, and centered at 0 at every "slice" of the explanatory variable
+
+```{r echo = FALSE, fig.width = 10, out.width = "70%"}
+set.seed(1)
+x <- runif(500, min=-1, max=1)
+x <- sort(x)
+n1 <- sum(x<0)
+n2 <- sum(x>0)
+
+y1 <- x[x<0] + rnorm(n1)
+y2 <- x[x>=0] + (rchisq(n2, df=1)-1)/sqrt(2)
+
+y <- c(y1, y2)
+group <- c(rep("X<0", n1), rep("X>0", n2))
+residuals <- lm(y~x)$residuals
+
+my_df <- data.frame(x, y, residuals, group)
+
+temp <- lm(y~x)
+
+g1 <- ggplot(my_df, aes(x = x, y=y, color=group)) + 
+  geom_vline(aes(xintercept = 0), color = "gray40", lty = 2) +
+  geom_point()+ 
+  theme_bw()+ 
+  scale_x_continuous(limits = c(-1, 1)) + 
+  scale_y_continuous(limits = c(-3, 3)) + 
+  geom_abline(aes(intercept = temp$coefficients[1], slope = temp$coefficients[2]))
+
+my_df1 <- filter(my_df, x<0)
+my_df2 <- filter(my_df, x>=0)
+
+g2 <- 
+  ggplot(my_df1, aes(x=residuals)) + 
+  geom_histogram(color = "white")+ 
+  theme_bw()+ 
+  labs(x = "Residual", title = "Residuals for X<0 (Normal)")
+
+g3 <- 
+  ggplot(my_df2, aes(x=residuals)) + 
+  geom_histogram(color = "white")+ 
+  theme_bw()+ 
+  labs(x = "Residual", title = "Residuals for X>0 (Non-Normal)")
+
+grid.arrange(g1,g2,g3, ncol = 3)
+```
+
+:::
+
+
+------------------------------------------------------------------------
+
+## Assessing conditions: Normality (of residuals)
+
+::: smaller
+**Normality:** The distribution of residuals should be bell-shaped, unimodal, symmetric, and centered at 0 at every "slice" of the explanatory variable
+
+```{r fig.width = 10, fig.height = 4, echo = FALSE}
+ggplot(my_df, aes(x=residuals)) + 
+  geom_histogram(color = "white")+ 
+  theme_bw()+ 
+  labs(x = "Residual", title = "Residuals Overall (Non-Normal)")
+names(my_df)[3] <- "residual"
+```
+
+If residuals are non-Normal...
+
+  - Some predictions can be very inaccurate
+  - Inference about the population may be misleading
+
+:::
+
+------------------------------------------------------------------------
+
+## Assessing conditions: Normality (of residuals)
+
+**Normality:** The distribution of residuals should be "Normal"
+
+::::: columns
+
+::: {.column width=50%}
+```{r}
+# New aes() argument!! 
+ggplot(my_df, aes(sample = residual)) + 
+  geom_qq() +
+  geom_qq_line() +
+  theme_bw()
+```
+
+:::
+
+::: {.column width=50%}
+- "Q-Q" plots make it even easier to check Normality - we'll learn some of the theory behind this later.
+- We want points to fall as close to the line as possible.
+:::
+
+:::::
+
+------------------------------------------------------------------------
+
+## Assessing conditions: Equal variability (of residuals)
+
+**Equal Variability**: Variance of residuals should be approximately constant across the data
+
+::::: columns
+
+::: {.column width=50%}
+```{r echo = FALSE, fig.height=9}
+set.seed(218)
+
+x<-seq(0, 1, length.out = 150)
+sd<-seq(from = .2, to = 1, length.out = 150)^2
+y1 <- x + rnorm(150,0,.35)
+y2<- x + rnorm(150, 0, sd )
+
+my_df <- data.frame(x,y1, y2)
+
+lm1 <- lm(data=my_df, y1~x)
+lm2 <- lm(data=my_df, y2~x)
+
+res1 <- get_regression_points(lm1)
+res2 <- get_regression_points(lm2)
+
+g1 <- ggplot(res1, aes(x = x, y = residual))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+
+  labs(x = "x", y = "residual", title = "Equal Variability")+scale_y_continuous(limits = c(-2,2))
+
+g2 <- ggplot(res2, aes(x = x, y = residual))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+
+  labs(x = "x", y = "residual", title = "Non-Equal Variability")+scale_y_continuous(limits = c(-2,2))
+
+
+grid.arrange(g1,g2, ncol = 1)
+```
+:::
+
+::: {.column width=50%}
+-   **Residual plots** are also very useful for this
+-   If equal variability isn't met:
+    -   Inference about the population may be misleading
+    -   (Potential) outliers in high-variability range are more influential
+:::
+:::::
+
+----------------------------------------------------------------------
+
+## Another example: high leverage points
+
+Remember the outlier example:
+
+```{r}
+#| echo: false
+set.seed(13681)
+x <- c(runif(50, 0, 10))
+y1 <- c(3 + 1*x + rnorm(50, 0))
+dat1 <- data_frame(x = c(x, 20), y = c(y1, 20))
+x2 <- c(x, 20)
+y2 <- c(y1, 5)
+dat <- data_frame(x = x2, y = y2)
+ggplot(dat, aes(x, y)) + geom_point() +
+  stat_smooth(method = "lm", se = FALSE, color = "turquoise4", linewidth = 2) +
+ stat_smooth(method = "lm", se = FALSE, data = dat[-51,], color = "deeppink3", linewidth = 2)
+```
+
+:::{.fragment}
+What do diagnostics look like when we fit the teal model?
+:::
+
+------------------------------------------------------------------------
+
+## Diagnosing the model
+
+```{r echo = FALSE}
+teal_mod <- lm(y ~ x, dat)
+ggplot(teal_mod) +
+  gglm::stat_fitted_resid()
+```
+
+-   In this case, can already see the outlier in the residual vs fitted plot.
+
+------------------------------------------------------------------------
+
+## What to do with high leverage points?
+
+-   Depends on **context**
+-   It may be reasonable to remove them and refit the model
+    -   If we believe the data is the result of an error
+    -   If we are most focused on **prediction** for non-outliers, or if our population of interest does not include the outlier
+-   But we shouldn't remove outliers just because we don't like the results that they produce
+    - Especially if our goal is **descriptive** or **explanatory**, and the outlier represents a valid data point
+
+
+::: {.fragment}
+
+```{r}
+dat_no_outlier <- dat %>%
+  filter(x < 15)
+
+pink_mod <- lm(y ~ x, dat_no_outlier)
+```
+
+:::
+
+
+------------------------------------------------------------------------
+
+## Recall our `candy` simple linear regression model
+
+```{r}
+mod <- lm(winpercent ~ sugarpercent, data = candy)
+```
+
+
+```{r}
+#| echo: false
+ggplot(data = candy,
+       mapping = aes(x = sugarpercent,
+                     y = winpercent)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE, color = "deeppink2")
+```
+
+:::{.fragment}
+Let's check if this meets the **LINE** assumptions
+:::
+
+::: fragment
+**Q**: First, what does this graph tell us about **Linearity**?
+:::
+
+------------------------------------------------------------------------
+
+## Residual vs. fitted plot
+
+::::: columns
+::: {.column width=65%}
+```{r}
+res <- get_regression_points(mod)
+
+ggplot(res, aes(x = winpercent_hat, y = residual)) + 
+  geom_point(alpha = 0.5) + 
+  geom_smooth(method = "lm", se = FALSE, color = "deeppink2") + 
+  labs(x = "fitted value", y = "residual")
+```
+
+:::
+
+::: {.column width=35%}
+
+<br>
+<br>
+<br>
+<br>
+
+-   Linearity: `r emo::ji("check")`
+
+-   Independence: `r emo::ji("check")`
+
+-   Equal Variability: `r emo::ji("check")`
+:::
+:::::
+
+<!-- Remember: we want to see a cloud / football-y shape here -->
+
+
+
+------------------------------------------------------------------------
+
+## Checking normality: residual histogram
+
+
+```{r}
+ggplot(res, aes(x = residual)) + 
+  geom_histogram(bins = 30) + 
+  labs(x = "Residual")
+```
+
+-   Normality: `r emo::ji("thinking")`
+    - Not horrible but not great
+    - We'll look at a Q-Q plot to further assess!
+
+------------------------------------------------------------------------
+
+## Checking normality: Q-Q plot
+
+```{r}
+ggplot(res, aes(sample = residual)) + 
+  geom_qq() +
+  geom_qq_line()
+```
+
+-   Normality: `r emo::ji("question")`
+
+
+# Suppose LINE assumptions are met. Is the model good?
+
+------------------------------------------------------------------------
+
+### Coefficient of Determination, or $R^2$
+
+A common measure of the **strength** of a linear model is the **coefficient of determination** $R^2$, (aka "R-squared").
+
+- $R^2$ is always between 0 and 1 (for the linear models we discuss)
+- It measures the **proportion of variation in the response variable $y$ that is explained by the linear model**
+
+::: fragment
+$$
+R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}}} { \underbrace{s_y^2}_{\textrm{Variation in y}}} \ \ \ \ \ \ \ \ \ \ \ \ (\text{Reminder: } \text{Variance} = (\text{Standard Deviation})^2)
+$$
+:::
+
+-   $s_y^2$ = **Total Variation in $y$**
+-   $s_e^2$ = Variation in the residual ($e$) = Unexplained Variation in $y$ 
+-   $s_y^2 - s_e^2$ = (Total Variation in $y$) - (Unexplained Variation in $y$)   = **Variation in y explained by x**
+
+
+------------------------------------------------------------------------
+
+### Values of R^2
+
+If $R^2 \approx 1$: nearly all the variability in response is **explained by** variability in the explanatory variable.
+  
+
+```{r echo = F, out.width="60%"}
+
+set.seed(254)
+X<-runif(20, 1, 4)
+Y<-X + rnorm(20,0,0.2)
+
+dd<-tibble(X,Y)
+
+ggplot(dd, aes(x = X, y =Y))+
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  annotate(geom = "text", x = 1.25, y = 2.5, label = "R^2 == 0.94", parse = T)+theme_bw()
+```
+
+------------------------------------------------------------------------
+
+### Values of R^2
+
+If $R^2 \approx 0$: almost none of the variability in response is **explained by** variability in the explanatory variable.
+  
+```{r echo = F, out.width="60%"}
+
+set.seed(254)
+X<-runif(20, 1, 4)
+Y<- X/10+rnorm(20,0,1)
+
+dd<-tibble(X,Y)
+
+ggplot(dd, aes(x = X, y =Y))+
+  geom_point()+
+    geom_smooth(method = "lm", se = FALSE) +
+  #geom_point( aes( x = 0, y = Y), color = "darkgrey")+
+  #geom_point( aes( x = X, y = 0),color = "darkgrey")+
+  annotate(geom = "text", x = 1.25, y = 2.5, label = "R^2 == 0.07", parse = T)+theme_bw()
+```
+
+------------------------------------------------------------------------
+
+### Next Time
+
+- Regression with one categorical variable
+
+
+------------------------------------------------------------------------

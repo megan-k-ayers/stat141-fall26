@@ -1,0 +1,24 @@
+---
+date: 9/10/26
+editor: source
+draft: true
+---
+
+# Stat 141: Readings for {{< meta date >}}
+
+Before coming to lecture today, please review:
+
+-    MD 1.2
+
+Then, run `library(dplyr)` followed by these R help commands in your console, and skim the
+documentation that shows up in the "Help" pane (usually the bottom left of
+RStudio). Pay the most attention to the "Description", "Usage", "Arguments", 
+"Value", and "Examples" sections. Usually, the most common or important uses and arguments
+are mentioned first. Run a few of the provided examples in your
+own console for each command.
+
+-   `?arrange`
+-   `?group_by`
+-   `?summarize`
+-   `?filter`
+-   `?mutate`

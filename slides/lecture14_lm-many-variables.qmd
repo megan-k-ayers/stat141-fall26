@@ -1,0 +1,614 @@
+---
+pagetitle: "Linear Models V: More Variables + Case Study"
+editor: source
+draft: true
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = 'center')
+library(knitr)
+library(tidyverse)
+```
+
+::::: columns
+::: {.column .center width="60%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="40%"}
+<br>
+
+[Linear Models V]{.custom-title}
+
+<br> <br> 
+
+[Megan Ayers]{.custom-subtitle}
+
+[Stat 141 \| Fall 2026 <br> Wednesday, Week 5]{.custom-subtitle}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Goals for Today
+
+-   Learning Check
+-   Regression with many variables
+-   Adjusted $R^2$ and model selection
+-   Multicollinearity
+-   Application of Multiple Linear Regression
+
+
+------------------------------------------------------------------------
+
+## Learning check handout
+
+<!-- Note to self: Give them 10 mins to fill it out, then give the answers and have them correct their own. I'll collect them to grade for completion - they can take a picture of their work, or come to my office Friday to get it. -->
+
+```{r}
+#| echo: false
+countdown::countdown(10)
+```
+
+------------------------------------------------------------------------
+
+### Linear Regression
+
+Model Form:
+
+$$ 
+\begin{align}
+y &= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_p x_p + \epsilon
+\end{align}
+$$
+
+Linear regression is a flexible class of models that allow for:
+
+::: nonincremental
+-   Both quantitative and categorical **explanatory** variables.
+
+-   **Multiple** explanatory variables.
+
+-   Transformed explanatory variables.
+
+-   BUT the **response variable is quantitative**.
+:::
+
+------------------------------------------------------------------------
+
+### More time with the `palmerpenguins`!
+
+![](img/penguins.png){fig-align="center"}
+
+
+------------------------------------------------------------------------
+
+### Recap: Regression with the penguins so far
+
+::::: columns
+
+::: {.column width=50%}
+
+::: fragment
+**One Quantitative Variable**
+
+```{r}
+library(palmerpenguins)
+library(moderndive)
+mod <- lm(bill_length_mm ~ bill_depth_mm,
+          data = penguins)
+get_regression_table(mod) %>% select(term, estimate)
+```
+
+:::
+
+<br>
+
+::: fragment
+**One Categorical Variable**
+
+```{r}
+mod <- lm(bill_length_mm ~ species,
+          data = penguins)
+get_regression_table(mod) %>% select(term, estimate)
+```
+
+:::
+:::
+
+
+::: {.column width=50%}
+
+::: fragment
+**Equal Slopes Model**
+
+```{r}
+mod <- lm(bill_length_mm ~ species + bill_depth_mm,
+          data = penguins)
+get_regression_table(mod) %>% select(term, estimate)
+```
+
+:::
+
+
+::: fragment
+**Different Slopes Model**
+
+```{r}
+mod <- lm(bill_length_mm ~ species*bill_depth_mm,
+          data = penguins)
+get_regression_table(mod) %>% select(term, estimate)
+```
+
+:::
+:::
+:::::
+
+
+------------------------------------------------------------------------
+
+### This time: Regression with multiple quantitative predictors
+
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+```{r}
+ggplot(penguins, aes(x = body_mass_g, y = bill_length_mm)) +
+  geom_point()
+```
+
+:::
+
+::: {.column width=50%}
+
+```{r}
+ggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm)) +
+  geom_point()
+```
+
+:::
+
+::::
+
+
+::: {.fragment}
+
+$$
+y = \beta_0 + \beta_1x_{\textrm{Bill Depth}} + \beta_2 x_{\textrm{Body Mass}} + \epsilon
+$$
+
+:::
+
+
+------------------------------------------------------------------------
+
+### This time: Regression with multiple quantitative predictors
+
+In R:
+
+```{r}
+mod <- lm(bill_length_mm ~ bill_depth_mm + body_mass_g, penguins)
+get_regression_table(mod)
+```
+
+## Visualizing the best fit plane
+
+```{r}
+options(rgl.useNULL = TRUE)
+options(rgl.printRglwidget = TRUE)
+library(rgl)
+plot3d(x = penguins$bill_depth_mm, y = penguins$body_mass_g, 
+       z = penguins$bill_length_mm, type = "s", col = "goldenrod", size = 1)
+planes3d(a = coef(mod)[2], b = coef(mod)[3], c=-1, d = coef(mod)[1], alpha = .5)
+```
+
+## Least Squares and Prediction
+
+-   Still minimizing the sum of squared residuals (from the plane)
+-   Still predict like usual
+
+:::{.fragment}
+
+```{r}
+pred_dat <- data.frame(bill_depth_mm = c(16, 18),
+                       body_mass_g = c(4000, 5000))
+predict(mod, pred_dat)
+```
+
+:::
+
+
+------------------------------------------------------------------------
+
+## Model Building Guidance
+
+Should we always include an interaction term? How many variables should I include? 
+
+:::::: columns
+:::: column
+**Guiding Principle**: Occam's Razor for Modeling
+
+> "All other things being equal, simpler models are to be preferred over complex ones." -- ModernDive
+
+::: fragment
+**Guiding Principle**: Consider your modeling goals.
+
+::: nonincremental
+-   The equal slopes model allows us to control for the intensity of the light and then see the impact of being in the early or late timing groups on the number of flowers.
+:::
+::::
+:::
+
+::: column
+```{r mf, echo = FALSE}
+library(Sleuth3)
+data(case0901)
+
+# Recode the timing variable
+case0901 <- case0901 %>%
+  mutate(TimeCat = factor(case_when(
+    Time == 1 ~ "Late",
+    Time == 2 ~ "Early"
+  )))
+
+ggplot(case0901, aes(x = Intensity, y = Flowers,
+                     color = TimeCat)) + 
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+-   Later in the course will learn statistical procedures for determining whether or not a particular term should be included in the model.
+:::
+::::::
+
+# What if I want to include many explanatory variables??
+
+------------------------------------------------------------------------
+
+### Model Building Guidance
+
+We often have several potential explanatory variables. How do we determine which to include in the model and in what form?
+
+**Guiding Principle**: Include explanatory variables that attempt to explain **different** aspects of the variation in the response variable.
+
+------------------------------------------------------------------------
+
+### Example: Movie Ratings
+
+```{r}
+library(tidyverse)
+library(moderndive)
+movies <- read_csv("https://www.lock5stat.com/datasets2e/HollywoodMovies.csv")
+
+# Restrict our attention to dramas, horrors, and actions
+movies2 <- movies %>%
+  filter(Genre %in% c("Drama", "Horror", "Action")) %>%
+  drop_na(Genre, AudienceScore, RottenTomatoes)
+glimpse(movies2)
+```
+
+------------------------------------------------------------------------
+
+### Example: Movie Ratings
+
+```{r}
+library(GGally)
+movies2 %>%
+  select(RottenTomatoes, AudienceScore, OpeningWeekend, DomesticGross, Genre) %>%
+  ggpairs()
+```
+
+::: {.fragment .nonincremental}
+- **Multicollinearity**: when explanatory variables are **highly** correlated with one another. Multicollinearity often results in coefficients that are distorted in erroneous ways!
+
+- **Q**: Do any of these variables seem to be measuring the same thing? 
+:::
+
+------------------------------------------------------------------------
+
+### Model Building Guidance
+
+We often have several potential explanatory variables. How do we determine which to include in the model and in what form?
+
+**Guiding Principle**: Include explanatory variables that attempt to explain **different** aspects of the variation in the response variable.
+
+```{r}
+mod_movies <- lm(RottenTomatoes ~ AudienceScore + Genre + DomesticGross, data = movies2)
+get_regression_table(mod_movies)
+```
+
+------------------------------------------------------------------------
+
+## Transformations: Model Building Guidance
+
+What degree of polynomial should I include in my model?
+
+:::::: fragment
+::::: columns
+::: column
+<br>
+
+**Guiding Principle**: Capture the general trend, not the noise.
+
+$$
+\begin{align}
+y &= f(x) + \epsilon \\
+y &= \mbox{TREND} + \mbox{NOISE}
+\end{align}
+$$
+:::
+
+::: column
+
+```{r, echo = FALSE}
+ggplot(movies2[movies2$Genre == "Drama", ], aes(x = AudienceScore, y = RottenTomatoes)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 2), 
+              color = "purple") +
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 5), 
+              color = "orange") +
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 18), 
+              color = "darkgreen") +
+  ggtitle("Drama Movies")
+```
+:::
+:::::
+::::::
+
+------------------------------------------------------------------------
+
+### Model Building Guidance
+
+Suppose I built 3 different models. **Which is best?**
+
+```{r}
+mod1 <- lm(RottenTomatoes ~ AudienceScore, data = movies2)
+mod2 <- lm(RottenTomatoes ~ AudienceScore + Genre, data = movies2)
+mod3 <- lm(RottenTomatoes ~ AudienceScore + Genre + DomesticGross, data = movies2)
+```
+
+-   Big question! Take **Math 243: Statistical Learning** to learn systematic model selection techniques.
+
+-   We will explore one approach. (But there are many possible approaches!)
+
+------------------------------------------------------------------------
+
+### Comparing Models with $R^2$
+
+**Strategy**: Compute the $R^2$ value for each model and pick the one with the highest $R^2$.
+
+```{r}
+mod1 <- lm(RottenTomatoes ~ AudienceScore, data = movies2)
+mod2 <- lm(RottenTomatoes ~ AudienceScore + Genre, data = movies2)
+mod3 <- lm(RottenTomatoes ~ AudienceScore + Genre + DomesticGross, data = movies2)
+
+get_regression_summaries(mod1) %>% select(r_squared)
+get_regression_summaries(mod2) %>% select(r_squared)
+get_regression_summaries(mod3) %>% select(r_squared)
+```
+
+------------------------------------------------------------------------
+
+**Strategy**: Compute the $R^2$ value for each model and pick the one with the highest $R^2$.
+
+```{r}
+get_regression_summaries(mod1) %>% select(r_squared)
+get_regression_summaries(mod2) %>% select(r_squared)
+get_regression_summaries(mod3) %>% select(r_squared)
+```
+
+::: fragment
+**Problem:** As we add predictors, the $R^2$ value will only increase.
+
+**Guiding Principle**: Occam's Razor for Modeling
+
+> "All other things being equal, simpler models are to be preferred over complex ones." -- ModernDive
+:::
+
+------------------------------------------------------------------------
+
+### Comparing Models with the Adjusted $R^2$
+
+**New Measure of quality**: Adjusted $R^2$ (Coefficient of Determination)
+
+\begin{align*}
+\mbox{adj} R^2 &= 1- \frac{\sum (y - \widehat{y})^2}{\sum (y - \bar{y})^2} \left(\frac{n - 1}{n - p - 1} \right)
+\end{align*}
+
+where $p$ is the number of explanatory variables in the model.
+
+-   Now we will penalize larger models.
+
+-   **Strategy**: Compute the adjusted $R^2$ value for each model and pick the one with the highest adjusted $R^2$.
+
+------------------------------------------------------------------------
+
+**Strategy**: Compute the **adjusted $R^2$** value for each model and pick the one with the highest adjusted $R^2$.
+
+```{r}
+mod1 <- lm(RottenTomatoes ~ AudienceScore, data = movies2)
+mod2 <- lm(RottenTomatoes ~ AudienceScore + Genre, data = movies2)
+mod3 <- lm(RottenTomatoes ~ AudienceScore + Genre + DomesticGross, data = movies2)
+
+get_regression_summaries(mod1) %>% select(r_squared, adj_r_squared)
+get_regression_summaries(mod2) %>% select(r_squared, adj_r_squared)
+get_regression_summaries(mod3) %>% select(r_squared, adj_r_squared)
+```
+
+------------------------------------------------------------------------
+
+## Case Study: Home Prices in King County, WA
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning = FALSE,message = FALSE,fig.align = 'center')
+library(tidyverse)
+library(moderndive)
+library(gridExtra)
+house <- read_csv("data/house.csv")
+# house <- house %>% select(price,sqft_living,sqft_above,bedrooms)
+```
+
+\textbf{What's the relationship between a home's square footage and number of bedrooms on the home's sale price?}
+
+We'll consider \textbf{four variables}: Sale price (**response**); and square footage, above-ground square footage, and number of bedrooms (potential explanatory variables). Check out the exploratory plots below:
+
+::::: columns
+::: {.column width=65%}
+```{r outwidth="100%",fig.asp=0.65}
+grid.arrange(
+  ggplot(house,aes(x=price))+geom_histogram(binwidth=25,color="white")+theme_bw(base_size=11)+
+    labs(x="Price (thousands of dollars)"),
+  ggplot(house,aes(x=bedrooms))+geom_histogram(binwidth=1,color="white")+theme_bw(base_size=11)+
+    labs(x="Number of Bedrooms")+scale_x_continuous(breaks=1:10),
+  ggplot(house,aes(x=sqft_living))+geom_histogram(binwidth=100,color="white")+theme_bw(base_size=11)+
+    labs(x="Total Square Footage"),
+  ggplot(house,aes(x=sqft_above))+geom_histogram(binwidth=100,color="white")+theme_bw(base_size=11)+
+    labs(x="Above-Ground Square Footage"),
+  nrow=2)
+```
+
+:::
+
+::: {.column width=35%}
+<br><br>
+
+- **Q**: How would you describe the distribution of `price`?
+
+- **Q**: What do you expect the relationship between `price` and `bedrooms` to be like?
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Exploration, Multicollinearity
+
+```{r outwidth="100%",fig.asp=0.45}
+grid.arrange(
+  ggplot(house,aes(x=sqft_living,y=sqft_above))+geom_point(alpha=0.3)+theme_bw(base_size=10)+
+    labs(x="Sq. Footage",y="Ab.-Ground Sq. Ft."),
+  ggplot(house,aes(x=sqft_living,y=bedrooms))+geom_point(alpha=0.3)+theme_bw(base_size=10)+
+    labs(x="Sq. Footage",y="Bedrooms"),
+   ggplot(house,aes(x=sqft_above,y=bedrooms))+geom_point(alpha=0.3)+theme_bw(base_size=10)+
+    labs(x="Ab.-Ground Sq. Ft.",y="Bedrooms"),
+  nrow=1)
+```
+
+- **Multicollinearity**: when explanatory variables are **highly** correlated with one another. Multicollinearity often results in coefficients that are distorted in erroneous ways! We want to avoid this (*some* correlation is okay!)
+
+- **Q**: Which pair of explanatory variables suffers *most* from multicollinearity?
+
+------------------------------------------------------------------------
+
+## Model Estimation
+
+```{r}
+mod <- lm(price ~ sqft_living + bedrooms, data = house)
+get_regression_table(mod)
+```
+
+- **Q**: What is the equation, including coefficient values, for the estimated model?
+
+::: fragment
+$$
+\widehat{\text{price}} = 197 + 0.177*\text{sqrt_living} - 21.6*\text{bedrooms}
+$$
+:::
+
+- **Q**: How should interpret the **intercept** coefficient in our model?
+     - When `sqrt_living` and `bedrooms` are both 0, we expect/predict price to be $197,000 on average.
+
+- **Q**: The coefficient for **Bedrooms**? Does this match your expectation?
+     - When the number of `bedrooms` increases by 1, we expect/predict price to **decrease** by $21,600 on average, **holding `sqft_living` constant**.
+
+------------------------------------------------------------------------
+
+## LINE Assumptions
+
+```{r echo=FALSE}
+res <- get_regression_points(mod)
+gg1 <- ggplot(res, aes(x = price_hat, y = residual)) +
+  geom_point() + geom_hline(aes(yintercept = 0), lty = 2, color = "gray50")
+gg2 <- ggplot(res, aes(x = residual)) + geom_histogram(color = "white")
+gg3 <- ggplot(res, aes(sample = residual)) + geom_qq() + geom_qq_line()
+
+gridExtra::grid.arrange(gg1, gg2, gg3, nrow = 2)
+
+```
+
+------------------------------------------------------------------------
+
+## Adjusted $R^2$
+
+What's the adjusted $R^2$ of our model?
+
+```{r echo = TRUE}
+get_regression_summaries(mod)[, c("r_squared", "adj_r_squared")]
+```
+
+::: fragment
+Not super close to 1. Compare to a simpler model:
+:::
+
+::: fragment
+```{r echo = TRUE}
+small_mod <- lm(price ~ bedrooms, data = house)
+get_regression_summaries(small_mod)[, c("r_squared", "adj_r_squared")]
+```
+::: 
+
+::: fragment
+Compare to a much bigger model with additional variables:
+
+```{r echo = TRUE}
+big_mod <- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_above + sqft_lot + 
+                view + condition + yr_built, data = house)
+get_regression_summaries(big_mod)[, c("r_squared", "adj_r_squared")]
+```
+:::
+
+------------------------------------------------------------------------
+
+### Developing Linear Models
+
+-   Key components that we've learned about over the last 5 lectures:
+
+    -   Determining the **response** variable and the potential **explanatory** variable(s)
+    -   Writing out the **model form** and understanding what the terms represent **in context**
+    -   **Building** and **visualizing** linear regression models in `R`
+    -   **Validating** model assumptions with diagnostic plots
+    -   **Comparing** different potential models
+
+------------------------------------------------------------------------
+
+## Next time
+
+-   Sampling distributions!
+
+
+------------------------------------------------------------------------

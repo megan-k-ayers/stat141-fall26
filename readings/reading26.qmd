@@ -1,0 +1,15 @@
+---
+date: 10/30/26
+editor: source
+draft: true
+---
+
+# Stat 141: Readings for {{< meta date >}}
+
+## Reading 
+
+Before coming to lecture today, please read the following material: 
+
+-    Review 9.5.2 and 9.5.3, and read 9.7.3 including skimming the linked articles
+
+

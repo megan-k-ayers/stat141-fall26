@@ -47,7 +47,7 @@ library(tidyverse)
 
 [Megan Ayers]{.custom-subtitle}
 
-[Math 141 \| Spring 2026 <br> Monday, Week 1]{.custom-subtitle}
+[Stat 141 \| Fall 2026 <br> Monday, Week 1]{.custom-subtitle}
 :::
 :::
 

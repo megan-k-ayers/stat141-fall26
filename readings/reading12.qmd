@@ -1,0 +1,15 @@
+---
+date: 9/23/26
+editor: source
+draft: true
+---
+
+# Stat 141: Readings for {{< meta date >}}
+
+## Reading 
+
+Before coming to lecture today, please read the following material: 
+
+-   MD 5, 5.1 [Note: we may not always use the same functions as MD, but the general concepts are the same.]
+
+

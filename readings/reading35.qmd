@@ -1,0 +1,14 @@
+---
+date: 11/20/26
+editor: source
+draft: true
+---
+
+# Stat 141: Readings for {{< meta date >}}
+
+## Reading 
+
+Before coming to lecture today, please read the following material: 
+
+-  IMS 24.6-24.7  
+

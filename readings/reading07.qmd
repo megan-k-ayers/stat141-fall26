@@ -1,0 +1,12 @@
+---
+date: 9/11/26
+editor: source
+draft: true
+---
+
+# Stat 141: Readings for {{< meta date >}}
+
+Before coming to lab today, please read the following material: 
+
+-   MD Section 2.9
+-   [Quarto markdown basics](https://quarto.org/docs/authoring/markdown-basics.html)

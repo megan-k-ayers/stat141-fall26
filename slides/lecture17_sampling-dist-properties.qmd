@@ -1,0 +1,801 @@
+---
+pagetitle: "Sampling Distributions II: Properties"
+editor: source
+draft: true
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.align = 'center')
+library(knitr)
+library(tidyverse)
+library(ggthemes)
+library(moderndive)
+library(gapminder)
+library(infer)
+library(tufte)
+```
+
+::::: columns
+::: {.column .center width="50%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="50%"}
+<br>
+
+[Sampling Distributions II]{.custom-title}
+
+<br> <br> 
+
+[Megan Ayers]{.custom-subtitle}
+
+[Stat 141 \| Fall 2026 <br> Monday, Week 6]{.custom-subtitle}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### Announcements
+
+- Midterm studyguide posted on course website
+
+- We'll work on the study guide in lab this week in groups - it would be helpful to take a look before lab but you don't need to prepare any work
+
+------------------------------------------------------------------------
+
+### Goals for Today
+
+- Discuss the framework for random sampling
+
+- Investigate properties of the "sampling distribution"
+
+- Week 4 feedback (if time)
+
+------------------------------------------------------------------------
+
+### The `r emo::ji("heart")` of statistical inference is quantifying uncertainty
+
+Like with regression, need to distinguish between the **population** and the **sample**
+
+::::::: columns
+:::: column
+::: nonincremental
+-   **Parameters**:
+    -   Based on the **population**
+    -   Unknown if we don't have data on the whole population
+    -   EX: $\beta_0$ and $\beta_1$
+    -   EX: $\mu$ (population mean) $p$ (population proportion)
+:::
+::::
+
+:::: column
+::: nonincremental
+-   **Statistics**:
+    -   Based on the **sample** data
+    -   Known
+    -   Usually estimate a population parameter
+    -   EX: $\widehat{\beta}_0$ and $\widehat{\beta}_1$
+    -   EX: $\bar{x}$ (sample mean), $\widehat{p}$ (sample proportion)
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+## Estimation and Uncertainty
+
+- We are interested in the value of a **parameter** in a *population*, and use a **statistic** from a *sample* to estimate the parameter.
+    - e.g., want to know the proportion ($p$) of Reed students with March birthdays
+    - Estimate $p$ by using the proportion in a sample, ($\widehat{p}$), of $100$ individuals.
+    
+- **Key question:** How accurate is $\widehat{p}$ as an estimate of $p$?
+- **Sub-question:** If we take many samples, how much will $\widehat{p}$ vary?
+  
+- The distribution of all possible values of $\widehat{p}$ (for a fixed sample size) is called the **Sampling Distribution**
+
+
+------------------------------------------------------------------------
+
+## Sampling Distribution of a Statistic
+
+Steps to Construct a Sampling Distribution:
+
+1.  Decide on a sample size, $n$.
+
+2.  Determine all$^*$ possible samples of size $n$ from the population.
+
+3.  Compute the sample statistic in each sample.
+
+
+------------------------------------------------------------------------
+
+## Approximate Sampling Distribution of a Statistic
+
+Steps to Construct an **Approximate** Sampling Distribution:
+
+::: nonincremental
+1.  Decide on a sample size, $n$.
+
+2.  **Randomly select a sample of size $n$ from the population.**
+
+3.  Compute the sample statistic in that sample.
+
+4.  **Put the sample back in.**
+
+5.  Repeat Steps 2 - 4 many (1000+) times.
+:::
+
+------------------------------------------------------------------------
+
+## Population and Sampling Distributions in Our Activity
+
+Last Class: got a ["snapshot"]{.underline} of the sampling distribution for the **mean card value from a sample of 10 cards**.
+
+<br>
+
+```{r, echo = F, fig.width = 20, fig.height = 7}
+
+temp <- c(1:13)
+cards <- rep(temp, 4)
+data <- data.frame(cards)
+
+gg_true <- ggplot(data = data, aes(x = cards)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(limits = c(0.5, 13.5),
+                     breaks = c(1:13),
+                     labels = c("1\n(Ace)", "2", "3", "4", "5", "6", "7", "8",
+                                "9", "10", "11\n(Jck)", "12\n(Qn)", 
+                                "13\n(Kng)")) +
+  scale_y_continuous(limits = c(0, 5)) +
+  labs(x = "Card Value",
+       title = "Distribution of Card Values (in the Population)") +
+  geom_vline(xintercept = 7, color = "red") + theme_bw(base_size = 15) +
+  annotate("text", label = "Mean=7", x = 8, y = 4.5, color = "red")
+
+
+class_results <- read.csv("data/card_avgs.csv")
+names(class_results)[1] <- "x"
+class_results$x <- class_results$x
+mean_class <- mean(class_results$x)
+
+gg_sample <- ggplot(data = class_results, aes(x = x)) +
+  geom_histogram(binwidth = 0.5, color = "white") +
+  scale_x_continuous(limits = c(0.5, 13.5),
+                     breaks = c(1:13),
+                     labels = c("1\n(Ace)", "2", "3", "4", "5", "6", "7", "8",
+                                "9", "10", "11\n(Jck)", "12\n(Qn)",
+                                "13\n(Kng)")) +
+  scale_y_continuous(limits = c(0, 30)) +
+  labs(x = "Average Card Value", title = "Distribution of Card Value Sample Means") +
+  geom_vline(xintercept = mean_class, color = "red") +
+  annotate("text", label = paste("Mean=", round(mean_class, 2), sep = ""),
+           x = 8.35, y = 27, color = "red") + theme_bw(base_size = 15)
+
+gridExtra::grid.arrange(gg_true, gg_sample, nrow = 1)
+
+```
+
+------------------------------------------------------------------------
+
+## Sampling Distribution in Our Activity
+
+["Snapshot"]{.underline} of sampling distribution for **mean card value from a sample of 10 cards**:
+
+
+```{r, echo=F, fig.height = 3}
+gg_sample
+```
+
+Why just a "snapshot"?
+
+- **Q:** How many elements are there in the sampling distribution?
+  $${52 \choose 10} = 15,820,024,220 \ \text{Samples}$$
+  
+- We only took $119$ samples (combining both sections)...
+  
+  
+  
+------------------------------------------------------------------------
+  
+## Sampling Distribution: a smaller scale
+
+Consider a **population of 4 students**, where the (true) population proportion of March birthdays is $p = \frac{1}{4} = 0.25$
+
+```{r, echo=F}
+name <- c("Joel", "Maria", "Arthur", "Klaus")
+bday_month <- c("march", "january", "april", "september")
+pop <- data.frame(name, bday_month)
+kable(pop)
+```
+
+
+- **Practice:** With a neighbor, write out the sampling distribution for $\widehat{p}$ (the sample proportion of those with March birthdays) with...
+    1) All possible samples [of size 2]{.underline}
+    2) All possible samples [of size 3]{.underline} 
+
+- And, what are the means of these two sampling distributions?
+
+```{r}
+#| echo: false
+countdown::countdown(6)
+```
+
+------------------------------------------------------------------------
+
+## Sampling Distribution: a smaller scale
+
+::: nonincremental
+1. Sampling distribution for the sample proportion $\widehat{p}$ [from a sample of 2]{.underline}:
+:::
+
+::::: columns 
+::: {.column width=50%}
+```{r, echo=F}
+kable(pop)
+```
+:::
+
+::: {.column width=50%}
+
+```{r, echo=F}
+sample <- c(
+  "Joel + Maria",
+  "Joel + Arthur",
+  "Joel + Klaus",
+  "Maria + Arthur",
+  "Maria + Klaus",
+  "Arthur + Klaus"
+)
+phat <- c(
+  0.5, 0.5, 0.5,
+  0, 0, 
+  0
+)
+sampling <- data.frame(sample, phat)
+kable(sampling)
+```
+:::
+:::::
+
+- There are ${4 \choose 2} = 6$ elements in the sampling distribution
+- **Mean=0.25**, which is $p$!
+  
+  
+
+------------------------------------------------------------------------
+
+## Sampling Distribution: a smaller scale
+
+::: nonincremental
+2. Sampling distribution for the sample proportion $\widehat{p}$ [from a sample of 3]{.underline}:
+:::
+
+::::: columns 
+::: {.column width=50%}
+```{r, echo=F}
+kable(pop)
+```
+:::
+
+::: {.column width=50%}
+
+```{r, echo=F}
+sample <- c(
+  "Joel + Maria + Arthur",
+  "Joel + Maria + Klaus",
+  "Joel + Arthur + Klaus",
+  "Maria + Arthur + Klaus"
+)
+phat <- c(
+  "1/3", "1/3", "1/3",
+  "0"
+)
+sampling <- data.frame(sample, phat)
+kable(sampling)
+```
+:::
+:::::
+
+- There are ${4 \choose 3} = 4$ elements in the sampling distribution
+- **Mean=0.25**, which is $p$! (again)
+- **Note**: The means of the sampling distributions were all $p = \frac{1}{4}$ *even though none of the sample proportions* $\widehat{p}$ *were equal to* $\frac{1}{4}$!
+
+
+------------------------------------------------------------------------
+
+## Sampling Distribution
+
+- Just like any distribution, the sampling distribution of a statistic has a mean, standard deviation, median, IQR, etc.
+     - **Standard Error**: standard deviation in a sampling distribution 
+
+- Ex. When estimating a population proportion ($p$) with the sample proportion ($\widehat{p}$) with sample size $n$, theory shows that:
+  - The sampling distribution for $\widehat p$ has mean $p$ 
+  - and has standard deviation (aka standard error) $SE = \sqrt{\frac{p (1-p)}{n}}$
+  
+- This means if the population proportion $p = 0.20$ and $n=100$, then in sampling distribution:
+  - mean($\widehat{p}$) = $p$ = 0.20
+  - $SE = \sqrt{\frac{0.20(1 - 0.20)}{100}} = 0.04$
+
+
+------------------------------------------------------------------------
+
+## Sampling Distribution vs. Population Distribution
+
+For [most]{.underline} sample statistics and [sufficiently large sample sizes]{.underline} ($n \geq 30$ is a rule of thumb), **the sampling distribution will be approximately bell-shaped**, even if the population is not
+
+- Both distributions will have the same center.
+
+- But, the sampling distribution will have lower variability than the population distribution.
+
+
+::::: columns
+::: {.column width=50%}
+```{r echo= FALSE, out.width = "90%"}
+set.seed(100)
+X<-rgamma(500,2,4)
+ggplot(data.frame(X), aes(x = X))+
+  geom_histogram(bins = 15, color = "white", fill = "steelblue")+
+  geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "red", size = 1.5,linetype=2,alpha=.2)+
+  labs(title = "Population Distribution", x = "Observations")+
+  scale_x_continuous(limits=c(-.1,2.1))+theme_bw(base_size=15)
+```
+:::
+
+::: {.column width=50%}
+```{r echo= FALSE,  out.width = "90%"}
+set.seed(100)
+xbar<-data.frame(X) %>% rep_sample_n(size = 100, reps = 10000, replace = TRUE )
+xbar %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X)) %>% 
+  ggplot( aes(x = mean))+ geom_histogram(bins = 100, color = "white", fill = "steelblue" ) + labs(title = "Sampling Distribution, n = 100", x = "sample means")+geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "red", size = 1.5,linetype=2,alpha=.2)+
+  scale_x_continuous(limits=c(-.1,2.1))+theme_bw(base_size=15)
+```
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Why are Sampling Distributions Useful?
+
+
+::::: columns
+::: {.column width=50%}
+
+What we want to know:
+
+```{r fig.height = 3.75, out.width = "90%" , echo = FALSE}
+ggplot(data.frame(X), aes(x = X))+
+  geom_histogram(bins = 15, color = "white", fill = "steelblue")+labs(title = "Population Distribution", x = "Observations")+geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "red", size = 1.5,linetype=2)+
+  annotate("text",x = .8, y = 98, label = "Population Mean", size = 6)+
+  scale_x_continuous(limits=c(-.1,2.1))+theme_bw(base_size=15)
+```
+
+:::
+::: {.column width=50%}
+
+What we have:
+
+```{r fig.height = 3.75, out.width = "90%" , warning=FALSE, echo = FALSE}
+xbarsumm<-xbar %>% 
+  filter(replicate == 3) %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X))
+xbar %>% 
+  filter(replicate < 2) %>% 
+  ggplot( aes(x = X))+ geom_histogram(bins = 15, color = "white", fill = "steelblue" ) + labs(title = "A sample of size n= 100", x = "Sample Observations")+
+  geom_segment(data = xbarsumm, mapping =aes(y = 0 , 
+                             yend = Inf,
+                             xend = mean,
+                             x = mean),
+               color = "red", size = 1.5,linetype=2)+
+  xlim(0,1)+
+  annotate("text",x = .85, y = 15, label = "Sample mean", size = 6)+
+scale_x_continuous(limits=c(-.1,2.1))+theme_bw(base_size=15)
+```
+
+:::
+:::::
+
+What sampling distributions tell us about what we have:
+
+```{r fig.height=3.5, fig.width= 9, echo = FALSE}
+set.seed(100)
+xbar<-data.frame(X) %>% rep_sample_n(size = 100, reps = 20000, replace = TRUE )
+xbar %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X)) %>% 
+  ggplot( aes(x = mean))+ geom_histogram(bins = 15, color = "white", fill = "steelblue" )+
+  annotate("text", x = .57, y = 3500, size=5,label = "Mean of All Sample Statistics" )+ 
+  geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "red", size = 1.5,linetype=2)+
+  labs(title = "Sampling Distribution, n = 100", x = "sample means") +
+  theme_bw()
+```
+
+------------------------------------------------------------------------
+
+## Variability in Samples {.smaller}
+
+The **standard error** ($se$) of a sample statistic measures variability between different samples.
+
+- For $\approx$ bell-shaped distributions, about 95\% of observations fall within two standard errors of the population's mean $\mu$. 
+
+- **Very useful implication!**
+  - The sampling distribution for the sample average, $\bar{x}$ is $\approx$ bell-shaped
+  - ... and is centered at the population mean, $\mu$.
+  
+::: {.fragment .nonincremental}
+
+  - So **95\% of all sample statistics, $\widehat p$, fall within 2 standard errors of $p$!**
+
+
+```{r fig.height=2.5, out.width = "80%",fig.asp=0.35, echo = FALSE}
+set.seed(100)
+
+xbar_r<-xbar %>% 
+  group_by(replicate) %>% 
+  summarize(xbart = mean(X)) %>% 
+  summarize(mu = mean(xbart), s = sd(xbart))
+
+xbar %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X), sd = sd(X)) %>% 
+  ggplot( )+ 
+  geom_histogram(aes(x = mean), bins = 20, color = "white", fill = "steelblue" )+
+  geom_rect(data = data.frame(x1 = .5, y1 = 1), xmin = .495-.07, xmax = .495 + .07, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+
+  geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "red", size = 2)+
+  scale_x_continuous(breaks = c(.495-.07, 0.5, .495 + .07), labels = c(expression(p - 2*se), expression(p), expression(p + 2*se)))+
+  labs(title = "Sampling Distribution, n = 100", x = "sample means") +theme_bw()
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## This is very powerful!
+
+```{r fig.height=2.5, out.width = "80%", echo = FALSE}
+xbar %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X), sd = sd(X)) %>% 
+  ggplot( )+ 
+  geom_histogram(aes(x = mean), bins = 20, color = "white", fill = "steelblue" )+
+  geom_rect(data = data.frame(x1 = .5, y1 = 1), xmin = .495-.07, xmax = .495 + .07, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+
+  geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "red", size = 2)+
+  scale_x_continuous(breaks = c(.495-.07, 0.5, .495 + .07), labels = c(expression(p - 2*se), expression(p), expression(p + 2*se)))+
+  labs(title = "Sampling Distribution, n = 100", x = "sample means") +theme_bw()
+```
+
+Even though we just have one sample, if we know $se$, **we know how far away from the parameter our statistic is [likely]{.underline} to fall**!
+
+  - This allows us to give quantitative plausible ranges for the parameter
+
+
+------------------------------------------------------------------------
+
+## Variability and Sample Size
+
+Variability of the sampling distribution generally decreases as sample size increases
+
+
+```{r, echo = FALSE, fig.height=6.5, fig.width = 10, warning = FALSE}
+set.seed(100)
+xbar10 <- data.frame(X) %>%
+  rep_sample_n(size = 10, reps = 10000, replace = TRUE ) %>%
+  mutate(size = 10, label = "Sampling Distribution, n = 10")
+xbar100 <- data.frame(X) %>%
+  rep_sample_n(size = 100, reps = 10000, replace = TRUE ) %>%
+  mutate(size = 100, label = "Sampling Distribution, n = 100")
+xbar1000 <- data.frame(X) %>%
+  rep_sample_n(size = 1000, reps = 10000, replace = TRUE ) %>%
+  mutate(size = 1000, label = "Sampling Distribution, n = 1000")
+
+xbar_all <- rbind(xbar10, xbar100, xbar1000)
+
+library(gridExtra)
+
+xbar_all <- xbar_all %>% 
+  group_by(replicate, size, label) %>% 
+  summarize(mean = mean(X))
+
+ggplot(xbar_all, aes(x = mean)) + 
+  geom_histogram(data = xbar_all %>% filter(size == 10),
+                 bins = 50, color = "white", fill = "steelblue", size = .25) +
+  geom_histogram(data = xbar_all %>% filter(size == 100),
+                 bins = 100, color = "white", fill = "steelblue", size = .25) +
+  geom_histogram(data = xbar_all %>% filter(size == 1000),
+                 bins = 200, color = "white", fill = "steelblue", size = .25) +
+  xlim(c(0, 1)) +
+  labs(x = "sample means") +
+  facet_wrap(~label, nrow = 3) +
+  theme_bw() + 
+  theme(strip.text = element_text(size = 14, face = "bold"))
+
+
+```
+
+- **Implication:** Our statistic $\bar{x}$ is likely to be closer to parameter $\mu$ as sample size $n$ increases.
+
+------------------------------------------------------------------------
+
+## Variability and Sample Size {.smaller}
+
+- The sampling distributions for $n = 10$, $100$, and $1000$ are all approximately bell-shaped, and so 95% of sample means are within 2 standard errors of the population mean.
+- Highlighted in green are the intervals containing 95% of all sample means:
+
+```{r, echo = FALSE, fig.height=7, fig.width = 10, warning = FALSE}
+
+g4<-xbar10 %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X)) %>% 
+  ggplot( )+ geom_histogram(aes(x = mean),bins = 50, color = "white", fill = "steelblue",size = .25 )+
+  xlim(c(0,1))+
+  geom_rect(data = data.frame(x1 = .5, y1 = 1),xmin = .495-.23, xmax = .495 + .23, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+theme_bw()+
+  labs(title = "Sampling Distribution, n = 10", x = "sample means") 
+
+g5<-xbar100 %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X)) %>% 
+  ggplot( )+ geom_histogram(aes(x = mean),bins = 100, color = "white", fill = "steelblue", size = .25 )+
+  xlim(c(0,1))+
+  geom_rect(data = data.frame(x1 = .5, y1 = 1),xmin = .495-.07, xmax = .495 + .07, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+theme_bw()+
+  labs(title = "Sampling Distribution, n = 100", x = "sample means") 
+
+g6<-xbar1000 %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X)) %>% 
+  ggplot()+ geom_histogram(  aes(x = mean),bins = 200, color = "white", fill = "steelblue", size = .1 )+
+  xlim(c(0,1))+
+  geom_rect(data = data.frame(x1 = .5, y1 = 1),xmin = .495-.022, xmax = .495 + .022, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+theme_bw()+
+  labs(title = "Sampling Distribution, n = 1000", x = "sample means") 
+
+grid.arrange(g4,g5,g6, ncol = 1)
+```
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ## Pause: Standard Error vs Standard Deviation ($s$) -->
+
+<!-- - **Big takeaway**: We don't need to know the sampling distribution to assess uncertainty, just $\color{red}{se}$ -->
+<!-- - Okay, but $\color{red}{se}$ is still a population parameter!  -->
+<!-- - It is much easier to estimate $\color{red}{se}$ than to observe the sampling distribution -->
+<!-- - Statistics theory tells us how to estimate $\color{blue}{se}$ accurately using our sample data (e.g. slide 13 for $\widehat{p}$) -->
+
+ 
+------------------------------------------------------------------------
+
+## The Shape of the Sampling Distribution: word of warning {.smaller}
+
+When $n \geq 30$, the sampling distribution is *usually* bell-shaped. But sometimes, you need a large sample size.
+
+::: {.fragment .nonincremental}
+
+- Example: A funky population distribution.
+
+
+```{r out.width="70%",fig.asp=0.25, echo = FALSE}
+set.seed(101)
+value <- c(
+  pmax(pmin(rgamma(1000, shape = 0.1, rate = 1)*8, 10), 0)
+)
+pop <- data.frame(value)
+
+xbar4<-pop %>% rep_sample_n(size = 4, reps = 10000, replace = TRUE )
+xbar10<-pop %>% rep_sample_n(size = 30, reps = 10000, replace = TRUE )
+xbar100<-pop %>% rep_sample_n(size = 100, reps = 10000, replace = TRUE )
+
+
+gp <-  ggplot(pop, aes(x = value))+ geom_histogram(bins = 30, color = "white", fill = "steelblue" )+
+  # xlim(c(0,10))+
+  labs(title = "Population Distribution", x = "Observations") 
+
+g7<-xbar4 %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(value)) %>% 
+  ggplot( aes(x = mean))+ geom_histogram(bins = 30, color = "white", fill = "steelblue" )+
+  xlim(c(0,10))+
+  labs(title = "Sampling Distribution, n = 4", x = "sample means") 
+
+g8<-xbar10 %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(value)) %>% 
+  ggplot( aes(x = mean))+ geom_histogram(bins = 40, color = "white", fill = "steelblue")+
+  xlim(c(0,10))+
+  labs(title = "Sampling Distribution, n = 30", x = "sample means") 
+
+g9<-xbar100 %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(value)) %>% 
+  ggplot( aes(x = mean))+ geom_histogram(bins = 75, color = "white", fill = "steelblue")+
+  xlim(c(0,10))+
+  labs(title = "Sampling Distribution, n = 100", x = "sample means") 
+gp+theme_bw(base_size=15)
+```
+
+:::
+
+::: fragment
+
+::::: columns
+::: {.column width=30%}
+
+```{r out.width="99%",fig.asp=0.66, echo = FALSE}
+g7+theme_bw(base_size=15) + theme(plot.title = element_text(size = 30))
+```
+:::
+
+::: {.column width=30%}
+
+```{r out.width="99%",fig.asp=0.66, echo = FALSE}
+g8+theme_bw(base_size=15) + theme(plot.title = element_text(size = 30))
+```
+
+:::
+::: {.column width=30%}
+
+```{r out.width="99%",fig.asp=0.66, echo = FALSE}
+g9+theme_bw(base_size=15) + theme(plot.title = element_text(size = 30))
+```
+:::
+:::::
+:::
+
+
+------------------------------------------------------------------------
+
+## Key Features of a Sampling Distribution
+
+What did we learn about sampling distributions?
+
+-   Centered around the true population parameter.
+
+-   As the sample size increases, the **standard error** (SE) of the statistic decreases.
+
+-   As the sample size increases, the shape of the sampling distribution becomes more bell-shaped and symmetric.
+
+
+::: {.fragment}
+
+#### Question:
+
+**If I am estimating a parameter in a real example, why won't I be able to construct the sampling distribution?**
+
+<!-- ::: -->
+
+<!-- -   **Major takeaway**: We don't necessarily need to observe the entire sampling distribution to assess uncertainty, just $\color{red}{se}$ -->
+
+<!-- ::: {.fragment} -->
+
+:::
+
+::: fragment
+#### Cliffhanger:
+
+**How can we learn from the sampling distribution if we only have one sample?**
+
+<!-- - But $\color{red}{se}$ is still a population parameter! What do we do in a real example?  -->
+
+:::
+
+------------------------------------------------------------------------
+
+### Week 4 Feedback (n = 33)
+
+```{r, echo=FALSE, fig.width = 15, fig.height = 7}
+x <- read.csv("data/week4_feedback.csv")
+names(x) <- c("labs", "hw", "reading", "meganOH", "caOH", "workload")
+
+# Helpfulness of assigned work
+gg_work_help <- x %>% select(labs, hw, reading) %>%
+  pivot_longer(cols = 1:3, values_to = "value", names_to = "type") %>%
+  mutate(value = factor(value, levels = rev(c("Very helpful", "Somewhat helpful",
+                                          "Neutral", "Somewhat unhelpful",
+                                          "Very unhelpful",
+                                          "I haven't been doing the readings")))) %>%
+  ggplot(aes(x = type, fill = value)) +
+  geom_bar(position = "fill", color = "white") +
+  theme_classic() +
+  guides(fill = guide_legend(nrow = 3)) +
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = 15))
+
+
+# Helpfulness of office hours
+gg_oh_help <- x %>% select(meganOH, caOH) %>%
+  pivot_longer(cols = 1:2, values_to = "value", names_to = "type") %>%
+  mutate(value = factor(value, levels = rev(c("Very helpful", "Somewhat helpful",
+                                              "Neutral", "Somewhat unhelpful",
+                                              "Very unhelpful",
+                                              "Haven't attended")))) %>%
+  ggplot(aes(x = type, fill = value)) +
+  geom_bar(position = "fill", color = "white") +
+  theme_classic() +
+  guides(fill = guide_legend(nrow = 3)) +
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = 15))
+
+
+# Workload marginal
+gg_work <- x %>%
+  mutate(workload = factor(workload, levels = rev(c("Just the right amount of work",
+                                                "A little too much work",
+                                                "Way too much work")))) %>%
+  ggplot(aes(x = 1, fill = workload)) +
+  geom_bar(position = "fill", color = "white") +
+  theme_classic() +
+  guides(fill = guide_legend(nrow = 3)) +
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = 15))
+
+
+# Workload w/ lab difficulty
+gg_work_lab <- x %>%
+  mutate(workload = factor(workload, levels = rev(c("Just the right amount of work",
+                                                "A little too much work",
+                                                "Way too much work"))),
+         labs = factor(labs, levels = rev(c("Very helpful", "Somewhat helpful",
+                                              "Neutral", "Somewhat unhelpful",
+                                              "Very unhelpful",
+                                              "Haven't attended")))) %>%
+  ggplot(aes(x = labs, fill = workload)) +
+  geom_bar(position = "fill", color = "white") +
+  theme_classic() +
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = 15))
+
+# Workload w/ hw difficulty
+gg_work_hw <- x %>%
+  mutate(workload = factor(workload, levels = rev(c("Just the right amount of work",
+                                                "A little too much work",
+                                                "Way too much work"))),
+         hw = factor(hw, levels = rev(c("Very helpful", "Somewhat helpful",
+                                              "Neutral", "Somewhat unhelpful",
+                                              "Very unhelpful",
+                                              "Haven't attended")))) %>%
+  ggplot(aes(x = hw, fill = workload)) +
+  geom_bar(position = "fill", color = "white") +
+  theme_classic() +
+  theme(legend.position = "bottom",
+        legend.text = element_text(size = 15))
+
+gridExtra::grid.arrange(gg_work_help, gg_oh_help, nrow = 1)
+
+```
+
+------------------------------------------------------------------------
+
+### Week 4 Feedback (n = 33)
+
+```{r, echo=FALSE, fig.width = 15, fig.height = 7}
+
+ggpubr::ggarrange(gg_work, gg_work_hw, gg_work_lab, nrow = 1,
+                  common.legend = TRUE)
+
+```
+
+
+
+------------------------------------------------------------------------

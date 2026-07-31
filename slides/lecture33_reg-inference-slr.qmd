@@ -1,0 +1,1186 @@
+---
+pagetitle: "Inference for Regression I: Recap and Simple Linear Regression"
+editor: source
+draft: true
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+#| echo:    false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.align = 'center')
+library(knitr)
+library(tidyverse)
+library(ggthemes)
+library(moderndive)
+library(gapminder)
+library(infer)
+library(tufte)
+```
+
+::::: columns
+::: {.column .center width="50%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="50%"}
+<br>
+
+[Inference for Regression I]{.custom-title}
+
+<br> <br> 
+
+[Megan Ayers]{.custom-subtitle}
+
+[Stat 141 \| Fall 2026 <br> Wednesday, Week 12]{.custom-subtitle}
+:::
+:::::
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = F, message = FALSE, warning = FALSE, fig.align = "center", fig.height = 4, fig.width = 6,  out.width = "75%")
+library(knitr)
+library(tidyverse)
+library(ggthemes)
+library(moderndive)
+library(gapminder)
+library(infer)
+library(tufte)
+library(gridExtra)
+theme_set(theme_bw())
+```
+
+
+------------------------------------------------------------------------
+
+## Goals for today
+
+- Announcement: 
+    - Math Dept. Colloquium tomorrow: advising week workshop
+
+- Answers from last lecture's activity
+
+- Discuss theoretical inference for simple linear regression (SLR)
+
+- Discuss inference with bootstrap for linear models
+
+
+------------------------------------------------------------------------
+
+## Activity: Average Home Price between Seattle and Portland
+
+::: nonincremental
+
+Suppose you're interested in comparing average home price between Seattle and Portland
+
+- You randomly sample $n_1=50$ Seattle homes, and find $\bar{x}_1=0.95M$, $s_1=0.15M$.
+- You randomly sample $n_2=35$ Portland homes, and find $\bar{x}_2=0.70M$, $s_2=0.35M$.
+
+:::
+
+<br>
+
+
+**With Neighbor(s):** Choose a question below and work through it on the board.
+
+::::: columns
+
+::: {.column width=50% .nonincremental}
+
+**Confidence Intervals**
+
+- Find a 80% confidence interval for the difference in average home price.
+
+- Are we 80% confident there's actually a difference?
+
+:::
+
+::: {.column width=50% .nonincremental}
+
+**Hypothesis Testing**
+
+- You've **heard** there's no difference between Seattle and Portland!
+
+- Test your claim using a hypothesis test (with a significance level of $\alpha = 0.01$).
+
+:::
+
+:::::
+
+
+------------------------------------------------------------------------
+
+## Answer Key: Confidence Intervals
+
+::: fragment
+
+With *independent* samples of size $n_1>30$, $n_2>30$, we can use the t-distribution approximation method.
+
+```{r echo=T}
+qt(0.90, df= min(50-1,35-1))
+sqrt(0.15^2/50 + 0.35^2/35)
+```
+
+:::
+
+::: fragment
+
+$$
+\begin{align*}
+(\bar{x}_1-\bar{x}_2) \pm t^*\times \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} &= (.95-.70) \pm 1.307 \times 0.06285\\
+& = (0.1679, \ 0.3321)
+\end{align*}
+$$
+
+:::
+
+::: fragment
+
+Thus, at the 80% confidence level, we think there is a difference in average home price between Seattle and Portland.
+
+:::
+
+------------------------------------------------------------------------
+
+## Answer Key: Hypothesis Testing
+
+1. Hypotheses: $H_0: \mu_1 -\mu_2 = 0 \quad H_a: \mu_1-\mu_2 \neq 0$
+
+2. Assess Conditions (on previous slide)
+
+3. Compute test statistic under $H_0$
+$$t = \frac{(\bar{x}_1 - \bar{x}_{2})-(\mu_1-\mu_{2})}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}} = \frac{(.95-.70)-(0)}{\sqrt{\frac{0.15^2}{50} + \frac{0.35^2}{35} }} = 3.978 $$
+
+
+::: {.fragment .nonincremental}
+4. Calculate p-value
+
+```{r echo=T}
+2*(1-pt(3.978,df=min(50-1,35-1)))
+```
+
+:::
+
+5. Conclude: We reject the null hypothesis (at the $\alpha = 0.01$ level), in favor of the hypothesis that Portland and Seattle have different average home prices.
+
+
+
+
+# Simple Linear Regression
+
+
+------------------------------------------------------------------------
+
+## Review of Simple Linear Regression
+
+We've used linear models to analyze the relationship between two quantitative variables
+
+$$
+y = \beta_0 + \beta_1 x + \epsilon
+$$
+
+
+-   $\beta_0$ and $\beta_1$ are fixed numbers in our **population model**
+-   $\beta_0$ represents the **intercept** of a line
+-   $\beta_1$ represents the **slope** of a line
+
+::: fragment
+
+Performing **least squares regression** gives us our best guess at this model by providing estimates $\widehat{\beta}_1$ and $\widehat{\beta}_2$ based on our sample data: 
+
+
+$$
+\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
+$$
+:::
+
+
+------------------------------------------------------------------------
+
+## Linear Models in R
+
+::: {.fragment .nonincremental}
+- To fit a linear model in R, we use the `lm()` function
+
+```{r echo = F}
+set.seed(100)
+theses<-read_csv("data/theses_2022.csv") %>% drop_na(n_pages, year) 
+
+theses_samp<-theses %>%  sample_n(size = 100)
+
+theses_mod <- lm(n_pages~year, data= theses_samp)
+b0 <- round(coef(theses_mod)[1],2)
+b1 <- round(coef(theses_mod)[2],2)
+R <- round(cor(theses_samp$year, theses_samp$n_pages), 2)
+
+my_data <- theses_samp %>% mutate(x  = year, y = n_pages)
+```
+
+
+```{r echo = T}
+my_mod <- lm(y ~ x, data = my_data)
+```
+
+:::
+
+
+::: {.fragment .nonincremental}
+
+- To view coefficients of the model, we use `get_regression_table()` 
+
+```{r echo = T}
+get_regression_table(my_mod)
+```
+
+:::
+
+::: {.fragment .nonincremental}
+
+- Correlation can be computed using `cor()`:
+
+```{r echo = T}
+cor(my_data$x, my_data$y)
+```
+
+:::
+
+::: {.fragment .nonincremental}
+
+- Recall that $\widehat{\beta}_1 = \frac{s_y}{s_x}r$
+    - $s_y \geq 0$ and $s_x \geq 0$ ($s_x = 0$ or $s_y = 0$ are uninteresting cases)
+
+:::
+
+
+------------------------------------------------------------------------
+
+## Statistical Inference for Regression
+
+- We can fit a linear model to any data set we want, but if we just have a *sample* of data, any trend we detect doesn't necessarily demonstrate that the trend exists in the *population*.
+
+- **Goal of Inference**: Use *statistics* calculated from data to make inferences about *parameters*
+
+::: fragment 
+
+**Parameters**: $\beta_0$ (intercept) and $\beta_1$ (slope)
+
+$$
+y = \beta_0 + \beta_1 x + \epsilon
+$$
+
+:::
+  
+
+::: fragment
+
+We won't ever know the true values of these parameters. So **we estimate them based on a least squares model in the sample**:
+
+ 
+$$
+\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
+$$
+ 
+:::
+ 
+::: fragment
+ 
+**Statistics**: $\widehat{\beta}_0$ (intercept) and $\widehat{\beta}_1$ (slope)
+
+:::
+
+------------------------------------------------------------------------
+
+## Example for Today: Reed Theses
+
+- Several years ago, some Math 141 students collected data on several hundred senior theses from thesis tower.
+
+::: {.fragment .nonincremental}
+
+- Page Count ($y$) and Year Published ($x$) for several of these theses are shown below:
+
+```{r echo=F, fig.height=2.25}
+theses_samp %>% 
+  ggplot(aes(x = year, y = n_pages)) + 
+  geom_point() + geom_smooth(method = "lm", se = F) +
+  labs(title = "Reed Theses", x = "Year", y = "Page Count") +
+  annotate(geom = "text", x = 2000, y = 250, label = paste("r=", R)) +
+  annotate(geom = "text", x = 2000, y = 200, label = paste("Y=", b0, b1, "X"))
+```
+
+:::
+
+- But this is just a sample of data. What can we say about the underlying *population* slope?
+
+
+------------------------------------------------------------------------
+
+## Inference for Regression
+
+We assume that *in the population*, there is the following relationship between Page Count ($y$) and Year ($x$)
+
+$$
+\underbrace{\text{Page Count}}_{y} = \beta_0 + \beta_1 \underbrace{\text{Year}}_{x} + \underbrace{\epsilon}_{\text{error}}
+$$ 
+
+
+::::: columns
+
+::: {.column width=50% .fragment .nonincremental}
+
+[Hypothesis Tests]{.underline}
+
+- **Null Hypothesis**:  Year ($x$) and Page Count ($y$) are *uncorrelated*
+
+- **Alternative Hypothesis**: Page Count and Year are *correlated*
+
+**Q:** What do these hypotheses translate to in *mathematical symbols* and *parameters*? 
+
+::: fragment
+
+$$H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0$$
+
+::: 
+
+:::
+
+::: {.column width=5%}
+
+:::
+
+::: {.column width=45%}
+
+::: {.fragment .nonincremental}
+
+[Confidence intervals]{.underline}
+- Can I make a 95% confidence interval for $\beta_1$?
+
+:::
+
+<br><br><br>
+
+::: fragment
+
+**We'll use the least squares sample model to conduct these inference tasks:**
+
+$$
+\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x = 1291.54 - 0.61 x
+$$
+
+:::
+
+:::
+
+:::::
+
+------------------------------------------------------------------------
+
+## Roadmap for Inference
+
+- Regression is a potent tool for assessing relationships between variables.
+    - We have four "LINE" conditions for regression 
+    - We would like to conduct inference on parameters $\beta_0$ and/or $\beta_1$
+  
+<br>
+
+::: fragment
+
+Today, we will:
+
+:::
+
+1. Conduct **theory-based** inference for $\beta_0$, $\beta_1$
+    - Requires [ALL]{.underline} of the LINE conditions be met. Rigid!!
+    - Straightforward to conduct
+
+2. Conduct **simulation**-based inference for $\beta_0$, $\beta_1$
+    - Only requires Linearity and Independence. Flexible!!
+    - Needs some extra code.
+
+
+
+# Theory-Based Inference for Simple Linear Regression
+
+
+------------------------------------------------------------------------
+
+## Hypothesis Tests for Slope {.smaller}
+
+::::: columns
+
+::: {.column width=50%}
+
+$$\text{Population Model:   } y = \beta_0 + \beta_1 x + \epsilon$$
+
+:::
+
+::: {.column width=50%}
+
+$$\text{Sample Model:   } \widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 X $$
+
+:::
+
+:::::
+
+$$H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0$$
+
+
+- We'd like to use $\widehat{\beta}_1$ to do this hypothesis test
+    - Need to know the *mean*, *standard error*, and *shape* of the sampling distribution for $\widehat{\beta}_1$ 
+  
+
+::: fragment
+
+**Under the LINE conditions** (we'll check these soon), $\widehat{\beta}_1$ is:
+
+:::
+
+  - Approximately normally distributed
+  - Has mean $\beta_1$
+  
+::: {.fragment .nonincremental}
+  - Has a standard error of: 
+  
+$$
+\color{red}{SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 + \beta_1 x_i) )^2}{\sum_{i=1}^n (x_i - \bar x)^2}}}
+$$
+(Don't memorize this!)
+
+:::
+
+------------------------------------------------------------------------
+
+## Hypothesis Tests for Slope {.smaller}
+
+$$H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0$$
+
+**Under the LINE conditions**, $\widehat{\beta}_1$ is:
+
+::: nonincremental
+
+  - Approximately normally distributed 
+  
+  - has mean $\beta_1$
+  
+  - Has a standard error of: 
+  
+:::
+
+$$
+SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 + \beta_1 x_i) )^2}{\sum_{i=1}^n (x_i - \bar x)^2}}
+$$
+
+
+- In practice, **we estimate $\beta_0, \beta_1$ in the formula using $\widehat{\beta}_0, \widehat{\beta}_1$**, giving $\widehat{SE} (\widehat{\beta}_1)$
+  
+- We perform a hypothesis test of $H_0: \beta_1 = 0$ using the standardized t-statistic 
+
+::: fragment
+
+$$
+\text{t-statistic} = \frac{\textrm{sample stat}- \textrm{null value}}{\widehat{SE} (\widehat{\beta}_1)} = \frac{\widehat{\beta}_1 - 0}{\widehat{SE} (\widehat{\beta}_1)}
+$$
+
+:::
+
+- The $t$-statistic follows a [$t$-distribution with $n-2$ degrees of freedom.]{.underline}
+  
+- We can use the `pt()` function to calculate the corresponding p-value
+
+
+
+------------------------------------------------------------------------
+
+## Confidence Intervals for Slope
+
+
+We create a confidence interval for $\beta_1$ using 
+
+$$
+\textrm{sample stat} \pm \underbrace{t^*}_{\text{critical value}} \cdot \widehat{SE} (\widehat{\beta}_1) \quad = \quad \color{red}{\widehat{\beta}_1 \pm t^* \cdot \widehat{SE} (\widehat{\beta}_1)}
+$$
+
+We use the critical values from a **$t$-distribution with $n-2$ degrees of freedom**!
+
+<br><br>
+
+- Can we do hypothesis tests and get confidence intervals for $\beta_1$ *without* tedious calculation?
+    - Yes! Using the `lm()` and `get_regression_table()` functions in R.
+
+
+
+------------------------------------------------------------------------
+
+## Hypothesis Tests and Confidence Intervals through `lm()`
+
+```{r echo = T}
+thesis_mod <- lm(n_pages ~ year, data = theses_samp)
+get_regression_table(theses_mod)
+```
+
+<br>
+
+**Hypothesis Test**
+
+- `std_error` --- theory-based standard error (0.198) 
+
+- `statistic` --- $t$-statistic (-3.057)
+
+- `p_value` --- p-value (0.003) of observing our $t$-statistic or something more extreme in the t-distribution with $df=n-2$ for the [*two-sided test*]{.underline},
+$$H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0$$
+
+
+
+------------------------------------------------------------------------
+
+## Hypothesis Tests and Confidence Intervals through `lm()`
+
+```{r echo = T}
+thesis_mod <- lm(n_pages ~ year, data = theses_samp)
+get_regression_table(theses_mod)
+```
+
+<br>
+
+**Confidence Interval**
+
+- **By default**, the upper and lower bounds are provided for the **95%** confidence interval with `lower_ci` and `upper_ci`, giving the 95% interval (-0.998, -0.212)
+
+- The table also gives similar information for the intercept with:
+    - Hypothesis test $H_0: \beta_0 = 0$, $H_a: \beta_0 \neq 0$
+    - 95% confidence intervals
+    - (But this is less useful in practice).
+
+
+------------------------------------------------------------------------
+
+## Hypothesis Tests and Confidence Intervals through `lm()`
+
+```{r echo = T}
+thesis_mod <- lm(n_pages ~ year, data = theses_samp)
+get_regression_table(theses_mod, conf.level = 0.80) # Note change
+```
+
+<br>
+
+**General Confidence Interval**
+
+- Use `conf.level` argument to change **confidence level**
+- 80% confidence intervals: c(-0.860, -0.350)
+
+
+
+# Conditions for Theory-Based Inference
+
+------------------------------------------------------------------------
+
+## LINE Conditions {.smaller}
+
+To do **theory-based** inference for regression, we require the LINE conditions we talked about way back in week 4!
+
+::: {.fragment .nonincremental}
+
+1. **Linearity:** The relationship between explanatory and response variables must be approximately linear
+    - Check using scatterplot/residual plot
+
+:::
+
+::: {.fragment .nonincremental}
+
+2. **Independence:** The [observations]{.underline} should be independent of one another
+    - Consider sample design and data context
+
+:::
+
+::: {.fragment .nonincremental}
+
+3. **Normality:** The distribution of residuals should be normally distributed
+    - Histogram of residuals
+    - Q-Q plot of residuals
+
+:::
+
+::: {.fragment .nonincremental}
+
+4. **Equal Variability:** Variance of residuals should be roughly constant across data set
+    - Check using residual plot.
+    
+:::
+
+
+::: {.fragment .nonincremental}
+
+These make up the [LINE Conditions]{.underline} (**L**inearity, **I**ndependence, **N**ormality, **E**qual Variability)
+
+:::
+
+------------------------------------------------------------------------
+
+## 1) Linearity
+
+::: nonincremental
+
+**Linearity:** The relationship between explanatory and response variables must be approximately linear
+
+   - Points should be evenly distributed above and below the regression line **at each "slice" of X**
+  
+```{r echo=F, fig.height=2}
+theses_samp %>% 
+  ggplot(aes( x = year, y = n_pages))+ 
+  geom_point( )+geom_smooth(method = "lm", se = F)+
+  labs(title = "Reed Theses", x = "Year", y = "Page Count")
+```
+
+:::
+
+- Some potential outliers with high page counts...
+
+- But this mostly looks okay!
+
+------------------------------------------------------------------------
+
+## 2) Independent Observations
+
+**Independence:** The observations should be independent of one another.
+
+- Hard to know if any two theses have dependence ... but not totally unreasonable
+
+
+
+
+------------------------------------------------------------------------
+
+## 3) Normality (of Residuals)
+
+**Normality of Residuals:** The distribution of residuals should be normally distributed
+
+```{r echo=F, fig.height=2}
+mod_theses<-lm(n_pages ~ year, data = theses_samp)
+theses_res<-get_regression_points(mod_theses)
+
+g1 <- ggplot(theses_res, aes( x = residual))+geom_histogram(bins = 25, color = "white")+
+  labs(title = "Distribution of Residuals", x = "Residual", y = "Count")
+
+g2 <- ggplot(theses_samp, aes(sample = n_pages))+geom_qq()+geom_qq_line()+labs(title = "Residual QQ Plot")
+
+grid.arrange(g1,g2,ncol =2)
+```
+
+- Distribution appears somewhat right-skewed, with a notable potential outliers on the right.
+- This provides some evidence residuals are not Normally distributed.
+
+
+------------------------------------------------------------------------
+
+## 4) Equal Variability (of Residuals)
+
+**Equal Variability:** Variance of residuals should be roughly constant across data set. 
+
+
+```{r echo=F, fig.height=2}
+ggplot(theses_res, aes( x = year, y = residual))+geom_point()+geom_smooth(method = "lm", se = F)+
+  labs(title = "Residual Plot", x = "Year", y = "Residual")
+```
+
+- Residuals appear to have constant variability between 1980 and 2020
+- However, **theses prior to 1980 appear to have more spread**
+  
+  
+------------------------------------------------------------------------
+  
+## LINE Conditions: Recap
+
+- **Linearity** and **Independence** seem to be reasonably met...
+
+- but **Normality** and **Equal Variance** do [not]{.underline}
+
+<br><br>
+
+- Are we unable to do inference???
+    - Fear not! **We can get around this with the bootstrap!**
+
+
+
+# Inference with Bootstrap
+
+
+------------------------------------------------------------------------
+
+## Bootstrap can get around Normality and Equal Variance! (with larger $n$)
+
+When **Normality** and **Equal Variance** do [not]{.underline} hold, we can use the bootstrap for correct inference!
+
+
+
+- But we do need the sample size $n$ to be larger than usual.
+
+- You should feel okay about this with a sample size of at least a [couple]{.underline} hundred
+
+
+------------------------------------------------------------------------
+
+## Bootstrapping Slopes
+
+To approximate variability in the slope statistic $\widehat{\beta}_1$, we create a bootstrap sample by resampling data rows [with replacement]{.underline}, and then calculating **a new linear model, with a new slope**
+
+
+::::: columns
+
+::: {.column width=40% .fragment}
+
+```{r eval = F, echo = T}
+set.seed(11)
+theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1)
+```
+
+
+```{r echo = F}
+set.seed(13)
+samp1 <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1)
+
+samp1 %>% 
+  head()
+```
+
+:::
+
+::: {.column width=60% .fragment .nonincremental}
+
+```{r echo = F, out.width = "100%", fig.height = 3.5}
+ggplot(samp1, aes(x = year, y = n_pages))+geom_point(alpha = .35, size = 2)+geom_smooth(method = "lm", se = F)+
+  geom_abline(slope = b1, intercept = b0, color = "red", linetype = "dashed")+
+  labs(title = "Bootstrap Sample")
+```
+
+
+
+- Dashed red line: regression line for original sample
+
+- Darker points: observations included in bootstrap sample more than once
+
+:::
+
+:::::
+
+
+------------------------------------------------------------------------
+
+## Bootstrap Distribution of Slopes
+
+
+Now we generate 1000 replicates/bootstrap samples, and compute the slope for each.
+
+<br>
+
+Let's step carefully through this code - we're combining `lm()`, `get_regression_table()`, and our `dplyr` data wrangling functions. 
+
+<br>
+
+
+```{r eval = F, echo = T}
+set.seed(11)
+theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000) %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+```
+
+
+```{r eval = F, echo = F, cache=T}
+set.seed(11)
+boot_slope <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000)
+
+boot_slope <- boot_slope %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+
+head(boot_slope)
+```
+
+
+------------------------------------------------------------------------
+
+## Bootstrap Distribution of Slopes
+
+
+Now we generate 1000 replicates/bootstrap samples, and compute the slope for each. 
+
+<br>
+
+
+We draw 1000 different bootstrap samples of size `nrow(theses_samp)` (our sample size)
+
+<br>
+<br>
+
+
+```{r eval = F, echo = T}
+#| code-line-numbers: "1-5"
+set.seed(11)
+theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000) %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+```
+
+
+```{r eval = F, echo = F, cache=T}
+set.seed(11)
+boot_slope <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000)
+
+boot_slope <- boot_slope %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+
+head(boot_slope)
+```
+
+
+------------------------------------------------------------------------
+
+## Bootstrap Distribution of Slopes
+
+
+Now we generate 1000 replicates/bootstrap samples, and compute the slope for each. 
+
+<br>
+
+
+Then we group by `replicate`: we want R to do the next calculation within every bootstrap sample
+
+<br>
+
+
+```{r eval = F, echo = T}
+#| code-line-numbers: "6"
+set.seed(11)
+theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000) %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+```
+
+
+```{r eval = F, echo = F, cache=T}
+set.seed(11)
+boot_slope <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000)
+
+boot_slope <- boot_slope %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+
+head(boot_slope)
+```
+
+
+------------------------------------------------------------------------
+
+## Bootstrap Distribution of Slopes
+
+
+Now we generate 1000 replicates/bootstrap samples, and compute the slope for each. 
+
+<br>
+
+
+Across each bootstrap sample, we calculate a single number inside `summarize()`: the **slope** estimate (second `estimate`) from the regression table from `lm(n_pages ~ year)`
+
+<br>
+
+
+```{r eval = F, echo = T}
+#| code-line-numbers: "7"
+set.seed(11)
+theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000) %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+```
+
+
+```{r eval = T, echo = F, cache=T}
+set.seed(11)
+boot_slope <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000)
+
+boot_slope <- boot_slope %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+
+head(boot_slope)
+```
+
+
+- **Note**: `get_regression_table` rounds values to 3 digits by default (can change `digits`) 
+
+------------------------------------------------------------------------
+
+## Bootstrap Distribution of Slopes
+
+::::: columns
+
+::: {.column width=50%}
+
+Plotting the bootstrap distribution
+
+<br>
+
+```{r eval = T, echo = T,  fig.height=3.5}
+boot_slope %>% ggplot(aes(x = slope)) +
+  geom_histogram(color = "white") +
+  theme_bw()
+```
+
+
+- The original sample had slope $\widehat{\beta}_1 =$ `r b1`
+
+:::
+
+::: {.column width=50%}
+
+::: fragment
+
+We can make the same plot and add the implied 95% confidence interval:
+
+```{r eval = T, echo = T,  fig.height=3.5}
+
+ci <- quantile(boot_slope$slope, c(0.025, 0.975))
+
+boot_slope %>% ggplot(aes(x = slope)) +
+  geom_histogram(color = "white") +
+  geom_vline(xintercept = ci, color = "dodgerblue") +
+  annotate("rect", xmin = ci[1], xmax = ci[2], ymin = 0,
+           ymax = Inf, fill = "dodgerblue", alpha = 0.25) +
+  theme_bw()
+```
+
+:::
+
+:::
+
+:::::
+
+
+------------------------------------------------------------------------
+
+## Confidence Intervals - putting it all together
+
+Gathering bootstrap samples...
+
+```{r eval = T, echo = T}
+#| output-location: column
+boot_slope <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000) %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+head(boot_slope)
+```
+
+<br>
+
+::::: columns
+
+::: {.column width=40% .fragment}
+
+**Percentile confidence interval**
+
+```{r eval = T, echo = T}
+q_ci <- quantile(boot_slope$slope,
+                 c(0.025, 0.975))
+q_ci
+```
+
+:::
+
+::: {.column width=60% .fragment}
+
+**Standard error confidence interval** (`r b1` is the original slope)...
+
+```{r eval = T, echo = T}
+tstar <- qt(0.975, nrow(theses_samp) - 2)
+se <- sd(boot_slope$slope)
+se_ci <- c(b1 - tstar*se, b1 + tstar*se)
+se_ci
+```
+
+
+:::
+
+:::::
+
+
+- Neither interval contains 0!
+
+
+------------------------------------------------------------------------
+
+## Hypothesis Tests 
+
+$$H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0$$
+
+
+Even without **Normality** and **Equal Variability** [of the *residuals*]{.underline}, the standardized statistic
+
+$$
+Z = \frac{\widehat{\beta}_1 - \beta_1}{\text{Bootstrap $\widehat{SE}$}}
+$$
+
+is **approximately standard normal (i.e., mean 0 and SD 1) as $n$ gets large enough.**
+
+
+
+- This means we can use `pnorm()` to get our p-values! 
+    - The bootstrap is helping us estimate the SE for our z-score. 
+    - We need to use the bootstrap because we can't trust the `lm()` theory-based SE estimates when these assumptions are violated.
+
+- We could go *fully* simulation-based and avoid even assuming that $Z$ is approximately Normal - this just requires extra coding.
+
+
+------------------------------------------------------------------------
+
+## Hypothesis Tests 
+
+
+$$
+H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\beta}_1 - \beta_1}{\text{Bootstrap $\widehat{SE}$}}
+$$
+
+::::: columns
+
+::: {.column width=45%}
+
+::: {.fragment .nonincremental}
+
+1) Gather bootstrap samples...
+
+```{r eval = F, echo = T}
+boot_slope <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000) %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+```
+
+:::
+
+
+::: {.fragment .nonincremental}
+
+2) Calculate the bootstrapped SE...
+
+```{r eval = T, echo = T}
+bootstrap_se <- sd(boot_slope$slope)
+bootstrap_se
+```
+
+
+:::
+
+:::
+
+::: {.column width=3%}
+
+:::
+
+::: {.column width=52%}
+
+::: {.fragment .nonincremental}
+
+3) Calculate z-score under the null ($\widehat{\beta}_1=-0.61$ is the original slope)...
+
+
+```{r eval = T, echo = F}
+z <- (-0.61 - 0) / bootstrap_se
+```
+
+
+```{r eval = T, echo = T}
+z <- (b1 - 0) / bootstrap_se
+z
+```
+
+
+:::
+
+::: {.fragment .nonincremental}
+
+4) Calculate the p-value (2-sided test)...
+
+
+```{r eval = T, echo = T}
+p_value <- 2*pnorm(z)
+p_value
+```
+
+:::
+
+:::
+
+:::::
+
+::: fragment
+
+**We reject $H_0$ at the 0.05 level! (But not at the 0.01 level)**
+
+:::
+
+
+------------------------------------------------------------------------
+
+## Next time
+
+- Inference for multiple regression
+
+------------------------------------------------------------------------
+
+

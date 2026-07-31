@@ -1,0 +1,104 @@
+---
+pagetitle: "Inference for Regression IV"
+editor: source
+draft: true
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+#| echo:    false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.align = 'center')
+library(knitr)
+library(tidyverse)
+library(ggthemes)
+library(moderndive)
+library(gapminder)
+library(infer)
+library(tufte)
+```
+
+::::: columns
+::: {.column .center width="50%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="50%"}
+<br>
+
+[Inference for Regression IV]{.custom-title}
+
+<br> <br> 
+
+[Megan Ayers]{.custom-subtitle}
+
+[Stat 141 \| Fall 2026 <br> Wednesday, Week 13]{.custom-subtitle}
+:::
+:::::
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning = FALSE,message = FALSE,fig.align = 'center')
+library(tidyverse)
+library(moderndive)
+library(gridExtra)
+set.seed(1)
+data <- nycflights13::flights %>% 
+  filter(dest == "PDX") %>% filter(arr_delay < 750)
+mod <- lm(arr_delay~air_time+dep_delay*carrier,data)
+data <- mod %>% get_regression_points()
+data$arr_delay <- data$arr_delay_hat + rnorm(1341,0,sd=25)
+data <- data %>% select(arr_delay,carrier,dep_delay,air_time)
+data$carrier <- factor(data$carrier,levels=c("B6","DL","UA"),labels=c("JetBlue","Delta","United"))
+rm(mod)
+```
+
+
+------------------------------------------------------------------------
+
+## Goals for today
+
+::: nonincremental
+
+- Work on inference for regression worksheet in small groups of 3-4
+    - Activity file is posted on the course website next to today's slides
+    - **Each** group member should upload a finished worksheet to Gradescope, but you can collaborate on your answers. 
+    
+<br>
+
+- We'll go through answers together in last ~15 minutes
+
+:::
+
+
+------------------------------------------------------------------------
+
+
+## Next time
+
+- Chi-squared tests 
+
+---------------------------------------------------------------------

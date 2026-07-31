@@ -1,0 +1,15 @@
+---
+date: 10/26/26
+editor: source
+draft: true
+---
+
+# Stat 141: Readings for {{< meta date >}}
+
+## Reading 
+
+Before coming to lecture today, please read the following material: 
+
+-    Review MD 9.1-9.3, and read MD 9.4.3, 9.5.1 (*Note that this section uses some coding methods that we will not cover from the `infer` package - focus on the concepts rather than the code for this reading.*)
+
+

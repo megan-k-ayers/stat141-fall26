@@ -1,0 +1,785 @@
+---
+pagetitle: "Hypothesis Testing III: Types of Errors, Power"
+editor: source
+draft: true
+format: 
+  revealjs:
+    chalkboard: true
+    incremental: true
+    theme: [default, custom.scss]
+    height: 900
+    width: 1600
+    slide-number: c
+    auto-stretch: false
+    callout-appearance: simple
+    pdf-max-pages-per-slide: 2
+    menu: 
+      side: right
+      numbers: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+#| echo:    false
+
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.align = 'center')
+library(knitr)
+library(tidyverse)
+library(ggthemes)
+library(moderndive)
+library(gapminder)
+library(infer)
+library(tufte)
+```
+
+::::: columns
+::: {.column .center width="50%"}
+![](img/DAW.jpeg){width="90%"}
+:::
+
+::: {.column .center width="50%"}
+<br>
+
+[Hypothesis Testing III]{.custom-title}
+
+<br> <br> 
+
+[Megan Ayers]{.custom-subtitle}
+
+[Stat 141 \| Fall 2026 <br> Wednesday, Week 8]{.custom-subtitle}
+:::
+:::::
+
+
+------------------------------------------------------------------------
+
+## Goals for today
+
+-   Discuss **decisions** in a hypothesis test
+    -   Types of errors
+-   Discuss and learn to compute the **power** of a hypothesis test
+
+------------------------------------------------------------------------
+
+### Hypothesis Testing Framework
+
+Have two competing hypotheses:
+
+-   Null Hypothesis $(H_0)$: "Dull" hypothesis, status quo, random chance, no effect...
+
+-   Alternative Hypothesis $(H_a)$: The researchers' conjecture.
+
+::: fragment
+Must first take those hypotheses and translate them into statements about the **population parameters** so that we can test them with sample data.
+:::
+
+::: columns
+::: column
+::: fragment
+**Example**:
+
+$H_0$: ESP doesn't exist.
+
+$H_a$: ESP does exist.
+
+Then translate into a statistical problem!
+:::
+:::
+
+::: column
+::: fragment
+**Q**: Using formal statistical/mathematical notation, how should we define these?
+
+$p$ =
+
+$H_0$:
+
+$H_a$:
+:::
+:::
+:::
+
+------------------------------------------------------------------------
+
+### New Example: Swimming with Dolphins
+
+In 2005, researchers Antonioli and Reveley posed the question "Does swimming with the dolphins help depression?" They recruited 30 US subjects diagnosed with mild to moderate depression. Participants were randomly assigned to either the treatment group (swimming with dolphins) or the control group (swimming without dolphins). After two weeks, each subject was categorized as "showed substantial improvement" or "did not show substantial improvement".
+
+```{r, message=FALSE,echo = FALSE}
+dolphins <- read.csv("data/Dolphins.txt", sep="")
+```
+
+<br>
+
+
+
+::::: columns
+
+::: {.column width=55%}
+
+::: {.fragment}
+
+Here's a contingency table of `improve` and `group`.
+
+```{r}
+dolphins %>%
+  count(group, improve)
+```
+$H_0$:
+
+$H_a$:
+
+:::
+
+:::
+
+
+::: {.column width=45%}
+
+::: {.fragment .nonincremental}
+
+Snapshot of the data:
+
+```{r, echo = FALSE}
+set.seed(44)
+dolphins %>%
+  sample_n(8)
+```
+
+**Q**: How might we generate the null distribution for this scenario?
+
+:::
+
+:::
+
+:::::
+
+------------------------------------------------------------------------
+
+## Penguins Example
+
+Let's return to the `penguins` data and ask if flipper length varies, on average, by the sex of the penguin.
+
+**Research Question**: Does flipper length differ by sex?
+
+**Response Variable**:
+
+<br>
+
+**Explanatory Variable**:
+
+<br>
+
+**Statistical Hypotheses**:
+
+------------------------------------------------------------------------
+
+## Exploratory Data Analysis
+
+```{r}
+#| output-location: column
+
+library(palmerpenguins)
+
+penguins <- palmerpenguins::penguins
+
+penguins %>%
+  drop_na(sex) %>%
+ggplot(mapping = aes(x = sex,
+                     y = flipper_length_mm)) +
+  geom_boxplot()
+
+
+```
+
+------------------------------------------------------------------------
+
+## Two-Sided Hypothesis Test
+
+Compute observed test statistic:
+
+```{r}
+#| output-location: column
+
+penguins %>% drop_na(sex) %>%
+  group_by(sex) %>%
+  summarize(avg_length = mean(flipper_length_mm))
+```
+
+$\rightarrow$ Our test statistic is: `r 204.5060 - 197.3636`
+
+::: fragment
+
+Generate the null distribution by simulating many data sets where gender is shuffled (code not shown for brevity), and visualize null sampling distribution compared to our test statistic:
+
+```{r, echo = FALSE}
+
+test_stat <- 204.5060 - 197.3636
+
+p_df <- penguins %>% drop_na(sex)
+
+# Generate null distribution 
+peng_null_stats <- p_df %>% select(sex) %>%
+  rep_sample_n(size = nrow(p_df), replace = FALSE,
+               reps = 5000) %>%
+  add_column(flipper = rep(p_df$flipper_length_mm,
+                        times = 5000)) %>%
+  group_by(replicate, sex) %>%
+  summarize(ybar = mean(flipper)) %>% 
+  pivot_wider(names_from = sex, values_from = ybar) %>%
+  mutate(stat = male - female) %>%
+  select(replicate, stat)
+
+```
+
+```{r}
+#| output-location: column
+#| fig-height: 3.5
+
+ggplot(peng_null_stats, aes(x = stat)) +
+  geom_histogram(color = "white") +
+  geom_vline(xintercept = abs(test_stat),
+             color = "deeppink", size = 2) +
+  geom_vline(xintercept = -abs(test_stat),
+             color = "deeppink", size = 2)
+
+```
+
+**Q**: Guesses for p-value?
+
+:::
+
+------------------------------------------------------------------------
+
+## Two-Sided Hypothesis Test
+
+```{r echo = FALSE}
+#| output-location: column
+#| fig-height: 3.5
+
+ggplot(peng_null_stats, aes(x = stat)) +
+  geom_histogram(color = "white") +
+  geom_vline(xintercept = abs(test_stat),
+             color = "deeppink", size = 2) +
+  geom_vline(xintercept = -abs(test_stat),
+             color = "deeppink", size = 2)
+
+```
+
+Calculate the p-value for a two-sided test:
+
+```{r}
+#| output-location: column
+# Compute p-value
+(p_val <- mean(peng_null_stats$stat > abs(test_stat)) +
+   mean(peng_null_stats$stat < -abs(test_stat)))
+```
+
+- **Interpretation of** $p$-value: If the mean flipper length does not differ by sex in the population, the probability of observing a difference in the sample means of at least `r round(test_stat, 2)` mm (in magnitude) is equal to `r p_val`.
+
+- **Conclusion**: These data represent evidence that flipper length does vary by sex.
+
+
+
+# Now: A closer look at the conclusions of a hypothesis test
+
+------------------------------------------------------------------------
+
+### Hypothesis Testing: Decisions, Decisions
+
+Once you get to the end of a hypothesis test you make one of two decisions:
+
+-   P-value is small.
+    -   I have evidence for $H_a$. Reject $H_0$.
+-   P-value is not small.
+    -   I don't have evidence for $H_a$. Fail to reject $H_0$.
+
+::: fragment
+Sometimes we make the correct decision. Sometimes we make a mistake.
+:::
+
+------------------------------------------------------------------------
+
+### Hypothesis Testing: Decisions, Decisions
+
+Let's create a table of potential outcomes on the board.
+
+<br> <br><br><br><br><br><br><br><br> <br> <br>
+
+::: fragment
+$\alpha$ = prob of Type I error **under repeated sampling** = prob reject $H_0$ when it is true
+:::
+
+::: fragment
+$\beta$ = prob of Type II error **under repeated sampling** = prob fail to reject $H_0$ when $H_a$ is true.
+:::
+
+------------------------------------------------------------------------
+
+### Hypothesis Testing: Decisions, Decisions
+
+We should set $\alpha$ level beforehand.
+
+Use $\alpha$ to determine "small" for a p-value.
+
+::: nonincremental
+-   P-value ~~is~~ ~~small~~ $< \alpha$.
+    -   $\rightarrow$ I have evidence for $H_a$. Reject $H_0$.
+-   P-value ~~is~~ ~~not~~ ~~small~~ $\geq \alpha$.
+    -   $\rightarrow$ I don't have evidence for $H_a$. Fail to reject $H_0$.
+:::
+
+------------------------------------------------------------------------
+
+### Hypothesis Testing: Decisions, Decisions
+
+**Open Question**: How do I select $\alpha$?
+
+-   Will depend on the convention in your field (0.05 is common).
+
+-   Want a small $\alpha$ and a small $\beta$. But they are related.
+    -   **The smaller** $\alpha$ is the larger $\beta$ will be.
+
+-   Choose a lower $\alpha$ (e.g., 0.01, 0.001) when the Type I error is worse and a higher $\alpha$ (e.g., 0.1) when the Type II error is worse.
+
+<br>
+
+- **Q**: What are some examples of when Type I errors are worse than Type II errors? Examples when the opposite is true?
+
+------------------------------------------------------------------------
+
+### Hypothesis Testing: Decisions, Decisions
+
+::: nonincremental
+**Open Question**: How do I select $\alpha$?
+
+-   Will depend on the convention in your field (0.05 is common).
+
+-   Want a small $\alpha$ and a small $\beta$. But they are related.
+    -   **The smaller** $\alpha$ is the larger $\beta$ will be.
+
+:::
+
+<br>
+
+-   **Q**: Can't easily compute $\beta$ (probability of failing to reject a false null hypothesis). Why?
+
+-   Important related concept:
+    -   **Power** = probability reject $H_0$ when the alternative is true.
+
+::: {.fragment .nonincremental}
+
+::::: columns
+
+::: {.column width=70%}
+
+- **Q**: Why is power important when designing an experiment?
+
+:::
+
+::: {.column width=30%}
+
+![](img/palpatine.jpg){width=60%}
+
+:::
+
+:::::
+
+:::
+
+------------------------------------------------------------------------
+
+### Example
+
+Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant 10 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant's true (long-run) detection rate is **70%**. 
+
+::: {.fragment}
+
+::: columns
+::: column
+$H_0$:
+:::
+
+::: column
+$H_a$:
+:::
+:::
+
+::: 
+
+::: {.fragment}
+
+
+::: columns
+::: column
+```{r, echo = FALSE, fig.asp = 0.65}
+
+set.seed(111)
+
+dat <- data.frame(guesses = c(rep("hit", 7), 
+                              rep("miss", 3)))
+
+
+library(infer)
+library(tidyverse)
+null <- dat %>%
+  specify(response = guesses, success = "hit") %>%
+  hypothesize(null = "point", p = 0.5) %>%
+  generate(reps = 5000, type = "draw") %>%
+  calculate(stat = "prop") %>%
+  mutate(dist = "Null")
+
+alt <- dat %>%
+  specify(response = guesses, success = "hit") %>%
+  hypothesize(null = "point", p = 0.7) %>%
+  generate(reps = 5000, type = "draw") %>%
+  calculate(stat = "prop") %>%
+  mutate(dist = "Alternative")
+
+both <- bind_rows(null, alt) %>%
+  mutate(dist = fct_relevel(dist, "Null"))
+
+both %>%
+  ggplot(mapping = aes(x = stat)) +
+  geom_histogram(bins = 40, color = "white") +
+  xlim(c(0, 1.1)) +
+  facet_wrap(~dist, ncol = 1) +
+  geom_vline(xintercept = 0.9, size = 2,
+             color = "turquoise4")
+
+power <- alt %>%
+  summarize(power = mean(stat >= 0.9)) %>%
+  pull()
+```
+:::
+
+::: column
+-   When $\alpha=0.05$, they need 9 or more correct for a small enough p-value to reject $H_o$.
+
+-   When $\alpha=0.05$, the power of this test is **`r round(power, 2)`**.
+
+::::: {.columns}
+::: {.fragment .nonincremental}
+
+::: {.column width=85%}
+-   Why is the power **so low**? Our power is very much [not]{.underline} "unlimited" :(
+:::
+
+::: {.column width=15%}
+ ![](img/palpatine.jpg){width=100%}
+:::
+
+:::
+
+:::::
+
+-   What aspects of the test could we change to **increase the power** of the test?
+:::
+:::
+
+:::
+
+------------------------------------------------------------------------
+
+### Example
+
+Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant ~~10~~ 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant's true (long-run) detection rate is **70%**. 
+
+::: nonincremental
+- **What will happen to the power of the test if we increase the sample size?**
+:::
+
+::: columns
+::: column
+```{r, echo = FALSE, fig.asp = 0.65}
+
+set.seed(123)
+
+dat <- data.frame(guesses = c(rep("hit", 35), 
+                              rep("miss", 15)))
+
+null <- dat %>%
+  specify(response = guesses, success = "hit") %>%
+  hypothesize(null = "point", p = 0.5) %>%
+  generate(reps = 5000, type = "draw") %>%
+  calculate(stat = "prop") %>%
+  mutate(dist = "Null")
+
+alt <- dat %>%
+  specify(response = guesses, success = "hit") %>%
+  hypothesize(null = "point", p = 0.7) %>%
+  generate(reps = 5000, type = "draw") %>%
+  calculate(stat = "prop") %>%
+  mutate(dist = "Alternative")
+
+both <- bind_rows(null, alt) %>%
+  mutate(dist = fct_relevel(dist, "Null"))
+
+both %>%
+  ggplot(mapping = aes(x = stat)) +
+  geom_histogram(bins = 25, color = "white") +
+  xlim(c(0, 1.1)) +
+  facet_wrap(~dist, ncol = 1) +
+  geom_vline(xintercept = 0.64, size = 2,
+             color = "turquoise4")
+
+power <- alt %>%
+  summarize(power = mean(stat >= 0.64)) %>%
+  pull()
+```
+:::
+
+::: column
+-   Increasing the sample size narrows the sampling distributions and increases the power.
+
+-   When $\alpha$ is set to $0.05$ and the sample size is now 50, the power of this test is **`r round(power, 2)`**.
+:::
+:::
+
+------------------------------------------------------------------------
+
+### Example
+
+Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant ~~10~~ 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant's true (long-run) detection rate is **70%**. 
+
+::: nonincremental
+- **What will happen to the power of the test if we increase** $\alpha$ to 0.1?
+:::
+
+::: columns
+::: column
+```{r, echo = FALSE, fig.asp = 0.65}
+both %>%
+  ggplot(mapping = aes(x = stat)) +
+  geom_histogram(bins = 25, color = "white") +
+  xlim(c(0, 1.1)) +
+  facet_wrap(~dist, ncol = 1) +
+  geom_vline(xintercept = 0.58, size = 2,
+             color = "turquoise4")
+
+power <- alt %>%
+  summarize(power = mean(stat >= 0.58)) %>%
+  pull()
+```
+:::
+
+::: column
+
+-   Increasing $\alpha$ increases the power.
+    -   Decreases $\beta$.
+    -   (But remember, also increasing our chances of false alarms)
+-   When $\alpha$ is set to $0.1$ and the sample size is 50, the power of this test is **`r round(power, 2)`**!
+
+:::
+:::
+
+------------------------------------------------------------------------
+
+### Example
+
+Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant ~~10~~ 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant's true (long-run) detection rate is ~~70%~~ **80%**. 
+
+::: nonincremental
+- **What will happen to the power of the test if the participant is even better at detecting AI?**
+:::
+
+::: columns
+::: column
+```{r, echo = FALSE, fig.asp = 0.65}
+set.seed(123)
+
+dat <- data.frame(guesses = c(rep("hit", 40), 
+                              rep("miss", 10)))
+
+null <- dat %>%
+  specify(response = guesses, success = "hit") %>%
+  hypothesize(null = "point", p = 0.5) %>%
+  generate(reps = 5000, type = "draw") %>%
+  calculate(stat = "prop") %>%
+  mutate(dist = "Null")
+
+alt <- dat %>%
+  specify(response = guesses, success = "hit") %>%
+  hypothesize(null = "point", p = 0.8) %>%
+  generate(reps = 5000, type = "draw") %>%
+  calculate(stat = "prop") %>%
+  mutate(dist = "Alternative")
+
+both <- bind_rows(null, alt) %>%
+  mutate(dist = fct_relevel(dist, "Null"))
+
+both %>%
+  ggplot(mapping = aes(x = stat)) +
+  geom_histogram(bins = 25, color = "white") +
+  xlim(c(0, 1.1)) +
+  facet_wrap(~dist, ncol = 1) +
+  geom_vline(xintercept = 0.64, size = 2,
+             color = "turquoise4")
+
+power <- alt %>%
+  summarize(power = mean(stat >= 0.64)) %>%
+  pull()
+
+```
+:::
+
+::: column
+::: nonincremental
+-   **Effect size**: Difference between true value of the parameter and null value.
+
+    -   Often standardized.
+
+-   Increasing the effect size increases the power.
+
+-   When $\alpha$ is set back to **$0.05$**, the sample size is 50, and the true probability of detecting AI is 0.8, the power of this test is **`r round(power, 3)`**.
+:::
+:::
+:::
+
+------------------------------------------------------------------------
+
+### Computing Power
+
+::: nonincremental
+1.  Generate a null distribution:
+:::
+
+```{r}
+#| output-location: column
+
+# Generate null distribution
+null_stats <- data.frame(correct = c(0, 1)) %>% 
+  rep_sample_n(size = 50, replace = TRUE,
+               reps = 5000) %>%
+  group_by(replicate) %>%
+  summarize(stat = mean(correct))
+
+ggplot(data = null_stats, mapping = aes(x = stat)) +
+  geom_histogram(bins = 20, color = "white")
+
+```
+
+------------------------------------------------------------------------
+
+### Computing Power
+
+::: nonincremental
+2.  Determine the "critical value(s)" where $\alpha = 0.05$ (careful with discrete distributions).
+:::
+
+::: fragment
+
+```{r}
+#| output-location: column
+quantile(null_stats$stat, 0.95)
+```
+
+:::
+
+<br>
+
+::: fragment
+
+```{r}
+#| output-location: column
+mean(null_stats$stat >= 0.62)  # 31/50
+```
+
+:::
+
+<br>
+
+::: fragment
+
+```{r}
+#| output-location: column
+mean(null_stats$stat >= 0.64)  # 32/50
+```
+
+:::
+
+<br>
+
+::: fragment
+
+```{r}
+#| output-location: column
+#| fig-height: 3.5
+#| code-line-numbers: "3"
+ggplot(data = null_stats, mapping = aes(x = stat)) +
+  geom_histogram(bins = 20, color = "white") +
+  geom_vline(xintercept = 0.64, size = 2,
+             color = "turquoise4")
+```
+
+:::
+
+------------------------------------------------------------------------
+
+### Computing Power
+
+::: nonincremental
+3.  Construct the alternative distribution. **This usually requires a leap of faith - we need to assume a parameter under the alternative hypothesis!**
+    - Draw on any existing evidence (ex. a pilot study) to justify your assumption
+:::
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "1-2"
+alt_stats <- data.frame(correct = rep(c(0, 1),
+                        times = c(3, 7))) %>% 
+  rep_sample_n(size = 50, replace = TRUE,
+               reps = 5000) %>%
+  group_by(replicate) %>%
+  summarize(stat = mean(correct))
+
+ggplot(data = alt_stats, mapping = aes(x = stat)) +
+  geom_histogram(bins = 20, color = "white") +
+  geom_vline(xintercept = 0.64,
+             size = 2, color = "turquoise4")
+```
+
+------------------------------------------------------------------------
+
+### Computing Power
+
+::: nonincremental
+4.  Find the probability of the critical value or more extreme under the **alternative distribution**.
+:::
+
+```{r}
+alt_stats %>%
+  summarize(power = mean(stat >= 0.64))
+```
+
+------------------------------------------------------------------------
+
+## Thoughts on Power
+
+-   **Q**: We saw how **$\alpha$**, **$n$**, and the **effect size** affected power. What aspects of the test do we actually have control over?
+
+-   **Q**: Why is it easier to set **$\alpha$** than to set **$\beta$** or power?
+
+-   Although it can be challenging, considering power before collecting data is very important!
+
+-   Under-powered studies carry large risks
+    - Grants often require power analyses to justify funding
+    - Type II errors can be dangerous depending on the setting
+
+
+------------------------------------------------------------------------
+
+## Next time:
+
+::: nonincremental
+-   $p$-value pitfalls
+:::
+
+------------------------------------------------------------------------
