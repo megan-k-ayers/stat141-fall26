@@ -3,15 +3,15 @@ project:
   output-dir: docs
   render:
     - "*.qmd"
-    - "!exams/*"
-    - "!labs/*"
-    - "!hw/*"
-    - "!slides/combined_slides.qmd"
+    - "!exams/"
+    - "!lab/"
+    - "!hw/"
     - "!hw-solutions/"
     - "!lab-solutions/"
     - "!quiz/"
     - "!quiz-solutions"
     - "!in_class/"
+    - "!prep/"
 
 website:
   title: "STAT 141"
