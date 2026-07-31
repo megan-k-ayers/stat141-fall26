@@ -17,7 +17,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading01.qmd
             - type: Slides
-              href: slides/lecture01_wk01mon.qmd
+              href: slides/lecture01_stat-thinking.qmd
         - topic: "Data Visualization Introduction"
           display-date: Wednesday, Sept 2
           date: 9/2/26
@@ -25,7 +25,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading02.qmd
             - type: Slides
-              href: slides/lecture02_wk01wed.qmd
+              href: slides/lecture02_data-viz-intro.qmd
         - topic: "Lab: Introduction to R, RStudio, and Quarto"
           display-date: Thursday, Sept 3
           date: 9/3/26
@@ -34,10 +34,12 @@ scheduled-docs:
               href: readings/reading03.qmd
             - type: Lab Instructions
               href: readings/lab_instr_01.qmd
-            - type: Download Lab
+            - type: Download Lab 1
               href: lab/lab01.zip
             - type: Slides
               href: slides/labslides01.qmd
+            - type: Download HW 1
+              href: hw/hw01.zip
         - topic: "Data Visualization: the 5 Named Graphs with <code>ggplot2</code>"
           display-date: Friday, Sept 4
           date: 9/4/26
@@ -45,9 +47,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading04.qmd
             - type: Slides
-              href: slides/lecture03_wk01fri.qmd
-            - type: Download HW01
-              href: hw/hw01.zip
+              href: slides/lecture03_five-named-graphs.qmd
       resources:
             - 'Check your gradescope access (code on Moodle)'
             - 'Start assignment 1 (assigned 9/3)'
@@ -63,15 +63,17 @@ scheduled-docs:
             - type: Reading
               href: readings/reading05.qmd
             - type: Slides
-              href: slides/lecture04_wk02wed.qmd
+              href: slides/lecture04_summary-stats.qmd
         - topic: "Lab: Data Visualization & Summary Statistics"
           display-date: Thursday, Sept 10
           date: 9/10/26
           docs:
             - type: Reading
               href: readings/reading06.qmd
-            - type: Download Lab
+            - type: Download Lab 2
               href: lab/lab02.zip
+            - type: Download HW 2
+              href: hw/hw02.zip
         - topic: "Data Wrangling"
           display-date: Friday, Sept 11
           date: 9/11/26
@@ -79,7 +81,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading07.qmd
             - type: Slides
-              href: slides/lecture05_wk02wed.qmd
+              href: slides/lecture05_data-wrangling.qmd
       resources:
             - 'Submit assignment 1 (due Thurs 9/10 at 9am)'
             - 'Start assignment 2 (assigned 9/10)'
@@ -93,7 +95,7 @@ scheduled-docs:
               - type: Reading
                 href: readings/reading08.qmd
               - type: Slides
-                href: slides/lecture06_wk02fri.qmd
+                href: slides/lecture06_probability-intro-lln.qmd
               - type: Download HW02
                 href: hw/hw02.zip
         - topic: "Probability II: Properties and Rules"
@@ -103,13 +105,15 @@ scheduled-docs:
             - type: Reading
               href: readings/reading09.qmd
             - type: Slides
-              href: slides/lecture07_wk03mon.qmd
+              href: slides/lecture07_probability-rules.qmd
         - topic: "Lab: Data Wrangling & Probability | Quiz 1"
           display-date: Thursday, Sept 17
           date: 9/17/26
           docs:
-          - type: Download Lab
+          - type: Download Lab 3
             href: lab/lab03.zip
+          - type: Download HW 3
+            href: hw/hw03.zip
         - topic: "Data Collection and Sampling"
           display-date: Friday, Sept 18
           date: 9/18/26
@@ -117,7 +121,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading10.qmd
             - type: Slides
-              href: slides/lecture08_wk03wed.qmd
+              href: slides/lecture08_data-collection-sampling.qmd
       resources:
             - 'Submit assignment 2 (due Thurs 9/17 at 9am)'
             - 'Take Quiz 1 during lab'
@@ -132,9 +136,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading11.qmd
             - type: Slides
-              href: slides/lecture09_wk03fri.qmd
-            - type: Download HW03
-              href: hw/hw03.zip
+              href: slides/lecture09_study-design.qmd
         - topic: "Linear Models I: Introduction"
           display-date: Wednesday, Sept 23
           date: 9/23/26
@@ -142,15 +144,15 @@ scheduled-docs:
             - type: Reading
               href: readings/reading12.qmd
             - type: Slides
-              href: slides/lecture10_wk04mon.qmd
+              href: slides/lecture10_lm-intro.qmd
         - topic: "Lab: Sampling, Study Design & SLR | Quiz 2"
           display-date: Thursday, Sept 24
           date: 9/24/26
           docs:
-            - type: Download Lab
+            - type: Download Lab 4
               href: lab/lab04.zip
-            - type: Demo File
-              href: lab/slr_demo.zip
+            - type: Download HW 4
+              href: hw/hw04.zip
         - topic: "Linear Models II: Accuracy and Assumptions"
           display-date: Friday, Sept 25
           date: 9/25/26
@@ -158,7 +160,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading13.qmd
             - type: Slides
-              href: slides/lecture11_wk04wed.qmd
+              href: slides/lecture11_lm-accuracy-assumptions.qmd
       resources:
             - 'Submit assignment 3 (due Thurs 9/24 at 9am)'
             - 'Take Quiz 2 during lab'
@@ -173,9 +175,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading14.qmd
             - type: Slides
-              href: slides/lecture12_wk04fri.qmd
-            - type: Download HW04
-              href: hw/hw04.zip
+              href: slides/lecture12_lm-categorical.qmd
         - topic: "Linear Models IV: Multiple Regression"
           display-date: Wednesday, Sept 30
           date: 9/30/26
@@ -183,13 +183,15 @@ scheduled-docs:
             - type: Reading
               href: readings/reading15.qmd
             - type: Slides
-              href: slides/lecture13_wk05mon.qmd
+              href: slides/lecture13_lm-multiple-regression.qmd
         - topic: "Lab: Linear Regression | Quiz 3"
           display-date: Thursday, Oct 1
           date: 10/01/26
           docs:
-              - type: Download Lab
+              - type: Download Lab 5
                 href: lab/lab05.zip
+              - type: Download HW 5
+                href: hw/hw05.zip
         - topic: "Linear Models V: Many Variables!"
           display-date: Friday, Oct 2
           date: 10/02/26
@@ -197,7 +199,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading16.qmd
             - type: Slides
-              href: slides/lecture14_wk05wed.qmd
+              href: slides/lecture14_lm-many-variables.qmd
       resources:
             - 'Submit assignment 4 (due Thurs 10/01 at 9am)'
             - 'Take Quiz 3 during lab'
@@ -212,9 +214,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading17.qmd
             - type: Slides
-              href: slides/lecture15_wk05fri.qmd
-            - type: Download HW05
-              href: hw/hw05.zip
+              href: slides/lecture15_lm-case-study.qmd
         - topic: "Sampling Distributions I: Introduction"
           display-date: Wednesday, Oct 7
           date: 10/07/26
@@ -222,17 +222,15 @@ scheduled-docs:
             - type: Reading
               href: readings/reading18.qmd
             - type: Slides
-              href: slides/lecture16_wk06mon.qmd
-            - type: Midterm Review Sheet
-              href: in_class/studyguide.pdf
+              href: slides/lecture16_sampling-dist-intro.qmd
         - topic: "Lab: Metacognition | Quiz 4 (online - Megan away for workshop)"
           display-date: Thursday, Oct 8
           date: 10/08/26
           docs:
             - type: Reading
               href: readings/reading19.qmd
-            - type: Download Lab
-              href: lab/lab06.zip
+            - type: Download Metacognition assignment
+              href: hw/metacog.zip
         - topic: "Sampling Distributions II: Properties"
           display-date: Friday, Oct 9
           date: 10/09/26
@@ -240,7 +238,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading20.qmd
             - type: Slides
-              href: slides/lecture17_wk06wed.qmd
+              href: slides/lecture17_sampling-dist-properties.qmd
       resources:
             - 'Submit assignment 5 (due Thurs 10/08 at 9am)'
             - 'Take Quiz 4 online (but at regular lab time)'
@@ -255,7 +253,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading21.qmd
             - type: Slides
-              href: slides/lecture21_wk07fri.qmd
+              href: slides/lecture18_bootstrapping.qmd
         - topic: "Sampling vs Bootstrapping Distributions"
           display-date: Wednesday, Oct 14
           date: 10/14/26
@@ -263,15 +261,15 @@ scheduled-docs:
             - type: Reading
               href: readings/reading22.qmd
             - type: Slides
-              href: slides/lecture19_wk07mon.qmd
-            - type: Download HW06
-              href: hw/hw06.zip
+              href: slides/lecture19_sampling-vs-bootstrap.qmd
         - topic: "Lab: Sampling & Bootstrap Distributions | No Quiz"
           display-date: Thursday, Oct 15
           date: 10/15/26
-          # docs:
-          #   - type:
-          #     href:
+          docs:
+              - type: Download Lab 6
+                href: lab/lab06.zip
+              - type: Download HW 6
+                href: hw/hw06.zip
         - topic: "Confidence Intervals I: Introduction" 
           display-date: Friday, Oct 16
           date: 10/16/26
@@ -279,7 +277,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading23.qmd
             - type: Slides
-              href: slides/lecture20_wk07wed.qmd
+              href: slides/lecture20_ci-intro.qmd
       resources:
             - 'Start assignment 6 (assigned 10/15)'
 
@@ -299,7 +297,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading24.qmd
             - type: Slides
-              href: slides/lecture21_wk07fri.qmd
+              href: slides/lecture21_ci-misconceptions.qmd
         - topic: "Hypothesis Testing I: Introduction"
           display-date: Wednesday, Oct 28
           date: 10/28/26
@@ -307,13 +305,15 @@ scheduled-docs:
             - type: Reading
               href: readings/reading25.qmd
             - type: Slides
-              href: slides/lecture22_wk08mon.qmd
+              href: slides/lecture22_hyp-test-intro.qmd
         - topic: "Lab: Bootstrapping & Confidence Intervals | Quiz 5"
           display-date: Thursday, Oct 29
           date: 10/29/26
           docs:
-            - type: Download Lab
-              href: lab/lab06.zip
+              - type: Download Lab 7
+                href: lab/lab07.zip
+              - type: Download HW 7
+                href: hw/hw07.zip
         - topic: "Hypothesis Testing II: Null Distributions"
           display-date: Friday, Oct 30
           date: 10/30/26
@@ -321,7 +321,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading26.qmd
             - type: Slides
-              href: slides/lecture23_wk08wed.qmd
+              href: slides/lecture23_hyp-test-null-dist.qmd
       resources:
             - 'Submit assignment 6 (due Thurs 10/29 at 9am)'
             - 'Take Quiz 5 during lab'
@@ -336,7 +336,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading27.qmd
             - type: Slides
-              href: slides/lecture25_wk10mon.qmd
+              href: slides/lecture24_hyp-test-errors.qmd
         - topic: "P-Value Pitfalls"
           display-date: Wednesday, Nov 4
           date: 11/04/26
@@ -344,13 +344,15 @@ scheduled-docs:
             - type: Reading
               href: readings/reading28.qmd
             - type: Slides
-              href: slides/lecture26_wk10wed.qmd
+              href: slides/lecture25_pvalue-pitfalls.qmd
         - topic: "Lab: Hypothesis Testing | Quiz 6"
           display-date: Thursday, Nov 5
           date: 11/5/26
           docs:
-            - type: Download Lab
-              href: lab/lab07.zip
+              - type: Download Lab 8
+                href: lab/lab08.zip
+              - type: Download HW 8
+                href: hw/hw08.zip
         - topic: "Random Variables I: Introduction"
           display-date: Friday, Nov 6
           date: 11/06/26
@@ -358,9 +360,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading29.qmd
             - type: Slides
-              href: slides/lecture27_wk10fri.qmd
-            - type: Download HW08
-              href: hw/hw08.zip
+              href: slides/lecture26_rv-intro.qmd
       resources:
             - 'Submit assignment 7 (due Thurs 11/5 at 9am)'
             - 'Take Quiz 6 during lab'
@@ -375,7 +375,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading30.qmd
             - type: Slides
-              href: slides/lecture28_wk11mon.qmd
+              href: slides/lecture27_rv-discrete.qmd
         - topic: "Random Variables III: Continuous Distributions & the CLT"
           display-date: Wednesday, Nov 11
           date: 11/11/26
@@ -383,13 +383,15 @@ scheduled-docs:
             - type: Reading
               href: readings/reading31.qmd
             - type: Slides
-              href: slides/lecture29_wk11wed.qmd
+              href: slides/lecture28_rv-continuous-clt.qmd
         - topic: "Lab: Random Variables | Quiz 7"
           display-date: Thursday, Nov 12
           date: 11/12/26
           docs:
-            - type: Download Lab
-              href: lab/lab08.zip
+              - type: Download Lab 9
+                href: lab/lab09.zip
+              - type: Download HW 9
+                href: hw/hw09.zip
         - topic: "Theory-based Inference I: Intro"
           display-date: Friday, Nov 13
           date: 11/13/26
@@ -397,7 +399,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading32.qmd
             - type: Slides
-              href: slides/lecture25_wk10mon.qmd
+              href: slides/lecture29_tbi-intro.qmd
       resources:
             - 'Submit assignment 8 (due Thurs 11/12 at 9am)'
             - 'Take Quiz 7 during lab'
@@ -412,7 +414,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading33.qmd
             - type: Slides
-              href: slides/lecture30_wk11fri.qmd
+              href: slides/lecture30_tbi-proportions.qmd
         - topic: "Theory-based Inference III: Means"
           display-date: Wednesday, Nov 18
           date: 11/18/26
@@ -420,13 +422,15 @@ scheduled-docs:
             - type: Reading
               href: readings/reading34.qmd
             - type: Slides
-              href: slides/lecture31_wk12mon.qmd
+              href: slides/lecture31_tbi-means.qmd
         - topic: "Lab: Theory-Based Inference | Quiz 8"
           display-date: Thursday, Nov 19
           date: 11/19/26
           docs:
-            - type: Download Lab
-              href: lab/lab09.zip
+              - type: Download Lab 10
+                href: lab/lab10.zip
+              - type: Download HW 10
+                href: hw/hw10.zip
         - topic: "Theory-based Inference IV: Difference in Means"
           display-date: Friday, Nov 20
           date: 11/20/26
@@ -434,7 +438,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading35.qmd
             - type: Slides
-              href: slides/lecture32_wk12wed.qmd
+              href: slides/lecture32_tbi-diff-means.qmd
       resources:
             - 'Submit assignment 9 (due Thurs 11/19 at 9am)'
             - 'Take Quiz 8 during lab'
@@ -449,9 +453,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading36.qmd
             - type: Slides
-              href: slides/lecture33_wk12fri.qmd
-            - type: Download HW09
-              href: hw/hw09.zip
+              href: slides/lecture33_reg-inference-slr.qmd
         - topic: "Inference for Regression II: MLR"
           display-date: Wednesday, Nov 25
           date: 11/25/26
@@ -459,7 +461,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading37.qmd
             - type: Slides
-              href: slides/lecture34_wk13mon.qmd
+              href: slides/lecture34_reg-inference-mlr.qmd
         - topic: "No Class (Thanksgiving Break)"
           display-date: Thursday, Nov 26
           date: 11/26/26
@@ -478,7 +480,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading38.qmd
             - type: Slides
-              href: slides/lecture35_wk13wed.qmd
+              href: slides/lecture35_reg-inference-anova.qmd
             - type: Activity
               href: in_class/inference_for_regression.zip
         - topic: "Inference for Regression IV: Wrapping Up"
@@ -488,13 +490,15 @@ scheduled-docs:
             - type: Reading
               href: readings/reading39.qmd
             - type: Slides
-              href: slides/lecture36_wk13fri.qmd
+              href: slides/lecture36_reg-inference-wrapup.qmd
         - topic: "Lab: Inference for Regression | Quiz 9"
           display-date: Thursday, Dec 3
           date: 12/03/26
           docs:
-            - type: Download Lab
-              href: lab/lab10.zip
+              - type: Download Lab 11
+                href: lab/lab11.zip
+              - type: Download HW 11
+                href: hw/hw11.zip
         - topic: "Chi-Squared Tests"
           display-date: Friday, Dec 4
           date: 12/04/26
@@ -502,7 +506,7 @@ scheduled-docs:
             - type: Reading
               href: readings/reading40.qmd
             - type: Slides
-              href: slides/lecture37_wk14mon.qmd
+              href: slides/lecture37_chi-squared.qmd
             - type: Exam Review Sheet
               href: in_class/final_review_sheet.pdf
       resources:
@@ -517,7 +521,7 @@ scheduled-docs:
           date: 12/07/26
           docs:
             - type: Slides
-              href: slides/lecture38_wk14wed.qmd
+              href: slides/lecture38_course-wrapup.qmd
         - topic: "Lab on TUESDAY: Final Exam Review"
           display-date: Tuesday, Dec 8
           date: 12/08/26
@@ -529,7 +533,7 @@ scheduled-docs:
           date: 12/09/26
           docs:
             - type: Slides
-              href: slides/lecture39_wk14fri.qmd
+              href: slides/lecture39_exam-review.qmd
       resources:
             - 'Submit assignment 11 (due **WEDNESDAY** 12/09 at 9am)'
             - 'Take Quiz 10 during **lecture on Wednesday**'
