@@ -30,10 +30,8 @@ scheduled-docs:
           display-date: Thursday, Sept 3
           date: 9/3/26
           docs:
-            - type: Reading
+            - type: Reading & Lab Instr.
               href: readings/reading03.qmd
-            - type: Lab Instructions
-              href: readings/lab_instr_01.qmd
             - type: Download Lab 1
               href: lab/lab01.zip
             - type: Slides
@@ -96,8 +94,6 @@ scheduled-docs:
                 href: readings/reading08.qmd
               - type: Slides
                 href: slides/lecture06_probability-intro-lln.qmd
-              - type: Download HW02
-                href: hw/hw02.zip
         - topic: "Probability II: Properties and Rules"
           display-date: Wednesday, Sept 16
           date: 9/16/26
