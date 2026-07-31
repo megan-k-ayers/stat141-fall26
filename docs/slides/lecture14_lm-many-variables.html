@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../assets/favicon.ico" rel="icon">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <title>STAT 141 – Linear Models V: More Variables + Case Study</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-bb035878c9beb80bfc5abc3d5219ce12.css">
+  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
+  <script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+  <script src="../site_libs/rglWebGL-binding-1.3.31/rglWebGL.js"></script>
+  <link href="../site_libs/rglwidgetClass-1.3.31/rgl.css" rel="stylesheet">
+  <script src="../site_libs/rglwidgetClass-1.3.31/rglClass.min.js"></script>
+  <script src="../site_libs/CanvasMatrix4-1.3.31/CanvasMatrix.min.js"></script>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+
+<section class="slide level2">
+
+<div class="columns">
+<div class="column center" style="width:60%;">
+<p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
+</div><div class="column center" style="width:40%;">
+<p><br></p>
+<p><span class="custom-title">Linear Models V</span></p>
+<p><br> <br></p>
+<p><span class="custom-subtitle">Megan Ayers</span></p>
+<p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Wednesday, Week 5</span></p>
+</div></div>
+</section>
+<section id="goals-for-today" class="slide level2">
+<h2>Goals for Today</h2>
+<ul>
+<li class="fragment">Learning Check</li>
+<li class="fragment">Regression with many variables</li>
+<li class="fragment">Adjusted <span class="math inline">\(R^2\)</span> and model selection</li>
+<li class="fragment">Multicollinearity</li>
+<li class="fragment">Application of Multiple Linear Regression</li>
+</ul>
+</section>
+<section id="learning-check-handout" class="slide level2">
+<h2>Learning check handout</h2>
+<!-- Note to self: Give them 10 mins to fill it out, then give the answers and have them correct their own. I'll collect them to grade for completion - they can take a picture of their work, or come to my office Friday to get it. -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_376273de" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="linear-regression">Linear Regression</h3>
+<p>Model Form:</p>
+<p><span class="math display">\[
+\begin{align}
+y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_p x_p + \epsilon
+\end{align}
+\]</span></p>
+<p>Linear regression is a flexible class of models that allow for:</p>
+<ul>
+<li><p>Both quantitative and categorical <strong>explanatory</strong> variables.</p></li>
+<li><p><strong>Multiple</strong> explanatory variables.</p></li>
+<li><p>Transformed explanatory variables.</p></li>
+<li><p>BUT the <strong>response variable is quantitative</strong>.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="more-time-with-the-palmerpenguins">More time with the <code>palmerpenguins</code>!</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/penguins.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="recap-regression-with-the-penguins-so-far">Recap: Regression with the penguins so far</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>One Quantitative Variable</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(moderndive)</span>
+<span id="cb1-3"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_length_mm <span class="sc">~</span> bill_depth_mm,</span>
+<span id="cb1-4"><a></a>          <span class="at">data =</span> penguins)</span>
+<span id="cb1-5"><a></a><span class="fu">get_regression_table</span>(mod) <span class="sc">%&gt;%</span> <span class="fu">select</span>(term, estimate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  term          estimate
+  &lt;chr&gt;            &lt;dbl&gt;
+1 intercept        55.1 
+2 bill_depth_mm    -0.65</code></pre>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<p><strong>One Categorical Variable</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_length_mm <span class="sc">~</span> species,</span>
+<span id="cb3-2"><a></a>          <span class="at">data =</span> penguins)</span>
+<span id="cb3-3"><a></a><span class="fu">get_regression_table</span>(mod) <span class="sc">%&gt;%</span> <span class="fu">select</span>(term, estimate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  term               estimate
+  &lt;chr&gt;                 &lt;dbl&gt;
+1 intercept             38.8 
+2 species: Chinstrap    10.0 
+3 species: Gentoo        8.71</code></pre>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Equal Slopes Model</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_length_mm <span class="sc">~</span> species <span class="sc">+</span> bill_depth_mm,</span>
+<span id="cb5-2"><a></a>          <span class="at">data =</span> penguins)</span>
+<span id="cb5-3"><a></a><span class="fu">get_regression_table</span>(mod) <span class="sc">%&gt;%</span> <span class="fu">select</span>(term, estimate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  term               estimate
+  &lt;chr&gt;                 &lt;dbl&gt;
+1 intercept             13.2 
+2 species: Chinstrap     9.94
+3 species: Gentoo       13.4 
+4 bill_depth_mm          1.39</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Different Slopes Model</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_length_mm <span class="sc">~</span> species<span class="sc">*</span>bill_depth_mm,</span>
+<span id="cb7-2"><a></a>          <span class="at">data =</span> penguins)</span>
+<span id="cb7-3"><a></a><span class="fu">get_regression_table</span>(mod) <span class="sc">%&gt;%</span> <span class="fu">select</span>(term, estimate)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  term                             estimate
+  &lt;chr&gt;                               &lt;dbl&gt;
+1 intercept                          23.1  
+2 species: Chinstrap                 -9.64 
+3 species: Gentoo                    -5.84 
+4 bill_depth_mm                       0.857
+5 species: Chinstrap:bill_depth_mm    1.06 
+6 species: Gentoo:bill_depth_mm       1.16 </code></pre>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="this-time-regression-with-multiple-quantitative-predictors">This time: Regression with multiple quantitative predictors</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> body_mass_g, <span class="at">y =</span> bill_length_mm)) <span class="sc">+</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture14_lm-many-variables_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(penguins, <span class="fu">aes</span>(<span class="at">x =</span> bill_depth_mm, <span class="at">y =</span> bill_length_mm)) <span class="sc">+</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture14_lm-many-variables_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<p><span class="math display">\[
+y = \beta_0 + \beta_1x_{\textrm{Bill Depth}} + \beta_2 x_{\textrm{Body Mass}} + \epsilon
+\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="this-time-regression-with-multiple-quantitative-predictors-1">This time: Regression with multiple quantitative predictors</h3>
+<p>In R:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_length_mm <span class="sc">~</span> bill_depth_mm <span class="sc">+</span> body_mass_g, penguins)</span>
+<span id="cb11-2"><a></a><span class="fu">get_regression_table</span>(mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term          estimate std_error statistic p_value lower_ci upper_ci
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept       23.3       3.27       7.14   0       16.9     29.7  
+2 bill_depth_mm    0.163     0.137      1.19   0.234   -0.106    0.432
+3 body_mass_g      0.004     0         12.6    0        0.004    0.005</code></pre>
+</div>
+</div>
+</section>
+<section id="visualizing-the-best-fit-plane" class="slide level2">
+<h2>Visualizing the best fit plane</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">options</span>(<span class="at">rgl.useNULL =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-2"><a></a><span class="fu">options</span>(<span class="at">rgl.printRglwidget =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-3"><a></a><span class="fu">library</span>(rgl)</span>
+<span id="cb13-4"><a></a><span class="fu">plot3d</span>(<span class="at">x =</span> penguins<span class="sc">$</span>bill_depth_mm, <span class="at">y =</span> penguins<span class="sc">$</span>body_mass_g, </span>
+<span id="cb13-5"><a></a>       <span class="at">z =</span> penguins<span class="sc">$</span>bill_length_mm, <span class="at">type =</span> <span class="st">"s"</span>, <span class="at">col =</span> <span class="st">"goldenrod"</span>, <span class="at">size =</span> <span class="dv">1</span>)</span>
+<span id="cb13-6"><a></a><span class="fu">planes3d</span>(<span class="at">a =</span> <span class="fu">coef</span>(mod)[<span class="dv">2</span>], <span class="at">b =</span> <span class="fu">coef</span>(mod)[<span class="dv">3</span>], <span class="at">c=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">d =</span> <span class="fu">coef</span>(mod)[<span class="dv">1</span>], <span class="at">alpha =</span> .<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display no-overflow-x">
+<style>#rgl30681 {margin:auto;}</style>
+<div id="rgl30681" style="width:960px;height:480px;" class="rglWebGL html-widget" role="img" aria-labelledby="rgl30681-aria"></div>
+<script type="application/json" data-for="rgl30681">{"x":{"material":{"color":"#000000","alpha":1,"lit":true,"ambient":"#000000","specular":"#FFFFFF","emission":"#000000","shininess":50,"smooth":true,"front":"filled","back":"filled","size":3,"lwd":1,"fog":true,"point_antialias":false,"line_antialias":false,"texture":null,"textype":"rgb","texmode":"modulate","texmipmap":false,"texminfilter":"linear","texmagfilter":"linear","texenvmap":false,"depth_mask":true,"depth_test":"less","isTransparent":false,"polygon_offset":[0,0],"margin":"","floating":false,"tag":"","blend":["src_alpha","one_minus_src_alpha"]},"rootSubscene":1,"objects":{"8":{"id":8,"type":"spheres","material":{},"vertices":"0","colors":"1","radii":[[34.64212036132812]],"centers":"2","ignoreExtent":false,"fastTransparency":true,"flags":32771},"10":{"id":10,"type":"text","material":{"lit":false,"margin":0,"floating":true,"edge":[0,1,1]},"vertices":"3","colors":"4","texts":[["penguins$bill_depth_mm"]],"cex":[[1]],"adj":[[0.5,0.5,0.5]],"centers":"5","family":[["sans"]],"font":[[1]],"ignoreExtent":true,"flags":33808},"11":{"id":11,"type":"text","material":{"lit":false,"margin":1,"floating":true,"edge":[1,1,1]},"vertices":"6","colors":"7","texts":[["penguins$body_mass_g"]],"cex":[[1]],"adj":[[0.5,0.5,0.5]],"centers":"8","family":[["sans"]],"font":[[1]],"ignoreExtent":true,"flags":33808},"12":{"id":12,"type":"text","material":{"lit":false,"margin":2,"floating":true,"edge":[1,1,1]},"vertices":"9","colors":"10","texts":[["penguins$bill_length_mm"]],"cex":[[1]],"adj":[[0.5,0.5,0.5]],"centers":"11","family":[["sans"]],"font":[[1]],"ignoreExtent":true,"flags":33808},"13":{"id":13,"type":"planes","material":{"alpha":0.4980392158031464,"isTransparent":true},"vertices":"12","colors":"14","offsets":[[23.31045722961426]],"centers":"15","normals":"13","ignoreExtent":true,"flags":32803},"5":{"id":5,"type":"light","vertices":[[0,0,1]],"colors":[[1,1,1,1],[1,1,1,1],[1,1,1,1]],"viewpoint":true,"finite":false},"7":{"id":7,"type":"background","material":{"lit":false,"back":"lines"},"colors":"16","centers":"17","sphere":false,"fogtype":"none","fogscale":1,"flags":32768},"9":{"id":9,"type":"bboxdeco","material":{"front":"lines","back":"lines"},"vertices":"18","colors":"19","axes":{"mode":["pretty","pretty","pretty"],"step":[2,1000,5],"nticks":[5,5,5],"marklen":[15,15,15],"expand":[1.029999971389771,1.029999971389771,1.029999971389771]},"draw_front":true,"flags":32769},"1":{"id":1,"type":"subscene","par3d":{"antialias":8,"FOV":30,"ignoreExtent":false,"listeners":1,"mouseMode":{"none":"none","left":"trackball","right":"zoom","middle":"fov","wheel":"pull"},"observer":[0,0,9103.142578125],"modelMatrix":[[247.4415893554688,0,0,-4280.7392578125],[0,0.1974717229604721,71.02442169189453,-4145.09228515625],[0,-0.5425490736961365,25.85077667236328,-7846.9296875],[0,0,0,1]],"projMatrix":[[3.732050657272339,0,0,0],[0,3.732050657272339,0,0],[0,0,-3.863703727722168,-32815.77734375],[0,0,-1,0]],"skipRedraw":false,"userMatrix":[[1,0,0,0],[0,0.3420201433256682,0.9396926207859085,0],[0,-0.9396926207859085,0.3420201433256682,0],[0,0,0,1]],"userProjection":[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]],"scale":[247.4415893554688,0.5773686766624451,75.58261108398438],"viewport":{"x":0,"y":0,"width":1,"height":1},"zoom":1,"bbox":[12.95999908447266,21.64000129699707,2640,6360,31.64166450500488,60.05833435058594],"windowRect":[0,0,256,256],"family":"sans","font":1,"cex":1,"useFreeType":true,"fontname":"NULL","maxClipPlanes":2147483647,"glVersion":"NA","activeSubscene":0},"embeddings":{"viewport":"replace","projection":"replace","model":"replace","mouse":"replace"},"objects":[7,9,8,10,11,12,13,5],"subscenes":[],"flags":34099}},"crosstalk":{"key":[],"group":[],"id":[],"options":[]},"width":960,"height":480,"buffer":{"accessors":[{"bufferView":0,"componentType":5126,"count":344,"type":"VEC3"},{"bufferView":1,"componentType":5126,"count":1,"type":"VEC4"},{"bufferView":2,"componentType":5126,"count":344,"type":"VEC3"},{"bufferView":3,"componentType":5126,"count":1,"type":"VEC3"},{"bufferView":4,"componentType":5121,"count":1,"type":"VEC4"},{"bufferView":5,"componentType":5126,"count":1,"type":"VEC3"},{"bufferView":6,"componentType":5126,"count":1,"type":"VEC3"},{"bufferView":7,"componentType":5121,"count":1,"type":"VEC4"},{"bufferView":8,"componentType":5126,"count":1,"type":"VEC3"},{"bufferView":9,"componentType":5126,"count":1,"type":"VEC3"},{"bufferView":10,"componentType":5121,"count":1,"type":"VEC4"},{"bufferView":11,"componentType":5126,"count":1,"type":"VEC3"},{"bufferView":12,"componentType":5126,"count":3,"type":"VEC3"},{"bufferView":13,"componentType":5126,"count":1,"type":"VEC3"},{"bufferView":14,"componentType":5126,"count":1,"type":"VEC4"},{"bufferView":15,"componentType":5126,"count":4,"type":"VEC3"},{"bufferView":16,"componentType":5121,"count":1,"type":"VEC4"},{"bufferView":17,"componentType":5121,"count":1,"type":"VEC3"},{"bufferView":18,"componentType":5126,"count":14,"type":"VEC3"},{"bufferView":19,"componentType":5121,"count":1,"type":"VEC4"}],"bufferViews":[{"buffer":0,"byteLength":4128,"byteOffset":0},{"buffer":0,"byteLength":16,"byteOffset":4128},{"buffer":0,"byteLength":4128,"byteOffset":4144},{"buffer":0,"byteLength":12,"byteOffset":8272},{"buffer":0,"byteLength":4,"byteOffset":8284},{"buffer":0,"byteLength":12,"byteOffset":8288},{"buffer":0,"byteLength":12,"byteOffset":8300},{"buffer":0,"byteLength":4,"byteOffset":8312},{"buffer":0,"byteLength":12,"byteOffset":8316},{"buffer":0,"byteLength":12,"byteOffset":8328},{"buffer":0,"byteLength":4,"byteOffset":8340},{"buffer":0,"byteLength":12,"byteOffset":8344},{"buffer":0,"byteLength":36,"byteOffset":8356},{"buffer":0,"byteLength":12,"byteOffset":8392},{"buffer":0,"byteLength":16,"byteOffset":8404},{"buffer":0,"byteLength":48,"byteOffset":8420},{"buffer":0,"byteLength":4,"byteOffset":8468},{"buffer":0,"byteLength":3,"byteOffset":8472},{"buffer":0,"byteLength":168,"byteOffset":8476},{"buffer":0,"byteLength":4,"byteOffset":8644}],"buffers":[{"byteLength":8648,"bytes":"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\nAABwQgAAAAE="}]},"context":{"shiny":false,"rmarkdown":null},"vertexShader":"#line 2 1\n// File 1 is the vertex shader\n#ifdef GL_ES\n#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n#endif\n\nattribute vec3 aPos;\nattribute vec4 aCol;\nuniform mat4 mvMatrix;\nuniform mat4 prMatrix;\nvarying vec4 vCol;\nvarying vec4 vPosition;\n\n#ifdef NEEDS_VNORMAL\nattribute vec3 aNorm;\nuniform mat4 normMatrix;\nvarying vec4 vNormal;\n#endif\n\n#if defined(HAS_TEXTURE) || defined (IS_TEXT)\nattribute vec2 aTexcoord;\nvarying vec2 vTexcoord;\n#endif\n\n#ifdef FIXED_SIZE\nuniform vec3 textScale;\n#endif\n\n#ifdef FIXED_QUADS\nattribute vec3 aOfs;\n#endif\n\n#ifdef IS_TWOSIDED\n#ifdef HAS_NORMALS\nvarying float normz;\nuniform mat4 invPrMatrix;\n#else\nattribute vec3 aPos1;\nattribute vec3 aPos2;\nvarying float normz;\n#endif\n#endif // IS_TWOSIDED\n\n#ifdef FAT_LINES\nattribute vec3 aNext;\nattribute vec2 aPoint;\nvarying vec2 vPoint;\nvarying float vLength;\nuniform float uAspect;\nuniform float uLwd;\n#endif\n\n#ifdef USE_ENVMAP\nvarying vec3 vReflection;\n#endif\n\nvoid main(void) {\n  \n#ifndef IS_BRUSH\n#if defined(NCLIPPLANES) || !defined(FIXED_QUADS) || defined(HAS_FOG) || defined(USE_ENVMAP)\n  vPosition = mvMatrix * vec4(aPos, 1.);\n#endif\n  \n#ifndef FIXED_QUADS\n  gl_Position = prMatrix * vPosition;\n#endif\n#endif // !IS_BRUSH\n  \n#ifdef IS_POINTS\n  gl_PointSize = POINTSIZE;\n#endif\n  \n  vCol = aCol;\n  \n// USE_ENVMAP implies NEEDS_VNORMAL\n\n#ifdef NEEDS_VNORMAL\n  vNormal = normMatrix * vec4(-aNorm, dot(aNorm, aPos));\n#endif\n\n#ifdef USE_ENVMAP\n  vReflection = normalize(reflect(vPosition.xyz/vPosition.w, \n                        normalize(vNormal.xyz/vNormal.w)));\n#endif\n  \n#ifdef IS_TWOSIDED\n#ifdef HAS_NORMALS\n  /* normz should be calculated *after* projection */\n  normz = (invPrMatrix*vNormal).z;\n#else\n  vec4 pos1 = prMatrix*(mvMatrix*vec4(aPos1, 1.));\n  pos1 = pos1/pos1.w - gl_Position/gl_Position.w;\n  vec4 pos2 = prMatrix*(mvMatrix*vec4(aPos2, 1.));\n  pos2 = pos2/pos2.w - gl_Position/gl_Position.w;\n  normz = pos1.x*pos2.y - pos1.y*pos2.x;\n#endif\n#endif // IS_TWOSIDED\n  \n#ifdef NEEDS_VNORMAL\n  vNormal = vec4(normalize(vNormal.xyz), 1);\n#endif\n  \n#if defined(HAS_TEXTURE) || defined(IS_TEXT)\n  vTexcoord = aTexcoord;\n#endif\n  \n#if defined(FIXED_SIZE) && !defined(ROTATING)\n  vec4 pos = prMatrix * mvMatrix * vec4(aPos, 1.);\n  pos = pos/pos.w;\n  gl_Position = pos + vec4(aOfs*textScale, 0.);\n#endif\n  \n#if defined(IS_SPRITES) && !defined(FIXED_SIZE)\n  vec4 pos = mvMatrix * vec4(aPos, 1.);\n  pos = pos/pos.w + vec4(aOfs,  0.);\n  gl_Position = prMatrix*pos;\n#endif\n  \n#ifdef FAT_LINES\n  /* This code was inspired by Matt Deslauriers' code in \n   https://mattdesl.svbtle.com/drawing-lines-is-hard */\n  vec2 aspectVec = vec2(uAspect, 1.0);\n  mat4 projViewModel = prMatrix * mvMatrix;\n  vec4 currentProjected = projViewModel * vec4(aPos, 1.0);\n  currentProjected = currentProjected/currentProjected.w;\n  vec4 nextProjected = projViewModel * vec4(aNext, 1.0);\n  vec2 currentScreen = currentProjected.xy * aspectVec;\n  vec2 nextScreen = (nextProjected.xy / nextProjected.w) * aspectVec;\n  float len = uLwd;\n  vec2 dir = vec2(1.0, 0.0);\n  vPoint = aPoint;\n  vLength = length(nextScreen - currentScreen)/2.0;\n  vLength = vLength/(vLength + len);\n  if (vLength > 0.0) {\n    dir = normalize(nextScreen - currentScreen);\n  }\n  vec2 normal = vec2(-dir.y, dir.x);\n  dir.x /= uAspect;\n  normal.x /= uAspect;\n  vec4 offset = vec4(len*(normal*aPoint.x*aPoint.y - dir), 0.0, 0.0);\n  gl_Position = currentProjected + offset;\n#endif\n  \n#ifdef IS_BRUSH\n  gl_Position = vec4(aPos, 1.);\n#endif\n}","fragmentShader":"#line 2 2\n// File 2 is the fragment shader\n#ifdef GL_ES\n#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n#endif\nvarying vec4 vCol; // carries alpha\nvarying vec4 vPosition;\n#if defined(HAS_TEXTURE) || defined (IS_TEXT)\nvarying vec2 vTexcoord;\nuniform sampler2D uSampler;\n#endif\n\n#ifdef HAS_FOG\nuniform int uFogMode;\nuniform vec3 uFogColor;\nuniform vec4 uFogParms;\n#endif\n\n#if defined(IS_LIT) && !defined(FIXED_QUADS)\nvarying vec4 vNormal;\n#endif\n\n#if NCLIPPLANES > 0\nuniform vec4 vClipplane[NCLIPPLANES];\n#endif\n\n#if NLIGHTS > 0\nuniform mat4 mvMatrix;\n#endif\n\n#ifdef IS_LIT\nuniform vec3 emission;\nuniform float shininess;\n#if NLIGHTS > 0\nuniform vec3 ambient[NLIGHTS];\nuniform vec3 specular[NLIGHTS]; // light*material\nuniform vec3 diffuse[NLIGHTS];\nuniform vec3 lightDir[NLIGHTS];\nuniform bool viewpoint[NLIGHTS];\nuniform bool finite[NLIGHTS];\n#endif\n#endif // IS_LIT\n\n#ifdef IS_TWOSIDED\nuniform bool front;\nvarying float normz;\n#endif\n\n#ifdef FAT_LINES\nvarying vec2 vPoint;\nvarying float vLength;\n#endif\n\n#ifdef USE_ENVMAP\nvarying vec3 vReflection;\n#endif\n\nvoid main(void) {\n  vec4 fragColor;\n#ifdef FAT_LINES\n  vec2 point = vPoint;\n  bool neg = point.y < 0.0;\n  point.y = neg ? (point.y + vLength)/(1.0 - vLength) :\n                 -(point.y - vLength)/(1.0 - vLength);\n#if defined(IS_TRANSPARENT) && defined(IS_LINESTRIP)\n  if (neg && length(point) <= 1.0) discard;\n#endif\n  point.y = min(point.y, 0.0);\n  if (length(point) > 1.0) discard;\n#endif // FAT_LINES\n  \n#ifdef ROUND_POINTS\n  vec2 coord = gl_PointCoord - vec2(0.5);\n  if (length(coord) > 0.5) discard;\n#endif\n  \n#if NCLIPPLANES > 0\n  for (int i = 0; i < NCLIPPLANES; i++)\n    if (dot(vPosition, vClipplane[i]) < 0.0) discard;\n#endif\n    \n#ifdef FIXED_QUADS\n    vec3 n = vec3(0., 0., 1.);\n#elif defined(IS_LIT)\n    vec3 n = normalize(vNormal.xyz);\n#endif\n    \n#ifdef IS_TWOSIDED\n    if ((normz <= 0.) != front) discard;\n#endif\n\n#ifdef IS_LIT\n    vec3 eye = normalize(-vPosition.xyz/vPosition.w);\n    vec3 lightdir;\n    vec4 colDiff;\n    vec3 halfVec;\n    vec4 lighteffect = vec4(emission, 0.);\n    vec3 col;\n    float nDotL;\n#ifdef FIXED_QUADS\n    n = -faceforward(n, n, eye);\n#endif\n    \n#if NLIGHTS > 0\n    // Simulate two-sided lighting\n    if (n.z < 0.0)\n      n = -n;\n    for (int i=0;i<NLIGHTS;i++) {\n      colDiff = vec4(vCol.rgb * diffuse[i], vCol.a);\n      lightdir = lightDir[i];\n      if (!viewpoint[i]) {\n        if (finite[i]) {\n          lightdir = (mvMatrix * vec4(lightdir, 1.)).xyz;\n        } else {\n          lightdir = (mvMatrix * vec4(lightdir, 0.)).xyz;\n        }\n      }\n      if (!finite[i]) {\n        halfVec = normalize(lightdir + eye);\n      } else {\n        lightdir = normalize(lightdir - vPosition.xyz/vPosition.w);\n        halfVec = normalize(lightdir + eye);\n      }\n      col = ambient[i];\n      nDotL = dot(n, lightdir);\n      col = col + max(nDotL, 0.) * colDiff.rgb;\n      col = col + pow(max(dot(halfVec, n), 0.), shininess) * specular[i];\n      lighteffect = lighteffect + vec4(col, colDiff.a);\n    }\n#endif\n    \n#else // not IS_LIT\n    vec4 colDiff = vCol;\n    vec4 lighteffect = colDiff;\n#endif\n    \n#ifdef IS_TEXT\n    vec4 textureColor = lighteffect*texture2D(uSampler, vTexcoord);\n#endif\n    \n#ifdef HAS_TEXTURE\n\n// These calculations use the definitions from \n// https://docs.gl/gl3/glTexEnv\n\n#ifdef USE_ENVMAP\n    float m = 2.0 * sqrt(dot(vReflection, vReflection) + 2.0*vReflection.z + 1.0);\n    vec4 textureColor = texture2D(uSampler, vReflection.xy / m + vec2(0.5, 0.5));\n#else\n    vec4 textureColor = texture2D(uSampler, vTexcoord);\n#endif\n\n#ifdef TEXTURE_rgb\n\n#if defined(TEXMODE_replace) || defined(TEXMODE_decal)\n    textureColor = vec4(textureColor.rgb, lighteffect.a);\n#endif \n\n#ifdef TEXMODE_modulate\n    textureColor = lighteffect*vec4(textureColor.rgb, 1.);\n#endif\n\n#ifdef TEXMODE_blend\n    textureColor = vec4((1. - textureColor.rgb) * lighteffect.rgb, lighteffect.a);\n#endif\n\n#ifdef TEXMODE_add\n    textureColor = vec4(lighteffect.rgb + textureColor.rgb, lighteffect.a);\n#endif\n\n#endif //TEXTURE_rgb\n        \n#ifdef TEXTURE_rgba\n\n#ifdef TEXMODE_replace\n// already done\n#endif \n\n#ifdef TEXMODE_modulate\n    textureColor = lighteffect*textureColor;\n#endif\n\n#ifdef TEXMODE_decal\n    textureColor = vec4((1. - textureColor.a)*lighteffect.rgb) +\n                     textureColor.a*textureColor.rgb, \n                     lighteffect.a);\n#endif\n\n#ifdef TEXMODE_blend\n    textureColor = vec4((1. - textureColor.rgb) * lighteffect.rgb,\n                    lighteffect.a*textureColor.a);\n#endif\n\n#ifdef TEXMODE_add\n    textureColor = vec4(lighteffect.rgb + textureColor.rgb,\n                    lighteffect.a*textureColor.a);\n#endif\n    \n#endif //TEXTURE_rgba\n    \n#ifdef TEXTURE_alpha\n    float luminance = dot(vec3(1.,1.,1.),textureColor.rgb)/3.;\n\n#if defined(TEXMODE_replace) || defined(TEXMODE_decal)\n    textureColor = vec4(lighteffect.rgb, luminance);\n#endif \n\n#if defined(TEXMODE_modulate) || defined(TEXMODE_blend) || defined(TEXMODE_add)\n    textureColor = vec4(lighteffect.rgb, lighteffect.a*luminance);\n#endif\n \n#endif // TEXTURE_alpha\n    \n// The TEXTURE_luminance values are not from that reference    \n#ifdef TEXTURE_luminance\n    float luminance = dot(vec3(1.,1.,1.),textureColor.rgb)/3.;\n\n#if defined(TEXMODE_replace) || defined(TEXMODE_decal)\n    textureColor = vec4(luminance, luminance, luminance, lighteffect.a);\n#endif \n\n#ifdef TEXMODE_modulate\n    textureColor = vec4(luminance*lighteffect.rgb, lighteffect.a);\n#endif\n\n#ifdef TEXMODE_blend\n    textureColor = vec4((1. - luminance)*lighteffect.rgb,\n                        lighteffect.a);\n#endif\n\n#ifdef TEXMODE_add\n    textureColor = vec4(luminance + lighteffect.rgb, lighteffect.a);\n#endif\n\n#endif // TEXTURE_luminance\n \n    \n#ifdef TEXTURE_luminance_alpha\n    float luminance = dot(vec3(1.,1.,1.),textureColor.rgb)/3.;\n\n#if defined(TEXMODE_replace) || defined(TEXMODE_decal)\n    textureColor = vec4(luminance, luminance, luminance, textureColor.a);\n#endif \n\n#ifdef TEXMODE_modulate\n    textureColor = vec4(luminance*lighteffect.rgb, \n                        textureColor.a*lighteffect.a);\n#endif\n\n#ifdef TEXMODE_blend\n    textureColor = vec4((1. - luminance)*lighteffect.rgb,\n                        textureColor.a*lighteffect.a);\n#endif\n\n#ifdef TEXMODE_add\n    textureColor = vec4(luminance + lighteffect.rgb, \n                        textureColor.a*lighteffect.a);\n\n#endif\n\n#endif // TEXTURE_luminance_alpha\n    \n    fragColor = textureColor;\n\n#elif defined(IS_TEXT)\n    if (textureColor.a < 0.1)\n      discard;\n    else\n      fragColor = textureColor;\n#else\n    fragColor = lighteffect;\n#endif // HAS_TEXTURE\n    \n#ifdef HAS_FOG\n    // uFogParms elements: x = near, y = far, z = fogscale, w = (1-sin(FOV/2))/(1+sin(FOV/2))\n    // In Exp and Exp2: use density = density/far\n    // fogF will be the proportion of fog\n    // Initialize it to the linear value\n    float fogF;\n    if (uFogMode > 0) {\n      fogF = (uFogParms.y - vPosition.z/vPosition.w)/(uFogParms.y - uFogParms.x);\n      if (uFogMode > 1)\n        fogF = mix(uFogParms.w, 1.0, fogF);\n      fogF = fogF*uFogParms.z;\n      if (uFogMode == 2)\n        fogF = 1.0 - exp(-fogF);\n      // Docs are wrong: use (density*c)^2, not density*c^2\n      // https://gitlab.freedesktop.org/mesa/mesa/-/blob/master/src/mesa/swrast/s_fog.c#L58\n      else if (uFogMode == 3)\n        fogF = 1.0 - exp(-fogF*fogF);\n      fogF = clamp(fogF, 0.0, 1.0);\n      gl_FragColor = vec4(mix(fragColor.rgb, uFogColor, fogF), fragColor.a);\n    } else gl_FragColor = fragColor;\n#else\n    gl_FragColor = fragColor;\n#endif // HAS_FOG\n    \n}","players":[],"webGLoptions":{"preserveDrawingBuffer":true},"fastTransparency":true},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="least-squares-and-prediction" class="slide level2">
+<h2>Least Squares and Prediction</h2>
+<ul>
+<li class="fragment">Still minimizing the sum of squared residuals (from the plane)</li>
+<li class="fragment">Still predict like usual</li>
+</ul>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>pred_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">bill_depth_mm =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">18</span>),</span>
+<span id="cb14-2"><a></a>                       <span class="at">body_mass_g =</span> <span class="fu">c</span>(<span class="dv">4000</span>, <span class="dv">5000</span>))</span>
+<span id="cb14-3"><a></a><span class="fu">predict</span>(mod, pred_dat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1        2 
+42.87888 47.44527 </code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="model-building-guidance" class="slide level2">
+<h2>Model Building Guidance</h2>
+<p>Should we always include an interaction term? How many variables should I include?</p>
+<div class="columns">
+<div class="column">
+<p><strong>Guiding Principle</strong>: Occam’s Razor for Modeling</p>
+<blockquote>
+<p>“All other things being equal, simpler models are to be preferred over complex ones.” – ModernDive</p>
+</blockquote>
+<div class="fragment">
+<p><strong>Guiding Principle</strong>: Consider your modeling goals.</p>
+<ul>
+<li>The equal slopes model allows us to control for the intensity of the light and then see the impact of being in the early or late timing groups on the number of flowers.</li>
+</ul>
+</div>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture14_lm-many-variables_files/figure-revealjs/mf-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">Later in the course will learn statistical procedures for determining whether or not a particular term should be included in the model.</li>
+</ul>
+</div></div>
+</section>
+<section>
+<section id="what-if-i-want-to-include-many-explanatory-variables" class="title-slide slide level1 center">
+<h1>What if I want to include many explanatory variables??</h1>
+
+</section>
+<section class="slide level2">
+
+<h3 id="model-building-guidance-1">Model Building Guidance</h3>
+<p>We often have several potential explanatory variables. How do we determine which to include in the model and in what form?</p>
+<p><strong>Guiding Principle</strong>: Include explanatory variables that attempt to explain <strong>different</strong> aspects of the variation in the response variable.</p>
+</section>
+<section class="slide level2">
+
+<h3 id="example-movie-ratings">Example: Movie Ratings</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-2"><a></a><span class="fu">library</span>(moderndive)</span>
+<span id="cb16-3"><a></a>movies <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://www.lock5stat.com/datasets2e/HollywoodMovies.csv"</span>)</span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a><span class="co"># Restrict our attention to dramas, horrors, and actions</span></span>
+<span id="cb16-6"><a></a>movies2 <span class="ot">&lt;-</span> movies <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a></a>  <span class="fu">filter</span>(Genre <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Drama"</span>, <span class="st">"Horror"</span>, <span class="st">"Action"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-8"><a></a>  <span class="fu">drop_na</span>(Genre, AudienceScore, RottenTomatoes)</span>
+<span id="cb16-9"><a></a><span class="fu">glimpse</span>(movies2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 313
+Columns: 16
+$ Movie            &lt;chr&gt; "Spider-Man 3", "Transformers", "Pirates of the Carib…
+$ LeadStudio       &lt;chr&gt; "Sony", "Paramount", "Disney", "Warner Bros", "Warner…
+$ RottenTomatoes   &lt;dbl&gt; 61, 57, 45, 60, 20, 79, 35, 28, 41, 71, 95, 42, 18, 2…
+$ AudienceScore    &lt;dbl&gt; 54, 89, 74, 90, 68, 86, 55, 56, 81, 52, 84, 55, 70, 6…
+$ Story            &lt;chr&gt; "Metamorphosis", "Monster Force", "Rescue", "Sacrific…
+$ Genre            &lt;chr&gt; "Action", "Action", "Action", "Action", "Action", "Ac…
+$ TheatersOpenWeek &lt;dbl&gt; 4252, 4011, 4362, 3103, 3778, 3408, 3959, 3619, 2911,…
+$ OpeningWeekend   &lt;dbl&gt; 151.1, 70.5, 114.7, 70.9, 49.1, 33.4, 58.0, 45.3, 19.…
+$ BOAvgOpenWeekend &lt;dbl&gt; 35540, 17577, 26302, 22844, 12996, 9791, 14663, 12541…
+$ DomesticGross    &lt;dbl&gt; 336.53, 319.25, 309.42, 210.61, 140.13, 134.53, 131.9…
+$ ForeignGross     &lt;dbl&gt; 554.34, 390.46, 654.00, 245.45, 117.90, 249.00, 157.1…
+$ WorldGross       &lt;dbl&gt; 890.87, 709.71, 963.42, 456.07, 258.02, 383.53, 289.0…
+$ Budget           &lt;dbl&gt; 258.0, 150.0, 300.0, 65.0, 140.0, 110.0, 130.0, 110.0…
+$ Profitability    &lt;dbl&gt; 345.30, 473.14, 321.14, 701.64, 184.30, 348.66, 222.3…
+$ OpenProfit       &lt;dbl&gt; 58.57, 47.00, 38.23, 109.08, 35.07, 30.36, 44.62, 41.…
+$ Year             &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,…</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="example-movie-ratings-1">Example: Movie Ratings</h3>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(GGally)</span>
+<span id="cb18-2"><a></a>movies2 <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a></a>  <span class="fu">select</span>(RottenTomatoes, AudienceScore, OpeningWeekend, DomesticGross, Genre) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a></a>  <span class="fu">ggpairs</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture14_lm-many-variables_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li><p><strong>Multicollinearity</strong>: when explanatory variables are <strong>highly</strong> correlated with one another. Multicollinearity often results in coefficients that are distorted in erroneous ways!</p></li>
+<li><p><strong>Q</strong>: Do any of these variables seem to be measuring the same thing?</p></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="model-building-guidance-2">Model Building Guidance</h3>
+<p>We often have several potential explanatory variables. How do we determine which to include in the model and in what form?</p>
+<p><strong>Guiding Principle</strong>: Include explanatory variables that attempt to explain <strong>different</strong> aspects of the variation in the response variable.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>mod_movies <span class="ot">&lt;-</span> <span class="fu">lm</span>(RottenTomatoes <span class="sc">~</span> AudienceScore <span class="sc">+</span> Genre <span class="sc">+</span> DomesticGross, <span class="at">data =</span> movies2)</span>
+<span id="cb19-2"><a></a><span class="fu">get_regression_table</span>(mod_movies)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 7
+  term          estimate std_error statistic p_value lower_ci upper_ci
+  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept      -12.5       4.08     -3.06    0.002  -20.5     -4.44 
+2 AudienceScore    0.975     0.072    13.6     0        0.834    1.12 
+3 Genre: Drama     6.12      2.64      2.31    0.021    0.916   11.3  
+4 Genre: Horror    2.06      3.14      0.655   0.513   -4.12     8.24 
+5 DomesticGross   -0.006     0.015    -0.431   0.667   -0.035    0.023</code></pre>
+</div>
+</div>
+</section>
+<section id="transformations-model-building-guidance" class="slide level2">
+<h2>Transformations: Model Building Guidance</h2>
+<p>What degree of polynomial should I include in my model?</p>
+<div class="fragment">
+<div class="columns">
+<div class="column">
+<p><br></p>
+<p><strong>Guiding Principle</strong>: Capture the general trend, not the noise.</p>
+<p><span class="math display">\[
+\begin{align}
+y &amp;= f(x) + \epsilon \\
+y &amp;= \mbox{TREND} + \mbox{NOISE}
+\end{align}
+\]</span></p>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture14_lm-many-variables_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="model-building-guidance-3">Model Building Guidance</h3>
+<p>Suppose I built 3 different models. <strong>Which is best?</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(RottenTomatoes <span class="sc">~</span> AudienceScore, <span class="at">data =</span> movies2)</span>
+<span id="cb21-2"><a></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(RottenTomatoes <span class="sc">~</span> AudienceScore <span class="sc">+</span> Genre, <span class="at">data =</span> movies2)</span>
+<span id="cb21-3"><a></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(RottenTomatoes <span class="sc">~</span> AudienceScore <span class="sc">+</span> Genre <span class="sc">+</span> DomesticGross, <span class="at">data =</span> movies2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li class="fragment"><p>Big question! Take <strong>Math 243: Statistical Learning</strong> to learn systematic model selection techniques.</p></li>
+<li class="fragment"><p>We will explore one approach. (But there are many possible approaches!)</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="comparing-models-with-r2">Comparing Models with <span class="math inline">\(R^2\)</span></h3>
+<p><strong>Strategy</strong>: Compute the <span class="math inline">\(R^2\)</span> value for each model and pick the one with the highest <span class="math inline">\(R^2\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(RottenTomatoes <span class="sc">~</span> AudienceScore, <span class="at">data =</span> movies2)</span>
+<span id="cb22-2"><a></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(RottenTomatoes <span class="sc">~</span> AudienceScore <span class="sc">+</span> Genre, <span class="at">data =</span> movies2)</span>
+<span id="cb22-3"><a></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(RottenTomatoes <span class="sc">~</span> AudienceScore <span class="sc">+</span> Genre <span class="sc">+</span> DomesticGross, <span class="at">data =</span> movies2)</span>
+<span id="cb22-4"><a></a></span>
+<span id="cb22-5"><a></a><span class="fu">get_regression_summaries</span>(mod1) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r_squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  r_squared
+      &lt;dbl&gt;
+1     0.457</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">get_regression_summaries</span>(mod2) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r_squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  r_squared
+      &lt;dbl&gt;
+1     0.469</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">get_regression_summaries</span>(mod3) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r_squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  r_squared
+      &lt;dbl&gt;
+1     0.469</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<p><strong>Strategy</strong>: Compute the <span class="math inline">\(R^2\)</span> value for each model and pick the one with the highest <span class="math inline">\(R^2\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">get_regression_summaries</span>(mod1) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r_squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  r_squared
+      &lt;dbl&gt;
+1     0.457</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">get_regression_summaries</span>(mod2) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r_squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  r_squared
+      &lt;dbl&gt;
+1     0.469</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a><span class="fu">get_regression_summaries</span>(mod3) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r_squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  r_squared
+      &lt;dbl&gt;
+1     0.469</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Problem:</strong> As we add predictors, the <span class="math inline">\(R^2\)</span> value will only increase.</p>
+<p><strong>Guiding Principle</strong>: Occam’s Razor for Modeling</p>
+<blockquote>
+<p>“All other things being equal, simpler models are to be preferred over complex ones.” – ModernDive</p>
+</blockquote>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="comparing-models-with-the-adjusted-r2">Comparing Models with the Adjusted <span class="math inline">\(R^2\)</span></h3>
+<p><strong>New Measure of quality</strong>: Adjusted <span class="math inline">\(R^2\)</span> (Coefficient of Determination)</p>
+<p><span class="math display">\[\begin{align*}
+\mbox{adj} R^2 &amp;= 1- \frac{\sum (y - \widehat{y})^2}{\sum (y - \bar{y})^2} \left(\frac{n - 1}{n - p - 1} \right)
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(p\)</span> is the number of explanatory variables in the model.</p>
+<ul>
+<li class="fragment"><p>Now we will penalize larger models.</p></li>
+<li class="fragment"><p><strong>Strategy</strong>: Compute the adjusted <span class="math inline">\(R^2\)</span> value for each model and pick the one with the highest adjusted <span class="math inline">\(R^2\)</span>.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p><strong>Strategy</strong>: Compute the <strong>adjusted <span class="math inline">\(R^2\)</span></strong> value for each model and pick the one with the highest adjusted <span class="math inline">\(R^2\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(RottenTomatoes <span class="sc">~</span> AudienceScore, <span class="at">data =</span> movies2)</span>
+<span id="cb34-2"><a></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(RottenTomatoes <span class="sc">~</span> AudienceScore <span class="sc">+</span> Genre, <span class="at">data =</span> movies2)</span>
+<span id="cb34-3"><a></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(RottenTomatoes <span class="sc">~</span> AudienceScore <span class="sc">+</span> Genre <span class="sc">+</span> DomesticGross, <span class="at">data =</span> movies2)</span>
+<span id="cb34-4"><a></a></span>
+<span id="cb34-5"><a></a><span class="fu">get_regression_summaries</span>(mod1) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r_squared, adj_r_squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  r_squared adj_r_squared
+      &lt;dbl&gt;         &lt;dbl&gt;
+1     0.457         0.455</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">get_regression_summaries</span>(mod2) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r_squared, adj_r_squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  r_squared adj_r_squared
+      &lt;dbl&gt;         &lt;dbl&gt;
+1     0.469         0.464</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">get_regression_summaries</span>(mod3) <span class="sc">%&gt;%</span> <span class="fu">select</span>(r_squared, adj_r_squared)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  r_squared adj_r_squared
+      &lt;dbl&gt;         &lt;dbl&gt;
+1     0.469         0.462</code></pre>
+</div>
+</div>
+</section>
+<section id="case-study-home-prices-in-king-county-wa" class="slide level2">
+<h2>Case Study: Home Prices in King County, WA</h2>
+<p></p>
+<p>We’ll consider : Sale price (<strong>response</strong>); and square footage, above-ground square footage, and number of bedrooms (potential explanatory variables). Check out the exploratory plots below:</p>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell" data-layout-align="center" data-outwidth="100%">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture14_lm-many-variables_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:35%;">
+<p><br><br></p>
+<ul>
+<li class="fragment"><p><strong>Q</strong>: How would you describe the distribution of <code>price</code>?</p></li>
+<li class="fragment"><p><strong>Q</strong>: What do you expect the relationship between <code>price</code> and <code>bedrooms</code> to be like?</p></li>
+</ul>
+</div></div>
+</section>
+<section id="exploration-multicollinearity" class="slide level2">
+<h2>Exploration, Multicollinearity</h2>
+<div class="cell" data-layout-align="center" data-outwidth="100%">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture14_lm-many-variables_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment"><p><strong>Multicollinearity</strong>: when explanatory variables are <strong>highly</strong> correlated with one another. Multicollinearity often results in coefficients that are distorted in erroneous ways! We want to avoid this (<em>some</em> correlation is okay!)</p></li>
+<li class="fragment"><p><strong>Q</strong>: Which pair of explanatory variables suffers <em>most</em> from multicollinearity?</p></li>
+</ul>
+</section>
+<section id="model-estimation" class="slide level2">
+<h2>Model Estimation</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term        estimate std_error statistic p_value lower_ci upper_ci
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept    197.        19.4      10.1    0      159.     235.   
+2 sqft_living    0.177      0.01     18.4    0        0.158    0.196
+3 bedrooms     -21.6        7.27     -2.97   0.003  -35.9     -7.34 </code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment"><strong>Q</strong>: What is the equation, including coefficient values, for the estimated model?</li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[
+\widehat{\text{price}} = 197 + 0.177*\text{sqrt_living} - 21.6*\text{bedrooms}
+\]</span></p>
+</div>
+<ul>
+<li class="fragment"><strong>Q</strong>: How should interpret the <strong>intercept</strong> coefficient in our model?
+<ul>
+<li class="fragment">When <code>sqrt_living</code> and <code>bedrooms</code> are both 0, we expect/predict price to be $197,000 on average.</li>
+</ul></li>
+<li class="fragment"><strong>Q</strong>: The coefficient for <strong>Bedrooms</strong>? Does this match your expectation?
+<ul>
+<li class="fragment">When the number of <code>bedrooms</code> increases by 1, we expect/predict price to <strong>decrease</strong> by $21,600 on average, <strong>holding <code>sqft_living</code> constant</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="line-assumptions" class="slide level2">
+<h2>LINE Assumptions</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture14_lm-many-variables_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="adjusted-r2" class="slide level2">
+<h2>Adjusted <span class="math inline">\(R^2\)</span></h2>
+<p>What’s the adjusted <span class="math inline">\(R^2\)</span> of our model?</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a><span class="fu">get_regression_summaries</span>(mod)[, <span class="fu">c</span>(<span class="st">"r_squared"</span>, <span class="st">"adj_r_squared"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  r_squared adj_r_squared
+      &lt;dbl&gt;         &lt;dbl&gt;
+1     0.314         0.313</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Not super close to 1. Compare to a simpler model:</p>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>small_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> bedrooms, <span class="at">data =</span> house)</span>
+<span id="cb43-2"><a></a><span class="fu">get_regression_summaries</span>(small_mod)[, <span class="fu">c</span>(<span class="st">"r_squared"</span>, <span class="st">"adj_r_squared"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  r_squared adj_r_squared
+      &lt;dbl&gt;         &lt;dbl&gt;
+1     0.082         0.081</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Compare to a much bigger model with additional variables:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>big_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> bedrooms <span class="sc">+</span> bathrooms <span class="sc">+</span> sqft_living <span class="sc">+</span> sqft_above <span class="sc">+</span> sqft_lot <span class="sc">+</span> </span>
+<span id="cb45-2"><a></a>                view <span class="sc">+</span> condition <span class="sc">+</span> yr_built, <span class="at">data =</span> house)</span>
+<span id="cb45-3"><a></a><span class="fu">get_regression_summaries</span>(big_mod)[, <span class="fu">c</span>(<span class="st">"r_squared"</span>, <span class="st">"adj_r_squared"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  r_squared adj_r_squared
+      &lt;dbl&gt;         &lt;dbl&gt;
+1     0.434         0.429</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="developing-linear-models">Developing Linear Models</h3>
+<ul>
+<li class="fragment"><p>Key components that we’ve learned about over the last 5 lectures:</p>
+<ul>
+<li class="fragment">Determining the <strong>response</strong> variable and the potential <strong>explanatory</strong> variable(s)</li>
+<li class="fragment">Writing out the <strong>model form</strong> and understanding what the terms represent <strong>in context</strong></li>
+<li class="fragment"><strong>Building</strong> and <strong>visualizing</strong> linear regression models in <code>R</code></li>
+<li class="fragment"><strong>Validating</strong> model assumptions with diagnostic plots</li>
+<li class="fragment"><strong>Comparing</strong> different potential models</li>
+</ul></li>
+</ul>
+</section>
+<section id="next-time" class="slide level2">
+<h2>Next time</h2>
+<ul>
+<li class="fragment">Sampling distributions!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'pdfMaxPagesPerSlide': 2,
+'menu': {"side":"right","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"numbers":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("XXX SITE URL HERE XXX");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
