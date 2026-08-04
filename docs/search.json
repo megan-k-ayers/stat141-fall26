@@ -67,7 +67,7 @@
     "href": "syllabus.html#acknowledgements",
     "title": "Syllabus",
     "section": "Acknowledgements",
-    "text": "Acknowledgements\nThank you to Grayson White for allowing me to largely reuse the website structure he developed for Stat 141, and many of the related course materials (which in turn were influenced by the work of many others). Thank you to Michael Pearce and Lenny Wainstein, whose previous Stat 141 course materials have also been adapted for this course."
+    "text": "Acknowledgements\nThank you to Grayson White for allowing me to largely reuse the website structure he developed for Stat 141, and many of the related course materials (which in turn were influenced by the work of many others!). Thank you to Michael Pearce and Lenny Wainstein, many of whose previous Stat 141 course materials have also been adapted for this course. I enlisted the help of Claude Code for lecture slide and assignment reformatting tasks (ex. “Please change Math 141 Spring 2026 to Stat 141 Fall 2026 in all files!”, “Please align assignment deadlines in .qmd files with the website schedule”, “Please add this collaboration statement to the top of every assignment file”)."
   },
   {
     "objectID": "syllabus.html#footnotes",

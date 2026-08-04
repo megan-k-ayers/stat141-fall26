@@ -32,16 +32,16 @@ website:
       #   text: Inference Summary Tables
     tools:
       - icon: chat-dots-fill
-        href: https://math141sp26.slack.com
+        href: https://stat141-fall2026.slack.com
         aria-label: Slack
       - icon: r-circle-fill
         href: https://rstudio.reed.edu/
         aria-label: RStudio Server
       - icon: bar-chart-fill
-        href: https://www.gradescope.com/courses/1225246
+        href: https://www.gradescope.com/courses/1343290
         aria-label: Gradescope
       - icon: door-closed-fill
-        href: https://moodle.reed.edu/course/view.php?id=6317
+        href: https://moodle.reed.edu/course/view.php?id=6886
         aria-label: Moodle
 
 format:

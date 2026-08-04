@@ -17,9 +17,9 @@ editor:
 **Lecture and Lab Instructor**: Megan Ayers (she/her) 
 
 -   Email: [meganayers@reed.edu](mailto:meganayers@reed.edu)
--   Office hours: See [Moodle](XXX) for weekly office hour times and locations. I am also happy to meet ad hoc by appointment if you have conflicts during the scheduled times. Please [email me](mailto:meganayers@reed.edu) or send me a Slack message to find a time to meet. 
+-   Office hours: See [Moodle](https://moodle.reed.edu/course/view.php?id=6886) for weekly office hour times and locations. I am also happy to meet ad hoc by appointment if you have conflicts during the scheduled times. Please [email me](mailto:meganayers@reed.edu) or send me a Slack message to find a time to meet. 
 
-**Course Assistants**: We have X course assistants for STAT 141 this semester! A course assistant will be present at each lab section. Further, each course assistant will hold office hours during the week. Times and locations of course assistant office hours can be found on [Moodle](XXX). Feel free to go to any course assistant's office hours, even if they are not the course assistant for your lab section. 
+**Course Assistants**: We have X course assistants for STAT 141 this semester! A course assistant will be present at each lab section. Further, each course assistant will hold office hours during the week. Times and locations of course assistant office hours can be found on [Moodle](https://moodle.reed.edu/course/view.php?id=6886). Feel free to go to any course assistant's office hours, even if they are not the course assistant for your lab section. 
 
 
 **Links and course resources**:
@@ -30,14 +30,14 @@ The course website, [link-here](link-here), includes information on the course, 
 -   RStudio Server, for working on homework and lab assignments
 -   Slack, for course correspondence,
 -   Gradescope, for turning in assignments, and
--   [Moodle](XXX), (sparingly) for information about meetings and private course materials
+-   [Moodle](https://moodle.reed.edu/course/view.php?id=6886), (sparingly) for information about meetings and private course materials
 
 Note that **the entire course website (including lecture slide material) is searchable!!** This may come in handy when completing assignments. Click on the magnifying glass icon in the upper right corner of the website to search.
 
 
 **Meeting Times**:
 
-We'll have a lecture-style meeting three times a week, and a lab meeting once a week. Please see the course [Moodle](XXX) page or the [Reed schedule of classes](https://solar.reed.edu/class_schedule/) to verify the times and locations for your section.
+We'll have a lecture-style meeting three times a week, and a lab meeting once a week. Please see the course [Moodle](https://moodle.reed.edu/course/view.php?id=6886) page or the [Reed schedule of classes](https://solar.reed.edu/class_schedule/) to verify the times and locations for your section.
 
 
 **Communication**:
@@ -254,4 +254,4 @@ While there are many ways to achieve tasks in R, and many helpful internet resou
 
 ## Acknowledgements
 
-Thank you to Grayson White for allowing me to largely reuse the website structure he developed for Stat 141, and many of the related course materials (which in turn were influenced by the work of many others). Thank you to Michael Pearce and Lenny Wainstein, whose previous Stat 141 course materials have also been adapted for this course.
+Thank you to Grayson White for allowing me to largely reuse the website structure he developed for Stat 141, and many of the related course materials (which in turn were influenced by the work of many others!). Thank you to Michael Pearce and Lenny Wainstein, many of whose previous Stat 141 course materials have also been adapted for this course. I enlisted the help of Claude Code for lecture slide and assignment reformatting tasks (ex. "Please change Math 141 Spring 2026 to Stat 141 Fall 2026 in all files!", "Please align assignment deadlines in .qmd files with the website schedule", "Please add this collaboration statement to the top of every assignment file"). 
