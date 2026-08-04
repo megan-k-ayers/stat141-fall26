@@ -20,6 +20,7 @@ format:
       method: mathjax
       url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
 execute:
+  freeze: auto
   echo: true
   warning: false
   message: false

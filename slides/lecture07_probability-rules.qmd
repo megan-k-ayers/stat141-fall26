@@ -17,6 +17,7 @@ format:
       side: right
       numbers: true
 execute:
+  freeze: auto
   echo: false
   warning: false
   message: false

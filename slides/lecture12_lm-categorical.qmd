@@ -19,6 +19,7 @@ format:
     filters:
       - parse-latex
 execute:
+  freeze: auto
   echo: true
   warning: false
   message: false

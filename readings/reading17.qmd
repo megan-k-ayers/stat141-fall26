@@ -2,6 +2,8 @@
 date: 10/05/26
 editor: source
 draft: true
+execute:
+  freeze: auto
 ---
 
 # Stat 141: Readings for {{< meta date >}}
