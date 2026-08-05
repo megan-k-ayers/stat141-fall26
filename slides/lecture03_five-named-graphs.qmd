@@ -62,17 +62,19 @@ library(tidyverse)
 -   [The DataLab @ Reed](https://www.reed.edu/data-at-reed/data_lab/)
 -   First homework assignment is posted! 
 
-```{r, echo = FALSE, eval = FALSE}
 
-library(tidyverse)
-qod <- read.csv("data/qod_coffee-tea.csv")
-qod %>% count(clean.answer) %>%
-  ggplot(aes(y = reorder(clean.answer, n), x = n)) +
-  geom_col() +
-  ylab("") +
-  theme_classic()
+<!-- ```{r, echo = FALSE, eval = FALSE} -->
 
-```
+<!-- library(tidyverse) -->
+<!-- qod <- read.csv("data/qod_coffee-tea.csv") -->
+<!-- qod %>% count(clean.answer) %>% -->
+<!--   ggplot(aes(y = reorder(clean.answer, n), x = n)) + -->
+<!--   geom_col() + -->
+<!--   ylab("") + -->
+<!--   theme_classic() -->
+
+<!-- ``` -->
+
 
 ------------------------------------------------------------------------
 
@@ -91,7 +93,7 @@ qod %>% count(clean.answer) %>%
 -   Learn five standard graphs for numerical/quantitative data:
     -   **Histogram**: one numerical variable
     -   **Boxplot**: one numerical variable
-    -   **Barplot**: one numerical variable and at least one categorical variable
+    -   **Barplot**: one numerical variable$^*$ and at least one categorical variable
     -   **Scatterplot** and **Linegraph**: two numerical variables
 
 ------------------------------------------------------------------------
@@ -192,7 +194,7 @@ ggplot(data = ---, mapping = aes(---)) +
   geom_---(---) 
 ```
 
--   There are other layers, such as `scale_---_---()` and `labs()`, but we will wait on those.
+-   There are other layers, such as `scale_---_---()` and `labs()`, but we will wait on those for a bit.
 
 <br>
 
@@ -382,6 +384,7 @@ ggplot(data = biketown,
 ```
 - Boxplots and histograms show the overall distribution of *quantitative* variables 
 - Barplots show the distribution of quantitative variables within distinct levels defined by a *categorical* variable
+    - Often via **numerical summarization** of a categorical variable (counts)
 
 ------------------------------------------------------------------------
 
@@ -409,6 +412,8 @@ ggplot(data = biketown,
   geom_bar(position = "fill")
 ```
 - Alternatively, we can consider the y-axis to represent proportion, making direct comparison easier.
+
+- **Q**: How can we tell a histogram from a barplot?
 
 ------------------------------------------------------------------------
 
@@ -489,13 +494,13 @@ ggplot(data = near_Reed,
   geom_point(size = 2, alpha = 0.25)
 ```
 
--   Fix over-plotting (using **alpha**)
+-   Fix over-plotting (using `alpha`)
 -   What's going on in this graph?
 
 
 ------------------------------------------------------------------------
 
-## Scatterplots
+## Adding plot titles and axis labels
 
 ::: {.nonincremental}
 ```{r}
@@ -512,7 +517,8 @@ ggplot(data = near_Reed,
        title = "Tree Species Relationships Near Reed College")
 ```
 
--   Fix over-plotting (using **alpha**)
+-   Fix over-plotting (using `alpha`)
+-   Add a **plot title** and **axis labels** using `labs`
 -   What's going on in this graph? (labels help add context)
 :::
 
@@ -746,6 +752,9 @@ ggplot(data = near_Reed,
                                 "#aa0951"))
 ```
 
+
+- **Be warned**: Hours of my life have been lost to this, it can happen to you too...
+
 ------------------------------------------------------------------------
 
 ## Use a [Different Theme](https://ggplot2.tidyverse.org/reference/ggtheme.html)
@@ -779,7 +788,12 @@ ggplot(data = ---, mapping = aes(---)) +
 <br><br>
 
 - This is the major concept to remember
-- We covered a lot of ground - it takes lots of practice to become fluent in the details! 
+    - Sub in `histogram`, `boxplot`, `bar`, `point`, or `line` for the `geom_` 
+    - **Aesthetic mappings** required in `aes` depend on the **geom** (see previous slides)
+
+- Can then add more layers to add detail/context
+    
+- We covered a lot of ground - it takes **lots** of practice to become fluent in the details! 
 
 
 ## Next time: 

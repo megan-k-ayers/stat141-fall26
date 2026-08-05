@@ -58,7 +58,6 @@ library(tidyverse)
 ### Announcements/reminders
 
 - Waitlist movement - let me know if you're still on the waitlist and haven't heard from me
-- Readings posted Fridays for the following week, slides right after lecture
 
 
 ------------------------------------------------------------------------
@@ -492,12 +491,27 @@ Be careful that your design choices don't cause your viewer to draw incorrect co
 
 <!-- # [The DataLab @ Reed](https://www.reed.edu/data-at-reed/data_lab/) -->
 
-## Next time
+------------------------------------------------------------------------
 
-::: nonincremental
--   Tomorrow in lab: intro to using RStudio to code and explore data frames 
--   Friday: We'll learn about the `ggplot2` package so that we can use the grammar of graphics to create beautiful visualizations!
+### Recap
+
+::: {.nonincremental .fragment}
+
+Today we...
+
+-   Reviewed data frames
+-   Motivated data visualizations
+-   Developed **language** to talk about the components of a graphic
+-   Practiced deconstructing graphics
+-   Discussed good graphical practices
 :::
+
+
+### Next time
+
+-   Tomorrow in lab: intro to using RStudio to code and explore data frames 
+-   Friday: We'll learn about the `ggplot2` package so that we can use the grammar of graphics to create beeaauutiful visualizations!! 
+    - (This is my favorite part of any project, and soon I hope it is yours too)
 
 
 ------------------------------------------------------------------------
