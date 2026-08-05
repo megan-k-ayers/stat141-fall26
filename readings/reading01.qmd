@@ -1,14 +1,15 @@
 ---
 date: 8/31/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
 
 # Stat 141: Readings for {{< meta date >}}
 
-Before coming to lecture today, please read the following material: 
+Before coming to lecture today, please **fill out the office hour availability survey** and review the course syllabus: 
 
+-   [Office hour availability survey](https://forms.gle/ZwzXVng5EG172atKA)
 -   [The syllabus](../syllabus.qmd)
 

@@ -219,6 +219,16 @@ Suppose A and B are events with P(A) = 0.3 and P(B) = 0.7.
 
 
 
+**e.** Suppose we want to know P(A | B^c). What additional information would we need to compute this quantity using *only* Bayes' Rule?  
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
 
 ## Exercise 5: Winfall
 

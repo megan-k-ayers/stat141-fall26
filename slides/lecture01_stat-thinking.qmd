@@ -1,7 +1,7 @@
 ---
 pagetitle: "Statistical Thinking"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -68,7 +68,7 @@ Before we get started...
 ## Goals for Today
 
 ::: nonincremental
-1.  Getting started in Math 141
+1.  Getting started in Stat 141
     i.  Course structure and technologies
     ii. Where to find resources
     iii. Course expectations
@@ -93,12 +93,12 @@ Before we get started...
 ------------------------------------------------------------------------
 
 ::: {style="margin-top: 80px; font-size: 2.5em; color: #3F6574; text-align: center;"}
-Getting Started in Math 141
+Getting Started in Stat 141
 :::
 
 ------------------------------------------------------------------------
 
-## Getting Started in Math 141
+## Getting Started in Stat 141
 
 #### Course website
 
@@ -108,15 +108,15 @@ Getting Started in Math 141
 :::
 
 ::: {.column width="40%"}
--   The course website, [megan-k-ayers.github.io/math-141-sp26](https://megan-k-ayers.github.io/math-141-sp26/), will be the central location for all our course materials.
+-   The course website, [megan-k-ayers.github.io/stat141-fall26](https://megan-k-ayers.github.io/stat141-fall26/), will be the central location for all our course materials.
 
--   We'll use a few other resources to navigate Math 141, but everything will be linked/directed to from the course website.
+-   We'll use a few other resources to navigate Stat 141, but everything will be linked/directed to from the course website.
 :::
 :::
 
 ------------------------------------------------------------------------
 
-## Getting Started in Math 141
+## Getting Started in Stat 141
 
 #### Other Resources
 
@@ -154,9 +154,33 @@ A course-wide **Slack** workspace, for course communication,
 -   [OpenIntro Statistics, Fourth Edition](https://www.openintro.org/book/os/) (**OI**)
 :::
 
+
 ------------------------------------------------------------------------
 
-## Getting Started in Math 141
+## Getting Started in Stat 141
+
+#### Finding Resources on the Course Website
+
+::: columns
+::: {.column width="60%"}
+![](img/course-website.png)
+:::
+
+::: {.column width="40%"}
+-   [megan-k-ayers.github.io/stat141-fall26](https://megan-k-ayers.github.io/stat141-fall26/)
+
+-   The syllabus and information about office hours are linked in the upper left
+
+-   Slack, RStudio, Gradescope, and Moodle are linked via icons in the upper right, in addition to a search button that covers all slides and readings!
+
+-   Readings, labs, homeworks, and slides will be posted next to the corresponding day
+
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Getting Started in Stat 141
 
 #### Other Resources
 
@@ -168,58 +192,12 @@ You will need access to a computer for this course.
 
 **Please let me know ASAP after class or via email if you do not have access to a personal computer.**
 
-<!-- ------------------------------------------------------------------------ -->
+<br><br>
 
-<!-- ## Getting Started in Math 141 -->
-<!-- #### Finding Resources -->
+::: fragment
 
-<!-- ::: columns -->
-<!-- ::: {.column width="20%"} -->
-<!-- ::: -->
+- For coding, the internet in general is **not** a permitted resource, unless stated otherwise. 
 
-<!-- ::: {.column width="60%"} -->
-<!-- ![](img/course-website.png){fig-align="center"} -->
-<!-- ::: -->
-
-<!-- ::: {.column width="20%"} -->
-<!-- ::: -->
-<!-- ::: -->
-
-<!-- ------------------------------------------------------------------------ -->
-
-<!-- ## Getting Started in Math 141 -->
-<!-- #### Finding Resources -->
-
-<!-- ::: columns -->
-<!-- ::: {.column width="15%"} -->
-<!-- ::: -->
-
-<!-- ::: {.column width="70%"} -->
-<!-- ![](img/resources1.png){fig-align='center'} -->
-
-<!-- ::: -->
-
-<!-- ::: {.column width="15%"} -->
-<!-- ::: -->
-<!-- ::: -->
-
-
-------------------------------------------------------------------------
-
-## Getting Started in Math 141
-#### Finding Resources
-
-::: columns
-::: {.column width="15%"}
-:::
-
-::: {.column width="70%"}
-![](img/resources2.png){fig-align='center'}
-
-:::
-
-::: {.column width="15%"}
-:::
 :::
 
 
@@ -246,28 +224,26 @@ You will need access to a computer for this course.
 
 ## Learning support resources
 
-- The Math 141 Teaching Team are excited to support your learning!
+- The Stat 141 Teaching Team are excited to support your learning!
     - Course assistant office hours coming soon on Moodle
 - Each student is entitled to [one hour of individual tutoring](https://www.reed.edu/academic_support/individual_tutoring.html) per week
 
 ------------------------------------------------------------------------
 
-## A typical week in Math 141
+## A typical week in Stat 141
 
 ::: {.nonincremental}
 
 - **Monday**
     - Attend lecture
-- **Tuesday**
-    - Turn in lab assignment from previous week by 11:59pm
 - **Wednesday** 
     - Attend lecture
 - **Thursday** 
+    - Submit homework assignment by 9am
     - Attend lab
-- **Friday**
-    - Turn in homework assignment by 11:59pm (most weeks)
-    - Attend lecture
     - Next homework assignment is released
+- **Friday**
+    - Attend lecture
     
 :::
 
@@ -286,46 +262,53 @@ You will need access to a computer for this course.
 
 ::: {.fragment .fade-up}
 
--   **Lab assignments (*weekly-ish*)**
+-   **Lab assignments (*weekly*)**
     - Assigned Thursday in lab
-    - Due the next Tuesday, 11:59pm on **Gradescope**
-    - Mostly R practice. Please collaborate!
+    - Due at the end of lab (+grace period for formatting issues) on **Gradescope**
+    - Mostly collaborative R practice in small groups
     
 :::
 
 ::: {.fragment .fade-up}
 
--   **Homework assignments (*weekly-ish*)**
-    - Assigned on Friday (usually)
-    - Due the next Friday (usually), 11:59pm on **Gradescope**
-    - Mostly theory/conceptual, some R. Please collaborate!
+-   **Homework assignments (*weekly*)**
+    - Assigned on Thursdays
+    - Due the next Thursday at 9:00am on **Gradescope**
+    - Builds on concepts from lecture and practice from lab. Please collaborate! 
+    - Always check your formatting!
     
 :::
 
 :::
 
-::: {.column width="10%"}
+::: {.column width="7%"}
 
 :::
 
-::: {.column width="45%"}
+::: {.column width="48%"}
 
 ::: {.fragment .fade-up}
 
--   **In-class activities (*semi-regular*)**
-    - Individual activities
-    - Group activities
+-   **Quizzes (*weekly*)**
+    - Taken at the beginning of lab, in person and on paper
+    - Short (30 mins) and low-stakes
+    - Based closely on homework assignment
+    - Lowest score dropped, revisions possible
     
 :::
 
 ::: {.fragment .fade-up}
 
 
--   **Exams (*1 midterm, 1 final*)**
-    - Both are written and in-person
-    - Midterm: 3/12
-    - Final: Finals week
+-   **Exam (*1 final*)**
+    - Cumulative, written, and in-person
     
+:::
+
+::: {.fragment .fade-up}
+
+- **Readings (*each lecture*)**
+
 :::
 
 :::
@@ -338,10 +321,16 @@ You will need access to a computer for this course.
 
 ## Expectations for submitted work
 
-- Address questions completely. If you have a partial solution, say so, explain what you've tried.
+- Address questions completely whenever you can. If you have a partial solution, say so, explain what you've tried.
 - Respond in full sentences for written answers.
 - Show your work.
 - Write comments in your code explaining your work.
+- **Collaboration**:
+    - An excellent way to deepen your understanding and enjoy the learning experience
+    - You should try all problems on your own first
+    - Can involve comparison of reasoning and solutions when each student has attempted a problem
+    - Should **never** involve direct sharing or copying of solutions
+    - Should be guided by the honor principle
 
 ------------------------------------------------------------------------
 
@@ -351,27 +340,23 @@ You will need access to a computer for this course.
 
 :::{.fragment .fade-up}
 
--   **Labs**: up to 4 extensions days can be used throughout the semester.
-    - e.g., 1 additional day for 4 labs, 4 additional days for 1 lab, ...
+-   **Labs**: each has a small but meaningful contribution towards your participation grade. No late submissions will be accepted, but you may miss one lab without penalty.
+-   **HW**: up to 3 extensions days can be used throughout the semester.
+    - e.g., 1 additional day for 3 HWs, 3 additional days for 1 HW, ...
     - rounding days up
--   **HW**: up to 4 extensions days can be used throughout the semester.
-    - e.g., 1 additional day for 4 HWs, 4 additional days for 1 HW, ...
-    - rounding days up
--   Lab extension days cannot be used for HW, and vice versa
-    
+    - Further late work is accepted for half credit, no guarantees on grading timing/feedback
+
 :::
+
 
 :::{.fragment .fade-up}
 
-- **Any other late work has a 50\% grade deduction, no guarantees on grading timing/feedback**
+-   **Quizzes**:
+    - Missed quizzes will receive scores of 0
+    - Lowest quiz score will be dropped (including if you missed a quiz)
 
 :::
 
-:::{.fragment .fade-up}
-
--   **In-class assignments**: cannot be made up.
-
-:::
 
 :::{.fragment .fade-up}
 
@@ -392,10 +377,18 @@ You will need access to a computer for this course.
     
 -   Missing more than 4 lectures or 1 lab will have a small, accumulating impact on your grade.
 
--   During lecture and lab, remove distractions.
-    -   When we are on our computers, close email, social media, news, etc.
-    -   Hide your phone.
-  
+
+------------------------------------------------------------------------
+
+## Engagement
+
+#### Technology policy
+
+::: blockquote
+
+In STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides will be made available ahead of lecture on the course website.
+
+:::
 
 
 ------------------------------------------------------------------------
@@ -405,8 +398,32 @@ You will need access to a computer for this course.
   
 -   I have high expectations but know that all of you (regardless of your stats, math, or computing background) have the ability to meet them.
 
--   We are all going to make mistakes, we will learn more because of them. 
+-   We are all going to make mistakes, we are all going to have errors in our code we will learn more because of them.
 
+-   Don't let perfection be the enemy of learning!
+
+-   Resilience is one of the most valuable traits in learning.
+
+-   Expect some moments of repetition and try to lean in
+
+
+------------------------------------------------------------------------
+
+
+## Artificial Intelligence (AI) Policy
+
+
+::: blockquote
+
+Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. If you have questions about whether a tool is allowed for this course, ask me before using it.
+
+If you are unsure of how to approach a particular exercise on an assignment, or are stuck on a concept from lecture, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.
+
+:::
+
+- How I use AI
+
+- Soapbox moment
 
 ------------------------------------------------------------------------
 
@@ -421,7 +438,7 @@ We expect everyone in this class to strive to foster a learning environment that
 **Code of Conduct**:
 
 
-We expect all members of Math 141 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+We expect all members of Stat 141 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 We expect everyone to act and interact in ways that contribute to an open, welcoming, inclusive, and healthy community of learners. You can contribute to a positive learning environment by demonstrating empathy and kindness, being respectful of differing viewpoints and experiences, and giving and gracefully accepting constructive feedback.[^1]
 
@@ -437,23 +454,21 @@ If you plan to request academic accommodations, please submit these **through th
 
 ------------------------------------------------------------------------
 
-## Artificial Intelligence (AI) Policy
+## Office Hours
 
-
-::: blockquote
-
-Artificial intelligence (AI) tools, such as ChatGPT, Claude, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, is strictly prohibited in any stage of the work process for this course. If you have questions about whether a tool is allowed for this course, ask the Instructor before using it.
-
-:::
-
+- Office hours are an excellent opportunity to get help on homework assignments or concepts from lecture, and to collaborate with your peers
+- The teaching team is more than happy to assist you, or just to chat and get to know you! 
+- Office hours are not a place to verify all answers or reasoning, more a place to get un-stuck and discuss general concepts
+- Please fill out [the availability survey linked here](https://forms.gle/ZwzXVng5EG172atKA) after lecture if you haven't already!!!
 
 ------------------------------------------------------------------------
+
 
 ## Course or syllabus questions? 
 
 ------------------------------------------------------------------------
 
-## Math 141: The whole game {.center}
+## Stat 141: The whole game {.center}
 
 :::: {.columns}
 
@@ -504,7 +519,7 @@ Statistical thinking
 
 ------------------------------------------------------------------------
 
-## Math 141 is about developing our **statistical thinking** skills. {.center}
+## Stat 141 is about developing our **statistical thinking** skills. {.center}
 
 <br>
 
@@ -526,7 +541,7 @@ Let's discover what **statistical thinking** is through some examples.
 
 ------------------------------------------------------------------------
 
-## Data in Math 141
+## Data in Stat 141
 
 Will use a wide-range of **real** and **relevant** data examples
 
@@ -766,6 +781,11 @@ Example questions:
 -   For quantitative variables, what values are possible? Were the data rounded or binned? Are those values actually encoding categories? What are the units of measurement?
 
 ------------------------------------------------------------------------
+
+## Recap from today
+- Spent a lot of time on course resources, logistics, policies, expectations
+- Introduced big picture of statistical thinking
+- Introduced data frames
 
 ## Next time
 - Introduction to data visualization!

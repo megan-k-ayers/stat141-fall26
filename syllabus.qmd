@@ -122,25 +122,25 @@ We'll have a variety of assignments, activities, and assessments for this course
     - Every week we will have a lab assignment. The lab assignments will be worked on collaboratively during lab time on Thursdays, where you will be able to ask the instructor and the course assistant questions. They are designed to help you practice implementing concepts and tasks from lecture, particularly those that relate to coding in R. The following homework assignment will build on questions covered in lab.  
     - Lab assignments will be made available for download from the course website before each lab. 
     - You will submit the progress you made on each lab assignment via Gradescope at the end of your section's lab time. Labs will be assessed as part of your participation grade, and while you may receive some feedback on your lab work, you will not receive a numeric score.  
-    - Late labs will not be accepted, though you are expected to complete them on your own to prepare for homework assignments even if you miss lab.
-    - Lab assignments will count for a small portion of your grade, but will be very important for preparing for the upcoming homework assignment and quiz.
+    - Late labs will not be accepted, though you are encouraged to complete them on your own to prepare for homework assignments even if you miss lab.
+    - Lab assignments will count for a small portion of your grade, but will be helpful for preparing for the upcoming homework assignment and quiz.
 
 -   **Homework assignments**:
     - Every week we will have a homework assignment. Homework assignments will be posted on the course website on Thursday mornings. 
     - These will be turned in via Gradescope by **9:00am on Thursay of the following week**.
     - Homework assignments will largely build on or continue content from that week's lab, and may also cover additional material from lecture. 
-    - You will receive detailed feedback on your homework assignments, and scores will be assigned based on completion and effort.
+    - You will receive detailed feedback on your homework assignments, and scores will be assigned based on completion.
     - Homework assignments represent a higher proportion of your grade than labs, but a relatively small proportion overall. 
     - Engaging with homework assignments and discussing them in office hours will be the best way to study for the next week's quiz!
-    - Completion grades and feedback are given based on your submitted PDF, and regrade requests will not be accepted. Be sure to check that your rendered PDF legibly displays all of your work before submitting homework assignments to avoid formatting issue frustration! 
+    - Completion grades and feedback are given based on your submitted PDF, and regrade requests will not be accepted. **Be sure to check that your rendered PDF legibly displays all of your work before submitting homework assignments to avoid formatting issue frustration!** 
 
 -   **Quizzes**:
     - Almost every week at the beginning of lab we will have a short quiz, based closely on the material from the last week's homework assignment.
     - Cumulatively, quizzes have the largest impact on your grade. However, there will be 10 quizzes throughout the semester, so each individual quiz will be relatively low-stakes.
+    - Your lowest quiz grade will be dropped - this may come in handy in the event of an expected or unexpected absence.
     - Quizzes will be taken on paper and will be entirely closed-notes. 
-    - While you will not be asked to write code in R during quizzes, you may be asked to write pseudo-code, describe coding steps qualitatively, or explain code that is shown to you. 
-    - You will have the opportunity to submit quiz revisions within 1 week of feedback being posted, and to submit make-up quizzes (in the event of absences) for partial credit.
-    - Your two lowest quiz grades will be dropped, but dropped quizzes may not include quizzes that you were absent for *if you did not submit a make up quiz*.
+    - While you will not be asked to write code in R during quizzes, you may be asked to write code by hand, describe coding steps qualitatively, or explain code that is shown to you. 
+    - You will have the opportunity to submit quiz revisions within 1 week of feedback being posted for partial credit.
     
 -   **In-class activities**:
     - Lectures and labs will often involve some in-class activities. Including but not limited to: 
@@ -154,8 +154,9 @@ We'll have a variety of assignments, activities, and assessments for this course
     - The content in readings may seem repetitive with lecture content - this is by design! The more frequently you encounter and think through concepts that are presented in different ways, the better you will remember them, and the more deeply you will be able to engage with future material in the course that builds on them.
     
 -   **Final Exam**:
-    - We'll have one exam (a final exam) for this course. The exam will consist of an in-person written exam. 
+    - We'll have one exam (a final exam) for this course. The exam will consist of an in-person, cumulative, written exam. 
     - The final exam period will be three hours, and will be held during finals week (the official finals schedule is TBD).
+    - If you perform better on the final exam than cumulatively on quizzes, the exam will count more heavily towards your final grade. If you perform better across quizzes than on the final exam, the quizzes will count more heavily towards your final grade. In other words, whichever in-person assessment you perform best on will have the largest impact on your grade.
     - No late exams will be accepted. 
         
 
@@ -201,26 +202,24 @@ We expect everyone to act and interact in ways that contribute to an open, welco
 
 **Technology policy**:
 
-* For some parts of the course, we will ask you to use your phone/tablet/computer to engage with course material (ex. you'll be asked to take attendance via online survey at the start of lecture, and to use your laptop to work on lab assignments and occasionally during lecture). 
+* In STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides will be made available ahead of lecture on the course website.
+
+* However, for some parts of the course, we will ask you to use your phone/tablet/computer to engage with course material (ex. you'll be asked to take attendance via QR code at the start of lecture, and to use your laptop to work on lab assignments and occasionally during lecture). 
 
 * We ask that you do not wear headphones at any point during labs or lectures. 
 
-* During other parts of the course, we will ask you to put away all devices, including phones, laptops, and headphones. This will primarily apply to time when the instructor is actively lecturing: please plan to take notes during lectures by hand. Note that all lecture slides will be made available on the course website.
-
-    * **Why this policy?** It is super easy to become distracted by other things on your devices while you are typing notes! App and social media developers are literally trying their very best to distract us all, all of the time. I (Megan) admit that I am easily distracted and am constantly a victim of this. Let's remove the opportunity for distraction during lecture so that we can all focus and engage with the course material.
-
 * Advice for note taking during lecture: 
-    * You don't need to transcribe everything that is on the slides or that I say, especially because slides will all be posted online. Focus on summarizing content and ideas in your own words, recording any questions you have, and emphasizing any insights that helped you make sense of a concept.
+    * Rather than focusing on transcribing everything that is displayed or said, focus on summarizing content and ideas in your own words, recording any questions you have, and emphasizing any insights that helped you make sense of a concept.
     * Reference the slide number when taking each note so that you can contextualize it with the slides when reviewing your notes. It may be particularly helpful to make list of slides where code examples are provided for different tasks.
 
 
 **Late work policy**:
 
-* **Quizzes**: Since quizzes are taken in-person during lab, a missed quiz will be assigned a score of 0. However, you have the opportunity to make up a missed quiz outside of class for up to 50% partial credit by submitting a quiz revision. To help with various circumstances expected and unexpected, quizzes that have been made up outside of class are eligible to be dropped from your final grade, no questions asked (the two lowest quiz scores *from attempted quizzes* will be dropped at the end of the semester).
+* **Quizzes**: Since quizzes are taken in-person during lab, a missed quiz will be assigned a score of 0. Makeup quizzes will not be given, but, to help with various circumstances (expected and unexpected), the lowest quiz score will be dropped.
 
-* **Homeworks**: To be considered for full credit, homework assignments must be submitted by their deadline. Late homework assignments will be accepted for up to 50% partial credit at any time before the end of the last day of class, Wednesday December 9th at 11:59pm. Late submissions of homework assignments are not guaranteed timely or detailed feedback - you are encouraged to meet with Megan or course assistants in office hours to clarify any questions or discuss solutions from any late homework assignments.  
+* **Homeworks**: To help with various circumstances (expected and unexpected), you have up to 3 additional homework extension days that you can use as you need, no questions asked. You are free to distribute the extension days to different assignments as you wish (e.g., 1 additional day for 3 HWs, 3 additional days for 1 HW) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). Beyond these extension days, late homework assignments will be accepted for up to 50% partial credit at any time before the end of the last day of class, Wednesday December 9th at 11:59pm. Late submissions of homework assignments are not guaranteed timely or detailed feedback - you are encouraged to meet with Megan or course assistants in office hours to clarify any questions or discuss solutions from any late homework assignments.  
 
-* **Labs**: Lab assignments will be due at the end of each lab section and will count towards a small participation grade. You will have a grace period until the end of the day to submit your lab in the case of a rendering error. In the event of a lab absence, you are expected to prepare for homework assignments by completing labs on your own, but late submissions of lab assignments will not be accepted.
+* **Labs**: Lab assignments will be due at the end of each lab section and will count towards a small participation grade. You will have a grace period until the end of the day to submit your lab in the case of a rendering error. In the event of a lab absence, you are encouraged to prepare for homework assignments by completing labs on your own, but late submissions of lab assignments will not be accepted. You may miss one lab without impact to your grade. 
 
 * **Exam**: The final exam cannot be made up, except in cases with academic accommodations.  
 
