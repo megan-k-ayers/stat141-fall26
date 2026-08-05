@@ -10,5 +10,5 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
--   MD 2.4, 2.5, 2.7, 2.8
+-   MD 2.3-2.5, 2.7, 2.8
 

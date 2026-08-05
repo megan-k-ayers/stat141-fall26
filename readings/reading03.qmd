@@ -26,7 +26,7 @@ RStudio comes in two varieties: RStudio Desktop and RStudio Server. The desktop 
 
 Before coming to lab today, please read the following material from ModernDive. 
 
--   MD Chapter 1 (skip section 1.1.1)
+-   MD Chapter 1 (skip section 1.1.1, unless you feel strongly about using the desktop app RStudio rather than RStudio Server)
 
 
 
