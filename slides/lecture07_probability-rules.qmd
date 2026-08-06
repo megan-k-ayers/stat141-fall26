@@ -53,7 +53,7 @@ theme_set(theme_bw())
 
 [Megan Ayers]{.custom-subtitle}
 
-[Stat 141 \| Fall 2026 <br> Monday, Week 3]{.custom-subtitle}
+[Stat 141 \| Fall 2026 <br> Wednesday, Week 3]{.custom-subtitle}
 :::
 :::::
 

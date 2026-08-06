@@ -56,7 +56,7 @@ library(kableExtra)
 
 [Megan Ayers]{.custom-subtitle}
 
-[Stat 141 \| Fall 2026 <br> Friday, Week 14]{.custom-subtitle}
+[Stat 141 \| Fall 2026 <br> Wednesday, Week 15]{.custom-subtitle}
 :::
 :::::
 

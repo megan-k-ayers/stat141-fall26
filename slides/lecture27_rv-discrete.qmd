@@ -57,7 +57,7 @@ library(tufte)
 
 [Megan Ayers]{.custom-subtitle}
 
-[Stat 141 \| Fall 2026 <br> Wednesday, Week 10]{.custom-subtitle}
+[Stat 141 \| Fall 2026 <br> Monday, Week 11]{.custom-subtitle}
 :::
 :::::
 

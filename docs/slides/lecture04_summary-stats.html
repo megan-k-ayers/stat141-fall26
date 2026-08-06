@@ -209,11 +209,12 @@
 <p><span class="custom-title">Summary Statistics</span></p>
 <p><br> <br> <br> <br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
-<p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 2</span></p>
+<p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Wednesday, Week 2</span></p>
 </div></div>
 </section>
-<section id="announcements" class="slide level2">
-<h2>Announcements</h2>
+<section class="slide level2">
+
+<h3 id="announcements">Announcements</h3>
 <ul>
 <li>The teaching team would love to see you in office hours!
 <ul>
@@ -222,11 +223,27 @@
 </ul></li>
 </ul>
 <div class="fragment">
+<h3 id="reminders">Reminders</h3>
 <ul>
-<li class="fragment">Reminder: If you haven’t already, make sure your access to Gradescope is set up.</li>
-<li class="fragment">Please select pages for each problem part on Gradescope</li>
+<li class="fragment">Test rendering your HW submission early</li>
+<li class="fragment">If you haven’t already, make sure your access to Gradescope is set up</li>
+<li class="fragment">Select pages for each problem part on Gradescope to receive full credit</li>
 </ul>
 </div>
+<!-- # ```{r, echo = FALSE, eval = FALSE} -->
+<!-- #  -->
+<!-- # qod <- read.csv("data/qod-music.csv") -->
+<!-- # qod$Section <- substr(qod$Section, 3, 3) -->
+<!-- # qod %>%  -->
+<!-- #   ggplot(aes(y = Section, fill = Cleaned)) + -->
+<!-- #   geom_bar(position = "fill") + -->
+<!-- #   ggtitle("Should we play music in lab?") + -->
+<!-- #   theme_classic() -->
+<!-- #  -->
+<!-- #  -->
+<!-- # table(qod$Section[qod$Notes!= ""], qod$Notes[qod$Notes!= ""]) -->
+<!-- #  -->
+<!-- # ``` -->
 </section>
 <section class="slide level2">
 
@@ -237,12 +254,12 @@
 </ul>
 <h3 id="goals-for-today">Goals for Today</h3>
 <ul>
-<li class="fragment">Consider measures for <strong>summarizing</strong> quantitative data
+<li class="fragment">Consider measures for numerically <strong>summarizing</strong> quantitative data
 <ul>
 <li class="fragment">Center</li>
 <li class="fragment">Spread/variability</li>
 </ul></li>
-<li class="fragment">Consider measures for <strong>summarizing</strong> categorical data
+<li class="fragment">Consider measures for numerically <strong>summarizing</strong> categorical data
 <ul>
 <li class="fragment">Contingency tables</li>
 </ul></li>
@@ -375,7 +392,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -384,13 +401,17 @@
 <p><br></p>
 <p>For a quantitative variable, often want to answer:</p>
 <ul>
-<li class="fragment"><p>What is an <strong>average</strong> value?</p></li>
+<li class="fragment"><p>What is an <strong>average</strong> value (the center)?</p></li>
 <li class="fragment"><p>What is the <strong>trend/shape</strong> of the variable?</p></li>
-<li class="fragment"><p>How much <strong>variation</strong> is there from case to case?</p></li>
+<li class="fragment"><p>How much <strong>variation</strong> is there from case to case (spread)?</p></li>
 </ul>
 </div></div>
 <div class="fragment">
-<p>Need to learn key <strong>summary statistics</strong>: Numerical values computed based on the observed cases.</p>
+<p><strong>Q:</strong> I will sometimes ask you to assess these qualitatively by eye. Let’s practice with these histograms.</p>
+</div>
+<p><br></p>
+<div class="fragment">
+<p>To be more precise in assessing these we need to learn key <strong>summary statistics</strong>: Numerical values computed based on the observed cases.</p>
 </div>
 </section>
 <section id="measures-of-center" class="slide level2">
@@ -438,13 +459,11 @@
 \bar{x}  = \frac{1}{n} \sum_{i = 1}^n x_i
 \]</span></p>
 </div><div class="column" style="width:50%;">
-<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Test out on first 6 values</span></span>
 <span id="cb3-2"><a></a><span class="fu">head</span>(biketown<span class="sc">$</span>Distance_Miles)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.91 0.72 3.42 1.81 4.51 5.54</code></pre>
-</div>
 </div>
 </div>
 <p><br></p>
@@ -518,7 +537,7 @@
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
-<p>Compute in R:</p>
+<p>Compute in R across all values:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">median</span>(biketown<span class="sc">$</span>Distance_Miles)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -533,8 +552,9 @@
 <div class="column" style="width:50%;">
 <p><strong>Q:</strong> Why is the mean larger than the median?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">data.frame</span>(<span class="at">mean_miles =</span> <span class="fu">mean</span>(biketown<span class="sc">$</span>Distance_Miles),</span>
-<span id="cb17-2"><a></a>           <span class="at">median_miles =</span> <span class="fu">median</span>(biketown<span class="sc">$</span>Distance_Miles))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>biketown <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a></a>  <span class="fu">summarize</span>(<span class="at">mean_miles =</span> <span class="fu">mean</span>(Distance_Miles),</span>
+<span id="cb17-3"><a></a>            <span class="at">median_miles =</span> <span class="fu">median</span>(Distance_Miles))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  mean_miles median_miles
 1   2.044768         1.48</code></pre>
@@ -545,7 +565,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -605,6 +625,25 @@
 <p>We call the median a <strong>robust</strong> statistic.</p>
 </div>
 </section>
+<section id="summary-statistic-anecdote" class="slide level2 smaller">
+<h2>Summary statistic anecdote</h2>
+<p>In April 2026 the New York Times published an article titled “In Defense of Dumb Dogs.” The article describes research that found that a large majority (66%) of dog owners describe their dog as “smarter than average.”</p>
+<p><br></p>
+<div class="fragment">
+<p>NYT’s morning newsletter stated that this result was <strong>“statistically impossible.”</strong> Apparently many readers wrote in to complain, because the next morning’s newsletter included a (somewhat defensive) mea culpa about this flawed statement.</p>
+</div>
+<p><br><br></p>
+<div class="fragment">
+<p><strong>Q:</strong> Why was their statement flawed?</p>
+<!-- If we have a really left skewed distribution (a few *very* dumb dogs, many reasonably smart dogs), it's totally possible that the 0.66 quantile is above the mean! By "average" they meant "median"  -->
+<!-- Rachel saying everyone else has an "above average" # of legs is another funny story to show this point but maybe won't have time. -->
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/dumb_cute_dogs.png" class="quarto-figure quarto-figure-center" style="height:4in"></p>
+</figure>
+</div>
+</section>
 <section id="computing-measures-of-center-by-groups" class="slide level2">
 <h2>Computing Measures of Center by Groups</h2>
 <p><strong>Question</strong>: Who travels further, on average? Casual biketown users or payment plan subscribers?</p>
@@ -612,7 +651,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -661,7 +700,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -677,7 +716,7 @@
 <div class="column" style="width:50%;">
 <ul>
 <li class="fragment">Find how much each observation deviates from the mean.</li>
-<li class="fragment">Idea: Compute the average of the deviations</li>
+<li class="fragment"><strong>Idea</strong>: Compute the average of the deviations</li>
 </ul>
 </div><div class="column" style="width:50%;">
 
@@ -692,7 +731,7 @@
 <div class="column" style="width:50%;">
 <ul>
 <li>Find how much each observation deviates from the mean.</li>
-<li>Idea: Compute the average of the deviations</li>
+<li><strong>Idea</strong>: Compute the average of the deviations</li>
 </ul>
 <p><span class="math display">\[
 \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})
@@ -710,7 +749,7 @@
 <div class="column" style="width:50%;">
 <ul>
 <li>Find how much each observation deviates from the mean.</li>
-<li>Idea: Compute the average of the deviations</li>
+<li><strong>Idea</strong>: Compute the average of the deviations</li>
 </ul>
 <p><span class="math display">\[
 \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})
@@ -725,7 +764,7 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_e79d1b5d" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a2ddfa2a" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
@@ -954,7 +993,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-36-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-35-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -970,6 +1009,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 \mbox{IQR} = \mbox{Q}_3 - \mbox{Q}_1
 \]</span></p>
 <ul>
+<li class="fragment">Imagine we sort our data and divide it into four evenly sized chunks (<strong>quartiles</strong>)</li>
 <li class="fragment">25% of all observations are less than the <em>first quartile</em> Q1</li>
 <li class="fragment">25% of all observations are greater than the <em>third quartile</em> Q3</li>
 </ul>
@@ -1003,7 +1043,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-39-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-38-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -1021,7 +1061,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-40-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-39-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1031,7 +1071,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-41-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-40-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1130,7 +1170,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-45-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-44-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1143,7 +1183,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <section class="slide level2">
 
 <h3 id="another-ggplot2-geom-geom_col">Another <code>ggplot2</code> <code>geom</code>: <code>geom_col()</code></h3>
-<p>If you have already aggregated the data, you will use <code>geom_col()</code> instead of <code>geom_bar()</code>.</p>
+<p>If you have already aggregated the data, you will use <code>geom_col()</code> instead of <code>geom_bar()</code> to make a barplot.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a>dog_counts <span class="ot">&lt;-</span> <span class="fu">count</span>(dogs_top5, Dog_Name)</span>
 <span id="cb65-2"><a></a>dog_counts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1167,7 +1207,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-47-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-46-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1201,7 +1241,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-49-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-48-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1253,7 +1293,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-52-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-51-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1278,7 +1318,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-53-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-52-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1380,7 +1420,40 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 </div></div>
 <p><strong>Q:</strong> How does the interpretation change based on which variable you condition on?</p>
 </section>
-<section id="reminders" class="slide level2">
+<section id="recap-quantitative-data" class="slide level2">
+<h2>Recap: quantitative data</h2>
+<ul>
+<li class="fragment"><p>We’ll frequently <strong>summarize</strong> quantitative data by assessing a distribution’s:</p>
+<ol type="1">
+<li class="fragment">Center</li>
+<li class="fragment">Spread (aka variability)</li>
+<li class="fragment">Shape</li>
+</ol></li>
+<li class="fragment"><p>We can most easily assess these visually via boxplot or histogram</p></li>
+<li class="fragment"><p>We quantify center and spread by calculating (or sometimes by eyeballing) <strong>summary statistics</strong></p>
+<ol type="1">
+<li class="fragment">The <strong>mean</strong> or <strong>median</strong> (<code>mean()</code>, <code>median()</code>) for center</li>
+<li class="fragment">The <strong>standard deviation</strong>, <strong>variance</strong>, or <strong>interquartile range</strong> (<code>sd()</code>, <code>var()</code>, <code>IQR()</code>) for spread</li>
+</ol></li>
+<li class="fragment"><p>In this class we’ll usually assess shape visually (<strong>symmetric</strong>, <strong>right-skewed</strong>, or <strong>left-skewed</strong>?)</p>
+<ul>
+<li class="fragment">We’ll see a quantitative example on the homework</li>
+</ul></li>
+</ul>
+</section>
+<section id="recap-categorical-data" class="slide level2">
+<h2>Recap: categorical data</h2>
+<ul>
+<li class="fragment">We’ll frequently <strong>summarize</strong> categorical data by making tables of category <strong>counts</strong> or proportions
+<ul>
+<li class="fragment">Table of <em>counts</em> for 1 categorical variable = <strong>frequency table</strong> or <strong>one-way frequency table</strong></li>
+<li class="fragment">Table of <em>counts</em> for 2 categorical variables = <strong>contingency table</strong> or <strong>two-way frequency table</strong></li>
+<li class="fragment">Table of <em>proportions</em> with 2 categorical variables = <strong>conditional proportions table</strong></li>
+</ul></li>
+<li class="fragment">We can most easily visualize these tables via barplots</li>
+</ul>
+</section>
+<section id="reminders-1" class="slide level2">
 <h2>Reminders</h2>
 <ul>
 <li class="fragment"><p>The teaching team would love to see you in office hours!</p></li>

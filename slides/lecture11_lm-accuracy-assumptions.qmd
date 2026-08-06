@@ -50,7 +50,7 @@ library(moderndive)
 
 [Megan Ayers]{.custom-subtitle}
 
-[Stat 141 \| Fall 2026 <br> Wednesday, Week 4]{.custom-subtitle}
+[Stat 141 \| Fall 2026 <br> Friday, Week 4]{.custom-subtitle}
 :::
 :::::
 

@@ -51,14 +51,14 @@ library(dplyr)
 
 [Megan Ayers]{.custom-subtitle}
 
-[Stat 141 \| Fall 2026 <br> Monday, Week 2]{.custom-subtitle}
+[Stat 141 \| Fall 2026 <br> Wednesday, Week 2]{.custom-subtitle}
 :::
 :::::
 
 ------------------------------------------------------------------------
 
 
-## Announcements
+### Announcements
 
 ::: {.nonincremental}
 -   The teaching team would love to see you in office hours!
@@ -66,25 +66,31 @@ library(dplyr)
     -   **Course assistant office hours**: To work on assignments with your peers and get help from the course assistants when you are stuck
 :::
 
+
 ::: fragment
--  Reminder: If you haven't already, make sure your access to Gradescope is set up.
--  Please select pages for each problem part on Gradescope
+
+### Reminders
+
+-  Test rendering your HW submission early
+-  If you haven't already, make sure your access to Gradescope is set up
+-  Select pages for each problem part on Gradescope to receive full credit
+
 :::
 
-```{r, echo = FALSE, eval = FALSE}
-
-qod <- read.csv("data/qod-music.csv")
-qod$Section <- substr(qod$Section, 3, 3)
-qod %>% 
-  ggplot(aes(y = Section, fill = Cleaned)) +
-  geom_bar(position = "fill") +
-  ggtitle("Should we play music in lab?") +
-  theme_classic()
-
-
-table(qod$Section[qod$Notes!= ""], qod$Notes[qod$Notes!= ""])
-
-```
+<!-- # ```{r, echo = FALSE, eval = FALSE} -->
+<!-- #  -->
+<!-- # qod <- read.csv("data/qod-music.csv") -->
+<!-- # qod$Section <- substr(qod$Section, 3, 3) -->
+<!-- # qod %>%  -->
+<!-- #   ggplot(aes(y = Section, fill = Cleaned)) + -->
+<!-- #   geom_bar(position = "fill") + -->
+<!-- #   ggtitle("Should we play music in lab?") + -->
+<!-- #   theme_classic() -->
+<!-- #  -->
+<!-- #  -->
+<!-- # table(qod$Section[qod$Notes!= ""], qod$Notes[qod$Notes!= ""]) -->
+<!-- #  -->
+<!-- # ``` -->
 
 ------------------------------------------------------------------------
 
@@ -97,10 +103,10 @@ table(qod$Section[qod$Notes!= ""], qod$Notes[qod$Notes!= ""])
 
 ### Goals for Today
 
--   Consider measures for **summarizing** quantitative data
+-   Consider measures for numerically **summarizing** quantitative data
     -   Center
     -   Spread/variability
--   Consider measures for **summarizing** categorical data
+-   Consider measures for numerically **summarizing** categorical data
     - Contingency tables
 
 
@@ -149,16 +155,22 @@ ggplot(data = biketown, mapping = aes(x = Distance_Miles)) +
 
 For a quantitative variable, often want to answer:
 
--   What is an **average** value?
+-   What is an **average** value (the center)?
 
 -   What is the **trend/shape** of the variable?
 
--   How much **variation** is there from case to case?
+-   How much **variation** is there from case to case (spread)?
 :::
 :::::
 
 ::: fragment
-Need to learn key **summary statistics**: Numerical values computed based on the observed cases.
+**Q:** I will sometimes ask you to assess these qualitatively by eye. Let's practice with these histograms.
+:::
+
+<br>
+
+::: fragment
+To be more precise in assessing these we need to learn key **summary statistics**: Numerical values computed based on the observed cases.
 :::
 
 ------------------------------------------------------------------------
@@ -223,12 +235,10 @@ $$
 
 ::: {.column width="50%"}
 
-::: fragment
 ```{r}
 # Test out on first 6 values
 head(biketown$Distance_Miles)
 ```
-:::
 
 <br>
 
@@ -308,7 +318,7 @@ sort(head(biketown$Distance_Miles))
 :::
 
 ::: {.column .fragment width="50%"}
-Compute in R:
+Compute in R across all values:
 
 ```{r}
 median(biketown$Distance_Miles)
@@ -325,8 +335,9 @@ median(biketown$Distance_Miles)
 **Q:** Why is the mean larger than the median?
 
 ```{r}
-data.frame(mean_miles = mean(biketown$Distance_Miles),
-           median_miles = median(biketown$Distance_Miles))
+biketown %>%
+  summarize(mean_miles = mean(Distance_Miles),
+            median_miles = median(Distance_Miles))
 ```
 :::
 
@@ -417,6 +428,35 @@ We call the median a **robust** statistic.
 
 ------------------------------------------------------------------------
 
+## Summary statistic anecdote {.smaller}
+
+In April 2026 the New York Times published an article titled "In Defense of Dumb Dogs." The article describes research that found that a large majority (66%) of dog owners describe their dog as "smarter than average." 
+
+<br>
+
+::: fragment
+
+NYT's morning newsletter stated that this result was **"statistically impossible."** Apparently many readers wrote in to complain, because the next morning's newsletter included a (somewhat defensive) mea culpa about this flawed statement.
+
+:::
+
+<br><br>
+
+::: fragment
+
+**Q:** Why was their statement flawed? 
+
+<!-- If we have a really left skewed distribution (a few *very* dumb dogs, many reasonably smart dogs), it's totally possible that the 0.66 quantile is above the mean! By "average" they meant "median"  -->
+
+<!-- Rachel saying everyone else has an "above average" # of legs is another funny story to show this point but maybe won't have time. -->
+
+:::
+
+![](img/dumb_cute_dogs.png){height=4in fig-align="center"}
+
+
+------------------------------------------------------------------------
+
 ## Computing Measures of Center by Groups
 
 **Question**: Who travels further, on average? Casual biketown users or payment plan subscribers?
@@ -489,7 +529,7 @@ ggplot(data = biketown, mapping = aes(x = Distance_Miles)) +
 ::::: columns
 ::: {.column width="50%"}
 -   Find how much each observation deviates from the mean.
--   Idea: Compute the average of the deviations
+-   **Idea**: Compute the average of the deviations
 
 :::
 
@@ -513,7 +553,7 @@ ggplot(data = biketown, mapping = aes(x = Distance_Miles)) +
 ::::: columns
 ::: {.column width="50%" .nonincremental}
 -   Find how much each observation deviates from the mean.
--   Idea: Compute the average of the deviations
+-   **Idea**: Compute the average of the deviations
 
 $$
 \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})
@@ -541,7 +581,7 @@ $$
 ::::: columns
 ::: {.column width="50%" .nonincremental}
 -   Find how much each observation deviates from the mean.
--   Idea: Compute the average of the deviations
+-   **Idea**: Compute the average of the deviations
 
 $$
 \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})
@@ -852,6 +892,7 @@ $$
 $$
 :::
 
+- Imagine we sort our data and divide it into four evenly sized chunks (**quartiles**)
 - 25% of all observations are less than the *first quartile* Q1
 - 25% of all observations are greater than the *third quartile* Q3
 
@@ -1001,7 +1042,7 @@ ggplot(data = dogs_top5,
 
 ### Another `ggplot2` `geom`: `geom_col()`
 
-If you have already aggregated the data, you will use `geom_col()` instead of `geom_bar()`.
+If you have already aggregated the data, you will use `geom_col()` instead of `geom_bar()` to make a barplot.
 
 ```{r}
 dog_counts <- count(dogs_top5, Dog_Name)
@@ -1147,6 +1188,38 @@ count(dogs_top5, Dog_Name, Breed) %>%
 :::::
 
 **Q:** How does the interpretation change based on which variable you condition on?
+
+
+------------------------------------------------------------------------
+
+## Recap: quantitative data
+
+-   We'll frequently **summarize** quantitative data by assessing a distribution's:
+    1. Center
+    2. Spread (aka variability)
+    3. Shape
+    
+- We can most easily assess these visually via boxplot or histogram    
+
+- We quantify center and spread by calculating (or sometimes by eyeballing) **summary statistics** 
+   1. The **mean** or **median** (`mean()`, `median()`) for center
+   2. The **standard deviation**, **variance**, or **interquartile range** (`sd()`, `var()`, `IQR()`) for spread
+
+- In this class we'll usually assess shape visually (**symmetric**, **right-skewed**, or **left-skewed**?)
+    - We'll see a quantitative example on the homework
+    
+    
+------------------------------------------------------------------------
+
+## Recap: categorical data
+
+-   We'll frequently **summarize** categorical data by making tables of category **counts** or proportions
+    - Table of *counts* for 1 categorical variable = **frequency table** or **one-way frequency table**
+    - Table of *counts* for 2 categorical variables = **contingency table** or **two-way frequency table**
+    - Table of *proportions* with 2 categorical variables = **conditional proportions table**
+  
+- We can most easily visualize these tables via barplots
+    
 
 ------------------------------------------------------------------------
 

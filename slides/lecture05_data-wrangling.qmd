@@ -49,7 +49,7 @@ library(dplyr)
 
 [Megan Ayers]{.custom-subtitle}
 
-[Stat 141 \| Fall 2026 <br> Wednesday, Week 2]{.custom-subtitle}
+[Stat 141 \| Fall 2026 <br> Friday, Week 2]{.custom-subtitle}
 :::
 :::::
 
@@ -200,6 +200,11 @@ To fix how R **stores** a variable (or make a new one).
 
 ## Motivation for "filtering"
 
+```{r echo=FALSE}
+dogs <- as_tibble(dogs)
+```
+
+
 ```{r}
 count(dogs, Dog_Name)
 ```
@@ -219,7 +224,9 @@ freddy
 ```
 :::
 
-<br>
+:::
+
+::: {.column width=50%}
 
 ::: {.fragment}
 
@@ -228,10 +235,11 @@ not_freddy <- filter(dogs, Dog_Name != "Freddy")
 head(not_freddy)
 ```
 :::
-:::
 
-::: {.column width=50% .fragment}
+::: {.fragment}
+
 ![](img/freddie.jpeg){width=50%}
+:::
 :::
 :::::
 
@@ -245,23 +253,32 @@ We extract rows according to logical conditions about variable cases:
 ```{r}
 filter(dogs, Dog_Name %in% c("Freddy", "Bo"))
 ```
+
 :::
 
-<br>
+------------------------------------------------------------------------
+
+## Filtering cases
+
+We extract rows according to logical conditions about variable cases:
 
 ::: {.fragment}
+
 ```{r}
 filter(dogs, Dog_Name == "Freddy" | Dog_Name == "Bo")
 ```
+
 :::
 
-<br>
 
 ::: {.fragment}
+
 ```{r}
 filter(dogs, Dog_Name == "Rosie" & Dog_Breed == "Goldendoodle")
 ```
+
 :::
+
 
 ------------------------------------------------------------------------
 
@@ -278,8 +295,6 @@ head(not_freddy)
 ```
 :::
 
-<br>
-
 ::: {.fragment}
 ... we can write:
 ```{r}
@@ -289,8 +304,7 @@ dogs %>% filter(Dog_Name != "Freddy") %>% head()
 :::
 
 ::: {.column width=50%}
--   **Q:** Which do you prefer?
--   As you develop coding skills, consider:
+-   Either method works! As you develop coding skills, consider:
     - Readability
     - Minimizing the # of defined variables
     - Ease of debugging
@@ -300,43 +314,50 @@ dogs %>% filter(Dog_Name != "Freddy") %>% head()
 
 ------------------------------------------------------------------------
 
-
 ## Extracting variables 
 
-We can use `$` to extract a single variable
+To extract variables, we can use the `dplyr` funtion `select()`
 
 ```{r}
-dogs_top5$Dog_Name
+#| code-line-numbers: "1"
+dogs_top5 %>% select("Dog_Name", "Dog_Breed") %>%
+  head()
 ```
 
 <br>
 
 ::: fragment
-To extract multiple variables, can use syntax like `df[, c("var1", "var2")]`. 
+
+To extract just one variable it can sometimes be easier to just use `$` if
+we don't need to data wrangle
 
 ```{r}
-head(dogs_top5[, c("Dog_Name", "Dog_Breed")])
+#| code-line-numbers: "1"
+just_dog_name <- dogs_top5$Dog_Name
+head(just_dog_name)
 ```
+
 :::
 
-------------------------------------------------------------------------
 
-## FYI: We can also filter cases with syntax like `df[condition, ]`
+<!-- ------------------------------------------------------------------------ -->
 
-Rows and columns can be subset at the same time: 
+<!-- ## FYI: We can also filter cases with syntax like `df[condition, ]` -->
 
-`df[--rows to extract--, --columns to extract--]`.
+<!-- Rows and columns can be subset at the same time:  -->
 
-<br>
+<!-- `df[--rows to extract--, --columns to extract--]`. -->
 
-In this class we will rarely use this syntax, but it is common in the wild. 
+<!-- <br> -->
 
-<br>
+<!-- In this class we will rarely use this syntax, but it is common in the wild.  -->
 
-```{r}
-keep_names <- c("Maggie", "Stella")
-dogs[dogs$Dog_Name %in% keep_names, c("Dog_Name", "Dog_Breed")]
-```
+<!-- <br> -->
+
+<!-- ```{r} -->
+<!-- keep_names <- c("Maggie", "Stella") -->
+<!-- dogs[dogs$Dog_Name %in% keep_names, c("Dog_Name", "Dog_Breed")] -->
+<!-- ``` -->
 
 ------------------------------------------------------------------------
 
@@ -361,6 +382,10 @@ We use `mutate()` to create new variables, or overwrite existing ones
 head(dogs_top5)
 ```
 
+<br>
+
+::: fragment
+
 ```{r}
 dogs_top5 %>%
   mutate(animal = "dog",
@@ -368,7 +393,7 @@ dogs_top5 %>%
   head()
 ```
 
-
+:::
 
 ------------------------------------------------------------------------
 
@@ -386,17 +411,17 @@ str(ce_raw)
 
 ------------------------------------------------------------------------
 
-## Wrangling CE Data {.smaller}
+## Wrangling CE Data
 
-::::::: columns
-:::: {.column width="\"50%"}
 Want to better understand a family's income and expenditures
 
 ```{r}
-ce <- ce_raw[, c("NEWID", "PRINEARN", "FINCBTAX", "BLS_URBN",
-                 "HIGH_EDU", "TOTEXPCQ", "IRAX")]
+ce <- ce_raw %>% select("NEWID", "PRINEARN", "FINCBTAX", "BLS_URBN", "HIGH_EDU", "TOTEXPCQ", "IRAX")
 dim(ce)
 ```
+
+::::::: columns
+:::: {.column width="\"50%"}
 
 **Variables:**
 
@@ -404,12 +429,12 @@ dim(ce)
 -   `NEWID`: ID for the household
 -   `PRINEARN`: ID for which member of the household is the principal earner
 -   `FINCBTAX`: Final income before taxes for the year
+-   `BLS_URBN`: 1 = urban, 2 = rural
 :::
 ::::
 
 :::: {.column width="\"50%"}
 ::: nonincremental
--   `BLS_URBN`: 1 = urban, 2 = rural
 -   `HIGH_EDU`: Highest education in the household. 00 = Never attended, 10 = Grades 1-8, 11 = Grades 9-12, no degree, 12 = High school graduate, 13 = Some college, no degree, 14 = Associates degree, 15 = Bachelor's degree, 16 = Masters, Professional/doctorate degree
 -   `TOTEXPCQ` = Total household expenditures for the current quarter
 -   `IRAX` = Total in retirement funds
@@ -717,6 +742,11 @@ head(colleges[, c("region", "state", "tier_name", "name", "mr_kq5_pq1")])
 **In groups of 3-4, on paper or the board, write pseudocode to answer**: what states in the west have the highest average mobility rate across their private and elite colleges? 
 :::
 
+```{r}
+#| echo: false
+countdown::countdown(7)
+```
+
 
 ```{r include=FALSE, eval=FALSE}
 load("data/colleges.Rdata")
@@ -734,3 +764,27 @@ colleges %>%
 
 
 ------------------------------------------------------------------------
+
+## Recap
+
+-   Five fundamental wrangling verbs from the `dplyr` package:
+    - `count()`: reduces the data set to counts of categorical variables
+    - `filter()`: subsets the data frame to rows that meet logical conditions
+    - `arrange()`: sorts the data frame
+    - `mutate()`: creates new columns in the data frame (can be combined with arithmetic, `case_when()`, and more)
+    - `summarize()`: reduces the data set to summary statistics
+-   One `dplyr` action:
+    - `group_by()`:
+        - Tells `R`: perform the following operation separately for levels of a categorical variable
+        - Mostly used in combination with `summarize()` (sometimes with `mutate()`)
+- Use the pipe `%>%` between function calls to perform several data wrangling steps at once
+
+------------------------------------------------------------------------
+
+## Next Time
+
+- Shifting gears into probability
+
+
+
+

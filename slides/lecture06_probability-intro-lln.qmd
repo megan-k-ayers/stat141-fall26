@@ -53,7 +53,7 @@ library(infer)
 
 [Megan Ayers]{.custom-subtitle}
 
-[Stat 141 \| Fall 2026 <br> Friday, Week 2]{.custom-subtitle}
+[Stat 141 \| Fall 2026 <br> Monday, Week 3]{.custom-subtitle}
 :::
 :::::
 
