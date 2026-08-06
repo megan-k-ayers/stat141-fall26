@@ -352,7 +352,7 @@ You will need access to a computer for this course.
 :::{.fragment .fade-up}
 
 -   **Quizzes**:
-    - Missed quizzes will receive scores of 0
+    - Missed quizzes will receive scores of 0 and cannot be made up
     - Lowest quiz score will be dropped (including if you missed a quiz)
 
 :::
