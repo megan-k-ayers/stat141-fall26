@@ -63,8 +63,7 @@ library(infer)
 ## Announcements/reminders
 ::: {.incremental}
 
--   Compiled PDF of all slides now on the course website
--   HW 1 due today at 11:59pm
+-   
 
 :::
 
@@ -77,6 +76,7 @@ library(infer)
 -   Introduce **probability theory**
 -   See the **Law of Large Numbers**
 -   Define and practice using key **rules of probability**
+-   Introduce **conditional probability**
 
 :::
 
@@ -528,7 +528,7 @@ $$
 
 ------------------------------------------------------------------------
 
-## The Addition Rule: Only for Disjoint events!
+## The Addition Rule: Only for Disjoint events! {.small}
 
 ::: {.callout-note icon=false}
 ## Theorem: Addition Rule
@@ -647,30 +647,171 @@ $$P(\text{Rain or Doesn't Rain}) = P(\text{Rain}) + P(\text{Doesn't Rain}) = 0.6
 It can rain *and* snow in one day! Thus, we *can't use the addition rule!*
 :::
 
+
+
+# Conditional Probability
+
+------------------------------------------------------------------------
+
+## Activity: Coffee or Tea?
+
+A survey was given to 100 Math 141 students in 2017. Some results are summarized below:
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+|           | Coffee | Tea | total |
+|-----------|--------|-----|-------|
+| First-year| 7      | 10  | 17    |
+| Sophomore | 25     | 20  | 45    |
+| Junior    | 13     | 12  | 25    |
+| Senior    | 8      | 5   | 13    |
+| **total** | **53** | **47** | **100** |
+
+:::
+
+::: {.column width=50%}
+
+::: {.incremental}
+1. What is the probability that a **random student** prefers *coffee*?
+
+2. What is the probability that a **random student** was a *sophomore*?
+
+3. What is the probability that a **random student** was a *sophomore* and preferred *coffee*?
+
+4. What is the probability that a **random *sophomore*** preferred *coffee*?
+:::
+
+:::
+
+::::
+
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
+
+
+------------------------------------------------------------------------
+
+## Conditional Probability
+
+**Conditional Probability**: probability of something occurring, **given** that another event has **already** occurred.
+
+::: {.fragment}
+We write *the conditional probability of Event A given Event B has occurred* as, 
+
+$$P(A\ | \ B)$$
+:::
+
+::: {.fragment}
+In the previous example,
+
+::: {.incremental}
+- Question: What is the probability that a random *sophomore* preferred *coffee*?
+- Event A: The student prefers coffee
+- Event B: The student is a sophomore
+- Answer: P(Coffee | Sophomore) = P(A|B)
+:::
+:::
+
+------------------------------------------------------------------------
+
+## Conditional Probability
+
+How do we calculate conditional probabilities?
+
+::: {.fragment}
+$$
+P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
+$$
+:::
+
+::: {.fragment}
+In general,
+
+::: {.callout-note icon=false}
+## Theorem: Conditional Probability Rule
+The Conditional Probability of an event $A$ given another event $B$ is
+$$
+P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
+$$
+:::
+:::
+
+::: fragment
+
+- Example: the probability that a student who is a sophomore (B) prefers coffee (A):
+$$P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}$$
+
+:::
+
+
 ------------------------------------------------------------------------
 
 ## Recap
 
-Today we defined:
+::: fragment
 
-::: {.incremental}
-- Random processes, events, probability, probability models
-- Law of Large Numbers
-- Addition Rule and Complement Rule
+::: {.callout-note icon=false}
+## Definition: Probability
+The **probability** of a particular **event** is the proportion of times the event would occur, if we observed the random process an *arbitrarily large* number of times.
 :::
 
+:::
 
-::: {.fragment}
+::: {.callout-note .fragment icon=false}
+## Law of Large Numbers
+Observed proportions may deviate from expected probabilities when $n$ is small, but the deviation decreases as $n$ increases. Think about the proportion of heads you expect from 10 vs 1,000,000 coin flips.
+:::
 
-### Next time
+::: {.callout-note .fragment icon=false}
+## Theorem: Addition Rule
+The probability that at least one event occurs in a pair of **disjoint** events is the sum of their individual probabilities:
+$$
+P(A \textrm{ or } B) = P(A) + P(B)
+$$
+:::
 
--   More probability rules and an activity!
+::::: columns
+
+::: {.column width=40%}
+
+::: {.callout-note .fragment icon=false}
+## Theorem: Complement Rule
+$$
+P(A^c) = 1 - P(A)
+$$
+:::
 
 :::
+
+::: {.column width=60%}
+
+::: {.callout-note .fragment icon=false}
+## Theorem: Conditional Probability Rule
+The Conditional Probability of an event $A$ given another event $B$ is
+$$
+P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
+$$
+:::
+
+:::
+
+:::::
+
 
 ------------------------------------------------------------------------
 
-## Quick note
+### Next time
+
+-   More on conditional probability
+-   More probability rules
+-   Longer activity!
+
+
+### Quick note
 
 -   Even if you arrive to class late, you can fill out the attendance form by coming up after class! 
 

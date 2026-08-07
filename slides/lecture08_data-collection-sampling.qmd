@@ -56,7 +56,7 @@ library(tidyverse)
 
 ## Announcements/Reminders
 
-![](img/HEDS Survey - Slide.jpg){width=80%}
+- 
 
 ------------------------------------------------------------------------
 
@@ -76,7 +76,7 @@ library(tidyverse)
 :::
 
 ::: fragment
-→ Talk it through with a course assistant, a fellow Math 141 student, or Megan so together we can verbalize the process of going from Q to A.
+→ Talk it through with a course assistant, a fellow Stat 141 student, or Megan so together we can verbalize the process of going from Q to A.
 :::
 
 <br>
@@ -141,11 +141,16 @@ Every statistical investigation should clearly identify and compare:
 
 ## Who are the data supposed to represent?
 
-![](img/cloud_population.png){width="60%" fig-align="center"}
+![](img/cloud_population.png){width="55%" fig-align="center"}
 
 In a **census**, we have data on the entire population! 
 
-But usually, we don't have the money, time, or ability to do this. 
+Lets us calculate summary statistics about the whole population (we call these **parameters**).
+
+
+::: fragment
+But usually, we don't have the money, time, or ability to do this :(
+:::
 
 ------------------------------------------------------------------------
 
@@ -154,6 +159,14 @@ But usually, we don't have the money, time, or ability to do this.
 ![](img/sampling_clouds.png){width="50%" fig-align="center"}
 
 Instead, we use a **sample** of the population, and use the sample to draw conclusions about the **population**.
+
+<br>
+
+:::fragment
+
+We calculate **statistics** based on our **sample** and use these as **estimates** of the population **parameters** that we really want to know.
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -663,7 +676,21 @@ ggplot(data = NHANES, mapping = aes(x = Age, y = Height)) +
 
 ------------------------------------------------------------------------
 
-## Next time: 
+### Recap
+
+-   We often want to learn about an entire **population** (ex. all US voters) but only have access to a **sample** (ex. 1000 survey respondents)
+-   We can learn about the population from the sample **IF** the sample is **representative** of the population
+-   **Sampling bias** occurs when systematic differences between our sample and the population lead us to make incorrect conclusions
+-   Three ways to obtain a representative sample:
+    - **Simple random sampling** (select cards from *one* hat)
+    - **Cluster random sampling** (select some of many hats, take their cards)
+    - **Stratified random sampling** (select some cards from every hat)
+    
+    
+------------------------------------------------------------------------
+
+
+### Next time: 
 
 -   Study design
 

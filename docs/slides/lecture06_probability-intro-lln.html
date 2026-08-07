@@ -147,8 +147,7 @@
 <section id="announcementsreminders" class="slide level2">
 <h2>Announcements/reminders</h2>
 <ul>
-<li class="fragment">Compiled PDF of all slides now on the course website</li>
-<li class="fragment">HW 1 due today at 11:59pm</li>
+<li class="fragment"></li>
 </ul>
 </section>
 <section id="goals-for-today" class="slide level2">
@@ -157,6 +156,7 @@
 <li class="fragment">Introduce <strong>probability theory</strong></li>
 <li class="fragment">See the <strong>Law of Large Numbers</strong></li>
 <li class="fragment">Define and practice using key <strong>rules of probability</strong></li>
+<li class="fragment">Introduce <strong>conditional probability</strong></li>
 </ul>
 </section>
 <section>
@@ -207,7 +207,7 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_7556b2f9" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_ed66dc13" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -356,7 +356,7 @@ P(\textrm{Heads})=0.5 \quad \textrm{or} \quad P(H)=0.5
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a0a46600" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_1c0200df" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -531,7 +531,7 @@ P( \textrm{Odd} ) &amp;= P(\textrm{roll a 1, 3, or 5})\\
 \end{aligned}
 \]</span></p>
 </section>
-<section id="the-addition-rule-only-for-disjoint-events" class="slide level2">
+<section id="the-addition-rule-only-for-disjoint-events" class="slide level2 small">
 <h2>The Addition Rule: Only for Disjoint events!</h2>
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
@@ -658,24 +658,201 @@ P(A^c) = 1 - P(A)
 </ol>
 <p>It can rain <em>and</em> snow in one day! Thus, we <em>can’t use the addition rule!</em></p>
 </div>
+</section></section>
+<section>
+<section id="conditional-probability" class="title-slide slide level1 center">
+<h1>Conditional Probability</h1>
+
 </section>
-<section id="recap" class="slide level2">
-<h2>Recap</h2>
-<p>Today we defined:</p>
-<ul>
-<li class="fragment">Random processes, events, probability, probability models</li>
-<li class="fragment">Law of Large Numbers</li>
-<li class="fragment">Addition Rule and Complement Rule</li>
-</ul>
+<section id="activity-coffee-or-tea" class="slide level2">
+<h2>Activity: Coffee or Tea?</h2>
+<p>A survey was given to 100 Math 141 students in 2017. Some results are summarized below:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Coffee</th>
+<th>Tea</th>
+<th>total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First-year</td>
+<td>7</td>
+<td>10</td>
+<td>17</td>
+</tr>
+<tr class="even">
+<td>Sophomore</td>
+<td>25</td>
+<td>20</td>
+<td>45</td>
+</tr>
+<tr class="odd">
+<td>Junior</td>
+<td>13</td>
+<td>12</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<td>Senior</td>
+<td>8</td>
+<td>5</td>
+<td>13</td>
+</tr>
+<tr class="odd">
+<td><strong>total</strong></td>
+<td><strong>53</strong></td>
+<td><strong>47</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<ol type="1">
+<li class="fragment"><p>What is the probability that a <strong>random student</strong> prefers <em>coffee</em>?</p></li>
+<li class="fragment"><p>What is the probability that a <strong>random student</strong> was a <em>sophomore</em>?</p></li>
+<li class="fragment"><p>What is the probability that a <strong>random student</strong> was a <em>sophomore</em> and preferred <em>coffee</em>?</p></li>
+<li class="fragment"><p>What is the probability that a <strong>random <em>sophomore</em></strong> preferred <em>coffee</em>?</p></li>
+</ol>
+</div></div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_fa5b488f" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="conditional-probability-1" class="slide level2">
+<h2>Conditional Probability</h2>
+<p><strong>Conditional Probability</strong>: probability of something occurring, <strong>given</strong> that another event has <strong>already</strong> occurred.</p>
 <div class="fragment">
-<h3 id="next-time">Next time</h3>
+<p>We write <em>the conditional probability of Event A given Event B has occurred</em> as,</p>
+<p><span class="math display">\[P(A\ | \ B)\]</span></p>
+</div>
+<div class="fragment">
+<p>In the previous example,</p>
 <ul>
-<li>More probability rules and an activity!</li>
+<li class="fragment">Question: What is the probability that a random <em>sophomore</em> preferred <em>coffee</em>?</li>
+<li class="fragment">Event A: The student prefers coffee</li>
+<li class="fragment">Event B: The student is a sophomore</li>
+<li class="fragment">Answer: P(Coffee | Sophomore) = P(A|B)</li>
 </ul>
 </div>
 </section>
-<section id="quick-note" class="slide level2">
-<h2>Quick note</h2>
+<section id="conditional-probability-2" class="slide level2">
+<h2>Conditional Probability</h2>
+<p>How do we calculate conditional probabilities?</p>
+<div class="fragment">
+<p><span class="math display">\[
+P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>In general,</p>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Conditional Probability Rule</strong></p>
+</div>
+<div class="callout-content">
+<p>The Conditional Probability of an event <span class="math inline">\(A\)</span> given another event <span class="math inline">\(B\)</span> is <span class="math display">\[
+P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>Example: the probability that a student who is a sophomore (B) prefers coffee (A): <span class="math display">\[P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}\]</span></li>
+</ul>
+</div>
+</section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Definition: Probability</strong></p>
+</div>
+<div class="callout-content">
+<p>The <strong>probability</strong> of a particular <strong>event</strong> is the proportion of times the event would occur, if we observed the random process an <em>arbitrarily large</em> number of times.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Law of Large Numbers</strong></p>
+</div>
+<div class="callout-content">
+<p>Observed proportions may deviate from expected probabilities when <span class="math inline">\(n\)</span> is small, but the deviation decreases as <span class="math inline">\(n\)</span> increases. Think about the proportion of heads you expect from 10 vs 1,000,000 coin flips.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Addition Rule</strong></p>
+</div>
+<div class="callout-content">
+<p>The probability that at least one event occurs in a pair of <strong>disjoint</strong> events is the sum of their individual probabilities: <span class="math display">\[
+P(A \textrm{ or } B) = P(A) + P(B)
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Complement Rule</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[
+P(A^c) = 1 - P(A)
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Conditional Probability Rule</strong></p>
+</div>
+<div class="callout-content">
+<p>The Conditional Probability of an event <span class="math inline">\(A\)</span> given another event <span class="math inline">\(B\)</span> is <span class="math display">\[
+P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="next-time">Next time</h3>
+<ul>
+<li>More on conditional probability</li>
+<li>More probability rules</li>
+<li>Longer activity!</li>
+</ul>
+<h3 id="quick-note">Quick note</h3>
 <ul>
 <li>Even if you arrive to class late, you can fill out the attendance form by coming up after class!</li>
 </ul>

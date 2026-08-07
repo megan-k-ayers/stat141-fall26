@@ -61,7 +61,7 @@ theme_set(theme_bw())
 
 ### Announcements/Reminders
 
-- Groupwork expectations  
+- Quiz tomorrow
 
 ------------------------------------------------------------------------
 
@@ -71,6 +71,7 @@ theme_set(theme_bw())
 -   Introduced **probability theory**
 -   Saw the **Law of Large Numbers**
 -   Defined and practiced using key **rules of probability**
+-   Introduced **conditional probability**
 :::
 
 <br>
@@ -78,55 +79,10 @@ theme_set(theme_bw())
 ### Goals for Today
 
 ::: {.incremental}
-- Introduce **Conditional Probability**
+- Review **Conditional Probability**
 - Define **Independence** and the **Multiplication Rule**
 - Practice using the **Law of Total Probability** and **Bayes' Rule**
 :::
-
-
-
-# Conditional Probability
-
-------------------------------------------------------------------------
-
-## Activity 1: Coffee or Tea?
-
-A survey was given to 100 Math 141 students in 2017. Some results are summarized below:
-
-:::: {.columns}
-
-::: {.column width=50%}
-
-|           | Coffee | Tea | total |
-|-----------|--------|-----|-------|
-| First-year| 7      | 10  | 17    |
-| Sophomore | 25     | 20  | 45    |
-| Junior    | 13     | 12  | 25    |
-| Senior    | 8      | 5   | 13    |
-| **total** | **53** | **47** | **100** |
-
-:::
-
-::: {.column width=50%}
-
-::: {.incremental}
-1. What is the probability that a **random student** prefers *coffee*?
-
-2. What is the probability that a **random student** was a *sophomore*?
-
-3. What is the probability that a **random student** was a *sophomore* and preferred *coffee*?
-
-4. What is the probability that a **random *sophomore*** preferred *coffee*?
-:::
-
-:::
-
-::::
-
-```{r}
-#| echo: false
-countdown::countdown(3)
-```
 
 
 ------------------------------------------------------------------------
@@ -142,7 +98,7 @@ $$P(A\ | \ B)$$
 :::
 
 ::: {.fragment}
-In the previous example,
+Example from the end of last class,
 
 ::: {.incremental}
 - Question: What is the probability that a random *sophomore* preferred *coffee*?
@@ -178,10 +134,39 @@ $$
 
 ------------------------------------------------------------------------
 
-## Answers to Activity 1
+## Activity from last class : Coffee or Tea? {.small}
+
+:::: {.columns}
+
+::: {.column width=40%}
+
+|           | Coffee | Tea | total |
+|-----------|--------|-----|-------|
+| First-year| 7      | 10  | 17    |
+| Sophomore | 25     | 20  | 45    |
+| Junior    | 13     | 12  | 25    |
+| Senior    | 8      | 5   | 13    |
+| **total** | **53** | **47** | **100** |
+
+:::
+
+::: {.column width=60%}
+
+<br><br><br>
+
+::: {.incremental}
 
 - Event $A$: The student prefers coffee
 - Event $B$: The student is a sophomore
+
+:::
+
+:::
+
+
+::::
+
+<br>
 
 ::: {.fragment}
 1. **Probability student prefers coffee:** $P(\text{Coffee}) = P(A) = \frac{53}{100}$
@@ -199,6 +184,7 @@ $$
 4. **Probability a random sophomore prefers coffee:** 
 $$P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}$$
 :::
+
 
 # Using Conditional Probability
 
@@ -318,6 +304,32 @@ Checks out!
 :::
 :::
 :::::
+
+------------------------------------------------------------------------
+
+## Multiplication Rule - Independent Events
+
+::: {.callout-note icon=false}
+## Theorem: Multiplication Rule
+For any events $A$ and $B$,
+$$
+P(A \textrm{ and } B ) = P(A|B) \times P(B)
+$$
+:::
+
+<br>
+
+**Q:** If events $A$ and $B$ are independent, what happens to the multiplication rule?
+
+<br>
+
+::: {.fragment .callout-note icon=false}
+## Theorem: Multiplication Rule for Independent Events
+For any events $A$ and $B$ that are **independent**,
+$$
+P(A \textrm{ and } B ) = P(A) \times P(B)
+$$
+:::
 
 ------------------------------------------------------------------------
 
@@ -465,7 +477,7 @@ $$
 
 ------------------------------------------------------------------------
 
-## Activity 2: Testing for a Rare Disease
+## Activity 1: Testing for a Rare Disease
 
 Suppose that we have a rapid COVID-19 test where:
 
@@ -506,7 +518,7 @@ countdown::countdown(12)
 
 ------------------------------------------------------------------------
 
-## Activity 2: Solution
+## Activity 1: Solution
 
 **Q:** Suppose a person takes this test and receives a positive diagnosis -- what is the probability that the person has COVID?
 
@@ -524,7 +536,7 @@ countdown::countdown(12)
 
 ------------------------------------------------------------------------
 
-## Activity 2: Solution {.smaller}
+## Activity 1: Solution {.smaller}
 
 ::: {.incremental}
 
@@ -645,3 +657,63 @@ A professor from the Georgia Institute of Technology asked students on their hom
 
 
 ------------------------------------------------------------------------
+
+## Recap
+
+::::: columns
+
+::: column
+
+::: {.fragment .callout-note icon=false}
+## Theorem: Criteria for Independence
+Two events $A$ and $B$ are independent if and only if
+$$
+P(A | B) = P(A) \quad \text{and} \quad P(B | A) = P(B)
+$$
+
+In words: $A$ and $B$ are independent if and only if knowing about $B$ tells us nothing about the probability of $A$, and vise versa
+
+:::
+
+<br>
+
+::: {.fragment .callout-note icon=false}
+## Theorem: Multiplication Rule
+For any events $A$ and $B$,
+$$
+P(A \textrm{ and } B ) = P(A|B) \times P(B) = P(B) \times P(A|B)
+$$
+
+Can think: $A$ and $B$ means that first $B$ happens, then **given** that $B$ happens, $A$ also happens. 
+
+:::
+
+:::
+
+::: column
+
+::: {.callout-note .fragment icon=false}
+## Theorem: The Law of Total Probability
+Let $A$ and $B$ be events. Then
+$$
+P(A) = P(A  | B)P(B) + P(A  | B^c)P(B^c) 
+$$
+
+Think about breaking $A$ into two disjoint pieces: ($A$ and $B$) or ($A$ and $B^c$) [addition rule]. Then we apply the multiplication rule to each piece.
+
+:::
+
+<br>
+
+::: {.callout-note icon=false .fragment}
+## Theorem: Bayes' Rule
+Let $A$ and $B$ be events. Then,
+$$
+P(A|B) = \frac{P(B  | A)P(A)}{P(B)}
+$$
+This follows algebraically from conditional probability and the multiplication rule.
+:::
+
+:::
+
+:::::

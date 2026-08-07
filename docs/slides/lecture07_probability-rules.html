@@ -148,7 +148,7 @@
 
 <h3 id="announcementsreminders">Announcements/Reminders</h3>
 <ul>
-<li>Groupwork expectations</li>
+<li>Quiz tomorrow</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -158,25 +158,61 @@
 <li>Introduced <strong>probability theory</strong></li>
 <li>Saw the <strong>Law of Large Numbers</strong></li>
 <li>Defined and practiced using key <strong>rules of probability</strong></li>
+<li>Introduced <strong>conditional probability</strong></li>
 </ul>
 <p><br></p>
 <h3 id="goals-for-today">Goals for Today</h3>
 <ul>
-<li class="fragment">Introduce <strong>Conditional Probability</strong></li>
+<li class="fragment">Review <strong>Conditional Probability</strong></li>
 <li class="fragment">Define <strong>Independence</strong> and the <strong>Multiplication Rule</strong></li>
 <li class="fragment">Practice using the <strong>Law of Total Probability</strong> and <strong>Bayes’ Rule</strong></li>
 </ul>
 </section>
-<section>
-<section id="conditional-probability" class="title-slide slide level1 center">
-<h1>Conditional Probability</h1>
-
+<section id="conditional-probability" class="slide level2">
+<h2>Conditional Probability</h2>
+<p><strong>Conditional Probability</strong>: probability of something occurring, <strong>given</strong> that another event has <strong>already</strong> occurred.</p>
+<div class="fragment">
+<p>We write <em>the conditional probability of Event A given Event B has occurred</em> as,</p>
+<p><span class="math display">\[P(A\ | \ B)\]</span></p>
+</div>
+<div class="fragment">
+<p>Example from the end of last class,</p>
+<ul>
+<li class="fragment">Question: What is the probability that a random <em>sophomore</em> preferred <em>coffee</em>?</li>
+<li class="fragment">Event A: The student prefers coffee</li>
+<li class="fragment">Event B: The student is a sophomore</li>
+<li class="fragment">Answer: P(Coffee | Sophomore) = P(A|B)</li>
+</ul>
+</div>
 </section>
-<section id="activity-1-coffee-or-tea" class="slide level2">
-<h2>Activity 1: Coffee or Tea?</h2>
-<p>A survey was given to 100 Math 141 students in 2017. Some results are summarized below:</p>
+<section id="conditional-probability-1" class="slide level2">
+<h2>Conditional Probability</h2>
+<p>How do we calculate conditional probabilities?</p>
+<div class="fragment">
+<p><span class="math display">\[
+P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>In general,</p>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Conditional Probability Rule</strong></p>
+</div>
+<div class="callout-content">
+<p>The Conditional Probability of an event <span class="math inline">\(A\)</span> given another event <span class="math inline">\(B\)</span> is <span class="math display">\[
+P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="activity-from-last-class-coffee-or-tea" class="slide level2 small">
+<h2>Activity from last class : Coffee or Tea?</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:40%;">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -219,67 +255,14 @@
 </tr>
 </tbody>
 </table>
-</div><div class="column" style="width:50%;">
-<ol type="1">
-<li class="fragment"><p>What is the probability that a <strong>random student</strong> prefers <em>coffee</em>?</p></li>
-<li class="fragment"><p>What is the probability that a <strong>random student</strong> was a <em>sophomore</em>?</p></li>
-<li class="fragment"><p>What is the probability that a <strong>random student</strong> was a <em>sophomore</em> and preferred <em>coffee</em>?</p></li>
-<li class="fragment"><p>What is the probability that a <strong>random <em>sophomore</em></strong> preferred <em>coffee</em>?</p></li>
-</ol>
+</div><div class="column" style="width:60%;">
+<p><br><br><br></p>
+<ul>
+<li class="fragment">Event <span class="math inline">\(A\)</span>: The student prefers coffee</li>
+<li class="fragment">Event <span class="math inline">\(B\)</span>: The student is a sophomore</li>
+</ul>
 </div></div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_e69856c0" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
-</div>
-</section>
-<section id="conditional-probability-1" class="slide level2">
-<h2>Conditional Probability</h2>
-<p><strong>Conditional Probability</strong>: probability of something occurring, <strong>given</strong> that another event has <strong>already</strong> occurred.</p>
-<div class="fragment">
-<p>We write <em>the conditional probability of Event A given Event B has occurred</em> as,</p>
-<p><span class="math display">\[P(A\ | \ B)\]</span></p>
-</div>
-<div class="fragment">
-<p>In the previous example,</p>
-<ul>
-<li class="fragment">Question: What is the probability that a random <em>sophomore</em> preferred <em>coffee</em>?</li>
-<li class="fragment">Event A: The student prefers coffee</li>
-<li class="fragment">Event B: The student is a sophomore</li>
-<li class="fragment">Answer: P(Coffee | Sophomore) = P(A|B)</li>
-</ul>
-</div>
-</section>
-<section id="conditional-probability-2" class="slide level2">
-<h2>Conditional Probability</h2>
-<p>How do we calculate conditional probabilities?</p>
-<div class="fragment">
-<p><span class="math display">\[
-P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
-\]</span></p>
-</div>
-<div class="fragment">
-<p>In general,</p>
-<div class="callout callout-note no-icon callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Theorem: Conditional Probability Rule</strong></p>
-</div>
-<div class="callout-content">
-<p>The Conditional Probability of an event <span class="math inline">\(A\)</span> given another event <span class="math inline">\(B\)</span> is <span class="math display">\[
-P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
-\]</span></p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="answers-to-activity-1" class="slide level2">
-<h2>Answers to Activity 1</h2>
-<ul>
-<li>Event <span class="math inline">\(A\)</span>: The student prefers coffee</li>
-<li>Event <span class="math inline">\(B\)</span>: The student is a sophomore</li>
-</ul>
+<p><br></p>
 <div class="fragment">
 <ol type="1">
 <li><strong>Probability student prefers coffee:</strong> <span class="math inline">\(P(\text{Coffee}) = P(A) = \frac{53}{100}\)</span></li>
@@ -300,7 +283,7 @@ P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
 <li><strong>Probability a random sophomore prefers coffee:</strong> <span class="math display">\[P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}\]</span></li>
 </ol>
 </div>
-</section></section>
+</section>
 <section>
 <section id="using-conditional-probability" class="title-slide slide level1 center">
 <h1>Using Conditional Probability</h1>
@@ -417,6 +400,38 @@ P(A \textrm{ and } B ) = P(A|B) \times P(B)
 <p>Checks out!</p>
 </div>
 </div></div>
+</section>
+<section id="multiplication-rule---independent-events" class="slide level2">
+<h2>Multiplication Rule - Independent Events</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Multiplication Rule</strong></p>
+</div>
+<div class="callout-content">
+<p>For any events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math display">\[
+P(A \textrm{ and } B ) = P(A|B) \times P(B)
+\]</span></p>
+</div>
+</div>
+</div>
+<p><br></p>
+<p><strong>Q:</strong> If events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, what happens to the multiplication rule?</p>
+<p><br></p>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Multiplication Rule for Independent Events</strong></p>
+</div>
+<div class="callout-content">
+<p>For any events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> that are <strong>independent</strong>, <span class="math display">\[
+P(A \textrm{ and } B ) = P(A) \times P(B)
+\]</span></p>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="the-law-of-total-probability" class="slide level2">
 <h2>The Law of Total Probability</h2>
@@ -561,8 +576,8 @@ P(A|B)\times P(B) &amp;= P(B|A)\times P(A)\\
 <h1>Activity</h1>
 
 </section>
-<section id="activity-2-testing-for-a-rare-disease" class="slide level2">
-<h2>Activity 2: Testing for a Rare Disease</h2>
+<section id="activity-1-testing-for-a-rare-disease" class="slide level2">
+<h2>Activity 1: Testing for a Rare Disease</h2>
 <p>Suppose that we have a rapid COVID-19 test where:</p>
 <ul>
 <li class="fragment">Given a person <strong>does not</strong> have COVID, the test is (correctly) negative 99% of the time.</li>
@@ -596,12 +611,12 @@ P(A|B)\times P(B) &amp;= P(B|A)\times P(A)\\
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_5e30f514" minutes="12" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_8792e9e1" minutes="12" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
-<section id="activity-2-solution" class="slide level2">
-<h2>Activity 2: Solution</h2>
+<section id="activity-1-solution" class="slide level2">
+<h2>Activity 1: Solution</h2>
 <p><strong>Q:</strong> Suppose a person takes this test and receives a positive diagnosis – what is the probability that the person has COVID?</p>
 <div class="fragment">
 <ul>
@@ -619,8 +634,8 @@ P(A|B)\times P(B) &amp;= P(B|A)\times P(A)\\
 </ul>
 </div>
 </section>
-<section id="activity-2-solution-1" class="slide level2 smaller">
-<h2>Activity 2: Solution</h2>
+<section id="activity-1-solution-1" class="slide level2 smaller">
+<h2>Activity 1: Solution</h2>
 <ul>
 <li class="fragment"><p>Test correctly diagnoses a person who <strong>does not</strong> have COVID 99% of the time<br>
 <span class="math inline">\(P(+^c | C^c) = 0.99\)</span> and <span class="math inline">\(P(+ | C^c) = 0.01\)</span></p></li>
@@ -727,8 +742,73 @@ P(A|B) = \frac{P(B  | A)P(A)}{P(B)}
 </ul>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<div class="columns">
+<div class="column">
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Criteria for Independence</strong></p>
+</div>
+<div class="callout-content">
+<p>Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if and only if <span class="math display">\[
+P(A | B) = P(A) \quad \text{and} \quad P(B | A) = P(B)
+\]</span></p>
+<p>In words: <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if and only if knowing about <span class="math inline">\(B\)</span> tells us nothing about the probability of <span class="math inline">\(A\)</span>, and vise versa</p>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Multiplication Rule</strong></p>
+</div>
+<div class="callout-content">
+<p>For any events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math display">\[
+P(A \textrm{ and } B ) = P(A|B) \times P(B) = P(B) \times P(A|B)
+\]</span></p>
+<p>Can think: <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> means that first <span class="math inline">\(B\)</span> happens, then <strong>given</strong> that <span class="math inline">\(B\)</span> happens, <span class="math inline">\(A\)</span> also happens.</p>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: The Law of Total Probability</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be events. Then <span class="math display">\[
+P(A) = P(A  | B)P(B) + P(A  | B^c)P(B^c)
+\]</span></p>
+<p>Think about breaking <span class="math inline">\(A\)</span> into two disjoint pieces: (<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>) or (<span class="math inline">\(A\)</span> and <span class="math inline">\(B^c\)</span>) [addition rule]. Then we apply the multiplication rule to each piece.</p>
+</div>
+</div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Bayes’ Rule</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be events. Then, <span class="math display">\[
+P(A|B) = \frac{P(B  | A)P(A)}{P(B)}
+\]</span> This follows algebraically from conditional probability and the multiplication rule.</p>
+</div>
+</div>
+</div>
+</div>
+</div></div>
 
 
 </section></section>
