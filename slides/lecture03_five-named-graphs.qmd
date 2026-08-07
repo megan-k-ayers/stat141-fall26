@@ -35,11 +35,11 @@ library(tidyverse)
 ```
 
 ::::: columns
-::: {.column .center width="60%"}
+::: {.column .center width="55%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="40%"}
+::: {.column .center width="45%"}
 <br>
 
 [Data Visualization: the 5 Named Graphs with <code>ggplot2</code>]{.custom-title}
@@ -775,9 +775,9 @@ ggplot(data = near_Reed,
   theme(legend.position = "bottom") 
 ```
 
+------------------------------------------------------------------------
 
-
-## Recap: `ggplot2`
+### Recap: `ggplot2`
 
 ```{r, eval = FALSE, tidy = FALSE}
 library(tidyverse)
@@ -785,24 +785,22 @@ ggplot(data = ---, mapping = aes(---)) +
   geom_---(---) 
 ```
 
-<br><br>
-
 - This is the major concept to remember
-    - Sub in `histogram`, `boxplot`, `bar`, `point`, or `line` for the `geom_` 
-    - **Aesthetic mappings** required in `aes` depend on the **geom** (see previous slides)
+    - Plug in `histogram`, `boxplot`, `bar`, `point`, or `line` for the `geom_---` 
+    - **Aesthetic mappings** required in `aes()` depend on the **geom** (see previous slides)
 
 - Can then add more layers to add detail/context
     
 - We covered a lot of ground - it takes **lots** of practice to become fluent in the details! 
 
+<br>
 
-## Next time: 
+::: {.nonincremental .fragment}
 
-::: {.nonincremental}
+### Next time: 
 
 -  Data wrangling! 
 
 :::
 
 
-------------------------------------------------------------------------

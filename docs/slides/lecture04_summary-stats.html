@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-bb035878c9beb80bfc5abc3d5219ce12.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-dcd0113d5cc71e8f14b6292e6de6236b.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -207,7 +207,7 @@
 </div><div class="column center" style="width:40%;">
 <p><br></p>
 <p><span class="custom-title">Summary Statistics</span></p>
-<p><br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Wednesday, Week 2</span></p>
 </div></div>
@@ -764,7 +764,7 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a2ddfa2a" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_68a64c4a" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
@@ -915,9 +915,6 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <p><span class="math display">\[
 s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 \]</span></p>
-<ul>
-<li>We’ll learn why we divide by <span class="math inline">\(n-1\)</span> instead of <span class="math inline">\(n\)</span> later in the course.</li>
-</ul>
 </div><div class="column" style="width:50%;">
 <p>Compute with R:</p>
 <div class="cell" data-layout-align="center">
@@ -930,36 +927,40 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 </section>
 <section id="measures-of-variability-8" class="slide level2">
 <h2>Measures of Variability</h2>
+<div style="font-size: 0.9em;">
 <ul>
 <li>Want a statistic that captures how much observations <strong>deviate</strong> from the mean</li>
 </ul>
+</div>
 <div class="columns">
-<div class="column" style="width:50%;">
-<div class="fragment">
+<div class="column" style="width:55%;">
+<div class="fragment" style="font-size: 0.9em;">
 <ul>
 <li>Find how much each observation deviates from the mean.</li>
 <li>Compute the (nearly) average of the <strong>squared</strong> deviations (<span class="math inline">\(s^2\)</span>).</li>
 <li>Because observations are squared, units differ from original data.</li>
 </ul>
 </div>
-<div class="fragment">
+<div class="fragment" style="font-size: 0.9em;">
 <ul>
 <li>The square root of the sample variance is called the <strong>sample standard deviation</strong> <span class="math inline">\(s\)</span>.</li>
 </ul>
-<p><img data-src="img/sample_var_latex.png" style="width:65.0%"></p>
+<p><img data-src="img/sample_var_latex.png" style="width:60.0%"></p>
 </div>
-</div><div class="column" style="width:50%;">
+</div><div class="column" style="width:45%;">
 <div class="fragment">
 <p>Compute in R:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">var</span>(biketown<span class="sc">$</span>Distance_Miles)  <span class="co"># Variance</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>  <span class="co"># Variance</span></span>
+<span id="cb46-2"><a></a><span class="fu">var</span>(biketown<span class="sc">$</span>Distance_Miles)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.805638</code></pre>
 </div>
 </div>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">sd</span>(biketown<span class="sc">$</span>Distance_Miles)   <span class="co"># Standard deviation </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="co"># Standard deviation </span></span>
+<span id="cb48-2"><a></a><span class="fu">sd</span>(biketown<span class="sc">$</span>Distance_Miles)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.950804</code></pre>
 </div>
@@ -1043,7 +1044,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-38-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+<p><img data-src="lecture04_summary-stats_files/figure-revealjs/unnamed-chunk-38-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1122,26 +1123,26 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <span id="cb60-9"><a></a></span>
 <span id="cb60-10"><a></a><span class="fu">head</span>(dogs_top5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Dog_Name                  Dog_Breed              Location_masked
-1    Rosie              DACHSHUND MIX POINT (-71.114047 42.367352)
-2     Luna         Labrador Retriever  POINT (-71.152822 42.38067)
-3  Charlie            English Pointer POINT (-71.107799 42.359186)
-4    Rosie                Mixed Breed POINT (-71.136168 42.376682)
-5     Lucy Goldendoodle / Labradoodle POINT (-71.136168 42.376682)
-6     Lucy       Keeshond / Dachshund POINT (-71.096823 42.365754)
-  Latitude_masked Longitude_masked    Neighborhood             Birth.Year
-1         42.3674         -71.1140       Riverside 01/01/2016 12:00:00 AM
-2         42.3807         -71.1528 Strawberry Hill 01/01/2015 12:00:00 AM
-3         42.3592         -71.1078   Cambridgeport 01/01/2012 12:00:00 AM
-4         42.3767         -71.1362  West Cambridge 01/01/2017 12:00:00 AM
-5         42.3767         -71.1362  West Cambridge 01/01/2020 12:00:00 AM
-6         42.3658         -71.0968        The Port 01/01/2018 12:00:00 AM
+<pre><code>  Dog_Name                            Dog_Breed              Location_masked
+1     Lucy                      Standard Poodle POINT (-71.079075 42.368232)
+2   Cooper            Treeing Tennessee Brindle  POINT (-71.13607 42.395315)
+3  Charlie                       Beagle / Hound  POINT (-71.12829 42.385157)
+4     Lucy                          Mixed Breed POINT (-71.096823 42.365754)
+5   Cooper Carolina Dog / Australian Cattle Dog  POINT (-71.12829 42.385157)
+6     Luna                   Labrador Retriever  POINT (-71.152822 42.38067)
+  Latitude_masked Longitude_masked      Neighborhood             Birth.Year
+1         42.3682         -71.0791    East Cambridge 01/01/2017 12:00:00 AM
+2         42.3953         -71.1361   North Cambridge 01/01/2017 12:00:00 AM
+3         42.3852         -71.1283 Neighborhood Nine 01/01/2011 12:00:00 AM
+4         42.3658         -71.0968          The Port 01/01/2018 12:00:00 AM
+5         42.3852         -71.1283 Neighborhood Nine 01/01/2023 12:00:00 AM
+6         42.3807         -71.1528   Strawberry Hill 01/01/2015 12:00:00 AM
   Gender        Expiration.Date Is.Active  Breed
-1 Female 01/01/2022 12:00:00 AM     false Single
-2 Female 01/01/2022 12:00:00 AM     false Single
+1 Female 01/01/2020 12:00:00 AM     false Single
+2   Male 01/01/2025 12:00:00 AM     false Single
 3   Male 01/01/2023 12:00:00 AM     false Single
-4 Female 01/01/2022 12:00:00 AM     false  Mixed
-5 Female 01/01/2027 12:00:00 AM      true Single
+4 Female 01/01/2021 12:00:00 AM     false  Mixed
+5   Male 01/01/2027 12:00:00 AM      true Single
 6 Female 01/01/2024 12:00:00 AM     false Single</code></pre>
 </div>
 </div>
@@ -1453,19 +1454,18 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <li class="fragment">We can most easily visualize these tables via barplots</li>
 </ul>
 </section>
-<section id="reminders-1" class="slide level2">
-<h2>Reminders</h2>
+<section class="slide level2">
+
+<h3 id="reminders-1">Reminders</h3>
 <ul>
-<li class="fragment"><p>The teaching team would love to see you in office hours!</p></li>
-<li class="fragment"><p>Next time:</p>
+<li class="fragment">The teaching team would love to see you in office hours!</li>
+</ul>
+<p><br><br></p>
+<h3 id="next-time">Next time:</h3>
 <ul>
 <li class="fragment">We’ll define <strong>data wrangling</strong> and</li>
 <li class="fragment">Learn to use more functions and methods to summarize and wrangle data</li>
-</ul></li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>

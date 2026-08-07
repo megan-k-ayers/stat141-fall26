@@ -238,7 +238,7 @@ head(not_freddy)
 
 ::: {.fragment}
 
-![](img/freddie.jpeg){width=50%}
+![](img/freddie.jpeg){width=35%}
 :::
 :::
 :::::
@@ -274,7 +274,7 @@ filter(dogs, Dog_Name == "Freddy" | Dog_Name == "Bo")
 ::: {.fragment}
 
 ```{r}
-filter(dogs, Dog_Name == "Rosie" & Dog_Breed == "Goldendoodle")
+filter(dogs, Dog_Name == "Rosie" & Dog_Breed == "Terrier")
 ```
 
 :::
@@ -291,14 +291,16 @@ The pipe operator `%>%` is a handy way to string multiple commands together in `
 ::: fragment
 ```{r}
 not_freddy <- filter(dogs, Dog_Name != "Freddy")
-head(not_freddy)
+head(not_freddy, 3)
 ```
 :::
+
+<br>
 
 ::: {.fragment}
 ... we can write:
 ```{r}
-dogs %>% filter(Dog_Name != "Freddy") %>% head()
+dogs %>% filter(Dog_Name != "Freddy") %>% head(3)
 ```
 :::
 :::

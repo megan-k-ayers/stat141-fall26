@@ -122,31 +122,31 @@ Getting Started in Stat 141
 
 <br>
 
-::: {.fragment .fade-up .midi style="font-size: 0.9em;"}
+::: {.fragment .fade-up .midi style="font-size: 0.8em;"}
 Reed's **RStudio Server**, for coursework,
 :::
 
 <br>
 
-::: {.fragment .fade-up .midi style="font-size: 0.9em;"}
+::: {.fragment .fade-up .midi style="font-size: 0.8em;"}
 A course-wide **Slack** workspace, for course communication,
 :::
 
 <br>
 
-::: {.fragment .fade-up .midi style="font-size: 0.9em;"}
+::: {.fragment .fade-up .midi style="font-size: 0.8em;"}
 **Gradescope**, for turning in assignments, and
 :::
 
 <br>
 
-::: {.fragment .fade-up .midi style="font-size: 0.9em;"}
+::: {.fragment .fade-up .midi style="font-size: 0.8em;"}
 **Moodle**, sparingly, for private course materials & info about meeting times/locations
 :::
 
 <br>
 
-::: {.fragment .fade-up .midi style="font-size: 0.9em;"}
+::: {.fragment .fade-up .midi style="font-size: 0.8em;"}
 **Textbooks** (all free and online)
 
 -   [Statistical Inference via Data Science: A ModernDive into R and the tidyverse, Second Edition](https://moderndive.com/v2) (**MD**)
@@ -260,7 +260,7 @@ You will need access to a computer for this course.
 
 ::: {.column width="45%"}
 
-::: {.fragment .fade-up}
+::: {.fragment .fade-up style="font-size: 0.9em;"}
 
 -   **Lab assignments (*weekly*)**
     - Assigned Thursday in lab
@@ -269,7 +269,7 @@ You will need access to a computer for this course.
     
 :::
 
-::: {.fragment .fade-up}
+::: {.fragment .fade-up style="font-size: 0.9em;"}
 
 -   **Homework assignments (*weekly*)**
     - Assigned on Thursdays
@@ -287,7 +287,7 @@ You will need access to a computer for this course.
 
 ::: {.column width="48%"}
 
-::: {.fragment .fade-up}
+::: {.fragment .fade-up style="font-size: 0.9em;"}
 
 -   **Quizzes (*weekly*)**
     - Taken at the beginning of lab, in person and on paper
@@ -297,7 +297,7 @@ You will need access to a computer for this course.
     
 :::
 
-::: {.fragment .fade-up}
+::: {.fragment .fade-up style="font-size: 0.9em;"}
 
 
 -   **Exam (*1 final*)**
@@ -305,9 +305,11 @@ You will need access to a computer for this course.
     
 :::
 
-::: {.fragment .fade-up}
+::: {.fragment .fade-up style="font-size: 0.9em;"}
 
-- **Readings (*each lecture*)**
+- **Readings (*each lecture, some labs*)**
+    - Opportunities to reinforce understanding of material
+    - Similar content to lecture, varying presentation/examples
 
 :::
 
@@ -421,9 +423,10 @@ If you are unsure of how to approach a particular exercise on an assignment, or 
 
 :::
 
+<br>
+
 - How I use AI
 
-- Soapbox moment
 
 ------------------------------------------------------------------------
 
@@ -448,7 +451,7 @@ We expect everyone to act and interact in ways that contribute to an open, welco
 
 ------------------------------------------------------------------------
 
-## Academic Accomodations
+## Academic Accomodations {.center}
 
 If you plan to request academic accommodations, please submit these **through the DAR student portal** as soon as possible. 
 
@@ -458,13 +461,20 @@ If you plan to request academic accommodations, please submit these **through th
 
 - Office hours are an excellent opportunity to get help on homework assignments or concepts from lecture, and to collaborate with your peers
 - The teaching team is more than happy to assist you, or just to chat and get to know you! 
-- Office hours are not a place to verify all answers or reasoning, more a place to get un-stuck and discuss general concepts
-- Please fill out [the availability survey linked here](https://forms.gle/ZwzXVng5EG172atKA) after lecture if you haven't already!!!
+- Office hours are not a place to verify all answers or reasoning, more a place to get un-stuck, discuss general concepts, work together on assignments
+
+<br>
+
+::: {.fragment .fade-up}
+
+**Important!** Please fill out [the availability survey linked here](https://forms.gle/ZwzXVng5EG172atKA) after lecture if you haven't already!!!
+
+:::
 
 ------------------------------------------------------------------------
 
 
-## Course or syllabus questions? 
+## Course or syllabus questions? {.center}
 
 ------------------------------------------------------------------------
 
@@ -472,7 +482,7 @@ If you plan to request academic accommodations, please submit these **through th
 
 :::: {.columns}
 
-::: {.column width="55%"}
+::: {.column width="45%"}
 
 ::: {.fragment .fade-up .midi}
 
@@ -599,7 +609,7 @@ Will use a wide-range of **real** and **relevant** data examples
 -   After public outcry, the Georgia Department of Public Health updated the graph:
 
 ::: {.fragment .midi}
-![](img/GAcovid2.jpg){fig-align="center" width="70%"}
+![](img/GAcovid2.jpg){fig-align="center" width="65%"}
 :::
 
 
@@ -772,7 +782,9 @@ detectors %>%
 
 Every time you get a new dataset, spend time exploring the variables.
 
-Example questions:
+::: {.fragment style="font-size: 0.9em;"}
+
+**Example questions**:
 
 -   Is each variable capturing the desired information?
 
@@ -780,14 +792,16 @@ Example questions:
 
 -   For quantitative variables, what values are possible? Were the data rounded or binned? Are those values actually encoding categories? What are the units of measurement?
 
+:::
+
 ------------------------------------------------------------------------
 
-## Recap from today
+### Recap from today
 - Spent a lot of time on course resources, logistics, policies, expectations
 - Introduced big picture of statistical thinking
 - Introduced data frames
 
-## Next time
-- Introduction to data visualization!
+<br>
 
-------------------------------------------------------------------------
+### Next time
+- Introduction to data visualization!

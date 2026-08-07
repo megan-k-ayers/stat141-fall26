@@ -1,0 +1,4 @@
+project:
+  render:
+    - "slides/*.qmd"
+  post-render: "scripts/make-handouts.sh"

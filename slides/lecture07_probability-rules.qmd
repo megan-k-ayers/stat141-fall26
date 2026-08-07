@@ -49,7 +49,7 @@ theme_set(theme_bw())
 
 [Probability II]{.custom-title}
 
-<br> <br> <br> <br> <br> 
+<br> <br> <br> <br>
 
 [Megan Ayers]{.custom-subtitle}
 
@@ -297,7 +297,7 @@ and
 **Does it work?**
 :::
 
-::: fragment
+::: {.fragment style="font-size: 0.9em;"}
 $$ P(A|B) P(B) = \left(\frac{25}{45}\right) \left(\frac{45}{100}\right) = \frac{25}{100}$$
 
 Checks out!
@@ -382,21 +382,21 @@ $$
 
 Suppose you're a medical researcher interested in population health.
 
-::: {.fragment}
+::: {.fragment style="font-size: 0.9em;"}
 - 80% of individuals *see a physician* each year
 - 20% do not
 :::
 
-::: {.fragment}
+::: {.fragment style="font-size: 0.9em;"}
 - Among people who see a physician, 95% are generally healthy.
 - Among people who *don't see* a physician, 70% are generally healthy.
 :::
 
-::: {.fragment}
+::: {.fragment style="font-size: 0.9em;"}
 **Q:** What proportion of adults are generally healthy?
 :::
 
-::: {.fragment}
+::: {.fragment style="font-size: 0.9em;"}
 Let
 
 - Event $A$: Individual is healthy
@@ -404,7 +404,7 @@ Let
 - Event: $B^c$: Individual doesn't see a physician each year
 :::
 
-::: {.fragment}
+::: {.fragment style="font-size: 0.9em;"}
 This question is asking: **$P(A)=$???**
 :::
 
@@ -445,7 +445,7 @@ Thus, 90% of adults are generally healthy!
 
 What if we know $P(B|A)$, but we want to know $P(A|B)$?
 
-::: {.callout-note icon=false .fragment}
+::: {.callout-note icon=false .fragment style="font-size: 0.9em;"}
 ## Theorem: Bayes' Rule
 Let $A$ and $B$ be events. Then,
 $$
@@ -453,7 +453,7 @@ P(A|B) = \frac{P(B  | A)P(A)}{P(B)}
 $$
 :::
 
-::: {.fragment}
+::: {.fragment style="font-size: 0.9em;"}
 **Proof:** From the definition of multiplication rule,
 $$
 \begin{align}
@@ -463,7 +463,7 @@ P(A \text{ and } B) &= P(B|A)\times P(A)
 $$
 :::
 
-::: {.fragment}
+::: {.fragment style="font-size: 0.9em;"}
 Setting these two equations equal, we find
 $$
 \begin{align}

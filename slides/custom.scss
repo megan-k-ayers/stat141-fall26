@@ -94,6 +94,10 @@ text-align: center;
     background-color: $reed-red;
   }
 }
+.reveal .slide {
+  outline: thick double #000000;
+  padding: 10px !important;
+}
 strong {
   font-weight: bold;
   color: #DAA520;

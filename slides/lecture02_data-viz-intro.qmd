@@ -410,7 +410,7 @@ countdown::countdown(4)
 
 ### What visual cues are easier to compare?
 
-![](img/visual_cues.png){width="40%" fig-align="center"}
+![](img/visual_cues.png){width="37.5%" fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -444,7 +444,7 @@ Maps, like the [Dude map](https://qz.com/316906/the-dude-map-how-american-men-re
 
 ### Color Palettes -- Qualitative
 
-![](img/dogs.png){width="70%" fig-align="center"}
+![](img/dogs.png){width="68%" fig-align="center"}
 
 ::: {aside}
 [information is beautiful's Best in Show](https://www.informationisbeautiful.net/visualizations/best-in-show-whats-the-top-data-dog/)
@@ -513,5 +513,3 @@ Today we...
 -   Friday: We'll learn about the `ggplot2` package so that we can use the grammar of graphics to create beeaauutiful visualizations!! 
     - (This is my favorite part of any project, and soon I hope it is yours too)
 
-
-------------------------------------------------------------------------

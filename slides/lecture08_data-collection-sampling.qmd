@@ -42,9 +42,9 @@ library(tidyverse)
 ::: {.column .center width="40%"}
 <br>
 
-[Data Collection and Sampling]{.custom-title}
+[Data Collection and Sampling]{.custom-title style="font-size: 2.5em;"}
 
-<br> <br> <br> <br> <br> 
+<br> <br> <br> <br>
 
 [Megan Ayers]{.custom-subtitle}
 
@@ -117,7 +117,7 @@ Remember:
 
 ## Now for Data Collection
 
-![](img/DAW.png){width="50%" fig-align="center"}
+![](img/DAW.png){width="40%" fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -292,7 +292,7 @@ We'll explore 3 types of random sampling
 -   Draw $n$ IDs/slips one-by-one to create a sample
 
 ::: {.fragment fragment-index=2}
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height = 4.75}
 
 set.seed(123)
 n <- 1000
@@ -327,7 +327,7 @@ ggplot(students, aes(x = x, y = y)) +
 -   Draw $n$ IDs/slips one-by-one to create a sample
 
 
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height = 4.75}
 
 students$sampled <- students$id %in% sample(students$id, 100)
 students_in <- students[students$sampled, ]
@@ -420,7 +420,7 @@ gg1
 -   e.g. define strata based on public vs private college and family income ranges
 
 ::: fragment
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height = 4.75}
 
 students$grp <- rep(c("Public - High Inc.", "Public - Med Inc.", "Public - Low Inc.", 
                       "Private - High Inc.", "Private - Med Inc.", "Private - Low Inc."),
@@ -496,7 +496,7 @@ gg2
 -   e.g. we take a simple random sample of schools, include all students in those schools in the sample
 
 ::: fragment
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height = 4.75}
 
 students$school <- sample(rep(1:12,
                               times = c(25, 25, 50, 50, 50, 75, 75, 75, 100, 100, 175, 200)))
@@ -528,11 +528,11 @@ students$school <- paste0("School ", students$school)
 
 ### Cluster Random Sampling
 
-**Cluster Random Sampling**: "Clusters" are non-homogeneous. We take a simple random sample of the clusters, and use all observations in those clusters as the sample.
+**Cluster Random Sampling**: "Clusters" are non-homogeneous. We take a simple random sample of the clusters, and use all (or some) observations in *those* clusters as the sample.
 
 ::::: columns
 
-::: {.column width=50%}
+::: {.column width=50% style="font-size: 0.9em;"}
 
 **Advantages**:
 
@@ -679,19 +679,16 @@ ggplot(data = NHANES, mapping = aes(x = Age, y = Height)) +
 ### Recap
 
 -   We often want to learn about an entire **population** (ex. all US voters) but only have access to a **sample** (ex. 1000 survey respondents)
--   We can learn about the population from the sample **IF** the sample is **representative** of the population
+-   We can use a sample to learn about the population **IF** it's **representative** of the population
 -   **Sampling bias** occurs when systematic differences between our sample and the population lead us to make incorrect conclusions
 -   Three ways to obtain a representative sample:
     - **Simple random sampling** (select cards from *one* hat)
     - **Cluster random sampling** (select some of many hats, take their cards)
     - **Stratified random sampling** (select some cards from every hat)
-    
-    
-------------------------------------------------------------------------
 
+<br>
 
 ### Next time: 
 
 -   Study design
 
-------------------------------------------------------------------------

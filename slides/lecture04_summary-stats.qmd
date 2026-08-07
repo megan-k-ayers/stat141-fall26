@@ -47,7 +47,7 @@ library(dplyr)
 
 [Summary Statistics]{.custom-title}
 
-<br> <br> <br> <br> <br>
+<br> <br> <br> <br>
 
 [Megan Ayers]{.custom-subtitle}
 
@@ -780,8 +780,6 @@ $$
 s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 $$
 
--   We'll learn why we divide by $n-1$ instead of $n$ later in the course.
-
 :::
 
 ::: {.column width="50%"}
@@ -797,39 +795,41 @@ var(biketown$Distance_Miles)
 
 ## Measures of Variability
 
-::: {.nonincremental}
+::: {.nonincremental style="font-size: 0.9em;"}
 
 -   Want a statistic that captures how much observations **deviate** from the mean
 
 :::
 
 ::::: columns
-::: {.column width="50%"}
-::: {.nonincremental .fragment}
+::: {.column width="55%"}
+::: {.nonincremental .fragment style="font-size: 0.9em;"}
 -   Find how much each observation deviates from the mean.
 -   Compute the (nearly) average of the **squared** deviations ($s^2$).
 -   Because observations are squared, units differ from original data.
 :::
-::: {.nonincremental .fragment}
+::: {.nonincremental .fragment style="font-size: 0.9em;"}
 -   The square root of the sample variance is called the **sample standard deviation** $s$.
 
-![](img/sample_var_latex.png){width="65%"}
+![](img/sample_var_latex.png){width="60%"}
 
 :::
 :::
 
-::: {.column width="50%" .nonincremental}
+::: {.column width="45%" .nonincremental}
 ::: fragment
 Compute in R:
 
 ```{r}
-var(biketown$Distance_Miles)  # Variance
+  # Variance
+var(biketown$Distance_Miles)
 ```
 
 <br>
 
 ```{r}
-sd(biketown$Distance_Miles)   # Standard deviation 
+# Standard deviation 
+sd(biketown$Distance_Miles)   
 ```
 
 :::
@@ -924,7 +924,7 @@ $$
 quantile(biketown$Distance_Miles, c(0.25, 0.5, 0.75))
 ```
 
-```{r fig.height = 2, out.width = "60%", fig.asp=.45, echo = F}
+```{r fig.height = 4, echo = F}
 qs <- quantile(biketown$Distance_Miles, c(0.25, 0.5, 0.75))
 (gg2 <- ggplot(biketown, aes(x = Distance_Miles)) +
     geom_histogram(bins = 50, color = "white") +
@@ -1223,13 +1223,15 @@ count(dogs_top5, Dog_Name, Breed) %>%
 
 ------------------------------------------------------------------------
 
-## Reminders
+### Reminders
 
 -   The teaching team would love to see you in office hours!
 
--   Next time: 
-    - We'll define **data wrangling** and
-    - Learn to use more functions and methods to summarize and wrangle data
+<br><br>
+
+### Next time: 
+
+- We'll define **data wrangling** and
+- Learn to use more functions and methods to summarize and wrangle data
     
-------------------------------------------------------------------------
 

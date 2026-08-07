@@ -95,7 +95,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-bb035878c9beb80bfc5abc3d5219ce12.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-dcd0113d5cc71e8f14b6292e6de6236b.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -410,7 +410,7 @@
 </div>
 </div>
 <div class="fragment">
-<p><img data-src="img/freddie.jpeg" style="width:50.0%"></p>
+<p><img data-src="img/freddie.jpeg" style="width:35.0%"></p>
 </div>
 </div></div>
 </section>
@@ -465,22 +465,17 @@
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">filter</span>(dogs, Dog_Name <span class="sc">==</span> <span class="st">"Rosie"</span> <span class="sc">&amp;</span> Dog_Breed <span class="sc">==</span> <span class="st">"Goldendoodle"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">filter</span>(dogs, Dog_Name <span class="sc">==</span> <span class="st">"Rosie"</span> <span class="sc">&amp;</span> Dog_Breed <span class="sc">==</span> <span class="st">"Terrier"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 26 × 3
-   Dog_Name Dog_Breed    Neighborhood  
-   &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;         
- 1 Rosie    Goldendoodle Mid-Cambridge 
- 2 Rosie    Goldendoodle East Cambridge
- 3 Rosie    Goldendoodle East Cambridge
- 4 Rosie    Goldendoodle West Cambridge
- 5 Rosie    Goldendoodle West Cambridge
- 6 Rosie    Goldendoodle West Cambridge
- 7 Rosie    Goldendoodle West Cambridge
- 8 Rosie    Goldendoodle West Cambridge
- 9 Rosie    Goldendoodle Mid-Cambridge 
-10 Rosie    Goldendoodle Mid-Cambridge 
-# ℹ 16 more rows</code></pre>
+<pre><code># A tibble: 6 × 3
+  Dog_Name Dog_Breed Neighborhood   
+  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;          
+1 Rosie    Terrier   North Cambridge
+2 Rosie    Terrier   North Cambridge
+3 Rosie    Terrier   North Cambridge
+4 Rosie    Terrier   North Cambridge
+5 Rosie    Terrier   North Cambridge
+6 Rosie    Terrier   North Cambridge</code></pre>
 </div>
 </div>
 </div>
@@ -493,34 +488,29 @@
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>not_freddy <span class="ot">&lt;-</span> <span class="fu">filter</span>(dogs, Dog_Name <span class="sc">!=</span> <span class="st">"Freddy"</span>)</span>
-<span id="cb18-2"><a></a><span class="fu">head</span>(not_freddy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-2"><a></a><span class="fu">head</span>(not_freddy, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  Dog_Name Dog_Breed                 Neighborhood   
-  &lt;chr&gt;    &lt;chr&gt;                     &lt;chr&gt;          
-1 STELLA   SCHNOODLE                 West Cambridge 
-2 George   Maltipoo                  North Cambridge
-3 Jack     Poodle                    Riverside      
-4 Tika     Hound                     Mid-Cambridge  
-5 Ponchi   Cocker Spaniel / Brittany Cambridgeport  
-6 Thomas   Whippet                   Baldwin        </code></pre>
+<pre><code># A tibble: 3 × 3
+  Dog_Name Dog_Breed Neighborhood   
+  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;          
+1 STELLA   SCHNOODLE West Cambridge 
+2 George   Maltipoo  North Cambridge
+3 Jack     Poodle    Riverside      </code></pre>
 </div>
 </div>
 </div>
+<p><br></p>
 <div class="fragment">
 <p>… we can write:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>dogs <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dog_Name <span class="sc">!=</span> <span class="st">"Freddy"</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>dogs <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dog_Name <span class="sc">!=</span> <span class="st">"Freddy"</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  Dog_Name Dog_Breed                 Neighborhood   
-  &lt;chr&gt;    &lt;chr&gt;                     &lt;chr&gt;          
-1 STELLA   SCHNOODLE                 West Cambridge 
-2 George   Maltipoo                  North Cambridge
-3 Jack     Poodle                    Riverside      
-4 Tika     Hound                     Mid-Cambridge  
-5 Ponchi   Cocker Spaniel / Brittany Cambridgeport  
-6 Thomas   Whippet                   Baldwin        </code></pre>
+<pre><code># A tibble: 3 × 3
+  Dog_Name Dog_Breed Neighborhood   
+  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;          
+1 STELLA   SCHNOODLE West Cambridge 
+2 George   Maltipoo  North Cambridge
+3 Jack     Poodle    Riverside      </code></pre>
 </div>
 </div>
 </div>
@@ -16487,7 +16477,7 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_94f79d2f" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_ee243d49" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
