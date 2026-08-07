@@ -8,6 +8,6 @@ execute:
 
 # Stat 141: Readings for {{< meta date >}}
 
-Before coming to lecture today, please read the following material: 
+Before coming to lecture today, please review/read the following material: 
 
 -   OI 3.2

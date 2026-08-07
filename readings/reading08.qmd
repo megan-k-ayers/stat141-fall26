@@ -10,4 +10,4 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
--   OI Section 3.1.1-3.1.6
+-   OI Section 3.1.1-3.1.6 and 3.2.1-3.2.3

@@ -10,5 +10,5 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
--   IMS 5.1 - 5.6
+-   IMS 5.1 - 5.6, 4.1-4.2.1, 4.3
 

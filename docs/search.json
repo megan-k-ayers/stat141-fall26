@@ -341,19 +341,5 @@
     "title": "STAT 141",
     "section": "Data Frames",
     "text": "Data Frames\n\n\n\n\n\n\nID\nkind\n.pred_AI\n.pred_class\ndetector\nnative\nname\nmodel\n\n\n\n\n1\nHuman\n0.9999942\nAI\nSapling\nNo\nReal TOEFL\nHuman\n\n\n2\nHuman\n0.8281448\nAI\nCrossplag\nNo\nReal TOEFL\nHuman\n\n\n3\nHuman\n0.0002137\nHuman\nCrossplag\nYes\nReal College Essays\nHuman\n\n\n4\nAI\n0.0000000\nHuman\nZeroGPT\nNA\nFake CS224N - GPT3\nGPT3\n\n\n5\nAI\n0.0017841\nHuman\nOriginalityAI\nNA\nFake CS224N - GPT3, PE\nGPT4\n\n\n6\nHuman\n0.0001783\nHuman\nHFOpenAI\nYes\nReal CS224N\nHuman\n\n\n\n\n\n\nEvery time you get a new dataset, spend time exploring the variables.\n\nExample questions:\n\nIs each variable capturing the desired information?\nFor categorical variables, what are the categories? Do those categories adequately represent that variable?\nFor quantitative variables, what values are possible? Were the data rounded or binned? Are those values actually encoding categories? What are the units of measurement?"
-  },
-  {
-    "objectID": "slides/lecture01_stat-thinking.html#recap-from-today",
-    "href": "slides/lecture01_stat-thinking.html#recap-from-today",
-    "title": "STAT 141",
-    "section": "Recap from today",
-    "text": "Recap from today\n\nSpent a lot of time on course resources, logistics, policies, expectations\nIntroduced big picture of statistical thinking\nIntroduced data frames"
-  },
-  {
-    "objectID": "slides/lecture01_stat-thinking.html#next-time",
-    "href": "slides/lecture01_stat-thinking.html#next-time",
-    "title": "STAT 141",
-    "section": "Next time",
-    "text": "Next time\n\nIntroduction to data visualization!"
   }
 ]

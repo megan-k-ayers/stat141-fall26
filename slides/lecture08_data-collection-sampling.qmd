@@ -678,13 +678,17 @@ ggplot(data = NHANES, mapping = aes(x = Age, y = Height)) +
 
 ### Recap
 
+::: {style="font-size: 0.9em;"}
+
 -   We often want to learn about an entire **population** (ex. all US voters) but only have access to a **sample** (ex. 1000 survey respondents)
 -   We can use a sample to learn about the population **IF** it's **representative** of the population
 -   **Sampling bias** occurs when systematic differences between our sample and the population lead us to make incorrect conclusions
 -   Three ways to obtain a representative sample:
     - **Simple random sampling** (select cards from *one* hat)
-    - **Cluster random sampling** (select some of many hats, take their cards)
-    - **Stratified random sampling** (select some cards from every hat)
+    - **Cluster random sampling** (select *some* from a group of many *similar* hats, take their cards)
+    - **Stratified random sampling** (select some cards from *every* hat in a group of very *different* hats)
+
+:::
 
 <br>
 
