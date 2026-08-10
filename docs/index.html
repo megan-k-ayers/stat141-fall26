@@ -214,6 +214,10 @@ window.Quarto = {
           <a href="./slides/lecture01_stat-thinking.html" class="btn btn-success btn-sm">Slides</a>
         
       
+        
+          <a href="handouts/lecture01_stat-thinking_handout.pdf" class="btn btn-success btn-sm">Slides Printout (Optional)</a>
+        
+      
     
     </p>
     </div>
@@ -1692,7 +1696,7 @@ window.Quarto = {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("XXX SITE URL HERE XXX");
+        var filterRegex = new RegExp("https:\/\/megan-k-ayers\.github\.io\/stat141-fall26\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

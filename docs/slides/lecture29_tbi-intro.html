@@ -1073,7 +1073,7 @@ H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p &lt; p_0 \ \ \tex
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("XXX SITE URL HERE XXX");
+            var filterRegex = new RegExp("https:\/\/megan-k-ayers\.github\.io\/stat141-fall26\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

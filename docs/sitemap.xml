@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>XXX SITE URL HERE XXX/syllabus.html</loc>
-    <lastmod>2026-08-10T17:55:46.008Z</lastmod>
+    <loc>https://megan-k-ayers.github.io/stat141-fall26/syllabus.html</loc>
+    <lastmod>2026-08-10T20:33:17.785Z</lastmod>
   </url>
   <url>
-    <loc>XXX SITE URL HERE XXX/office_hours.html</loc>
+    <loc>https://megan-k-ayers.github.io/stat141-fall26/office_hours.html</loc>
     <lastmod>2026-08-04T00:46:20.957Z</lastmod>
   </url>
   <url>
-    <loc>XXX SITE URL HERE XXX/index.html</loc>
+    <loc>https://megan-k-ayers.github.io/stat141-fall26/index.html</loc>
     <lastmod>2026-05-12T01:39:02.002Z</lastmod>
   </url>
   <url>
-    <loc>XXX SITE URL HERE XXX/inference_cheatsheet.html</loc>
+    <loc>https://megan-k-ayers.github.io/stat141-fall26/inference_cheatsheet.html</loc>
     <lastmod>2026-05-01T16:02:42.678Z</lastmod>
   </url>
   <url>
-    <loc>XXX SITE URL HERE XXX/readings/reading01.html</loc>
+    <loc>https://megan-k-ayers.github.io/stat141-fall26/readings/reading01.html</loc>
     <lastmod>2026-08-05T23:07:29.463Z</lastmod>
   </url>
   <url>
-    <loc>XXX SITE URL HERE XXX/slides/lecture01_stat-thinking.html</loc>
-    <lastmod>2026-08-10T17:46:20.970Z</lastmod>
+    <loc>https://megan-k-ayers.github.io/stat141-fall26/slides/lecture01_stat-thinking.html</loc>
+    <lastmod>2026-08-10T20:32:00.119Z</lastmod>
   </url>
 </urlset>

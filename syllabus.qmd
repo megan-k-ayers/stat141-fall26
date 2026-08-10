@@ -19,12 +19,12 @@ editor:
 -   Email: [meganayers@reed.edu](mailto:meganayers@reed.edu)
 -   Office hours: See [Moodle](https://moodle.reed.edu/course/view.php?id=6886) for weekly office hour times and locations. I am also happy to meet ad hoc by appointment if you have conflicts during the scheduled times. Please [email me](mailto:meganayers@reed.edu) or send me a Slack message to find a time to meet. 
 
-**Course Assistants**: We have X course assistants for STAT 141 this semester! A course assistant will be present at each lab section. Further, each course assistant will hold office hours during the week. Times and locations of course assistant office hours can be found on [Moodle](https://moodle.reed.edu/course/view.php?id=6886). Feel free to go to any course assistant's office hours, even if they are not the course assistant for your lab section. 
+**Course Assistants**: We have course assistants for STAT 141 this semester! A course assistant will be present at each lab section. Further, each course assistant will hold office hours during the week. Times and locations of course assistant office hours can be found on [Moodle](https://moodle.reed.edu/course/view.php?id=6886). Feel free to go to any course assistant's office hours, even if they are not the course assistant for your lab section. 
 
 
 **Links and course resources**:
 
-The course website, [link-here](link-here), includes information on the course, lecture slides, public course materials, and links to all other course resources:
+The course website, [https://megan-k-ayers.github.io/stat141-fall26/](https://megan-k-ayers.github.io/stat141-fall26/), includes information on the course, lecture slides, public course materials, and links to all other course resources:
 
 -   Textbooks (links on this Syllabus page)
 -   RStudio Server, for working on homework and lab assignments

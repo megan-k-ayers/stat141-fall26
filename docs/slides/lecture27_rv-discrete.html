@@ -1264,7 +1264,7 @@ P(X=3) &amp;= \frac{1}{8} \quad&amp;\quad P(X=2) &amp;= \frac{3}{8}\\
         }
           var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
           var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("XXX SITE URL HERE XXX");
+            var filterRegex = new RegExp("https:\/\/megan-k-ayers\.github\.io\/stat141-fall26\/");
           var isInternal = (href) => {
               return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }

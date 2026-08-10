@@ -11,11 +11,12 @@ project:
     - "!quiz/"
     - "!quiz-solutions"
     - "!in_class/"
+    - "!handouts/"
 
 website:
   title: "STAT 141"
   image: assets/math141-hex.png
-  site-url: "XXX SITE URL HERE XXX"
+  site-url: "https://megan-k-ayers.github.io/stat141-fall26/"
   favicon: assets/favicon.ico
   navbar:
     title: false

@@ -1,1 +1,1 @@
-Sitemap: XXX SITE URL HERE XXX/sitemap.xml
+Sitemap: https://megan-k-ayers.github.io/stat141-fall26/sitemap.xml
