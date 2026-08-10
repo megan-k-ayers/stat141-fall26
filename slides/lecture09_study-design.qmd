@@ -44,7 +44,7 @@ library(tidyverse)
 
 [Study Design]{.custom-title}
 
-<br> <br> <br> <br> <br> 
+<br> <br> <br> <br>
 
 [Megan Ayers]{.custom-subtitle}
 
@@ -56,49 +56,7 @@ library(tidyverse)
 
 ## Reminders/Announcements
 
--   Feedback for Lab 01 posted on Gradescope
--   Feedback for HW 01 coming soon
-
-------------------------------------------------------------------------
-
-## Math/Stats course interest form
-
-::: smaller
-> The Mathematics and Statistics Department is currently in the process of drafting a schedule for next academic year. In order to have a better sense of how many sections of each class to offer, we would like to know your plans for next year.
-:::
-
-::::: columns
-::: {.column width=35% .center}
-[https://tinyurl.com/math-prefs](https://tinyurl.com/math-prefs)
-![](img/math_courses_qr.jpg){width=50%}
-
-:::
-
-::: {.column width=5%}
-:::
-
-::: nonincremental
-::: {.column width=30% .smaller}
-
--   **MATH 111**: Calculus
--   **MATH 112**: Intro to Analysis
--   **MATH 113**: Discrete Structures
--   **MATH 201**: Linear Algebra
--   **MATH 202**: Vector Calculus
--   **MATH 291**: Probability
--   **MATH 321**: Real Analysis
-
-:::
-
-::: {.column width=30% .smaller}
--   **MATH 332**: Abstract Algebra
--   **STAT 241**: \*Data Science\*
--   **STAT 243**: \*Statistical Learning\*
--   **STAT 343**: Statistics Practicum
--   **STAT 394**: Causal Inference
-:::
-:::
-:::::
+-   
 
 ------------------------------------------------------------------------
 
@@ -121,11 +79,15 @@ library(tidyverse)
 
 ![](img/cloud_sample_representative.png){width="55%" fig-align="center"}
 
+::: {style="font-size: 0.9em;"}
+
 **Key questions:**
 
 -   What evidence is there that the **respondents** are **representative** of the **population**?
 -   Who is present? Who is absent?
 -   Who is overrepresented? Who is underrepresented?
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -139,7 +101,7 @@ library(tidyverse)
 
 ## Nonresponse bias
 
-![](img/sampling_bias_comic.png){width="60%" fig-align="center"}
+![](img/sampling_bias_comic.png){width="45%" fig-align="center"}
 
 **Nonresponse bias**: The respondents are **systematically** different from the non-respondents for the variables of interest.
 
@@ -156,6 +118,14 @@ Of the 10 million people surveyed, more than 2.4 million responded with 57% indi
 <!-- Sample generated using lists of phone numbers, drivers registrations, COUNTRY CLUB MEMBERSHIPS!! At the height of the depression. Sampling skewed heavily wealthy, in an election greatly determined by economic policy. -->
 
 <!-- Additionally, nonresponse bias. -->
+
+<br> <br> <br> <br> <br> <br>
+
+::: fragment
+
+**Note:** The response rate (less than 25%) is not the problem here - it's who is responding!
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -226,7 +196,7 @@ Quality over quantity!
 
 ### Typical Analysis Goals
 
-For these goals will differentiate between the roles of the variables:
+For these goals we'll differentiate between the roles of the variables:
 
 -   **Response variable**: Variable I want to better understand
 
@@ -333,10 +303,11 @@ Correlation does not imply causation ... but sometimes there's causation!
 -   Even if we aren't intending to make rigorous causal claims, we often use the terms **explanatory** and **response** variables in analyses and modeling.
 -   **Correlation** is bi-directional: If $X$ is correlated with $Y$, then $Y$ is correlated with $X$
 -   **Causation** is mono-directional: If $X$ causes $Y$, $Y$ may not cause $X$.
+
+<br><br>
+
 -   Academics in quantitative fields can be **very** sensitive to implications of causal claims - be careful with your vocab choices ("caused" vs "is associated with" vs "trends with"). 
 -   At the same time, p-hacking (for both causal and correlational findings) is a common unethical practice! We'll return to this.
-
-------------------------------------------------------------------------
 
 
 # Types of Studies
@@ -364,6 +335,7 @@ Correlation does not imply causation ... but sometimes there's causation!
     -   **Control** group that gets no treatment or a standard treatment. 
     -   **Placebo**: A fake treatment to control for the **placebo effect** where if people believe they are receiving a treatment, they may experience the desired effect regardless of whether the treatment is any good.
     -   **Blinding**: When the subjects and/or researchers don't know the explanatory group assignments.
+    -   **Deception**: When information is witheld or participants are mislead in order to prevent bias or maintain natural reactions
 
 ------------------------------------------------------------------------
 
@@ -373,11 +345,11 @@ Correlation does not imply causation ... but sometimes there's causation!
 -   A study in which the researcher actively controls one or more of the explanatory variables through random assignment.
 :::
 
--   **Another Example**: Experiment in yesterday's lab! 
+-   **Another Example**: Experiment in Lab 2! 
     -   I randomly assigned you each a piece of paper with either 82 or 531 on it
     -   I asked you to guess the number of dog breeds in the world
     -   We'll investigate the results in Lab 04 to see if there was an "anchoring effect"
-    
+
 
 ------------------------------------------------------------------------
 
@@ -417,4 +389,18 @@ countdown::countdown(5)
 
 
 ------------------------------------------------------------------------
+
+## Recap
+
+- **Randomized experiments**:
+    - A study where researchers actively control an explanatory variable (i.e. randomize a "treatment")
+    - Can lead to causal conclusions 
+- **Observational study**: 
+    - A study where researchers observe and collect data but do not actively control them
+    - Generally cannot lead to causal conclusions due to confounding variables, unless we make more assumptions and use more advanced causal inference methods
+    - Can still generate meaningful evidence for research questions
+    
+<br> 
+
+- Note that both of these types of studies can involve surveys, and both can involve *random selection of participants* or cases
 

@@ -299,11 +299,47 @@ You will need access to a computer for this course.
 
 ::: {.fragment .fade-up style="font-size: 0.9em;"}
 
+-   **NOTE:**
+    - Office hours will be a great place to work through assignments and prepare for quizzes
+    - Teaching team may indirectly or directly discuss solutions in OH or in feedback
+    - You may help each other based on your own work, but **you [may not]{.underline} distribute solutions** to students in this or other sections of 141
+
+:::
+
+:::
+
+::::
+
+:::
+
+------------------------------------------------------------------------
+
+## Assignments and Exams
+
+
+
+::: {.nonincremental}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+::: {.fragment .fade-up style="font-size: 0.9em;"}
+
 
 -   **Exam (*1 final*)**
     - Cumulative, written, and in-person
     
 :::
+
+:::
+
+::: {.column width="7%"}
+
+:::
+
+::: {.column width="48%"}
+
 
 ::: {.fragment .fade-up style="font-size: 0.9em;"}
 
@@ -318,6 +354,7 @@ You will need access to a computer for this course.
 ::::
 
 :::
+
 
 ------------------------------------------------------------------------
 
