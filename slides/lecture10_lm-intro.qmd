@@ -44,7 +44,7 @@ library(tidyverse)
 
 [Linear Models I: Introduction]{.custom-title}
 
-<br> <br> <br> <br> <br> 
+<br> <br> <br> <br> 
 
 [Megan Ayers]{.custom-subtitle}
 
@@ -54,34 +54,66 @@ library(tidyverse)
 
 ------------------------------------------------------------------------
 
+### Week 4 Survey 
+
+::: {.fragment .nonincremental}
+
+-   Fill out the [Week 4 Survey](https://tinyurl.com/stat141-4wk-survey)
+
+![https://tinyurl.com/4wk-survey](img/4wk-survey-qr.png){width=30%}
+
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(5)
+```
+
+------------------------------------------------------------------------
+
 ### Goals for Today
 
 -   Discuss the ideas of statistical modeling
 -   Learn two new summary statistics
 -   Introduce simple linear regression
 
+
 ------------------------------------------------------------------------
 
 ## Typical Analysis Goals
+
+::: {.fragment .fade-up}
 
 **Descriptive**: Want to estimate quantities (summary statistics) related to the population.
 
 → *How many trees are in the Amazon?*
 
+:::
+
+<br>
+
+::: {.fragment .fade-up}
 
 **Predictive**: Want to predict the value of a variable.
 
 → *Can I use remotely sensed data to predict forest types in the Amazon?*
 
+:::
+
+<br>
+
+::: {.fragment .fade-up}
 
 **Causal**: Want to determine if changes in a variable cause changes in another variable.
 
 → *Do financial contracts prevent people from deforesting their land in the Amazon?*
 
-<br>
+:::
 
-::: fragment
-We will focus mainly on **descriptive modeling** in this course, and occasionally on **predictive modeling** (take Math 243: Statistical Learning to learn more). If you want to learn more about **causality**, take Math 394: Causal Inference.
+<br><br>
+
+::: {.fragment .fade-up}
+We will focus mainly on **descriptive modeling** in this course, and occasionally on **predictive modeling** (take Stat 243: Statistical Learning to learn more). If you want to learn more about **causality**, take Stat 394: Causal Inference.
 :::
 
 ------------------------------------------------------------------------
@@ -102,7 +134,7 @@ where $\epsilon$ represents an error term.
 
 -   Determine a reasonable form for $f()$. (Ex: Line, curve, ...)
 
--   Estimate $f()$ with $\widehat{f}()$ using the data.
+-   Estimate $f()$ with $\widehat{f}()$ (**"f hat"**) using the data.
 
 -   Generate predicted values: $\widehat y = \widehat{f}(x)$.
 
@@ -122,61 +154,47 @@ Consider this model when:
 
 ------------------------------------------------------------------------
 
-### Example: [The Ultimate Halloween Candy Power Ranking](https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/)
+### Example: [Major League Baseball Data from the 1986 and 1987 seasons](https://www.statlearning.com/resources-second-edition)
 
-> "The social contract of Halloween is simple: Provide adequate treats to costumed masses, or be prepared for late-night tricks from those dissatisfied with your offer. To help you avoid that type of vengeance, and to help you make good decisions at the supermarket this weekend, we wanted to figure out what Halloween candy people most prefer. So we devised an experiment: Pit dozens of fun-sized candy varietals against one another, and let the wisdom of the crowd decide which one was best." -- Walt Hickey
-
-> "While we don't know who exactly voted, we do know this: 8,371 different IP addresses voted on about 269,000 randomly generated matchups. So, not a scientific survey or anything, but a good sample of what candy people like."
-
-------------------------------------------------------------------------
-
-### Example: [The Ultimate Halloween Candy Power Ranking](https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/)
-
-```{r, echo = FALSE, out.width='80%'}
-knitr::include_graphics("img/candy_ex.png")
-```
-
-------------------------------------------------------------------------
-
-### Example: [The Ultimate Halloween Candy Power Ranking](https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/)
 
 ```{r}
-candy <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv") %>%
-  mutate(sugarpercent = sugarpercent*100)
+library(ISLR)
+data(Hitters)
+hitters <- Hitters %>% filter(!is.na(Salary), !is.na(HmRun))
 
-glimpse(candy)
+glimpse(hitters)
 
 ```
 
 ------------------------------------------------------------------------
 
-### Example: [The Ultimate Halloween Candy Power Ranking](https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/)
+### Example: [Major League Baseball Data from the 1986 and 1987 seasons](https://www.statlearning.com/resources-second-edition)
 
 ::::: columns
-::: column
+::: {.column width=30%}
 -   Linear trend?
 
 -   Direction of trend?
 :::
 
-::: column
+::: {.column width=70%}
 ```{r}
 #| echo: false
-ggplot(data = candy, 
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
   geom_point(alpha = 0.6, size = 4, 
-             color = "chocolate4")
+             color = "dodgerblue")
 ```
 :::
 :::::
 
 ------------------------------------------------------------------------
 
-### Example: [The Ultimate Halloween Candy Power Ranking](https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/)
+### Example: [Major League Baseball Data from the 1986 and 1987 seasons](https://www.statlearning.com/resources-second-edition)
 
 ::::: columns
-::: column
+::: {.column width=30%}
 -   A simple linear regression model would be suitable for these data:
 
 ::: fragment
@@ -185,31 +203,32 @@ y = \beta_0 + \beta_1 x + \epsilon
 $$
 :::
 
--   $\beta_0$ and $\beta_1$ are fixed numbers
+-   $\beta_0$ and $\beta_1$ are fixed numbers ("coefficients")
 -   $\beta_0$ represents the **intercept** of a line
 -   $\beta_1$ represents the **slope** of a line
 
 :::
 
-::: column
+::: {.column width=70%}
 ```{r}
 #| echo: false
-ggplot(data = candy, 
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
   geom_point(alpha = 0.6, size = 4, 
-             color = "chocolate4") +
+             color = "dodgerblue") +
   geom_smooth(method = "lm", se = FALSE,
-              color = "deeppink2")
+              color = "magenta3")
 ```
 :::
 :::::
 
-<br>
 
 - Knowing $\beta_0$ and $\beta_1$ would help us summarize and describe the relationship between $x$ and $y$.
 
 ------------------------------------------------------------------------
+
+## Finding the Right Coefficients
 
 -   We want to find $\beta_1$ (slope) and $\beta_0$ (intercept) so that the line fits our data well
 
@@ -261,7 +280,7 @@ dat <- data_frame(x = rep(x, times = 6), y = c(y1, y2, y3, y4, y5, y6),
 
 ::: fragment
 ```{r}
-cor(candy$sugarpercent, candy$winpercent)
+cor(hitters$HmRun, hitters$Salary)
 ```
 :::
 
@@ -353,9 +372,17 @@ cat(paste0(temp$data, ": ", temp$cor_xy, "   "))
 :::
 :::::
 
+::: {style="font-size: 0.8em;"}
+
 - Correlation: how strong is the linear relationship *relative to noise*
 - Correlation and slope are related, but not the same (ex. **A** vs **E**)
 
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
 
 ------------------------------------------------------------------------
 
@@ -386,7 +413,9 @@ dat2 %>%
 
 #### Always graph the data when exploring relationships!
 
-```{r}
+<br>
+
+```{r fig.width=16, fig.height = 7}
 #| echo: false
 ggplot(data = dat2, mapping = aes(x = x, y = y)) +
   geom_point() +
@@ -399,32 +428,25 @@ ggplot(data = dat2, mapping = aes(x = x, y = y)) +
 
 ### Simple Linear Regression
 
-::::: columns
-::: column
-Let's return to the Candy Example.
+Let's return to the MLB hitters example.
 
 -   A line is a reasonable model form.
 
--   Where should the line be?
+-   Where should the line be? Slope? Intercept?
 
-    -   Slope? Intercept?
-:::
-
-::: column
-```{r}
+```{r fig.width = 12, fig.height = 6}
 #| echo: false
-ggplot(data = candy, 
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
   geom_point(alpha = 0.6, size = 4, 
-             color = "chocolate4") +
+             color = "dodgerblue") +
   geom_smooth(method = "lm", se = FALSE,
-              color = "deeppink2") + 
-  geom_smooth(method = "lm", se = FALSE, data = candy[1:30,], color = "purple") +
-  geom_smooth(method = "lm", se = FALSE, data = candy[40:80,], color = "orange") 
+              color = "magenta3") + 
+  geom_smooth(method = "lm", se = FALSE, data = hitters[240:260,], color = "darkred", fullrange = TRUE) +
+  geom_smooth(method = "lm", se = FALSE, data = hitters[40:80,], color = "orange") 
 ```
-:::
-:::::
+
 
 ------------------------------------------------------------------------
 
@@ -442,36 +464,36 @@ $$
 
 ------------------------------------------------------------------------
 
-#### Distinguishing between the **population** and the **sample**
+#### Distinguishing between the **population** and the **sample**: Terminology
 
 ::::: columns
 ::: column
 $$ 
-y = \beta_0 + \beta_1 x + \epsilon
+\underbrace{y = \beta_0 + \beta_1 x + \epsilon}_{\text{Population model}}
 $$
 
 -   Parameters:
     -   Based on the **population**
     -   Unknown if we don't have data on the whole population
-    -   EX: $\beta_0$ and $\beta_1$
+    -   EX: $\beta_0$ and $\beta_1$, AKA population coefficients
 :::
 
 ::: column
 $$
-\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
+\underbrace{\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x}_{\text{Fitted or estimated model}}
 $$
 
 -   Statistics:
     -   Based on the **sample** data
     -   Known
     -   Usually estimate a population parameter
-    -   EX: $\widehat{\beta}_0$ and $\widehat{\beta}_1$
+    -   EX: $\widehat{\beta}_0$ and $\widehat{\beta}_1$, AKA estimated or "fitted" coefficients
 :::
 :::::
 
 ------------------------------------------------------------------------
 
-### Method of Least Squares
+### Method of Least Squares: More Terminology
 
 Need two key definitions:
 
@@ -495,10 +517,10 @@ $$
 
 ------------------------------------------------------------------------
 
-### Method of Least Squares
+### Method of Least Squares: Minimizing Residuals
 
 :::::: columns
-:::: column
+:::: {.column width=40%}
 -   Want residuals to be small.
 
 -   Minimize a function of the residuals.
@@ -510,21 +532,37 @@ $$
 \sum_{i = 1}^n e^2_i
 $$
 :::
+
+
+::: fragment
+
+Sidenote:
+
+-   We could use $\sum_{i = 1}^n |e_i|$
+
+:::
+
 ::::
 
-::: column
-```{r, echo=FALSE, eval = TRUE}
-ggplot(data = candy, 
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
+::: {.column width=60%}
+```{r, echo=FALSE, eval = TRUE, fig.height = 7, fig.width = 11}
+set.seed(123)
+temp <- hitters %>%
+  group_by(HmRun) %>%
+  sample_n(1)
+
+ggplot(data = temp, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
   geom_point(alpha = 0.6, size = 4, 
-             color = "chocolate4") +
-  stat_smooth(method = "lm", se = FALSE,
-              color = "deeppink2") +
-  annotate("segment", x = candy$sugarpercent, 
-           xend = candy$sugarpercent, 
-           y = candy$winpercent, yend = 44.6094 + .1192*candy$sugarpercent, 
-           color = "darkblue", arrow = arrow(length = unit(0.03, "npc"))) + 
+             color = "dodgerblue") +
+  geom_smooth(method = "lm", se = FALSE,
+              color = "magenta3") +
+  annotate("segment", x = temp$HmRun, 
+           xend = temp$HmRun, 
+           y = temp$Salary, yend = 278.671 + 20.290*temp$HmRun, 
+           color = "darkblue", arrow = arrow(length = unit(0.03, "npc"))) +
+  ggtitle("Subsample of hitters") +
   geom_point()
 
   
@@ -532,19 +570,13 @@ ggplot(data = candy,
 :::
 ::::::
 
-::: fragment
 
-Sidenote:
-
--   We could use $\sum_{i = 1}^n |e_i|$
 -   But, this is less common, less computationally efficient, and lacks theoretical advantages
 -   $\sum_{i = 1}^n e_i^2$ appropriately weights one large residual as "worse" than many small ones
 
-:::
-
 ------------------------------------------------------------------------
 
-### Method of Least Squares
+### Method of Least Squares: Coefficient Formulas
 
 -   Suppose $n$ observations of $x$ and $y$ are collected: $(x_1, y_1), \ldots, (x_n, y_n)$.
 
@@ -567,7 +599,7 @@ $$
 
 ------------------------------------------------------------------------
 
-### Method of Least Squares
+### Method of Least Squares: Coefficient Formulas
 
 ::: nonincremental
 -   Suppose $n$ observations of $x$ and $y$ are collected: $(x_1, y_1), \ldots, (x_n, y_n)$.
@@ -591,7 +623,7 @@ $$
 
 ------------------------------------------------------------------------
 
-### Method of Least Squares
+### Method of Least Squares: Interpretation
 
 Once we know $\widehat{\beta}_0$ and $\widehat{\beta}_1$, we can estimate the whole function with:
 
@@ -611,6 +643,13 @@ We need to be precise and careful when interpreting $\beta_0$ and $\beta_1$ (and
 
 :::
 
+::: fragment
+
+**I will be a stickler about this! Make sure to adhere to this language, using problem context, for full points.**
+
+:::
+
+<br>
 
 ::: fragment
 
@@ -623,76 +662,82 @@ Unless experimental data is involved, avoid causal language.
 
 ------------------------------------------------------------------------
 
-### Method of Least Squares
+### Method of Least Squares: Plotting Regression Lines
 
 `ggplot2` will compute the line and add it to your plot using `geom_smooth(method = "lm")`
 
 ```{r}
 #| output-location: column
-ggplot(data = candy, 
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
   geom_point(alpha = 0.6, size = 4, 
-             color = "chocolate4") +
+             color = "dodgerblue") +
   geom_smooth(method = "lm", se = FALSE,
-              color = "deeppink2")
+              color = "magenta3")
 ```
 
 We can calculate the **exact** values of $\widehat{\beta}_0$ and $\widehat{\beta}_1$ using our formulas, by hand or in `R`
 
 ------------------------------------------------------------------------
 
-### Method of Least Squares
+### Method of Least Squares: Practice Interpreting
 
 ::::: columns
 ::: {.column width=50%}
 $$
 \widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
 $$
-In this case, $\widehat{\beta}_0 = 44.6094$ and $\widehat{\beta}_1 = 0.1192$.
+Here, $\widehat{\beta}_0 = 330.59$ and $\widehat{\beta}_1 = 17.67$ (units of \$1000).
+
+**Q**: How should we interpret these coefficients? 
+
 :::
 
 ::: {.column width=50%}
 ```{r, echo = FALSE}
-ggplot(data = candy, 
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
   geom_point(alpha = 0.6, size = 4, 
-             color = "chocolate4") +
+             color = "dodgerblue") +
   geom_smooth(method = "lm", se = FALSE,
-              color = "deeppink2")
+              color = "magenta3")
 ```
 
 
 :::
 :::::
 
-
+-   **Intercept:** We [[expect/predict]]{.underline} a player's **Salary** to be \$330,000 [on average]{.underline} when they've hit 0 **home runs**.
+-   **Slope**: For **each additional home run** that a player hits, we [[expect/predict]]{.underline} their **Salary** to increase by \$17,670 [on average]{.underline}.
 
 
 ------------------------------------------------------------------------
 
-### Method of Least Squares
+### Method of Least Squares: Practice Predicting
 
 ::::: columns
 ::: {.column width=50%}
 $$
 \widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
 $$
-In this case, $\widehat{\beta}_0 = 44.6094$ and $\widehat{\beta}_1 = 0.1192$.
+Here, $\widehat{\beta}_0 = 330.59$ and $\widehat{\beta}_1 = 17.67$ (units of \$1000).
+
+
 :::
 
 ::: {.column width=50%}
 ```{r, echo = FALSE}
-ggplot(data = candy, 
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
   geom_point(alpha = 0.6, size = 4, 
-             color = "chocolate4") +
+             color = "dodgerblue") +
   geom_smooth(method = "lm", se = FALSE,
-              color = "deeppink2") +
-  annotate("point", x = 73.199999, y = candy$winpercent[candy$sugarpercent == 73.199999],
-           color = "green3", size = 4)
+              color = "magenta3") +
+  annotate("point", x = 30, y = hitters$Salary[hitters$HmRun == 30],
+           color = "chocolate4", size = 5)
 ```
 
 
@@ -700,33 +745,33 @@ ggplot(data = candy,
 :::::
 
 ::: nonincremental
-- **Q**: Suppose a new candy bar has `sugarpercent = 73`. What does the model predict for `winpercent`?
+- **Q**: Suppose a player hit `HmRun = 30`. What does the model predict for `Salary`?
 :::
 
 ------------------------------------------------------------------------
 
-### Method of Least Squares
+### Method of Least Squares: Practice Predicting
 
 ::::: columns
 ::: {.column width=50%}
 $$
 \widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
 $$
-In this case, $\widehat{\beta}_0 = 44.6094$ and $\widehat{\beta}_1 = 0.1192$.
+Here, $\widehat{\beta}_0 = 330.59$ and $\widehat{\beta}_1 = 17.67$ (units of \$1000).
 :::
 
 ::: {.column width=50%}
 ```{r, echo = FALSE}
-ggplot(data = candy, 
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
   geom_point(alpha = 0.6, size = 4, 
-             color = "chocolate4") +
+             color = "dodgerblue") +
   geom_smooth(method = "lm", se = FALSE,
-              color = "deeppink2") +
-  annotate("point", x = 73.199999, y = candy$winpercent[candy$sugarpercent == 73.199999],
-           color = "green3", size = 4) +
-  annotate("point", x = 73.199999, y = 53.311, color = "purple", size = 6)
+              color = "magenta3") +
+  annotate("point", x = 30, y = hitters$Salary[hitters$HmRun == 30],
+           color = "chocolate4", size = 5) +
+  annotate("point", x = 30, y = 860.69, color = "magenta", size = 6)
 ```
 
 
@@ -734,12 +779,55 @@ ggplot(data = candy,
 :::::
 
 ::: nonincremental
-- **Q**: Suppose a new candy bar has `sugarpercent = 73`. What does the model predict for `winpercent`?
-- **A**: $\widehat{y} = 44.6094 + 0.1192 \cdot 73$ = `r 44.6094 + 0.1192*73`
+- **Q**: Suppose a player hit `HmRun = 30`. What does the model predict for `Salary`?
+- **A**: $\widehat{y} = 330.59 + 17.67 \cdot 30$ = `r 330.59+17.67*30`
 :::
 
-- This is different from the actual `winpercent`s we see for candies with `sugarpercent = 73`.
+- This is different from the actual `Salary` we see for a player with `HmRun = 30`.
 - This isn't unexpected: the line predicts the **average** $y$ for each value of $x$.
+
+------------------------------------------------------------------------
+
+### Method of Least Squares: Equations in LaTeX
+
+::::: columns
+::: {.column width=50%}
+$$
+\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
+$$
+Here, $\widehat{\beta}_0 = 330.59$ and $\widehat{\beta}_1 = 17.67$ (units of \$1000).
+:::
+
+::: {.column width=50%}
+```{r, echo = FALSE}
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
+  geom_point(alpha = 0.6, size = 4, 
+             color = "dodgerblue") +
+  geom_smooth(method = "lm", se = FALSE,
+              color = "magenta3") +
+  annotate("point", x = 30, y = hitters$Salary[hitters$HmRun == 30],
+           color = "chocolate4", size = 5) +
+  annotate("point", x = 30, y = 860.69, color = "magenta", size = 6)
+```
+
+
+:::
+:::::
+
+::: nonincremental
+- **Q**: Suppose a player hit `HmRun = 30`. What does the model predict for `Salary`?
+- **A**: $\widehat{y} = 330.59 + 17.67 \cdot 30$ = `r 330.59+17.67*30`
+:::
+
+**Side note**: You will often be asked to write out this kind of model equation. You can do this nicely using a little LaTeX in your `.qmd` file, like this:
+
+::: {.center}
+
+`$\widehat{y} = 330.59 + 17.67 \cdot 30$`
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -749,15 +837,15 @@ We can visualize the accuracy of a linear model using residual plots:
 
 ```{r, echo=FALSE}
 
-lm_fit <- lm(winpercent ~ sugarpercent, candy)
-df <- data.frame(y = candy$winpercent,
-                 x = candy$sugarpercent,
+lm_fit <- lm(Salary ~ HmRun, hitters)
+df <- data.frame(y = hitters$Salary,
+                 x = hitters$HmRun,
                  ypred = lm_fit$fitted.values,
                  residual = lm_fit$residuals)
 ggplot(df, aes(x = x, y = residual)) +
   geom_hline(aes(yintercept = 0), color = "gray60", lwd = 1) +
   geom_point() +
-  annotate("point", x = 73.199999, y = df$residual[df$x == 73.199999],
+  annotate("point", x = 30, y = df$residual[df$x == 30],
            color = "green3", size = 2.5) +
   theme_classic()
 
@@ -803,9 +891,32 @@ countdown::countdown(3)
 
 ------------------------------------------------------------------------
 
-## Next time: more simple linear regression
+## Recap
 
--   We'll use `R` to compute the least squares line and the values of $\widehat{\beta}_0$ and $\widehat{\beta}_1$. 
--   We'll introduce the formal assumptions we must make when doing linear regression, and diagnostic plots to check these assumptions. 
+We considered the simple linear model:
+
+::: fragment
+$$
+y = \beta_0 + \beta_1 x + \epsilon
+$$
+:::
+
+-   $\beta_0$ and $\beta_1$ are fixed numbers ("coefficients")
+-   $\beta_0$ represents the **intercept** of a line
+-   $\beta_1$ represents the **slope** of a line
+
+::: fragment
+We estimate these population coefficients using sample data via the **method of least squares**, which finds $\widehat{\beta}_0$ and $\widehat{\beta}_1$ such that the **sum of squared residuals is minimized**.
+:::
+
+- Knowing $\widehat{\beta}_0$ and $\widehat{\beta}_1$ allows us to **predict** values of $y$ given specific values of $x$
+- There is a precise way that we should interpret $\widehat{\beta}_0$ and $\widehat{\beta}_1$ (see slides)
 
 ------------------------------------------------------------------------
+
+## Next time: more simple linear regression
+
+-   We'll use `R` to compute the least squares line and the values of $\widehat{\beta}_0$ and $\widehat{\beta}_1$ (we'll start practicing in lab). 
+-   We'll introduce the formal assumptions we must make when doing linear regression, and diagnostic plots to check these assumptions. 
+
+

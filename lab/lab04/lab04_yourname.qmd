@@ -106,7 +106,12 @@ near_reed <- near_reed %>%
 
 
 
-**c.** Using the `near_reed` data frame, run a linear regression using `Crown_Width` as the explanatory variable and `Tree_Height` as the outcome variable. Pass the model to the `get_regression_table()` function to display a table of coefficients. [Code only for this question]
+
+We'll see these more in lecture tomorrow, but let's preview two essential functions in `R` for working with linear regression models. The first function is `lm()`, which takes in a model equation and our data and returns a fitted linear model. For example, we might run something like: `mod <- lm(y ~ x, our_df)` to fit a linear model that uses `x` to predict `y`, where `x` and `y` are both columns in the data frame `our_df`. 
+
+The direct output of `lm()` is not super informative, so we'll usually just save it to an object to use later (`mod` above). The second function that we'll use all of the time when working with linear models is `get_regression_table()`. This function is from the `moderndive` package, and allows us to see some nicely formatted results about our model, including coefficients. It takes in a model created by `lm()` and returns a nice table. For example, we would run `get_regression_table(mod)` for our above model.
+
+**c.**  Using the `near_reed` data frame and these two new functions, run a linear regression using `Crown_Width` as the explanatory variable and `Tree_Height` as the outcome variable, and display a table of coefficients. [Code only for this question]
 
 *******************************************************************************
 
@@ -116,7 +121,7 @@ near_reed <- near_reed %>%
 
 
 
-**d.** Carefully interpret the estimated coefficients for the intercept and the slope term for Crown Width, *in context*. [Text only for this question]
+**d.** Carefully interpret the estimated coefficients for the intercept and the slope term for Crown Width, *in context*. These can be found under the "estimate" column in the output of `get_regression_table()`. For now, we'll ignore the other columns. [Text only for this question]
 
 *******************************************************************************
 
@@ -126,7 +131,7 @@ near_reed <- near_reed %>%
 
 
 
-**e.** Write out the equation for the regression line, aka the "fitted model."
+**e.** Write out the equation for the regression line, aka the "fitted model", using these coefficient estimates.
 
 *******************************************************************************
 

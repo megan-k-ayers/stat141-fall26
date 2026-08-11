@@ -205,10 +205,30 @@
 </div><div class="column center" style="width:50%;">
 <p><br></p>
 <p><span class="custom-title">Linear Models I: Introduction</span></p>
-<p><br> <br> <br> <br> <br></p>
+<p><br> <br> <br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Wednesday, Week 4</span></p>
 </div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="week-4-survey">Week 4 Survey</h3>
+<div class="fragment">
+<ul>
+<li>Fill out the <a href="https://tinyurl.com/stat141-4wk-survey">Week 4 Survey</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/4wk-survey-qr.png" style="width:30.0%"></p>
+<figcaption>https://tinyurl.com/4wk-survey</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_fd1351b7" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
 </section>
 <section class="slide level2">
 
@@ -221,15 +241,23 @@
 </section>
 <section id="typical-analysis-goals" class="slide level2">
 <h2>Typical Analysis Goals</h2>
+<div class="fragment fade-up">
 <p><strong>Descriptive</strong>: Want to estimate quantities (summary statistics) related to the population.</p>
 <p>→ <em>How many trees are in the Amazon?</em></p>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
 <p><strong>Predictive</strong>: Want to predict the value of a variable.</p>
 <p>→ <em>Can I use remotely sensed data to predict forest types in the Amazon?</em></p>
+</div>
+<p><br></p>
+<div class="fragment fade-up">
 <p><strong>Causal</strong>: Want to determine if changes in a variable cause changes in another variable.</p>
 <p>→ <em>Do financial contracts prevent people from deforesting their land in the Amazon?</em></p>
-<p><br></p>
-<div class="fragment">
-<p>We will focus mainly on <strong>descriptive modeling</strong> in this course, and occasionally on <strong>predictive modeling</strong> (take Math 243: Statistical Learning to learn more). If you want to learn more about <strong>causality</strong>, take Math 394: Causal Inference.</p>
+</div>
+<p><br><br></p>
+<div class="fragment fade-up">
+<p>We will focus mainly on <strong>descriptive modeling</strong> in this course, and occasionally on <strong>predictive modeling</strong> (take Stat 243: Statistical Learning to learn more). If you want to learn more about <strong>causality</strong>, take Stat 394: Causal Inference.</p>
 </div>
 </section>
 <section id="form-of-the-model" class="slide level2">
@@ -243,7 +271,7 @@ y = f(x) + \epsilon
 <p><strong>Goal:</strong></p>
 <ul>
 <li class="fragment"><p>Determine a reasonable form for <span class="math inline">\(f()\)</span>. (Ex: Line, curve, …)</p></li>
-<li class="fragment"><p>Estimate <span class="math inline">\(f()\)</span> with <span class="math inline">\(\widehat{f}()\)</span> using the data.</p></li>
+<li class="fragment"><p>Estimate <span class="math inline">\(f()\)</span> with <span class="math inline">\(\widehat{f}()\)</span> (<strong>“f hat”</strong>) using the data.</p></li>
 <li class="fragment"><p>Generate predicted values: <span class="math inline">\(\widehat y = \widehat{f}(x)\)</span>.</p></li>
 </ul>
 </section>
@@ -262,64 +290,49 @@ y = f(x) + \epsilon
 </section>
 <section class="slide level2">
 
-<h3 id="example-the-ultimate-halloween-candy-power-ranking">Example: <a href="https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/">The Ultimate Halloween Candy Power Ranking</a></h3>
-<blockquote>
-<p>“The social contract of Halloween is simple: Provide adequate treats to costumed masses, or be prepared for late-night tricks from those dissatisfied with your offer. To help you avoid that type of vengeance, and to help you make good decisions at the supermarket this weekend, we wanted to figure out what Halloween candy people most prefer. So we devised an experiment: Pit dozens of fun-sized candy varietals against one another, and let the wisdom of the crowd decide which one was best.” – Walt Hickey</p>
-</blockquote>
-<blockquote>
-<p>“While we don’t know who exactly voted, we do know this: 8,371 different IP addresses voted on about 269,000 randomly generated matchups. So, not a scientific survey or anything, but a good sample of what candy people like.”</p>
-</blockquote>
-</section>
-<section class="slide level2">
-
-<h3 id="example-the-ultimate-halloween-candy-power-ranking-1">Example: <a href="https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/">The Ultimate Halloween Candy Power Ranking</a></h3>
+<h3 id="example-major-league-baseball-data-from-the-1986-and-1987-seasons">Example: <a href="https://www.statlearning.com/resources-second-edition">Major League Baseball Data from the 1986 and 1987 seasons</a></h3>
 <div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/candy_ex.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section class="slide level2">
-
-<h3 id="example-the-ultimate-halloween-candy-power-ranking-2">Example: <a href="https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/">The Ultimate Halloween Candy Power Ranking</a></h3>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>candy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-2"><a></a>  <span class="fu">mutate</span>(<span class="at">sugarpercent =</span> sugarpercent<span class="sc">*</span><span class="dv">100</span>)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="fu">glimpse</span>(candy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ISLR)</span>
+<span id="cb1-2"><a></a><span class="fu">data</span>(Hitters)</span>
+<span id="cb1-3"><a></a>hitters <span class="ot">&lt;-</span> Hitters <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Salary), <span class="sc">!</span><span class="fu">is.na</span>(HmRun))</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a><span class="fu">glimpse</span>(hitters)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 85
-Columns: 13
-$ competitorname   &lt;chr&gt; "100 Grand", "3 Musketeers", "One dime", "One quarter…
-$ chocolate        &lt;dbl&gt; 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,…
-$ fruity           &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1,…
-$ caramel          &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ peanutyalmondy   &lt;dbl&gt; 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ nougat           &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,…
-$ crispedricewafer &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
-$ hard             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1,…
-$ bar              &lt;dbl&gt; 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,…
-$ pluribus         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1,…
-$ sugarpercent     &lt;dbl&gt; 73.2, 60.4, 1.1, 1.1, 90.6, 46.5, 60.4, 31.3, 90.6, 6…
-$ pricepercent     &lt;dbl&gt; 0.860, 0.511, 0.116, 0.511, 0.511, 0.767, 0.767, 0.51…
-$ winpercent       &lt;dbl&gt; 66.97173, 67.60294, 32.26109, 46.11650, 52.34146, 50.…</code></pre>
+<pre><code>Rows: 263
+Columns: 20
+$ AtBat     &lt;int&gt; 315, 479, 496, 321, 594, 185, 298, 323, 401, 574, 202, 418, …
+$ Hits      &lt;int&gt; 81, 130, 141, 87, 169, 37, 73, 81, 92, 159, 53, 113, 60, 43,…
+$ HmRun     &lt;int&gt; 7, 18, 20, 10, 4, 1, 0, 6, 17, 21, 4, 13, 0, 7, 20, 2, 8, 16…
+$ Runs      &lt;int&gt; 24, 66, 65, 39, 74, 23, 24, 26, 49, 107, 31, 48, 30, 29, 89,…
+$ RBI       &lt;int&gt; 38, 72, 78, 42, 51, 8, 24, 32, 66, 75, 26, 61, 11, 27, 75, 8…
+$ Walks     &lt;int&gt; 39, 76, 37, 30, 35, 21, 7, 8, 65, 59, 27, 47, 22, 30, 73, 15…
+$ Years     &lt;int&gt; 14, 3, 11, 2, 11, 2, 3, 2, 13, 10, 9, 4, 6, 13, 15, 5, 8, 1,…
+$ CAtBat    &lt;int&gt; 3449, 1624, 5628, 396, 4408, 214, 509, 341, 5206, 4631, 1876…
+$ CHits     &lt;int&gt; 835, 457, 1575, 101, 1133, 42, 108, 86, 1332, 1300, 467, 392…
+$ CHmRun    &lt;int&gt; 69, 63, 225, 12, 19, 1, 0, 6, 253, 90, 15, 41, 4, 36, 177, 5…
+$ CRuns     &lt;int&gt; 321, 224, 828, 48, 501, 30, 41, 32, 784, 702, 192, 205, 309,…
+$ CRBI      &lt;int&gt; 414, 266, 838, 46, 336, 9, 37, 34, 890, 504, 186, 204, 103, …
+$ CWalks    &lt;int&gt; 375, 263, 354, 33, 194, 24, 12, 8, 866, 488, 161, 203, 207, …
+$ League    &lt;fct&gt; N, A, N, N, A, N, A, N, A, A, N, N, A, N, N, A, N, N, A, N, …
+$ Division  &lt;fct&gt; W, W, E, E, W, E, W, W, E, E, W, E, E, E, W, W, W, E, W, W, …
+$ PutOuts   &lt;int&gt; 632, 880, 200, 805, 282, 76, 121, 143, 0, 238, 304, 211, 121…
+$ Assists   &lt;int&gt; 43, 82, 11, 40, 421, 127, 283, 290, 0, 445, 45, 11, 151, 45,…
+$ Errors    &lt;int&gt; 10, 14, 3, 4, 25, 7, 9, 19, 0, 22, 11, 7, 6, 8, 10, 16, 2, 5…
+$ Salary    &lt;dbl&gt; 475.000, 480.000, 500.000, 91.500, 750.000, 70.000, 100.000,…
+$ NewLeague &lt;fct&gt; N, A, N, N, A, A, A, N, A, A, N, N, A, N, N, A, N, N, N, N, …</code></pre>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 id="example-the-ultimate-halloween-candy-power-ranking-3">Example: <a href="https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/">The Ultimate Halloween Candy Power Ranking</a></h3>
+<h3 id="example-major-league-baseball-data-from-the-1986-and-1987-seasons-1">Example: <a href="https://www.statlearning.com/resources-second-edition">Major League Baseball Data from the 1986 and 1987 seasons</a></h3>
 <div class="columns">
-<div class="column">
+<div class="column" style="width:30%;">
 <ul>
 <li class="fragment"><p>Linear trend?</p></li>
 <li class="fragment"><p>Direction of trend?</p></li>
 </ul>
-</div><div class="column">
+</div><div class="column" style="width:70%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -333,9 +346,9 @@ $ winpercent       &lt;dbl&gt; 66.97173, 67.60294, 32.26109, 46.11650, 52.34146,
 </section>
 <section class="slide level2">
 
-<h3 id="example-the-ultimate-halloween-candy-power-ranking-4">Example: <a href="https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/">The Ultimate Halloween Candy Power Ranking</a></h3>
+<h3 id="example-major-league-baseball-data-from-the-1986-and-1987-seasons-2">Example: <a href="https://www.statlearning.com/resources-second-edition">Major League Baseball Data from the 1986 and 1987 seasons</a></h3>
 <div class="columns">
-<div class="column">
+<div class="column" style="width:30%;">
 <ul>
 <li class="fragment">A simple linear regression model would be suitable for these data:</li>
 </ul>
@@ -345,11 +358,11 @@ y = \beta_0 + \beta_1 x + \epsilon
 \]</span></p>
 </div>
 <ul>
-<li class="fragment"><span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are fixed numbers</li>
+<li class="fragment"><span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are fixed numbers (“coefficients”)</li>
 <li class="fragment"><span class="math inline">\(\beta_0\)</span> represents the <strong>intercept</strong> of a line</li>
 <li class="fragment"><span class="math inline">\(\beta_1\)</span> represents the <strong>slope</strong> of a line</li>
 </ul>
-</div><div class="column">
+</div><div class="column" style="width:70%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -360,13 +373,12 @@ y = \beta_0 + \beta_1 x + \epsilon
 </div>
 </div>
 </div></div>
-<p><br></p>
 <ul>
 <li class="fragment">Knowing <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> would help us summarize and describe the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</li>
 </ul>
 </section>
-<section class="slide level2">
-
+<section id="finding-the-right-coefficients" class="slide level2">
+<h2>Finding the Right Coefficients</h2>
 <ul>
 <li class="fragment"><p>We want to find <span class="math inline">\(\beta_1\)</span> (slope) and <span class="math inline">\(\beta_0\)</span> (intercept) so that the line fits our data well</p>
 <p>→ Need summary statistics that quantify the strength and relationship of the linear trend</p>
@@ -397,9 +409,9 @@ y = \beta_0 + \beta_1 x + \epsilon
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">cor</span>(candy<span class="sc">$</span>sugarpercent, candy<span class="sc">$</span>winpercent)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">cor</span>(hitters<span class="sc">$</span>HmRun, hitters<span class="sc">$</span>Salary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2291507</code></pre>
+<pre><code>[1] 0.3430281</code></pre>
 </div>
 </div>
 </div>
@@ -460,10 +472,17 @@ cov(x, y) = r \times s_x s_y = \frac{1}{n-1} \sum_{i =1}^n (x_i - \bar{x} )  (y_
 </div>
 </div>
 </div></div>
+<div style="font-size: 0.8em;">
 <ul>
 <li class="fragment">Correlation: how strong is the linear relationship <em>relative to noise</em></li>
 <li class="fragment">Correlation and slope are related, but not the same (ex. <strong>A</strong> vs <strong>E</strong>)</li>
 </ul>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_898a2e20" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
 </section>
 <section id="new-example" class="slide level2">
 <h2>New Example</h2>
@@ -501,11 +520,12 @@ cov(x, y) = r \times s_x s_y = \frac{1}{n-1} \sum_{i =1}^n (x_i - \bar{x} )  (y_
 <section class="slide level2">
 
 <h4 id="always-graph-the-data-when-exploring-relationships">Always graph the data when exploring relationships!</h4>
+<p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="1536"></p>
 </figure>
 </div>
 </div>
@@ -519,27 +539,20 @@ cov(x, y) = r \times s_x s_y = \frac{1}{n-1} \sum_{i =1}^n (x_i - \bar{x} )  (y_
 <section class="slide level2">
 
 <h3 id="simple-linear-regression">Simple Linear Regression</h3>
-<div class="columns">
-<div class="column">
-<p>Let’s return to the Candy Example.</p>
+<p>Let’s return to the MLB hitters example.</p>
 <ul>
 <li class="fragment"><p>A line is a reasonable model form.</p></li>
-<li class="fragment"><p>Where should the line be?</p>
-<ul>
-<li class="fragment">Slope? Intercept?</li>
-</ul></li>
+<li class="fragment"><p>Where should the line be? Slope? Intercept?</p></li>
 </ul>
-</div><div class="column">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="1152"></p>
 </figure>
 </div>
 </div>
 </div>
-</div></div>
 </section>
 <section class="slide level2">
 
@@ -557,23 +570,23 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 </section>
 <section class="slide level2">
 
-<h4 id="distinguishing-between-the-population-and-the-sample">Distinguishing between the <strong>population</strong> and the <strong>sample</strong></h4>
+<h4 id="distinguishing-between-the-population-and-the-sample-terminology">Distinguishing between the <strong>population</strong> and the <strong>sample</strong>: Terminology</h4>
 <div class="columns">
 <div class="column">
 <p><span class="math display">\[
-y = \beta_0 + \beta_1 x + \epsilon
+\underbrace{y = \beta_0 + \beta_1 x + \epsilon}_{\text{Population model}}
 \]</span></p>
 <ul>
 <li class="fragment">Parameters:
 <ul>
 <li class="fragment">Based on the <strong>population</strong></li>
 <li class="fragment">Unknown if we don’t have data on the whole population</li>
-<li class="fragment">EX: <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></li>
+<li class="fragment">EX: <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, AKA population coefficients</li>
 </ul></li>
 </ul>
 </div><div class="column">
 <p><span class="math display">\[
-\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
+\underbrace{\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x}_{\text{Fitted or estimated model}}
 \]</span></p>
 <ul>
 <li class="fragment">Statistics:
@@ -581,14 +594,14 @@ y = \beta_0 + \beta_1 x + \epsilon
 <li class="fragment">Based on the <strong>sample</strong> data</li>
 <li class="fragment">Known</li>
 <li class="fragment">Usually estimate a population parameter</li>
-<li class="fragment">EX: <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span></li>
+<li class="fragment">EX: <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span>, AKA estimated or “fitted” coefficients</li>
 </ul></li>
 </ul>
 </div></div>
 </section>
 <section class="slide level2">
 
-<h3 id="method-of-least-squares">Method of Least Squares</h3>
+<h3 id="method-of-least-squares-more-terminology">Method of Least Squares: More Terminology</h3>
 <p>Need two key definitions:</p>
 <ul>
 <li class="fragment"><strong>Fitted value</strong>: The <em>estimated</em> value of the <span class="math inline">\(i\)</span>-th case, given estimates <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span></li>
@@ -610,9 +623,9 @@ e_i = y_i - \widehat{y}_i
 </section>
 <section class="slide level2">
 
-<h3 id="method-of-least-squares-1">Method of Least Squares</h3>
+<h3 id="method-of-least-squares-minimizing-residuals">Method of Least Squares: Minimizing Residuals</h3>
 <div class="columns">
-<div class="column">
+<div class="column" style="width:40%;">
 <ul>
 <li class="fragment"><p>Want residuals to be small.</p></li>
 <li class="fragment"><p>Minimize a function of the residuals.</p></li>
@@ -623,29 +636,31 @@ e_i = y_i - \widehat{y}_i
 \sum_{i = 1}^n e^2_i
 \]</span></p>
 </div>
-</div><div class="column">
+<div class="fragment">
+<p>Sidenote:</p>
+<ul>
+<li class="fragment">We could use <span class="math inline">\(\sum_{i = 1}^n |e_i|\)</span></li>
+</ul>
+</div>
+</div><div class="column" style="width:60%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="1056"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
-<div class="fragment">
-<p>Sidenote:</p>
 <ul>
-<li class="fragment">We could use <span class="math inline">\(\sum_{i = 1}^n |e_i|\)</span></li>
 <li class="fragment">But, this is less common, less computationally efficient, and lacks theoretical advantages</li>
 <li class="fragment"><span class="math inline">\(\sum_{i = 1}^n e_i^2\)</span> appropriately weights one large residual as “worse” than many small ones</li>
 </ul>
-</div>
 </section>
 <section class="slide level2">
 
-<h3 id="method-of-least-squares-2">Method of Least Squares</h3>
+<h3 id="method-of-least-squares-coefficient-formulas">Method of Least Squares: Coefficient Formulas</h3>
 <ul>
 <li class="fragment"><p>Suppose <span class="math inline">\(n\)</span> observations of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are collected: <span class="math inline">\((x_1, y_1), \ldots, (x_n, y_n)\)</span>.</p></li>
 <li class="fragment"><p>It turns out there are specific values of <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> that minimize the sum of squared residuals, given this data:</p></li>
@@ -666,7 +681,7 @@ e_i = y_i - \widehat{y}_i
 </section>
 <section class="slide level2">
 
-<h3 id="method-of-least-squares-3">Method of Least Squares</h3>
+<h3 id="method-of-least-squares-coefficient-formulas-1">Method of Least Squares: Coefficient Formulas</h3>
 <ul>
 <li><p>Suppose <span class="math inline">\(n\)</span> observations of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are collected: <span class="math inline">\((x_1, y_1), \ldots, (x_n, y_n)\)</span>.</p></li>
 <li><p>It turns out there are specific values of <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> that minimize the sum of squared residuals, given this data:</p></li>
@@ -685,7 +700,7 @@ e_i = y_i - \widehat{y}_i
 </section>
 <section class="slide level2">
 
-<h3 id="method-of-least-squares-4">Method of Least Squares</h3>
+<h3 id="method-of-least-squares-interpretation">Method of Least Squares: Interpretation</h3>
 <p>Once we know <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span>, we can estimate the whole function with:</p>
 <p><span class="math display">\[
 \widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
@@ -699,6 +714,10 @@ e_i = y_i - \widehat{y}_i
 </ul>
 </div>
 <div class="fragment">
+<p><strong>I will be a stickler about this! Make sure to adhere to this language, using problem context, for full points.</strong></p>
+</div>
+<p><br></p>
+<div class="fragment">
 <p>Unless experimental data is involved, avoid causal language.</p>
 <ul>
 <li class="fragment">Example of causal language: “When <span class="math inline">\(x\)</span> increases by 1 unit, <span class="math inline">\(y\)</span> will increase by <span class="math inline">\(\beta_1\)</span>”</li>
@@ -707,22 +726,22 @@ e_i = y_i - \widehat{y}_i
 </section>
 <section class="slide level2">
 
-<h3 id="method-of-least-squares-5">Method of Least Squares</h3>
+<h3 id="method-of-least-squares-plotting-regression-lines">Method of Least Squares: Plotting Regression Lines</h3>
 <p><code>ggplot2</code> will compute the line and add it to your plot using <code>geom_smooth(method = "lm")</code></p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> candy, </span>
-<span id="cb8-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> sugarpercent,</span>
-<span id="cb8-3"><a></a>                     <span class="at">y =</span> winpercent)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> hitters, </span>
+<span id="cb8-2"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> HmRun,</span>
+<span id="cb8-3"><a></a>                     <span class="at">y =</span> Salary)) <span class="sc">+</span></span>
 <span id="cb8-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
-<span id="cb8-5"><a></a>             <span class="at">color =</span> <span class="st">"chocolate4"</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a></a>             <span class="at">color =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
 <span id="cb8-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb8-7"><a></a>              <span class="at">color =</span> <span class="st">"deeppink2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-7"><a></a>              <span class="at">color =</span> <span class="st">"magenta3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -731,32 +750,13 @@ e_i = y_i - \widehat{y}_i
 </section>
 <section class="slide level2">
 
-<h3 id="method-of-least-squares-6">Method of Least Squares</h3>
+<h3 id="method-of-least-squares-practice-interpreting">Method of Least Squares: Practice Interpreting</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">\[
 \widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
-\]</span> In this case, <span class="math inline">\(\widehat{\beta}_0 = 44.6094\)</span> and <span class="math inline">\(\widehat{\beta}_1 = 0.1192\)</span>.</p>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<h3 id="method-of-least-squares-7">Method of Least Squares</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><span class="math display">\[
-\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
-\]</span> In this case, <span class="math inline">\(\widehat{\beta}_0 = 44.6094\)</span> and <span class="math inline">\(\widehat{\beta}_1 = 0.1192\)</span>.</p>
+\]</span> Here, <span class="math inline">\(\widehat{\beta}_0 = 330.59\)</span> and <span class="math inline">\(\widehat{\beta}_1 = 17.67\)</span> (units of $1000).</p>
+<p><strong>Q</strong>: How should we interpret these coefficients?</p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -769,17 +769,18 @@ e_i = y_i - \widehat{y}_i
 </div>
 </div></div>
 <ul>
-<li><strong>Q</strong>: Suppose a new candy bar has <code>sugarpercent = 73</code>. What does the model predict for <code>winpercent</code>?</li>
+<li class="fragment"><strong>Intercept:</strong> We <u>[expect/predict]</u> a player’s <strong>Salary</strong> to be $330,000 <u>on average</u> when they’ve hit 0 <strong>home runs</strong>.</li>
+<li class="fragment"><strong>Slope</strong>: For <strong>each additional home run</strong> that a player hits, we <u>[expect/predict]</u> their <strong>Salary</strong> to increase by $17,670 <u>on average</u>.</li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="method-of-least-squares-8">Method of Least Squares</h3>
+<h3 id="method-of-least-squares-practice-predicting">Method of Least Squares: Practice Predicting</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">\[
 \widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
-\]</span> In this case, <span class="math inline">\(\widehat{\beta}_0 = 44.6094\)</span> and <span class="math inline">\(\widehat{\beta}_1 = 0.1192\)</span>.</p>
+\]</span> Here, <span class="math inline">\(\widehat{\beta}_0 = 330.59\)</span> and <span class="math inline">\(\widehat{\beta}_1 = 17.67\)</span> (units of $1000).</p>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -792,13 +793,64 @@ e_i = y_i - \widehat{y}_i
 </div>
 </div></div>
 <ul>
-<li><strong>Q</strong>: Suppose a new candy bar has <code>sugarpercent = 73</code>. What does the model predict for <code>winpercent</code>?</li>
-<li><strong>A</strong>: <span class="math inline">\(\widehat{y} = 44.6094 + 0.1192 \cdot 73\)</span> = 53.311</li>
+<li><strong>Q</strong>: Suppose a player hit <code>HmRun = 30</code>. What does the model predict for <code>Salary</code>?</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="method-of-least-squares-practice-predicting-1">Method of Least Squares: Practice Predicting</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[
+\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
+\]</span> Here, <span class="math inline">\(\widehat{\beta}_0 = 330.59\)</span> and <span class="math inline">\(\widehat{\beta}_1 = 17.67\)</span> (units of $1000).</p>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<ul>
+<li><strong>Q</strong>: Suppose a player hit <code>HmRun = 30</code>. What does the model predict for <code>Salary</code>?</li>
+<li><strong>A</strong>: <span class="math inline">\(\widehat{y} = 330.59 + 17.67 \cdot 30\)</span> = 860.69</li>
 </ul>
 <ul>
-<li class="fragment">This is different from the actual <code>winpercent</code>s we see for candies with <code>sugarpercent = 73</code>.</li>
+<li class="fragment">This is different from the actual <code>Salary</code> we see for a player with <code>HmRun = 30</code>.</li>
 <li class="fragment">This isn’t unexpected: the line predicts the <strong>average</strong> <span class="math inline">\(y\)</span> for each value of <span class="math inline">\(x\)</span>.</li>
 </ul>
+</section>
+<section class="slide level2">
+
+<h3 id="method-of-least-squares-equations-in-latex">Method of Least Squares: Equations in LaTeX</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[
+\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
+\]</span> Here, <span class="math inline">\(\widehat{\beta}_0 = 330.59\)</span> and <span class="math inline">\(\widehat{\beta}_1 = 17.67\)</span> (units of $1000).</p>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<ul>
+<li><strong>Q</strong>: Suppose a player hit <code>HmRun = 30</code>. What does the model predict for <code>Salary</code>?</li>
+<li><strong>A</strong>: <span class="math inline">\(\widehat{y} = 330.59 + 17.67 \cdot 30\)</span> = 860.69</li>
+</ul>
+<p><strong>Side note</strong>: You will often be asked to write out this kind of model equation. You can do this nicely using a little LaTeX in your <code>.qmd</code> file, like this:</p>
+<div class="center">
+<p><code>$\widehat{y} = 330.59 + 17.67 \cdot 30$</code></p>
+</div>
 </section>
 <section id="residual-plot-preview" class="slide level2">
 <h2>Residual plot preview</h2>
@@ -807,7 +859,7 @@ e_i = y_i - \widehat{y}_i
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -832,7 +884,7 @@ e_i = y_i - \widehat{y}_i
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture10_lm-intro_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -851,20 +903,38 @@ e_i = y_i - \widehat{y}_i
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_0118d0bc" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_1bbb4d2f" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
 </section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<p>We considered the simple linear model:</p>
+<div class="fragment">
+<p><span class="math display">\[
+y = \beta_0 + \beta_1 x + \epsilon
+\]</span></p>
+</div>
+<ul>
+<li class="fragment"><span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are fixed numbers (“coefficients”)</li>
+<li class="fragment"><span class="math inline">\(\beta_0\)</span> represents the <strong>intercept</strong> of a line</li>
+<li class="fragment"><span class="math inline">\(\beta_1\)</span> represents the <strong>slope</strong> of a line</li>
+</ul>
+<div class="fragment">
+<p>We estimate these population coefficients using sample data via the <strong>method of least squares</strong>, which finds <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> such that the <strong>sum of squared residuals is minimized</strong>.</p>
+</div>
+<ul>
+<li class="fragment">Knowing <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> allows us to <strong>predict</strong> values of <span class="math inline">\(y\)</span> given specific values of <span class="math inline">\(x\)</span></li>
+<li class="fragment">There is a precise way that we should interpret <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> (see slides)</li>
+</ul>
+</section>
 <section id="next-time-more-simple-linear-regression" class="slide level2">
 <h2>Next time: more simple linear regression</h2>
 <ul>
-<li class="fragment">We’ll use <code>R</code> to compute the least squares line and the values of <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span>.</li>
+<li class="fragment">We’ll use <code>R</code> to compute the least squares line and the values of <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> (we’ll start practicing in lab).</li>
 <li class="fragment">We’ll introduce the formal assumptions we must make when doing linear regression, and diagnostic plots to check these assumptions.</li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>
