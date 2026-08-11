@@ -60,7 +60,7 @@ library(tidyverse)
 
 -   Fill out the [Week 4 Survey](https://tinyurl.com/stat141-4wk-survey)
 
-![https://tinyurl.com/4wk-survey](img/4wk-survey-qr.png){width=30%}
+![https://tinyurl.com/stat141-4wk-survey](img/4wk-survey-qr.png){width=30%}
 
 :::
 

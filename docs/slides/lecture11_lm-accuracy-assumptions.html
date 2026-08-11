@@ -202,23 +202,23 @@
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
 </div><div class="column center" style="width:40%;">
 <p><br></p>
-<p><span class="custom-title">Linear Models II: Accuracy and Assumptions</span></p>
-<p><br> <br></p>
+<p><span class="custom-title" style="font-size: 2.25em;">Linear Models II: Accuracy and Assumptions</span></p>
+<p><br> <br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Friday, Week 4</span></p>
 </div></div>
 </section>
 <section class="slide level2">
 
-<h3 id="announcements">Announcements</h3>
+<h3 id="announcementsreminders">Announcements/Reminders</h3>
 <div class="fragment">
 <ul>
-<li>Fill out the <a href="https://tinyurl.com/4wk-survey">Week 4 Survey</a></li>
+<li>Fill out the <a href="https://tinyurl.com/stat141-4wk-survey">Week 4 Survey</a> plz!!</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="img/4wk-survey-qr.png" style="width:20.0%"></p>
-<figcaption>https://tinyurl.com/4wk-survey</figcaption>
+<p><img data-src="img/4wk-survey-qr.png" style="width:30.0%"></p>
+<figcaption>https://tinyurl.com/stat141-4wk-survey</figcaption>
 </figure>
 </div>
 </div>
@@ -227,8 +227,7 @@
 
 <h3 id="goals-for-today">Goals for Today</h3>
 <ul>
-<li class="fragment">Recall simple linear regression</li>
-<li class="fragment">Do simple linear regression in R</li>
+<li class="fragment">Review simple linear regression concepts and <code>R</code> functions</li>
 <li class="fragment">Discuss model assumptions for linear regression</li>
 <li class="fragment">Assess accuracy of linear regression models</li>
 <li class="fragment">Discuss “extrapolation”</li>
@@ -272,19 +271,19 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="columns">
 <div class="column">
 <p><span class="math display">\[
-y = \beta_0 + \beta_1 x + \epsilon
+\underbrace{y = \beta_0 + \beta_1 x + \epsilon}_{\text{Population model}}
 \]</span></p>
 <ul>
 <li class="fragment">Parameters:
 <ul>
 <li class="fragment">Based on the <strong>population</strong></li>
-<li class="fragment">Unknown then if don’t have data on the whole population</li>
-<li class="fragment">EX: <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></li>
+<li class="fragment">Unknown if we don’t have data on the whole population</li>
+<li class="fragment">EX: <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>, AKA population coefficients</li>
 </ul></li>
 </ul>
 </div><div class="column">
 <p><span class="math display">\[
-\widehat{y} = \widehat{ \beta}_0 + \widehat{\beta}_1 x
+\underbrace{\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x}_{\text{Fitted or estimated model}}
 \]</span></p>
 <ul>
 <li class="fragment">Statistics:
@@ -292,14 +291,14 @@ y = \beta_0 + \beta_1 x + \epsilon
 <li class="fragment">Based on the <strong>sample</strong> data</li>
 <li class="fragment">Known</li>
 <li class="fragment">Usually estimate a population parameter</li>
-<li class="fragment">EX: <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span></li>
+<li class="fragment">EX: <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span>, AKA estimated or “fitted” coefficients</li>
 </ul></li>
 </ul>
 </div></div>
 </section>
 <section id="regression-goals" class="slide level2">
 <h2>Regression goals</h2>
-<p>Linear regression is used for 2 main tasks:</p>
+<p>We’ll use linear regression for 2 tasks (mostly the first):</p>
 <ul>
 <li class="fragment"><strong>Explaining</strong> relationships between variables in a data set so that we can <strong>infer</strong> relationships in the population
 <ul>
@@ -317,19 +316,20 @@ y = \beta_0 + \beta_1 x + \epsilon
 <section class="slide level2">
 
 <h3 id="our-modeling-goal">Our Modeling Goal</h3>
-<p>Recall our modeling goal: <strong>predict win percentage by using the sugar percentage variable</strong>.</p>
+<p>Recall our modeling goal: <strong>predict MLB player salary in 1986/1987 by using the HmRun variable</strong>.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>candy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-2"><a></a>  <span class="fu">mutate</span>(<span class="at">sugarpercent =</span> sugarpercent<span class="sc">*</span><span class="dv">100</span>)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> candy, </span>
-<span id="cb1-5"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> sugarpercent,</span>
-<span id="cb1-6"><a></a>                     <span class="at">y =</span> winpercent)) <span class="sc">+</span></span>
-<span id="cb1-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
-<span id="cb1-8"><a></a>             <span class="at">color =</span> <span class="st">"chocolate4"</span>) <span class="sc">+</span></span>
-<span id="cb1-9"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-10"><a></a>              <span class="at">color =</span> <span class="st">"deeppink2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ISLR)</span>
+<span id="cb1-2"><a></a><span class="fu">data</span>(Hitters)</span>
+<span id="cb1-3"><a></a>hitters <span class="ot">&lt;-</span> Hitters <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Salary), <span class="sc">!</span><span class="fu">is.na</span>(HmRun))</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> hitters, </span>
+<span id="cb1-6"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> HmRun,</span>
+<span id="cb1-7"><a></a>                     <span class="at">y =</span> Salary)) <span class="sc">+</span></span>
+<span id="cb1-8"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">size =</span> <span class="dv">4</span>, </span>
+<span id="cb1-9"><a></a>             <span class="at">color =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
+<span id="cb1-10"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-11"><a></a>              <span class="at">color =</span> <span class="st">"magenta3"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -394,7 +394,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <p><span class="math display">\[
 \widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
 \]</span></p>
-<p>Called the <strong>least squares line</strong>, <strong>regression line</strong>, or the <strong>line of best fit</strong>.</p>
+<p>Called the <strong>least squares line</strong>, <strong>regression line</strong>, <strong>fitted line/model</strong>, or the <strong>line of best fit</strong>.</p>
 </section>
 <section class="slide level2">
 
@@ -402,43 +402,27 @@ y = \beta_0 + \beta_1 x + \epsilon
 <p>We can use the <code>lm()</code> function to construct the simple linear regression model in R and the <code>get_regression_table()</code> function from <code>moderndive</code> to interpret it.</p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(winpercent <span class="sc">~</span> sugarpercent, <span class="at">data =</span> candy)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Salary <span class="sc">~</span> HmRun, <span class="at">data =</span> hitters)</span>
 <span id="cb2-2"><a></a><span class="fu">get_regression_table</span>(mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 7
-  term         estimate std_error statistic p_value lower_ci upper_ci
-  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 intercept      44.609     3.086    14.455   0       38.471   50.748
-2 sugarpercent    0.119     0.056     2.145   0.035    0.009    0.23 </code></pre>
+  term      estimate std_error statistic p_value lower_ci upper_ci
+  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept  330.59     43.551     7.591       0  244.84   416.35 
+2 HmRun       17.671     2.995     5.9         0   11.773   23.569</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>What is the fitted model form?</p>
+<p><strong>Q:</strong> What is the fitted model form?</p>
 </div>
 <div class="fragment">
 <p><span class="math display">\[\begin{align*}
-  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
-   &amp;= 44.6094 + 0.1192 \times x_{sugarpercent}
+  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
+   &amp;= 330.59 + 17.67 \times (\text{HmRun})
 \end{align*}\]</span></p>
 </div>
-</section>
-<section class="slide level2">
-
-<p>We can use the <code>lm()</code> function to construct the simple linear regression model in R and the <code>get_regression_table()</code> function to interpret it.</p>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(winpercent <span class="sc">~</span> sugarpercent, <span class="at">data =</span> candy)</span>
-<span id="cb4-2"><a></a><span class="fu">get_regression_table</span>(mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 7
-  term         estimate std_error statistic p_value lower_ci upper_ci
-  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 intercept      44.609     3.086    14.455   0       38.471   50.748
-2 sugarpercent    0.119     0.056     2.145   0.035    0.009    0.23 </code></pre>
-</div>
-</div>
-</div>
+<p><br></p>
 <div class="fragment">
 <p><strong>Q:</strong> How do we interpret the coefficients?</p>
 </div>
@@ -447,8 +431,8 @@ y = \beta_0 + \beta_1 x + \epsilon
 
 <h3 id="coefficient-interpretation">Coefficient Interpretation</h3>
 <p><span class="math display">\[\begin{align*}
-  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
-   &amp;= 44.6094 + 0.1192 \times x_{sugarpercent}
+  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
+   &amp;= 330.59 + 17.67 \times (\text{HmRun})
 \end{align*}\]</span></p>
 <p>We need to be precise and careful when interpreting estimated coefficients!</p>
 <ul>
@@ -456,44 +440,48 @@ y = \beta_0 + \beta_1 x + \epsilon
 <li class="fragment"><p><strong>Slope:</strong> For a one-unit increase in <span class="math inline">\(x\)</span>, we <u>expect/predict</u> <span class="math inline">\(y\)</span> to change by <span class="math inline">\(\widehat{\beta}_1\)</span> units <u>on average</u>.</p></li>
 </ul>
 <div class="fragment">
-<p><strong>These interpretations are non-specific to the context of our model, but when we are interpreting coefficients, we always need to interpret the coefficients in context</strong></p>
+<p><strong>This template is non-specific to the context of our model, but when we are actually interpreting coefficients, we always need to insert the context</strong></p>
+<ul>
+<li class="fragment">Use variable names instead of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
+<li class="fragment">Insert estimated values for <span class="math inline">\(\widehat{\beta}_0\)</span>, <span class="math inline">\(\widehat{\beta}_1\)</span></li>
+<li class="fragment">Explain what “<span class="math inline">\(x = 0\)</span>” and a “one-unit increase in <span class="math inline">\(x\)</span>” corresponds to, if you can do so briefly</li>
+</ul>
 </div>
 </section>
 <section class="slide level2">
 
 <h3 id="coefficient-interpretation-in-context">Coefficient Interpretation: In Context</h3>
 <p><span class="math display">\[\begin{align*}
-  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
-   &amp;= 44.6094 + 0.1192 \times x_{sugarpercent}
+  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
+   &amp;= 330.59 + 17.67 \times (\text{HmRun})
 \end{align*}\]</span></p>
 <ul>
-<li class="fragment"><p><strong>Intercept:</strong> We <u>expect/predict</u> a candy’s win percentage to be 44.6094 <u>on average</u> when their sugar percentage is 0.</p></li>
-<li class="fragment"><p><strong>Slope:</strong> For a one-unit increase in sugar percentage, we <u>expect/predict</u> the win percentage of a candy to change by 0.1192 units <u>on average</u>.</p></li>
+<li class="fragment"><strong>Intercept:</strong> We <u>[expect/predict]</u> a player’s <strong>Salary</strong> to be $330,000 <u>on average</u> when they’ve hit 0 <strong>home runs</strong>.</li>
+<li class="fragment"><strong>Slope</strong>: For <strong>each additional home run</strong> (or one-unit increase in <strong>HmRun</strong>) that a player hits, we <u>[expect/predict]</u> their <strong>Salary</strong> to increase by $17,670 <u>on average</u>.</li>
 </ul>
 </section>
 <section class="slide level2">
 
 <h3 id="prediction-interpolation-and-extrapolation">Prediction, Interpolation, and Extrapolation</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>new_cases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">sugarpercent =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">77</span>, <span class="dv">150</span>))</span>
-<span id="cb6-2"><a></a><span class="fu">predict</span>(mod, <span class="at">newdata =</span> new_cases)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>new_cases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">HmRun =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">32</span>, <span class="dv">60</span>))  <span class="co"># Must have same explanatory variable name as mod!</span></span>
+<span id="cb4-2"><a></a><span class="fu">predict</span>(mod, <span class="at">newdata =</span> new_cases)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       1        2        3 
-47.23269 53.79082 62.49524 </code></pre>
+<pre><code>        1         2         3 
+ 507.3030  896.0638 1390.8503 </code></pre>
 </div>
 </div>
+<p><br></p>
 <ul>
-<li class="fragment">We didn’t have any treats in our sample with a sugar percentage of 77%. Can we still make this prediction?
+<li class="fragment">We didn’t have any players in our sample with 32 home runs. Can we still make this prediction?
 <ul>
 <li class="fragment">Called <strong>interpolation</strong></li>
 </ul></li>
-</ul>
-<p><br></p>
-<ul>
-<li class="fragment">We didn’t have any treats in our sample with a sugar percentage of 150%. Can we still make this prediction?
+<li class="fragment">We didn’t have any players in our sample with 60 home runs. Can we still make this prediction?
 <ul>
 <li class="fragment">Called <strong>extrapolation</strong></li>
 </ul></li>
+<li class="fragment">We could give our model a value of <span class="math inline">\((\text{HmRun}) = 20.5\)</span>, and we’d get out a numerical prediction for <code>Salary</code>. How is this different from the previous examples?</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -513,7 +501,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -524,18 +512,18 @@ y = \beta_0 + \beta_1 x + \epsilon
 
 <h3 id="a-closer-look-at-our-model">A closer look at our model</h3>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">get_regression_table</span>(mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">get_regression_table</span>(mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 7
-  term         estimate std_error statistic p_value lower_ci upper_ci
-  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 intercept      44.609     3.086    14.455   0       38.471   50.748
-2 sugarpercent    0.119     0.056     2.145   0.035    0.009    0.23 </code></pre>
+  term      estimate std_error statistic p_value lower_ci upper_ci
+  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept  330.59     43.551     7.591       0  244.84   416.35 
+2 HmRun       17.671     2.995     5.9         0   11.773   23.569</code></pre>
 </div>
 </div>
 <p><span class="math display">\[\begin{align*}
-  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
-   &amp;= 44.6094 + 0.1192 \times x_{sugarpercent}
+  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
+   &amp;= 330.59 + 17.67 \times (\text{HmRun})
 \end{align*}\]</span></p>
 <div class="fragment">
 <p>What assumptions have we made?</p>
@@ -596,7 +584,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <p><br></p>
 <ul>
 <li class="fragment">We assess these using <strong>diagnostic plots</strong> (<code>y</code> vs <code>x</code> scatterplot, residual plot, residual histogram, q-q plot)</li>
-<li class="fragment">Later in the course, we’ll learn why <strong>I</strong>, <strong>N</strong>, and <strong>E</strong> are required for <strong>inference</strong></li>
+<li class="fragment">Later in the course, we’ll learn how <strong>I</strong>, <strong>N</strong>, and <strong>E</strong> are required for <strong>inference</strong></li>
 </ul>
 </section>
 <section id="assessing-conditions-linearity" class="slide level2">
@@ -607,7 +595,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -628,7 +616,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -642,24 +630,24 @@ y = \beta_0 + \beta_1 x + \epsilon
 <section id="assessing-conditions-linearity-code-example" class="slide level2">
 <h2>Assessing conditions: Linearity (Code Example)</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">library</span>(moderndive)</span>
-<span id="cb10-2"><a></a></span>
-<span id="cb10-3"><a></a><span class="co"># Creating the model</span></span>
-<span id="cb10-4"><a></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> my_df, y1 <span class="sc">~</span> x)</span>
-<span id="cb10-5"><a></a></span>
-<span id="cb10-6"><a></a><span class="co"># *** Pulling out model inputs, residuals, and fitted values ***</span></span>
-<span id="cb10-7"><a></a>res1 <span class="ot">&lt;-</span> <span class="fu">get_regression_points</span>(lm1)  </span>
-<span id="cb10-8"><a></a></span>
-<span id="cb10-9"><a></a><span class="co"># Plotting residuals vs fitted values</span></span>
-<span id="cb10-10"><a></a>(g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(res1, <span class="fu">aes</span>(<span class="at">x =</span> y1_hat, <span class="at">y =</span> residual)) <span class="sc">+</span> </span>
-<span id="cb10-11"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb10-12"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
-<span id="cb10-13"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F) <span class="sc">+</span> </span>
-<span id="cb10-14"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"fitted value"</span>, <span class="at">y =</span> <span class="st">"residual"</span>, <span class="at">title =</span> <span class="st">"Linear"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(moderndive)</span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a><span class="co"># Creating the model</span></span>
+<span id="cb8-4"><a></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> my_df, y1 <span class="sc">~</span> x)</span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a><span class="co"># *** Pulling out model inputs, residuals, and fitted values ***</span></span>
+<span id="cb8-7"><a></a>res1 <span class="ot">&lt;-</span> <span class="fu">get_regression_points</span>(lm1)  </span>
+<span id="cb8-8"><a></a></span>
+<span id="cb8-9"><a></a><span class="co"># Plotting residuals vs fitted values</span></span>
+<span id="cb8-10"><a></a>(g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(res1, <span class="fu">aes</span>(<span class="at">x =</span> y1_hat, <span class="at">y =</span> residual)) <span class="sc">+</span> </span>
+<span id="cb8-11"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb8-12"><a></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb8-13"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F) <span class="sc">+</span>   <span class="co"># Helps check for any trend - want a flat line here</span></span>
+<span id="cb8-14"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"fitted value"</span>, <span class="at">y =</span> <span class="st">"residual"</span>, <span class="at">title =</span> <span class="st">"Linear"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -673,17 +661,15 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 <ul>
 <li class="fragment">If observations are not independent, inference about the population may be misleading.</li>
-<li class="fragment">We usually assess independence qualitatively
-<ul>
-<li class="fragment">Are observations inherently connected? (Beyond variables in the model)</li>
-</ul></li>
+<li class="fragment">Think about independence between <strong>observations</strong> (rows in the data frame), not necessarily between <strong>variables</strong> (columns in the data frame).</li>
+<li class="fragment">We usually assess independence qualitatively: Are observations inherently connected?</li>
 </ul>
 </div>
 </section>
@@ -695,7 +681,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -710,7 +696,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -722,21 +708,28 @@ y = \beta_0 + \beta_1 x + \epsilon
 </ul>
 </div>
 </section>
-<section id="assessing-conditions-normality-of-residuals-2" class="slide level2">
-<h2>Assessing conditions: Normality (of residuals)</h2>
+<section class="slide level2">
+
+<h3 id="assessing-conditions-normality-of-residuals-code-example">Assessing conditions: Normality (of residuals) (Code Example)</h3>
 <p><strong>Normality:</strong> The distribution of residuals should be “Normal”</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># New aes() argument!! </span></span>
-<span id="cb11-2"><a></a><span class="fu">ggplot</span>(my_df, <span class="fu">aes</span>(<span class="at">sample =</span> residual)) <span class="sc">+</span> </span>
-<span id="cb11-3"><a></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
-<span id="cb11-5"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Creating the model</span></span>
+<span id="cb9-2"><a></a>lm2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> my_df, y <span class="sc">~</span> x)</span>
+<span id="cb9-3"><a></a></span>
+<span id="cb9-4"><a></a><span class="co"># *** Pulling out model inputs, residuals, and fitted values ***</span></span>
+<span id="cb9-5"><a></a>res2 <span class="ot">&lt;-</span> <span class="fu">get_regression_points</span>(lm2)  </span>
+<span id="cb9-6"><a></a></span>
+<span id="cb9-7"><a></a><span class="co"># Making a Q-Q plot: new aes() argument!! </span></span>
+<span id="cb9-8"><a></a><span class="fu">ggplot</span>(res2, <span class="fu">aes</span>(<span class="at">sample =</span> residual)) <span class="sc">+</span> </span>
+<span id="cb9-9"><a></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb9-10"><a></a>  <span class="fu">geom_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb9-11"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -757,7 +750,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -780,7 +773,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -795,7 +788,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="1344"></p>
 </figure>
 </div>
 </div>
@@ -820,23 +813,23 @@ y = \beta_0 + \beta_1 x + \epsilon
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>dat_no_outlier <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a></a>  <span class="fu">filter</span>(x <span class="sc">&lt;</span> <span class="dv">15</span>)</span>
-<span id="cb12-3"><a></a></span>
-<span id="cb12-4"><a></a>pink_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, dat_no_outlier)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>dat_no_outlier <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">filter</span>(x <span class="sc">&lt;</span> <span class="dv">15</span>)</span>
+<span id="cb10-3"><a></a></span>
+<span id="cb10-4"><a></a>pink_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, dat_no_outlier)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
-<section id="recall-our-candy-simple-linear-regression-model" class="slide level2">
-<h2>Recall our <code>candy</code> simple linear regression model</h2>
+<section id="recall-our-hitters-simple-linear-regression-model" class="slide level2">
+<h2>Recall our <code>hitters</code> simple linear regression model</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(winpercent <span class="sc">~</span> sugarpercent, <span class="at">data =</span> candy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Salary <span class="sc">~</span> HmRun, <span class="at">data =</span> hitters)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -849,20 +842,22 @@ y = \beta_0 + \beta_1 x + \epsilon
 </div>
 </section>
 <section id="residual-vs.-fitted-plot" class="slide level2">
-<h2>Residual vs.&nbsp;fitted plot</h2>
+<h2>Residual vs.&nbsp;fitted plot:</h2>
+<p>Remember to use <code>get_regression_points(mod)</code> (not <code>get_regression_TABLE</code>) to get residuals and fitted values from a model.</p>
 <div class="columns">
 <div class="column" style="width:65%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>res <span class="ot">&lt;-</span> <span class="fu">get_regression_points</span>(mod)</span>
-<span id="cb14-2"><a></a></span>
-<span id="cb14-3"><a></a><span class="fu">ggplot</span>(res, <span class="fu">aes</span>(<span class="at">x =</span> winpercent_hat, <span class="at">y =</span> residual)) <span class="sc">+</span> </span>
-<span id="cb14-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb14-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"deeppink2"</span>) <span class="sc">+</span> </span>
-<span id="cb14-6"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"fitted value"</span>, <span class="at">y =</span> <span class="st">"residual"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Salary <span class="sc">~</span> HmRun, <span class="at">data =</span> hitters)</span>
+<span id="cb12-2"><a></a>res <span class="ot">&lt;-</span> <span class="fu">get_regression_points</span>(mod)</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a><span class="fu">ggplot</span>(res, <span class="fu">aes</span>(<span class="at">x =</span> Salary_hat, <span class="at">y =</span> residual)) <span class="sc">+</span> </span>
+<span id="cb12-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb12-6"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"deeppink2"</span>) <span class="sc">+</span> </span>
+<span id="cb12-7"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"fitted value"</span>, <span class="at">y =</span> <span class="st">"residual"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -870,27 +865,36 @@ y = \beta_0 + \beta_1 x + \epsilon
 </div><div class="column" style="width:35%;">
 <p><br> <br> <br> <br></p>
 <ul>
-<li class="fragment"><p>Linearity: ✅</p></li>
-<li class="fragment"><p>Independence: ✅</p></li>
-<li class="fragment"><p>Equal Variability: ✅</p></li>
+<li class="fragment"><p>Linearity: ✅</p>
+<ul>
+<li class="fragment">(<code>geom_smooth()</code> helps check this again)</li>
+</ul></li>
+<li class="fragment"><p>Independence: ❓</p></li>
+<li class="fragment"><p>Equal Variability: ⚠️</p></li>
 </ul>
 </div></div>
 <!-- Remember: we want to see a cloud / football-y shape here -->
 </section>
 <section id="checking-normality-residual-histogram" class="slide level2">
 <h2>Checking normality: residual histogram</h2>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(res, <span class="fu">aes</span>(<span class="at">x =</span> residual)) <span class="sc">+</span> </span>
-<span id="cb15-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>) <span class="sc">+</span> </span>
-<span id="cb15-3"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Residual"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Remember to use <code>get_regression_points(mod)</code> (not <code>get_regression_TABLE</code>) to get residuals and fitted values from a model.</p>
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Salary <span class="sc">~</span> HmRun, <span class="at">data =</span> hitters)</span>
+<span id="cb13-2"><a></a>res <span class="ot">&lt;-</span> <span class="fu">get_regression_points</span>(mod)</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a><span class="fu">ggplot</span>(res, <span class="fu">aes</span>(<span class="at">x =</span> residual)) <span class="sc">+</span> </span>
+<span id="cb13-5"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> </span>
+<span id="cb13-6"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Residual"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
-</div>
+</div></div>
 <ul>
 <li class="fragment">Normality: 🤔
 <ul>
@@ -902,29 +906,33 @@ y = \beta_0 + \beta_1 x + \epsilon
 <section id="checking-normality-q-q-plot" class="slide level2">
 <h2>Checking normality: Q-Q plot</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>(res, <span class="fu">aes</span>(<span class="at">sample =</span> residual)) <span class="sc">+</span> </span>
-<span id="cb16-2"><a></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
-<span id="cb16-3"><a></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Salary <span class="sc">~</span> HmRun, <span class="at">data =</span> hitters)</span>
+<span id="cb14-2"><a></a>res <span class="ot">&lt;-</span> <span class="fu">get_regression_points</span>(mod)</span>
+<span id="cb14-3"><a></a></span>
+<span id="cb14-4"><a></a><span class="fu">ggplot</span>(res, <span class="fu">aes</span>(<span class="at">sample =</span> residual)) <span class="sc">+</span> </span>
+<span id="cb14-5"><a></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span></span>
+<span id="cb14-6"><a></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 <ul>
-<li class="fragment">Normality: ❓</li>
+<li class="fragment">Normality: 🚨</li>
 </ul>
 </section>
 <section>
 <section id="suppose-line-assumptions-are-met.-is-the-model-good" class="title-slide slide level1 center">
-<h1>Suppose LINE assumptions are met. Is the model good?</h1>
+<h1>Suppose LINE assumptions are met. Is the model <strong>good</strong>?</h1>
 
 </section>
 <section class="slide level2">
 
 <h3 id="coefficient-of-determination-or-r2">Coefficient of Determination, or <span class="math inline">\(R^2\)</span></h3>
+<div style="font-size: 0.9em;">
 <p>A common measure of the <strong>strength</strong> of a linear model is the <strong>coefficient of determination</strong> <span class="math inline">\(R^2\)</span>, (aka “R-squared”).</p>
 <ul>
 <li class="fragment"><span class="math inline">\(R^2\)</span> is always between 0 and 1 (for the linear models we discuss)</li>
@@ -932,7 +940,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 </ul>
 <div class="fragment">
 <p><span class="math display">\[
-R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}}} { \underbrace{s_y^2}_{\textrm{Variation in y}}} \ \ \ \ \ \ \ \ \ \ \ \ (\text{Reminder: } \text{Variance} = (\text{Standard Deviation})^2)
+R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}}} { \underbrace{s_y^2}_{\textrm{Variation in y}}} \ \ \ \ \ \ \ \ \ \ (\text{Reminder: } \text{Variance} = (\text{Standard Deviation})^2)
 \]</span></p>
 </div>
 <ul>
@@ -940,11 +948,26 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 <li class="fragment"><span class="math inline">\(s_e^2\)</span> = Variation in the residual (<span class="math inline">\(e\)</span>) = Unexplained Variation in <span class="math inline">\(y\)</span></li>
 <li class="fragment"><span class="math inline">\(s_y^2 - s_e^2\)</span> = (Total Variation in <span class="math inline">\(y\)</span>) - (Unexplained Variation in <span class="math inline">\(y\)</span>) = <strong>Variation in y explained by x</strong></li>
 </ul>
+</div>
 </section>
 <section class="slide level2">
 
-<h3 id="values-of-r2">Values of R^2</h3>
+<h3 id="example-of-high-r2">Example of High R^2</h3>
 <p>If <span class="math inline">\(R^2 \approx 1\)</span>: nearly all the variability in response is <strong>explained by</strong> variability in the explanatory variable.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="example-of-low-r2-and-code-to-get-it">Example of Low R^2 (and code to get it)</h3>
+<p>If <span class="math inline">\(R^2 \approx 0\)</span>: almost none of the variability in response is <strong>explained by</strong> variability in the explanatory variable.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -954,30 +977,42 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 </div>
 </div>
 </div>
-</section>
-<section class="slide level2">
-
-<h3 id="values-of-r2-1">Values of R^2</h3>
-<p>If <span class="math inline">\(R^2 \approx 0\)</span>: almost none of the variability in response is <strong>explained by</strong> variability in the explanatory variable.</p>
+<div class="fragment" style="font-size: 0.8em;">
+<p>Yet another <code>moderndive</code> function can help us calculate <span class="math inline">\(R^2\)</span> from a fitted model:</p>
 <div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
-</figure>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Salary <span class="sc">~</span> HmRun, <span class="at">data =</span> hitters)</span>
+<span id="cb15-2"><a></a><span class="fu">get_regression_summaries</span>(mod)<span class="sc">$</span>r_squared</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.118</code></pre>
 </div>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
+<h3 id="recap">Recap</h3>
+<div style="font-size: 0.9em;">
+<ul>
+<li class="fragment"><p>Linear models must meet the four <strong>LINE</strong> assumptions to have reliable output</p>
+<ul>
+<li class="fragment">We can check these using a combination of plots and contextual knowledge about the data</li>
+</ul></li>
+<li class="fragment"><p>We should be careful about <strong>outliers</strong> and <strong>extrapolation</strong> when fitting our linear models and using them to predict for new observations</p></li>
+<li class="fragment"><p>The coefficient of determination, <span class="math inline">\(R^2\)</span>, gives a measure of how well a regression line fits our data</p></li>
+<li class="fragment"><p>Key functions:</p>
+<ul>
+<li class="fragment"><code>lm()</code> to fit models</li>
+<li class="fragment"><code>get_regression_table()</code> to calculate coefficients</li>
+<li class="fragment"><code>get_regression_points()</code> to work with residuals/fitted values</li>
+<li class="fragment"><code>get_regression_summaries</code> to calculate <span class="math inline">\(R^2\)</span></li>
+<li class="fragment"><code>predict()</code> to make predictions for new <span class="math inline">\(x\)</span> values using a fitted model</li>
+</ul></li>
+</ul>
 <h3 id="next-time">Next Time</h3>
 <ul>
 <li class="fragment">Regression with one categorical variable</li>
 </ul>
-</section>
-<section class="slide level2">
-
+</div>
 
 
 </section></section>

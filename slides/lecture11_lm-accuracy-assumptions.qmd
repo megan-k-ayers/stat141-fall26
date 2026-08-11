@@ -44,9 +44,9 @@ library(moderndive)
 ::: {.column .center width="40%"}
 <br>
 
-[Linear Models II: Accuracy and Assumptions]{.custom-title}
+[Linear Models II: Accuracy and Assumptions]{.custom-title style="font-size: 2.25em;"}
 
-<br> <br> 
+<br> <br> <br>
 
 [Megan Ayers]{.custom-subtitle}
 
@@ -56,13 +56,13 @@ library(moderndive)
 
 ------------------------------------------------------------------------
 
-### Announcements
+### Announcements/Reminders
 
 ::: {.fragment .nonincremental}
 
--   Fill out the [Week 4 Survey](https://tinyurl.com/4wk-survey)
+-   Fill out the [Week 4 Survey](https://tinyurl.com/stat141-4wk-survey) plz!!
 
-![https://tinyurl.com/4wk-survey](img/4wk-survey-qr.png){width=20%}
+![https://tinyurl.com/stat141-4wk-survey](img/4wk-survey-qr.png){width=30%}
 
 :::
 
@@ -70,8 +70,7 @@ library(moderndive)
 
 ### Goals for Today
 
--   Recall simple linear regression
--   Do simple linear regression in R
+-   Review simple linear regression concepts and `R` functions
 -   Discuss model assumptions for linear regression
 -   Assess accuracy of linear regression models
 -   Discuss "extrapolation"
@@ -126,25 +125,25 @@ Consider this model when:
 ::::: columns
 ::: column
 $$ 
-y = \beta_0 + \beta_1 x + \epsilon
+\underbrace{y = \beta_0 + \beta_1 x + \epsilon}_{\text{Population model}}
 $$
 
 -   Parameters:
     -   Based on the **population**
-    -   Unknown then if don't have data on the whole population
-    -   EX: $\beta_0$ and $\beta_1$
+    -   Unknown if we don't have data on the whole population
+    -   EX: $\beta_0$ and $\beta_1$, AKA population coefficients
 :::
 
 ::: column
 $$
-\widehat{y} = \widehat{ \beta}_0 + \widehat{\beta}_1 x
+\underbrace{\widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x}_{\text{Fitted or estimated model}}
 $$
 
 -   Statistics:
     -   Based on the **sample** data
     -   Known
     -   Usually estimate a population parameter
-    -   EX: $\widehat{\beta}_0$ and $\widehat{\beta}_1$
+    -   EX: $\widehat{\beta}_0$ and $\widehat{\beta}_1$, AKA estimated or "fitted" coefficients
 :::
 :::::
 
@@ -152,7 +151,7 @@ $$
 
 ## Regression goals
 
-Linear regression is used for 2 main tasks:
+We'll use linear regression for 2 tasks (mostly the first):
 
 -   **Explaining** relationships between variables in a data set so that we can **infer** relationships in the population
     -   Ex. We observe that a sample of Reed students who sleep more have higher test scores
@@ -168,20 +167,21 @@ Linear regression is used for 2 main tasks:
 
 ### Our Modeling Goal
 
-Recall our modeling goal: **predict win percentage by using the sugar percentage variable**.
+Recall our modeling goal: **predict MLB player salary in 1986/1987 by using the HmRun variable**.
 
 ```{r}
 #| output-location: column
-candy <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv") %>%
-  mutate(sugarpercent = sugarpercent*100)
+library(ISLR)
+data(Hitters)
+hitters <- Hitters %>% filter(!is.na(Salary), !is.na(HmRun))
 
-ggplot(data = candy, 
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
   geom_point(alpha = 0.6, size = 4, 
-             color = "chocolate4") +
+             color = "dodgerblue") +
   geom_smooth(method = "lm", se = FALSE,
-              color = "deeppink2")
+              color = "magenta3")
 ```
 
 ------------------------------------------------------------------------
@@ -205,17 +205,23 @@ $$
 
 ::: column
 ```{r, echo=FALSE, eval = TRUE}
-ggplot(data = candy, 
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
+set.seed(123)
+temp <- hitters %>%
+  group_by(HmRun) %>%
+  sample_n(1)
+
+ggplot(data = temp, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
   geom_point(alpha = 0.6, size = 4, 
-             color = "chocolate4") +
-  stat_smooth(method = "lm", se = FALSE,
-              color = "deeppink2") +
-  annotate("segment", x = candy$sugarpercent, 
-           xend = candy$sugarpercent, 
-           y = candy$winpercent, yend = 44.6094 + .1192*candy$sugarpercent, 
-           color = "darkblue", arrow = arrow(length = unit(0.03, "npc"))) + 
+             color = "dodgerblue") +
+  geom_smooth(method = "lm", se = FALSE,
+              color = "magenta3") +
+  annotate("segment", x = temp$HmRun, 
+           xend = temp$HmRun, 
+           y = temp$Salary, yend = 278.671 + 20.290*temp$HmRun, 
+           color = "darkblue", arrow = arrow(length = unit(0.03, "npc"))) +
+  ggtitle("Subsample of hitters") +
   geom_point()
   
 ```
@@ -255,7 +261,7 @@ $$
 \widehat{y} = \widehat{\beta}_0 + \widehat{\beta}_1 x
 $$
 
-Called the **least squares line**, **regression line**, or the **line of best fit**.
+Called the **least squares line**, **regression line**, **fitted line/model**, or the **line of best fit**.
 
 ------------------------------------------------------------------------
 
@@ -266,36 +272,24 @@ We can use the `lm()` function to construct the simple linear regression model i
 ::: {.fragment}
 
 ```{r, R.options=list(pillar.sigfig = 5)}
-mod <- lm(winpercent ~ sugarpercent, data = candy)
+mod <- lm(Salary ~ HmRun, data = hitters)
 get_regression_table(mod)
 ```
 
 :::
 
 :::{.fragment}
-What is the fitted model form? 
+**Q:** What is the fitted model form? 
 :::
 
 :::{.fragment}
 \begin{align*}
-  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
-   &= 44.6094 + 0.1192 \times x_{sugarpercent}
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
+   &= 330.59 + 17.67 \times (\text{HmRun})
 \end{align*}
 ::: 
 
-------------------------------------------------------------------------
-
-We can use the `lm()` function to construct the simple linear regression model in R and the `get_regression_table()` function to interpret it.
-
-::: {.fragment}
-
-```{r, R.options=list(pillar.sigfig = 5)}
-mod <- lm(winpercent ~ sugarpercent, data = candy)
-get_regression_table(mod)
-```
-
-:::
-
+<br>
 
 :::{.fragment}
 **Q:** How do we interpret the coefficients?
@@ -306,8 +300,8 @@ get_regression_table(mod)
 ### Coefficient Interpretation
 
 \begin{align*}
-  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
-   &= 44.6094 + 0.1192 \times x_{sugarpercent}
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
+   &= 330.59 + 17.67 \times (\text{HmRun})
 \end{align*}
 
 We need to be precise and careful when interpreting estimated coefficients! 
@@ -318,7 +312,11 @@ We need to be precise and careful when interpreting estimated coefficients!
 
 :::{.fragment}
 
-**These interpretations are non-specific to the context of our model, but when we are interpreting coefficients, we always need to interpret the coefficients in context**
+**This template is non-specific to the context of our model, but when we are actually interpreting coefficients, we always need to insert the context**
+
+- Use variable names instead of $x$ and $y$
+- Insert estimated values for $\widehat{\beta}_0$, $\widehat{\beta}_1$
+- Explain what "$x = 0$" and a "one-unit increase in $x$" corresponds to, if you can do so briefly
 
 :::
 
@@ -327,13 +325,12 @@ We need to be precise and careful when interpreting estimated coefficients!
 ### Coefficient Interpretation: In Context
 
 \begin{align*}
-  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
-   &= 44.6094 + 0.1192 \times x_{sugarpercent}
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
+   &= 330.59 + 17.67 \times (\text{HmRun})
 \end{align*}
 
--   **Intercept:** We [expect/predict]{.underline} a candy's win percentage to be 44.6094 [on average]{.underline} when their sugar percentage is 0.
-
--   **Slope:** For a one-unit increase in sugar percentage, we [expect/predict]{.underline} the win percentage of a candy to change by 0.1192 units [on average]{.underline}.
+-   **Intercept:** We [[expect/predict]]{.underline} a player's **Salary** to be \$330,000 [on average]{.underline} when they've hit 0 **home runs**.
+-   **Slope**: For **each additional home run** (or one-unit increase in **HmRun**) that a player hits, we [[expect/predict]]{.underline} their **Salary** to increase by \$17,670 [on average]{.underline}.
 
 
 
@@ -342,17 +339,21 @@ We need to be precise and careful when interpreting estimated coefficients!
 ### Prediction, Interpolation, and Extrapolation
 
 ```{r}
-new_cases <- data.frame(sugarpercent = c(22, 77, 150))
+new_cases <- data.frame(HmRun = c(10, 32, 60))  # Must have same explanatory variable name as mod!
 predict(mod, newdata = new_cases)
 ```
 
--   We didn't have any treats in our sample with a sugar percentage of 77%. Can we still make this prediction?
-    -   Called **interpolation**
-
 <br>
 
--   We didn't have any treats in our sample with a sugar percentage of 150%. Can we still make this prediction?
+-   We didn't have any players in our sample with 32 home runs. Can we still make this prediction?
+    -   Called **interpolation**
+
+
+-   We didn't have any players in our sample with 60 home runs. Can we still make this prediction?
     -   Called **extrapolation**
+
+
+-   We could give our model a value of $(\text{HmRun}) = 20.5$, and we'd get out a numerical prediction for `Salary`. How is this different from the previous examples?
 
 ------------------------------------------------------------------------
 
@@ -397,8 +398,8 @@ get_regression_table(mod)
 
 
 \begin{align*}
-  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_{sugarpercent} \\
-   &= 44.6094 + 0.1192 \times x_{sugarpercent}
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
+   &= 330.59 + 17.67 \times (\text{HmRun})
 \end{align*}
 
 
@@ -464,7 +465,7 @@ To responsibly use linear regression tools for prediction or inference, we requi
 <br>
 
 - We assess these using **diagnostic plots** (`y` vs `x` scatterplot, residual plot, residual histogram, q-q plot)
-- Later in the course, we'll learn why **I**, **N**, and **E** are required for **inference**
+- Later in the course, we'll learn how **I**, **N**, and **E** are required for **inference**
 
 ------------------------------------------------------------------------
 
@@ -518,7 +519,7 @@ grid.arrange(g1,g2, ncol = 2)
 
 ## Assessing conditions: Linearity (Code Example)
     
-```{r fig.height = 4.5}
+```{r fig.height = 4}
 library(moderndive)
 
 # Creating the model
@@ -531,7 +532,7 @@ res1 <- get_regression_points(lm1)
 (g1 <- ggplot(res1, aes(x = y1_hat, y = residual)) + 
   geom_point() + 
   theme_bw() + 
-  geom_smooth(method = "lm", se = F) + 
+  geom_smooth(method = "lm", se = F) +   # Helps check for any trend - want a flat line here
   labs(x = "fitted value", y = "residual", title = "Linear"))
 ```
 
@@ -542,7 +543,7 @@ res1 <- get_regression_points(lm1)
 ::: smaller
 **Independence**: The observations should be independent of one another
 
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height = 4}
 set.seed(218)
 
 # Setting 1
@@ -605,8 +606,8 @@ grid.arrange(g1,g2, ncol = 2)
 ```
 
 -   If observations are not independent, inference about the population may be misleading.
--   We usually assess independence qualitatively
-    -   Are observations inherently connected? (Beyond variables in the model)
+-   Think about independence between **observations** (rows in the data frame), not necessarily between **variables** (columns in the data frame).
+-   We usually assess independence qualitatively: Are observations inherently connected?
 
 :::
 
@@ -677,6 +678,7 @@ ggplot(my_df, aes(x=residuals)) +
   theme_bw()+ 
   labs(x = "Residual", title = "Residuals Overall (Non-Normal)")
 names(my_df)[3] <- "residual"
+my_df <- data.frame(x, y, residuals, group)
 ```
 
 If residuals are non-Normal...
@@ -688,7 +690,7 @@ If residuals are non-Normal...
 
 ------------------------------------------------------------------------
 
-## Assessing conditions: Normality (of residuals)
+### Assessing conditions: Normality (of residuals) (Code Example)
 
 **Normality:** The distribution of residuals should be "Normal"
 
@@ -696,8 +698,14 @@ If residuals are non-Normal...
 
 ::: {.column width=50%}
 ```{r}
-# New aes() argument!! 
-ggplot(my_df, aes(sample = residual)) + 
+# Creating the model
+lm2 <- lm(data = my_df, y ~ x)
+
+# *** Pulling out model inputs, residuals, and fitted values ***
+res2 <- get_regression_points(lm2)  
+
+# Making a Q-Q plot: new aes() argument!! 
+ggplot(res2, aes(sample = residual)) + 
   geom_qq() +
   geom_qq_line() +
   theme_bw()
@@ -753,6 +761,7 @@ grid.arrange(g1,g2, ncol = 1)
 -   If equal variability isn't met:
     -   Inference about the population may be misleading
     -   (Potential) outliers in high-variability range are more influential
+
 :::
 :::::
 
@@ -784,7 +793,7 @@ What do diagnostics look like when we fit the teal model?
 
 ## Diagnosing the model
 
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height = 7, fig.width=14}
 teal_mod <- lm(y ~ x, dat)
 ggplot(teal_mod) +
   gglm::stat_fitted_resid()
@@ -818,20 +827,22 @@ pink_mod <- lm(y ~ x, dat_no_outlier)
 
 ------------------------------------------------------------------------
 
-## Recall our `candy` simple linear regression model
+## Recall our `hitters` simple linear regression model
 
 ```{r}
-mod <- lm(winpercent ~ sugarpercent, data = candy)
+mod <- lm(Salary ~ HmRun, data = hitters)
 ```
 
 
 ```{r}
 #| echo: false
-ggplot(data = candy,
-       mapping = aes(x = sugarpercent,
-                     y = winpercent)) +
-  geom_point(alpha = 0.5) +
-  geom_smooth(method = "lm", se = FALSE, color = "deeppink2")
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
+  geom_point(alpha = 0.6, size = 4, 
+             color = "dodgerblue") +
+  geom_smooth(method = "lm", se = FALSE,
+              color = "magenta3")
 ```
 
 :::{.fragment}
@@ -844,14 +855,17 @@ Let's check if this meets the **LINE** assumptions
 
 ------------------------------------------------------------------------
 
-## Residual vs. fitted plot
+## Residual vs. fitted plot:
+
+Remember to use `get_regression_points(mod)` (not `get_regression_TABLE`) to get residuals and fitted values from a model.
 
 ::::: columns
 ::: {.column width=65%}
-```{r}
+```{r fig.height=4.5}
+mod <- lm(Salary ~ HmRun, data = hitters)
 res <- get_regression_points(mod)
 
-ggplot(res, aes(x = winpercent_hat, y = residual)) + 
+ggplot(res, aes(x = Salary_hat, y = residual)) + 
   geom_point(alpha = 0.5) + 
   geom_smooth(method = "lm", se = FALSE, color = "deeppink2") + 
   labs(x = "fitted value", y = "residual")
@@ -867,10 +881,11 @@ ggplot(res, aes(x = winpercent_hat, y = residual)) +
 <br>
 
 -   Linearity: `r emo::ji("check")`
+    - (`geom_smooth()` helps check this again)
 
--   Independence: `r emo::ji("check")`
+-   Independence: `r emo::ji("question")`
 
--   Equal Variability: `r emo::ji("check")`
+-   Equal Variability: `r emo::ji("warning")`
 :::
 :::::
 
@@ -882,10 +897,15 @@ ggplot(res, aes(x = winpercent_hat, y = residual)) +
 
 ## Checking normality: residual histogram
 
+Remember to use `get_regression_points(mod)` (not `get_regression_TABLE`) to get residuals and fitted values from a model.
 
 ```{r}
+#| output-location: column
+mod <- lm(Salary ~ HmRun, data = hitters)
+res <- get_regression_points(mod)
+
 ggplot(res, aes(x = residual)) + 
-  geom_histogram(bins = 30) + 
+  geom_histogram(bins = 30, color = "white") + 
   labs(x = "Residual")
 ```
 
@@ -898,19 +918,24 @@ ggplot(res, aes(x = residual)) +
 ## Checking normality: Q-Q plot
 
 ```{r}
+mod <- lm(Salary ~ HmRun, data = hitters)
+res <- get_regression_points(mod)
+
 ggplot(res, aes(sample = residual)) + 
   geom_qq() +
   geom_qq_line()
 ```
 
--   Normality: `r emo::ji("question")`
+-   Normality: `r emo::ji("police_car_light")`
 
 
-# Suppose LINE assumptions are met. Is the model good?
+# Suppose LINE assumptions are met. Is the model **good**?
 
 ------------------------------------------------------------------------
 
 ### Coefficient of Determination, or $R^2$
+
+::: {style="font-size: 0.9em;"}
 
 A common measure of the **strength** of a linear model is the **coefficient of determination** $R^2$, (aka "R-squared").
 
@@ -919,7 +944,7 @@ A common measure of the **strength** of a linear model is the **coefficient of d
 
 ::: fragment
 $$
-R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}}} { \underbrace{s_y^2}_{\textrm{Variation in y}}} \ \ \ \ \ \ \ \ \ \ \ \ (\text{Reminder: } \text{Variance} = (\text{Standard Deviation})^2)
+R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}}} { \underbrace{s_y^2}_{\textrm{Variation in y}}} \ \ \ \ \ \ \ \ \ \ (\text{Reminder: } \text{Variance} = (\text{Standard Deviation})^2)
 $$
 :::
 
@@ -927,10 +952,11 @@ $$
 -   $s_e^2$ = Variation in the residual ($e$) = Unexplained Variation in $y$ 
 -   $s_y^2 - s_e^2$ = (Total Variation in $y$) - (Unexplained Variation in $y$)   = **Variation in y explained by x**
 
+:::
 
 ------------------------------------------------------------------------
 
-### Values of R^2
+### Example of High R^2
 
 If $R^2 \approx 1$: nearly all the variability in response is **explained by** variability in the explanatory variable.
   
@@ -949,9 +975,10 @@ ggplot(dd, aes(x = X, y =Y))+
   annotate(geom = "text", x = 1.25, y = 2.5, label = "R^2 == 0.94", parse = T)+theme_bw()
 ```
 
+
 ------------------------------------------------------------------------
 
-### Values of R^2
+### Example of Low R^2 (and code to get it)
 
 If $R^2 \approx 0$: almost none of the variability in response is **explained by** variability in the explanatory variable.
   
@@ -971,11 +998,40 @@ ggplot(dd, aes(x = X, y =Y))+
   annotate(geom = "text", x = 1.25, y = 2.5, label = "R^2 == 0.07", parse = T)+theme_bw()
 ```
 
+::: {.fragment style="font-size: 0.8em;"}
+
+Yet another `moderndive` function can help us calculate $R^2$ from a fitted model:
+
+```{r}
+mod <- lm(Salary ~ HmRun, data = hitters)
+get_regression_summaries(mod)$r_squared
+```
+
+:::
+
 ------------------------------------------------------------------------
+
+### Recap
+
+::: {style="font-size: 0.9em;"}
+
+- Linear models must meet the four **LINE** assumptions to have reliable output
+    - We can check these using a combination of plots and contextual knowledge about the data
+    
+- We should be careful about **outliers** and **extrapolation** when fitting our linear models and using them to predict for new observations
+
+- The coefficient of determination, $R^2$, gives a measure of how well a regression line fits our data
+
+- Key functions:
+    - `lm()` to fit models
+    - `get_regression_table()` to calculate coefficients
+    - `get_regression_points()` to work with residuals/fitted values
+    - `get_regression_summaries` to calculate $R^2$
+    - `predict()` to make predictions for new $x$ values using a fitted model
+
 
 ### Next Time
 
 - Regression with one categorical variable
 
-
-------------------------------------------------------------------------
+:::
