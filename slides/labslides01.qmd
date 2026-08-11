@@ -63,8 +63,8 @@ library(tidyverse)
 
 ::: nonincremental
 -   Get to know each other
+-   General lab policies
 -   Take a tour of RStudio
--   Run through `intro.qmd`
 -   Download the lab materials for today on RStudio Server and start the lab
 :::
 
@@ -79,32 +79,17 @@ library(tidyverse)
 
 ------------------------------------------------------------------------
 
-## Demo: Lab instructions and tour of RStudio.
+## Lab logistics policies
+
+- Labs are due at the end of the lab period as **PDFs** on **Gradescope**
+- If we run out of time to try all problems...
+    - Just submit the progress you made
+    - Stay tuned for more info from me about any essential content we didn't cover
+- If you have an error preventing your PDF from rendering, shoot me an email, submit by the end of the day
+- We'll work on labs in small groups and periodically discuss progress all together
 
 ------------------------------------------------------------------------
 
-## Demo: `intro.qmd`
+## Demo: Tour of RStudio, start the lab
 
-**If you see a popup asking if you want to install a package called `detectors`, say yes.**
 
-------------------------------------------------------------------------
-
-## Open working time
-
-::: {.nonincremental .fragment}
--   The lab will be due on Gradescope (as a **PDF**) on Tuesday February 3 at 11:59pm.
--   Check out out your Gradescope account for this class **before Tuesday afternoon**.
-     - Course entry code: on the course website and Moodle.
-     - If you have any issues, send me an email **before Tuesday afternoon**.
-
-:::
-
-<br>
-
-::: {.nonincremental .fragment}
-**To-do:**
-
-1. Follow the lab instructions to access lab materials / RStudio Server.
-2. Review `intro.qmd`, if you'd like.
-3. Start the lab exercises in `lab01_yournamehere.qmd`.
-:::

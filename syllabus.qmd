@@ -111,6 +111,8 @@ By the end of the course, you will have improved your data acumen and your abili
 \textbf{Please let me know ASAP if you do not have access to a personal computer!}
 
 
+**Tutoring & Academic Support**:
+I encourage you to reach out to Academic Support at Reed if you feel you're struggling or feeling overwhelmed with academics. They can help with study habits, note-taking, or time and stress management strategies. You may also want to take advantage of the free individual tutoring available by appointment. For more information, see https://www.reed.edu/academic_support/ or email `academic-support@reed.edu`.
 
 
 
@@ -168,7 +170,9 @@ Being actively present in lectures and labs is very important in this course. Th
 -   Contributing to small group or classroom level discussions
 -   Contributing to discussions on Slack.
 
-Being consistently absent, late to class, or being consistently distracted during class (ex. using cell phone or doing homework during lecture), or consistently not participating in group work will have a negative impact on your participation grade.
+Being consistently absent, late to class, or being consistently distracted during class (ex. using cell phone or doing homework during lecture), or consistently not participating in group work will detract from your participation grade.
+
+That said, I understand that unexpected things happen, and that you may have an outside obligation come up during class time. To help with circumstances that might lead to an absence (expected or unexpected), everyone has four "free" lecture absences and 1 "free" lab absence (if you miss a lab where there is a quiz you will receive a 0 for it, but the lowest quiz score is dropped).  You may use these free absences as needed, no questions asked. While I am here to listen, don't feel that you have to share anything personal to justify your absence. 
 
 
 
@@ -200,7 +204,7 @@ We expect everyone to act and interact in ways that contribute to an open, welco
 
 ## Policies
 
-**Technology policy**:
+### Technology policy:
 
 * In STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides will be made available ahead of lecture on the course website.
 
@@ -213,13 +217,13 @@ We expect everyone to act and interact in ways that contribute to an open, welco
     * Reference the slide number when taking each note so that you can contextualize it with the slides when reviewing your notes. It may be particularly helpful to make list of slides where code examples are provided for different tasks.
 
 
-**Late work policy**:
+### Late work policy:
 
 * **Quizzes**: Since quizzes are taken in-person during lab, a missed quiz will be assigned a score of 0. Makeup quizzes will not be given, but, to help with various circumstances (expected and unexpected), the lowest quiz score will be dropped.
 
-* **Homeworks**: To help with various circumstances (expected and unexpected), you have up to 3 additional homework extension days that you can use as you need, no questions asked. You are free to distribute the extension days to different assignments as you wish (e.g., 1 additional day for 3 HWs, 3 additional days for 1 HW) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). When I see a late assignment submitted, I'll assume you intend to use extension days for it - you don't need to email me. Beyond these extension days, late homework assignments will be accepted for up to 50% partial credit at any time before the end of the last day of class, Wednesday December 9th at 11:59pm. Late submissions of homework assignments are not guaranteed timely or detailed feedback - you are encouraged to meet with Megan or course assistants in office hours to clarify any questions or discuss solutions from any late homework assignments.  
+* **Homeworks**: To help with various circumstances (expected and unexpected), you have up to 3 additional homework extension days that you can use as you need, no questions asked. You are free to distribute the extension days to different assignments as you wish (e.g., 1 additional day for 3 HWs, 3 additional days for 1 HW) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). When I see a late assignment submitted, I'll assume you intend to use extension days for it - you don't need to email me. If you've used all extension days, further late homework assignments will be accepted for up to 50% partial credit at any time before the end of the last day of class, Wednesday December 9th at 11:59pm. Late submissions of homework assignments are not guaranteed timely or detailed feedback - you are encouraged to meet with Megan or course assistants in office hours to clarify any questions or discuss solutions from any late homework assignments. ***Note:** Extension days only get "used up" if applied to an assignment submitted within the available window. For example, if you have one extension day remaining and submit an assignment two days late, that assignment will be subject to the late penalty, but you will still have your one extension day to use on a future assignment.*
 
-* **Labs**: Lab assignments will be due at the end of each lab section and will count towards a small participation grade. You will have a grace period until the end of the day to submit your lab in the case of a rendering error. In the event of a lab absence, you are encouraged to prepare for homework assignments by completing labs on your own, but late submissions of lab assignments will not be accepted. You may miss one lab without impact to your grade. 
+* **Labs**: Lab assignments will be due at the end of each lab section and will count towards a small participation grade. If we ran out of time in lab to attempt all questions you don't need to rush to finish the lab before submitting it: just submit the progress that you made. You will have a grace period until the end of the day to submit your lab in the event of a PDF rendering error - please send me a quick email at the end of lab if you need to take this time to fix an error. In case of a lab absence, you are encouraged to prepare for homework assignments by completing labs on your own, but late submissions of lab assignments will not be accepted. You may miss one lab without impact to your grade. 
 
 * **Exam**: The final exam cannot be made up, except in cases with academic accommodations.  
 
@@ -231,7 +235,7 @@ We expect everyone to act and interact in ways that contribute to an open, welco
 <!-- If you have used all of your extension days and submit an additional assignment late, you may still submit your assignment (via Gradescope, or email if the Gradescope assignment is closed) for a grade worth up to 50% of the maximum possible grade of the original assignment. For example, if a lab is worth 100 points, and you submit it late without using extension days, your maximum possible grade for that assignment will be 50 points. It may take several weeks for assignments to be graded in these cases, and detailed feedback will not be given. -->
 
 
-**Collaboration Policy and Academic Honesty**:
+### Collaboration Policy and Academic Honesty:
 
 Working with your classmates on difficult and interesting problems can not only help your learning, but also help you get to know each other! Therefore, I *highly* encourage you to collaborate on assignments. But, every piece of work you do *must* be your own. Copying other people’s work or code is not acceptable (whether they are in the course or not), nor is allowing other people to copy and paste your own work. The Honor Principle must guide your conduct in this class. 
 
@@ -244,7 +248,7 @@ Collaborator(s): Michael Pearce, Lenny Wainstein, Grayson White
 For STAT 141, collaboration can look like: working with classmates together on a given problem, doing scratch work, helping each other get un-stuck on a part of a problem, and even coming to a solution. However, you **must** write up your own problem solutions individually and cannot copy other's solutions (even those who you have collaborated with). You are expected to be able to explain your submitted solutions. When helping others with their assignment, you are encouraged to help them reason through concepts and to explain connections to lecture material and past assignments. However, you are expected to never explicitly share solutions, and to never distribute solutions obtained directly or indirectly from office hours or written feedback with other students, including those in this course or other sections of 141. Further, copying solutions or code from a collaborator, classmate, an internet resource, or a generative AI tool (see the following section) is strictly prohibited. 
 
 
-**AI and Internet Use Policy**:
+### AI and Internet Use Policy:
 
 Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. If you have questions about whether a tool is allowed for this course, ask the Instructor before using it.
 

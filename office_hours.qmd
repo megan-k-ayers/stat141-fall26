@@ -3,7 +3,7 @@ title: "Office Hours"
 editor: source
 ---
 
-**The times and locations of office hours can be found on [Moodle - UPDATE LINK](https://moodle.reed.edu/course/view.php?id=6886) under "General."**
+**The times and locations of office hours can be found on [Moodle](https://moodle.reed.edu/course/view.php?id=6886) under "General."**
 
 Please stop by during office hours to introduce yourself or ask some questions about the course! 
 
