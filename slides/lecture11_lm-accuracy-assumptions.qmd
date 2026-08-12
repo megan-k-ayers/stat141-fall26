@@ -60,7 +60,7 @@ library(moderndive)
 
 ::: {.fragment .nonincremental}
 
--   Fill out the [Week 4 Survey](https://tinyurl.com/stat141-4wk-survey) plz!!
+-   Fill out the [Week 4 Survey](https://tinyurl.com/stat141-4wk-survey) before EOD plz!!
 
 ![https://tinyurl.com/stat141-4wk-survey](img/4wk-survey-qr.png){width=30%}
 
@@ -284,8 +284,8 @@ get_regression_table(mod)
 
 :::{.fragment}
 \begin{align*}
-  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
-   &= 330.59 + 17.67 \times (\text{HmRun})
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
+   &= 330.59 + 17.67 \times x_\text{HmRun}
 \end{align*}
 ::: 
 
@@ -300,8 +300,8 @@ get_regression_table(mod)
 ### Coefficient Interpretation
 
 \begin{align*}
-  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
-   &= 330.59 + 17.67 \times (\text{HmRun})
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
+   &= 330.59 + 17.67 \times x_\text{HmRun}
 \end{align*}
 
 We need to be precise and careful when interpreting estimated coefficients! 
@@ -325,8 +325,8 @@ We need to be precise and careful when interpreting estimated coefficients!
 ### Coefficient Interpretation: In Context
 
 \begin{align*}
-  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
-   &= 330.59 + 17.67 \times (\text{HmRun})
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
+   &= 330.59 + 17.67 \times x_\text{HmRun}
 \end{align*}
 
 -   **Intercept:** We [[expect/predict]]{.underline} a player's **Salary** to be \$330,000 [on average]{.underline} when they've hit 0 **home runs**.
@@ -353,7 +353,7 @@ predict(mod, newdata = new_cases)
     -   Called **extrapolation**
 
 
--   We could give our model a value of $(\text{HmRun}) = 20.5$, and we'd get out a numerical prediction for `Salary`. How is this different from the previous examples?
+-   We could give our model a value of $x_\text{HmRun} = 20.5$, and we'd get out a numerical prediction for `Salary`. How is this different from the previous examples?
 
 ------------------------------------------------------------------------
 
@@ -398,8 +398,8 @@ get_regression_table(mod)
 
 
 \begin{align*}
-  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
-   &= 330.59 + 17.67 \times (\text{HmRun})
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
+   &= 330.59 + 17.67 \times x_\text{HmRun}
 \end{align*}
 
 

@@ -44,7 +44,7 @@ library(tidyverse)
 
 [Linear Models IV: Multiple Regression]{.custom-title}
 
-<br> <br> 
+<br> 
 
 [Megan Ayers]{.custom-subtitle}
 
@@ -53,12 +53,6 @@ library(tidyverse)
 :::::
 
 ------------------------------------------------------------------------
-
-## Announcements
-
--   Week 4 assessments
--   Office hours changes 
-
 
 ### Goals for Today
 
@@ -92,7 +86,7 @@ How does extending to more predictors change our process?
 
 ### Multiple Linear Regression
 
--   We are going to see a few examples of multiple linear regression this week.
+-   We are going to see a few more examples of multiple linear regression this week.
 
 -   We will need to return to modeling later in the course once we have learned about statistical inference (i.e., confidence intervals and p-values).
 
@@ -178,11 +172,11 @@ ggplot(case0901,
 
 - **Q**: How does this plot help us intuit what $\widehat{\beta}_0$, $\widehat{\beta}_1$, and $\widehat{\beta}_2$ might be?
 
-- Why don't I have to include `data =` and `mapping =` in my `ggplot()` layer?
+- **Side Q**: Why don't I have to include `data = ` and `mapping = ` in my `ggplot()` layer?
 
 ------------------------------------------------------------------------
 
-### Building the Linear Regression Model
+### Building and Interpetring the Linear Regression Model
 
 Full model form:
 
@@ -196,10 +190,35 @@ get_regression_table(modFlowers)
 ::: nonincremental
 -   Estimated regression line for **TimeCat = "Late"**
 
-<br> <br>
+<br> 
 
 -   Estimated regression line for **TimeCat = "Early"**:
+
+<br>
+
+-   Interpreting coefficients?
+
 :::
+
+------------------------------------------------------------------------
+
+### Building and Interpetring the Linear Regression Model
+
+Full model form:
+
+```{r}
+modFlowers <- lm(Flowers ~ Intensity + TimeCat, data = case0901)
+
+library(moderndive)
+get_regression_table(modFlowers)
+```
+
+
+Interpreting coefficients?
+
+- Expect `Flowers` to be 83.5 on average when `Intensity` = 0 **and `TimeCat` is early**
+- Expect `Flowers` to decrease by -0.04 on average when `Intensity` increases by 1, **holding `TimeCat` constant**
+- Expect plants with late `TimeCat` to have -12.2 fewer flowers on average **than those with early `TimeCat`**, **holding `Intensity` constant**
 
 ------------------------------------------------------------------------
 
@@ -242,7 +261,7 @@ library(palmerpenguins)
 
 ------------------------------------------------------------------------
 
-### Last time:
+### Last time: One Categorical Variable
 
 We predicted a penguin's bill length based on their species.
 
@@ -273,7 +292,7 @@ ggplot(penguins, aes(x = species, y = bill_length_mm, fill = species)) +
 
 ------------------------------------------------------------------------
 
-### This time: 
+### This time: Add a Quantitative Variable
 
 We'll incorporate bill depth for prediction!
 
@@ -297,12 +316,12 @@ ggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm)) +
 
 ------------------------------------------------------------------------
 
-![](img/culmen_depth.png){fig-align='center'}
+![](img/culmen_depth.png){fig-align='center' width=85%}
 
 
 ------------------------------------------------------------------------
 
-### What if we include both explanatory variables? 
+### What if we include both? 
 
 ::: {.fragment}
 
@@ -329,10 +348,15 @@ ggplot(penguins, aes(x = bill_depth_mm,
 
 :::
 
+::: {style="font-size: 0.9em;"}
+
 -   **Negative** relationships between bill depth and bill length overall.
 -   **Positive** relationships between bill depth and bill length when accounting for species! 
 -   **What is going on here??**
--   This is a case of **Simpson's Paradox**. 
+-   This is a case of **Simpson's Paradox**! 
+-   Side note: this type of graph is really helpful when including both a categorical and quantitative variable in a linear model! 
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -405,11 +429,14 @@ $$
 
 :::
 
--   **Slope Coefficient on Quantitative Variable:** The *expected/predicted* change in response variable, *on average*, per unit increase in the explanatory variable, *holding all other variables constant*.
+::: {style="font-size: 0.9em;"}
+
+-   **Slope Coefficient on Quantitative Variable:** The *expected/predicted* change in response variable, *on average*, per 1 unit increase in the explanatory variable, *holding all other variables constant*.
     -   Example: We expect a 1.394mm increase in bill length for every 1mm increase in bill depth, on average, after holding species constant.
 
 -   Interpretation on factors from **Categorical Variables** still applies: the *expect/predicted* change in response variable, *on average*, when going from the reference level to the factor's level, *holding all other variables constant*.
 
+:::
 
 ------------------------------------------------------------------------
 
@@ -449,7 +476,9 @@ ggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +
 
 **Are equal slopes a reasonable assumption here?**
 
-## Different Slopes Model
+------------------------------------------------------------------------
+
+## Different Slopes Model (ggplot example)
 
 
 ```{r}
@@ -469,6 +498,8 @@ ggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +
 -   In contrast, **different slopes** models allow for **different relationships** between quantitative predictors and the response variable for each group in the model. 
 
 -   How can we allow our model to have different slopes? 
+
+------------------------------------------------------------------------
 
 ## Contrasting model forms
 
@@ -496,6 +527,10 @@ $$
 :::
 
 -   **Coefficient interpretation?**
+    - $\beta_1 \cdot x_{\textrm{Bill Depth}}$ is particularly tricky
+
+
+------------------------------------------------------------------------
 
 ## Different Slopes Model in R
 
@@ -541,9 +576,13 @@ movies2 <- movies %>%
 glimpse(movies2)
 ```
 
+::: {style="font-size: 0.8em;"}
+
 **Response variable:** `RottenTomatoes`
 
 **Explanatory variables:** `AudienceScore`
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -595,12 +634,13 @@ ggplot(data = movies2 %>% filter(Genre == "Drama"),
   geom_smooth(method = "lm", se = FALSE, color = "#55B84F",
               formula = y ~ poly(x, degree = 2)) +
   ggtitle("Dramas Only") +
-  theme(plot.title = element_text(size = 18))
+  theme(plot.title = element_text(size = 18),
+        axis.title = element_text(size = 16))
 ```
 
 ------------------------------------------------------------------------
 
-## Using Transformations to Account for Non-Linear Relationships
+### Using Transformations to Account for Non-Linear Relationships
 
 
 ```{r}
@@ -611,7 +651,8 @@ ggplot(data = movies2 %>% filter(Genre == "Drama"),
   geom_point(color = "#55B84F") +
   geom_smooth(method = "lm", se = FALSE, color = "#55B84F") +
   ggtitle("Dramas Only") +
-  theme(plot.title = element_text(size = 18))
+  theme(plot.title = element_text(size = 18),
+        axis.title = element_text(size = 16))
 ```
 
 - Notice that the relationship between `AudienceScore`$^2$ and `RottenTomatoes` is approximately linear.
@@ -631,8 +672,10 @@ get_regression_table(mod2)
 
 ```
 
-- We'll practice a very common transformation in lab this week - the **log transformation**
-- **Q**: Why is it still called a linear regression if the model also handles curved relationship?
+<br>
+
+- We'll practice a very common transformation in HW 5 - the **log transformation**
+- **Q**: Why is it still called a *linear* regression if the model also handles curved relationships?
 - Transformations are super powerful: we can now use linear models even if the *untransformed* variables have non-linear relationships.
 
 
@@ -658,12 +701,11 @@ $$
 :::
 
 ::: column
-2008 Election Polls Example:
 
 ```{r, echo = FALSE}
-library(Stat2Data)
-data("Pollster08")
-ggplot(Pollster08, aes(x = Days, y = Margin)) +
+ggplot(data = movies2 %>% filter(Genre == "Drama"),
+       mapping = aes(x = AudienceScore,
+                     y = RottenTomatoes)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
   geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 2), 
@@ -671,7 +713,10 @@ ggplot(Pollster08, aes(x = Days, y = Margin)) +
   geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 5), 
               color = "orange") +
   geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 18), 
-              color = "darkgreen")
+              color = "darkgreen") +
+  ggtitle("Dramas Only") +
+  theme(plot.title = element_text(size = 18),
+        axis.title = element_text(size = 16))
 ```
 :::
 :::::
@@ -679,10 +724,16 @@ ggplot(Pollster08, aes(x = Days, y = Margin)) +
 
 ------------------------------------------------------------------------
 
-## Next time
+### Recap
+
+- We've now looked at linear models that combine quantitative and categorical explanatory variables
+- They can be complicated to interpret - review the examples here as you practice!
+- We've compared **fixed and varying slope models**, and seen how to visualize each in `ggplot2` (`geom_parallel_slopes()` vs regular `geom_smooth()`)
+- We've seen how **transformations** can help us proceed with linear models even when our data appear to have nonlinear relationships 
+
+### Next time
 
 -   Linear regression with many variables
 -   Multicollinearity
 -   Model selection
 
-------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 ---
-pagetitle: "Linear Models V: More Variables + Case Study"
+pagetitle: "Linear Models V: More Variables"
 editor: source
 draft: true
 format: 
@@ -56,7 +56,7 @@ library(tidyverse)
 
 ## Goals for Today
 
--   Learning Check
+-   Some logistics - Megan will be away for a few days coming up
 -   Regression with many variables
 -   Adjusted $R^2$ and model selection
 -   Multicollinearity
@@ -65,14 +65,21 @@ library(tidyverse)
 
 ------------------------------------------------------------------------
 
-## Learning check handout
+### Logistics for Thurs Oct 8 
 
-<!-- Note to self: Give them 10 mins to fill it out, then give the answers and have them correct their own. I'll collect them to grade for completion - they can take a picture of their work, or come to my office Friday to get it. -->
+- Quiz 4 will be taken online on Gradescope at your lab section's start time
+- It will be timed like usual, but you can take it anywhere (you still need to complete it individually)
 
-```{r}
-#| echo: false
-countdown::countdown(10)
-```
+<br>
+
+- For the rest of the time that we're usually in lab, you'll work on a metacognition assignment
+- No new homework will be assigned
+- There won't be a quiz on Oct 15
+
+
+### Friday Oct 9 and Monday Oct 12
+
+- 
 
 ------------------------------------------------------------------------
 
@@ -313,18 +320,30 @@ movies2 <- movies %>%
 glimpse(movies2)
 ```
 
+
 ------------------------------------------------------------------------
 
 ### Example: Movie Ratings
 
-```{r}
+```{r fig.width=14, fig.height=7}
 library(GGally)
 movies2 %>%
   select(RottenTomatoes, AudienceScore, OpeningWeekend, DomesticGross, Genre) %>%
   ggpairs()
 ```
 
-::: {.fragment .nonincremental}
+------------------------------------------------------------------------
+
+### Example: Movie Ratings
+
+```{r fig.width=10, fig.height=6, echo=FALSE}
+library(GGally)
+movies2 %>%
+  select(RottenTomatoes, AudienceScore, OpeningWeekend, DomesticGross, Genre) %>%
+  ggpairs()
+```
+
+::: {.nonincremental style="font-size: 0.9em;"}
 - **Multicollinearity**: when explanatory variables are **highly** correlated with one another. Multicollinearity often results in coefficients that are distorted in erroneous ways!
 
 - **Q**: Do any of these variables seem to be measuring the same thing? 
@@ -581,13 +600,13 @@ Not super close to 1. Compare to a simpler model:
 small_mod <- lm(price ~ bedrooms, data = house)
 get_regression_summaries(small_mod)[, c("r_squared", "adj_r_squared")]
 ```
-::: 
+:::
 
 ::: fragment
 Compare to a much bigger model with additional variables:
 
 ```{r echo = TRUE}
-big_mod <- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_above + sqft_lot + 
+big_mod <- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_above + sqft_lot +
                 view + condition + yr_built, data = house)
 get_regression_summaries(big_mod)[, c("r_squared", "adj_r_squared")]
 ```
@@ -595,21 +614,13 @@ get_regression_summaries(big_mod)[, c("r_squared", "adj_r_squared")]
 
 ------------------------------------------------------------------------
 
-### Developing Linear Models
+### Recap on Developing Linear Models
 
 -   Key components that we've learned about over the last 5 lectures:
-
     -   Determining the **response** variable and the potential **explanatory** variable(s)
     -   Writing out the **model form** and understanding what the terms represent **in context**
     -   **Building** and **visualizing** linear regression models in `R`
     -   **Validating** model assumptions with diagnostic plots
     -   **Comparing** different potential models
 
-------------------------------------------------------------------------
 
-## Next time
-
--   Sampling distributions!
-
-
-------------------------------------------------------------------------

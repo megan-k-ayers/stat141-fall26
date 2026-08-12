@@ -47,7 +47,7 @@ library(tidyverse)
 
 [Linear Models III: Categorical Predictors]{.custom-title .smaller}
 
-<br> <br>
+<br>
 
 [Megan Ayers]{.custom-subtitle}
 
@@ -58,25 +58,12 @@ library(tidyverse)
 ------------------------------------------------------------------------
 
 
-### Reminders/Announcements
-
--   Please fill out the Week 4 feedback survey (link in Slack)
--   Wednesday: we will have a **short** and **completion-based** learning check about coefficient interpretation. Please arrive on time! 
-
-
 ### Goals for Today
 
-::::: columns
-::: column
 -   Recap: Simple linear regression model
 -   Broadening our idea of linear regression
-:::
-
-::: column
 -   Regression with a single, binary categorical explanatory variable
 -   Regression with a single categorical explanatory variable with more than 2 levels
-:::
-:::::
 
 ------------------------------------------------------------------------
 
@@ -110,7 +97,7 @@ Linear regression is a flexible class of models that allow for:
 
 -   **Multiple** explanatory variables.
 
--   Where the **response variable is quantitative**.
+-   A **quantitative response variable**.
 
 ------------------------------------------------------------------------
 
@@ -250,14 +237,16 @@ $$
 
 ------------------------------------------------------------------------
 
-### Example: Halloween Candy
+### Example: Halloween Candy Ranking
 
 ```{r}
 candy <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv")
 glimpse(candy)
 ```
 
-What might be a good categorical explanatory variable of `winpercent`?
+<br>
+
+What might be a good **categorical** explanatory variable of `winpercent` (how often a candy won in head-to-head lineups)?
 
 ------------------------------------------------------------------------
 
@@ -445,10 +434,13 @@ $$
 
 When $x = 0$:
 
-<br>
+<br><br>
 
 
 When $x = 1$:
+
+
+<br><br>
 
 ::: {.fragment}
 
@@ -462,15 +454,17 @@ get_regression_table(mod)
 
 ------------------------------------------------------------------------
 
-### Notes
+### Different Interpretation for Categorical Explanatory Variables
 
 -   When the explanatory variable is categorical, $\beta_0$ and $\beta_1$ no longer represent the intercept and slope.
 
 -   Now $\beta_0$ represents the (population) mean of the response variable when $x = 0$.
 
--   And, $\beta_1$ represents the change in the (population) mean response going from $x = 0$ to $x = 1$.
+-   $\beta_1$ represents the change in the (population) mean response going from $x = 0$ to $x = 1$.
 
--   Can also do prediction:
+-   Can still do prediction (**Q:** how many unique predicted values will we get?)
+
+<br><br>
 
 ::: fragment
 ```{r}
@@ -649,7 +643,7 @@ Even though we are using one predictor (species), we now have $\beta_0,~ \beta_1
 
 <br>
 
--   Categorical explanatory variables are tricky! Revisit these examples, more practice with HW 04 Exercise 3
+-   **Categorical explanatory variables are tricky!!** Revisit these examples, more practice with HW 5 Exercise 1
 
 
 ------------------------------------------------------------------------
@@ -672,7 +666,7 @@ Get in groups of ~5 and find a spot on one of the boards.
 
 - **Q1:** Write down the equation for this fitted model.
 - **Q2:** Draw a few rows of the data frame with the variables used by the model.
-- **Q3:** How is the interpretation of $\beta_0$ and $\widehat{\beta}_0$ different now?
+- **Q3:** How is the interpretation of $\widehat{\beta}_0$ different now?
 - **Q4:** How should we interpret the other two coefficients?
 
 
@@ -703,7 +697,7 @@ head(penguins[, c("bill_length_mm", "species", "x_adelie", "x_gentoo")])
 
 <br>
 
-- **Q3:** How is the interpretation of $\beta_0$ and $\widehat{\beta}_0$ different now?
+- **Q3:** How is the interpretation of $\widehat{\beta}_0$ different now?
     - $\beta_0$ ($\widehat{\beta}_0$) now represents (estimates) the population mean bill length for Chinstrap penguins, not Adelie penguins
 
 <br>
@@ -713,4 +707,3 @@ head(penguins[, c("bill_length_mm", "species", "x_adelie", "x_gentoo")])
 
 :::
 
-------------------------------------------------------------------------

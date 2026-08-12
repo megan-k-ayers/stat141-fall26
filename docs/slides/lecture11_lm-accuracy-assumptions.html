@@ -213,7 +213,7 @@
 <h3 id="announcementsreminders">Announcements/Reminders</h3>
 <div class="fragment">
 <ul>
-<li>Fill out the <a href="https://tinyurl.com/stat141-4wk-survey">Week 4 Survey</a> plz!!</li>
+<li>Fill out the <a href="https://tinyurl.com/stat141-4wk-survey">Week 4 Survey</a> before EOD plz!!</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -418,8 +418,8 @@ y = \beta_0 + \beta_1 x + \epsilon
 </div>
 <div class="fragment">
 <p><span class="math display">\[\begin{align*}
-  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
-   &amp;= 330.59 + 17.67 \times (\text{HmRun})
+  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
+   &amp;= 330.59 + 17.67 \times x_\text{HmRun}
 \end{align*}\]</span></p>
 </div>
 <p><br></p>
@@ -431,8 +431,8 @@ y = \beta_0 + \beta_1 x + \epsilon
 
 <h3 id="coefficient-interpretation">Coefficient Interpretation</h3>
 <p><span class="math display">\[\begin{align*}
-  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
-   &amp;= 330.59 + 17.67 \times (\text{HmRun})
+  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
+   &amp;= 330.59 + 17.67 \times x_\text{HmRun}
 \end{align*}\]</span></p>
 <p>We need to be precise and careful when interpreting estimated coefficients!</p>
 <ul>
@@ -452,8 +452,8 @@ y = \beta_0 + \beta_1 x + \epsilon
 
 <h3 id="coefficient-interpretation-in-context">Coefficient Interpretation: In Context</h3>
 <p><span class="math display">\[\begin{align*}
-  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
-   &amp;= 330.59 + 17.67 \times (\text{HmRun})
+  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
+   &amp;= 330.59 + 17.67 \times x_\text{HmRun}
 \end{align*}\]</span></p>
 <ul>
 <li class="fragment"><strong>Intercept:</strong> We <u>[expect/predict]</u> a player’s <strong>Salary</strong> to be $330,000 <u>on average</u> when they’ve hit 0 <strong>home runs</strong>.</li>
@@ -481,7 +481,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <ul>
 <li class="fragment">Called <strong>extrapolation</strong></li>
 </ul></li>
-<li class="fragment">We could give our model a value of <span class="math inline">\((\text{HmRun}) = 20.5\)</span>, and we’d get out a numerical prediction for <code>Salary</code>. How is this different from the previous examples?</li>
+<li class="fragment">We could give our model a value of <span class="math inline">\(x_\text{HmRun} = 20.5\)</span>, and we’d get out a numerical prediction for <code>Salary</code>. How is this different from the previous examples?</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -522,8 +522,8 @@ y = \beta_0 + \beta_1 x + \epsilon
 </div>
 </div>
 <p><span class="math display">\[\begin{align*}
-  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times (\text{HmRun}) \\
-   &amp;= 330.59 + 17.67 \times (\text{HmRun})
+  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
+   &amp;= 330.59 + 17.67 \times x_\text{HmRun}
 \end{align*}\]</span></p>
 <div class="fragment">
 <p>What assumptions have we made?</p>

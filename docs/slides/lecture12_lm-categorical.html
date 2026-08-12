@@ -205,31 +205,20 @@
 </div><div class="column center" style="width:50%;">
 <p><br></p>
 <p><span class="custom-title smaller">Linear Models III: Categorical Predictors</span></p>
-<p><br> <br></p>
+<p><br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 5</span></p>
 </div></div>
 </section>
 <section class="slide level2">
 
-<h3 id="remindersannouncements">Reminders/Announcements</h3>
-<ul>
-<li class="fragment">Please fill out the Week 4 feedback survey (link in Slack)</li>
-<li class="fragment">Wednesday: we will have a <strong>short</strong> and <strong>completion-based</strong> learning check about coefficient interpretation. Please arrive on time!</li>
-</ul>
 <h3 id="goals-for-today">Goals for Today</h3>
-<div class="columns">
-<div class="column">
 <ul>
 <li class="fragment">Recap: Simple linear regression model</li>
 <li class="fragment">Broadening our idea of linear regression</li>
-</ul>
-</div><div class="column">
-<ul>
 <li class="fragment">Regression with a single, binary categorical explanatory variable</li>
 <li class="fragment">Regression with a single categorical explanatory variable with more than 2 levels</li>
 </ul>
-</div></div>
 </section>
 <section class="slide level2">
 
@@ -256,7 +245,7 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 <ul>
 <li class="fragment"><p>Both quantitative and categorical <strong>explanatory</strong> variables.</p></li>
 <li class="fragment"><p><strong>Multiple</strong> explanatory variables.</p></li>
-<li class="fragment"><p>Where the <strong>response variable is quantitative</strong>.</p></li>
+<li class="fragment"><p>A <strong>quantitative response variable</strong>.</p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -317,7 +306,7 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a52abaef" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_1c1b0bc4" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
@@ -464,7 +453,7 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 </section>
 <section class="slide level2">
 
-<h3 id="example-halloween-candy">Example: Halloween Candy</h3>
+<h3 id="example-halloween-candy-ranking">Example: Halloween Candy Ranking</h3>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>candy <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv"</span>)</span>
 <span id="cb1-2"><a></a><span class="fu">glimpse</span>(candy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -486,7 +475,8 @@ $ pricepercent     &lt;dbl&gt; 0.860, 0.511, 0.116, 0.511, 0.511, 0.767, 0.767, 
 $ winpercent       &lt;dbl&gt; 66.97173, 67.60294, 32.26109, 46.11650, 52.34146, 50.…</code></pre>
 </div>
 </div>
-<p>What might be a good categorical explanatory variable of <code>winpercent</code>?</p>
+<p><br></p>
+<p>What might be a good <strong>categorical</strong> explanatory variable of <code>winpercent</code> (how often a candy won in head-to-head lineups)?</p>
 </section>
 <section class="slide level2">
 
@@ -706,8 +696,9 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 \end{align}
 \]</span></p>
 <p>When <span class="math inline">\(x = 0\)</span>:</p>
-<p><br></p>
+<p><br><br></p>
 <p>When <span class="math inline">\(x = 1\)</span>:</p>
+<p><br><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(winpercent <span class="sc">~</span> chocolate, <span class="at">data =</span> candy)</span>
@@ -725,13 +716,14 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 </section>
 <section class="slide level2">
 
-<h3 id="notes">Notes</h3>
+<h3 id="different-interpretation-for-categorical-explanatory-variables">Different Interpretation for Categorical Explanatory Variables</h3>
 <ul>
 <li class="fragment"><p>When the explanatory variable is categorical, <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> no longer represent the intercept and slope.</p></li>
 <li class="fragment"><p>Now <span class="math inline">\(\beta_0\)</span> represents the (population) mean of the response variable when <span class="math inline">\(x = 0\)</span>.</p></li>
-<li class="fragment"><p>And, <span class="math inline">\(\beta_1\)</span> represents the change in the (population) mean response going from <span class="math inline">\(x = 0\)</span> to <span class="math inline">\(x = 1\)</span>.</p></li>
-<li class="fragment"><p>Can also do prediction:</p></li>
+<li class="fragment"><p><span class="math inline">\(\beta_1\)</span> represents the change in the (population) mean response going from <span class="math inline">\(x = 0\)</span> to <span class="math inline">\(x = 1\)</span>.</p></li>
+<li class="fragment"><p>Can still do prediction (<strong>Q:</strong> how many unique predicted values will we get?)</p></li>
 </ul>
+<p><br><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>new_candy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">chocolate =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
@@ -922,7 +914,7 @@ y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsi
 </ul>
 <p><br></p>
 <ul>
-<li class="fragment">Categorical explanatory variables are tricky! Revisit these examples, more practice with HW 04 Exercise 3</li>
+<li class="fragment"><strong>Categorical explanatory variables are tricky!!</strong> Revisit these examples, more practice with HW 5 Exercise 1</li>
 </ul>
 </section>
 <section id="activity-changing-reference-level" class="slide level2">
@@ -948,7 +940,7 @@ y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsi
 <ul>
 <li class="fragment"><strong>Q1:</strong> Write down the equation for this fitted model.</li>
 <li class="fragment"><strong>Q2:</strong> Draw a few rows of the data frame with the variables used by the model.</li>
-<li class="fragment"><strong>Q3:</strong> How is the interpretation of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\widehat{\beta}_0\)</span> different now?</li>
+<li class="fragment"><strong>Q3:</strong> How is the interpretation of <span class="math inline">\(\widehat{\beta}_0\)</span> different now?</li>
 <li class="fragment"><strong>Q4:</strong> How should we interpret the other two coefficients?</li>
 </ul>
 </section>
@@ -969,17 +961,17 @@ y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsi
 # Groups:   species [3]
   bill_length_mm species   x_adelie x_gentoo
            &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt;    &lt;dbl&gt;
-1           51.4 Chinstrap        0        0
+1           42.5 Chinstrap        0        0
 2           50.8 Chinstrap        0        0
-3           34.5 Adelie           1        0
-4           38.8 Adelie           1        0
-5           45.4 Gentoo           0        1
-6           54.3 Gentoo           0        1</code></pre>
+3           37.9 Adelie           1        0
+4           36.9 Adelie           1        0
+5           46.3 Gentoo           0        1
+6           45.5 Gentoo           0        1</code></pre>
 </div>
 </div>
 <p><br></p>
 <ul>
-<li><strong>Q3:</strong> How is the interpretation of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\widehat{\beta}_0\)</span> different now?
+<li><strong>Q3:</strong> How is the interpretation of <span class="math inline">\(\widehat{\beta}_0\)</span> different now?
 <ul>
 <li><span class="math inline">\(\beta_0\)</span> (<span class="math inline">\(\widehat{\beta}_0\)</span>) now represents (estimates) the population mean bill length for Chinstrap penguins, not Adelie penguins</li>
 </ul></li>
@@ -991,9 +983,6 @@ y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsi
 <li>They now represent the predicted change in bill lengths for Adelie and Gentoo penguins on average, relative to the predicted bill length for Chinstrap penguins.</li>
 </ul></li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>
