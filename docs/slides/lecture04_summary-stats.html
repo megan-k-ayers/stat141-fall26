@@ -222,6 +222,9 @@
 <li><strong>Course assistant office hours</strong>: To work on assignments with your peers and get help from the course assistants when you are stuck</li>
 </ul></li>
 </ul>
+<ul>
+<li class="fragment">Math/Stats colloquium tomorrow! Come and hear about examples of stats research!</li>
+</ul>
 <div class="fragment">
 <h3 id="reminders">Reminders</h3>
 <ul>
@@ -764,7 +767,7 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_68a64c4a" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_6b50462c" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
@@ -1094,17 +1097,17 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>dogs <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://data.cambridgema.gov/api/views/sckh-3xyx/rows.csv"</span>)</span>
 <span id="cb58-2"><a></a><span class="fu">str</span>(dogs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   31820 obs. of  10 variables:
- $ Dog_Name        : chr  "STELLA" "George" "Jack" "Tika" ...
- $ Dog_Breed       : chr  "SCHNOODLE" "Maltipoo" "Poodle" "Hound" ...
- $ Location_masked : chr  "POINT (-71.136168 42.376682)" "POINT (-71.13607 42.395315)" "POINT (-71.114047 42.367352)" "POINT (-71.108359 42.372506)" ...
- $ Latitude_masked : num  42.4 42.4 42.4 42.4 42.4 ...
- $ Longitude_masked: num  -71.1 -71.1 -71.1 -71.1 -71.1 ...
- $ Neighborhood    : chr  "West Cambridge" "North Cambridge" "Riverside" "Mid-Cambridge" ...
- $ Birth.Year      : chr  "01/01/2013 12:00:00 AM" "01/01/2021 12:00:00 AM" "01/01/2020 12:00:00 AM" "01/01/2016 12:00:00 AM" ...
- $ Gender          : chr  "Female" "Male" "Male" "Female" ...
- $ Expiration.Date : chr  "01/01/2021 12:00:00 AM" "01/01/2023 12:00:00 AM" "01/01/2023 12:00:00 AM" "01/01/2024 12:00:00 AM" ...
- $ Is.Active       : chr  "false" "false" "false" "false" ...</code></pre>
+<pre><code>'data.frame':   27688 obs. of  10 variables:
+ $ Dog_Name        : chr  "Poppy Grace" "Clementine" "Maple" "Stella" ...
+ $ Dog_Breed       : chr  "Pug" "Labrador Retriever" "Golden Retriever" "Maltipoo" ...
+ $ Location_masked : chr  "POINT (-71.093036 42.371026)" "POINT (-71.115351 42.380721)" "POINT (-71.115351 42.380721)" "POINT (-71.13607 42.395315)" ...
+ $ Latitude_masked : num  42.4 42.4 42.4 42.4 NA ...
+ $ Longitude_masked: num  -71.1 -71.1 -71.1 -71.1 NA ...
+ $ Neighborhood    : chr  "Wellington-Harrington" "Baldwin" "Baldwin" "North Cambridge" ...
+ $ Birth.Year      : chr  "01/01/2017 12:00:00 AM" "01/01/2015 12:00:00 AM" "01/01/2025 12:00:00 AM" "01/01/2021 12:00:00 AM" ...
+ $ Gender          : chr  "Female" "Female" "Female" "Female" ...
+ $ Expiration.Date : chr  "01/01/2021 12:00:00 AM" "01/01/2024 12:00:00 AM" "01/01/2027 12:00:00 AM" "01/01/2027 12:00:00 AM" ...
+ $ Is.Active       : chr  "false" "false" "true" "true" ...</code></pre>
 </div>
 </div>
 </section>
@@ -1123,27 +1126,27 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <span id="cb60-9"><a></a></span>
 <span id="cb60-10"><a></a><span class="fu">head</span>(dogs_top5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Dog_Name                            Dog_Breed              Location_masked
-1     Lucy                      Standard Poodle POINT (-71.079075 42.368232)
-2   Cooper            Treeing Tennessee Brindle  POINT (-71.13607 42.395315)
-3  Charlie                       Beagle / Hound  POINT (-71.12829 42.385157)
-4     Lucy                          Mixed Breed POINT (-71.096823 42.365754)
-5   Cooper Carolina Dog / Australian Cattle Dog  POINT (-71.12829 42.385157)
-6     Luna                   Labrador Retriever  POINT (-71.152822 42.38067)
-  Latitude_masked Longitude_masked      Neighborhood             Birth.Year
-1         42.3682         -71.0791    East Cambridge 01/01/2017 12:00:00 AM
-2         42.3953         -71.1361   North Cambridge 01/01/2017 12:00:00 AM
-3         42.3852         -71.1283 Neighborhood Nine 01/01/2011 12:00:00 AM
-4         42.3658         -71.0968          The Port 01/01/2018 12:00:00 AM
-5         42.3852         -71.1283 Neighborhood Nine 01/01/2023 12:00:00 AM
-6         42.3807         -71.1528   Strawberry Hill 01/01/2015 12:00:00 AM
-  Gender        Expiration.Date Is.Active  Breed
-1 Female 01/01/2020 12:00:00 AM     false Single
-2   Male 01/01/2025 12:00:00 AM     false Single
-3   Male 01/01/2023 12:00:00 AM     false Single
-4 Female 01/01/2021 12:00:00 AM     false  Mixed
-5   Male 01/01/2027 12:00:00 AM      true Single
-6 Female 01/01/2024 12:00:00 AM     false Single</code></pre>
+<pre><code>  Dog_Name                                Dog_Breed
+1     Luna         Labrador Retriever / Rat Terrier
+2     Luna Labrador Retriever / German Shepherd Dog
+3  Charlie                           Cocker Spaniel
+4  Charlie      Siberian Husky / Labrador Retriever
+5     Luna                           French Bulldog
+6     Luna                       Labrador Retriever
+               Location_masked Latitude_masked Longitude_masked    Neighborhood
+1  POINT (-71.13607 42.395315)         42.3953         -71.1361 North Cambridge
+2 POINT (-71.108359 42.372506)         42.3725         -71.1084   Mid-Cambridge
+3 POINT (-71.107799 42.359186)         42.3592         -71.1078   Cambridgeport
+4  POINT (-71.152822 42.38067)         42.3807         -71.1528 Strawberry Hill
+5 POINT (-71.136168 42.376682)         42.3767         -71.1362  West Cambridge
+6  POINT (-71.152822 42.38067)         42.3807         -71.1528 Strawberry Hill
+              Birth.Year Gender        Expiration.Date Is.Active  Breed
+1 01/01/2019 12:00:00 AM Female 01/01/2024 12:00:00 AM     false Single
+2 01/01/2025 12:00:00 AM Female 01/01/2027 12:00:00 AM      true Single
+3 01/01/2017 12:00:00 AM   Male 01/01/2026 12:00:00 AM     false Single
+4 01/01/2019 12:00:00 AM Female 01/01/2027 12:00:00 AM      true Single
+5 01/01/2021 12:00:00 AM Female 01/01/2022 12:00:00 AM     false Single
+6 01/01/2015 12:00:00 AM Female 01/01/2022 12:00:00 AM     false Single</code></pre>
 </div>
 </div>
 </section>
@@ -1156,11 +1159,11 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a></a><span class="fu">count</span>(dogs_top5, Dog_Name)  <span class="co"># Handy function</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Dog_Name   n
-1  Charlie 252
-2   Cooper 134
-3     Lucy 175
-4     Luna 287
-5    Rosie 167</code></pre>
+1  Charlie 225
+2   Cooper 122
+3     Lucy 155
+4     Luna 260
+5    Rosie 147</code></pre>
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
@@ -1190,11 +1193,11 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <span id="cb65-2"><a></a>dog_counts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Dog_Name   n
-1  Charlie 252
-2   Cooper 134
-3     Lucy 175
-4     Luna 287
-5    Rosie 167</code></pre>
+1  Charlie 225
+2   Cooper 122
+3     Lucy 155
+4     Luna 260
+5    Rosie 147</code></pre>
 </div>
 </div>
 <p><br></p>
@@ -1223,11 +1226,11 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <span id="cb68-2"><a></a>dog_counts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Dog_Name   n
-1  Charlie 252
-2   Cooper 134
-3     Lucy 175
-4     Luna 287
-5    Rosie 167</code></pre>
+1  Charlie 225
+2   Cooper 122
+3     Lucy 155
+4     Luna 260
+5    Rosie 147</code></pre>
 </div>
 </div>
 <p><br></p>
@@ -1259,15 +1262,15 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output cell-output-stdout">
 <pre><code>   Dog_Name  Breed   n
 1   Charlie  Mixed  22
-2   Charlie Single 230
+2   Charlie Single 203
 3    Cooper  Mixed  14
-4    Cooper Single 120
+4    Cooper Single 108
 5      Lucy  Mixed  19
-6      Lucy Single 156
-7      Luna  Mixed  30
-8      Luna Single 257
+6      Lucy Single 136
+7      Luna  Mixed  29
+8      Luna Single 231
 9     Rosie  Mixed   8
-10    Rosie Single 159</code></pre>
+10    Rosie Single 139</code></pre>
 </div>
 </div>
 <p><br></p>
@@ -1278,11 +1281,11 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output cell-output-stdout">
 <pre><code>         
           Mixed Single
-  Charlie    22    230
-  Cooper     14    120
-  Lucy       19    156
-  Luna       30    257
-  Rosie       8    159</code></pre>
+  Charlie    22    203
+  Cooper     14    108
+  Lucy       19    136
+  Luna       29    231
+  Rosie       8    139</code></pre>
 </div>
 </div>
 </div>
@@ -1335,15 +1338,15 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="cell-output cell-output-stdout">
 <pre><code>   Dog_Name  Breed   n
 1   Charlie  Mixed  22
-2   Charlie Single 230
+2   Charlie Single 203
 3    Cooper  Mixed  14
-4    Cooper Single 120
+4    Cooper Single 108
 5      Lucy  Mixed  19
-6      Lucy Single 156
-7      Luna  Mixed  30
-8      Luna Single 257
+6      Lucy Single 136
+7      Luna  Mixed  29
+8      Luna Single 231
 9     Rosie  Mixed   8
-10    Rosie Single 159</code></pre>
+10    Rosie Single 139</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1356,16 +1359,16 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 # Groups:   Dog_Name [5]
    Dog_Name Breed      n   prop
    &lt;chr&gt;    &lt;chr&gt;  &lt;int&gt;  &lt;dbl&gt;
- 1 Charlie  Mixed     22 0.0873
- 2 Charlie  Single   230 0.913 
- 3 Cooper   Mixed     14 0.104 
- 4 Cooper   Single   120 0.896 
- 5 Lucy     Mixed     19 0.109 
- 6 Lucy     Single   156 0.891 
- 7 Luna     Mixed     30 0.105 
- 8 Luna     Single   257 0.895 
- 9 Rosie    Mixed      8 0.0479
-10 Rosie    Single   159 0.952 </code></pre>
+ 1 Charlie  Mixed     22 0.0978
+ 2 Charlie  Single   203 0.902 
+ 3 Cooper   Mixed     14 0.115 
+ 4 Cooper   Single   108 0.885 
+ 5 Lucy     Mixed     19 0.123 
+ 6 Lucy     Single   136 0.877 
+ 7 Luna     Mixed     29 0.112 
+ 8 Luna     Single   231 0.888 
+ 9 Rosie    Mixed      8 0.0544
+10 Rosie    Single   139 0.946 </code></pre>
 </div>
 </div>
 </div></div>
@@ -1384,16 +1387,16 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 # Groups:   Dog_Name [5]
    Dog_Name Breed      n   prop
    &lt;chr&gt;    &lt;chr&gt;  &lt;int&gt;  &lt;dbl&gt;
- 1 Charlie  Mixed     22 0.0873
- 2 Charlie  Single   230 0.913 
- 3 Cooper   Mixed     14 0.104 
- 4 Cooper   Single   120 0.896 
- 5 Lucy     Mixed     19 0.109 
- 6 Lucy     Single   156 0.891 
- 7 Luna     Mixed     30 0.105 
- 8 Luna     Single   257 0.895 
- 9 Rosie    Mixed      8 0.0479
-10 Rosie    Single   159 0.952 </code></pre>
+ 1 Charlie  Mixed     22 0.0978
+ 2 Charlie  Single   203 0.902 
+ 3 Cooper   Mixed     14 0.115 
+ 4 Cooper   Single   108 0.885 
+ 5 Lucy     Mixed     19 0.123 
+ 6 Lucy     Single   136 0.877 
+ 7 Luna     Mixed     29 0.112 
+ 8 Luna     Single   231 0.888 
+ 9 Rosie    Mixed      8 0.0544
+10 Rosie    Single   139 0.946 </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -1406,16 +1409,16 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 # Groups:   Breed [2]
    Dog_Name Breed      n   prop
    &lt;chr&gt;    &lt;chr&gt;  &lt;int&gt;  &lt;dbl&gt;
- 1 Charlie  Mixed     22 0.237 
- 2 Charlie  Single   230 0.249 
- 3 Cooper   Mixed     14 0.151 
- 4 Cooper   Single   120 0.130 
- 5 Lucy     Mixed     19 0.204 
- 6 Lucy     Single   156 0.169 
- 7 Luna     Mixed     30 0.323 
- 8 Luna     Single   257 0.279 
- 9 Rosie    Mixed      8 0.0860
-10 Rosie    Single   159 0.172 </code></pre>
+ 1 Charlie  Mixed     22 0.239 
+ 2 Charlie  Single   203 0.248 
+ 3 Cooper   Mixed     14 0.152 
+ 4 Cooper   Single   108 0.132 
+ 5 Lucy     Mixed     19 0.207 
+ 6 Lucy     Single   136 0.166 
+ 7 Luna     Mixed     29 0.315 
+ 8 Luna     Single   231 0.283 
+ 9 Rosie    Mixed      8 0.0870
+10 Rosie    Single   139 0.170 </code></pre>
 </div>
 </div>
 </div></div>

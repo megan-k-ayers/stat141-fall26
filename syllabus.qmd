@@ -172,7 +172,7 @@ Being actively present in lectures and labs is very important in this course. Th
 
 Being consistently absent, late to class, or being consistently distracted during class (ex. using cell phone or doing homework during lecture), or consistently not participating in group work will detract from your participation grade.
 
-That said, I understand that unexpected things happen, and that you may have an outside obligation come up during class time. To help with circumstances that might lead to an absence (expected or unexpected), everyone has four "free" lecture absences and 1 "free" lab absence (if you miss a lab where there is a quiz you will receive a 0 for it, but the lowest quiz score is dropped).  You may use these free absences as needed, no questions asked. While I am here to listen, don't feel that you have to share anything personal to justify your absence. 
+That said, I understand that unexpected things happen, and that you may have an outside obligation come up during class time. To help with circumstances that might lead to an absence (expected or unexpected), everyone has four "free" lecture absences and 1 "free" lab absence (if you miss a lab where there is a quiz you will receive a 0 for it, but the lowest quiz score is dropped).  You may use these free absences as needed, no questions asked. While I am here to listen, don't feel that you have to share anything personal to justify your absence.
 
 
 
@@ -200,6 +200,10 @@ We expect everyone to act and interact in ways that contribute to an open, welco
 
 [^1]: This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html), version 2.0.
 
+
+## Accommodations
+
+Students come to this class with diverse needs and abilities. My hope is for this class to be accessible to all enrolled students. If you are planning to or are considering requesting a disability accommodation, I encourage you to contact Disability & Accessibility Resources (DAR), [dar@reed.edu](mailto:dar@reed.edu) or 503-517-4917 as early as possible in the semester. Please be aware that requests may take several weeks to be processed through DAR. Once I receive accommodations requests via DAR I will reach out to discuss arrangements for each accommodation, but feel free to reach out to me to discuss accommodations at any time before or after this.
 
 
 ## Policies

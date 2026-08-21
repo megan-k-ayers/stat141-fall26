@@ -57,6 +57,7 @@ library(tidyverse)
 ## Goals for Today
 
 -   Some logistics - Megan will be away for a few days coming up
+-   See week 4 feedback results
 -   Regression with many variables
 -   Adjusted $R^2$ and model selection
 -   Multicollinearity
@@ -79,7 +80,11 @@ library(tidyverse)
 
 ### Friday Oct 9 and Monday Oct 12
 
-- 
+- Lenny will give lectures
+
+------------------------------------------------------------------------
+
+## Week 4 Feedback
 
 ------------------------------------------------------------------------
 

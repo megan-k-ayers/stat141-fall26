@@ -27,19 +27,187 @@ execute:
 #| include: false
 #| warning: false
 #| message: false
-#| echo:    false
 
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
-                      fig.align = 'center')
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = 'center')
 library(knitr)
 library(tidyverse)
-library(ggthemes)
-library(moderndive)
-library(gapminder)
-library(infer)
-library(tufte)
 ```
 
-## Linear Models VI: Case Study {.center}
+::::: columns
+::: {.column .center width="60%"}
+![](img/DAW.jpeg){width="90%"}
+:::
 
-*(placeholder -- content TBD)*
+::: {.column .center width="40%"}
+<br>
+
+[Linear Models VI]{.custom-title}
+
+<br> <br> 
+
+[Megan Ayers]{.custom-subtitle}
+
+[Stat 141 \| Fall 2026 <br> Monday, Week 6]{.custom-subtitle}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Goals for Today
+
+- Quick test run of Thursday's online quiz
+- Any spillover content from last week
+- Practice problems 
+
+
+------------------------------------------------------------------------
+
+## Practice problem: Linear Regression
+
+<!-- Note to self: Answers are in quiz folder from last semester. -->
+
+::: {style="font-size: 0.7em;"}
+
+In HW 4, we explored the results of the **Anchoring Effect Experiment** conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the `treatment`, either **82** or **531**) affected the student's guess for the number of dog breeds in the world (the response variable).
+
+We can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where `treatment` is treated as a **categorical** explanatory variable.
+
+:::
+
+<br>
+
+```{r echo = FALSE}
+library(moderndive)
+dogs <- read.csv("data/dogs_cleaned.csv")
+dogs$treatment <- factor(dogs$treatment)
+get_regression_table(lm(n_breeds ~ treatment, dogs))
+```
+
+<br>
+
+- **Q1**: Write the equation for the **estimated regression line**.
+
+
+
+
+- **Q2**: How should we interpret the "intercept" and "`treatment: High`" terms, given the context of the experiment?
+
+
+```{r echo=FALSE}
+countdown::countdown(5)
+```
+
+
+------------------------------------------------------------------------
+
+## Practice problem: Linear Regression
+
+::: {style="font-size: 0.7em;"}
+
+In HW 4, we explored the results of the **Anchoring Effect Experiment** conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the `treatment`, either **82** or **531**) affected the student's guess for the number of dog breeds in the world (the response variable).
+
+We can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where `treatment` is treated as a **categorical** explanatory variable.
+
+:::
+
+<br>
+
+```{r echo = FALSE}
+library(moderndive)
+dogs <- read.csv("data/dogs_cleaned.csv")
+dogs$treatment <- factor(dogs$treatment)
+get_regression_table(lm(n_breeds ~ treatment, dogs))
+```
+
+<br>
+
+- **Q3**: Suppose I had tested the effect of three different treatments: `82`, `531`, and `900`, instead of just `82` and `531`. What would be different about the regression model and the results table?
+
+
+- **Q4**: Suppose `treatment` was actually a **quantitative** variable, with each student seeing a different number in $[0, 200]$. Suppose that then our regression model produced estimates $\widehat{\beta}_0 = 100$ and $\widehat{\beta}_1 = 4$. How should we interpret $\widehat{\beta}_0$ and $\widehat{\beta}_1$ now?
+
+```{r echo=FALSE}
+countdown::countdown(5)
+```
+
+------------------------------------------------------------------------
+
+## Practice problem: Data Wrangling Pseudo-Code
+
+<!-- Note to self: Solutions are in lab_review_session.qmd from last semester. -->
+
+Looking at `pdxtrees` again:
+
+```{r echo=F, warning=F, message=F}
+library(pdxTrees)
+library(dplyr)
+library(ggplot2)
+near_Reed <- get_pdxTrees_parks(park = c("Woodstock Park", "Sellwood Riverfront Park", "Kenilworth Park"))
+near_Reed <- near_Reed[near_Reed$Genus %in% c("Acer", "Quercus", "Pinus", "Thuja", "Pseudotsuga"), ] 
+near_Reed <- near_Reed[, c("Genus", "DBH", "Condition", "Tree_Height", "Crown_Width_NS", "Park", "Native")]
+near_Reed[c(1, 2, 46, 166, 322), ]
+```
+
+
+<br><br>
+
+**Write pseudo-code to**: Make a contingency table of whether trees in Woodstock Park are "big guys" or "little guys" by whether they are native species or not. Trees are considered "big guys" when DBH > 30 or Tree_Height > 100 and "little guys" otherwise.
+
+```{r echo=FALSE}
+countdown::countdown(5)
+```
+
+------------------------------------------------------------------------
+
+## Practice problem: Data Wrangling Explaining Code
+
+Now let's turn to the penguins data. 
+
+```{r, warning=F, message=F, eval=F}
+penguins %>%
+  filter(!is.na(sex),
+         island %in% c("Biscoe", "Dream")) %>%
+  count(species, island, sex) %>%
+  group_by(species, island) %>%
+  mutate(prop = n / sum(n)) %>%
+  arrange(species, island, sex)
+```
+
+<br><br>
+
+**Explain what each line of code does in context, and sketch what the final data frame would look like.** Reminder that there are 3 different species in `penguins`: Adelies, Gentoos, and Chinstraps. It might be helpful to sketch what the data frame looks like at each intermediate step! 
+
+
+```{r echo=FALSE}
+countdown::countdown(7)
+```
+
+
+------------------------------------------------------------------------
+
+## Practice problem: Linear Regression (extra difficult `r emo::ji("weight")`)
+
+Still hanging with the penguins... Take a look at the following regression table:
+
+<br>
+
+```{r}
+our_mod <- lm(bill_len ~ sex*body_mass + flipper_len, penguins)
+get_regression_table(our_mod)
+```
+
+<br>
+
+- **Q1**: How should we interpret `intercept`? 
+
+
+- **Q2**: How should we interpret `body_mass`?
+
+
+- **Q3**: How should we interpret `flipper_len`?
+
+
+```{r echo=FALSE}
+countdown::countdown(8)
+```

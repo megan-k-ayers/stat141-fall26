@@ -61,10 +61,14 @@ library(dplyr)
 ### Announcements
 
 ::: {.nonincremental}
+
 -   The teaching team would love to see you in office hours!
     -   **Megan's office hours**: For individual or small group help on problems or concepts
     -   **Course assistant office hours**: To work on assignments with your peers and get help from the course assistants when you are stuck
+    
 :::
+
+- Math/Stats colloquium tomorrow! Come and hear about examples of stats research! 
 
 
 ::: fragment

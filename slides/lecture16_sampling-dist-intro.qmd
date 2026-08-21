@@ -67,12 +67,7 @@ library(tufte)
 
 ### Announcements/Reminders
 
-- New member of the course assistant team
-- Updated office hours
-- HW 4 due today
-- Extra time for HW 5: due **Monday** March 9
-- Final exam slots finalized
-- Reminder to pick up your learning assessment for feedback
+- 
 
 
 ------------------------------------------------------------------------
@@ -241,12 +236,12 @@ ggplot(data=data, aes(x = cards)) +
 1. Thoroughly shuffle your group's deck of cards.
 2. Draw 10 cards from the deck \textbf{without replacement} to form a sample.
 3. Compute the average/mean value of your 10 cards
-4. Write the value of the average/mean on a sticky note and add to chalkboard.
-5. Repeat steps 1 - 4 an additional four times.
+4. Add the value of the average/mean as a dot on the chalkboard.
+5. Repeat steps 1 - 4 an additional **seven** times.
 
 \smallskip
 
-Each group should have calculated 5 averages from 5 different samples of 10 cards!
+Each group should have calculated 8 averages from 8 different samples of 10 cards!
 :::
 
 
@@ -378,7 +373,8 @@ ggplot(data=data, aes(x = cards)) +
 
 `R` has been giving us uncertainty estimates (ex. `geom_smooth` when we don't set `se = FALSE`):
 
-```{r}
+
+```{r fig.height=3.5}
 library(pdxTrees)
 kenilworth <- get_pdxTrees_parks() %>%
   filter(Park %in% c("Kenilworth Park")) %>% 
@@ -438,12 +434,15 @@ include_graphics("img/ci_swimming.png")
 
 ------------------------------------------------------------------------
 
-## Statistical Inference
+## Recap: Sampling Distributions and Statistical Inference
 
 - **Goal**: Draw conclusions about the population based on the sample.
     - We've seen how to calculate a statistic from our sample
     - But different samples give different statistics: how do we know whether to trust the one we have?
-    - Sampling distributions show how widely our statistic can range across samples
+    
+<br>
+    
+- **Sampling distributions** show how widely our statistic can range across samples
     - This helps us understand how much to trust any single statistic
+    - We'll spend a couple more days learning about sampling distributions, then will learn how to use them to make inferences! 
 
-------------------------------------------------------------------------

@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-dcd0113d5cc71e8f14b6292e6de6236b.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -123,15 +189,163 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
 
-<section id="linear-models-vi-case-study" class="slide level2 center">
-<h2>Linear Models VI: Case Study</h2>
-<p><em>(placeholder – content TBD)</em></p>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column center" style="width:60%;">
+<p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
+</div><div class="column center" style="width:40%;">
+<p><br></p>
+<p><span class="custom-title">Linear Models VI</span></p>
+<p><br> <br></p>
+<p><span class="custom-subtitle">Megan Ayers</span></p>
+<p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 6</span></p>
+</div></div>
+</section>
+<section id="goals-for-today" class="slide level2">
+<h2>Goals for Today</h2>
+<ul>
+<li class="fragment">Quick test run of Thursday’s online quiz</li>
+<li class="fragment">Any spillover content from last week</li>
+<li class="fragment">Practice problems</li>
+</ul>
+</section>
+<section id="practice-problem-linear-regression" class="slide level2">
+<h2>Practice problem: Linear Regression</h2>
+<!-- Note to self: Answers are in quiz folder from last semester. -->
+<div style="font-size: 0.7em;">
+<p>In HW 4, we explored the results of the <strong>Anchoring Effect Experiment</strong> conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the <code>treatment</code>, either <strong>82</strong> or <strong>531</strong>) affected the student’s guess for the number of dog breeds in the world (the response variable).</p>
+<p>We can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where <code>treatment</code> is treated as a <strong>categorical</strong> explanatory variable.</p>
+</div>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  term           estimate std_error statistic p_value lower_ci upper_ci
+  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept          410.      188.      2.18   0.032     36.9     783.
+2 treatment: 531     407.      259.      1.57   0.12    -108.      922.</code></pre>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li class="fragment"><p><strong>Q1</strong>: Write the equation for the <strong>estimated regression line</strong>.</p></li>
+<li class="fragment"><p><strong>Q2</strong>: How should we interpret the “intercept” and “<code>treatment: High</code>” terms, given the context of the experiment?</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_2488a12f" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="practice-problem-linear-regression-1" class="slide level2">
+<h2>Practice problem: Linear Regression</h2>
+<div style="font-size: 0.7em;">
+<p>In HW 4, we explored the results of the <strong>Anchoring Effect Experiment</strong> conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the <code>treatment</code>, either <strong>82</strong> or <strong>531</strong>) affected the student’s guess for the number of dog breeds in the world (the response variable).</p>
+<p>We can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where <code>treatment</code> is treated as a <strong>categorical</strong> explanatory variable.</p>
+</div>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 7
+  term           estimate std_error statistic p_value lower_ci upper_ci
+  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept          410.      188.      2.18   0.032     36.9     783.
+2 treatment: 531     407.      259.      1.57   0.12    -108.      922.</code></pre>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li class="fragment"><p><strong>Q3</strong>: Suppose I had tested the effect of three different treatments: <code>82</code>, <code>531</code>, and <code>900</code>, instead of just <code>82</code> and <code>531</code>. What would be different about the regression model and the results table?</p></li>
+<li class="fragment"><p><strong>Q4</strong>: Suppose <code>treatment</code> was actually a <strong>quantitative</strong> variable, with each student seeing a different number in <span class="math inline">\([0, 200]\)</span>. Suppose that then our regression model produced estimates <span class="math inline">\(\widehat{\beta}_0 = 100\)</span> and <span class="math inline">\(\widehat{\beta}_1 = 4\)</span>. How should we interpret <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> now?</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_a9cb8dc5" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="practice-problem-data-wrangling-pseudo-code" class="slide level2">
+<h2>Practice problem: Data Wrangling Pseudo-Code</h2>
+<!-- Note to self: Solutions are in lab_review_session.qmd from last semester. -->
+<p>Looking at <code>pdxtrees</code> again:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 7
+  Genus         DBH Condition Tree_Height Crown_Width_NS Park             Native
+  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt; 
+1 Quercus       3.3 Fair               16             14 Kenilworth Park  No    
+2 Pseudotsuga  43.1 Fair              148             61 Kenilworth Park  Yes   
+3 Thuja        14.1 Fair               42             21 Kenilworth Park  Yes   
+4 Acer         36.5 Good               80             68 Woodstock Park   No    
+5 Pinus        10.3 Fair               27             24 Sellwood Riverf… No    </code></pre>
+</div>
+</div>
+<p><br><br></p>
+<p><strong>Write pseudo-code to</strong>: Make a contingency table of whether trees in Woodstock Park are “big guys” or “little guys” by whether they are native species or not. Trees are considered “big guys” when DBH &gt; 30 or Tree_Height &gt; 100 and “little guys” otherwise.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_4959e36a" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="practice-problem-data-wrangling-explaining-code" class="slide level2">
+<h2>Practice problem: Data Wrangling Explaining Code</h2>
+<p>Now let’s turn to the penguins data.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex),</span>
+<span id="cb4-3"><a></a>         island <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Biscoe"</span>, <span class="st">"Dream"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a></a>  <span class="fu">count</span>(species, island, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a></a>  <span class="fu">group_by</span>(species, island) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a></a>  <span class="fu">arrange</span>(species, island, sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><br><br></p>
+<p><strong>Explain what each line of code does in context, and sketch what the final data frame would look like.</strong> Reminder that there are 3 different species in <code>penguins</code>: Adelies, Gentoos, and Chinstraps. It might be helpful to sketch what the data frame looks like at each intermediate step!</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_f1705b81" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="practice-problem-linear-regression-extra-difficult" class="slide level2">
+<h2>Practice problem: Linear Regression (extra difficult 🏋)</h2>
+<p>Still hanging with the penguins… Take a look at the following regression table:</p>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>our_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_len <span class="sc">~</span> sex<span class="sc">*</span>body_mass <span class="sc">+</span> flipper_len, penguins)</span>
+<span id="cb5-2"><a></a><span class="fu">get_regression_table</span>(our_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 7
+  term                estimate std_error statistic p_value lower_ci upper_ci
+  &lt;chr&gt;                  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept             -9.83      4.83     -2.04    0.043  -19.3     -0.326
+2 sex: male              5.89      2.60      2.27    0.024    0.779   11.0  
+3 body_mass              0         0.001    -0.182   0.856   -0.002    0.001
+4 flipper_len            0.266     0.033     7.93    0        0.2      0.332
+5 sex: male:body_mass   -0.001     0.001    -1.41    0.161   -0.002    0    </code></pre>
+</div>
+</div>
+<p><br></p>
+<ul>
+<li class="fragment"><p><strong>Q1</strong>: How should we interpret <code>intercept</code>?</p></li>
+<li class="fragment"><p><strong>Q2</strong>: How should we interpret <code>body_mass</code>?</p></li>
+<li class="fragment"><p><strong>Q3</strong>: How should we interpret <code>flipper_len</code>?</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_62846ca2" minutes="8" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
 
 
 </section>
