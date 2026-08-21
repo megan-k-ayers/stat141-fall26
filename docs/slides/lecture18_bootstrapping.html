@@ -139,17 +139,10 @@
 </div><div class="column center" style="width:50%;">
 <p><br></p>
 <p><span class="custom-title">Bootstrapping</span></p>
-<p><br> <br></p>
+<p><br> <br> <br> <br> <br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 7</span></p>
 </div></div>
-</section>
-<section class="slide level2">
-
-<h3 id="midterm-check-in">Midterm Check In</h3>
-<ul>
-<li class="fragment">If you have exam accommodations and have <strong>not</strong> discussed them with me via email, please let me know asap!</li>
-</ul>
 </section>
 <section class="slide level2">
 
@@ -278,12 +271,33 @@
 </section>
 <section id="theory" class="slide level2">
 <h2>Theory</h2>
-<p><img data-src="img/bootstrap_shapes.png" style="width:85.0%"></p>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p><img data-src="img/bootstrap_shapes1.png"></p>
+</div><div class="column fragment" data-fragment-index="1" style="width:19%;">
+<p><img data-src="img/bootstrap_shapes2.png"></p>
+</div><div class="column fragment" data-fragment-index="2" style="width:31%;">
+<p><img data-src="img/bootstrap_shapes3.png"></p>
+</div><div class="column fragment" data-fragment-index="3" style="width:30%;">
+<p><img data-src="img/bootstrap_shapes4.png"></p>
+</div></div>
+<div style="font-size:0.8em;">
+<div class="fragment" data-fragment-index="1">
 <ul>
-<li class="fragment"><p>The sample “represents” the population. Many copies of the sample still “represents” the population</p></li>
-<li class="fragment"><p><strong>Idea</strong>: Copy the sample many times to create “a bootstrap population”, and then sample from this to get “bootstrap samples”</p></li>
-<li class="fragment"><p>Same result, save time: Just sample <em>with replacement</em> from the one original sample.</p></li>
+<li>The sample “represents” the population. Many copies of the sample still “represents” the population</li>
 </ul>
+</div>
+<div class="fragment" data-fragment-index="2">
+<ul>
+<li><strong>Idea</strong>: Copy the sample many times to create “a bootstrap population”, and then sample from this to get “bootstrap samples”</li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="3">
+<ul>
+<li>Same result, save time: Just sample <em>with replacement</em> from the one original sample to get “bootstrap samples”</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="the-bootstrap-procedure" class="slide level2">
 <h2>The Bootstrap Procedure</h2>
@@ -295,7 +309,7 @@
 <li class="fragment"><p>The collection of the bootstrap statistics form the <strong>Bootstrap distribution</strong>.</p></li>
 </ol>
 <div class="fragment">
-<p><strong>Q:</strong> How does this process of generating a bootstrap distribution differ from the process of generating the <em>sampling</em> distribution?</p>
+<p><strong>Q:</strong> How does this general process of generating a bootstrap distribution differ from the process of generating the <em>sampling</em> distribution?</p>
 </div>
 <ul>
 <li class="fragment"><p>We sample from the <u>original sample</u> here; for sampling distributions, we sample from the <u>population</u></p></li>
@@ -303,7 +317,7 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_eb4ccc13" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_fd645bff" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -315,7 +329,7 @@
 <li class="fragment"><p><strong>How We’ll Answer:</strong></p>
 <ul>
 <li class="fragment">Draw a sample hand of <span class="math inline">\(n=25\)</span> cards, and calculate the mean value.</li>
-<li class="fragment">Estimate uncertainty using the bootstrap distribution.</li>
+<li class="fragment">Estimate the sampling distribution (and therefore uncertainty) using the bootstrap distribution.</li>
 </ul></li>
 </ul>
 <div class="fragment">
@@ -517,16 +531,16 @@
 <!-- - Slightly different center/mean, but similar shape and spread! -->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_d38d4322" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_4332a99f" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
 <section id="worlds-largest-deck-of-cards" class="slide level2">
 <h2>World’s Largest Deck of Cards</h2>
 <p>We can compute some relevant statistics:</p>
-<div class="columns">
+<div class="columns" style="font-size:0.7em;">
 <div class="column" style="width:45%;">
-<p>Population:</p>
+<p><strong>Population</strong>:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table class="caption-top">
@@ -545,7 +559,7 @@
 </table>
 </div>
 </div>
-<p>Sampling Distribution:</p>
+<p><strong>Sampling Distribution</strong>:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table class="caption-top">
@@ -565,7 +579,7 @@
 </div>
 </div>
 </div><div class="column" style="width:45%;">
-<p>Sample:</p>
+<p><strong>Sample</strong>:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table class="caption-top">
@@ -584,7 +598,7 @@
 </table>
 </div>
 </div>
-<p>Bootstrap Distribution:</p>
+<p><strong>Bootstrap Distribution</strong>:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <table class="caption-top">
@@ -604,11 +618,129 @@
 </div>
 </div>
 </div></div>
+<p><br></p>
+<div style="font-size:0.85em;">
+<div class="fragment">
 <ul>
-<li class="fragment"><p><span style="color:blue;">Sampling and Bootstrap have slightly different means, but have similar standard deviations!</span></p></li>
-<li class="fragment"><p><span style="color:blue;">Mean of Sampling is the <em>true</em> mean</span></p></li>
-<li class="fragment"><p><span style="color:blue;">Mean of Bootstrap is the <em>sample</em> mean</span></p></li>
+<li>Sampling and Bootstrap have slightly different means, but have similar standard deviations!
+<ul>
+<li><strong>Q</strong>: Why are the means different?</li>
+<li><strong>Q</strong>: Does it make sense that the standard deviations are similar? Why is this helpful?</li>
+</ul></li>
 </ul>
+</div>
+<ul>
+<li class="fragment">Mean of Sampling is the <em>true</em> mean, while the Mean of Bootstrap is the <em>sample</em> mean
+<ul>
+<li class="fragment">These differ because of sampling variability</li>
+</ul></li>
+</ul>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_a5aa3b18" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="worlds-largest-deck-of-cards-1" class="slide level2">
+<h2>World’s Largest Deck of Cards</h2>
+<p>We can compute some relevant statistics:</p>
+<div class="columns" style="font-size:0.7em;">
+<div class="column" style="width:45%;">
+<p><strong>Population</strong>:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">mean_value</th>
+<th style="text-align: right;">sd_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3.742017</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Sampling Distribution</strong>:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">mean_xbar</th>
+<th style="text-align: right;">sd_xbar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">7.01703</td>
+<td style="text-align: right;">0.7331422</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<p><strong>Sample</strong>:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">mean_value</th>
+<th style="text-align: right;">sd_value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">6.52</td>
+<td style="text-align: right;">3.513308</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Bootstrap Distribution</strong>:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: right;">mean_xbar</th>
+<th style="text-align: right;">sd_xbar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">6.52426</td>
+<td style="text-align: right;">0.6902801</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></div>
+<p><br></p>
+<div style="font-size:0.85em;">
+<ul>
+<li>Sampling and Bootstrap have slightly different means, but have similar standard deviations!
+<ul>
+<li><strong>Q</strong>: Why are the means different?</li>
+<li><strong>Q</strong>: Does it make sense that the standard deviations are similar? Why is this helpful?</li>
+</ul></li>
+</ul>
+<ul>
+<li>The standard deviations are similar because the sample is representative of the population, and both distributions use samples of the same size
+<ul>
+<li><strong>This is great!!</strong> We have something very similar to <span class="math inline">\(SE\)</span> using only our one sample!</li>
+</ul></li>
+</ul>
+</div>
 </section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
@@ -629,9 +761,6 @@
 <li class="fragment">The <strong>standard deviation of the bootstrap distribution</strong> can help us estimate the <strong>standard error of the sampling distribution</strong> (next week)</li>
 </ul></li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>

@@ -124,8 +124,7 @@ We'll have a variety of assignments, activities, and assessments for this course
     - Every week we will have a lab assignment. The lab assignments will be worked on collaboratively during lab time on Thursdays, where you will be able to ask the instructor and the course assistant questions. They are designed to help you practice implementing concepts and tasks from lecture, particularly those that relate to coding in R. The following homework assignment will build on questions covered in lab.  
     - Lab assignments will be made available for download from the course website before each lab. 
     - You will submit the progress you made on each lab assignment via Gradescope at the end of your section's lab time. Labs will be assessed as part of your participation grade. You may receive some feedback on your lab work and will be shown correct solutions via Gradescope.  
-    - Late labs will not be accepted, though you are encouraged to complete them on your own to prepare for homework assignments even if you miss lab.
-    - Lab assignments will count for a small portion of your grade, but will be helpful for preparing for the upcoming homework assignment and quiz.
+    - Late labs will not be accepted, and you need to be present in lab to receive credit for a lab submission. In the event of a missed lab, you should complete them on your own to prepare for homework assignments. We'll be happy to discuss lab assignments in office hours. 
 
 -   **Homework assignments**:
     - Every week we will have a homework assignment. Homework assignments will be posted on the course website on Thursday mornings. 

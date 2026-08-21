@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 9/1/26
+  draft-after: 8/28/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -225,8 +225,6 @@ scheduled-docs:
           display-date: Thursday, Oct 8
           date: 10/08/26
           docs:
-            - type: Reading
-              href: readings/reading19.qmd
             - type: Download Metacognition assignment
               href: hw/metacog.zip
         - topic: "Sampling Distributions II: Properties"

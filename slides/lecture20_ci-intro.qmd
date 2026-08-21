@@ -64,15 +64,6 @@ library(tufte)
 
 ------------------------------------------------------------------------
 
-### Announcements/reminders
-
-- Homework 5 due tonight
-
-- Homework 6 is posted, but not due until 3/20 (last day before spring break)
-    - Today's content relevant to starting Ex. 4, 5. 
-
-------------------------------------------------------------------------
-
 ### Today's Goals
 
 - Introduce confidence intervals as a method for estimating a parameter
@@ -204,7 +195,7 @@ $$
 $$
   
   
-  - This interval will contain the parameter $p$ in 95% of samples!
+  - Intervals constructed this way will contain the parameter $p$ in 95% of samples!
 
 ::: {.fragment .nonincremental}
 
@@ -233,7 +224,7 @@ ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, co
 
 ------------------------------------------------------------------------
 
-## Interval Estimates
+## Confidence Intervals
 
 ::: nonincremental
 **Idea:** Build an interval centered at the sample statistic, with a margin of error of $2\cdot SE$:
@@ -244,7 +235,7 @@ $$
 
 
 
-  - This interval will contain the parameter $p$ in 95% of samples!
+  - Intervals constructed this way will contain the parameter $p$ in 95% of samples!
 
 
 
@@ -275,7 +266,7 @@ ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, co
 
 ------------------------------------------------------------------------
 
-## Interval Estimates
+## Confidence Intervals
 
 ::: nonincremental
 
@@ -287,7 +278,7 @@ $$
 
 
 
-  - This interval will contain the parameter $p$ in 95% of samples!
+  - Intervals constructed this way will contain the parameter $p$ in 95% of samples!
 
 
 
@@ -321,7 +312,7 @@ ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, co
 
 ------------------------------------------------------------------------
 
-## Interval Estimates
+## Confidence Intervals
   
 ::: nonincremental  
 
@@ -333,7 +324,7 @@ $$
 
 
 
-  - This interval will contain the parameter $p$ in 95% of samples!
+  - Intervals constructed this way will contain the parameter $p$ in 95% of samples!
   
 
 ```{r out.width = "70%", fig.height=2.5, echo=FALSE}
@@ -379,9 +370,174 @@ ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, co
 
 ------------------------------------------------------------------------
 
+## Another way to visualize this
+
+::::: columns
+
+::: {.column .nonincremental}
+
+Imagine we...
+
+- draw a sample from our population with $p = 40$
+- calculate the sample statistic in that sample
+- construct a confidence interval for that sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
+
+:::
+
+::: column
+
+```{r, fig.height = 8.25, fig.width = 5, echo=FALSE}
+set.seed(111)
+
+x <- data.frame(sample = 1:100, p = 40, phat = rnorm(100, 40, 2.5)) %>%
+  mutate(lower = phat - 5, upper = phat + 5) %>%
+  mutate(covers = p > lower & p < upper)
+
+ggplot(x[51, ], aes(x = phat, y = sample)) +
+  geom_point(aes(color = covers)) +
+  geom_segment(aes(x = upper, xend = lower, y = sample, yend = sample, color = covers)) +
+  geom_vline(aes(xintercept = p), lty = 2, lwd = 0.5) +
+  scale_color_manual(values = c("TRUE" = "gray30", "FALSE" = "magenta3"),
+                     guide = "none") +
+  xlab("Sample Statistic") + ylab("") +
+  xlim(c(27, 53)) + ylim(c(0, 100)) +
+  theme_minimal() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  labs(title = "1 sample and its confidence interval",
+       subtitle = "")
+
+```
+
+:::
+:::::
+
+------------------------------------------------------------------------
+
+
+## Another way to visualize this
+
+::::: columns
+
+::: {.column .nonincremental}
+
+Imagine we...
+
+- draw 5 different samples from our population with $p = 40$
+- calculate the sample statistic in each sample
+- construct a confidence interval for each sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
+
+:::
+
+::: column
+
+```{r, fig.height = 8.25, fig.width = 5, echo=FALSE}
+
+ggplot(x[c(10, 34, 51, 65, 80), ], aes(x = phat, y = sample)) +
+  geom_point(aes(color = covers)) +
+  geom_segment(aes(x = upper, xend = lower, y = sample, yend = sample, color = covers)) +
+  geom_vline(aes(xintercept = p), lty = 2, lwd = 0.5) +
+  scale_color_manual(values = c("TRUE" = "gray30", "FALSE" = "magenta3"),
+                     guide = "none") +
+  xlab("Sample Statistic") + ylab("") +
+  theme_minimal() +
+  xlim(c(27, 53)) + ylim(c(0, 100)) +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  labs(title = "5 different samples and their confidence intervals",
+       subtitle = "")
+
+```
+
+:::
+:::::
+
+------------------------------------------------------------------------
+
+
+## Another way to visualize this
+
+::::: columns
+
+::: {.column .nonincremental}
+
+Imagine we...
+
+- draw 20 different samples from our population with $p = 40$
+- calculate the sample statistic in each sample
+- construct a confidence interval for each sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
+
+:::
+
+::: column
+
+```{r, fig.height = 8.25, fig.width = 5, echo=FALSE}
+
+ggplot(x[c(10, 34, 51, 65, 80,
+           sample(setdiff(1:100, c(10, 34, 51, 65, 80)), 15)), ], aes(x = phat, y = sample)) +
+  geom_point(aes(color = covers)) +
+  geom_segment(aes(x = upper, xend = lower, y = sample, yend = sample, color = covers)) +
+  geom_vline(aes(xintercept = p), lty = 2, lwd = 0.5) +
+  scale_color_manual(values = c("TRUE" = "gray30", "FALSE" = "magenta3"),
+                     guide = "none") +
+  xlab("Sample Statistic") + ylab("") +
+  theme_minimal() +
+  xlim(c(27, 53)) + ylim(c(0, 100)) +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  labs(title = "20 different samples and their confidence intervals",
+       subtitle = "")
+
+```
+
+:::
+:::::
+
+------------------------------------------------------------------------
+
+
+## Another way to visualize this
+
+::::: columns
+
+::: {.column .nonincremental}
+
+Imagine we...
+
+- draw 100 different samples from our population with $p = 40$
+- calculate the sample statistic in each sample
+- construct a confidence interval for each sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
+
+:::
+
+::: column
+
+```{r, fig.height = 8.25, fig.width = 5, echo=FALSE}
+
+ggplot(x, aes(x = phat, y = sample)) +
+  geom_point(aes(color = covers)) +
+  geom_segment(aes(x = upper, xend = lower, y = sample, yend = sample, color = covers)) +
+  geom_vline(aes(xintercept = p), lty = 2, lwd = 0.5) +
+  scale_color_manual(values = c("TRUE" = "gray30", "FALSE" = "magenta3"),
+                     guide = "none") +
+  xlab("Sample Statistic") + ylab("") +
+  xlim(c(27, 53)) + ylim(c(0, 100)) +
+  theme_minimal() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank()) +
+  labs(title = "100 different samples and their confidence intervals",
+       subtitle = "Confidence interval coverage: 94/100 = 94%")
+
+```
+
+:::
+:::::
+
+------------------------------------------------------------------------
+
 ## Confidence levels
 
-- On the previous slide, 95\% of confidence intervals contained the true parameter, $p$.
+- On the previous slide, 95\% of confidence intervals *across all samples* would contain the true parameter, $p$.
 
 - Thus, we call each interval estimate a **95\% confidence interval**.
   
@@ -396,40 +552,19 @@ ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, co
 ::: fragment
 
 ```{r out.width = "70%", fig.height=2.5, echo=FALSE}
-ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, color = "white", fill = "gray60")+
-  labs(x = "Sample Proportion", title = "Sampling Distribution, n = 48, True parameter: p = .25", y = NULL)+
-  geom_rect(data =data.frame(x=0, y = 0), xmin = p-2*se, xmax =p+2*se, ymin = 0, ymax = Inf, fill = "gray50", alpha = .3)+
- scale_x_continuous(breaks = seq(0, .5, by = .05))+
-#  scale_y_continuous(labels = NULL)+
-  # annotate(geom = "text", label = paste("2*SE =",2*se), x = p+2.25*se, y = 800)+
-  annotate(geom = "text", label = "p", color = "magenta3", x = p+.01, y = 1500, size = 4)+
-  geom_vline(xintercept = .33, color = "forestgreen")+
-  annotate(geom = "text", label = expression(hat(p)), color = "forestgreen", x = .34, y = 1400, size = 4)+
-  geom_vline(xintercept = p, color = "magenta3")+
-  geom_segment(aes(x = .33 + 2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  geom_segment(aes(x = .33-2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  annotate(geom = "point", x = .33, y = 200, color = "dodgerblue", size = 2) +
+ggplot(x, aes(y = phat, x = sample)) +
+  geom_point(aes(color = covers)) +
+  geom_segment(aes(y = upper, yend = lower, x = sample, xend = sample, color = covers)) +
+  geom_hline(aes(yintercept = p), lty = 2, lwd = 0.5) +
+  scale_color_manual(values = c("TRUE" = "gray30", "FALSE" = "magenta3"),
+                     guide = "none") +
+  ylab("Sample Statistic") + xlab("") +
+  ylim(c(27, 53)) + xlim(c(0, 100)) +
   theme_minimal() +
-  geom_segment(aes(x = .225 + 2*se, y = 400, xend = .225, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  geom_segment(aes(x = .225-2*se, y = 400, xend = .225, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  annotate(geom = "point", x = .225, y = 400, color = "dodgerblue", size = 2) +
-  geom_segment(aes(x = .4 + 2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  geom_segment(aes(x = .4-2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  annotate(geom = "point", x = .4, y = 600, color = "dodgerblue", size = 2) +
-  geom_segment(aes(x = .4 + 2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  geom_segment(aes(x = .4-2*se, y = 600, xend = .4, yend = 600), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  annotate(geom = "point", x = .4, y = 600, color = "dodgerblue", size = 2) +
-  geom_segment(aes(x = .26 + 2*se, y = 1000, xend = .26, yend = 1000), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  geom_segment(aes(x = .26-2*se, y = 1000, xend = .26, yend = 1000), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  annotate(geom = "point", x = .26, y = 1000, color = "dodgerblue", size = 2)+
-  geom_segment(aes(x = .18 + 2*se, y = 1200, xend = .18, yend = 1200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  geom_segment(aes(x = .18-2*se, y = 1200, xend = .18, yend = 1200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  
-  annotate(geom = "point", x = .18, y = 1200, color = "dodgerblue", size = 2) +
-    geom_segment(aes(x = .15 + 2*se, y = 800, xend = .15, yend = 800), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  geom_segment(aes(x = .15-2*se, y = 800, xend = .15, yend = 800), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
-  annotate(geom = "point", x = .15, y = 800, color = "dodgerblue", size = 2) +
-  xlim(c(0, 0.525))
+  theme(axis.text.x = element_blank(),
+        axis.ticks.x = element_blank()) +
+  labs(title = "100 different samples and their confidence intervals",
+       subtitle = "Confidence interval coverage: 94/100 = 94%")
 ```
 
 :::
@@ -538,6 +673,8 @@ $$
 
 
 ## Interval Width and Confidence Level
+
+::: {style="font-size:0.9em;"}
   
 **Idea:** Build an 95\% confidence interval centered at the sample statistic, with a margin of error of $2\cdot SE$:
 $$
@@ -554,6 +691,8 @@ $$
 $$
     - We would get a 9[0]{.underline}\% confidence interval!
     - This interval is narrower, but **has a lower "success" rate!** For 9[0]{.underline}\% of all samples, the interval will contain the parameter.
+    
+:::
 
 
 ------------------------------------------------------------------------
@@ -609,7 +748,7 @@ Let's say we're working with 95\% confidence intervals
 
 
 
-# Bootstrap Confidence Intervals
+# Bootstrap Confidence Intervals: Example in R
 
 
 ------------------------------------------------------------------------
@@ -749,6 +888,8 @@ r0_se <- bootstrap_stats %>% summarize(SE = sd(x_bar)) %>% pull()
 
 ```{r echo = T}
 bootstrap_stats %>% summarize(SE = sd(x_bar))
+# or equivalently
+sd(bootstrap_stats$x_bar)
 ```
 
 :::
@@ -771,6 +912,15 @@ $$
 $$
 
 
+::: {.fragment .center}
+
+```{r}
+se_hat <- sd(bootstrap_stats$x_bar)
+c(7.046 - 2 * se_hat, 7.046 + 2 * se_hat)
+```
+
+:::
+
   - Our best guess for average nightly sleep is that it's between `r 7.046 - 2*round(r0_se,3)` and `r 7.046 + 2*round(r0_se,3)`. This method has a success rate of $95\%$.
 
 
@@ -785,4 +935,3 @@ $$
 - Confidence interval misconceptions
 
 
-------------------------------------------------------------------------

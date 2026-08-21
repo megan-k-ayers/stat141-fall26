@@ -59,18 +59,6 @@ library(tufte)
 :::::
 
 
-------------------------------------------------------------------------
-
-### ASA DataFest 2026
-
-::: nonincremental
-- Are you interested in data science and looking for a challenge? DataFest is an exciting opportunity to work with real-world data, collaborate with peers, and gain valuable experience! 
-
-- Friday April 17 - Sunday April 19 at Willamette
-
-- To learn more and sign up, visit [https://my.willamette.edu/site/computer-science/data-fest](https://my.willamette.edu/site/computer-science/data-fest)
-
-:::
 
 ------------------------------------------------------------------------
 
@@ -86,18 +74,16 @@ library(tufte)
 
 ------------------------------------------------------------------------
 
-## Instructions
+## Instructions {.nonincremental}
 
 - In small groups, carefully complete the worksheet
 
-<br>
-
-- When you are finished, **submit on Gradescope for a small completion grade**
-    - You may work on HW 5 or midterm review if you have extra time!
     
 <br>
 
+
 - We'll come together to discuss with 10-15 minutes remaining
+
 
 ------------------------------------------------------------------------
 
@@ -113,7 +99,7 @@ ggplot(deck,aes(cards))+geom_histogram(binwidth=1,color="white")+
   labs(x="Cards",y="Count",title="Fig. 1: Population Distribution")
 ```
 
-**Q1: In Figure 1, why is the height of each bar 4? Describe this distribution.**
+**Q1: In Figure 1, why is the height of each bar 4? Describe this distribution (center, spread, shape).**
 
 
 
@@ -135,9 +121,9 @@ single_sample <- deck %>% rep_sample_n(size = 10, replace = FALSE, reps = 1)
 single_sample$cards
 ```
 
+<br><br>
+
 **Q2: Based on the code, which cards are in our sample? Use the cards to calculate our sample statistic (the sample mean) based on this sample.**
-
-
 
 - We have two Ace's (1's), a 4, 5, two 6's, two 9's, a 10, and a Jack (11). 
 
@@ -180,8 +166,11 @@ deck %>%
 
 ## Question 4
 
+::: {style="font-size:0.8em;"}
 
 **Q4: Figure 3 (below) displays sampling distributions for samples of size n=10, n=20, and n=40. How are they similar and how are they different? Why do larger samples have sampling distributions with less variability?**
+
+:::
 
 
 ```{r, out.width="65%",fig.asp=0.4,echo=FALSE}
@@ -227,8 +216,11 @@ gridExtra::grid.arrange(g1,g2,g3,nrow=1)
 
 ## Question 4
 
+::: {style="font-size:0.8em;"}
 
 **Q4: Figure 3 (below) displays sampling distributions for samples of size n=10, n=20, and n=40. How are they similar and how are they different? Why do larger samples have sampling distributions with less variability?**
+
+:::
 
 ```{r, out.width="50%",fig.asp=0.4,echo=FALSE}
 gridExtra::grid.arrange(g1,g2,g3,nrow=1)
@@ -402,3 +394,16 @@ gridExtra::grid.arrange(g_bootstrap,g_bootstrap,g_bootstrap,nrow=1)
 
 
 ------------------------------------------------------------------------
+
+## Looking ahead
+
+- In lab tomorrow we'll get more practice actually working with the code from this worksheet
+    - And no quiz tomorrow! 
+- We'll continue practicing this and comparing sampling and bootstrap distributions in Homework 6
+    - **Note:** This may feel repetitive at times! 
+    - **Why we're doing it:** 
+        - Sampling distributions (and how we approximate them) are one of [the most fundamental concepts]{.underline} of this class. 
+        - Everything we learn from now on (ex. confidence intervals, hypothesis testing) builds upon them.
+        - The more we lock in these concepts now, the more deeply we'll be able to engage later.
+
+

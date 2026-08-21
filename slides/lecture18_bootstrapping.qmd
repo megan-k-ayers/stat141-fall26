@@ -49,20 +49,13 @@ library(tufte)
 
 [Bootstrapping]{.custom-title}
 
-<br> <br> 
+<br> <br> <br> <br> <br> <br>
 
 [Megan Ayers]{.custom-subtitle}
 
 [Stat 141 \| Fall 2026 <br> Monday, Week 7]{.custom-subtitle}
 :::
 :::::
-
-
-------------------------------------------------------------------------
-
-### Midterm Check In
-
-- If you have exam accommodations and have **not** discussed them with me via email, please let me know asap! 
 
 
 ------------------------------------------------------------------------
@@ -212,14 +205,55 @@ sampling_dist %>% ggplot()+geom_histogram(aes(x = p_hat),bins = 30, color = "whi
 
 ## Theory
 
-![](img/bootstrap_shapes.png){width=85%}
+::::: columns
+
+::: {.column width=20%}
+
+![](img/bootstrap_shapes1.png)
+
+:::
+
+::: {.column .fragment width=19% fragment-index=1}
+
+![](img/bootstrap_shapes2.png)
+
+:::
+
+::: {.column .fragment width=31% fragment-index=2}
+
+![](img/bootstrap_shapes3.png)
+
+:::
+
+::: {.column .fragment width=30% fragment-index=3}
+
+![](img/bootstrap_shapes4.png)
+
+:::
+
+:::::
+
+::: {style="font-size:0.8em;"}
+
+::: {.nonincremental .fragment fragment-index=1}
 
 - The sample "represents" the population. Many copies of the sample still "represents" the population
 
+:::
+
+::: {.nonincremental .fragment fragment-index=2}
+
 - **Idea**: Copy the sample many times to create "a bootstrap population", and then sample from this to get "bootstrap samples"
 
-- Same result, save time: Just sample *with replacement* from the one original sample.
+:::
 
+::: {.nonincremental .fragment fragment-index=3}
+
+- Same result, save time: Just sample *with replacement* from the one original sample to get "bootstrap samples"
+
+:::
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -236,7 +270,7 @@ To generate a **Bootstrap Distribution** given a sample of size $n$ from the pop
 4. The collection of the bootstrap statistics form the **Bootstrap distribution**.
 
 ::: fragment
-**Q:** How does this process of generating a bootstrap distribution differ from the process of generating the *sampling* distribution?
+**Q:** How does this general process of generating a bootstrap distribution differ from the process of generating the *sampling* distribution?
 :::
 
 - We sample from the [original sample]{.underline} here; for sampling distributions, we sample from the [population]{.underline}
@@ -258,7 +292,7 @@ countdown::countdown(3)
 
 - **How We'll Answer:**
   - Draw a sample hand of $n=25$ cards, and calculate the mean value.
-  - Estimate uncertainty using the bootstrap distribution.
+  - Estimate the sampling distribution (and therefore uncertainty) using the bootstrap distribution.
 
 ::: fragment
 
@@ -343,7 +377,7 @@ bs<-ggplot(my_boot_dist[1:1,], aes(x = x_bar) )+geom_histogram( bins = 40, color
 ::::: columns
 ::: {.column width=50%}
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height = 4}
 s_tmp
 ```
 
@@ -351,7 +385,7 @@ s_tmp
 
 ::: {.column width=50% .fragment}
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height = 4}
 bs1
 ```
 
@@ -390,7 +424,7 @@ bs<-ggplot(my_boot_dist[1:2,], aes(x = x_bar) )+geom_histogram( bins = 40, color
 ::::: columns
 ::: {.column width=50%}
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height = 4}
 s_tmp
 ```
 
@@ -398,7 +432,7 @@ s_tmp
 
 ::: {.column width=50%}
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height = 4}
 bs1
 ```
 
@@ -434,7 +468,7 @@ bs<-ggplot(my_boot_dist[1:100,], aes(x = x_bar) )+geom_histogram( bins = 40, col
 ::::: columns
 ::: {.column width=50%}
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height = 4}
 s_tmp
 ```
 
@@ -442,7 +476,7 @@ s_tmp
 
 ::: {.column width=50%}
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height = 4}
 bs1
 ```
 
@@ -476,7 +510,7 @@ bs<-ggplot(my_boot_dist, aes(x = x_bar) )+geom_histogram( bins = 40, color = "wh
 ::::: columns
 ::: {.column width=50%}
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height = 4}
 s_tmp
 ```
 
@@ -484,7 +518,7 @@ s_tmp
 
 ::: {.column width=50%}
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.height = 4}
 bs1
 ```
 
@@ -543,17 +577,17 @@ countdown::countdown(3)
 We can compute some relevant statistics:
 
 
-::::: columns
+::::: {.columns style="font-size:0.7em;"}
 
 ::: {.column width=45%}
 
-Population:
+**Population**:
 
 ```{r, echo = FALSE}
 my_cards %>% summarize(mean_value = mean(value), sd_value = sd(value)) %>% kable()
 ```
 
-Sampling Distribution:
+**Sampling Distribution**:
 
 ```{r, echo = FALSE}
 my_samp_dist %>% ungroup() %>% summarize(mean_xbar = mean(x_bar), sd_xbar = sd(x_bar)) %>% kable()
@@ -563,14 +597,14 @@ my_samp_dist %>% ungroup() %>% summarize(mean_xbar = mean(x_bar), sd_xbar = sd(x
 
 ::: {.column width=45%}
 
-Sample:
+**Sample**:
 
 ```{r, echo = FALSE}
 my_sample %>% ungroup() %>% summarize(mean_value = mean(value), sd_value = sd(value)) %>% kable()
 ```
  
 
-Bootstrap Distribution:
+**Bootstrap Distribution**:
 
 ```{r, echo = FALSE}
 my_boot_dist %>% ungroup() %>% summarize(mean_xbar = mean(x_bar), sd_xbar = sd(x_bar)) %>% kable()
@@ -580,11 +614,93 @@ my_boot_dist %>% ungroup() %>% summarize(mean_xbar = mean(x_bar), sd_xbar = sd(x
 
 :::::
 
-- [Sampling and Bootstrap have slightly different means, but have similar standard deviations!]{style="color:blue;"}
+<br>
 
-- [Mean of Sampling is the *true* mean]{style="color:blue;"}
+::: {style="font-size:0.85em;"}
 
-- [Mean of Bootstrap is the *sample* mean]{style="color:blue;"}
+::: {.fragment .nonincremental}
+
+- Sampling and Bootstrap have slightly different means, but have similar standard deviations!
+    - **Q**: Why are the means different? 
+    - **Q**: Does it make sense that the standard deviations are similar? Why is this helpful? 
+
+:::
+
+- Mean of Sampling is the *true* mean, while the Mean of Bootstrap is the *sample* mean
+    - These differ because of sampling variability
+    
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(2)
+```
+
+
+------------------------------------------------------------------------
+
+## World's Largest Deck of Cards
+
+We can compute some relevant statistics:
+
+
+::::: {.columns style="font-size:0.7em;"}
+
+::: {.column width=45%}
+
+**Population**:
+
+```{r, echo = FALSE}
+my_cards %>% summarize(mean_value = mean(value), sd_value = sd(value)) %>% kable()
+```
+
+**Sampling Distribution**:
+
+```{r, echo = FALSE}
+my_samp_dist %>% ungroup() %>% summarize(mean_xbar = mean(x_bar), sd_xbar = sd(x_bar)) %>% kable()
+```
+
+:::
+
+::: {.column width=45%}
+
+**Sample**:
+
+```{r, echo = FALSE}
+my_sample %>% ungroup() %>% summarize(mean_value = mean(value), sd_value = sd(value)) %>% kable()
+```
+ 
+
+**Bootstrap Distribution**:
+
+```{r, echo = FALSE}
+my_boot_dist %>% ungroup() %>% summarize(mean_xbar = mean(x_bar), sd_xbar = sd(x_bar)) %>% kable()
+```
+
+:::
+
+:::::
+
+<br>
+
+::: {style="font-size:0.85em;"}
+
+::: {.nonincremental}
+
+- Sampling and Bootstrap have slightly different means, but have similar standard deviations!
+    - **Q**: Why are the means different? 
+    - **Q**: Does it make sense that the standard deviations are similar? Why is this helpful? 
+
+:::
+
+::: {.nonincremental}
+- The standard deviations are similar because the sample is representative of the population, and both distributions use samples of the same size
+    - **This is great!!** We have something very similar to $SE$ using only our one sample! 
+    
+:::
+    
+:::
+
 
 ------------------------------------------------------------------------
 
@@ -601,6 +717,4 @@ my_boot_dist %>% ungroup() %>% summarize(mean_xbar = mean(x_bar), sd_xbar = sd(x
   - ...but without the work of taking many samples!
   - The center is shifted (around the statistic instead of the parameter), but, very importantly, similar shape and **spread**! 
   - The **standard deviation of the bootstrap distribution** can help us estimate the **standard error of the sampling distribution** (next week)
-
-------------------------------------------------------------------------
 

@@ -1,6 +1,6 @@
 ---
 title: "Sampling Distributions and Bootstrap Distributions"
-author: "Math 141"
+author: "Stat 141"
 format: pdf
 ---
 
@@ -54,12 +54,7 @@ ggplot(deck, aes(cards)) + geom_histogram(binwidth = 1, color = "white") +
 
 
 
-**************************************************
 
-
-
-
-**************************************************
 
 
 
@@ -82,17 +77,11 @@ The code above took our `deck`, and took a simple random sample of `size = 10`. 
 
 
 
-**************************************************
 
 
 
+\newpage
 
-**************************************************
-
-
-
-
-\vspace{6em}
 
 The following code creates a ("snapshot" of the) sampling distribution:
 
@@ -112,12 +101,8 @@ deck %>%
 
 
 
-**************************************************
+\newpage
 
-
-
-
-**************************************************
 
 
 ### Q4: Figure 3 (below) displays sampling distributions for samples of size n=10, n=20, and n=40. How are they similar and how are they different? Why do larger samples have sampling distributions with less variability?
@@ -174,12 +159,7 @@ gridExtra::grid.arrange(g1, g2, g3, nrow = 1)
 ```
 
 
-**************************************************
 
-
-
-
-**************************************************
 
 
 
@@ -204,24 +184,14 @@ bootstrap_sample$cards
 ### Q5: In the code above, what are we sampling from (the population, or the single sample)? Are we sampling with replacement? What's our sample size? 
 
 
-**************************************************
-
-
-
-
-**************************************************
+\vspace{4cm}
 
 
 ### Q6: How would your answers to Q5 be different if we were talking about sampling for a sampling distribution?
 
 
 
-**************************************************
 
-
-
-
-**************************************************
 
 
 
@@ -245,12 +215,8 @@ single_sample %>% ungroup() %>% select(cards) %>%
 ### Q7: Based on the code above, how many bootstrap samples are we taking to create the bootstrap distribution?
 
 
-**************************************************
 
-
-
-
-**************************************************
+\vspace{2cm}
 
 
 
@@ -259,12 +225,9 @@ single_sample %>% ungroup() %>% select(cards) %>%
 
 
 
-**************************************************
 
 
-
-
-**************************************************
+\newpage
 
 
 
@@ -275,11 +238,4 @@ single_sample %>% ungroup() %>% select(cards) %>%
 
 
 
-
-**************************************************
-
-
-
-
-**************************************************
 
