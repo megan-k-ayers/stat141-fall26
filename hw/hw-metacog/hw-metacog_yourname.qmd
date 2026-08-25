@@ -1,0 +1,96 @@
+---
+title: "Homework 5.5: Practice-Based Study Guide"
+subtitle: "STAT 141, Week 6"
+author: "Your name here"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Due: Thursday, October 15th at 9:00am on Gradescope as a **PDF**
+
+### Metacognitive Activities and Creating a Practice-Based Study Guide
+
+A [2021 article from the Stanford Center for Teaching and Learning](https://teachingcommons.stanford.edu/news/promoting-student-metacognition) defined **Metacognition** as *"the awareness and ability of learners to assess their learning and develop learning strategies in accordance with their goals."*
+
+The main idea is that the better that we're able to evaluate and understand our own learning, the more efficient we'll be at closing gaps between what we've actually learned and what we want to learn. Metacognitive activities can therefore help us deepen understanding of course material, and are a great way to study for exams. 
+
+Yes, it is very, very early to be thinking about our final exam! No need to stress about it yet. But because the exam is so far off, and because we have already covered quite a lot of material, I want you to take this time to reflect on what you've learned so far and how you might like to deepen your understanding. This mini homework assignment will ask you to start creating a practice-based study guide for yourself that you can continue building on up until the final exam. 
+
+Creating a study guide of any kind is an example of a metacognitive activity and is an excellent way to prepare for an exam. This kind of activity is usually much more effective than entirely rereading lecture material or the textbooks. You might be more familiar with study guides that summarize course content in a written, list-like format. Here, we'll focus on a type of study guide that centers practice problems and reflections about them.
+
+You will still submit this assignment to Gradescope, but it will only be assessed for completion (*as in: you wrote at least a sentence for each question, but it doesn't need to be paragraphs*). I expect this assignment to take you roughly 45 minutes in total. No feedback will be given. The more effort you put into study guide creation, the more you'll be helping your future self when they sit down to study for the exam in December.
+
+\newpage
+
+### Exercise 1: Identify a gap
+
+What has been **the most** confusing concept or task that you've encountered in the course so far? It may be helpful to review the course schedule up until now. Try to focus on a concept or task that is somewhat specific (ex. "creating bootstrap confidence intervals in R" instead of just "confidence intervals", or "interpreting categorical variables in linear models" vs just "linear models").
+
+******************************************************************************
+
+
+
+******************************************************************************
+
+
+
+### Exercise 2: Practice
+
+**a.** Find a practice problem related to your answer for Exercise 1. I recommend you source the problem from the slides or from past quizzes, and choose an example where you can find the solution either in the slides or deduce it from feedback on Gradescope. Note which problem it is here, and attempt to complete it (either here or on scratch paper) without looking at any solutions or grader feedback. *If you get stuck: that's okay! Write down what you tried or are thinking, and move on to the next part.*
+
+******************************************************************************
+
+
+
+******************************************************************************
+
+
+
+**b.** Don't look at solutions yet. Write down any questions or confusions you have from your attempt at completing the problem. 
+
+******************************************************************************
+
+
+
+******************************************************************************
+
+
+
+### Exercise 3: Self-assessment
+
+
+**a.** Check your work against solutions, or discuss them with a course assistant (or Megan when she's back on 10/14), or ask a classmate if they can walk through the problem with you. How did the practice problem go? Did you find a point where you went wrong?
+
+******************************************************************************
+
+
+
+******************************************************************************
+
+
+
+**b.** Write down any questions or confusions you have after viewing or discussion the correct solutions to the problem.
+
+******************************************************************************
+
+
+
+******************************************************************************
+
+
+
+**c.** Find lecture slides that introduce the material related to this problem. See if you can answer your questions and resolve confusion from the previous part by reviewing them, and make any needed corrections to your attempted solution. If you have remaining questions or confusions, I highly recommend visiting office hours and/or discussing the problem more with a classmate.
+
+******************************************************************************
+
+
+
+******************************************************************************
+
+
+
+
+

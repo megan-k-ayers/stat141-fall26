@@ -57,6 +57,8 @@ library(tidyverse)
 
 ### Announcements/reminders
 
+- Room change reminder for afternoon lab section
+
 - Waitlist movement - let me know if you're still on the waitlist and haven't heard from me
 
 - Math/Stats colloquium tomorrow - information session about Math/Math-Stats majors
