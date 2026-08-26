@@ -542,7 +542,7 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_617ec52f" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_733e317d" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -809,6 +809,32 @@
 <ul>
 <li class="fragment">Our best guess for average nightly sleep is that it’s between 6.716 and 7.376. This method has a success rate of <span class="math inline">\(95\%\)</span>.</li>
 </ul>
+</section>
+<section id="bootstrap-confidence-intervals-complete-code-example" class="slide level2">
+<h2>Bootstrap Confidence Intervals: Complete Code Example</h2>
+<div style="font-size:0.9em;">
+<p>We are given the data frame <code>sleep</code>. Our <u>statistic of interest is the average hours of sleep per night in the sample</u> contained in this data frame (recorded individually as <code>Hours</code>). We can use the <strong>bootstrap method</strong> to calculate confidence intervals for the <u>parameter, the average hours of sleep per night in the population</u>:</p>
+</div>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">set.seed</span>(<span class="dv">121</span>)</span>
+<span id="cb16-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data-path.csv"</span>)  <span class="co"># Read in the data</span></span>
+<span id="cb16-3"><a></a></span>
+<span id="cb16-4"><a></a>bootstrap_samples <span class="ot">&lt;-</span> sleep <span class="sc">%&gt;%</span>   <span class="co"># Creating our 10,000 bootstrap samples</span></span>
+<span id="cb16-5"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb16-6"><a></a></span>
+<span id="cb16-7"><a></a>bootstrap_stats <span class="ot">&lt;-</span> bootstrap_samples <span class="sc">%&gt;%</span>  <span class="co"># Calculating bootstrap statistics</span></span>
+<span id="cb16-8"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span>                 <span class="co"># from each sample.</span></span>
+<span id="cb16-9"><a></a>  <span class="fu">summarize</span>(<span class="at">x_bar =</span> <span class="fu">mean</span>(Hours))</span>
+<span id="cb16-10"><a></a></span>
+<span id="cb16-11"><a></a><span class="fu">ggplot</span>(bootstrap_stats, <span class="fu">aes</span>(<span class="at">x =</span> x_bar))<span class="sc">+</span>  <span class="co"># Graph the bootstrap distribution</span></span>
+<span id="cb16-12"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">34</span>, <span class="at">color =</span> <span class="st">"white"</span>)<span class="sc">+</span></span>
+<span id="cb16-13"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bootstrap Distribution for Average Sleep, n = 50"</span>, <span class="at">x =</span> <span class="fu">expression</span>(<span class="fu">bar</span>(x)))</span>
+<span id="cb16-14"><a></a></span>
+<span id="cb16-15"><a></a>se_hat <span class="ot">&lt;-</span> <span class="fu">sd</span>(bootstrap_stats<span class="sc">$</span>x_bar)  <span class="co"># Estimate the standard error</span></span>
+<span id="cb16-16"><a></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>Hours)  <span class="co"># This is our **statistic**, 7.046</span></span>
+<span id="cb16-17"><a></a><span class="fu">c</span>(xbar <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> se_hat, xbar <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> se_hat)  <span class="co"># Calculate confidence interval</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="next-time" class="slide level2">
 <h2>Next time:</h2>

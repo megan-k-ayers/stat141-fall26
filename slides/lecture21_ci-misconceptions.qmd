@@ -67,17 +67,6 @@ library(tufte)
 
 ------------------------------------------------------------------------
 
-## Midterm logistics
-
-- Please be mindful of students finishing exam from the previous section when arriving for the midterm (section 2)
-
-- Lab 5 grades are posted
-
-- Final office hours before midterm: Megan's office today from 3:30-5pm
-
-
-------------------------------------------------------------------------
-
 ## Goals for today
 
 - Review the concept of a 95\% confidence interval
@@ -129,6 +118,10 @@ library(tufte)
 
 2. Suppose we created confidence intervals based on **distinct** samples of size $n=10$ and $n=100$. How might they differ?
 
+```{r}
+#| echo: false
+countdown::countdown(1)
+```
 
 
 ------------------------------------------------------------------------
@@ -236,7 +229,7 @@ $$
 $$
 :::
 
-- We typically estimate the SE (i) with the bootstrap, or (ii) with a formula
+- We typically estimate the SE (i) with the bootstrap, or (ii) with a formula (we'll see this in a few weeks)
 
 
 
@@ -247,9 +240,7 @@ $$
 
 ## Example: Reproduction Rate for Covid-19
 
-- Researchers are interested in the COVID-19 **reproduction rate** (the average number of individuals each infected person further infects)  
-
-- Sample 50 infected individuals and perform contract tracing.
+Researchers are interested in the COVID-19 **reproduction rate** (the average number of individuals each infected person further infects). They sample 50 infected individuals and perform contract tracing.
 
 
 ::::: {.columns .fragment}
@@ -364,7 +355,7 @@ $$
 
 ```{r}
 #| echo: false
-countdown::countdown(4)
+countdown::countdown(3)
 ```
 
 ------------------------------------------------------------------------
@@ -509,7 +500,7 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
 
 ------------------------------------------------------------------------
 
-## Quantiles and Percentiles
+## Quantiles and Percentiles {style="font-size:0.9em;"}
 
 By definition, 2.5% of the data is less than the .025 quantile, and 2.5% of the data is greater than the .975 quantile
 
@@ -539,7 +530,7 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
 
 ------------------------------------------------------------------------
 
-## Quantiles and Percentiles
+## Quantiles and Percentiles {style="font-size:0.9em;"}
 
 By definition, 2.5% of the data is less than the .025 quantile, and 2.5% of the data is greater than the .975 quantile
 
@@ -560,7 +551,7 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
 ```
 
 ::: nonincremental
-- This means that 95% of the data is between the .025 and the .975 quantiles
+- This means that 95% of the data is between the .025 and the .975 quantiles.
 :::
 
 - *For sampling distributions that are bell-shaped*, the .025 quantile is about $2\cdot SE$ below the mean, and the .975 quantile is about $2\cdot SE$ above the mean
@@ -572,22 +563,27 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
 
 ## 95\% Confidence Interval: 2 ways
 
-1.  $\color{red}{\text{Statistic} \pm 2*\text{SE}}$
+<br>
+
+1\. $\color{darkred}{\text{Statistic} \pm 2*\text{SE}}$
     - $\mathrm{Statistic} \ (\bar{x}) = 2.06$
     - $\mathrm{SE} = 0.18$
     - $95\% \ \mathrm{CI} = 1.70 \ \text{to} \ 2.42$
+    
 
+<br>
 
 ::: {.fragment .nonincremental}
 
-2. $\color{red}{\text{Percentile Method}}$
+2\. $\color{darkred}{\text{Percentile Method}}$
 
+<br>
 
-::::: columns
+::::: {.columns}
 
-::: {.column width=50%}
+::: {.column width="50%"}
 
-```{r fig.height=3.5, fig.width = 5, echo = F}
+```{r fig.height=4, fig.width = 5, echo = F}
 
 ggplot(bootstrap_stats, aes(x = x_bar))+
   geom_histogram(bins = 34, color = "white")+
@@ -605,7 +601,7 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
 
 :::
 
-::: {.column width=50%}
+::: {.column width="50%"}
 
 ```{r, echo=T}
 quantile(bootstrap_stats$x_bar, c(0.025, 0.975))
@@ -617,6 +613,7 @@ quantile(bootstrap_stats$x_bar, c(0.025, 0.975))
 
 :::
 
+
 ------------------------------------------------------------------------
 
 ## Percentile Method for Confidence Intervals
@@ -625,7 +622,7 @@ quantile(bootstrap_stats$x_bar, c(0.025, 0.975))
     - $C\%$ lies in the middle
     - $\frac{(100-C)}{2}\%$ lies on either end (i.e., "the rest" is evenly distributed on the ends)
 
-
+<br>
 
 - **Ex:** For $C\% = 95\%$ (i.e., a 95\% Confidence Interval), we want
     - 95\% in the middle
@@ -647,7 +644,7 @@ quantile(bootstrap_stats$x_bar, c(0.025, 0.975))
 
 
 
-```{r fig.height=2.25, fig.width = 6 , echo = F}
+```{r fig.height=3, fig.width = 7, echo = F}
 
 proportion <-  c(.05,0.95)
 quantiles <- quantile(bootstrap_stats$x_bar, proportion)
@@ -692,7 +689,7 @@ quantile(bootstrap_stats$x_bar, c(.05, .95))
 
 :::
 
-```{r fig.height=2.25, fig.width = 6 , echo = F}
+```{r fig.height=3, fig.width = 7, echo = F}
 
 proportion <-  c(.05,0.95)
 quantiles <- quantile(bootstrap_stats$x_bar, proportion)
@@ -753,12 +750,12 @@ quantile(bootstrap_stats$x_bar, c(.05, .95))
 
 ```{r}
 #| echo: false
-countdown::countdown(2)
+countdown::countdown(1.5)
 ```
 
 ------------------------------------------------------------------------
 
-## Width of Confidence Intervals {.smaller}
+## Width of Confidence Intervals
 
 Two factors determine the width of a confidence interval:
 
@@ -773,21 +770,6 @@ Two factors determine the width of a confidence interval:
     - Higher confidence level $\implies$ larger interval
     - Lower confidence level $\implies$ smaller interval
 
-
-::: {.fragment .nonincremental}
-**Discuss with Neighbor(s):** Confidence Intervals get smaller with:
-
-- a larger sample size
-
-- a lower confidence level
-
-*Intuitively*, why does this make sense?
-:::
-
-```{r}
-#| echo: false
-countdown::countdown(2)
-```
 
 ------------------------------------------------------------------------
 
@@ -970,19 +952,24 @@ Instead, say either:
 
 ------------------------------------------------------------------------
 
-::: nonincremental
+### Recap
+
+- Two ways to construct 95% confidence intervals *specifically*
+    - **SE Method**: $\text{Statistic} \pm 2*\text{SE}$ (estimate $SE$ via bootstrap)
+    - **Percentile Method**: take the 0.025 and 0.975 quantiles of the estimated sampling distribution (via bootstrap)
+
+- If we want a confidence level that *isn't* 95%, we can easily adapt the percentile method by taking different quantiles from our bootstrap distribution.
+    - We can actually generalize the SE method to other levels too, but we won't see that for a few weeks.
+    
+- We should always interpret confidence intervals carefully, and in context.
+
+::: {.fragment .nonincremental}
 
 ### Next time
 
 - Hypothesis testing! 
 
-<br>
-
-### With any time left...
-
-- Midterm review questions?
 
 :::
 
 
-------------------------------------------------------------------------

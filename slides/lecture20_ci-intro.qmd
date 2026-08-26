@@ -923,6 +923,36 @@ c(7.046 - 2 * se_hat, 7.046 + 2 * se_hat)
 
   - Our best guess for average nightly sleep is that it's between `r 7.046 - 2*round(r0_se,3)` and `r 7.046 + 2*round(r0_se,3)`. This method has a success rate of $95\%$.
 
+------------------------------------------------------------------------
+
+## Bootstrap Confidence Intervals: Complete Code Example
+
+::: {style="font-size:0.9em;"}
+We are given the data frame `sleep`. Our [statistic of interest is the average hours of sleep per night in the sample]{.underline} contained in this data frame (recorded individually as `Hours`). We can use the **bootstrap method** to calculate confidence intervals for the [parameter, the average hours of sleep per night in the population]{.underline}: 
+:::
+
+<br>
+
+```{r eval = F}
+set.seed(121)
+sleep <- read.csv("data-path.csv")  # Read in the data
+
+bootstrap_samples <- sleep %>%   # Creating our 10,000 bootstrap samples
+  rep_sample_n(size = 50, replace = TRUE, reps = 10000)
+
+bootstrap_stats <- bootstrap_samples %>%  # Calculating bootstrap statistics
+  group_by(replicate) %>%                 # from each sample.
+  summarize(x_bar = mean(Hours))
+
+ggplot(bootstrap_stats, aes(x = x_bar))+  # Graph the bootstrap distribution
+  geom_histogram(bins = 34, color = "white")+
+  labs(title = "Bootstrap Distribution for Average Sleep, n = 50", x = expression(bar(x)))
+
+se_hat <- sd(bootstrap_stats$x_bar)  # Estimate the standard error
+xbar <- mean(sleep$Hours)  # This is our **statistic**, 7.046
+c(xbar - 2 * se_hat, xbar + 2 * se_hat)  # Calculate confidence interval
+```
+
 
 ------------------------------------------------------------------------
 
@@ -933,5 +963,6 @@ c(7.046 - 2 * se_hat, 7.046 + 2 * se_hat)
 - What to do with distributions that aren't bell-shaped (percentile method)
 
 - Confidence interval misconceptions
+
 
 

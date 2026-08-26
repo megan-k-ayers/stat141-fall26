@@ -61,11 +61,6 @@ library(tufte)
 
 ------------------------------------------------------------------------
 
-### Reminder
-
-- HW 6 was posted on Monday, due in 1 week (next Friday)
-
-<br>
 
 ### Goals for today
 
@@ -99,12 +94,12 @@ library(tufte)
 
 ```{r}
 #| echo: false
-countdown::countdown(2)
+countdown::countdown(3)
 ```
 
 ------------------------------------------------------------------------
 
-## The guesses... {.smaller}
+## The guesses... {style="font-size:0.75em;"}
 
 - Let's say I do this and get 10 in a row.
     - Clearly I'm cheating and you shouldn't have to pay me $20
@@ -173,7 +168,7 @@ is [small]{.underline}, **why does it make sense to reject the hypothesis?**
 - In life, we tend to believe things that happen are pretty "typical" or "likely"... or else they wouldn't happen!
 
 - With a **small p-value**, the hypothesis holding means **"You're special! You observed something really rare!"**
-    - We usually don't get that lucky - so we doubt our hypothesis. 
+    - We usually don't get that lucky :( So we may conclude that our hypothesis was wrong.
 
 - With a **large p-value**, the hypothesis holding means **"Your observation meets expectations."**
     - In this case, we don't have much reason to doubt our hypothesis.
@@ -265,7 +260,7 @@ $$
 
 ------------------------------------------------------------------------
 
-## 1) Identifying Hypotheses: Determining the Null Hypothesis
+## 1) Identifying Hypotheses: Determining the Null Hypothesis {style="font-size:0.9em;"}
 
 - The Null and Alternative Hypothesis statements are *not* interchangeable:
     - Null hypothesis is (usually) a statement of **equality** for a parameter (e.g., $p = 1/5$)
@@ -276,7 +271,7 @@ $$
 - The null hypothesis should represent the **status quo belief about the parameter.**
     - Would be assumed if no study were conducted, and would be maintained if the study is inconclusive.
   
-
+<br>
 
 - The alternative hypothesis often represents the **claim for which we seek evidence.**
     - It is the only statement we will be able to provide evidence for after our test.
@@ -505,7 +500,7 @@ null_stats %>% ggplot(aes(x = p_hat))+geom_histogram(breaks = 0:11/10 -1/20, col
 
 ------------------------------------------------------------------------
 
-## 4) Calculate the P-Value {.smaller}
+## 4) Calculate the P-Value {style="font-size:0.9em;"}
 
 - **Reminder:** Informally,
   - P-value = Probability of what happened in reality (or something more extreme) assuming the hypothesis is true
@@ -606,7 +601,7 @@ $$\text{P-value} = (1/5)^{10} \approx 0.0000001 $$
 ------------------------------------------------------------------------
 
 
-## 5) Making a conclusion using the P-value
+## 5) Making a conclusion using the P-value {style="font-size:0.9em;"}
 
 $$
 \textbf{Null Hypothesis:} \quad p = 1/5 \qquad \qquad \textbf{Alternative Hypothesis:} \quad p > 1/5
@@ -644,13 +639,53 @@ countdown::countdown(2)
 
 ------------------------------------------------------------------------
 
+## Another Application: Parkinson's Disease
+<br>
+
+Joy Milne, a retired nurse, claimed to have the ability to smell whether someone had Parkinson's disease. She noticed a change in her husband's smell 10 years before he was diagnosed with Parkinson's disease. When first attending a support group for people with Parkinson's with her husband, she immediately recognized the same smell from many other people in the room.
+
+To test Joy's claim, researchers gave her 12 shirts, where half were worn by individuals who had Parkinson's disease, and half worn by individuals who did not. She identified 11 out of 12 correctly.
+
+<br>
+
+Let's walk through the five steps of hypothesis testing together to determine whether or not we think Joy's claim is credible.
+
+------------------------------------------------------------------------
+
+## Recap: Framework for Hypothesis Testing
+
+Hypothesis Testing is a scientific experiment, and follows the **general** scientific method.
+
+
+1. Present research question and identify **hypotheses**
+    - **Null** Hypothesis (e.g., I was guessing cards randomly)
+    - **Alternative** Hypothesis (e.g., I was cheating)
+    - We'll express these hypotheses mathematically, *in terms of parameters*
+  
+
+2. Describe **Null distribution**
+    - What should we expect to happen if the null hypothesis is true?
+
+
+
+3. Obtain data, calculate relevant **Test Statistic**
+    - **Test Statistic** = sample statistic based on our data
+
+
+
+4. Calculate the **P-value**
+    - **P-value** = probability of observing the Test Statistic assuming the Null Hypothesis
+
+
+
+5. Use the P-value to **make a conclusion** on the research question
+
+------------------------------------------------------------------------
+
 ## Next time
 
 - More hypothesis testing! 
     - Practice framing research questions in the hypothesis testing framework
     - 1-sided vs 2-sided tests
-    
-- Graded midterms and info on revisions
 
-------------------------------------------------------------------------
 

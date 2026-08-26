@@ -212,11 +212,6 @@
 </section>
 <section class="slide level2">
 
-<h3 id="reminder">Reminder</h3>
-<ul>
-<li class="fragment">HW 6 was posted on Monday, due in 1 week (next Friday)</li>
-</ul>
-<p><br></p>
 <h3 id="goals-for-today">Goals for today</h3>
 <ul>
 <li class="fragment">Introduce hypothesis testing framework</li>
@@ -256,11 +251,11 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_6e670086" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_501d3391" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
-<section id="the-guesses" class="slide level2 smaller">
+<section id="the-guesses" class="slide level2" style="font-size:0.75em;">
 <h2>The guesses…</h2>
 <ul>
 <li class="fragment">Let’s say I do this and get 10 in a row.
@@ -327,7 +322,7 @@
 <li class="fragment"><p>In life, we tend to believe things that happen are pretty “typical” or “likely”… or else they wouldn’t happen!</p></li>
 <li class="fragment"><p>With a <strong>small p-value</strong>, the hypothesis holding means <strong>“You’re special! You observed something really rare!”</strong></p>
 <ul>
-<li class="fragment">We usually don’t get that lucky - so we doubt our hypothesis.</li>
+<li class="fragment">We usually don’t get that lucky :( So we may conclude that our hypothesis was wrong.</li>
 </ul></li>
 <li class="fragment"><p>With a <strong>large p-value</strong>, the hypothesis holding means <strong>“Your observation meets expectations.”</strong></p>
 <ul>
@@ -336,7 +331,7 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_3563960f" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_c1becac7" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section></section>
@@ -420,7 +415,7 @@
 </ul></li>
 </ul>
 </section>
-<section id="identifying-hypotheses-determining-the-null-hypothesis" class="slide level2">
+<section id="identifying-hypotheses-determining-the-null-hypothesis" class="slide level2" style="font-size:0.9em;">
 <h2>1) Identifying Hypotheses: Determining the Null Hypothesis</h2>
 <ul>
 <li class="fragment">The Null and Alternative Hypothesis statements are <em>not</em> interchangeable:
@@ -432,6 +427,9 @@
 <ul>
 <li class="fragment">Would be assumed if no study were conducted, and would be maintained if the study is inconclusive.</li>
 </ul></li>
+</ul>
+<p><br></p>
+<ul>
 <li class="fragment">The alternative hypothesis often represents the <strong>claim for which we seek evidence.</strong>
 <ul>
 <li class="fragment">It is the only statement we will be able to provide evidence for after our test.</li>
@@ -638,7 +636,7 @@
 <li class="fragment">Use the P-value to make a conclusion on the research question</li>
 </ol>
 </section>
-<section id="calculate-the-p-value" class="slide level2 smaller">
+<section id="calculate-the-p-value" class="slide level2" style="font-size:0.9em;">
 <h2>4) Calculate the P-Value</h2>
 <ul>
 <li class="fragment"><strong>Reminder:</strong> Informally,
@@ -734,7 +732,7 @@
 <li class="fragment"><strong>Use the P-value to make a conclusion on the research question</strong></li>
 </ol>
 </section>
-<section id="making-a-conclusion-using-the-p-value" class="slide level2">
+<section id="making-a-conclusion-using-the-p-value" class="slide level2" style="font-size:0.9em;">
 <h2>5) Making a conclusion using the P-value</h2>
 <p><span class="math display">\[
 \textbf{Null Hypothesis:} \quad p = 1/5 \qquad \qquad \textbf{Alternative Hypothesis:} \quad p &gt; 1/5
@@ -760,9 +758,42 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_68ae081f" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a1a57f63" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
+</section>
+<section id="another-application-parkinsons-disease" class="slide level2">
+<h2>Another Application: Parkinson’s Disease</h2>
+<p><br></p>
+<p>Joy Milne, a retired nurse, claimed to have the ability to smell whether someone had Parkinson’s disease. She noticed a change in her husband’s smell 10 years before he was diagnosed with Parkinson’s disease. When first attending a support group for people with Parkinson’s with her husband, she immediately recognized the same smell from many other people in the room.</p>
+<p>To test Joy’s claim, researchers gave her 12 shirts, where half were worn by individuals who had Parkinson’s disease, and half worn by individuals who did not. She identified 11 out of 12 correctly.</p>
+<p><br></p>
+<p>Let’s walk through the five steps of hypothesis testing together to determine whether or not we think Joy’s claim is credible.</p>
+</section>
+<section id="recap-framework-for-hypothesis-testing" class="slide level2">
+<h2>Recap: Framework for Hypothesis Testing</h2>
+<p>Hypothesis Testing is a scientific experiment, and follows the <strong>general</strong> scientific method.</p>
+<ol type="1">
+<li class="fragment">Present research question and identify <strong>hypotheses</strong>
+<ul>
+<li class="fragment"><strong>Null</strong> Hypothesis (e.g., I was guessing cards randomly)</li>
+<li class="fragment"><strong>Alternative</strong> Hypothesis (e.g., I was cheating)</li>
+<li class="fragment">We’ll express these hypotheses mathematically, <em>in terms of parameters</em></li>
+</ul></li>
+<li class="fragment">Describe <strong>Null distribution</strong>
+<ul>
+<li class="fragment">What should we expect to happen if the null hypothesis is true?</li>
+</ul></li>
+<li class="fragment">Obtain data, calculate relevant <strong>Test Statistic</strong>
+<ul>
+<li class="fragment"><strong>Test Statistic</strong> = sample statistic based on our data</li>
+</ul></li>
+<li class="fragment">Calculate the <strong>P-value</strong>
+<ul>
+<li class="fragment"><strong>P-value</strong> = probability of observing the Test Statistic assuming the Null Hypothesis</li>
+</ul></li>
+<li class="fragment">Use the P-value to <strong>make a conclusion</strong> on the research question</li>
+</ol>
 </section>
 <section id="next-time" class="slide level2">
 <h2>Next time</h2>
@@ -772,11 +803,7 @@
 <li class="fragment">Practice framing research questions in the hypothesis testing framework</li>
 <li class="fragment">1-sided vs 2-sided tests</li>
 </ul></li>
-<li class="fragment">Graded midterms and info on revisions</li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>
