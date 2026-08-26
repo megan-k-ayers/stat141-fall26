@@ -26,18 +26,16 @@ editor:
 
 The course website, [https://megan-k-ayers.github.io/stat141-fall26/](https://megan-k-ayers.github.io/stat141-fall26/), includes information on the course, lecture slides, public course materials, and links to all other course resources:
 
--   Textbooks (links on this Syllabus page)
--   RStudio Server, for working on homework and lab assignments
--   Slack, for course correspondence,
--   Gradescope, for turning in assignments, and
--   [Moodle](https://moodle.reed.edu/course/view.php?id=6886), (sparingly) for information about meetings and private course materials
+-   Textbooks (links on this Syllabus page),
+-   [RStudio Server](https://rstudio.reed.edu/), for working on homework and lab assignments (icon in upper right),
+-   [Slack](https://stat141-fall2026.slack.com), for course correspondence (icon in upper right),
+-   [Gradescope](https://www.gradescope.com/courses/1343290), for turning in assignments (icon in upper right), and
+-   occasionally, [Moodle](https://moodle.reed.edu/course/view.php?id=6886), for information about meetings and private course materials (icon in upper right).
 
 Note that **the entire course website (including lecture slide material) is searchable!!** This may come in handy when completing assignments. Click on the magnifying glass icon in the upper right corner of the website to search.
 
 
-**Meeting Times**:
-
-We'll have a lecture-style meeting three times a week, and a lab meeting once a week. Please see the course [Moodle](https://moodle.reed.edu/course/view.php?id=6886) page or the [Reed schedule of classes](https://solar.reed.edu/class_schedule/) to verify the times and locations for your section.
+**Meeting Times**: We'll have a lecture-style meeting three times a week, and a lab meeting once a week. Please see the course [Moodle](https://moodle.reed.edu/course/view.php?id=6886) page or the [Reed schedule of classes](https://solar.reed.edu/class_schedule/) to verify the times and locations for your section.
 
 
 **Communication**:
@@ -112,7 +110,7 @@ By the end of the course, you will have improved your data acumen and your abili
 
 
 **Tutoring & Academic Support**:
-I encourage you to reach out to Academic Support at Reed if you feel you're struggling or feeling overwhelmed with academics. They can help with study habits, note-taking, or time and stress management strategies. You may also want to take advantage of the free individual tutoring available by appointment. For more information, see https://www.reed.edu/academic_support/ or email `academic-support@reed.edu`.
+I encourage you to reach out to Academic Support at Reed if you feel you're struggling or feeling overwhelmed with academics. They can help with study habits, note-taking, or time and stress management strategies. You may also want to take advantage of the free individual tutoring available by appointment. For more information, see [https://www.reed.edu/academic_support/](https://www.reed.edu/academic_support/) or email `academic-support@reed.edu`.
 
 
 
@@ -124,24 +122,24 @@ We'll have a variety of assignments, activities, and assessments for this course
     - Every week we will have a lab assignment. The lab assignments will be worked on collaboratively during lab time on Thursdays, where you will be able to ask the instructor questions. They are designed to help you practice implementing concepts and tasks from lecture, particularly those that relate to coding in R. The following homework assignment will build on questions covered in lab.  
     - Lab assignments will be made available for download from the course website before each lab. 
     - You will submit the progress you made on each lab assignment via Gradescope at the end of your section's lab time. Labs will be assessed as part of your participation grade. You may receive some feedback on your lab work and will be shown correct solutions via Gradescope.  
-    - Late labs will not be accepted, and you need to be present in lab to receive credit for a lab submission. In the event of a missed lab, you should complete them on your own to prepare for homework assignments. We'll be happy to discuss lab assignments in office hours. 
+    - Late labs will not be accepted, and you need to be present in lab to receive credit for a lab submission. In the event of a missed lab, you should complete it outside of class to prepare for homework assignments. We'll be happy to discuss lab assignments in office hours. 
 
 -   **Homework assignments**:
     - Every week we will have a homework assignment. Homework assignments will be posted on the course website on Thursday mornings. 
     - These will be turned in via Gradescope by **9:00am on Thursay of the following week**.
     - Homework assignments will largely build on or continue content from that week's lab, and may also cover additional material from lecture. 
-    - You will receive detailed feedback on your homework assignments, and scores will be assigned based on completion.
+    - You will receive feedback on your homework assignments, and scores will be assigned based on **completion** and **effort**.
     - Homework assignments represent a higher proportion of your grade than labs, but a relatively small proportion overall. 
     - Engaging with homework assignments and discussing them in office hours will be the best way to study for the next week's quiz!
-    - Completion grades and feedback are given based on your submitted PDF, and regrade requests will not be accepted. **Be sure to check that your rendered PDF legibly displays all of your work before submitting homework assignments to avoid formatting issue frustration!** 
+    - Grades and feedback are given based on your submitted PDF, and regrade requests will not be accepted. **Be sure to check that your rendered PDF [legibly]{.underline} displays all of your work before submitting homework assignments to avoid formatting issue frustration!** 
 
 -   **Quizzes**:
-    - Almost every week at the beginning of lab we will have a short quiz, based closely on the material from the last week's homework assignment.
-    - Cumulatively, quizzes have the largest impact on your grade. However, there will be 10 quizzes throughout the semester, so each individual quiz will be relatively low-stakes.
+    - Almost every week at the beginning of lab we will have a short quiz, based closely on the material from the most recent homework assignment (ex. Quiz 1 will be based on content from HW 2).
+    - Cumulatively, quizzes have the largest impact on your grade. However, there will be 10 quizzes throughout the semester, so each individual quiz will be low-stakes.
     - Your lowest quiz grade will be dropped - this may come in handy in the event of an expected or unexpected absence, as quizzes cannot be made up.
-    - Quizzes will be taken on paper and will be entirely closed-notes. 
-    - While you will not be asked to write code in R during quizzes, you may be asked to write code by hand, describe coding steps qualitatively, or explain code that is shown to you. 
-    - You will have the opportunity to submit quiz revisions within 1 week of feedback being posted for partial credit.
+    - Quizzes will be given in written format and will be entirely closed-notes. 
+    - While you will not be asked to use a computer to write code in R during quizzes, you may be asked to write code by hand, describe coding steps qualitatively, or explain code that is shown to you. 
+    - You will have the opportunity to submit quiz revisions within 1 week of feedback being posted to regain partial credit.
     
 -   **In-class activities**:
     - Lectures and labs will often involve some in-class activities. Including but not limited to: 
@@ -171,7 +169,7 @@ Being actively present in lectures and labs is very important in this course. Th
 
 Being consistently absent, late to class, or being consistently distracted during class (ex. using cell phone or doing homework during lecture), or consistently not participating in group work will detract from your participation grade.
 
-That said, I understand that unexpected things happen, and that you may have an outside obligation come up during class time. To help with circumstances that might lead to an absence (expected or unexpected), everyone has four "free" lecture absences and 1 "free" lab absence (if you miss a lab where there is a quiz you will receive a 0 for it, but the lowest quiz score is dropped).  You may use these free absences as needed, no questions asked. While I am here to listen, don't feel that you have to share anything personal to justify your absence.
+That said, I understand that unexpected things happen, and that you may have an outside obligation come up during class time. To help with circumstances that might lead to an absence (expected or unexpected), everyone has 4 "free" lecture absences and 1 "free" lab absence (if you miss a lab where there is a quiz you will receive a 0 for it, but the lowest quiz score is dropped).  You may use these free absences as needed, no questions asked. While I am here to listen, don't feel that you have to share anything personal to justify your absence.
 
 
 
@@ -193,7 +191,7 @@ We expect everyone in this class to strive to foster a learning environment that
 
 **Code of Conduct**:
 
-We expect all members of Math 141 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+We expect all members of Stat 141 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 We expect everyone to act and interact in ways that contribute to an open, welcoming, inclusive, and healthy community of learners. You can contribute to a positive learning environment by demonstrating empathy and kindness, being respectful of differing viewpoints and experiences, and giving and gracefully accepting constructive feedback.[^1]
 
@@ -202,18 +200,16 @@ We expect everyone to act and interact in ways that contribute to an open, welco
 
 ## Accommodations
 
-Students come to this class with diverse needs and abilities. My hope is for this class to be accessible to all enrolled students. If you are planning to or are considering requesting a disability accommodation, I encourage you to contact Disability & Accessibility Resources (DAR), [dar@reed.edu](mailto:dar@reed.edu) or 503-517-4917 as early as possible in the semester. Please be aware that requests may take several weeks to be processed through DAR. Once I receive accommodations requests via DAR I will reach out to discuss arrangements for each accommodation, but feel free to reach out to me to discuss accommodations at any time before or after this.
+Students come to this class with diverse needs and abilities. My goal is for this class to be accessible to all enrolled students. If you are planning to or are considering requesting a disability accommodation, I encourage you to contact Disability & Accessibility Resources (DAR), [dar@reed.edu](mailto:dar@reed.edu) or 503-517-4917 as early as possible in the semester. Please be aware that requests may take several weeks to be processed through DAR. Once I receive accommodations requests via DAR I will reach out to discuss arrangements for each accommodation, but feel free to reach out to me to discuss accommodations at any time before or after this.
 
 
 ## Policies
 
 ### Technology policy:
 
-* In STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides will be made available ahead of lecture on the course website.
+* In STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides (including a condensed version for more efficient printing) will be made available ahead of lecture on the course website.
 
 * However, for some parts of the course, we will ask you to use your phone/tablet/computer to engage with course material (ex. you'll be asked to take attendance via QR code at the start of lecture, and to use your laptop to work on lab assignments and occasionally during lecture). 
-
-* We ask that you do not wear headphones at any point during labs or lectures. 
 
 * Advice for note taking during lecture: 
     * Rather than focusing on transcribing everything that is displayed or said, focus on summarizing content and ideas in your own words, recording any questions you have, and emphasizing any insights that helped you make sense of a concept.
@@ -228,19 +224,19 @@ Students come to this class with diverse needs and abilities. My hope is for thi
 
 * **Labs**: Lab assignments will be due at the end of each lab section and will count towards a small participation grade. If we ran out of time in lab to attempt all questions you don't need to rush to finish the lab before submitting it: just submit the progress that you made. You will have a grace period until the end of the day to submit your lab in the event of a PDF rendering error - please send me a quick email at the end of lab if you need to take this time to fix an error. In case of a lab absence, you are encouraged to prepare for homework assignments by completing labs on your own, but late submissions of lab assignments will not be accepted. You may miss one lab without impact to your grade. 
 
-* **Exam**: The final exam cannot be made up, except in cases with academic accommodations.  
+* **Exam**: The final exam cannot be made up.  
 
 
 <!-- To help with various circumstances (expected and unexpected), you have up to 4 additional lab extensions days and 4 additional homework extension days that you can use as you need, no questions asked. You are free to distribute the extension days to different assignments as you wish (e.g., 1 additional day for 4 labs, 4 additional days for 1 lab) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). Lab extension days may only be used for lab assignments, and homework extension days may only be used for homework assignments. When you use extension days, it may take longer for you to receive feedback on that assignment.  -->
 
-<!-- If you need to use any extension days, send Megan an **email** (not a Slack message) with the title: "Math 141 Extension Days" that includes the assignment that you are using an extension for, and the number of day(s) used.  -->
+<!-- If you need to use any extension days, send Megan an **email** (not a Slack message) with the title: "Stat 141 Extension Days" that includes the assignment that you are using an extension for, and the number of day(s) used.  -->
 
 <!-- If you have used all of your extension days and submit an additional assignment late, you may still submit your assignment (via Gradescope, or email if the Gradescope assignment is closed) for a grade worth up to 50% of the maximum possible grade of the original assignment. For example, if a lab is worth 100 points, and you submit it late without using extension days, your maximum possible grade for that assignment will be 50 points. It may take several weeks for assignments to be graded in these cases, and detailed feedback will not be given. -->
 
 
 ### Collaboration Policy and Academic Honesty:
 
-Working with your classmates on difficult and interesting problems can not only help your learning, but also help you get to know each other! Therefore, I *highly* encourage you to collaborate on assignments. But, every piece of work you do *must* be your own. Copying other people’s work or code is not acceptable (whether they are in the course or not), nor is allowing other people to copy and paste your own work. The Honor Principle must guide your conduct in this class. 
+Working with your classmates on difficult and interesting problems can not only help your learning, but also help you get to know each other! Therefore, I *highly* encourage you to collaborate on assignments. But, every piece of work you do *must* be your own. Copying other people’s work or code is not acceptable (whether they are in our course or not), nor is allowing other people to copy your own work (whether they are in our course or not). The [Honor Principle](https://www.reed.edu/honor_principle/) must guide your conduct in this class. 
 
 If you choose to collaborate with a classmate, **you must add their name to the top of your assignment**, and list them as a collaborator, e.g.:
 
@@ -248,16 +244,16 @@ Collaborator(s): Michael Pearce, Lenny Wainstein, Grayson White
 
 *But what is collaboration?*:
 
-For STAT 141, collaboration can look like: working with classmates together on a given problem, doing scratch work, helping each other get un-stuck on a part of a problem, and even coming to a solution. However, you **must** write up your own problem solutions individually and cannot copy other's solutions (even those who you have collaborated with). You are expected to be able to explain your submitted solutions. When helping others with their assignment, you are encouraged to help them reason through concepts and to explain connections to lecture material and past assignments. However, you are expected to never explicitly share solutions, and to never distribute solutions obtained directly or indirectly from office hours or written feedback with other students, including those in this course or other sections of 141. Further, copying solutions or code from a collaborator, classmate, an internet resource, or a generative AI tool (see the following section) is strictly prohibited. 
+For STAT 141, collaboration can look like: working with classmates together on a given problem, doing scratch work, helping each other get un-stuck on a part of a problem, and even coming to a solution together. However, you **must** write up your own problem solutions individually and cannot copy other's solutions (even those who you have collaborated with). You are expected to be able to explain the entirety your submitted solutions. When helping others with their assignment, you are encouraged to help them reason through concepts and to explain connections to lecture material and past assignments. However, you are expected to never explicitly share your completed solutions. You are expected to never distribute solutions obtained directly or indirectly via written feedback or office hours, including to students in this course or in other sections of 141. Copying solutions or code from [**any source**]{.underline}, including a collaborator, classmate, an internet resource, or a generative AI tool (see the following section) is strictly prohibited. 
 
 
 ### AI and Internet Use Policy:
 
-Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. If you have questions about whether a tool is allowed for this course, ask the Instructor before using it.
+Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, building resilience in moments of struggle and confusion, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and **independently** extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. The [Honor Principle](https://www.reed.edu/honor_principle/) must guide your conduct in following this policy. If you have questions about whether a tool is allowed for this course, ask before using it.
 
-While there are many ways to achieve tasks in R, and many helpful internet resources for learning about them, this course is designed to be self contained, and you may only use functions and packages that have been covered in this course on your assignments. You may use online documentation resources to refresh yourself or learn more about functions that have been introduced in class. If you have questions at any point about other functions or packages, I (Megan) am happy to discuss! If you are unsure of how to approach a particular exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.
+While there are many ways to complete tasks in R, and many helpful internet resources for learning about them, this course focuses on a curated selection and is designed to be self contained. You may only use functions and packages that have been covered in this course on your assignments. You may use official online documentation resources (ex. [https://tidyverse.org/packages/](https://tidyverse.org/packages/)) to refresh yourself or learn more about functions that have been introduced in class. If you have questions at any point about other functions or packages, I (Megan) am happy to discuss! If you are unsure of how to approach a particular exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.
 
 
 ## Acknowledgements
 
-Thank you to Grayson White for allowing me to largely reuse the website structure he developed for Stat 141, and many of the related course materials (which in turn were influenced by the work of many others!). Thank you to Michael Pearce and Lenny Wainstein, many of whose previous Stat 141 course materials have also been adapted for this course. I enlisted the help of Claude Code for lecture slide and assignment reformatting tasks (ex. "Please change Math 141 Spring 2026 to Stat 141 Fall 2026 in all files!", "Please align assignment deadlines in .qmd files with the website schedule", "Please add this collaboration statement to the top of every assignment file"). 
+Thank you to Grayson White for allowing me to largely reuse the website structure he developed for Stat 141, and many of the related course materials (which in turn were influenced by the work of many others!). Thank you to Michael Pearce and Lenny Wainstein, many of whose previous Stat 141 course materials have also been adapted for this course.

@@ -238,7 +238,7 @@ scheduled-docs:
       resources:
             - 'Submit assignment 5 (due Thurs 10/08 at 9am)'
             - 'Take Quiz 4 online (but at regular lab time)'
-            - 'Metacognition assignment'
+            - 'Metacognition assignment (assigned 10/08)'
 
     - week: 7
       days:
@@ -275,6 +275,7 @@ scheduled-docs:
             - type: Slides
               href: slides/lecture20_ci-intro.qmd
       resources:
+            - 'Submit metacognition assignment (due at 9am 10/15)'
             - 'Start assignment 6 (assigned 10/15)'
 
     - week: 8 (Fall Break)
