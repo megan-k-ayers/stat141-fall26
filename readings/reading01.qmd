@@ -8,8 +8,16 @@ execute:
 
 # Stat 141: Readings for {{< meta date >}}
 
-Before coming to lecture today, please **fill out the office hour availability survey** and review the course syllabus: 
+Before coming to lecture today, please complete the following items.
 
--   [Office hour availability survey](https://forms.gle/ZwzXVng5EG172atKA)
--   [The syllabus](../syllabus.qmd)
+1.   Fill out the [office hour availability survey](https://forms.gle/ZwzXVng5EG172atKA) (**important!!**)
+2.   Review [the course syllabus](../syllabus.qmd)
+3.   Practice the [Stat 141 Math Trailhead exercises](https://mrobinso314.github.io/MathTHClone/math-141.html). This 15-exercise sequence reviews some quantitative reasoning, algebra, and function skills that we will utilize in Stat 141 (the webpage is in development, and may refer to the course's previous name, Math 141). 
+
+
+**Note on #3**: *We are all coming into this course with a wide variety of backgrounds and experience in mathematics and other disciplines - this diversity of perspectives is very valuable and our discussions and collaborations will benefit greatly! It is natural that we'll each be at different starting points for different skills.*
+
+*If you're feeling stuck on any of the Trailhead practice problems, there are additional resources available to you beyond those specific to this course. These include [individual and drop-in peer tutoring](https://www.reed.edu/academic_support/tutoring.html) starting in week 2, and meeting with the [quantitative skills specialist at the Office of Academic Support](https://www.reed.edu/academic_support/coaching.html). I am happy to meet with you to discuss these and other options at any time - please don't hesitate to send me a message!* 
+
+
 
