@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.25">
 
-  <title>STAT 141 – Hypothesis Testing II: Null Distributions and P-Values</title>
+  <title>STAT 141 – Hypothesis Testing II: More Examples</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -213,33 +213,9 @@
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
 <ul>
-<li class="fragment"><p>Midterm revisions</p></li>
 <li class="fragment"><p>Practice framing research questions in terms of hypotheses</p></li>
-<li class="fragment"><p>Practice defining null distributions</p></li>
+<li class="fragment"><p>Practice defining and simulating null distributions</p></li>
 <li class="fragment"><p>1 vs 2 sided tests</p></li>
-</ul>
-</section>
-<section id="midterm-revisions" class="slide level2 smaller">
-<h2>Midterm revisions</h2>
-<p><strong>If you scored less than 80%</strong> on the midterm you have the opportunity to get some points back. Parameters:</p>
-<ul>
-<li class="fragment">You can get up to 50% of your missed points back (up to an 80% total score on the midterm).
-<ul>
-<li class="fragment"><strong>Example:</strong> If you got a 70% on the midterm, you can get up to an 80% with revisions, but if you got a 50% on the midterm you can get up to a 75% with revisions.</li>
-</ul></li>
-<li class="fragment">For each question part you can get half the points you missed.
-<ul>
-<li class="fragment"><strong>Example:</strong> If you got a 1 / 3 on Question 1 part (a), an entirely correct solution submitted to me on the midterm makeups will increase your score to 2 / 3 on Question 1 part (a).</li>
-</ul></li>
-<li class="fragment">Changes to rules now apply:
-<ol type="1">
-<li class="fragment">You must give a brief explanation of where you went wrong for each revised problem and why your revision fixes this.</li>
-<li class="fragment">You may consult your notes for the course and any of our internal course material. <strong>But outside resources, including friends, peers, the internet, or AI tools, are still prohibited.</strong></li>
-<li class="fragment">You have no time pressure.</li>
-<li class="fragment">You can come to my (Megans’s) office hours to discuss questions you are stuck on, but no other office hours or individual tutoring.</li>
-</ol></li>
-<li class="fragment"><strong>Revision instructions are on the course website.</strong></li>
-<li class="fragment"><strong>Submit paper copies of your midterm revisions to me by Wednesday 4/1 at 5:00pm. No late submissions!</strong></li>
 </ul>
 </section>
 <section id="recap-framework-for-hypothesis-testing" class="slide level2">
@@ -316,13 +292,13 @@
 </div><div class="column" style="width:47%;">
 <p><strong>Discuss with neighbor(s)</strong>:</p>
 <p><strong>1.</strong> What is the relevant null hypothesis (<strong><span class="math inline">\(H_0\)</span></strong>) and alternative hypothesis (<strong><span class="math inline">\(H_a\)</span></strong>)?</p>
-<p><strong>2.</strong> Describe <strong>Null distribution</strong>. How might we simulate it? (<em>Hint: Recall the card guessing example</em>)</p>
+<p><strong>2.</strong> Describe <strong>Null distribution</strong>. How might we simulate it?</p>
 <p><strong>3.</strong> What is our relevant <strong>Test Statistic</strong>?</p>
 <p><strong>4</strong>. What does the <strong>P-value</strong> represent here? How might we calculate it, given step 2?</p>
 <p><strong>5.</strong> How would we use the P-value to make a conclusion on the research question?</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_00565cfa" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_0204e212" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
@@ -483,7 +459,7 @@
 </div>
 </div></div>
 </section>
-<section id="hypothesis-testing-steps-esp-6" class="slide level2">
+<section id="hypothesis-testing-steps-esp-6" class="slide level2" style="font-size:0.9em;">
 <h2>Hypothesis Testing Steps: ESP</h2>
 <ol start="3" type="1">
 <li class="fragment">What is our relevant “Test Statistic”?
@@ -627,7 +603,7 @@
 </ul></li>
 </ul>
 <div class="columns">
-<div class="column" style="width:65%;">
+<div class="column" style="width:75%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -637,7 +613,7 @@
 </div>
 </div>
 </div>
-</div><div class="column" style="width:35%;">
+</div><div class="column" style="width:25%;">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&gt;=</span> <span class="fl">0.85</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -654,7 +630,7 @@
 </ul></li>
 </ul>
 <div class="columns">
-<div class="column" style="width:65%;">
+<div class="column" style="width:75%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -664,7 +640,7 @@
 </div>
 </div>
 </div>
-</div><div class="column" style="width:35%;">
+</div><div class="column" style="width:25%;">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&lt;=</span> <span class="fl">0.85</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -719,38 +695,16 @@
 </section>
 <section class="slide level2">
 
-<h3 id="another-example">Another Example</h3>
+<h3 id="another-example-mouse-frowns">Another Example: Mouse Frowns :(</h3>
 <p>Can you tell if a mouse is in pain by looking at its facial expression? A recent study created a “mouse grimace scale” and tested to see if there was a positive correlation between scores on that scale and the degree of pain (based on injections of a weak and mildly painful solution). The study’s authors believe that if the scale applies to other mammals as well, it could help veterinarians test how well painkillers and other medications work in animals.</p>
 <p><br></p>
 <ul>
-<li><p><strong>Q</strong>: Write out <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> qualitatively (in words).</p></li>
-<li><p><strong>Q</strong>: Write out <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> in terms of population parameters. (<em>Hint: recall that we use <span class="math inline">\(r\)</span> for correlation</em>)</p></li>
-<li><p><strong>Q</strong>: Describe how we’d expect the data to behave under <span class="math inline">\(H_0\)</span>.</p></li>
+<li><p><strong>Q</strong>: How should we write out <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> in terms of population parameters? (<em>Hint: recall that we use <span class="math inline">\(r\)</span> for correlation</em>)</p></li>
+<li><p><strong>Q</strong>: How would we expect the sample statistic to behave under <span class="math inline">\(H_0\)</span>?</p></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_d2f93554" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
-</div>
 </section>
-<section class="slide level2">
-
-<h3 id="another-example-1">Another Example!</h3>
-<p>Can a simple smile have an effect on punishment assigned following an infraction? In a 1995 study, Hecht and LeFrance examined the effect of a smile on the leniency of disciplinary action for wrongdoers. Participants in the experiment took on the role of members of a college disciplinary panel judging students accused of cheating. For each suspect, along with a description of the offense, a picture was provided with either a smile or neutral facial expression. A leniency score was calculated based on the disciplinary decisions made by the participants.</p>
-<p><br></p>
-<ul>
-<li><p><strong>Q</strong>: Write out <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> qualitatively (in words).</p></li>
-<li><p><strong>Q</strong>: Write out <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> in terms of population parameters (<em>Hint, we can write the population mean leniency score for smilers as <span class="math inline">\(\mu_S\)</span></em>).</p></li>
-<li><p><strong>Q</strong>: Describe how we’d expect the data to behave under <span class="math inline">\(H_0\)</span>.</p></li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_3a7f1feb" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
-</div>
-</section>
-<section id="null-distributions-how-to-generate-them-for-these-other-examples" class="slide level2">
-<h2>Null distributions: how to generate them for these other examples?</h2>
+<section id="null-distribution-in-r-via-permutation" class="slide level2">
+<h2>Null Distribution in <code>R</code> via Permutation</h2>
 <div class="columns">
 <div class="column fragment" style="width:50%;">
 <ul>
@@ -786,15 +740,25 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture23_hyp-test-null-dist_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture23_hyp-test-null-dist_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 </section>
-<section id="null-distributions-how-to-generate-them-for-these-other-examples-1" class="slide level2">
-<h2>Null distributions: how to generate them for these other examples?</h2>
+<section class="slide level2">
+
+<h3 id="another-example-crocodile-smiles">Another Example: Crocodile Smiles</h3>
+<p>Can a simple smile have an effect on punishment assigned following an infraction? In a 1995 study, Hecht and LeFrance examined the effect of a smile on the leniency of disciplinary action for wrongdoers. Participants in the experiment took on the role of members of a college disciplinary panel judging students accused of cheating. For each suspect, along with a description of the offense, a picture was provided with either a smile or neutral facial expression. A leniency score was calculated based on the disciplinary decisions made by the participants.</p>
+<p><br></p>
+<ul>
+<li><p><strong>Q</strong>: How should we write out <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> in terms of population parameters? (<em>Hint, we can write the population mean leniency score for smilers as <span class="math inline">\(\mu_S\)</span></em>).</p></li>
+<li><p><strong>Q</strong>: How would we expect the sample statistic to behave under <span class="math inline">\(H_0\)</span>?</p></li>
+</ul>
+</section>
+<section id="null-distribution-in-r-via-permutation-1" class="slide level2">
+<h2>Null Distribution in <code>R</code> via Permutation</h2>
 <div class="columns">
 <div class="column fragment" style="width:50%;">
 <ul>
@@ -828,7 +792,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture23_hyp-test-null-dist_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture23_hyp-test-null-dist_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -852,9 +816,9 @@
 </ul>
 <p><img data-src="img/palpatine.jpg" style="width:20.0%"></p>
 </div>
-</section>
-<section class="slide level2">
-
+<div class="fragment">
+<p><strong>Have a fun and safe Halloween!</strong></p>
+</div>
 
 
 </section></section>

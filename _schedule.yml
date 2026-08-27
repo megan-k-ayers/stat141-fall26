@@ -311,7 +311,7 @@ scheduled-docs:
                 href: lab/lab07.zip
               - type: Download HW 7
                 href: hw/hw07.zip
-        - topic: "Hypothesis Testing II: Null Distributions"
+        - topic: "Hypothesis Testing II: More Practice, 1 vs 2 Sided"
           display-date: Friday, Oct 30
           date: 10/30/26
           docs:
