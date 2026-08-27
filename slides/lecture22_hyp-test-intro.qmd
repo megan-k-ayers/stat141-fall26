@@ -71,24 +71,45 @@ library(tufte)
 
 ------------------------------------------------------------------------
 
-## Card Guessing
+### Motivating Example: Can some diseases be detected by smell? 
 
-- I have 5 (hearts) cards from a standard deck:
-    - 10, Jack, Queen, King, Ace
-  
+<br><br>
 
-- I'm going to shuffle the 5 cards and make a guess about which is on top, then reshuffle
-    - Let's bet $20 that I can guess right 10 out of 10 times
+::: columns
+
+::: {.column width=60%}
+
+Joy Milne, a retired nurse, claimed to have the ability to smell whether someone had Parkinson's disease. She noticed a change in her husband's smell 10 years before he was diagnosed with the disease, then recognized it again in support groups (this is a [true story!)](https://www.npr.org/sections/health-shots/2020/03/23/820274501/her-incredible-sense-of-smell-is-helping-scientists-find-new-ways-to-diagnose-di!).
+
+:::
+
+::: {.column width=40%}
+![](img/joy_milne.jpeg)
+:::
+
+:::
+
+------------------------------------------------------------------------
+
+### Motivating Example: Can some diseases be detected by smell? 
+
+- Imagine we are researchers who want to test Joy's claim.
+
+
+- We collect a bunch of tee shirts, some worn by individuals who are diagnosed with Parkinson's, others worn by individuals who aren't.
+
+- We present Joy with tee shirts one at a time, and ask her to identify which group the wearer is in.
 
 
 ::: {.fragment .nonincremental}
 - **Discuss with Neighbor(s):**
-    - **Q:** If I'm guessing at random, what's the probability that I guess correctly on **one** draw?
-    - **Q:** How many times out of 10 draws would you expect me to guess correctly?
+    - **Q:** If Joy is guessing at random, what's the probability that she guesses correctly for **one** shirt?
+    - **Q:** How many out of 10 shirts would you expect her to guess correctly?
     - **Q:** Which is the probability of guessing correctly 10 times in a row?
-        - $\frac{1}{5}$ or a 20\% chance
-        - 2 times out of 10
-        - $(\frac{1}{5})^{10} = 0.0000001$ or <0.001\%
+    
+        <!-- - $\frac{1}{5}$ or a 50\% chance -->
+        <!-- - 5 times out of 10 -->
+        <!-- - $(\frac{1}{2})^{10} \approx 0.00098$ or <0.001\% -->
 
 :::
 
@@ -99,20 +120,18 @@ countdown::countdown(3)
 
 ------------------------------------------------------------------------
 
-## The guesses... {style="font-size:0.75em;"}
+## The guesses... {style="font-size:0.8em;"}
 
-- Let's say I do this and get 10 in a row.
-    - Clearly I'm cheating and you shouldn't have to pay me $20
-    - But I say "Oh I just got lucky... pay me!!" ... **how do you prove I'm lying?**
-  
-- **Q:** Any ideas?
+- Let's say we do this, and Joy guesses 10 correctly in a row.
+    - Suppose a colleague says, "She just got lucky!"
+    - **Can we prove they are wrong?** Any ideas?
   
 <br>
 
 - One way of doing it:
-    - **Assume for a second** that I was guessing at random
+    - **Assume for a second** that she really was guessing at random.
     - If that's the case, then **there's a $<0.001\%$ chance** of guessing 10 in a row correctly!
-    - Therefore, I must be cheating (i.e., **You reject the idea that I'm guessing randomly**)
+    - Therefore, it seems more likely she *isn't* guessing randomly. The data we observed seems incompatible with our hypothesis.
   
 <br>
 
@@ -125,8 +144,8 @@ countdown::countdown(3)
 
 ## Hypothesis Tests and "P-Values", Informally
 
-- Say we want to disprove a hypothesis:
-    - e.g., "Megan was guessing randomly, and not cheating"
+- Say we want to **disprove** a hypothesis:
+    - e.g., "Joy was guessing randomly, she can't smell Parkinson's disease"
 
 - We are going to calculate something called a **P-value**:
     - **Assuming the hypothesis was true...**
@@ -139,7 +158,7 @@ $$
 
 :::
 
-- e.g., Assuming Megan was guessing randomly...
+- e.g., Assuming Joy was guessing randomly...
 
 ::: fragment
 
@@ -189,10 +208,10 @@ Hypothesis Testing is a scientific experiment, and follows the general scientifi
 
 
 1. Present research question and identify **hypotheses**
-    - **Null** Hypothesis (e.g., I was guessing cards randomly)
-    - **Alternative** Hypothesis (e.g., I was cheating)
+    - **Null** Hypothesis (e.g., Joy is guessing diagnoses randomly)
+    - **Alternative** Hypothesis (e.g., Joy can smell Parkinson's)
     - We'll express these hypotheses mathematically, *in terms of parameters*
-  
+
 
 2. Describe **Null distribution**
     - What should we expect to happen if the null hypothesis is true?
@@ -216,12 +235,11 @@ Hypothesis Testing is a scientific experiment, and follows the general scientifi
 
 ## 1) Identifying Hypotheses: Informal vs. Formal Hypotheses {.smaller}
 
-- Before the card guessing experiment, we may have several (informal) hypotheses:
-  1) Megan is guessing at random 
-  2) The cards are not equally likely to come up
-  3) Megan is psychic
-  4) Megan is not to be trusted
-  5) Megan is able to do better than guessing at random
+- Before the tee shirt experiment, we may have several (informal) hypotheses:
+  1) Joy is guessing at random 
+  2) Joy can smell Parkinson's disease
+  3) Joy is psychic
+  4) Joy is able to do better than guessing at random
   
 
 - But in order to compare these, it would be helpful to consider a set of hypotheses that:
@@ -235,7 +253,7 @@ Hypothesis Testing is a scientific experiment, and follows the general scientifi
 ::: fragment
 
 $$
-\textbf{Null Hypothesis:} \quad p = 1/5 \qquad \qquad \textbf{Alternative Hypothesis:} \quad p > 1/5
+\textbf{Null Hypothesis:} \quad p = 1/2 \qquad \qquad \textbf{Alternative Hypothesis:} \quad p > 1/2
 $$
 
 :::
@@ -247,24 +265,24 @@ $$
 ## 1) Identifying Hypotheses
 
 - The **null hypothesis ($H_0$)** is the claim we are testing. It often represents a skeptical perspective or that there is no relationship among several variables.
-    - $H_0$: The chance of guessing correctly is 1/5, or $p=1/5$.
-    - The **null value** = value of the population parameter under the Null Hypothesis (e.g., $1/5$)
+    - $H_0$: The chance of guessing correctly is 1/2, or $p=1/2$.
+    - The **null value** = value of the population parameter under the Null Hypothesis (e.g., $1/2$)
   
 - The **alternative hypothesis ($H_a$)** is contrary to the null hypothesis. It is often the theory we would like to prove.
-   - $H_a$: Megan can do better than random guessing, or $p>1/5$.
+   - $H_a$: Joy can do better than random guessing, or $p>1/2$.
   
 - The Null and Alternative hypotheses are most often statements about the particular value of a population parameter
     - $H_0$ and $H_a$ are **[never]{.underline}** statements about particular values of **sample statistics**. They are **hypotheses** and should be able to be expressed before any observation of data.
-        - **Incorrect** $H_0$: The proportion of correct guesses in $10$ guesses is $\widehat{p}=1/5$.
-        - **Incorrect** $H_a$: The proportion of correct guesses in $10$ guesses is $\widehat{p} > 1/5$.
+        - **Incorrect** $H_0$: The proportion of correct guesses in $10$ guesses is $\widehat{p}=1/2$.
+        - **Incorrect** $H_a$: The proportion of correct guesses in $10$ guesses is $\widehat{p} > 1/2$.
 
 ------------------------------------------------------------------------
 
 ## 1) Identifying Hypotheses: Determining the Null Hypothesis {style="font-size:0.9em;"}
 
 - The Null and Alternative Hypothesis statements are *not* interchangeable:
-    - Null hypothesis is (usually) a statement of **equality** for a parameter (e.g., $p = 1/5$)
-    - Alternative hypothesis is a statement of **inequality** for a parameter (e.g., $p > 1/5$)
+    - Null hypothesis is (usually) a statement of **equality** for a parameter (e.g., $p = 1/2$)
+    - Alternative hypothesis is a statement of **inequality** for a parameter (e.g., $p > 1/2$)
   
 
 
@@ -276,7 +294,6 @@ $$
 - The alternative hypothesis often represents the **claim for which we seek evidence.**
     - It is the only statement we will be able to provide evidence for after our test.
     - e.g., in a criminal trial, we assume innocence ($H_0$) first. If evidence is compelling ("beyond a reasonable doubt"), then we reject in favor of a guilty verdict ($H_a$). 
-    - e.g., Card guessing
 
 
 
@@ -301,14 +318,12 @@ $$
 
 ------------------------------------------------------------------------
 
-
 ## 2)  Describe the Null Distribution: Likelihood of Observing Sample Statistic
 
-- To compare Null and Alternate Hypotheses, we need to quantify how likely it is to observe a particular sample statistic, *if the null hypothesis were true*.
-    - If I'm guessing at random, how many correct guesses do you expect?
+- To compare Null and Alternate Hypotheses, we need to quantify how likely it is to observe a particular sample statistic, [*if the null hypothesis were true*]{.underline}.
+    - If Joy guesses at random, how many correct guesses do you expect?
     - What is the greatest number of correct guesses you would plausibly expect to see?
-    - If I had 4 correct guesses, would you think that I'm guessing at random? 
-    - How likely is is that I would get 7 or more correct guesses, if I'm guessing at random?
+    - How likely is is that she would get 7 or more correct guesses, if she's guessing at random?
   
 - To answer questions like these, we need to know the **distribution of the statistic of interest, if the null hypothesis were true**.
 
@@ -316,13 +331,15 @@ $$
   
 - We can approximate the Null Distribution using simulation or theory.
 
+- **Q**: How does the Null Distribution differ from the sampling distributions we considered for confidence intervals?
+
 
 ------------------------------------------------------------------------
 
-## 2)  Describe the Null Distribution: A Model of Card Guessing
+## 2)  Describe the Null Distribution: A Model of Tee Shirt Guessing
 
 
-We can use R to simulate one experiment of 10 guesses by...
+We can use R to simulate **one experiment** of 10 guesses by...
 
 
 ::::: columns
@@ -333,7 +350,7 @@ We can use R to simulate one experiment of 10 guesses by...
   
 ```{r echo = T}
 guesses <- data.frame(
-  correct = c(0, 0, 0, 0, 1))
+  correct = c(0, 0, 0, 0, 0, 1, 1, 1, 1, 1))
 guesses
 ```
 
@@ -361,15 +378,15 @@ one_trial
 :::::
 
 ::: fragment
-This gives us a $\widehat{p} = 2/10 = 0.2$
+Our one experiment us a $\widehat{p} = 6/10 = 0.6$
 :::
 
 ------------------------------------------------------------------------
 
-## 2) Describe the Null Distribution: A Model of Card Guessing
+## 2)  Describe the Null Distribution: A Model of Tee Shirt Guessing
 
 
-We can use R to simulate 2000 experiments of 10 guesses by putting in `reps = 2000` (`reps = 1` is the default).
+We can use R to simulate **2000 experiments** of 10 guesses by putting in `reps = 2000` (`reps = 1` is the default).
 
 
 ::::: columns
@@ -451,6 +468,7 @@ null_stats %>% ggplot(aes(x = p_hat))+geom_histogram(breaks = 0:11/10 -1/20, col
 
 :::
 
+
 ------------------------------------------------------------------------
 
 ## Framework for Hypothesis Testing
@@ -472,13 +490,13 @@ null_stats %>% ggplot(aes(x = p_hat))+geom_histogram(breaks = 0:11/10 -1/20, col
 
 ## 3) Calculate the Test Statistic
 
-- We've already done this with my card drawing:
-     - We found that $\widehat{p} = 1$ (I guessed right in 10 out of 10 draws)
+- We've already done this with Joy's guesses:
+     - We found that $\widehat{p} = 1$ (she guessed right for 10 out of 10 tee shirts)
 
 
 - In the context of hypothesis tests, we typically call the sample statistic (e.g., $\widehat{p}$) the **Test Statistic**
-
-
+    - This is the statistic that we actually observed in our data set
+    - In comparison, we call the hypothetical statistics in our null distribution **null statistics**
 
 ------------------------------------------------------------------------
 
@@ -541,7 +559,7 @@ null_stats %>% ggplot(aes(x = p_hat))+geom_histogram(breaks = 0:11/10 -1/20, col
 ```
 
 ```{r echo = T}
-mean(null_stats$p_hat==1) 
+mean(null_stats$p_hat >= 1) 
 ```
 
 :::
@@ -559,7 +577,7 @@ null_stats %>% ggplot(aes(x = p_hat))+geom_histogram(breaks = 0:11/10 -1/20, col
 ```
   
 ```{r echo = T}
-mean(null_stats$p_hat>=0.5) 
+mean(null_stats$p_hat >= 0.5) 
 ```
 
 :::
@@ -572,15 +590,16 @@ mean(null_stats$p_hat>=0.5)
 
 - **Method 2:** We use theory-based tools to create the theoretical null distribution.
     - Then use the model to calculate the theoretical probability of observing a sample statistic as extreme as the test statistic.
-    - In the case where I get all 10 guesses right, we have already calculated the p-value as:
+    - In the case where Joy gets all 10 guesses right, we have already calculated the p-value as:
 
 ::: fragment
 
-$$\text{P-value} = (1/5)^{10} \approx 0.0000001 $$
+$$\text{P-value} = (1/2)^{10} \approx 0.00098 $$
 
 :::
 
 ------------------------------------------------------------------------
+
 
 ## Framework for Hypothesis Testing
 
@@ -604,16 +623,16 @@ $$\text{P-value} = (1/5)^{10} \approx 0.0000001 $$
 ## 5) Making a conclusion using the P-value {style="font-size:0.9em;"}
 
 $$
-\textbf{Null Hypothesis:} \quad p = 1/5 \qquad \qquad \textbf{Alternative Hypothesis:} \quad p > 1/5
+\textbf{Null Hypothesis:} \quad p = 1/2 \qquad \qquad \textbf{Alternative Hypothesis:} \quad p > 1/2
 $$
 
 
 
 **Discuss with Neighbor(s)**:
 
-  1. When $\widehat{p} = 1$ (Megan guesses all 10 cards correctly), we found **P-value $\approx 0$**. Do we reject the Null Hypothesis under this framework? Why?
+  1. When $\widehat{p} = 1$ (Joy guesses all 10 tee shirts correctly), we found **P-value $< 0.001$**. Do we reject the Null Hypothesis under this framework? Why?
   
-  2. Hypothetically, a $\widehat{p} = 0.5$ gives **P-value $\approx 0.04$**. Do we reject the Null now? Why or why not?
+  2. Hypothetically, a $\widehat{p} = 0.8$ gives **P-value $\approx 0.055$**. Do we reject the Null now? Why or why not?
 
 
 ::: fragment
@@ -622,7 +641,7 @@ $$
 
 1. Yes, we're rejecting the Null
 
-2. Probably, but we don't feel good about it!
+2. Maybe? But we wouldn't feel as good about it!
 
 
 
@@ -639,32 +658,58 @@ countdown::countdown(2)
 
 ------------------------------------------------------------------------
 
-## Another Application: Parkinson's Disease
-<br>
+### Motivating Example: Can some diseases be detected by smell? 
 
-Joy Milne, a retired nurse, claimed to have the ability to smell whether someone had Parkinson's disease. She noticed a change in her husband's smell 10 years before he was diagnosed with Parkinson's disease. When first attending a support group for people with Parkinson's with her husband, she immediately recognized the same smell from many other people in the room.
-
-To test Joy's claim, researchers gave her 12 shirts, where half were worn by individuals who had Parkinson's disease, and half worn by individuals who did not. She identified 11 out of 12 correctly.
+This [true story](https://www.npr.org/sections/health-shots/2020/03/23/820274501/her-incredible-sense-of-smell-is-helping-scientists-find-new-ways-to-diagnose-di) is amazing, I don't want to leave you hanging! The answer is: **yes!** Joy really can smell Parkinson's disease. 
 
 <br>
 
-Let's walk through the five steps of hypothesis testing together to determine whether or not we think Joy's claim is credible.
+::: fragment
+
+When she realized her ability, she and her husband immediately understood the medical significance (she could have diagnosed her husband **10 years earlier** had she known). They reached out to a Parkinson's researcher at the University of Edinburgh. 
+
+:::
+
+::: fragment
+
+At first, researchers doubted her, but they decided to test her ability using [a similar experiment](https://impact.ed.ac.uk/research/future-health-and-care/discovering-the-smell-of-parkinsons/) with tee shirts. 
+
+:::
+
+::: fragment
+
+Out of all 12 samples they gave her, she only made one mistake by identifying someone in the control group as having the disease.
+
+:::
+
+::: fragment
+
+However, several months later, that same control individual was diagnosed with Parkinson's.
+
+:::
+
+::: fragment
+
+Researchers and Joy have now found that she can identify more illnesses, including Alzheimer's disease, tuberculosis, cancer, and diabetes. They are working to develop diagnostic tools that use skin-based biomarkers. 
+
+:::
 
 ------------------------------------------------------------------------
 
-## Recap: Framework for Hypothesis Testing
+## Recap: Framework for Hypothesis Testing {style="font-size:0.9em;"}
 
 Hypothesis Testing is a scientific experiment, and follows the **general** scientific method.
 
 
 1. Present research question and identify **hypotheses**
-    - **Null** Hypothesis (e.g., I was guessing cards randomly)
-    - **Alternative** Hypothesis (e.g., I was cheating)
+    - **Null** Hypothesis (e.g., Joy was guessing randomly)
+    - **Alternative** Hypothesis (e.g., Joy can smell Parkinson's disease)
     - We'll express these hypotheses mathematically, *in terms of parameters*
   
 
 2. Describe **Null distribution**
     - What should we expect to happen if the null hypothesis is true?
+    - We'll mainly use simulation to do this, for now
 
 
 
@@ -682,10 +727,95 @@ Hypothesis Testing is a scientific experiment, and follows the **general** scien
 
 ------------------------------------------------------------------------
 
+## 2) - 4) Null Distribution to P-Value: Full code example {style="font-size:0.75em;"}
+
+::::: columns
+::: {.column width=50%}
+
+::: {.fragment .nonincremental}
+
+- (2a) Create a data frame reflecting the null hypothesis (here $H_0: p=0.5$)
+    - Multiple equivalent ways to do this
+    - The important thing is that it encodes the assumed **null parameter**
+
+  
+```{r echo = T}
+guesses <- data.frame(correct = c(0, 0, 0, 0, 0,
+                                  1, 1, 1, 1, 1))
+```
+
+:::
+
+<br>
+
+::: {.fragment .nonincremental}
+
+- (2b) Sample from this data frame *with replacement* many times, and calculate the **null statistic** (here, the sample proportion) in each sample
+    - This simulates what the **sampling distribution** would look like under the **null hypothesis**
+
+```{r echo = T, eval = F}
+set.seed(111)
+null_stats <- guesses %>% 
+  rep_sample_n(size = 10, replace = T,  # Creating 2000 samples
+               reps = 2000) %>% 
+  group_by(replicate) %>%  # For each sample...
+  summarize(n_correct = sum(correct)) %>%  # Calculate null statistics
+  mutate(stat = n_correct/10)
+```
+
+
+:::
+
+:::
+
+::: {.column width=50%}
+
+::: {.fragment .nonincremental}
+
+- (2c) Visualize the null distribution, check that the center makes sense.
+
+```{r echo = T, eval = F}
+null_stats %>% ggplot(aes(x = stat)) +
+  geom_histogram(bins = 10, color = "white")
+```
+
+
+:::
+
+<br>
+
+::: {.fragment .nonincremental}
+- \(3\) Here, we were given the value of the test statistic: $\hat{p} = 10/10 = 1$.
+   
+:::
+   
+<br>
+
+::: {.fragment .nonincremental}
+   
+- \(4\) Calculate your p-value.
+   - In other examples, you may need to calculate `test_stat` from a data frame in the step above.
+
+```{r eval = F}
+test_stat <- 1
+mean(null_stats$stat >= test_stat) 
+```
+
+
+:::
+
+
+:::
+
+:::::
+
+------------------------------------------------------------------------
+
 ## Next time
 
 - More hypothesis testing! 
     - Practice framing research questions in the hypothesis testing framework
+        - Particularly, generating null distributions
     - 1-sided vs 2-sided tests
 
 

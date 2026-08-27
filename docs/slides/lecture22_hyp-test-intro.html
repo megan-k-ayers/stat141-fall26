@@ -222,56 +222,58 @@
 <h1>Introduction</h1>
 
 </section>
-<section id="card-guessing" class="slide level2">
-<h2>Card Guessing</h2>
+<section class="slide level2">
+
+<h3 id="motivating-example-can-some-diseases-be-detected-by-smell">Motivating Example: Can some diseases be detected by smell?</h3>
+<p><br><br></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<p>Joy Milne, a retired nurse, claimed to have the ability to smell whether someone had Parkinson’s disease. She noticed a change in her husband’s smell 10 years before he was diagnosed with the disease, then recognized it again in support groups (this is a <a href="https://www.npr.org/sections/health-shots/2020/03/23/820274501/her-incredible-sense-of-smell-is-helping-scientists-find-new-ways-to-diagnose-di!">true story!)</a>.</p>
+</div><div class="column" style="width:40%;">
+<p><img data-src="img/joy_milne.jpeg"></p>
+</div></div>
+</section>
+<section class="slide level2">
+
+<h3 id="motivating-example-can-some-diseases-be-detected-by-smell-1">Motivating Example: Can some diseases be detected by smell?</h3>
 <ul>
-<li class="fragment">I have 5 (hearts) cards from a standard deck:
-<ul>
-<li class="fragment">10, Jack, Queen, King, Ace</li>
-</ul></li>
-<li class="fragment">I’m going to shuffle the 5 cards and make a guess about which is on top, then reshuffle
-<ul>
-<li class="fragment">Let’s bet $20 that I can guess right 10 out of 10 times</li>
-</ul></li>
+<li class="fragment"><p>Imagine we are researchers who want to test Joy’s claim.</p></li>
+<li class="fragment"><p>We collect a bunch of tee shirts, some worn by individuals who are diagnosed with Parkinson’s, others worn by individuals who aren’t.</p></li>
+<li class="fragment"><p>We present Joy with tee shirts one at a time, and ask her to identify which group the wearer is in.</p></li>
 </ul>
 <div class="fragment">
 <ul>
 <li><strong>Discuss with Neighbor(s):</strong>
 <ul>
-<li><strong>Q:</strong> If I’m guessing at random, what’s the probability that I guess correctly on <strong>one</strong> draw?</li>
-<li><strong>Q:</strong> How many times out of 10 draws would you expect me to guess correctly?</li>
-<li><strong>Q:</strong> Which is the probability of guessing correctly 10 times in a row?
-<ul>
-<li><span class="math inline">\(\frac{1}{5}\)</span> or a 20% chance</li>
-<li>2 times out of 10</li>
-<li><span class="math inline">\((\frac{1}{5})^{10} = 0.0000001\)</span> or &lt;0.001%</li>
-</ul></li>
+<li><p><strong>Q:</strong> If Joy is guessing at random, what’s the probability that she guesses correctly for <strong>one</strong> shirt?</p></li>
+<li><p><strong>Q:</strong> How many out of 10 shirts would you expect her to guess correctly?</p></li>
+<li><p><strong>Q:</strong> Which is the probability of guessing correctly 10 times in a row?</p>
+<p><!-- - $\frac{1}{5}$ or a 50\% chance --> <!-- - 5 times out of 10 --> <!-- - $(\frac{1}{2})^{10} \approx 0.00098$ or <0.001\% --></p></li>
 </ul></li>
 </ul>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_501d3391" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_0efe9c4e" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
-<section id="the-guesses" class="slide level2" style="font-size:0.75em;">
+<section id="the-guesses" class="slide level2" style="font-size:0.8em;">
 <h2>The guesses…</h2>
 <ul>
-<li class="fragment">Let’s say I do this and get 10 in a row.
+<li class="fragment">Let’s say we do this, and Joy guesses 10 correctly in a row.
 <ul>
-<li class="fragment">Clearly I’m cheating and you shouldn’t have to pay me $20</li>
-<li class="fragment">But I say “Oh I just got lucky… pay me!!” … <strong>how do you prove I’m lying?</strong></li>
+<li class="fragment">Suppose a colleague says, “She just got lucky!”</li>
+<li class="fragment"><strong>Can we prove they are wrong?</strong> Any ideas?</li>
 </ul></li>
-<li class="fragment"><strong>Q:</strong> Any ideas?</li>
 </ul>
 <p><br></p>
 <ul>
 <li class="fragment">One way of doing it:
 <ul>
-<li class="fragment"><strong>Assume for a second</strong> that I was guessing at random</li>
+<li class="fragment"><strong>Assume for a second</strong> that she really was guessing at random.</li>
 <li class="fragment">If that’s the case, then <strong>there’s a <span class="math inline">\(&lt;0.001\%\)</span> chance</strong> of guessing 10 in a row correctly!</li>
-<li class="fragment">Therefore, I must be cheating (i.e., <strong>You reject the idea that I’m guessing randomly</strong>)</li>
+<li class="fragment">Therefore, it seems more likely she <em>isn’t</em> guessing randomly. The data we observed seems incompatible with our hypothesis.</li>
 </ul></li>
 </ul>
 <p><br></p>
@@ -286,9 +288,9 @@
 <section id="hypothesis-tests-and-p-values-informally" class="slide level2">
 <h2>Hypothesis Tests and “P-Values”, Informally</h2>
 <ul>
-<li class="fragment">Say we want to disprove a hypothesis:
+<li class="fragment">Say we want to <strong>disprove</strong> a hypothesis:
 <ul>
-<li class="fragment">e.g., “Megan was guessing randomly, and not cheating”</li>
+<li class="fragment">e.g., “Joy was guessing randomly, she can’t smell Parkinson’s disease”</li>
 </ul></li>
 <li class="fragment">We are going to calculate something called a <strong>P-value</strong>:
 <ul>
@@ -301,7 +303,7 @@
 \]</span></p>
 </div>
 <ul>
-<li class="fragment">e.g., Assuming Megan was guessing randomly…</li>
+<li class="fragment">e.g., Assuming Joy was guessing randomly…</li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[
@@ -331,7 +333,7 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_c1becac7" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_f110c6f7" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section></section>
@@ -346,8 +348,8 @@
 <ol type="1">
 <li class="fragment">Present research question and identify <strong>hypotheses</strong>
 <ul>
-<li class="fragment"><strong>Null</strong> Hypothesis (e.g., I was guessing cards randomly)</li>
-<li class="fragment"><strong>Alternative</strong> Hypothesis (e.g., I was cheating)</li>
+<li class="fragment"><strong>Null</strong> Hypothesis (e.g., Joy is guessing diagnoses randomly)</li>
+<li class="fragment"><strong>Alternative</strong> Hypothesis (e.g., Joy can smell Parkinson’s)</li>
 <li class="fragment">We’ll express these hypotheses mathematically, <em>in terms of parameters</em></li>
 </ul></li>
 <li class="fragment">Describe <strong>Null distribution</strong>
@@ -368,13 +370,12 @@
 <section id="identifying-hypotheses-informal-vs.-formal-hypotheses" class="slide level2 smaller">
 <h2>1) Identifying Hypotheses: Informal vs.&nbsp;Formal Hypotheses</h2>
 <ul>
-<li class="fragment">Before the card guessing experiment, we may have several (informal) hypotheses:
+<li class="fragment">Before the tee shirt experiment, we may have several (informal) hypotheses:
 <ol type="1">
-<li class="fragment">Megan is guessing at random</li>
-<li class="fragment">The cards are not equally likely to come up</li>
-<li class="fragment">Megan is psychic</li>
-<li class="fragment">Megan is not to be trusted</li>
-<li class="fragment">Megan is able to do better than guessing at random</li>
+<li class="fragment">Joy is guessing at random</li>
+<li class="fragment">Joy can smell Parkinson’s disease</li>
+<li class="fragment">Joy is psychic</li>
+<li class="fragment">Joy is able to do better than guessing at random</li>
 </ol></li>
 <li class="fragment">But in order to compare these, it would be helpful to consider a set of hypotheses that:
 <ul>
@@ -386,7 +387,7 @@
 </ul>
 <div class="fragment">
 <p><span class="math display">\[
-\textbf{Null Hypothesis:} \quad p = 1/5 \qquad \qquad \textbf{Alternative Hypothesis:} \quad p &gt; 1/5
+\textbf{Null Hypothesis:} \quad p = 1/2 \qquad \qquad \textbf{Alternative Hypothesis:} \quad p &gt; 1/2
 \]</span></p>
 </div>
 <ul>
@@ -398,19 +399,19 @@
 <ul>
 <li class="fragment">The <strong>null hypothesis (<span class="math inline">\(H_0\)</span>)</strong> is the claim we are testing. It often represents a skeptical perspective or that there is no relationship among several variables.
 <ul>
-<li class="fragment"><span class="math inline">\(H_0\)</span>: The chance of guessing correctly is 1/5, or <span class="math inline">\(p=1/5\)</span>.</li>
-<li class="fragment">The <strong>null value</strong> = value of the population parameter under the Null Hypothesis (e.g., <span class="math inline">\(1/5\)</span>)</li>
+<li class="fragment"><span class="math inline">\(H_0\)</span>: The chance of guessing correctly is 1/2, or <span class="math inline">\(p=1/2\)</span>.</li>
+<li class="fragment">The <strong>null value</strong> = value of the population parameter under the Null Hypothesis (e.g., <span class="math inline">\(1/2\)</span>)</li>
 </ul></li>
 <li class="fragment">The <strong>alternative hypothesis (<span class="math inline">\(H_a\)</span>)</strong> is contrary to the null hypothesis. It is often the theory we would like to prove.
 <ul>
-<li class="fragment"><span class="math inline">\(H_a\)</span>: Megan can do better than random guessing, or <span class="math inline">\(p&gt;1/5\)</span>.</li>
+<li class="fragment"><span class="math inline">\(H_a\)</span>: Joy can do better than random guessing, or <span class="math inline">\(p&gt;1/2\)</span>.</li>
 </ul></li>
 <li class="fragment">The Null and Alternative hypotheses are most often statements about the particular value of a population parameter
 <ul>
 <li class="fragment"><span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> are <strong><u>never</u></strong> statements about particular values of <strong>sample statistics</strong>. They are <strong>hypotheses</strong> and should be able to be expressed before any observation of data.
 <ul>
-<li class="fragment"><strong>Incorrect</strong> <span class="math inline">\(H_0\)</span>: The proportion of correct guesses in <span class="math inline">\(10\)</span> guesses is <span class="math inline">\(\widehat{p}=1/5\)</span>.</li>
-<li class="fragment"><strong>Incorrect</strong> <span class="math inline">\(H_a\)</span>: The proportion of correct guesses in <span class="math inline">\(10\)</span> guesses is <span class="math inline">\(\widehat{p} &gt; 1/5\)</span>.</li>
+<li class="fragment"><strong>Incorrect</strong> <span class="math inline">\(H_0\)</span>: The proportion of correct guesses in <span class="math inline">\(10\)</span> guesses is <span class="math inline">\(\widehat{p}=1/2\)</span>.</li>
+<li class="fragment"><strong>Incorrect</strong> <span class="math inline">\(H_a\)</span>: The proportion of correct guesses in <span class="math inline">\(10\)</span> guesses is <span class="math inline">\(\widehat{p} &gt; 1/2\)</span>.</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -420,8 +421,8 @@
 <ul>
 <li class="fragment">The Null and Alternative Hypothesis statements are <em>not</em> interchangeable:
 <ul>
-<li class="fragment">Null hypothesis is (usually) a statement of <strong>equality</strong> for a parameter (e.g., <span class="math inline">\(p = 1/5\)</span>)</li>
-<li class="fragment">Alternative hypothesis is a statement of <strong>inequality</strong> for a parameter (e.g., <span class="math inline">\(p &gt; 1/5\)</span>)</li>
+<li class="fragment">Null hypothesis is (usually) a statement of <strong>equality</strong> for a parameter (e.g., <span class="math inline">\(p = 1/2\)</span>)</li>
+<li class="fragment">Alternative hypothesis is a statement of <strong>inequality</strong> for a parameter (e.g., <span class="math inline">\(p &gt; 1/2\)</span>)</li>
 </ul></li>
 <li class="fragment">The null hypothesis should represent the <strong>status quo belief about the parameter.</strong>
 <ul>
@@ -434,7 +435,6 @@
 <ul>
 <li class="fragment">It is the only statement we will be able to provide evidence for after our test.</li>
 <li class="fragment">e.g., in a criminal trial, we assume innocence (<span class="math inline">\(H_0\)</span>) first. If evidence is compelling (“beyond a reasonable doubt”), then we reject in favor of a guilty verdict (<span class="math inline">\(H_a\)</span>).</li>
-<li class="fragment">e.g., Card guessing</li>
 </ul></li>
 <li class="fragment"><strong>Note:</strong> Rejecting the Null doesn’t mean it’s untrue, that’s just our conclusion based on the data we have</li>
 </ul>
@@ -455,21 +455,21 @@
 <section id="describe-the-null-distribution-likelihood-of-observing-sample-statistic" class="slide level2">
 <h2>2) Describe the Null Distribution: Likelihood of Observing Sample Statistic</h2>
 <ul>
-<li class="fragment"><p>To compare Null and Alternate Hypotheses, we need to quantify how likely it is to observe a particular sample statistic, <em>if the null hypothesis were true</em>.</p>
+<li class="fragment"><p>To compare Null and Alternate Hypotheses, we need to quantify how likely it is to observe a particular sample statistic, <u><em>if the null hypothesis were true</em></u>.</p>
 <ul>
-<li class="fragment">If I’m guessing at random, how many correct guesses do you expect?</li>
+<li class="fragment">If Joy guesses at random, how many correct guesses do you expect?</li>
 <li class="fragment">What is the greatest number of correct guesses you would plausibly expect to see?</li>
-<li class="fragment">If I had 4 correct guesses, would you think that I’m guessing at random?</li>
-<li class="fragment">How likely is is that I would get 7 or more correct guesses, if I’m guessing at random?</li>
+<li class="fragment">How likely is is that she would get 7 or more correct guesses, if she’s guessing at random?</li>
 </ul></li>
 <li class="fragment"><p>To answer questions like these, we need to know the <strong>distribution of the statistic of interest, if the null hypothesis were true</strong>.</p></li>
 <li class="fragment"><p>This distribution is called the <strong>Null Distribution</strong> and is the theoretical <em>sampling distribution</em> for the statistic if the <em>null hypothesis</em> were true.</p></li>
 <li class="fragment"><p>We can approximate the Null Distribution using simulation or theory.</p></li>
+<li class="fragment"><p><strong>Q</strong>: How does the Null Distribution differ from the sampling distributions we considered for confidence intervals?</p></li>
 </ul>
 </section>
-<section id="describe-the-null-distribution-a-model-of-card-guessing" class="slide level2">
-<h2>2) Describe the Null Distribution: A Model of Card Guessing</h2>
-<p>We can use R to simulate one experiment of 10 guesses by…</p>
+<section id="describe-the-null-distribution-a-model-of-tee-shirt-guessing" class="slide level2">
+<h2>2) Describe the Null Distribution: A Model of Tee Shirt Guessing</h2>
+<p>We can use R to simulate <strong>one experiment</strong> of 10 guesses by…</p>
 <div class="columns">
 <div class="column fragment" style="width:50%;">
 <ul>
@@ -477,15 +477,20 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>guesses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-2"><a></a>  <span class="at">correct =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb1-2"><a></a>  <span class="at">correct =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb1-3"><a></a>guesses</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  correct
-1       0
-2       0
-3       0
-4       0
-5       1</code></pre>
+<pre><code>   correct
+1        0
+2        0
+3        0
+4        0
+5        0
+6        1
+7        1
+8        1
+9        1
+10       1</code></pre>
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
@@ -502,23 +507,23 @@
 1          1       0
 2          1       0
 3          1       0
-4          1       0
+4          1       1
 5          1       0
-6          1       0
+6          1       1
 7          1       1
-8          1       0
-9          1       0
+8          1       1
+9          1       1
 10         1       1</code></pre>
 </div>
 </div>
 </div></div>
 <div class="fragment">
-<p>This gives us a <span class="math inline">\(\widehat{p} = 2/10 = 0.2\)</span></p>
+<p>Our one experiment us a <span class="math inline">\(\widehat{p} = 6/10 = 0.6\)</span></p>
 </div>
 </section>
-<section id="describe-the-null-distribution-a-model-of-card-guessing-1" class="slide level2">
-<h2>2) Describe the Null Distribution: A Model of Card Guessing</h2>
-<p>We can use R to simulate 2000 experiments of 10 guesses by putting in <code>reps = 2000</code> (<code>reps = 1</code> is the default).</p>
+<section id="describe-the-null-distribution-a-model-of-tee-shirt-guessing-1" class="slide level2">
+<h2>2) Describe the Null Distribution: A Model of Tee Shirt Guessing</h2>
+<p>We can use R to simulate <strong>2000 experiments</strong> of 10 guesses by putting in <code>reps = 2000</code> (<code>reps = 1</code> is the default).</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -536,15 +541,15 @@
 <pre><code># A tibble: 2,000 × 3
    replicate n_correct p_hat
        &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;
- 1         1         2   0.2
+ 1         1         4   0.4
  2         2         5   0.5
- 3         3         1   0.1
- 4         4         2   0.2
- 5         5         0   0  
- 6         6         3   0.3
- 7         7         0   0  
- 8         8         2   0.2
- 9         9         1   0.1
+ 3         3         4   0.4
+ 4         4         4   0.4
+ 5         5         8   0.8
+ 6         6         4   0.4
+ 7         7         5   0.5
+ 8         8         4   0.4
+ 9         9         4   0.4
 10        10         4   0.4
 # ℹ 1,990 more rows</code></pre>
 </div>
@@ -614,11 +619,15 @@
 <section id="calculate-the-test-statistic" class="slide level2">
 <h2>3) Calculate the Test Statistic</h2>
 <ul>
-<li class="fragment">We’ve already done this with my card drawing:
+<li class="fragment">We’ve already done this with Joy’s guesses:
 <ul>
-<li class="fragment">We found that <span class="math inline">\(\widehat{p} = 1\)</span> (I guessed right in 10 out of 10 draws)</li>
+<li class="fragment">We found that <span class="math inline">\(\widehat{p} = 1\)</span> (she guessed right for 10 out of 10 tee shirts)</li>
 </ul></li>
-<li class="fragment">In the context of hypothesis tests, we typically call the sample statistic (e.g., <span class="math inline">\(\widehat{p}\)</span>) the <strong>Test Statistic</strong></li>
+<li class="fragment">In the context of hypothesis tests, we typically call the sample statistic (e.g., <span class="math inline">\(\widehat{p}\)</span>) the <strong>Test Statistic</strong>
+<ul>
+<li class="fragment">This is the statistic that we actually observed in our data set</li>
+<li class="fragment">In comparison, we call the hypothetical statistics in our null distribution <strong>null statistics</strong></li>
+</ul></li>
 </ul>
 </section>
 <section id="framework-for-hypothesis-testing-3" class="slide level2">
@@ -680,9 +689,9 @@
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>p_hat<span class="sc">==</span><span class="dv">1</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&gt;=</span> <span class="dv">1</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0</code></pre>
+<pre><code>[1] 0.001</code></pre>
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
@@ -697,9 +706,9 @@
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>p_hat<span class="sc">&gt;=</span><span class="fl">0.5</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&gt;=</span> <span class="fl">0.5</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0345</code></pre>
+<pre><code>[1] 0.641</code></pre>
 </div>
 </div>
 </div></div>
@@ -710,11 +719,11 @@
 <li class="fragment"><strong>Method 2:</strong> We use theory-based tools to create the theoretical null distribution.
 <ul>
 <li class="fragment">Then use the model to calculate the theoretical probability of observing a sample statistic as extreme as the test statistic.</li>
-<li class="fragment">In the case where I get all 10 guesses right, we have already calculated the p-value as:</li>
+<li class="fragment">In the case where Joy gets all 10 guesses right, we have already calculated the p-value as:</li>
 </ul></li>
 </ul>
 <div class="fragment">
-<p><span class="math display">\[\text{P-value} = (1/5)^{10} \approx 0.0000001 \]</span></p>
+<p><span class="math display">\[\text{P-value} = (1/2)^{10} \approx 0.00098 \]</span></p>
 </div>
 </section>
 <section id="framework-for-hypothesis-testing-4" class="slide level2">
@@ -735,19 +744,19 @@
 <section id="making-a-conclusion-using-the-p-value" class="slide level2" style="font-size:0.9em;">
 <h2>5) Making a conclusion using the P-value</h2>
 <p><span class="math display">\[
-\textbf{Null Hypothesis:} \quad p = 1/5 \qquad \qquad \textbf{Alternative Hypothesis:} \quad p &gt; 1/5
+\textbf{Null Hypothesis:} \quad p = 1/2 \qquad \qquad \textbf{Alternative Hypothesis:} \quad p &gt; 1/2
 \]</span></p>
 <p><strong>Discuss with Neighbor(s)</strong>:</p>
 <ol type="1">
-<li class="fragment"><p>When <span class="math inline">\(\widehat{p} = 1\)</span> (Megan guesses all 10 cards correctly), we found <strong>P-value <span class="math inline">\(\approx 0\)</span></strong>. Do we reject the Null Hypothesis under this framework? Why?</p></li>
-<li class="fragment"><p>Hypothetically, a <span class="math inline">\(\widehat{p} = 0.5\)</span> gives <strong>P-value <span class="math inline">\(\approx 0.04\)</span></strong>. Do we reject the Null now? Why or why not?</p></li>
+<li class="fragment"><p>When <span class="math inline">\(\widehat{p} = 1\)</span> (Joy guesses all 10 tee shirts correctly), we found <strong>P-value <span class="math inline">\(&lt; 0.001\)</span></strong>. Do we reject the Null Hypothesis under this framework? Why?</p></li>
+<li class="fragment"><p>Hypothetically, a <span class="math inline">\(\widehat{p} = 0.8\)</span> gives <strong>P-value <span class="math inline">\(\approx 0.055\)</span></strong>. Do we reject the Null now? Why or why not?</p></li>
 </ol>
 <div class="fragment">
 <p><strong>Answers:</strong></p>
 </div>
 <ol type="1">
 <li class="fragment"><p>Yes, we’re rejecting the Null</p></li>
-<li class="fragment"><p>Probably, but we don’t feel good about it!</p></li>
+<li class="fragment"><p>Maybe? But we wouldn’t feel as good about it!</p></li>
 </ol>
 <ul>
 <li class="fragment"><strong>How small a p-value is small enough to reject the Null?</strong>
@@ -758,31 +767,45 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a1a57f63" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_3fcd5d7d" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
-<section id="another-application-parkinsons-disease" class="slide level2">
-<h2>Another Application: Parkinson’s Disease</h2>
+<section class="slide level2">
+
+<h3 id="motivating-example-can-some-diseases-be-detected-by-smell-2">Motivating Example: Can some diseases be detected by smell?</h3>
+<p>This <a href="https://www.npr.org/sections/health-shots/2020/03/23/820274501/her-incredible-sense-of-smell-is-helping-scientists-find-new-ways-to-diagnose-di">true story</a> is amazing, I don’t want to leave you hanging! The answer is: <strong>yes!</strong> Joy really can smell Parkinson’s disease.</p>
 <p><br></p>
-<p>Joy Milne, a retired nurse, claimed to have the ability to smell whether someone had Parkinson’s disease. She noticed a change in her husband’s smell 10 years before he was diagnosed with Parkinson’s disease. When first attending a support group for people with Parkinson’s with her husband, she immediately recognized the same smell from many other people in the room.</p>
-<p>To test Joy’s claim, researchers gave her 12 shirts, where half were worn by individuals who had Parkinson’s disease, and half worn by individuals who did not. She identified 11 out of 12 correctly.</p>
-<p><br></p>
-<p>Let’s walk through the five steps of hypothesis testing together to determine whether or not we think Joy’s claim is credible.</p>
+<div class="fragment">
+<p>When she realized her ability, she and her husband immediately understood the medical significance (she could have diagnosed her husband <strong>10 years earlier</strong> had she known). They reached out to a Parkinson’s researcher at the University of Edinburgh.</p>
+</div>
+<div class="fragment">
+<p>At first, researchers doubted her, but they decided to test her ability using <a href="https://impact.ed.ac.uk/research/future-health-and-care/discovering-the-smell-of-parkinsons/">a similar experiment</a> with tee shirts.</p>
+</div>
+<div class="fragment">
+<p>Out of all 12 samples they gave her, she only made one mistake by identifying someone in the control group as having the disease.</p>
+</div>
+<div class="fragment">
+<p>However, several months later, that same control individual was diagnosed with Parkinson’s.</p>
+</div>
+<div class="fragment">
+<p>Researchers and Joy have now found that she can identify more illnesses, including Alzheimer’s disease, tuberculosis, cancer, and diabetes. They are working to develop diagnostic tools that use skin-based biomarkers.</p>
+</div>
 </section>
-<section id="recap-framework-for-hypothesis-testing" class="slide level2">
+<section id="recap-framework-for-hypothesis-testing" class="slide level2" style="font-size:0.9em;">
 <h2>Recap: Framework for Hypothesis Testing</h2>
 <p>Hypothesis Testing is a scientific experiment, and follows the <strong>general</strong> scientific method.</p>
 <ol type="1">
 <li class="fragment">Present research question and identify <strong>hypotheses</strong>
 <ul>
-<li class="fragment"><strong>Null</strong> Hypothesis (e.g., I was guessing cards randomly)</li>
-<li class="fragment"><strong>Alternative</strong> Hypothesis (e.g., I was cheating)</li>
+<li class="fragment"><strong>Null</strong> Hypothesis (e.g., Joy was guessing randomly)</li>
+<li class="fragment"><strong>Alternative</strong> Hypothesis (e.g., Joy can smell Parkinson’s disease)</li>
 <li class="fragment">We’ll express these hypotheses mathematically, <em>in terms of parameters</em></li>
 </ul></li>
 <li class="fragment">Describe <strong>Null distribution</strong>
 <ul>
 <li class="fragment">What should we expect to happen if the null hypothesis is true?</li>
+<li class="fragment">We’ll mainly use simulation to do this, for now</li>
 </ul></li>
 <li class="fragment">Obtain data, calculate relevant <strong>Test Statistic</strong>
 <ul>
@@ -795,12 +818,81 @@
 <li class="fragment">Use the P-value to <strong>make a conclusion</strong> on the research question</li>
 </ol>
 </section>
+<section id="null-distribution-to-p-value-full-code-example" class="slide level2" style="font-size:0.75em;">
+<h2>2) - 4) Null Distribution to P-Value: Full code example</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<ul>
+<li>(2a) Create a data frame reflecting the null hypothesis (here <span class="math inline">\(H_0: p=0.5\)</span>)
+<ul>
+<li>Multiple equivalent ways to do this</li>
+<li>The important thing is that it encodes the assumed <strong>null parameter</strong></li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>guesses <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">correct =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb13-2"><a></a>                                  <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<ul>
+<li>(2b) Sample from this data frame <em>with replacement</em> many times, and calculate the <strong>null statistic</strong> (here, the sample proportion) in each sample
+<ul>
+<li>This simulates what the <strong>sampling distribution</strong> would look like under the <strong>null hypothesis</strong></li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb14-2"><a></a>null_stats <span class="ot">&lt;-</span> guesses <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> T,  <span class="co"># Creating 2000 samples</span></span>
+<span id="cb14-4"><a></a>               <span class="at">reps =</span> <span class="dv">2000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span>  <span class="co"># For each sample...</span></span>
+<span id="cb14-6"><a></a>  <span class="fu">summarize</span>(<span class="at">n_correct =</span> <span class="fu">sum</span>(correct)) <span class="sc">%&gt;%</span>  <span class="co"># Calculate null statistics</span></span>
+<span id="cb14-7"><a></a>  <span class="fu">mutate</span>(<span class="at">stat =</span> n_correct<span class="sc">/</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<ul>
+<li>(2c) Visualize the null distribution, check that the center makes sense.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>null_stats <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p><br></p>
+<div class="fragment">
+<ul>
+<li>(3) Here, we were given the value of the test statistic: <span class="math inline">\(\hat{p} = 10/10 = 1\)</span>.</li>
+</ul>
+</div>
+<p><br></p>
+<div class="fragment">
+<ul>
+<li>(4) Calculate your p-value.
+<ul>
+<li>In other examples, you may need to calculate <code>test_stat</code> from a data frame in the step above.</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>test_stat <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb16-2"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>stat <span class="sc">&gt;=</span> test_stat) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div></div>
+</section>
 <section id="next-time" class="slide level2">
 <h2>Next time</h2>
 <ul>
 <li class="fragment">More hypothesis testing!
 <ul>
-<li class="fragment">Practice framing research questions in the hypothesis testing framework</li>
+<li class="fragment">Practice framing research questions in the hypothesis testing framework
+<ul>
+<li class="fragment">Particularly, generating null distributions</li>
+</ul></li>
 <li class="fragment">1-sided vs 2-sided tests</li>
 </ul></li>
 </ul>
