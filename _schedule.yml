@@ -16,10 +16,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading01.qmd
-            # - type: Slides
-            #   href: slides/lecture01_stat-thinking.qmd
-            # - type: Slides Printout (Optional)
-            #   href: handouts/lecture01_stat-thinking_handout.pdf
+            - type: Slides
+              href: slides/lecture01_stat-thinking.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture01_stat-thinking_handout.pdf
         - topic: "Data Visualization Introduction"
           display-date: Wednesday, Sept 2
           date: 9/2/26

@@ -123,6 +123,8 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
   <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 </head>
@@ -238,14 +240,24 @@
 <section id="getting-started-in-stat-141-3" class="slide level2">
 <h2>Getting Started in Stat 141</h2>
 <h4 id="other-resources-1">Other Resources</h4>
-<p><br><br><br></p>
-<p>You will need access to a computer for this course.</p>
-<p><br><br></p>
-<p><strong>Please let me know ASAP after class or via email if you do not have access to a personal computer.</strong></p>
-<p><br><br></p>
-<div class="fragment">
+<p><br></p>
+<div style="font-size:0.9em;">
 <ul>
-<li class="fragment">For coding, the internet in general is <strong>not</strong> a permitted resource, unless stated otherwise.</li>
+<li class="fragment">You will need access to a computer for this course.
+<ul>
+<li class="fragment"><strong>Please let me know ASAP after class or via email if you do not have access to a personal computer.</strong></li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li class="fragment">Attendance will be taken via QR code or link at the start of each lecture.
+<ul>
+<li class="fragment"><strong>Please let me know if you plan to be device-free during lectures so that I can accommodate this.</strong></li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li class="fragment">The internet in general is <strong>not</strong> a permitted resource, unless stated otherwise. If you feel additional resources are necessary for your learning, let’s meet and discuss.</li>
 </ul>
 </div>
 </section>
@@ -263,9 +275,15 @@
 <ul>
 <li class="fragment">The Stat 141 Teaching Team are excited to support your learning!
 <ul>
-<li class="fragment">Course assistant office hours coming soon on Moodle</li>
+<li class="fragment">We’ll have 2 course assistants holding additional office hours every week</li>
 </ul></li>
-<li class="fragment">Each student is entitled to <a href="https://www.reed.edu/academic_support/individual_tutoring.html">one hour of individual tutoring</a> per week</li>
+</ul>
+<p><br></p>
+<ul>
+<li class="fragment">Each student is entitled to <a href="https://www.reed.edu/academic_support/individual_tutoring.html">one hour of individual tutoring</a> per week through the Office of Academic Support
+<ul>
+<li class="fragment">This is an awesome and under-utilized resource!!</li>
+</ul></li>
 </ul>
 </section>
 <section id="a-typical-week-in-stat-141" class="slide level2">
@@ -348,7 +366,7 @@
 <div class="column" style="width:45%;">
 <div class="fragment fade-up" style="font-size: 0.9em;">
 <ul>
-<li><strong>Exam (<em>1 final</em>)</strong>
+<li><strong>Exam (<em>1 final exam</em>)</strong>
 <ul>
 <li>Cumulative, written, and in-person</li>
 </ul></li>
@@ -371,10 +389,25 @@
 <section id="expectations-for-submitted-work" class="slide level2">
 <h2>Expectations for submitted work</h2>
 <ul>
-<li class="fragment">Address questions completely whenever you can. If you have a partial solution, say so, explain what you’ve tried.</li>
-<li class="fragment">Respond in full sentences for written answers.</li>
-<li class="fragment">Show your work.</li>
-<li class="fragment">Write comments in your code explaining your work.</li>
+<li class="fragment">Homeworks are assessed for <strong>completion</strong> and <strong>effort</strong>.
+<ul>
+<li class="fragment">Address all parts of questions completely whenever you can. If you have a partial solution, say so, explain what you’ve tried.</li>
+<li class="fragment">Respond in <u>full sentences</u> for written answers, and explain your reasoning.</li>
+<li class="fragment">Show your work, not just your final answer/value.</li>
+<li class="fragment">Code in submitted assignments should run (not be commented out whenever possible) and include a clear attempt to address the question.</li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li class="fragment">Quizzes are assessed for <strong>accuracy</strong>.
+<ul>
+<li class="fragment">Similar expectations apply: respond in full sentences that address all parts of problems, explain your reasoning, show your work.</li>
+</ul></li>
+</ul>
+</section>
+<section id="expectations-for-submitted-work-1" class="slide level2">
+<h2>Expectations for submitted work</h2>
+<ul>
 <li class="fragment"><strong>Collaboration</strong>:
 <ul>
 <li class="fragment">An excellent way to deepen your understanding and enjoy the learning experience</li>
@@ -385,16 +418,21 @@
 </ul></li>
 </ul>
 </section>
-<section id="late-work" class="slide level2">
+<section id="late-work" class="slide level2" style="font-size:0.9em;">
 <h2>Late Work</h2>
+<p>Circumstances expected or unexpected may come up that result in missed or late submissions.</p>
 <div class="fragment fade-up">
 <ul>
-<li><strong>Labs</strong>: each has a small but meaningful contribution towards your participation grade. No late submissions will be accepted, but you may miss one lab without penalty.</li>
+<li><strong>Labs</strong>: each has a small but meaningful contribution towards your participation grade. No late submissions, but you may miss one lab without penalty.</li>
+</ul>
+</div>
+<div class="fragment fade-up">
+<ul>
 <li><strong>HW</strong>: up to 3 extensions days can be used throughout the semester.
 <ul>
 <li>e.g., 1 additional day for 3 HWs, 3 additional days for 1 HW, …</li>
-<li>rounding days up</li>
-<li>Further late work is accepted for half credit, no guarantees on grading timing/feedback</li>
+<li>Rounding days up</li>
+<li>Further late work is accepted for half credit.</li>
 </ul></li>
 </ul>
 </div>
@@ -402,8 +440,8 @@
 <ul>
 <li><strong>Quizzes</strong>:
 <ul>
-<li>Missed quizzes will receive scores of 0 and cannot be made up</li>
-<li>Lowest quiz score will be dropped (including if you missed a quiz)</li>
+<li>Lowest quiz score will be dropped (including if you missed a quiz).</li>
+<li>Missed quizzes will receive scores of 0, and cannot be made up/revised</li>
 </ul></li>
 </ul>
 </div>
@@ -422,36 +460,45 @@
 <li class="fragment">Contributing to discussion at the small group and/or classroom level</li>
 <li class="fragment">Contributing to discussions on Slack</li>
 </ul></li>
-<li class="fragment">Missing more than 4 lectures or 1 lab will have a small, accumulating impact on your grade.</li>
+</ul>
+<p><br></p>
+<ul>
+<li class="fragment">Again, I understand that things come up! You have 4 “free” lecture absences and 1 “free” lab absence. After this, a small, accumulating impact on participation grade.</li>
 </ul>
 </section>
 <section id="engagement-1" class="slide level2">
 <h2>Engagement</h2>
 <h4 id="technology-policy">Technology policy</h4>
+<p><br></p>
 <div class="blockquote">
-<p>In STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides will be made available ahead of lecture on the course website.</p>
+<p>In STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in <strong>lecture</strong> to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides will be made available ahead of lecture on the course website.</p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_0afd2740" minutes="0" seconds="45" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
 </div>
 </section>
 <section id="engagement-2" class="slide level2">
 <h2>Engagement</h2>
 <ul>
 <li class="fragment"><p>I have high expectations but know that all of you (regardless of your stats, math, or computing background) have the ability to meet them.</p></li>
-<li class="fragment"><p>We are all going to make mistakes, we are all going to have errors in our code we will learn more because of them.</p></li>
-<li class="fragment"><p>Don’t let perfection be the enemy of learning!</p></li>
-<li class="fragment"><p>Resilience is one of the most valuable traits in learning.</p></li>
-<li class="fragment"><p>Expect some moments of repetition and try to lean in</p></li>
+<li class="fragment"><p>We are all going to make mistakes, we will learn more because of them.</p></li>
+<li class="fragment"><p>Resilience is one of the most valuable <strong>skills</strong> in learning.</p></li>
+<li class="fragment"><p>Expect some moments of repetition and try to lean in to the practice.</p></li>
 </ul>
 </section>
 <section id="artificial-intelligence-ai-policy" class="slide level2">
 <h2>Artificial Intelligence (AI) Policy</h2>
 <div class="blockquote">
-<p>Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. If you have questions about whether a tool is allowed for this course, ask me before using it.</p>
+<p>Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, building resilience in moments of struggle and confusion, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and <strong>independently</strong> extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. The <a href="https://www.reed.edu/honor_principle/">Honor Principle</a> must guide your conduct in following this policy. If you have questions about whether a tool is allowed for this course, ask before using it.</p>
 <p>If you are unsure of how to approach a particular exercise on an assignment, or are stuck on a concept from lecture, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.</p>
 </div>
-<p><br></p>
-<ul>
-<li class="fragment">How I use AI</li>
-</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_35d622b6" minutes="1" seconds="15" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
 </section>
 <section id="course-climate" class="slide level2">
 <h2>Course Climate</h2>
@@ -462,17 +509,21 @@
 <p>We expect all members of Stat 141 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.</p>
 <p>We expect everyone to act and interact in ways that contribute to an open, welcoming, inclusive, and healthy community of learners. You can contribute to a positive learning environment by demonstrating empathy and kindness, being respectful of differing viewpoints and experiences, and giving and gracefully accepting constructive feedback.<sup>1</sup></p>
 </div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_48cbc6eb" minutes="0" seconds="45" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>This Code of Conduct is adapted from the <a href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html">Contributor Covenant</a>, version 2.0.</p></li></ol></aside></section>
-<section id="academic-accomodations" class="slide level2 center">
-<h2>Academic Accomodations</h2>
+<section id="academic-accommodations" class="slide level2 center">
+<h2>Academic Accommodations</h2>
 <p>If you plan to request academic accommodations, please submit these <strong>through the DAR student portal</strong> as soon as possible.</p>
 </section>
 <section id="office-hours" class="slide level2">
 <h2>Office Hours</h2>
 <ul>
 <li class="fragment">Office hours are an excellent opportunity to get help on homework assignments or concepts from lecture, and to collaborate with your peers</li>
-<li class="fragment">The teaching team is more than happy to assist you, or just to chat and get to know you!</li>
-<li class="fragment">Office hours are not a place to verify all answers or reasoning, more a place to get un-stuck, discuss general concepts, work together on assignments</li>
+<li class="fragment">The teaching team is more than happy to assist you, or just to chat and get to know you! <!-- - Office hours are not a place to verify all answers or reasoning, more a place to get un-stuck, discuss general concepts, work together on assignments --></li>
 </ul>
 <p><br></p>
 <div class="fragment fade-up">
@@ -482,24 +533,24 @@
 <section id="course-or-syllabus-questions" class="slide level2 center">
 <h2>Course or syllabus questions?</h2>
 </section>
-<section id="stat-141-the-whole-game" class="slide level2 center">
-<h2>Stat 141: The whole game</h2>
+<section id="stat-141-learning-outcomes" class="slide level2 center">
+<h2>Stat 141: Learning Outcomes</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<div class="fragment fade-up midi">
-<p><img data-src="img/DAW.jpeg"></p>
-</div>
+<p><img data-src="img/DAW_prev.jpeg"></p>
 </div></div>
 </section>
-<section id="learning-outcomes" class="slide level2 center">
-<h2>Learning Outcomes</h2>
+<section id="stat-141-learning-outcomes-1" class="slide level2 center">
+<h2>Stat 141: Learning Outcomes</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<p><img data-src="img/DAW.jpeg"></p>
+<p><img data-src="img/DAW_prev.jpeg"></p>
 </div><div class="column" style="width:55%;">
 <ul>
-<li class="fragment"><p>In this course, you will learn how to think critically with data by engaging in the entire data analysis process.</p></li>
-<li class="fragment"><p>Most of our time will be spent in the <strong>Exploration and Visualization</strong>, <strong>Data Wrangling</strong>, and <strong>Modeling and Inference</strong> steps, but we will spend some time in each cog!</p>
+<li>In this course, you will learn how to think critically with data by engaging in the entire data analysis process.</li>
+</ul>
+<ul>
+<li class="fragment">Most of our time will be spent in the <strong>Exploration and Visualization</strong>, <strong>Data Wrangling</strong>, and <strong>Modeling and Inference</strong> steps, but we will spend some time in each cog!
 <ul>
 <li class="fragment">First ~3 weeks in <strong>Exploration and Visualization</strong>, <strong>Data Wrangling</strong>, and <strong>Data Acquisition</strong></li>
 <li class="fragment">Next ~2 weeks in <strong>Modeling</strong></li>
@@ -532,11 +583,15 @@
 </section>
 <section id="data-in-stat-141" class="slide level2">
 <h2>Data in Stat 141</h2>
-<p>Will use a wide-range of <strong>real</strong> and <strong>relevant</strong> data examples</p>
+<div class=".nonincremental">
+<ul>
+<li class="fragment">We’ll motivate topics with a wide-range of <strong>real</strong> and <strong>relevant</strong> data examples.</li>
+</ul>
+</div>
 <div class="columns">
-<div class="column center" style="width:50%;">
+<div class="column center fragment" style="width:50%;">
 <p><img data-src="img/nytimes_opp_insights.png" style="width:100.0%"></p>
-</div><div class="column center" style="width:50%;">
+</div><div class="column center fragment" style="width:50%;">
 <p><img data-src="img/kate_petrova_candles.jpg" style="width:80.0%"></p>
 </div></div>
 </section>
@@ -566,7 +621,7 @@
 </figure>
 </div>
 <ul>
-<li>At a quick first glance, what story does the graph appear to be telling?</li>
+<li><strong>Q</strong>: At a quick first glance, what story does the graph appear to be telling?</li>
 </ul>
 </section>
 <section id="example-visualizing-covid-prevalence-3" class="slide level2">
@@ -577,7 +632,7 @@
 </figure>
 </div>
 <ul>
-<li>What is misleading about the graph? How could we fix this issue?</li>
+<li><strong>Q</strong>: What is misleading about the graph? How could we fix this issue?</li>
 </ul>
 </section>
 <section id="example-visualizing-covid-prevalence-4" class="slide level2">
@@ -604,10 +659,10 @@
 </figure>
 </div>
 <ul>
-<li>How do your conclusions about COVID-19 cases in Georgia change when interpreting the new graph?</li>
+<li><strong>Q</strong>: How do your conclusions about COVID-19 cases in Georgia change when interpreting the new graph?</li>
 </ul>
 </section>
-<section id="example-visualizing-covid-prevalence-6" class="slide level2">
+<section id="example-visualizing-covid-prevalence-6" class="slide level2" style="font-size:0.9em;">
 <h2>Example: Visualizing COVID Prevalence</h2>
 <p>Alberto Cairo, a journalist and designer, created the second graph of the Georgia COVID-19 data:</p>
 <div class="fragment midi">
@@ -615,7 +670,7 @@
 </div>
 <ul>
 <li class="fragment"><p>A key principle of data visualization is to <strong>“help the viewer make meaningful comparisons”</strong>.</p></li>
-<li class="fragment"><p>What comparisons are made easy by the lefthand graph? What about by the righthand graph?</p></li>
+<li class="fragment"><p><strong>Q</strong>: What comparisons are made easy by the lefthand graph? What about by the righthand graph?</p></li>
 </ul>
 </section>
 <section id="statistical-thinking" class="slide level2">
@@ -1018,7 +1073,7 @@
 
 <h3 id="recap-from-today">Recap from today</h3>
 <ul>
-<li class="fragment">Spent a lot of time on course resources, logistics, policies, expectations</li>
+<li class="fragment">Course resources, logistics, policies, expectations</li>
 <li class="fragment">Introduced big picture of statistical thinking</li>
 <li class="fragment">Introduced data frames</li>
 </ul>

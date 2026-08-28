@@ -174,22 +174,23 @@ A course-wide **Slack** workspace, for course communication,
 
 #### Other Resources
 
-<br><br><br>
+<br>
 
-You will need access to a computer for this course. 
+::: {style="font-size:0.9em;"}
 
-<br><br>
+- You will need access to a computer for this course. 
+    - **Please let me know ASAP after class or via email if you do not have access to a personal computer.**
 
-**Please let me know ASAP after class or via email if you do not have access to a personal computer.**
+<br>
 
-<br><br>
+- Attendance will be taken via QR code or link at the start of each lecture.
+    - **Please let me know if you plan to be device-free during lectures so that I can accommodate this.**
 
-::: fragment
+<br>
 
-- For coding, the internet in general is **not** a permitted resource, unless stated otherwise. 
+- The internet in general is **not** a permitted resource, unless stated otherwise. If you feel additional resources are necessary for your learning, let's meet and discuss. 
 
 :::
-
 
 ------------------------------------------------------------------------
 
@@ -215,8 +216,12 @@ You will need access to a computer for this course.
 ## Learning support resources
 
 - The Stat 141 Teaching Team are excited to support your learning!
-    - Course assistant office hours coming soon on Moodle
-- Each student is entitled to [one hour of individual tutoring](https://www.reed.edu/academic_support/individual_tutoring.html) per week
+    - We'll have 2 course assistants holding additional office hours every week
+
+<br>  
+  
+- Each student is entitled to [one hour of individual tutoring](https://www.reed.edu/academic_support/individual_tutoring.html) per week through the Office of Academic Support
+    - This is an awesome and under-utilized resource!! 
 
 ------------------------------------------------------------------------
 
@@ -317,7 +322,7 @@ You will need access to a computer for this course.
 ::: {.fragment .fade-up style="font-size: 0.9em;"}
 
 
--   **Exam (*1 final*)**
+-   **Exam (*1 final exam*)**
     - Cumulative, written, and in-person
     
 :::
@@ -350,10 +355,21 @@ You will need access to a computer for this course.
 
 ## Expectations for submitted work
 
-- Address questions completely whenever you can. If you have a partial solution, say so, explain what you've tried.
-- Respond in full sentences for written answers.
-- Show your work.
-- Write comments in your code explaining your work.
+- Homeworks are assessed for **completion** and **effort**.
+   - Address all parts of questions completely whenever you can. If you have a partial solution, say so, explain what you've tried.
+   - Respond in [full sentences]{.underline} for written answers, and explain your reasoning.
+   - Show your work, not just your final answer/value.
+   - Code in submitted assignments should run (not be commented out whenever possible) and include a clear attempt to address the question.
+
+<br>
+
+- Quizzes are assessed for **accuracy**.
+   - Similar expectations apply: respond in full sentences that address all parts of problems, explain your reasoning, show your work. 
+    
+------------------------------------------------------------------------
+
+## Expectations for submitted work
+   
 - **Collaboration**:
     - An excellent way to deepen your understanding and enjoy the learning experience
     - You should try all problems on your own first
@@ -363,26 +379,34 @@ You will need access to a computer for this course.
 
 ------------------------------------------------------------------------
 
-## Late Work
+## Late Work {style="font-size:0.9em;"}
+
+Circumstances expected or unexpected may come up that result in missed or late submissions.
 
 ::: {.nonincremental}
 
 :::{.fragment .fade-up}
 
--   **Labs**: each has a small but meaningful contribution towards your participation grade. No late submissions will be accepted, but you may miss one lab without penalty.
--   **HW**: up to 3 extensions days can be used throughout the semester.
-    - e.g., 1 additional day for 3 HWs, 3 additional days for 1 HW, ...
-    - rounding days up
-    - Further late work is accepted for half credit, no guarantees on grading timing/feedback
+-   **Labs**: each has a small but meaningful contribution towards your participation grade. No late submissions, but you may miss one lab without penalty.
 
 :::
 
 
 :::{.fragment .fade-up}
 
+-   **HW**: up to 3 extensions days can be used throughout the semester.
+    - e.g., 1 additional day for 3 HWs, 3 additional days for 1 HW, ...
+    - Rounding days up
+    - Further late work is accepted for half credit.
+
+
+:::
+
+:::{.fragment .fade-up}
+
 -   **Quizzes**:
-    - Missed quizzes will receive scores of 0 and cannot be made up
-    - Lowest quiz score will be dropped (including if you missed a quiz)
+    - Lowest quiz score will be dropped (including if you missed a quiz).
+    - Missed quizzes will receive scores of 0, and cannot be made up/revised
 
 :::
 
@@ -403,8 +427,10 @@ You will need access to a computer for this course.
     -   Active listening
     -   Contributing to discussion at the small group and/or classroom level
     -   Contributing to discussions on Slack
-    
--   Missing more than 4 lectures or 1 lab will have a small, accumulating impact on your grade.
+
+<br>
+
+-   Again, I understand that things come up! You have 4 "free" lecture absences and 1 "free" lab absence. After this, a small, accumulating impact on participation grade.
 
 
 ------------------------------------------------------------------------
@@ -413,11 +439,18 @@ You will need access to a computer for this course.
 
 #### Technology policy
 
+<br>
+
 ::: blockquote
 
-In STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides will be made available ahead of lecture on the course website.
+In STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in **lecture** to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides will be made available ahead of lecture on the course website.
 
 :::
+
+```{r}
+#| echo: false
+countdown::countdown(0.75)
+```
 
 
 ------------------------------------------------------------------------
@@ -427,13 +460,11 @@ In STAT 141, we value a focused, distraction-free environment. Personal devices 
   
 -   I have high expectations but know that all of you (regardless of your stats, math, or computing background) have the ability to meet them.
 
--   We are all going to make mistakes, we are all going to have errors in our code we will learn more because of them.
+-   We are all going to make mistakes, we will learn more because of them.
 
--   Don't let perfection be the enemy of learning!
+-   Resilience is one of the most valuable **skills** in learning.
 
--   Resilience is one of the most valuable traits in learning.
-
--   Expect some moments of repetition and try to lean in
+-   Expect some moments of repetition and try to lean in to the practice.
 
 
 ------------------------------------------------------------------------
@@ -444,15 +475,18 @@ In STAT 141, we value a focused, distraction-free environment. Personal devices 
 
 ::: blockquote
 
-Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. If you have questions about whether a tool is allowed for this course, ask me before using it.
+Artificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, building resilience in moments of struggle and confusion, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and **independently** extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. The [Honor Principle](https://www.reed.edu/honor_principle/) must guide your conduct in following this policy. If you have questions about whether a tool is allowed for this course, ask before using it.
 
 If you are unsure of how to approach a particular exercise on an assignment, or are stuck on a concept from lecture, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.
 
 :::
 
-<br>
 
-- How I use AI
+
+```{r}
+#| echo: false
+countdown::countdown(1.25)
+```
 
 
 ------------------------------------------------------------------------
@@ -476,9 +510,15 @@ We expect everyone to act and interact in ways that contribute to an open, welco
 
 :::
 
+```{r}
+#| echo: false
+countdown::countdown(0.75)
+```
+
+
 ------------------------------------------------------------------------
 
-## Academic Accomodations {.center}
+## Academic Accommodations {.center}
 
 If you plan to request academic accommodations, please submit these **through the DAR student portal** as soon as possible. 
 
@@ -488,7 +528,7 @@ If you plan to request academic accommodations, please submit these **through th
 
 - Office hours are an excellent opportunity to get help on homework assignments or concepts from lecture, and to collaborate with your peers
 - The teaching team is more than happy to assist you, or just to chat and get to know you! 
-- Office hours are not a place to verify all answers or reasoning, more a place to get un-stuck, discuss general concepts, work together on assignments
+<!-- - Office hours are not a place to verify all answers or reasoning, more a place to get un-stuck, discuss general concepts, work together on assignments -->
 
 <br>
 
@@ -505,17 +545,13 @@ If you plan to request academic accommodations, please submit these **through th
 
 ------------------------------------------------------------------------
 
-## Stat 141: The whole game {.center}
+## Stat 141: Learning Outcomes  {.center}
 
 :::: {.columns}
 
 ::: {.column width="45%"}
 
-::: {.fragment .fade-up .midi}
-
-![](img/DAW.jpeg)
-
-:::
+![](img/DAW_prev.jpeg)
 
 :::
 
@@ -523,20 +559,24 @@ If you plan to request academic accommodations, please submit these **through th
 
 ------------------------------------------------------------------------
 
-## Learning Outcomes {.center}
+##  Stat 141: Learning Outcomes  {.center}
 
 :::: {.columns}
 
 ::: {.column width="45%"}
 
-![](img/DAW.jpeg)
+![](img/DAW_prev.jpeg)
 
 :::
 
 
 ::: {.column width="55%"}
 
+::: nonincremental
+
 -   In this course, you will learn how to think critically with data by engaging in the entire data analysis process.
+
+:::
 
 -   Most of our time will be spent in the **Exploration and Visualization**, **Data Wrangling**,  and **Modeling and Inference** steps, but we will spend some time in each cog!
     - First ~3 weeks in **Exploration and Visualization**, **Data Wrangling**, and **Data Acquisition**
@@ -580,14 +620,18 @@ Let's discover what **statistical thinking** is through some examples.
 
 ## Data in Stat 141
 
-Will use a wide-range of **real** and **relevant** data examples
+::: .nonincremental
+
+- We'll motivate topics with a wide-range of **real** and **relevant** data examples.
+
+:::
 
 ::::: columns
-::: {.column .center width="50%"}
+::: {.column .center width="50%" .fragment}
 ![](img/nytimes_opp_insights.png){width="100%"}
 :::
 
-::: {.column .center width="50%"}
+::: {.column .center width="50%" .fragment}
 ![](img/kate_petrova_candles.jpg){width="80%"}
 :::
 :::::
@@ -612,7 +656,7 @@ Will use a wide-range of **real** and **relevant** data examples
 ::: nonincremental
 ![](img/GAcovid.jpg){width="70%" fig-align="center"}
 
--   At a quick first glance, what story does the graph appear to be telling?
+-   **Q**: At a quick first glance, what story does the graph appear to be telling?
 
 :::
 
@@ -623,7 +667,7 @@ Will use a wide-range of **real** and **relevant** data examples
 ::: nonincremental
 ![](img/GAcovid.jpg){width="70%" fig-align="center"}
 
--   What is misleading about the graph? How could we fix this issue?
+-   **Q**: What is misleading about the graph? How could we fix this issue?
 
 :::
 
@@ -649,13 +693,13 @@ Will use a wide-range of **real** and **relevant** data examples
 
 ![](img/GAcovid2.jpg){fig-align="center" width="50%"}
 
--   How do your conclusions about COVID-19 cases in Georgia change when interpreting the new graph?
+-   **Q**: How do your conclusions about COVID-19 cases in Georgia change when interpreting the new graph?
 
 :::
 
 ------------------------------------------------------------------------
 
-## Example: Visualizing COVID Prevalence 
+## Example: Visualizing COVID Prevalence {style="font-size:0.9em;"}
 
 Alberto Cairo, a journalist and designer, created the second graph of the Georgia COVID-19 data:
 
@@ -665,7 +709,7 @@ Alberto Cairo, a journalist and designer, created the second graph of the Georgi
 
 -   A key principle of data visualization is to **"help the viewer make meaningful comparisons"**.
 
--   What comparisons are made easy by the lefthand graph? What about by the righthand graph?
+-   **Q**: What comparisons are made easy by the lefthand graph? What about by the righthand graph?
 
 
 
@@ -674,7 +718,6 @@ Alberto Cairo, a journalist and designer, created the second graph of the Georgi
 -   About developing **reasoning** (not just learning definitions and formulae).
 
 -   Statistical thinking requires **judgment** that takes time to develop.
-
     -   Will see **examples** and **practice** applying statistical thinking throughout the course.
     - Numeric calculations only get us so far: it is critical to understand the **underlying data** and **assumptions**
 
@@ -824,7 +867,7 @@ Every time you get a new dataset, spend time exploring the variables.
 ------------------------------------------------------------------------
 
 ### Recap from today
-- Spent a lot of time on course resources, logistics, policies, expectations
+- Course resources, logistics, policies, expectations
 - Introduced big picture of statistical thinking
 - Introduced data frames
 

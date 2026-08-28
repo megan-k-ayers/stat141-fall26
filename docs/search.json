@@ -67,7 +67,7 @@
     "href": "syllabus.html#policies",
     "title": "Syllabus",
     "section": "Policies",
-    "text": "Policies\n\nTechnology policy:\n\nIn STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides (including a condensed version for more efficient printing) will be made available ahead of lecture on the course website.\nHowever, for some parts of the course, we will ask you to use your phone/tablet/computer to engage with course material (ex. you’ll be asked to take attendance via QR code at the start of lecture, and to use your laptop to work on lab assignments and occasionally during lecture).\nAdvice for note taking during lecture:\n\nRather than focusing on transcribing everything that is displayed or said, focus on summarizing content and ideas in your own words, recording any questions you have, and emphasizing any insights that helped you make sense of a concept.\nReference the slide number when taking each note so that you can contextualize it with the slides when reviewing your notes. It may be particularly helpful to make list of slides where code examples are provided for different tasks.\n\n\n\n\nLate work policy:\n\nQuizzes: Since quizzes are taken in-person during lab, a missed quiz will be assigned a score of 0. Makeup quizzes will not be given, but, to help with various circumstances (expected and unexpected), the lowest quiz score will be dropped.\nHomeworks: To help with various circumstances (expected and unexpected), you have up to 3 additional homework extension days that you can use as you need, no questions asked. You are free to distribute the extension days to different assignments as you wish (e.g., 1 additional day for 3 HWs, 3 additional days for 1 HW) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). When I see a late assignment submitted, I’ll assume you intend to use extension days for it - you don’t need to email me. If you’ve used all extension days, further late homework assignments will be accepted for up to 50% partial credit at any time before the end of the last day of class, Wednesday December 9th at 11:59pm. Late submissions of homework assignments are not guaranteed timely or detailed feedback - you are encouraged to meet with Megan or course assistants in office hours to clarify any questions or discuss solutions from any late homework assignments. Note: Extension days only get “used up” if applied to an assignment submitted within the available window. For example, if you have one extension day remaining and submit an assignment two days late, that assignment will be subject to the late penalty, but you will still have your one extension day to use on a future assignment.\nLabs: Lab assignments will be due at the end of each lab section and will count towards a small participation grade. If we ran out of time in lab to attempt all questions you don’t need to rush to finish the lab before submitting it: just submit the progress that you made. You will have a grace period until the end of the day to submit your lab in the event of a PDF rendering error - please send me a quick email at the end of lab if you need to take this time to fix an error. In case of a lab absence, you are encouraged to prepare for homework assignments by completing labs on your own, but late submissions of lab assignments will not be accepted. You may miss one lab without impact to your grade.\nExam: The final exam cannot be made up.\n\n\n\n\n\n\nCollaboration Policy and Academic Honesty:\nWorking with your classmates on difficult and interesting problems can not only help your learning, but also help you get to know each other! Therefore, I highly encourage you to collaborate on assignments. But, every piece of work you do must be your own. Copying other people’s work or code is not acceptable (whether they are in our course or not), nor is allowing other people to copy your own work (whether they are in our course or not). The Honor Principle must guide your conduct in this class.\nIf you choose to collaborate with a classmate, you must add their name to the top of your assignment, and list them as a collaborator, e.g.:\nCollaborator(s): Michael Pearce, Lenny Wainstein, Grayson White\nBut what is collaboration?:\nFor STAT 141, collaboration can look like: working with classmates together on a given problem, doing scratch work, helping each other get un-stuck on a part of a problem, and even coming to a solution together. However, you must write up your own problem solutions individually and cannot copy other’s solutions (even those who you have collaborated with). You are expected to be able to explain the entirety your submitted solutions. When helping others with their assignment, you are encouraged to help them reason through concepts and to explain connections to lecture material and past assignments. However, you are expected to never explicitly share your completed solutions. You are expected to never distribute solutions obtained directly or indirectly via written feedback or office hours, including to students in this course or in other sections of 141. Copying solutions or code from any source, including a collaborator, classmate, an internet resource, or a generative AI tool (see the following section) is strictly prohibited.\n\n\nAI and Internet Use Policy:\nArtificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, building resilience in moments of struggle and confusion, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. The Honor Principle must guide your conduct in following this policy. If you have questions about whether a tool is allowed for this course, ask before using it.\nWhile there are many ways to complete tasks in R, and many helpful internet resources for learning about them, this course focuses on a curated selection and is designed to be self contained. You may only use functions and packages that have been covered in this course on your assignments. You may use official online documentation resources (ex. https://tidyverse.org/packages/) to refresh yourself or learn more about functions that have been introduced in class. If you have questions at any point about other functions or packages, I (Megan) am happy to discuss! If you are unsure of how to approach a particular exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel."
+    "text": "Policies\n\nTechnology policy:\n\nIn STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides (including a condensed version for more efficient printing) will be made available ahead of lecture on the course website.\nHowever, for some parts of the course, we will ask you to use your phone/tablet/computer to engage with course material (ex. you’ll be asked to take attendance via QR code at the start of lecture, and to use your laptop to work on lab assignments and occasionally during lecture).\nAdvice for note taking during lecture:\n\nRather than focusing on transcribing everything that is displayed or said, focus on summarizing content and ideas in your own words, recording any questions you have, and emphasizing any insights that helped you make sense of a concept.\nReference the slide number when taking each note so that you can contextualize it with the slides when reviewing your notes. It may be particularly helpful to make list of slides where code examples are provided for different tasks.\n\n\n\n\nLate work policy:\n\nQuizzes: Since quizzes are taken in-person during lab, a missed quiz will be assigned a score of 0. Makeup quizzes will not be given, but, to help with various circumstances (expected and unexpected), the lowest quiz score will be dropped.\nHomeworks: To help with various circumstances (expected and unexpected), you have up to 3 additional homework extension days that you can use as you need, no questions asked. You are free to distribute the extension days to different assignments as you wish (e.g., 1 additional day for 3 HWs, 3 additional days for 1 HW) but the extension days must be rounded up to the nearest day (e.g., 2 extra hours = 1 extension day). When I see a late assignment submitted, I’ll assume you intend to use extension days for it - you don’t need to email me. If you’ve used all extension days, further late homework assignments will be accepted for up to 50% partial credit at any time before the end of the last day of class, Wednesday December 9th at 11:59pm. Late submissions of homework assignments are not guaranteed timely or detailed feedback - you are encouraged to meet with Megan or course assistants in office hours to clarify any questions or discuss solutions from any late homework assignments. Note: Extension days only get “used up” if applied to an assignment submitted within the available window. For example, if you have one extension day remaining and submit an assignment two days late, that assignment will be subject to the late penalty, but you will still have your one extension day to use on a future assignment.\nLabs: Lab assignments will be due at the end of each lab section and will count towards a small participation grade. If we ran out of time in lab to attempt all questions you don’t need to rush to finish the lab before submitting it: just submit the progress that you made. You will have a grace period until the end of the day to submit your lab in the event of a PDF rendering error - please send me a quick email at the end of lab if you need to take this time to fix an error. In case of a lab absence, you are encouraged to prepare for homework assignments by completing labs on your own, but late submissions of lab assignments will not be accepted. You may miss one lab without impact to your grade.\nExam: The final exam cannot be made up.\n\n\n\n\n\n\nCollaboration Policy and Academic Honesty:\nWorking with your classmates on difficult and interesting problems can not only help your learning, but also help you get to know each other! Therefore, I highly encourage you to collaborate on assignments. But, every piece of work you do must be your own. Copying other people’s work or code is not acceptable (whether they are in our course or not), nor is allowing other people to copy your own work (whether they are in our course or not). The Honor Principle must guide your conduct in this class.\nIf you choose to collaborate with a classmate, you must add their name to the top of your assignment, and list them as a collaborator, e.g.:\nCollaborator(s): Michael Pearce, Lenny Wainstein, Grayson White\nBut what is collaboration?:\nFor STAT 141, collaboration can look like: working with classmates together on a given problem, doing scratch work, helping each other get un-stuck on a part of a problem, and even coming to a solution together. However, you must write up your own problem solutions individually and cannot copy other’s solutions (even those who you have collaborated with). You are expected to be able to explain the entirety your submitted solutions. When helping others with their assignment, you are encouraged to help them reason through concepts and to explain connections to lecture material and past assignments. However, you are expected to never explicitly share your completed solutions. You are expected to never distribute solutions obtained directly or indirectly via written feedback or office hours, including to students in this course or in other sections of 141. Copying solutions or code from any source, including a collaborator, classmate, an internet resource, or a generative AI tool (see the following section) is strictly prohibited.\n\n\nAI and Internet Use Policy:\nArtificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, building resilience in moments of struggle and confusion, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. The Honor Principle must guide your conduct in following this policy. If you have questions about whether a tool is allowed for this course, ask before using it.\nWhile there are many ways to complete tasks in R, and many helpful internet resources for learning about them, this course focuses on a curated selection and is designed to be self contained. You may only use functions and packages that have been covered in lecture or lab on your assignments. You may use official online documentation resources (ex. https://tidyverse.org/packages/) to refresh yourself or learn more about functions that have been introduced in class. If you have questions at any point about other functions or packages, I (Megan) am happy to discuss! If you are unsure of how to approach a particular exercise or of what function to use, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel."
   },
   {
     "objectID": "syllabus.html#acknowledgements",
@@ -137,7 +137,7 @@
     "href": "slides/lecture01_stat-thinking.html#getting-started-in-stat-141-3",
     "title": "STAT 141",
     "section": "Getting Started in Stat 141",
-    "text": "Getting Started in Stat 141\nOther Resources\n\nYou will need access to a computer for this course.\n\nPlease let me know ASAP after class or via email if you do not have access to a personal computer.\n\n\n\nFor coding, the internet in general is not a permitted resource, unless stated otherwise."
+    "text": "Getting Started in Stat 141\nOther Resources\n\n\n\nYou will need access to a computer for this course.\n\nPlease let me know ASAP after class or via email if you do not have access to a personal computer.\n\n\n\n\nAttendance will be taken via QR code or link at the start of each lecture.\n\nPlease let me know if you plan to be device-free during lectures so that I can accommodate this.\n\n\n\n\nThe internet in general is not a permitted resource, unless stated otherwise. If you feel additional resources are necessary for your learning, let’s meet and discuss."
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#my-info",
@@ -151,7 +151,7 @@
     "href": "slides/lecture01_stat-thinking.html#learning-support-resources",
     "title": "STAT 141",
     "section": "Learning support resources",
-    "text": "Learning support resources\n\nThe Stat 141 Teaching Team are excited to support your learning!\n\nCourse assistant office hours coming soon on Moodle\n\nEach student is entitled to one hour of individual tutoring per week"
+    "text": "Learning support resources\n\nThe Stat 141 Teaching Team are excited to support your learning!\n\nWe’ll have 2 course assistants holding additional office hours every week\n\n\n\n\nEach student is entitled to one hour of individual tutoring per week through the Office of Academic Support\n\nThis is an awesome and under-utilized resource!!"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#a-typical-week-in-stat-141",
@@ -172,70 +172,77 @@
     "href": "slides/lecture01_stat-thinking.html#assignments-and-exams-1",
     "title": "STAT 141",
     "section": "Assignments and Exams",
-    "text": "Assignments and Exams\n\n\n\n\nExam (1 final)\n\nCumulative, written, and in-person\n\n\n\n\n\n\n\n\nReadings (each lecture, some labs)\n\nOpportunities to reinforce understanding of material\nSimilar content to lecture, varying presentation/examples"
+    "text": "Assignments and Exams\n\n\n\n\nExam (1 final exam)\n\nCumulative, written, and in-person\n\n\n\n\n\n\n\n\nReadings (each lecture, some labs)\n\nOpportunities to reinforce understanding of material\nSimilar content to lecture, varying presentation/examples"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#expectations-for-submitted-work",
     "href": "slides/lecture01_stat-thinking.html#expectations-for-submitted-work",
     "title": "STAT 141",
     "section": "Expectations for submitted work",
-    "text": "Expectations for submitted work\n\nAddress questions completely whenever you can. If you have a partial solution, say so, explain what you’ve tried.\nRespond in full sentences for written answers.\nShow your work.\nWrite comments in your code explaining your work.\nCollaboration:\n\nAn excellent way to deepen your understanding and enjoy the learning experience\nYou should try all problems on your own first\nCan involve comparison of reasoning and solutions when each student has attempted a problem\nShould never involve direct sharing or copying of solutions\nShould be guided by the honor principle"
+    "text": "Expectations for submitted work\n\nHomeworks are assessed for completion and effort.\n\nAddress all parts of questions completely whenever you can. If you have a partial solution, say so, explain what you’ve tried.\nRespond in full sentences for written answers, and explain your reasoning.\nShow your work, not just your final answer/value.\nCode in submitted assignments should run (not be commented out whenever possible) and include a clear attempt to address the question.\n\n\n\n\nQuizzes are assessed for accuracy.\n\nSimilar expectations apply: respond in full sentences that address all parts of problems, explain your reasoning, show your work."
+  },
+  {
+    "objectID": "slides/lecture01_stat-thinking.html#expectations-for-submitted-work-1",
+    "href": "slides/lecture01_stat-thinking.html#expectations-for-submitted-work-1",
+    "title": "STAT 141",
+    "section": "Expectations for submitted work",
+    "text": "Expectations for submitted work\n\nCollaboration:\n\nAn excellent way to deepen your understanding and enjoy the learning experience\nYou should try all problems on your own first\nCan involve comparison of reasoning and solutions when each student has attempted a problem\nShould never involve direct sharing or copying of solutions\nShould be guided by the honor principle"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#late-work",
     "href": "slides/lecture01_stat-thinking.html#late-work",
     "title": "STAT 141",
     "section": "Late Work",
-    "text": "Late Work\n\n\nLabs: each has a small but meaningful contribution towards your participation grade. No late submissions will be accepted, but you may miss one lab without penalty.\nHW: up to 3 extensions days can be used throughout the semester.\n\ne.g., 1 additional day for 3 HWs, 3 additional days for 1 HW, …\nrounding days up\nFurther late work is accepted for half credit, no guarantees on grading timing/feedback\n\n\n\n\n\nQuizzes:\n\nMissed quizzes will receive scores of 0 and cannot be made up\nLowest quiz score will be dropped (including if you missed a quiz)\n\n\n\n\n\nExams: no late exams are accepted. Please arrive on time!"
+    "text": "Late Work\nCircumstances expected or unexpected may come up that result in missed or late submissions.\n\n\nLabs: each has a small but meaningful contribution towards your participation grade. No late submissions, but you may miss one lab without penalty.\n\n\n\n\nHW: up to 3 extensions days can be used throughout the semester.\n\ne.g., 1 additional day for 3 HWs, 3 additional days for 1 HW, …\nRounding days up\nFurther late work is accepted for half credit.\n\n\n\n\n\nQuizzes:\n\nLowest quiz score will be dropped (including if you missed a quiz).\nMissed quizzes will receive scores of 0, and cannot be made up/revised\n\n\n\n\n\nExams: no late exams are accepted. Please arrive on time!"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#engagement",
     "href": "slides/lecture01_stat-thinking.html#engagement",
     "title": "STAT 141",
     "section": "Engagement",
-    "text": "Engagement\n\nBeing actively present is key. This requires attendance, and can look like:\n\nActive listening\nContributing to discussion at the small group and/or classroom level\nContributing to discussions on Slack\n\nMissing more than 4 lectures or 1 lab will have a small, accumulating impact on your grade."
+    "text": "Engagement\n\nBeing actively present is key. This requires attendance, and can look like:\n\nActive listening\nContributing to discussion at the small group and/or classroom level\nContributing to discussions on Slack\n\n\n\n\nAgain, I understand that things come up! You have 4 “free” lecture absences and 1 “free” lab absence. After this, a small, accumulating impact on participation grade."
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#engagement-1",
     "href": "slides/lecture01_stat-thinking.html#engagement-1",
     "title": "STAT 141",
     "section": "Engagement",
-    "text": "Engagement\nTechnology policy\n\nIn STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides will be made available ahead of lecture on the course website."
+    "text": "Engagement\nTechnology policy\n\n\nIn STAT 141, we value a focused, distraction-free environment. Personal devices (including phones and headphones) and computers are generally not allowed in lecture to minimize digital distractions. However, technology is welcome for students who require digital tools for accessibility. We ask that these students limit their device use to essential in-class activities, such as note-taking or viewing digital readings. Non-academic use—including social media, messaging, and general web browsing—is not allowed, to ensure we remain fully engaged with the course material. Note that all lecture slides will be made available ahead of lecture on the course website."
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#engagement-2",
     "href": "slides/lecture01_stat-thinking.html#engagement-2",
     "title": "STAT 141",
     "section": "Engagement",
-    "text": "Engagement\n\nI have high expectations but know that all of you (regardless of your stats, math, or computing background) have the ability to meet them.\nWe are all going to make mistakes, we are all going to have errors in our code we will learn more because of them.\nDon’t let perfection be the enemy of learning!\nResilience is one of the most valuable traits in learning.\nExpect some moments of repetition and try to lean in"
+    "text": "Engagement\n\nI have high expectations but know that all of you (regardless of your stats, math, or computing background) have the ability to meet them.\nWe are all going to make mistakes, we will learn more because of them.\nResilience is one of the most valuable skills in learning.\nExpect some moments of repetition and try to lean in to the practice."
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#artificial-intelligence-ai-policy",
     "href": "slides/lecture01_stat-thinking.html#artificial-intelligence-ai-policy",
     "title": "STAT 141",
     "section": "Artificial Intelligence (AI) Policy",
-    "text": "Artificial Intelligence (AI) Policy\n\nArtificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. If you have questions about whether a tool is allowed for this course, ask me before using it.\nIf you are unsure of how to approach a particular exercise on an assignment, or are stuck on a concept from lecture, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel.\n\n\n\nHow I use AI"
+    "text": "Artificial Intelligence (AI) Policy\n\nArtificial intelligence (AI) tools, such as ChatGPT, Claude, Co-Pilot, Gemini, and others are being used to generate code, analyze data, and much more. However, learning to think critically about a problem at hand, building resilience in moments of struggle and confusion, and engaging with your peers, tutors, and instructors when not understanding a concept or question are integral components of a liberal arts education. Further, a key goal of this course is for you to learn how to thoughtfully, ethically, and independently extract knowledge from data and engage in statistical reasoning. Therefore, the use of generative AI tools, such as ChatGPT and others, are strictly prohibited in any stage of the work process for this course. The Honor Principle must guide your conduct in following this policy. If you have questions about whether a tool is allowed for this course, ask before using it.\nIf you are unsure of how to approach a particular exercise on an assignment, or are stuck on a concept from lecture, help is available to you! Please visit office hours, collaborate with your peers, or post in the Slack channel."
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#course-climate",
     "href": "slides/lecture01_stat-thinking.html#course-climate",
     "title": "STAT 141",
     "section": "Course Climate",
-    "text": "Course Climate\n\nWe expect everyone in this class to strive to foster a learning environment that is equitable, inclusive, and welcoming. If you experience any barriers to learning, please come to Professor Megan Ayers or a college administrator with your concerns.\n\nCode of Conduct:\nWe expect all members of Stat 141 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.\nWe expect everyone to act and interact in ways that contribute to an open, welcoming, inclusive, and healthy community of learners. You can contribute to a positive learning environment by demonstrating empathy and kindness, being respectful of differing viewpoints and experiences, and giving and gracefully accepting constructive feedback.1\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0."
+    "text": "Course Climate\n\nWe expect everyone in this class to strive to foster a learning environment that is equitable, inclusive, and welcoming. If you experience any barriers to learning, please come to Professor Megan Ayers or a college administrator with your concerns.\n\nCode of Conduct:\nWe expect all members of Stat 141 to make participation a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.\nWe expect everyone to act and interact in ways that contribute to an open, welcoming, inclusive, and healthy community of learners. You can contribute to a positive learning environment by demonstrating empathy and kindness, being respectful of differing viewpoints and experiences, and giving and gracefully accepting constructive feedback.1\n\n\n\n\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0."
   },
   {
-    "objectID": "slides/lecture01_stat-thinking.html#academic-accomodations",
-    "href": "slides/lecture01_stat-thinking.html#academic-accomodations",
+    "objectID": "slides/lecture01_stat-thinking.html#academic-accommodations",
+    "href": "slides/lecture01_stat-thinking.html#academic-accommodations",
     "title": "STAT 141",
-    "section": "Academic Accomodations",
-    "text": "Academic Accomodations\nIf you plan to request academic accommodations, please submit these through the DAR student portal as soon as possible."
+    "section": "Academic Accommodations",
+    "text": "Academic Accommodations\nIf you plan to request academic accommodations, please submit these through the DAR student portal as soon as possible."
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#office-hours",
     "href": "slides/lecture01_stat-thinking.html#office-hours",
     "title": "STAT 141",
     "section": "Office Hours",
-    "text": "Office Hours\n\nOffice hours are an excellent opportunity to get help on homework assignments or concepts from lecture, and to collaborate with your peers\nThe teaching team is more than happy to assist you, or just to chat and get to know you!\nOffice hours are not a place to verify all answers or reasoning, more a place to get un-stuck, discuss general concepts, work together on assignments\n\n\n\nImportant! Please fill out the availability survey linked here after lecture if you haven’t already!!!"
+    "text": "Office Hours\n\nOffice hours are an excellent opportunity to get help on homework assignments or concepts from lecture, and to collaborate with your peers\nThe teaching team is more than happy to assist you, or just to chat and get to know you! \n\n\n\nImportant! Please fill out the availability survey linked here after lecture if you haven’t already!!!"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#course-or-syllabus-questions",
@@ -245,18 +252,18 @@
     "text": "Course or syllabus questions?"
   },
   {
-    "objectID": "slides/lecture01_stat-thinking.html#stat-141-the-whole-game",
-    "href": "slides/lecture01_stat-thinking.html#stat-141-the-whole-game",
+    "objectID": "slides/lecture01_stat-thinking.html#stat-141-learning-outcomes",
+    "href": "slides/lecture01_stat-thinking.html#stat-141-learning-outcomes",
     "title": "STAT 141",
-    "section": "Stat 141: The whole game",
-    "text": "Stat 141: The whole game"
+    "section": "Stat 141: Learning Outcomes",
+    "text": "Stat 141: Learning Outcomes"
   },
   {
-    "objectID": "slides/lecture01_stat-thinking.html#learning-outcomes",
-    "href": "slides/lecture01_stat-thinking.html#learning-outcomes",
+    "objectID": "slides/lecture01_stat-thinking.html#stat-141-learning-outcomes-1",
+    "href": "slides/lecture01_stat-thinking.html#stat-141-learning-outcomes-1",
     "title": "STAT 141",
-    "section": "Learning Outcomes",
-    "text": "Learning Outcomes\n\n\n\n\n\nIn this course, you will learn how to think critically with data by engaging in the entire data analysis process.\nMost of our time will be spent in the Exploration and Visualization, Data Wrangling, and Modeling and Inference steps, but we will spend some time in each cog!\n\nFirst ~3 weeks in Exploration and Visualization, Data Wrangling, and Data Acquisition\nNext ~2 weeks in Modeling\nNext ~6 weeks of the course in Inference\nFinal weeks combining Modeling and Inference"
+    "section": "Stat 141: Learning Outcomes",
+    "text": "Stat 141: Learning Outcomes\n\n\n\n\n\nIn this course, you will learn how to think critically with data by engaging in the entire data analysis process.\n\n\nMost of our time will be spent in the Exploration and Visualization, Data Wrangling, and Modeling and Inference steps, but we will spend some time in each cog!\n\nFirst ~3 weeks in Exploration and Visualization, Data Wrangling, and Data Acquisition\nNext ~2 weeks in Modeling\nNext ~6 weeks of the course in Inference\nFinal weeks combining Modeling and Inference"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#stat-141-is-about-developing-our-statistical-thinking-skills.",
@@ -270,7 +277,7 @@
     "href": "slides/lecture01_stat-thinking.html#data-in-stat-141",
     "title": "STAT 141",
     "section": "Data in Stat 141",
-    "text": "Data in Stat 141\nWill use a wide-range of real and relevant data examples"
+    "text": "Data in Stat 141\n\n\nWe’ll motivate topics with a wide-range of real and relevant data examples."
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#example-visualizing-covid-prevalence-1",
@@ -284,14 +291,14 @@
     "href": "slides/lecture01_stat-thinking.html#example-visualizing-covid-prevalence-2",
     "title": "STAT 141",
     "section": "Example: Visualizing COVID Prevalence",
-    "text": "Example: Visualizing COVID Prevalence\n\n\n\n\n\n\nAt a quick first glance, what story does the graph appear to be telling?"
+    "text": "Example: Visualizing COVID Prevalence\n\n\n\n\n\n\nQ: At a quick first glance, what story does the graph appear to be telling?"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#example-visualizing-covid-prevalence-3",
     "href": "slides/lecture01_stat-thinking.html#example-visualizing-covid-prevalence-3",
     "title": "STAT 141",
     "section": "Example: Visualizing COVID Prevalence",
-    "text": "Example: Visualizing COVID Prevalence\n\n\n\n\n\n\nWhat is misleading about the graph? How could we fix this issue?"
+    "text": "Example: Visualizing COVID Prevalence\n\n\n\n\n\n\nQ: What is misleading about the graph? How could we fix this issue?"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#example-visualizing-covid-prevalence-4",
@@ -305,14 +312,14 @@
     "href": "slides/lecture01_stat-thinking.html#example-visualizing-covid-prevalence-5",
     "title": "STAT 141",
     "section": "Example: Visualizing COVID Prevalence",
-    "text": "Example: Visualizing COVID Prevalence\n\nAfter public outcry, the Georgia Department of Public Health updated the graph:\n\n\n\n\n\n\n\nHow do your conclusions about COVID-19 cases in Georgia change when interpreting the new graph?"
+    "text": "Example: Visualizing COVID Prevalence\n\nAfter public outcry, the Georgia Department of Public Health updated the graph:\n\n\n\n\n\n\n\nQ: How do your conclusions about COVID-19 cases in Georgia change when interpreting the new graph?"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#example-visualizing-covid-prevalence-6",
     "href": "slides/lecture01_stat-thinking.html#example-visualizing-covid-prevalence-6",
     "title": "STAT 141",
     "section": "Example: Visualizing COVID Prevalence",
-    "text": "Example: Visualizing COVID Prevalence\nAlberto Cairo, a journalist and designer, created the second graph of the Georgia COVID-19 data:\n\n \n\n\nA key principle of data visualization is to “help the viewer make meaningful comparisons”.\nWhat comparisons are made easy by the lefthand graph? What about by the righthand graph?"
+    "text": "Example: Visualizing COVID Prevalence\nAlberto Cairo, a journalist and designer, created the second graph of the Georgia COVID-19 data:\n\n \n\n\nA key principle of data visualization is to “help the viewer make meaningful comparisons”.\nQ: What comparisons are made easy by the lefthand graph? What about by the righthand graph?"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#statistical-thinking",
