@@ -12,7 +12,7 @@ Before coming to lecture today, please complete the following items.
 
 1.   Fill out the [office hour availability survey](https://forms.gle/ZwzXVng5EG172atKA) (Your responses can be updated during Week 1 if needed via the confirmation email you receive)
 2.   Review [the course syllabus](../syllabus.qmd)
-3.   Practice the [Stat 141 Math Trailhead exercises](https://mrobinso314.github.io/MathTHClone/math-141.html). This 15-exercise sequence reviews some quantitative reasoning, algebra, and function skills that we will utilize in Stat 141 (the webpage is in development, and may refer to the course's previous name, Math 141). 
+3.   Practice the [Stat 141 Math Trailhead exercises](https://mrobinso314.github.io/MathTHClone/stat-141.html). This 15-exercise sequence reviews some quantitative reasoning, algebra, and function skills that we will utilize in Stat 141 (the webpage is in development, and may refer to the course's previous name, Math 141). 
 
 
 **Note on #3**: *We are all coming into this course with a wide variety of backgrounds and experience in mathematics and other disciplines - this diversity of perspectives is very valuable and our discussions and collaborations will benefit greatly! It is natural that we'll each be at different starting points for different skills.*

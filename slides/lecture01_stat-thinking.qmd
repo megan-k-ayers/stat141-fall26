@@ -52,16 +52,6 @@ library(tidyverse)
 :::
 :::
 
-------------------------------------------------------------------------
-
-::: {style="margin-top: 80px; font-size: 3em; color: #3F6574; text-align: center;"}
-Before we get started...
-
-<br><br>
-
-**Attendance/waitlist form check**
-:::
-
 
 ------------------------------------------------------------------------
 
