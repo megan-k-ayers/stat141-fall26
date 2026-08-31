@@ -1,7 +1,7 @@
 ---
 pagetitle: "Data Visualization"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -59,8 +59,6 @@ library(tidyverse)
 
 - Room change reminder for afternoon lab section
 
-- Waitlist movement - let me know if you're still on the waitlist and haven't heard from me
-
 - Math/Stats colloquium tomorrow - information session about Math/Math-Stats majors
 
 
@@ -72,39 +70,44 @@ library(tidyverse)
 ::: nonincremental
 -  Introductions
 -  Statistical thinking
--  Introduced data frames
 :::
 
 ### Goals for Today
 
 ::: nonincremental
--   Review data frames
+-   Introduce data frames
 -   Motivate data visualizations
 -   Develop **language** to talk about the components of a graphic
 -   Practice deconstructing graphics
 -   Discuss good graphical practices
 :::
 
-<!-- ------------------------------------------------------------------------ -->
+------------------------------------------------------------------------
 
-<!-- ## Reminders -->
 
-<!-- -   DAR accommodations. -->
-<!-- -   **Slack** for communication. -->
-<!--     - `general-qa` and `coding-qa` channels -->
-<!-- -   Course assistant (CA) office hours are now posted on Moodle -->
-<!--     - CA Office hours start next week -->
-<!--     - Coverage every week day!  -->
-<!-- -   Other resources -->
-<!--     - Individual tutoring -->
-    
-    
-<!-- ## Math 141 Office Hours Schedule {.center} -->
+## [What are/is Data?]{.center}
 
-<!-- ::: nonincremental -->
-<!-- - On [Moodle](https://moodle.reed.edu/course/view.php?id=6317) -->
-<!-- ::: -->
+<br>
 
+<br>
+
+::: blockquote
+[*"'Raw data' is an oxymoron."* -- Lisa Gitelman](https://catalog.library.reed.edu/permalink/01ALLIANCE_REED/ivkaaq/alma99900791224501841)
+:::
+
+<br>
+
+::: blockquote
+[*"Data ... is information made tractable."* -- Catherine D'Ignazio and Lauren Klein](https://catalog.library.reed.edu/permalink/01ALLIANCE_REED/ivkaaq/alma99900435411901841)
+:::
+
+------------------------------------------------------------------------
+
+::: {style="margin-top: 80px; font-size: 2.5em; color: #3F6574; text-align: center;"}
+Data Frames
+:::
+
+------------------------------------------------------------------------
 
 ## Data Frames
 
@@ -155,6 +158,29 @@ detectors %>%
 
 ```
 
+Rows = Observations/cases
+
+**What are the cases? What does each row represent?**
+
+------------------------------------------------------------------------
+
+## Data Frames
+
+```{r}
+#| echo: false
+
+detectors %>%
+  mutate(ID = row_number()) %>%
+  relocate(ID) %>%
+  select(-document_id, -prompt) %>%
+  head() %>%
+
+  kable() %>%   
+  kable_styling(bootstrap_options = c("responsive", "bordered", "striped", "compact"),
+                font_size = 32)
+
+```
+
 Columns = Variables
 
 **Variables**: Describe characteristics of the observations
@@ -167,6 +193,38 @@ Columns = Variables
 
 ------------------------------------------------------------------------
 
+## Data Frames
+
+```{r}
+#| echo: false
+
+detectors %>%
+  mutate(ID = row_number()) %>%
+  relocate(ID) %>%
+  select(-document_id, -prompt) %>%
+  head() %>%
+
+  kable() %>%   
+  kable_styling(bootstrap_options = c("responsive", "bordered", "striped", "compact"),
+                font_size = 32)
+
+```
+
+Every time you get a new dataset, spend time exploring the variables.
+
+::: {.fragment style="font-size: 0.9em;"}
+
+**Example questions**:
+
+-   Is each variable capturing the desired information?
+
+-   For categorical variables, what are the categories? Do those categories adequately represent that variable?
+
+-   For quantitative variables, what values are possible? Were the data rounded or binned? Are those values actually encoding categories? What are the units of measurement?
+
+:::
+
+------------------------------------------------------------------------
 
 ## Types of variables
 
@@ -200,6 +258,8 @@ Columns = Variables
 
 
 ::::
+
+------------------------------------------------------------------------
 
 ## Why construct a graph? {.center}
 
@@ -347,7 +407,7 @@ For right now, we won't focus on the **names** of particular types of graphs (e.
 
 ```{r}
 #| echo: false
-countdown::countdown(5)
+countdown::countdown(4)
 ```
 
 ------------------------------------------------------------------------
@@ -373,7 +433,7 @@ countdown::countdown(5)
 
 ```{r}
 #| echo: false
-countdown::countdown(4)
+countdown::countdown(3)
 ```
 
 # Visualization Considerations
@@ -503,7 +563,7 @@ Be careful that your design choices don't cause your viewer to draw incorrect co
 
 Today we...
 
--   Reviewed data frames
+-   Introduced data frames
 -   Motivated data visualizations
 -   Developed **language** to talk about the components of a graphic
 -   Practiced deconstructing graphics
@@ -515,5 +575,4 @@ Today we...
 
 -   Tomorrow in lab: intro to using RStudio to code and explore data frames 
 -   Friday: We'll learn about the `ggplot2` package so that we can use the grammar of graphics to create beeaauutiful visualizations!! 
-    - (This is my favorite part of any project, and soon I hope it is yours too)
 

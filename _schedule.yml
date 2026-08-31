@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 9/1/26
+  draft-after: 9/4/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -28,26 +28,28 @@ scheduled-docs:
               href: readings/reading02.qmd
             - type: Slides
               href: slides/lecture02_data-viz-intro.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture02_data-viz-intro_handout.pdf
         - topic: "Lab: Introduction to R, RStudio, and Quarto"
           display-date: Thursday, Sept 3
           date: 9/3/26
           docs:
             - type: Reading & Lab Instr.
               href: readings/reading03.qmd
-            - type: Download Lab 1
-              href: lab/lab01.zip
-            - type: Slides
-              href: slides/labslides01.qmd
-            - type: Download HW 1
-              href: hw/hw01.zip
+            # - type: Download Lab 1
+            #   href: lab/lab01.zip
+            # - type: Slides
+            #   href: slides/labslides01.qmd
+            # - type: Download HW 1
+            #   href: hw/hw01.zip
         - topic: "Data Visualization: the 5 Named Graphs with <code>ggplot2</code>"
           display-date: Friday, Sept 4
           date: 9/4/26
           docs:
             - type: Reading
               href: readings/reading04.qmd
-            - type: Slides
-              href: slides/lecture03_five-named-graphs.qmd
+            # - type: Slides
+            #   href: slides/lecture03_five-named-graphs.qmd
       resources:
             - 'Check your gradescope access (code on Moodle)'
             - 'Start assignment 1 (assigned 9/3)'

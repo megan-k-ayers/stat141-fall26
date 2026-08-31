@@ -151,7 +151,6 @@
 <h3 id="announcementsreminders">Announcements/reminders</h3>
 <ul>
 <li class="fragment"><p>Room change reminder for afternoon lab section</p></li>
-<li class="fragment"><p>Waitlist movement - let me know if you’re still on the waitlist and haven’t heard from me</p></li>
 <li class="fragment"><p>Math/Stats colloquium tomorrow - information session about Math/Math-Stats majors</p></li>
 </ul>
 </section>
@@ -161,30 +160,33 @@
 <ul>
 <li>Introductions</li>
 <li>Statistical thinking</li>
-<li>Introduced data frames</li>
 </ul>
 <h3 id="goals-for-today">Goals for Today</h3>
 <ul>
-<li>Review data frames</li>
+<li>Introduce data frames</li>
 <li>Motivate data visualizations</li>
 <li>Develop <strong>language</strong> to talk about the components of a graphic</li>
 <li>Practice deconstructing graphics</li>
 <li>Discuss good graphical practices</li>
 </ul>
-<!-- ------------------------------------------------------------------------ -->
-<!-- ## Reminders -->
-<!-- -   DAR accommodations. -->
-<!-- -   **Slack** for communication. -->
-<!--     - `general-qa` and `coding-qa` channels -->
-<!-- -   Course assistant (CA) office hours are now posted on Moodle -->
-<!--     - CA Office hours start next week -->
-<!--     - Coverage every week day!  -->
-<!-- -   Other resources -->
-<!--     - Individual tutoring -->
-<!-- ## Math 141 Office Hours Schedule {.center} -->
-<!-- ::: nonincremental -->
-<!-- - On [Moodle](https://moodle.reed.edu/course/view.php?id=6317) -->
-<!-- ::: -->
+</section>
+<section id="what-areis-data" class="slide level2">
+<h2><span class="center">What are/is Data?</span></h2>
+<p><br></p>
+<p><br></p>
+<div class="blockquote">
+<p><a href="https://catalog.library.reed.edu/permalink/01ALLIANCE_REED/ivkaaq/alma99900791224501841"><em>“‘Raw data’ is an oxymoron.”</em> – Lisa Gitelman</a></p>
+</div>
+<p><br></p>
+<div class="blockquote">
+<p><a href="https://catalog.library.reed.edu/permalink/01ALLIANCE_REED/ivkaaq/alma99900435411901841"><em>“Data … is information made tractable.”</em> – Catherine D’Ignazio and Lauren Klein</a></p>
+</div>
+</section>
+<section class="slide level2">
+
+<div style="margin-top: 80px; font-size: 2.5em; color: #3F6574; text-align: center;">
+<p>Data Frames</p>
+</div>
 </section>
 <section id="data-frames" class="slide level2">
 <h2>Data Frames</h2>
@@ -363,6 +365,93 @@
 </div>
 </div>
 </div>
+<p>Rows = Observations/cases</p>
+<p><strong>What are the cases? What does each row represent?</strong></p>
+</section>
+<section id="data-frames-2" class="slide level2">
+<h2>Data Frames</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="table-responsive">
+<table class="table table-bordered table-striped caption-top" style="font-size: 32px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">ID</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">kind</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">.pred_AI</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">.pred_class</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">detector</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">native</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: right;">0.9999942</td>
+<td style="text-align: left;">AI</td>
+<td style="text-align: left;">Sapling</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Real TOEFL</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: right;">0.8281448</td>
+<td style="text-align: left;">AI</td>
+<td style="text-align: left;">Crossplag</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Real TOEFL</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: right;">0.0002137</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">Crossplag</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Real College Essays</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">AI</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">ZeroGPT</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Fake CS224N - GPT3</td>
+<td style="text-align: left;">GPT3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">AI</td>
+<td style="text-align: right;">0.0017841</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">OriginalityAI</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Fake CS224N - GPT3, PE</td>
+<td style="text-align: left;">GPT4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: right;">0.0001783</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">HFOpenAI</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Real CS224N</td>
+<td style="text-align: left;">Human</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 <p>Columns = Variables</p>
 <p><strong>Variables</strong>: Describe characteristics of the observations</p>
 <ul>
@@ -370,6 +459,100 @@
 <li class="fragment"><p><strong>Categorical</strong>: Values are categories</p></li>
 <li class="fragment"><p><strong>Identification</strong>: Uniquely identify each case</p></li>
 </ul>
+</section>
+<section id="data-frames-3" class="slide level2">
+<h2>Data Frames</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="table-responsive">
+<table class="table table-bordered table-striped caption-top" style="font-size: 32px; margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">ID</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">kind</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">.pred_AI</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">.pred_class</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">detector</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">native</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">name</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: right;">0.9999942</td>
+<td style="text-align: left;">AI</td>
+<td style="text-align: left;">Sapling</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Real TOEFL</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: right;">0.8281448</td>
+<td style="text-align: left;">AI</td>
+<td style="text-align: left;">Crossplag</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Real TOEFL</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: right;">0.0002137</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">Crossplag</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Real College Essays</td>
+<td style="text-align: left;">Human</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">AI</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">ZeroGPT</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Fake CS224N - GPT3</td>
+<td style="text-align: left;">GPT3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">AI</td>
+<td style="text-align: right;">0.0017841</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">OriginalityAI</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Fake CS224N - GPT3, PE</td>
+<td style="text-align: left;">GPT4</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: right;">0.0001783</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">HFOpenAI</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Real CS224N</td>
+<td style="text-align: left;">Human</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Every time you get a new dataset, spend time exploring the variables.</p>
+<div class="fragment" style="font-size: 0.9em;">
+<p><strong>Example questions</strong>:</p>
+<ul>
+<li class="fragment"><p>Is each variable capturing the desired information?</p></li>
+<li class="fragment"><p>For categorical variables, what are the categories? Do those categories adequately represent that variable?</p></li>
+<li class="fragment"><p>For quantitative variables, what values are possible? Were the data rounded or binned? Are those values actually encoding categories? What are the units of measurement?</p></li>
+</ul>
+</div>
 </section>
 <section id="types-of-variables" class="slide level2">
 <h2>Types of variables</h2>
@@ -457,7 +640,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture02_data-viz-intro_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+<p><img data-src="lecture02_data-viz-intro_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -471,7 +654,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture02_data-viz-intro_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+<p><img data-src="lecture02_data-viz-intro_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -538,7 +721,7 @@
 </div></div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_8b3a703c" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_f937ec1a" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -564,7 +747,7 @@
 </div></div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_97c96fe3" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_737ef7bd" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -710,7 +893,7 @@
 <div class="fragment">
 <p>Today we…</p>
 <ul>
-<li>Reviewed data frames</li>
+<li>Introduced data frames</li>
 <li>Motivated data visualizations</li>
 <li>Developed <strong>language</strong> to talk about the components of a graphic</li>
 <li>Practiced deconstructing graphics</li>
@@ -720,10 +903,7 @@
 <h3 id="next-time">Next time</h3>
 <ul>
 <li class="fragment">Tomorrow in lab: intro to using RStudio to code and explore data frames</li>
-<li class="fragment">Friday: We’ll learn about the <code>ggplot2</code> package so that we can use the grammar of graphics to create beeaauutiful visualizations!!
-<ul>
-<li class="fragment">(This is my favorite part of any project, and soon I hope it is yours too)</li>
-</ul></li>
+<li class="fragment">Friday: We’ll learn about the <code>ggplot2</code> package so that we can use the grammar of graphics to create beeaauutiful visualizations!!</li>
 </ul>
 
 
