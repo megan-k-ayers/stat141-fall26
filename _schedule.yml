@@ -36,12 +36,12 @@ scheduled-docs:
           docs:
             - type: Reading & Lab Instr.
               href: readings/reading03.qmd
-            # - type: Download Lab 1
-            #   href: lab/lab01.zip
-            # - type: Slides
-            #   href: slides/labslides01.qmd
-            # - type: Download HW 1
-            #   href: hw/hw01.zip
+            - type: Download Lab 1
+              href: lab/lab01.zip
+            - type: Slides
+              href: slides/labslides01.qmd
+            - type: Download HW 1
+              href: hw/hw01.zip
         - topic: "Data Visualization: the 5 Named Graphs with <code>ggplot2</code>"
           display-date: Friday, Sept 4
           date: 9/4/26

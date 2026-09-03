@@ -111,7 +111,7 @@ count(somerville, primary_transport)
 
 *Pro tip: Clicking on the name of the data frame in the Environment pane opens a spreadsheet window. In that window, you can sort the data frame by a particular variable by clicking on the arrows in that variable's column.*
 
-a. How many observations and variables are in the data frame? What does a row represent in the context of the data?
+**a.** How many observations and variables are in the data frame? What does a row represent in the context of the data?
 
 *******************************************************************************
 
@@ -121,7 +121,7 @@ a. How many observations and variables are in the data frame? What does a row re
 
 
 
-b. Identify which variables are quantitative and which variables are categorical.
+**b.** Identify which variables are quantitative and which variables are categorical.
 
 *******************************************************************************
 
@@ -131,7 +131,7 @@ b. Identify which variables are quantitative and which variables are categorical
 
 
 
-c. Suppose that for the next version of the happiness survey, city officials would like to obtain data on race. Before recent changes, the U.S. Office of Management and Budget required the Census Bureau to have five minimum categories to the question asking respondents for racial identity: White, Black or African American, American Indian or Alaska Native, Asian, and Native Hawaiian or Other Pacific Islander. Discuss the extent to which these categories adequately represent the variable they describe.
+**c.** Suppose that for the next version of the happiness survey, city officials would like to obtain data on race. Before recent changes, the U.S. Office of Management and Budget required the Census Bureau to have five minimum categories to the question asking respondents for racial identity: White, Black or African American, American Indian or Alaska Native, Asian, and Native Hawaiian or Other Pacific Islander. Discuss the extent to which these categories adequately represent the variable they describe.
 
 *******************************************************************************
 
@@ -141,7 +141,7 @@ c. Suppose that for the next version of the happiness survey, city officials wou
 
 
 
-d. Choose a categorical variable in the `somerville` data. Discuss the extent to which the given categories adequately represents the variable it describes.
+**d.** Choose a categorical variable in the `somerville` data. Discuss the extent to which the given categories adequately represents the variable it describes.
 
 *******************************************************************************
 
@@ -151,7 +151,7 @@ d. Choose a categorical variable in the `somerville` data. Discuss the extent to
 
 
 
-e. Choose a quantitative variable in the `somerville` data, and discuss if the range of values given are reasonable. In other words, think about whether there are values that might be the result of data entry error (such as if someone was listed as being 50 feet tall) and comment on what an unreasonable value might look like.
+**e.** Choose a quantitative variable in the `somerville` data, and discuss if the range of values given are reasonable. In other words, think about whether there are values that might be the result of data entry error (such as if someone was listed as being 50 feet tall) and comment on what an unreasonable value might look like.
 
 *******************************************************************************
 
@@ -166,7 +166,7 @@ e. Choose a quantitative variable in the `somerville` data, and discuss if the r
 
 Check out the graphic entitled ["A Brief Visual History of MARC Cataloging at the Library of Congress"](http://sappingattention.blogspot.com/2017/05/a-brief-visual-history-of-marc.html) using the link. This unique visual was created by Benjamin M. Schmidt so that he could better understand the history of how the Library created their digital card catalogs. The many interesting visual artifacts of the graph also help highlight the significant physical work that was involved in the conversion to digital catalogs.
 
-a. What are the variables in the **data** displayed in this graphic? For each variable, specify if it is categorical or quantitative.
+**a.** What are the variables in the **data** displayed in this graphic? For each variable, specify if it is categorical or quantitative.
 
 *******************************************************************************
 
@@ -176,7 +176,7 @@ a. What are the variables in the **data** displayed in this graphic? For each va
 
 
 
-b. How would you describe the **geom**etry being used to display the data?
+**b.** How would you describe the **geom**etry being used to display the data?
 
 *******************************************************************************
 
@@ -186,7 +186,7 @@ b. How would you describe the **geom**etry being used to display the data?
 
 
 
-c. How are each of the variables represented via **aes**thetic elements in the graphic (e.g., x- and y-axis position, color, shape, etc.)?
+**c.** How are each of the variables represented via **aes**thetic elements in the graphic (e.g., x- and y-axis position, color, shape, etc.)?
 
 *******************************************************************************
 
@@ -196,7 +196,7 @@ c. How are each of the variables represented via **aes**thetic elements in the g
 
 
 
-d. Is other context provided?  If so, how does it help the viewer better understand the graphic's story?
+**d.** Is other context provided?  If so, how does it help the viewer better understand the graphic's story?
 
 *******************************************************************************
 
@@ -206,7 +206,7 @@ d. Is other context provided?  If so, how does it help the viewer better underst
 
 
 
-e. What does this graph do well?
+**e.** What does this graph do well?
 
 *******************************************************************************
 
@@ -216,7 +216,7 @@ e. What does this graph do well?
 
 
 
-f. How could this graph be improved?
+**f.** How could this graph be improved?
 
 *******************************************************************************
 
@@ -262,7 +262,7 @@ grid.arrange(g1, g2)
 
 ```
 
-a. What features of the distribution are apparent in the histogram and not the box plot? What features are apparent in the box plot but not in the histogram?
+**a.** What features of the distribution are apparent in the histogram and not the box plot? What features are apparent in the box plot but not in the histogram?
 
 *******************************************************************************
 
@@ -272,7 +272,7 @@ a. What features of the distribution are apparent in the histogram and not the b
 
 
 
-b. What may be the reason for the bimodal distribution? Explain.
+**b.** What may be the reason for the bimodal distribution? Explain.
 
 *******************************************************************************
 
@@ -282,7 +282,7 @@ b. What may be the reason for the bimodal distribution? Explain.
 
 
 
-c. How does the box plot shown below help you compare the distribution of marathon times for men and women?
+**c.** How does the box plot shown below help you compare the distribution of marathon times for men and women?
 
 ```{r}
 ggplot(nyc_marathon, aes(x = time_hrs, y = division, color = division)) +
@@ -300,7 +300,7 @@ ggplot(nyc_marathon, aes(x = time_hrs, y = division, color = division)) +
 
 
 
-d. The time series plot shown below is another way to look at these data. Describe what is visible in this plot but not in the others.
+**d.** The time series plot shown below is another way to look at these data. Describe what is visible in this plot but not in the others.
 
 ```{r}
     ggplot(nyc_marathon, aes(x = year, y = time_hrs,
@@ -318,7 +318,7 @@ d. The time series plot shown below is another way to look at these data. Descri
 
 
 
-e. The barplot below shows the count of marathon wins per unique name in the data. What insights might this type of plot offer? What issues prevent you from making insights or gaining context?
+**e.** The barplot below shows the count of marathon wins per unique name in the data. What insights might this type of plot offer? What issues prevent you from making insights or gaining context?
 
 ```{r}
 

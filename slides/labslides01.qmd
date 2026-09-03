@@ -1,7 +1,7 @@
 ---
 pagetitle: "Lab 1: Intro to R, RStudio, Quarto"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -36,7 +36,7 @@ library(tidyverse)
 
 ::::: columns
 ::: {.column .center width="60%"}
-![](img/DAW.jpeg){width="90%"}
+![](img/DAW_prev.jpeg){width="90%"}
 :::
 
 ::: {.column .center width="40%"}
@@ -54,8 +54,19 @@ library(tidyverse)
 
 ------------------------------------------------------------------------
 
-## Announcements/reminders
--   Course assistant office hours are posted on Moodle
+## Quick announcement: LaTeX Workshop! 
+
+::: nonincremental
+
+Interested in learning about how to use **LaTeX**? Grayson White and Marcus Robinson will host a workshop for getting started with TeX **today, Thursday, September 3rd from 6:00 pm - 6:30 pm in Eliot 314**. 
+
+- The workshop will utilize Overleaf. They will focus on getting a first document set-up and then spend some time learning basic commands. 
+
+- Anyone is welcome but this workshop is specifically targeted for new LaTeX users!
+
+- While LaTeX is not required for this course, it can be really helpful for formatting equations in your assignment files! 
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -63,33 +74,56 @@ library(tidyverse)
 
 ::: nonincremental
 -   Get to know each other
--   General lab policies
+-   General lab logistics
 -   Take a tour of RStudio
 -   Download the lab materials for today on RStudio Server and start the lab
 :::
 
 ------------------------------------------------------------------------
 
-## Quick introductions
+## Quick introductions - small groups
+
+Find 2-3 people near you and share your:
+
 ::: nonincremental
 -   Name
 -   Pronouns
--   Something you're excited for this semester (Reed-related or not)
+-   Favorite place to get a treat in Portland (could be coffee, tea, pie, ice cream, etc.)
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(2)
+```
+
+
+------------------------------------------------------------------------
+
+## Quick introductions - whole class
+
+::: nonincremental
+-   Name
+-   Pronouns
 :::
 
 ------------------------------------------------------------------------
 
-## Lab logistics policies
+## Lab logistics
 
 - Labs are due at the end of the lab period as **PDFs** on **Gradescope**
 - If we run out of time to try all problems...
     - Just submit the progress you made
-    - Stay tuned for more info from me about any essential content we didn't cover
+    - It will be helpful to finish at your own pace after class, but you don't need to submit again
+    - Solutions (+ sometimes feedback) will be shared via Gradescope
 - If you have an error preventing your PDF from rendering, shoot me an email, submit by the end of the day
 - We'll work on labs in small groups and periodically discuss progress all together
 
 ------------------------------------------------------------------------
 
-## Demo: Tour of RStudio, start the lab
+## Demo: Finding the lab files, tour of RStudio, starting the lab
+
+
+
+
 
 
