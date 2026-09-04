@@ -456,7 +456,7 @@ ggplot(data = biketown,
 ```{r}
 library(pdxTrees)
 near_Reed <- get_pdxTrees_parks(park = c("Woodstock Park", "Sellwood Riverfront Park", "Kenilworth Park"))
-near_Reed <- near_Reed[near_Reed$Genus %in% c("Acer", "Quercus", "Pinus", "Thuja", "Pseudotsuga"), ]
+near_Reed <- near_Reed %>% filter(Genus %in% c("Acer", "Quercus", "Pinus", "Thuja", "Pseudotsuga"))
 
 ```
 
@@ -506,8 +506,7 @@ Is there something visually off with the points in this graph?
 
 ```{r}
 #| output-location: column
-
-
+#| code-line-numbers: "4"
 ggplot(data = near_Reed,
        mapping = aes(x = DBH,
                      y = Carbon_Storage_lb)) +
@@ -525,8 +524,7 @@ ggplot(data = near_Reed,
 ::: {.nonincremental}
 ```{r}
 #| output-location: column
-
-
+#| code-line-numbers: "5-9"
 ggplot(data = near_Reed,
        mapping = aes(x = DBH,
                      y = Carbon_Storage_lb)) +
@@ -548,8 +546,7 @@ ggplot(data = near_Reed,
 
 ```{r}
 #| output-location: column
-
-
+#| code-line-numbers: "4"
 ggplot(data = near_Reed,
        mapping = aes(x = DBH,
                      y = Carbon_Storage_lb,
@@ -578,8 +575,7 @@ ggplot(data = near_Reed,
 
 ```{r}
 #| output-location: column
-
-
+#| code-line-numbers: "4"
 ggplot(data = near_Reed,
        mapping = aes(x = DBH,
                      y = Carbon_Storage_lb,
@@ -631,8 +627,7 @@ ggplot(data = near_Reed,
 
 ```{r}
 #| output-location: column
-
-
+#| code-line-numbers: "6"
 ggplot(data = near_Reed,
        mapping = aes(x = DBH,
                      y = Carbon_Storage_lb,
@@ -660,9 +655,10 @@ ggplot(data = near_Reed,
 ## Adjusting Labels: Rotate
 
 ```{r bar4}
-
-biketown$month <- ifelse(biketown$month == 7, "July",
-                         ifelse(biketown$month == 8, "August", "September"))
+#| code-line-numbers: "7-10"
+biketown <- biketown %>% mutate(month = case_when(month == "7" ~ "July",
+                                                  month == "8" ~ "August",
+                                                  month == "9" ~ "September"))
 ggplot(data = biketown, 
        mapping = aes(x = month)) +
   geom_bar() +
@@ -692,6 +688,7 @@ ggplot(data = biketown,
 ## Zooming In
 
 ```{r box5}
+#| code-line-numbers: "7"
 ggplot(data = biketown, 
        mapping = aes(x = PaymentPlan, 
                      y = Distance_Miles,
@@ -707,6 +704,7 @@ ggplot(data = biketown,
 
 ```{r}
 #| output-location: column
+#| code-line-numbers: "7-10"
 ggplot(data = biketown, 
        mapping = aes(x = PaymentPlan, 
                      y = Distance_Miles,
@@ -725,6 +723,7 @@ ggplot(data = biketown,
 
 ```{r}
 #| output-location: column
+#| code-line-numbers: "5-7"
 ggplot(data = near_Reed,
        mapping = aes(x = DBH,
                      y = Carbon_Storage_lb,
@@ -758,6 +757,7 @@ You can also use hex color codes to fully customize colors.
 
 ```{r}
 #| output-location: column
+#| code-line-numbers: "7-11"
 ggplot(data = near_Reed,
        mapping = aes(x = DBH,
                      y = Carbon_Storage_lb,
@@ -780,6 +780,7 @@ ggplot(data = near_Reed,
 
 ```{r}
 #| output-location: column
+#| code-line-numbers: "11-12"
 ggplot(data = near_Reed,
        mapping = aes(x = DBH,
                      y = Carbon_Storage_lb,
@@ -790,8 +791,8 @@ ggplot(data = near_Reed,
                                 "forestgreen",
                                 "goldenrod",
                                 "maroon")) +
-  theme_bw() +
-  theme(legend.position = "bottom") 
+  theme_bw() +   # Preset theme
+  theme(legend.position = "bottom")   # Customize details individually
 ```
 
 ------------------------------------------------------------------------

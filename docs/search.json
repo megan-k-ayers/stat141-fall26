@@ -711,7 +711,7 @@
     "href": "slides/lecture03_five-named-graphs.html#new-data-context-pdxtrees-1",
     "title": "STAT 141",
     "section": "New Data Context: pdxTrees",
-    "text": "New Data Context: pdxTrees\n\nThe pdxTrees R package contains data on all the trees in the Portland Metro Area.\nToday, we’ll look at the Maple, Oak, Pine, Cedar, and Douglas-fir trees in a few parks near Reed.\nLet’s load the data\nDon’t worry, we haven’t learned the below code yet.\n\n\nlibrary(pdxTrees)\nnear_Reed &lt;- get_pdxTrees_parks(park = c(\"Woodstock Park\", \"Sellwood Riverfront Park\", \"Kenilworth Park\"))\nnear_Reed &lt;- near_Reed[near_Reed$Genus %in% c(\"Acer\", \"Quercus\", \"Pinus\", \"Thuja\", \"Pseudotsuga\"), ]"
+    "text": "New Data Context: pdxTrees\n\nThe pdxTrees R package contains data on all the trees in the Portland Metro Area.\nToday, we’ll look at the Maple, Oak, Pine, Cedar, and Douglas-fir trees in a few parks near Reed.\nLet’s load the data\nDon’t worry, we haven’t learned the below code yet.\n\n\nlibrary(pdxTrees)\nnear_Reed &lt;- get_pdxTrees_parks(park = c(\"Woodstock Park\", \"Sellwood Riverfront Park\", \"Kenilworth Park\"))\nnear_Reed &lt;- near_Reed %&gt;% filter(Genus %in% c(\"Acer\", \"Quercus\", \"Pinus\", \"Thuja\", \"Pseudotsuga\"))"
   },
   {
     "objectID": "slides/lecture03_five-named-graphs.html#inspect-the-data-2",
@@ -802,7 +802,7 @@
     "href": "slides/lecture03_five-named-graphs.html#adjusting-labels-rotate",
     "title": "STAT 141",
     "section": "Adjusting Labels: Rotate",
-    "text": "Adjusting Labels: Rotate\n\nbiketown$month &lt;- ifelse(biketown$month == 7, \"July\",\n                         ifelse(biketown$month == 8, \"August\", \"September\"))\nggplot(data = biketown, \n       mapping = aes(x = month)) +\n  geom_bar() +\n    theme(axis.text.x =\n          element_text(angle = 45,\n                       vjust = 1,\n                       hjust = 1))"
+    "text": "Adjusting Labels: Rotate\n\nbiketown &lt;- biketown %&gt;% mutate(month = case_when(month == \"7\" ~ \"July\",\n                                                  month == \"8\" ~ \"August\",\n                                                  month == \"9\" ~ \"September\"))\nggplot(data = biketown, \n       mapping = aes(x = month)) +\n  geom_bar() +\n    theme(axis.text.x =\n          element_text(angle = 45,\n                       vjust = 1,\n                       hjust = 1))"
   },
   {
     "objectID": "slides/lecture03_five-named-graphs.html#zooming-in",
@@ -851,6 +851,6 @@
     "href": "slides/lecture03_five-named-graphs.html#use-a-different-theme",
     "title": "STAT 141",
     "section": "Use a Different Theme",
-    "text": "Use a Different Theme\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb,\n                     color = Genus)) +\n  geom_line(size = 2) +\n  scale_color_manual(values = c(\"violetred2\",\n                                \"steelblue4\",\n                                \"forestgreen\",\n                                \"goldenrod\",\n                                \"maroon\")) +\n  theme_bw() +\n  theme(legend.position = \"bottom\")"
+    "text": "Use a Different Theme\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb,\n                     color = Genus)) +\n  geom_line(size = 2) +\n  scale_color_manual(values = c(\"violetred2\",\n                                \"steelblue4\",\n                                \"forestgreen\",\n                                \"goldenrod\",\n                                \"maroon\")) +\n  theme_bw() +   # Preset theme\n  theme(legend.position = \"bottom\")   # Customize details individually"
   }
 ]
