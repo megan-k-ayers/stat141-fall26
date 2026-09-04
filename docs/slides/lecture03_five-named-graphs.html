@@ -212,20 +212,22 @@
 
 <h3 id="remindersannouncements">Reminders/Announcements</h3>
 <ul>
-<li class="fragment">If you plan to request academic accommodations, please submit these through the <strong>DAR student portal</strong></li>
-<li class="fragment">Course assistant office hours are now on Moodle</li>
-<li class="fragment"><a href="https://www.reed.edu/data-at-reed/data_lab/">The DataLab @ Reed</a></li>
-<li class="fragment">First homework assignment is posted!</li>
+<li class="fragment">Office hours update</li>
+<li class="fragment">First homework assignment due on Thursday 9/10</li>
+<li class="fragment">There won’t be a quiz on this first homework <!-- -   [The DataLab @ Reed](https://www.reed.edu/data-at-reed/data_lab/) --> <!-- -   First homework assignment is posted!  --></li>
 </ul>
-<!-- ```{r, echo = FALSE, eval = FALSE} -->
-<!-- library(tidyverse) -->
-<!-- qod <- read.csv("data/qod_coffee-tea.csv") -->
-<!-- qod %>% count(clean.answer) %>% -->
-<!--   ggplot(aes(y = reorder(clean.answer, n), x = n)) + -->
-<!--   geom_col() + -->
-<!--   ylab("") + -->
-<!--   theme_classic() -->
-<!-- ``` -->
+<p><br></p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section class="slide level2">
 
@@ -241,10 +243,10 @@
 <li class="fragment">Learn the general structure of <code>ggplot2</code></li>
 <li class="fragment">Learn five standard graphs for numerical/quantitative data:
 <ul>
-<li class="fragment"><strong>Histogram</strong>: one numerical variable</li>
-<li class="fragment"><strong>Boxplot</strong>: one numerical variable</li>
-<li class="fragment"><strong>Barplot</strong>: one numerical variable<span class="math inline">\(^*\)</span> and at least one categorical variable</li>
-<li class="fragment"><strong>Scatterplot</strong> and <strong>Linegraph</strong>: two numerical variables</li>
+<li class="fragment"><strong>Histogram</strong>: one quantitative variable</li>
+<li class="fragment"><strong>Boxplot</strong>: one quantitative variable</li>
+<li class="fragment"><strong>Barplot</strong>: one categorical variable, one quantitative variable<span class="math inline">\(^*\)</span></li>
+<li class="fragment"><strong>Scatterplot</strong> and <strong>Linegraph</strong>: two quantitative variables</li>
 </ul></li>
 </ul>
 </section>
@@ -340,7 +342,8 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 6           5.54   53.783           keypad          FALSE</code></pre>
 </div>
 </div>
-<p>What does a row represent here?</p>
+<p><br><br></p>
+<p><strong>Q:</strong> What does a row represent here?</p>
 </section>
 <section id="inspect-the-data-1" class="slide level2">
 <h2>Inspect the Data</h2>
@@ -386,16 +389,18 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 <section id="ggplot2-example-code" class="slide level2">
 <h2><code>ggplot2</code> example code</h2>
 <p><strong>Guiding Principle</strong>: We will map variables from the <strong>data</strong> to the <strong>aes</strong>thetic attributes (e.g.&nbsp;location, size, shape, color) of <strong>geom</strong>etric objects (e.g.&nbsp;points, lines, bars).</p>
+<p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="sc">---</span>, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="sc">---</span>)) <span class="sc">+</span></span>
 <span id="cb12-2"><a></a>  geom_<span class="sc">---</span>(<span class="sc">---</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p><br></p>
 <ul>
 <li class="fragment">There are other layers, such as <code>scale_---_---()</code> and <code>labs()</code>, but we will wait on those for a bit.</li>
 </ul>
 <p><br></p>
 <ul>
-<li class="fragment">We are about to touch on many details of graphs - focus on recognizing this general pattern, revisit the slides to refresh on the coding specifics</li>
+<li class="fragment">We are about to touch on many details of graphs - focus on recognizing this general pattern, expect to revisit these slides to refresh on the specifics</li>
 </ul>
 </section>
 <section id="histograms" class="slide level2">
@@ -405,15 +410,15 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 <ul>
 <li class="fragment"><p>Binned counts of data.</p></li>
 <li class="fragment"><p>Great for assessing data distribution and shape.</p></li>
-<li class="fragment"><p><strong>Question</strong>: are histograms used for <em>quantitative</em> or <em>categorical</em> variables?</p></li>
-<li class="fragment"><p><strong>Answer</strong>: <em>Quantitative</em>.</p></li>
+<li class="fragment"><p><strong>Q</strong>: are histograms used for <em>quantitative</em> or <em>categorical</em> variables?</p></li>
 </ul>
+<!-- - **Answer**: *Quantitative*.  -->
 </div><div class="column" style="width:66%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -426,7 +431,7 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="1152"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="1152"></p>
 </figure>
 </div>
 </div>
@@ -500,7 +505,7 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -520,7 +525,7 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -544,7 +549,7 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 </div>
 </div></div>
 <ul>
-<li class="fragment">Is this <code>fill</code> an <code>aes</code>thetic mapping?</li>
+<li class="fragment"><strong>Q</strong>: Is this <code>fill</code> an <code>aes</code>thetic mapping?</li>
 </ul>
 </section>
 <section id="boxplots-3" class="slide level2">
@@ -566,8 +571,8 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 </div>
 </div></div>
 <ul>
-<li class="fragment"><p>Is this <code>fill</code> an <code>aes</code>thetic mapping?</p></li>
-<li class="fragment"><p>What variable is mapped to <code>fill</code>?</p></li>
+<li class="fragment"><p><strong>Q</strong>: Is this <code>fill</code> an <code>aes</code>thetic mapping?</p></li>
+<li class="fragment"><p><strong>Q</strong>: What variable is mapped to <code>fill</code>?</p></li>
 </ul>
 </section>
 <section id="boxplots-4" class="slide level2">
@@ -626,7 +631,7 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -648,7 +653,7 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -747,7 +752,8 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 #   Carbon_Sequestration_value &lt;dbl&gt;, Stormwater_ft &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
-<p>What does a row represent here?</p>
+<p><br></p>
+<p><strong>Q</strong>: What does a row represent here?</p>
 </section>
 <section id="scatterplots" class="slide level2">
 <h2>Scatterplots</h2>
@@ -768,7 +774,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -790,7 +796,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -816,7 +822,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -840,7 +846,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -858,7 +864,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -877,7 +883,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -891,7 +897,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -901,20 +907,18 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
 <ul>
-<li class="fragment">Which do you prefer?</li>
-<li class="fragment">Does it depend on context?</li>
+<li class="fragment">Similar, but one might be preferred depending on context.</li>
 </ul>
 </section>
 <section id="a-speedy-peek-at-advanced-techniques" class="slide level2">
 <h2>A speedy peek at advanced techniques!</h2>
-<p>If we run out of time, we’ll pick this back up during lab next Thursday.</p>
 </section>
 <section id="faceting" class="slide level2">
 <h2>Faceting</h2>
@@ -931,7 +935,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -943,10 +947,9 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <section id="customizing-your-ggplot2-plots" class="slide level2">
 <h2>Customizing your <code>ggplot2</code> Plots</h2>
 <ul>
-<li class="fragment"><p>There are so <strong>many</strong> ways you can customize the look of your <code>ggplot2</code> plots</p></li>
-<li class="fragment"><p>Let’s look quickly at some common changes:</p>
+<li class="fragment"><p>There are so <strong>many</strong> ways you can customize the look of your <code>ggplot2</code> plots</p>
 <ul>
-<li class="fragment">Fussing with labels</li>
+<li class="fragment">Adjusting labels</li>
 <li class="fragment">Zooming in</li>
 <li class="fragment">Using multiple <code>geoms</code></li>
 <li class="fragment">Color!</li>
@@ -954,8 +957,8 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 </ul></li>
 </ul>
 </section>
-<section id="fussing-with-labels-rotate" class="slide level2">
-<h2>Fussing with Labels: Rotate</h2>
+<section id="adjusting-labels-rotate" class="slide level2">
+<h2>Adjusting Labels: Rotate</h2>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>biketown<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(biketown<span class="sc">$</span>month <span class="sc">==</span> <span class="dv">7</span>, <span class="st">"July"</span>,</span>
 <span id="cb34-2"><a></a>                         <span class="fu">ifelse</span>(biketown<span class="sc">$</span>month <span class="sc">==</span> <span class="dv">8</span>, <span class="st">"August"</span>, <span class="st">"September"</span>))</span>
@@ -987,7 +990,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1025,12 +1028,12 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <span id="cb37-7"><a></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>,</span>
 <span id="cb37-8"><a></a>              <span class="at">height =</span> <span class="dv">0</span>, </span>
 <span id="cb37-9"><a></a>              <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb37-10"><a></a>    <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb37-10"><a></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1051,7 +1054,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-29-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1287,6 +1290,9 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="fragment">
 <p>You can also use hex color codes to fully customize colors.</p>
 </div>
+<div class="fragment">
+<p><a href="https://r-charts.com/colors/">This linked webpage is a permitted internet resource for going to town on color customization</a></p>
+</div>
 </section>
 <section id="change-the-color-1" class="slide level2">
 <h2>Change the Color</h2>
@@ -1307,7 +1313,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-30-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-31-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1336,7 +1342,7 @@ $ Species_Factoid            &lt;chr&gt; "Acorns take two years to mature and ar
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-31-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture03_five-named-graphs_files/figure-revealjs/unnamed-chunk-32-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>

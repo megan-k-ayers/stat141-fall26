@@ -203,6 +203,48 @@
     "text": "Summary Thoughts on Graphical Considerations\n\nGood graphics are one’s where the findings and insights are obvious to the viewer.\n\nAdd information and key context.\n\nFacilitate the comparisons that correspond to the research question.\n\nRecall the three Georgia COVID counts graphs from Day 1!\n\nData visualizations are not neutral.\nIt is easier to see the differences and similarities between different types of graphics if we learn the grammar of graphics.\nPracticing decomposing graphics should make it easier for us to compose our own graphics."
   },
   {
+    "objectID": "slides/labslides01.html#quick-announcement-latex-workshop",
+    "href": "slides/labslides01.html#quick-announcement-latex-workshop",
+    "title": "STAT 141",
+    "section": "Quick announcement: LaTeX Workshop!",
+    "text": "Quick announcement: LaTeX Workshop!\nInterested in learning about how to use LaTeX? Grayson White and Marcus Robinson will host a workshop for getting started with TeX today, Thursday, September 3rd from 6:00 pm - 6:30 pm in Eliot 314.\n\nThe workshop will utilize Overleaf. They will focus on getting a first document set-up and then spend some time learning basic commands.\nAnyone is welcome but this workshop is specifically targeted for new LaTeX users!\nWhile LaTeX is not required for this course, it can be really helpful for formatting equations in your assignment files!"
+  },
+  {
+    "objectID": "slides/labslides01.html#goals-for-today",
+    "href": "slides/labslides01.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for Today",
+    "text": "Goals for Today\n\nGet to know each other\nGeneral lab logistics\nTake a tour of RStudio\nDownload the lab materials for today on RStudio Server and start the lab"
+  },
+  {
+    "objectID": "slides/labslides01.html#quick-introductions---small-groups",
+    "href": "slides/labslides01.html#quick-introductions---small-groups",
+    "title": "STAT 141",
+    "section": "Quick introductions - small groups",
+    "text": "Quick introductions - small groups\nFind 2-3 people near you and share your:\n\nName\nPronouns\nFavorite place to get a treat in Portland (could be coffee, tea, pie, ice cream, etc.)"
+  },
+  {
+    "objectID": "slides/labslides01.html#quick-introductions---whole-class",
+    "href": "slides/labslides01.html#quick-introductions---whole-class",
+    "title": "STAT 141",
+    "section": "Quick introductions - whole class",
+    "text": "Quick introductions - whole class\n\nName\nPronouns"
+  },
+  {
+    "objectID": "slides/labslides01.html#lab-logistics",
+    "href": "slides/labslides01.html#lab-logistics",
+    "title": "STAT 141",
+    "section": "Lab logistics",
+    "text": "Lab logistics\n\nLabs are due at the end of the lab period as PDFs on Gradescope\nIf we run out of time to try all problems…\n\nJust submit the progress you made\nIt will be helpful to finish at your own pace after class, but you don’t need to submit again\nSolutions (+ sometimes feedback) will be shared via Gradescope\n\nIf you have an error preventing your PDF from rendering, shoot me an email, submit by the end of the day\nWe’ll work on labs in small groups and periodically discuss progress all together"
+  },
+  {
+    "objectID": "slides/labslides01.html#demo-finding-the-lab-files-tour-of-rstudio-starting-the-lab",
+    "href": "slides/labslides01.html#demo-finding-the-lab-files-tour-of-rstudio-starting-the-lab",
+    "title": "STAT 141",
+    "section": "Demo: Finding the lab files, tour of RStudio, starting the lab",
+    "text": "Demo: Finding the lab files, tour of RStudio, starting the lab"
+  },
+  {
     "objectID": "readings/reading04.html",
     "href": "readings/reading04.html",
     "title": "Stat 141: Readings for September 4, 2026",
@@ -523,5 +565,292 @@
     "title": "STAT 141",
     "section": "Data Frames",
     "text": "Data Frames\n\n\n\n\n\n\nID\nkind\n.pred_AI\n.pred_class\ndetector\nnative\nname\nmodel\n\n\n\n\n1\nHuman\n0.9999942\nAI\nSapling\nNo\nReal TOEFL\nHuman\n\n\n2\nHuman\n0.8281448\nAI\nCrossplag\nNo\nReal TOEFL\nHuman\n\n\n3\nHuman\n0.0002137\nHuman\nCrossplag\nYes\nReal College Essays\nHuman\n\n\n4\nAI\n0.0000000\nHuman\nZeroGPT\nNA\nFake CS224N - GPT3\nGPT3\n\n\n5\nAI\n0.0017841\nHuman\nOriginalityAI\nNA\nFake CS224N - GPT3, PE\nGPT4\n\n\n6\nHuman\n0.0001783\nHuman\nHFOpenAI\nYes\nReal CS224N\nHuman\n\n\n\n\n\n\nEvery time you get a new dataset, spend time exploring the variables.\n\nExample questions:\n\nIs each variable capturing the desired information?\nFor categorical variables, what are the categories? Do those categories adequately represent that variable?\nFor quantitative variables, what values are possible? Were the data rounded or binned? Are those values actually encoding categories? What are the units of measurement?"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#load-necessary-packages",
+    "href": "slides/lecture03_five-named-graphs.html#load-necessary-packages",
+    "title": "STAT 141",
+    "section": "Load Necessary Packages",
+    "text": "Load Necessary Packages\n\n\n\n\n\nggplot2 is part of this collection of data science packages.\n\n# Load necessary packages\nlibrary(tidyverse)\n\n\nAlso, above is an example of a code comment: # Load necessary packages"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#data-setting-portland-bikeshare-data",
+    "href": "slides/lecture03_five-named-graphs.html#data-setting-portland-bikeshare-data",
+    "title": "STAT 141",
+    "section": "Data Setting: Portland Bikeshare Data",
+    "text": "Data Setting: Portland Bikeshare Data"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#import-the-data",
+    "href": "slides/lecture03_five-named-graphs.html#import-the-data",
+    "title": "STAT 141",
+    "section": "Import the Data",
+    "text": "Import the Data\n\nbiketown &lt;- read.csv(\"data/biketown.csv\")\n\n# Inspect the data\nglimpse(biketown)\n\nRows: 9,999\nColumns: 19\n$ RouteID          &lt;int&gt; 4074085, 3719219, 3789757, 3576798, 3459987, 3947695,…\n$ PaymentPlan      &lt;chr&gt; \"Subscriber\", \"Casual\", \"Casual\", \"Subscriber\", \"Casu…\n$ StartHub         &lt;chr&gt; \"SE Elliott at Division\", \"SW Yamhill at Director Par…\n$ StartLatitude    &lt;dbl&gt; 45.50513, 45.51898, 45.52990, 45.52389, 45.53028, 45.…\n$ StartLongitude   &lt;dbl&gt; -122.6534, -122.6813, -122.6628, -122.6722, -122.6547…\n$ StartDate        &lt;chr&gt; \"8/17/2017\", \"7/22/2017\", \"7/27/2017\", \"7/12/2017\", \"…\n$ StartTime        &lt;chr&gt; \"10:44:00\", \"14:49:00\", \"14:13:00\", \"13:23:00\", \"19:3…\n$ EndHub           &lt;chr&gt; \"Blues Fest - SW Waterfront at Clay - Disabled\", \"SW …\n$ EndLatitude      &lt;dbl&gt; 45.51287, 45.52142, 45.55902, 45.53409, 45.52990, 45.…\n$ EndLongitude     &lt;dbl&gt; -122.6749, -122.6726, -122.6355, -122.6949, -122.6628…\n$ EndDate          &lt;chr&gt; \"8/17/2017\", \"7/22/2017\", \"7/27/2017\", \"7/12/2017\", \"…\n$ EndTime          &lt;chr&gt; \"10:56:00\", \"15:00:00\", \"14:42:00\", \"13:38:00\", \"20:3…\n$ TripType         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ BikeID           &lt;int&gt; 6163, 6843, 6409, 7375, 6354, 6088, 6089, 5988, 6857,…\n$ BikeName         &lt;chr&gt; \"0488 BIKETOWN\", \"0759 BIKETOWN\", \"0614 BIKETOWN\", \"0…\n$ Distance_Miles   &lt;dbl&gt; 1.91, 0.72, 3.42, 1.81, 4.51, 5.54, 1.59, 1.03, 0.70,…\n$ Duration         &lt;dbl&gt; 11.500, 11.383, 28.317, 14.917, 60.517, 53.783, 23.86…\n$ RentalAccessPath &lt;chr&gt; \"keypad\", \"keypad\", \"keypad\", \"keypad\", \"keypad\", \"ke…\n$ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE…"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#inspect-the-data",
+    "href": "slides/lecture03_five-named-graphs.html#inspect-the-data",
+    "title": "STAT 141",
+    "section": "Inspect the Data",
+    "text": "Inspect the Data\n\n# Look at first few rows\nhead(biketown)\n\n  RouteID PaymentPlan                    StartHub StartLatitude StartLongitude\n1 4074085  Subscriber      SE Elliott at Division      45.50513      -122.6534\n2 3719219      Casual SW Yamhill at Director Park      45.51898      -122.6813\n3 3789757      Casual          NE Holladay at MLK      45.52990      -122.6628\n4 3576798  Subscriber             NW Couch at 2nd      45.52389      -122.6722\n5 3459987      Casual    NE 11th at Holladay Park      45.53028      -122.6547\n6 3947695      Casual          SW Moody at Thomas      45.49429      -122.6719\n  StartDate StartTime                                        EndHub EndLatitude\n1 8/17/2017  10:44:00 Blues Fest - SW Waterfront at Clay - Disabled    45.51287\n2 7/22/2017  14:49:00                                SW 2nd at Pine    45.52142\n3 7/27/2017  14:13:00 NE Alberta at NE 29th/30th - Community Corral    45.55902\n4 7/12/2017  13:23:00                            NW Raleigh at 21st    45.53409\n5  7/3/2017  19:30:00                            NE Holladay at MLK    45.52990\n6  8/8/2017  10:01:00                              SW 3rd at Ankeny    45.52248\n  EndLongitude   EndDate  EndTime TripType BikeID                BikeName\n1    -122.6749 8/17/2017 10:56:00       NA   6163           0488 BIKETOWN\n2    -122.6726 7/22/2017 15:00:00       NA   6843           0759 BIKETOWN\n3    -122.6355 7/27/2017 14:42:00       NA   6409           0614 BIKETOWN\n4    -122.6949 7/12/2017 13:38:00       NA   7375 0959 BETRUE MAX - RECON\n5    -122.6628  7/3/2017 20:30:00       NA   6354           0374 BIKETOWN\n6    -122.6733  8/8/2017 10:55:00       NA   6088           0048 BIKETOWN\n  Distance_Miles Duration RentalAccessPath MultipleRental\n1           1.91   11.500           keypad          FALSE\n2           0.72   11.383           keypad          FALSE\n3           3.42   28.317           keypad          FALSE\n4           1.81   14.917           keypad          FALSE\n5           4.51   60.517           keypad           TRUE\n6           5.54   53.783           keypad          FALSE\n\n\n\nQ: What does a row represent here?"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#inspect-the-data-1",
+    "href": "slides/lecture03_five-named-graphs.html#inspect-the-data-1",
+    "title": "STAT 141",
+    "section": "Inspect the Data",
+    "text": "Inspect the Data\n\n# Determine type\n# To access one variable: dataset$variable\nclass(biketown$BikeName)\n\n[1] \"character\"\n\nclass(biketown$Distance_Miles)\n\n[1] \"numeric\"\n\nclass(biketown)\n\n[1] \"data.frame\""
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#grammar-of-graphics",
+    "href": "slides/lecture03_five-named-graphs.html#grammar-of-graphics",
+    "title": "STAT 141",
+    "section": "Grammar of Graphics",
+    "text": "Grammar of Graphics\n\ndata: Data frame that contains the raw data\n\nVariables used in the graph\n\ngeom: Geometric shape that the data are mapped to.\n\nEX: Point, line, bar, text, …\n\naesthetic: Visual properties of the geom\n\nEX: X (horizontal) position, y (vertical) position, color, fill, shape\n\nscale: Controls how data are mapped to the visual values of the aesthetic.\n\nEX: particular colors, log scale\n\nguide: Legend/key to help user convert visual display back to the data"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#ggplot2-example-code",
+    "href": "slides/lecture03_five-named-graphs.html#ggplot2-example-code",
+    "title": "STAT 141",
+    "section": "ggplot2 example code",
+    "text": "ggplot2 example code\nGuiding Principle: We will map variables from the data to the aesthetic attributes (e.g. location, size, shape, color) of geometric objects (e.g. points, lines, bars).\n\n\nggplot(data = ---, mapping = aes(---)) +\n  geom_---(---) \n\n\n\nThere are other layers, such as scale_---_---() and labs(), but we will wait on those for a bit.\n\n\n\nWe are about to touch on many details of graphs - focus on recognizing this general pattern, expect to revisit these slides to refresh on the specifics"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#histograms",
+    "href": "slides/lecture03_five-named-graphs.html#histograms",
+    "title": "STAT 141",
+    "section": "Histograms",
+    "text": "Histograms\n\n\n\nBinned counts of data.\nGreat for assessing data distribution and shape.\nQ: are histograms used for quantitative or categorical variables?"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#data-shapes",
+    "href": "slides/lecture03_five-named-graphs.html#data-shapes",
+    "title": "STAT 141",
+    "section": "Data Shapes",
+    "text": "Data Shapes"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#histograms-1",
+    "href": "slides/lecture03_five-named-graphs.html#histograms-1",
+    "title": "STAT 141",
+    "section": "Histograms",
+    "text": "Histograms\n\n\n# Create histogram\nggplot(data = biketown, \n       mapping = aes(x = Distance_Miles)) +\n  geom_histogram()"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#histograms-2",
+    "href": "slides/lecture03_five-named-graphs.html#histograms-2",
+    "title": "STAT 141",
+    "section": "Histograms",
+    "text": "Histograms\n\n\n# Create histogram\nggplot(data = biketown, \n       mapping = aes(x = Distance_Miles)) +\n  geom_histogram(color = \"white\",\n                 fill = \"violetred1\",\n                 bins = 50)\n\n\n\n\n\n\n\n\n\n\nmapping to a variable goes in aes()\nsetting to a specific, constant, value goes in the geom_---() \nDoes the right tail of this distribution make sense?"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#boxplots",
+    "href": "slides/lecture03_five-named-graphs.html#boxplots",
+    "title": "STAT 141",
+    "section": "Boxplots",
+    "text": "Boxplots\n\n\n\nFive number summary:\n\nMinimum\nFirst quartile (Q1)\nMedian\nThird quartile (Q3)\nMaximum\n\nInterquartile range (IQR) \\(=\\) Q3 \\(-\\) Q1\nOutliers: unusual points\n\nBoxplot defines unusual as being beyond \\(1.5*IQR\\) from \\(Q1\\) or \\(Q3\\).\n\nWhiskers: reach out to the furthest point that is NOT an outlier"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#boxplots-1",
+    "href": "slides/lecture03_five-named-graphs.html#boxplots-1",
+    "title": "STAT 141",
+    "section": "Boxplots",
+    "text": "Boxplots\n\n\n# Create boxplot\nggplot(data = biketown, \n       mapping = aes(x = PaymentPlan, \n                     y = Distance_Miles)) +\n  geom_boxplot()"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#boxplots-2",
+    "href": "slides/lecture03_five-named-graphs.html#boxplots-2",
+    "title": "STAT 141",
+    "section": "Boxplots",
+    "text": "Boxplots\n\n\nggplot(data = biketown, \n       mapping = aes(x = PaymentPlan, \n                     y = Distance_Miles)) +\n  geom_boxplot(fill = \"springgreen3\")\n\n\n\n\n\n\n\n\n\n\nQ: Is this fill an aesthetic mapping?"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#boxplots-3",
+    "href": "slides/lecture03_five-named-graphs.html#boxplots-3",
+    "title": "STAT 141",
+    "section": "Boxplots",
+    "text": "Boxplots\n\n\nggplot(data = biketown, \n       mapping = aes(x = PaymentPlan, \n                     y = Distance_Miles,\n                     fill = PaymentPlan)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\n\n\nQ: Is this fill an aesthetic mapping?\nQ: What variable is mapped to fill?"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#boxplots-4",
+    "href": "slides/lecture03_five-named-graphs.html#boxplots-4",
+    "title": "STAT 141",
+    "section": "Boxplots",
+    "text": "Boxplots\n\n\nggplot(data = biketown, \n       mapping = aes(x = PaymentPlan, \n                     y = Distance_Miles,\n                     fill = PaymentPlan)) +\n  geom_boxplot() +\n  guides(fill = \"none\")"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#barplots",
+    "href": "slides/lecture03_five-named-graphs.html#barplots",
+    "title": "STAT 141",
+    "section": "Barplots",
+    "text": "Barplots\n\n\nggplot(data = biketown, \n       mapping = aes(x = month)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\n\nBoxplots and histograms show the overall distribution of quantitative variables\nBarplots show the distribution of quantitative variables within distinct levels defined by a categorical variable\n\nOften via numerical summarization of a categorical variable (counts)"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#barplots-1",
+    "href": "slides/lecture03_five-named-graphs.html#barplots-1",
+    "title": "STAT 141",
+    "section": "Barplots",
+    "text": "Barplots\n\n\nggplot(data = biketown, \n       mapping = aes(x = month,\n                     fill = PaymentPlan)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\n\nBarplots can also show the joint distribution of two categorical variables via the color or fill aesthetic.\nHere, each bar is divided into separate counts with respect to the Payment Plan variable."
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#barplots-2",
+    "href": "slides/lecture03_five-named-graphs.html#barplots-2",
+    "title": "STAT 141",
+    "section": "Barplots",
+    "text": "Barplots\n\n\nggplot(data = biketown, \n       mapping = aes(x = month,\n                     fill = PaymentPlan)) +\n  geom_bar(position = \"fill\")\n\n\n\n\n\n\n\n\n\n\nAlternatively, we can consider the y-axis to represent proportion, making direct comparison easier.\nQ: How can we tell a histogram from a barplot?"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#new-data-context-pdxtrees",
+    "href": "slides/lecture03_five-named-graphs.html#new-data-context-pdxtrees",
+    "title": "STAT 141",
+    "section": "New Data Context: pdxTrees",
+    "text": "New Data Context: pdxTrees\n\nThe pdxTrees R package contains data on all the trees in the Portland Metro Area.\nToday, we’ll look at the Maple, Oak, Pine, Cedar, and Douglas-fir trees in a few parks near Reed.\nLet’s load the data"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#new-data-context-pdxtrees-1",
+    "href": "slides/lecture03_five-named-graphs.html#new-data-context-pdxtrees-1",
+    "title": "STAT 141",
+    "section": "New Data Context: pdxTrees",
+    "text": "New Data Context: pdxTrees\n\nThe pdxTrees R package contains data on all the trees in the Portland Metro Area.\nToday, we’ll look at the Maple, Oak, Pine, Cedar, and Douglas-fir trees in a few parks near Reed.\nLet’s load the data\nDon’t worry, we haven’t learned the below code yet.\n\n\nlibrary(pdxTrees)\nnear_Reed &lt;- get_pdxTrees_parks(park = c(\"Woodstock Park\", \"Sellwood Riverfront Park\", \"Kenilworth Park\"))\nnear_Reed &lt;- near_Reed[near_Reed$Genus %in% c(\"Acer\", \"Quercus\", \"Pinus\", \"Thuja\", \"Pseudotsuga\"), ]"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#inspect-the-data-2",
+    "href": "slides/lecture03_five-named-graphs.html#inspect-the-data-2",
+    "title": "STAT 141",
+    "section": "Inspect the data",
+    "text": "Inspect the data\n\nglimpse(near_Reed)\n\nRows: 323\nColumns: 34\n$ Longitude                  &lt;dbl&gt; -122.6304, -122.6301, -122.6301, -122.6299,…\n$ Latitude                   &lt;dbl&gt; 45.49201, 45.49080, 45.49081, 45.49094, 45.…\n$ UserID                     &lt;chr&gt; \"7670\", \"7671\", \"7672\", \"7902\", \"7903\", \"79…\n$ Genus                      &lt;chr&gt; \"Quercus\", \"Pseudotsuga\", \"Pseudotsuga\", \"Q…\n$ Family                     &lt;chr&gt; \"Fagaceae\", \"Pinaceae\", \"Pinaceae\", \"Fagace…\n$ DBH                        &lt;dbl&gt; 3.3, 43.1, 48.2, 2.4, 11.7, 33.5, 23.5, 37.…\n$ Inventory_Date             &lt;dttm&gt; 2018-07-26, 2018-07-26, 2018-07-26, 2018-0…\n$ Species                    &lt;chr&gt; \"QURU\", \"PSME\", \"PSME\", \"QURU\", \"PSME\", \"PS…\n$ Common_Name                &lt;chr&gt; \"Northern Red Oak\", \"Douglas-Fir\", \"Douglas…\n$ Condition                  &lt;chr&gt; \"Fair\", \"Fair\", \"Fair\", \"Fair\", \"Good\", \"Fa…\n$ Tree_Height                &lt;dbl&gt; 16, 148, 148, 16, 64, 118, 121, 105, 24, 12…\n$ Crown_Width_NS             &lt;dbl&gt; 14, 61, 52, 9, 29, 32, 37, 43, 38, 44, 31, …\n$ Crown_Width_EW             &lt;dbl&gt; 10, 43, 48, 14, 32, 50, 31, 44, 35, 36, 33,…\n$ Crown_Base_Height          &lt;dbl&gt; 5, 6, 7, 2, 3, 60, 27, 10, 5, 19, 17, 6, 5,…\n$ Collected_By               &lt;chr&gt; \"Staff\", \"Staff\", \"Staff\", \"Staff\", \"Staff\"…\n$ Park                       &lt;chr&gt; \"Kenilworth Park\", \"Kenilworth Park\", \"Keni…\n$ Scientific_Name            &lt;chr&gt; \"Quercus rubra\", \"Pseudotsuga menziesii\", \"…\n$ Functional_Type            &lt;chr&gt; \"BD\", \"CE\", \"CE\", \"BD\", \"CE\", \"CE\", \"CE\", \"…\n$ Mature_Size                &lt;fct&gt; L, L, L, L, L, L, L, L, S, L, L, L, L, L, L…\n$ Native                     &lt;chr&gt; \"No\", \"Yes\", \"Yes\", \"No\", \"Yes\", \"Yes\", \"Ye…\n$ Edible                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ Nuisance                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ Structural_Value           &lt;dbl&gt; 288.80, 12462.74, 14395.22, 143.21, 1348.26…\n$ Carbon_Storage_lb          &lt;dbl&gt; 25.2, 4221.2, 5206.7, 11.6, 285.3, 2513.2, …\n$ Carbon_Storage_value       &lt;dbl&gt; 1.63, 273.80, 337.73, 0.75, 18.51, 163.01, …\n$ Carbon_Sequestration_lb    &lt;dbl&gt; 3.7, 43.5, 49.8, 2.4, 9.6, 32.4, 21.4, 37.4…\n$ Carbon_Sequestration_value &lt;dbl&gt; 0.24, 2.82, 3.23, 0.15, 0.62, 2.10, 1.39, 2…\n$ Stormwater_ft              &lt;dbl&gt; 5.2, 157.1, 145.2, 4.7, 56.8, 73.3, 68.1, 1…\n$ Stormwater_value           &lt;dbl&gt; 0.35, 10.50, 9.71, 0.31, 3.80, 4.90, 4.55, …\n$ Pollution_Removal_value    &lt;dbl&gt; 0.63, 19.08, 17.64, 0.57, 6.90, 8.90, 8.27,…\n$ Pollution_Removal_oz       &lt;dbl&gt; 1.4, 42.3, 39.1, 1.3, 15.3, 19.7, 18.3, 30.…\n$ Total_Annual_Services      &lt;dbl&gt; 1.21, 32.40, 30.58, 1.04, 11.31, 15.90, 14.…\n$ Origin                     &lt;chr&gt; \"North America - eastern Canada and eastern…\n$ Species_Factoid            &lt;chr&gt; \"Acorns take two years to mature and are an…"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#inspect-the-data-3",
+    "href": "slides/lecture03_five-named-graphs.html#inspect-the-data-3",
+    "title": "STAT 141",
+    "section": "Inspect the data",
+    "text": "Inspect the data\n\nhead(near_Reed)\n\n# A tibble: 6 × 34\n  Longitude Latitude UserID Genus       Family   DBH Inventory_Date      Species\n      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;chr&gt;  &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;  \n1     -123.     45.5 7670   Quercus     Fagac…   3.3 2018-07-26 00:00:00 QURU   \n2     -123.     45.5 7671   Pseudotsuga Pinac…  43.1 2018-07-26 00:00:00 PSME   \n3     -123.     45.5 7672   Pseudotsuga Pinac…  48.2 2018-07-26 00:00:00 PSME   \n4     -123.     45.5 7902   Quercus     Fagac…   2.4 2018-07-26 00:00:00 QURU   \n5     -123.     45.5 7903   Pseudotsuga Pinac…  11.7 2018-07-26 00:00:00 PSME   \n6     -123.     45.5 7905   Pseudotsuga Pinac…  33.5 2018-07-26 00:00:00 PSME   \n# ℹ 26 more variables: Common_Name &lt;chr&gt;, Condition &lt;chr&gt;, Tree_Height &lt;dbl&gt;,\n#   Crown_Width_NS &lt;dbl&gt;, Crown_Width_EW &lt;dbl&gt;, Crown_Base_Height &lt;dbl&gt;,\n#   Collected_By &lt;chr&gt;, Park &lt;chr&gt;, Scientific_Name &lt;chr&gt;,\n#   Functional_Type &lt;chr&gt;, Mature_Size &lt;fct&gt;, Native &lt;chr&gt;, Edible &lt;chr&gt;,\n#   Nuisance &lt;chr&gt;, Structural_Value &lt;dbl&gt;, Carbon_Storage_lb &lt;dbl&gt;,\n#   Carbon_Storage_value &lt;dbl&gt;, Carbon_Sequestration_lb &lt;dbl&gt;,\n#   Carbon_Sequestration_value &lt;dbl&gt;, Stormwater_ft &lt;dbl&gt;, …\n\n\n\nQ: What does a row represent here?"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#scatterplots",
+    "href": "slides/lecture03_five-named-graphs.html#scatterplots",
+    "title": "STAT 141",
+    "section": "Scatterplots",
+    "text": "Scatterplots\n\nExplore relationships between numerical variables.\n\nWe will be especially interested in linear relationships.\n\n\n\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb)) +\n  geom_point(size = 2)\n\n\n\n\n\n\n\n\n\n\n\nIs there something visually off with the points in this graph?"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#scatterplots-1",
+    "href": "slides/lecture03_five-named-graphs.html#scatterplots-1",
+    "title": "STAT 141",
+    "section": "Scatterplots",
+    "text": "Scatterplots\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb)) +\n  geom_point(size = 2, alpha = 0.25)\n\n\n\n\n\n\n\n\n\n\nFix over-plotting (using alpha)\nWhat’s going on in this graph?"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#adding-plot-titles-and-axis-labels",
+    "href": "slides/lecture03_five-named-graphs.html#adding-plot-titles-and-axis-labels",
+    "title": "STAT 141",
+    "section": "Adding plot titles and axis labels",
+    "text": "Adding plot titles and axis labels\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb)) +\n  geom_point(size = 2, alpha = 0.25) +\n  labs(x = \"Diameter at Breast Height\",\n       y = \"Carbon Storage (lbs)\",\n       caption = \"Data Collected as part of the Urban Forestry Tree Inventory Project\",\n       title = \"Tree Species Relationships Near Reed College\")\n\n\n\n\n\n\n\n\n\n\nFix over-plotting (using alpha)\nAdd a plot title and axis labels using labs\nWhat’s going on in this graph? (labels help add context)"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#scatterplots-2",
+    "href": "slides/lecture03_five-named-graphs.html#scatterplots-2",
+    "title": "STAT 141",
+    "section": "Scatterplots",
+    "text": "Scatterplots\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb,\n                     color = Genus)) +\n  geom_point(size = 2, alpha = 0.25)"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#linegraphs",
+    "href": "slides/lecture03_five-named-graphs.html#linegraphs",
+    "title": "STAT 141",
+    "section": "Linegraphs",
+    "text": "Linegraphs\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb)) +\n  geom_line(linewidth = 2)"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#linegraphs-1",
+    "href": "slides/lecture03_five-named-graphs.html#linegraphs-1",
+    "title": "STAT 141",
+    "section": "Linegraphs",
+    "text": "Linegraphs\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb,\n                     color = Genus)) +\n  geom_line(linewidth = 2)"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#linegraphs-vs-scatterplots",
+    "href": "slides/lecture03_five-named-graphs.html#linegraphs-vs-scatterplots",
+    "title": "STAT 141",
+    "section": "Linegraphs vs scatterplots",
+    "text": "Linegraphs vs scatterplots\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSimilar, but one might be preferred depending on context."
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#a-speedy-peek-at-advanced-techniques",
+    "href": "slides/lecture03_five-named-graphs.html#a-speedy-peek-at-advanced-techniques",
+    "title": "STAT 141",
+    "section": "A speedy peek at advanced techniques!",
+    "text": "A speedy peek at advanced techniques!"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#faceting",
+    "href": "slides/lecture03_five-named-graphs.html#faceting",
+    "title": "STAT 141",
+    "section": "Faceting",
+    "text": "Faceting\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb,\n                     color = Genus)) +\n  geom_line(linewidth = 2) +\n  facet_wrap(~Genus) +\n  guides(color = \"none\")\n\n\n\n\n\n\n\n\n\n\nFaceting is used to split one graphic into several smaller ones, based on the values of a categorical variable"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#customizing-your-ggplot2-plots",
+    "href": "slides/lecture03_five-named-graphs.html#customizing-your-ggplot2-plots",
+    "title": "STAT 141",
+    "section": "Customizing your ggplot2 Plots",
+    "text": "Customizing your ggplot2 Plots\n\nThere are so many ways you can customize the look of your ggplot2 plots\n\nAdjusting labels\nZooming in\nUsing multiple geoms\nColor!\nThemes"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#adjusting-labels-rotate",
+    "href": "slides/lecture03_five-named-graphs.html#adjusting-labels-rotate",
+    "title": "STAT 141",
+    "section": "Adjusting Labels: Rotate",
+    "text": "Adjusting Labels: Rotate\n\nbiketown$month &lt;- ifelse(biketown$month == 7, \"July\",\n                         ifelse(biketown$month == 8, \"August\", \"September\"))\nggplot(data = biketown, \n       mapping = aes(x = month)) +\n  geom_bar() +\n    theme(axis.text.x =\n          element_text(angle = 45,\n                       vjust = 1,\n                       hjust = 1))"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#zooming-in",
+    "href": "slides/lecture03_five-named-graphs.html#zooming-in",
+    "title": "STAT 141",
+    "section": "Zooming In",
+    "text": "Zooming In\n\nggplot(data = biketown, \n       mapping = aes(x = PaymentPlan, \n                     y = Distance_Miles,\n                     fill = PaymentPlan)) +\n  geom_boxplot() +\n  guides(fill = \"none\")"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#zooming-in-1",
+    "href": "slides/lecture03_five-named-graphs.html#zooming-in-1",
+    "title": "STAT 141",
+    "section": "Zooming In",
+    "text": "Zooming In\n\nggplot(data = biketown, \n       mapping = aes(x = PaymentPlan, \n                     y = Distance_Miles,\n                     fill = PaymentPlan)) +\n  geom_boxplot() +\n  guides(fill = \"none\") +\n  coord_cartesian(ylim = c(0, 5))"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#multiple-geoms",
+    "href": "slides/lecture03_five-named-graphs.html#multiple-geoms",
+    "title": "STAT 141",
+    "section": "Multiple geoms",
+    "text": "Multiple geoms\n\n\nggplot(data = biketown, \n       mapping = aes(x = PaymentPlan, \n                     y = Distance_Miles,\n                     color = PaymentPlan)) +\n  guides(fill = \"none\") +\n  coord_cartesian(ylim = c(0, 10)) +\n  geom_jitter(width = 0.1,\n              height = 0, \n              alpha = 0.1) +\n  geom_boxplot(fill = NA, color = \"black\")"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#multiple-geoms-1",
+    "href": "slides/lecture03_five-named-graphs.html#multiple-geoms-1",
+    "title": "STAT 141",
+    "section": "Multiple geoms",
+    "text": "Multiple geoms\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb,\n                     color = Genus)) +\n  geom_line() +\n  theme(legend.position = \"bottom\") +\n  geom_point(size = 2)"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#change-the-color",
+    "href": "slides/lecture03_five-named-graphs.html#change-the-color",
+    "title": "STAT 141",
+    "section": "Change the Color",
+    "text": "Change the Color\n\ncolors()\n\n  [1] \"white\"                \"aliceblue\"            \"antiquewhite\"        \n  [4] \"antiquewhite1\"        \"antiquewhite2\"        \"antiquewhite3\"       \n  [7] \"antiquewhite4\"        \"aquamarine\"           \"aquamarine1\"         \n [10] \"aquamarine2\"          \"aquamarine3\"          \"aquamarine4\"         \n [13] \"azure\"                \"azure1\"               \"azure2\"              \n [16] \"azure3\"               \"azure4\"               \"beige\"               \n [19] \"bisque\"               \"bisque1\"              \"bisque2\"             \n [22] \"bisque3\"              \"bisque4\"              \"black\"               \n [25] \"blanchedalmond\"       \"blue\"                 \"blue1\"               \n [28] \"blue2\"                \"blue3\"                \"blue4\"               \n [31] \"blueviolet\"           \"brown\"                \"brown1\"              \n [34] \"brown2\"               \"brown3\"               \"brown4\"              \n [37] \"burlywood\"            \"burlywood1\"           \"burlywood2\"          \n [40] \"burlywood3\"           \"burlywood4\"           \"cadetblue\"           \n [43] \"cadetblue1\"           \"cadetblue2\"           \"cadetblue3\"          \n [46] \"cadetblue4\"           \"chartreuse\"           \"chartreuse1\"         \n [49] \"chartreuse2\"          \"chartreuse3\"          \"chartreuse4\"         \n [52] \"chocolate\"            \"chocolate1\"           \"chocolate2\"          \n [55] \"chocolate3\"           \"chocolate4\"           \"coral\"               \n [58] \"coral1\"               \"coral2\"               \"coral3\"              \n [61] \"coral4\"               \"cornflowerblue\"       \"cornsilk\"            \n [64] \"cornsilk1\"            \"cornsilk2\"            \"cornsilk3\"           \n [67] \"cornsilk4\"            \"cyan\"                 \"cyan1\"               \n [70] \"cyan2\"                \"cyan3\"                \"cyan4\"               \n [73] \"darkblue\"             \"darkcyan\"             \"darkgoldenrod\"       \n [76] \"darkgoldenrod1\"       \"darkgoldenrod2\"       \"darkgoldenrod3\"      \n [79] \"darkgoldenrod4\"       \"darkgray\"             \"darkgreen\"           \n [82] \"darkgrey\"             \"darkkhaki\"            \"darkmagenta\"         \n [85] \"darkolivegreen\"       \"darkolivegreen1\"      \"darkolivegreen2\"     \n [88] \"darkolivegreen3\"      \"darkolivegreen4\"      \"darkorange\"          \n [91] \"darkorange1\"          \"darkorange2\"          \"darkorange3\"         \n [94] \"darkorange4\"          \"darkorchid\"           \"darkorchid1\"         \n [97] \"darkorchid2\"          \"darkorchid3\"          \"darkorchid4\"         \n[100] \"darkred\"              \"darksalmon\"           \"darkseagreen\"        \n[103] \"darkseagreen1\"        \"darkseagreen2\"        \"darkseagreen3\"       \n[106] \"darkseagreen4\"        \"darkslateblue\"        \"darkslategray\"       \n[109] \"darkslategray1\"       \"darkslategray2\"       \"darkslategray3\"      \n[112] \"darkslategray4\"       \"darkslategrey\"        \"darkturquoise\"       \n[115] \"darkviolet\"           \"deeppink\"             \"deeppink1\"           \n[118] \"deeppink2\"            \"deeppink3\"            \"deeppink4\"           \n[121] \"deepskyblue\"          \"deepskyblue1\"         \"deepskyblue2\"        \n[124] \"deepskyblue3\"         \"deepskyblue4\"         \"dimgray\"             \n[127] \"dimgrey\"              \"dodgerblue\"           \"dodgerblue1\"         \n[130] \"dodgerblue2\"          \"dodgerblue3\"          \"dodgerblue4\"         \n[133] \"firebrick\"            \"firebrick1\"           \"firebrick2\"          \n[136] \"firebrick3\"           \"firebrick4\"           \"floralwhite\"         \n[139] \"forestgreen\"          \"gainsboro\"            \"ghostwhite\"          \n[142] \"gold\"                 \"gold1\"                \"gold2\"               \n[145] \"gold3\"                \"gold4\"                \"goldenrod\"           \n[148] \"goldenrod1\"           \"goldenrod2\"           \"goldenrod3\"          \n[151] \"goldenrod4\"           \"gray\"                 \"gray0\"               \n[154] \"gray1\"                \"gray2\"                \"gray3\"               \n[157] \"gray4\"                \"gray5\"                \"gray6\"               \n[160] \"gray7\"                \"gray8\"                \"gray9\"               \n[163] \"gray10\"               \"gray11\"               \"gray12\"              \n[166] \"gray13\"               \"gray14\"               \"gray15\"              \n[169] \"gray16\"               \"gray17\"               \"gray18\"              \n[172] \"gray19\"               \"gray20\"               \"gray21\"              \n[175] \"gray22\"               \"gray23\"               \"gray24\"              \n[178] \"gray25\"               \"gray26\"               \"gray27\"              \n[181] \"gray28\"               \"gray29\"               \"gray30\"              \n[184] \"gray31\"               \"gray32\"               \"gray33\"              \n[187] \"gray34\"               \"gray35\"               \"gray36\"              \n[190] \"gray37\"               \"gray38\"               \"gray39\"              \n[193] \"gray40\"               \"gray41\"               \"gray42\"              \n[196] \"gray43\"               \"gray44\"               \"gray45\"              \n[199] \"gray46\"               \"gray47\"               \"gray48\"              \n[202] \"gray49\"               \"gray50\"               \"gray51\"              \n[205] \"gray52\"               \"gray53\"               \"gray54\"              \n[208] \"gray55\"               \"gray56\"               \"gray57\"              \n[211] \"gray58\"               \"gray59\"               \"gray60\"              \n[214] \"gray61\"               \"gray62\"               \"gray63\"              \n[217] \"gray64\"               \"gray65\"               \"gray66\"              \n[220] \"gray67\"               \"gray68\"               \"gray69\"              \n[223] \"gray70\"               \"gray71\"               \"gray72\"              \n[226] \"gray73\"               \"gray74\"               \"gray75\"              \n[229] \"gray76\"               \"gray77\"               \"gray78\"              \n[232] \"gray79\"               \"gray80\"               \"gray81\"              \n[235] \"gray82\"               \"gray83\"               \"gray84\"              \n[238] \"gray85\"               \"gray86\"               \"gray87\"              \n[241] \"gray88\"               \"gray89\"               \"gray90\"              \n[244] \"gray91\"               \"gray92\"               \"gray93\"              \n[247] \"gray94\"               \"gray95\"               \"gray96\"              \n[250] \"gray97\"               \"gray98\"               \"gray99\"              \n[253] \"gray100\"              \"green\"                \"green1\"              \n[256] \"green2\"               \"green3\"               \"green4\"              \n[259] \"greenyellow\"          \"grey\"                 \"grey0\"               \n[262] \"grey1\"                \"grey2\"                \"grey3\"               \n[265] \"grey4\"                \"grey5\"                \"grey6\"               \n[268] \"grey7\"                \"grey8\"                \"grey9\"               \n[271] \"grey10\"               \"grey11\"               \"grey12\"              \n[274] \"grey13\"               \"grey14\"               \"grey15\"              \n[277] \"grey16\"               \"grey17\"               \"grey18\"              \n[280] \"grey19\"               \"grey20\"               \"grey21\"              \n[283] \"grey22\"               \"grey23\"               \"grey24\"              \n[286] \"grey25\"               \"grey26\"               \"grey27\"              \n[289] \"grey28\"               \"grey29\"               \"grey30\"              \n[292] \"grey31\"               \"grey32\"               \"grey33\"              \n[295] \"grey34\"               \"grey35\"               \"grey36\"              \n[298] \"grey37\"               \"grey38\"               \"grey39\"              \n[301] \"grey40\"               \"grey41\"               \"grey42\"              \n[304] \"grey43\"               \"grey44\"               \"grey45\"              \n[307] \"grey46\"               \"grey47\"               \"grey48\"              \n[310] \"grey49\"               \"grey50\"               \"grey51\"              \n[313] \"grey52\"               \"grey53\"               \"grey54\"              \n[316] \"grey55\"               \"grey56\"               \"grey57\"              \n[319] \"grey58\"               \"grey59\"               \"grey60\"              \n[322] \"grey61\"               \"grey62\"               \"grey63\"              \n[325] \"grey64\"               \"grey65\"               \"grey66\"              \n[328] \"grey67\"               \"grey68\"               \"grey69\"              \n[331] \"grey70\"               \"grey71\"               \"grey72\"              \n[334] \"grey73\"               \"grey74\"               \"grey75\"              \n[337] \"grey76\"               \"grey77\"               \"grey78\"              \n[340] \"grey79\"               \"grey80\"               \"grey81\"              \n[343] \"grey82\"               \"grey83\"               \"grey84\"              \n[346] \"grey85\"               \"grey86\"               \"grey87\"              \n[349] \"grey88\"               \"grey89\"               \"grey90\"              \n[352] \"grey91\"               \"grey92\"               \"grey93\"              \n[355] \"grey94\"               \"grey95\"               \"grey96\"              \n[358] \"grey97\"               \"grey98\"               \"grey99\"              \n[361] \"grey100\"              \"honeydew\"             \"honeydew1\"           \n[364] \"honeydew2\"            \"honeydew3\"            \"honeydew4\"           \n[367] \"hotpink\"              \"hotpink1\"             \"hotpink2\"            \n[370] \"hotpink3\"             \"hotpink4\"             \"indianred\"           \n[373] \"indianred1\"           \"indianred2\"           \"indianred3\"          \n[376] \"indianred4\"           \"ivory\"                \"ivory1\"              \n[379] \"ivory2\"               \"ivory3\"               \"ivory4\"              \n[382] \"khaki\"                \"khaki1\"               \"khaki2\"              \n[385] \"khaki3\"               \"khaki4\"               \"lavender\"            \n[388] \"lavenderblush\"        \"lavenderblush1\"       \"lavenderblush2\"      \n[391] \"lavenderblush3\"       \"lavenderblush4\"       \"lawngreen\"           \n[394] \"lemonchiffon\"         \"lemonchiffon1\"        \"lemonchiffon2\"       \n[397] \"lemonchiffon3\"        \"lemonchiffon4\"        \"lightblue\"           \n[400] \"lightblue1\"           \"lightblue2\"           \"lightblue3\"          \n[403] \"lightblue4\"           \"lightcoral\"           \"lightcyan\"           \n[406] \"lightcyan1\"           \"lightcyan2\"           \"lightcyan3\"          \n[409] \"lightcyan4\"           \"lightgoldenrod\"       \"lightgoldenrod1\"     \n[412] \"lightgoldenrod2\"      \"lightgoldenrod3\"      \"lightgoldenrod4\"     \n[415] \"lightgoldenrodyellow\" \"lightgray\"            \"lightgreen\"          \n[418] \"lightgrey\"            \"lightpink\"            \"lightpink1\"          \n[421] \"lightpink2\"           \"lightpink3\"           \"lightpink4\"          \n[424] \"lightsalmon\"          \"lightsalmon1\"         \"lightsalmon2\"        \n[427] \"lightsalmon3\"         \"lightsalmon4\"         \"lightseagreen\"       \n[430] \"lightskyblue\"         \"lightskyblue1\"        \"lightskyblue2\"       \n[433] \"lightskyblue3\"        \"lightskyblue4\"        \"lightslateblue\"      \n[436] \"lightslategray\"       \"lightslategrey\"       \"lightsteelblue\"      \n[439] \"lightsteelblue1\"      \"lightsteelblue2\"      \"lightsteelblue3\"     \n[442] \"lightsteelblue4\"      \"lightyellow\"          \"lightyellow1\"        \n[445] \"lightyellow2\"         \"lightyellow3\"         \"lightyellow4\"        \n[448] \"limegreen\"            \"linen\"                \"magenta\"             \n[451] \"magenta1\"             \"magenta2\"             \"magenta3\"            \n[454] \"magenta4\"             \"maroon\"               \"maroon1\"             \n[457] \"maroon2\"              \"maroon3\"              \"maroon4\"             \n[460] \"mediumaquamarine\"     \"mediumblue\"           \"mediumorchid\"        \n[463] \"mediumorchid1\"        \"mediumorchid2\"        \"mediumorchid3\"       \n[466] \"mediumorchid4\"        \"mediumpurple\"         \"mediumpurple1\"       \n[469] \"mediumpurple2\"        \"mediumpurple3\"        \"mediumpurple4\"       \n[472] \"mediumseagreen\"       \"mediumslateblue\"      \"mediumspringgreen\"   \n[475] \"mediumturquoise\"      \"mediumvioletred\"      \"midnightblue\"        \n[478] \"mintcream\"            \"mistyrose\"            \"mistyrose1\"          \n[481] \"mistyrose2\"           \"mistyrose3\"           \"mistyrose4\"          \n[484] \"moccasin\"             \"navajowhite\"          \"navajowhite1\"        \n[487] \"navajowhite2\"         \"navajowhite3\"         \"navajowhite4\"        \n[490] \"navy\"                 \"navyblue\"             \"oldlace\"             \n[493] \"olivedrab\"            \"olivedrab1\"           \"olivedrab2\"          \n[496] \"olivedrab3\"           \"olivedrab4\"           \"orange\"              \n[499] \"orange1\"              \"orange2\"              \"orange3\"             \n[502] \"orange4\"              \"orangered\"            \"orangered1\"          \n[505] \"orangered2\"           \"orangered3\"           \"orangered4\"          \n[508] \"orchid\"               \"orchid1\"              \"orchid2\"             \n[511] \"orchid3\"              \"orchid4\"              \"palegoldenrod\"       \n[514] \"palegreen\"            \"palegreen1\"           \"palegreen2\"          \n[517] \"palegreen3\"           \"palegreen4\"           \"paleturquoise\"       \n[520] \"paleturquoise1\"       \"paleturquoise2\"       \"paleturquoise3\"      \n[523] \"paleturquoise4\"       \"palevioletred\"        \"palevioletred1\"      \n[526] \"palevioletred2\"       \"palevioletred3\"       \"palevioletred4\"      \n[529] \"papayawhip\"           \"peachpuff\"            \"peachpuff1\"          \n[532] \"peachpuff2\"           \"peachpuff3\"           \"peachpuff4\"          \n[535] \"peru\"                 \"pink\"                 \"pink1\"               \n[538] \"pink2\"                \"pink3\"                \"pink4\"               \n[541] \"plum\"                 \"plum1\"                \"plum2\"               \n[544] \"plum3\"                \"plum4\"                \"powderblue\"          \n[547] \"purple\"               \"purple1\"              \"purple2\"             \n[550] \"purple3\"              \"purple4\"              \"red\"                 \n[553] \"red1\"                 \"red2\"                 \"red3\"                \n[556] \"red4\"                 \"rosybrown\"            \"rosybrown1\"          \n[559] \"rosybrown2\"           \"rosybrown3\"           \"rosybrown4\"          \n[562] \"royalblue\"            \"royalblue1\"           \"royalblue2\"          \n[565] \"royalblue3\"           \"royalblue4\"           \"saddlebrown\"         \n[568] \"salmon\"               \"salmon1\"              \"salmon2\"             \n[571] \"salmon3\"              \"salmon4\"              \"sandybrown\"          \n[574] \"seagreen\"             \"seagreen1\"            \"seagreen2\"           \n[577] \"seagreen3\"            \"seagreen4\"            \"seashell\"            \n[580] \"seashell1\"            \"seashell2\"            \"seashell3\"           \n[583] \"seashell4\"            \"sienna\"               \"sienna1\"             \n[586] \"sienna2\"              \"sienna3\"              \"sienna4\"             \n[589] \"skyblue\"              \"skyblue1\"             \"skyblue2\"            \n[592] \"skyblue3\"             \"skyblue4\"             \"slateblue\"           \n[595] \"slateblue1\"           \"slateblue2\"           \"slateblue3\"          \n[598] \"slateblue4\"           \"slategray\"            \"slategray1\"          \n[601] \"slategray2\"           \"slategray3\"           \"slategray4\"          \n[604] \"slategrey\"            \"snow\"                 \"snow1\"               \n[607] \"snow2\"                \"snow3\"                \"snow4\"               \n[610] \"springgreen\"          \"springgreen1\"         \"springgreen2\"        \n[613] \"springgreen3\"         \"springgreen4\"         \"steelblue\"           \n[616] \"steelblue1\"           \"steelblue2\"           \"steelblue3\"          \n[619] \"steelblue4\"           \"tan\"                  \"tan1\"                \n[622] \"tan2\"                 \"tan3\"                 \"tan4\"                \n[625] \"thistle\"              \"thistle1\"             \"thistle2\"            \n[628] \"thistle3\"             \"thistle4\"             \"tomato\"              \n[631] \"tomato1\"              \"tomato2\"              \"tomato3\"             \n[634] \"tomato4\"              \"turquoise\"            \"turquoise1\"          \n[637] \"turquoise2\"           \"turquoise3\"           \"turquoise4\"          \n[640] \"violet\"               \"violetred\"            \"violetred1\"          \n[643] \"violetred2\"           \"violetred3\"           \"violetred4\"          \n[646] \"wheat\"                \"wheat1\"               \"wheat2\"              \n[649] \"wheat3\"               \"wheat4\"               \"whitesmoke\"          \n[652] \"yellow\"               \"yellow1\"              \"yellow2\"             \n[655] \"yellow3\"              \"yellow4\"              \"yellowgreen\"         \n\n\n\n\nYou can also use hex color codes to fully customize colors.\n\n\nThis linked webpage is a permitted internet resource for going to town on color customization"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#change-the-color-1",
+    "href": "slides/lecture03_five-named-graphs.html#change-the-color-1",
+    "title": "STAT 141",
+    "section": "Change the Color",
+    "text": "Change the Color\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb,\n                     color = Genus)) +\n  geom_line(size = 2) +\n  theme(legend.position = \"bottom\") +\n  scale_color_manual(values = c(\"violetred2\",\n                                \"steelblue4\",\n                                \"forestgreen\",\n                                \"goldenrod\",\n                                \"#aa0951\"))\n\n\n\n\n\n\n\n\n\n\nBe warned: Hours of my life have been lost to this, it can happen to you too…"
+  },
+  {
+    "objectID": "slides/lecture03_five-named-graphs.html#use-a-different-theme",
+    "href": "slides/lecture03_five-named-graphs.html#use-a-different-theme",
+    "title": "STAT 141",
+    "section": "Use a Different Theme",
+    "text": "Use a Different Theme\n\n\nggplot(data = near_Reed,\n       mapping = aes(x = DBH,\n                     y = Carbon_Storage_lb,\n                     color = Genus)) +\n  geom_line(size = 2) +\n  scale_color_manual(values = c(\"violetred2\",\n                                \"steelblue4\",\n                                \"forestgreen\",\n                                \"goldenrod\",\n                                \"maroon\")) +\n  theme_bw() +\n  theme(legend.position = \"bottom\")"
   }
 ]

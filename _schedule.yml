@@ -48,8 +48,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading04.qmd
-            # - type: Slides
-            #   href: slides/lecture03_five-named-graphs.qmd
+            - type: Slides
+              href: slides/lecture03_five-named-graphs.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture03_five-named-graphs_handout.pdf
       resources:
             - 'Check your gradescope access (code on Moodle)'
             - 'Start assignment 1 (assigned 9/3)'

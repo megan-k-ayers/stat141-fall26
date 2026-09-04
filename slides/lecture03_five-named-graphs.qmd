@@ -1,7 +1,7 @@
 ---
 pagetitle: "Data Visualization: the 5 Named Graphs with <code>ggplot2</code>"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -57,24 +57,32 @@ library(tidyverse)
 
 ### Reminders/Announcements
 
--   If you plan to request academic accommodations, please submit these through the **DAR student portal**
--   Course assistant office hours are now on Moodle
--   [The DataLab @ Reed](https://www.reed.edu/data-at-reed/data_lab/)
--   First homework assignment is posted! 
+-   Office hours update
+-   First homework assignment due on Thursday 9/10
+-   There won't be a quiz on this first homework
+<!-- -   [The DataLab @ Reed](https://www.reed.edu/data-at-reed/data_lab/) -->
+<!-- -   First homework assignment is posted!  -->
 
+<br>
 
-<!-- ```{r, echo = FALSE, eval = FALSE} -->
+::: fragment
 
-<!-- library(tidyverse) -->
-<!-- qod <- read.csv("data/qod_coffee-tea.csv") -->
-<!-- qod %>% count(clean.answer) %>% -->
-<!--   ggplot(aes(y = reorder(clean.answer, n), x = n)) + -->
-<!--   geom_col() + -->
-<!--   ylab("") + -->
-<!--   theme_classic() -->
+```{r, echo = FALSE, eval = TRUE}
 
-<!-- ``` -->
+library(tidyverse)
+qod <- read.csv("data/animal_people.csv")
+qod %>% count(answer) %>%
+  ggplot(aes(y = reorder(answer, n), x = n)) +
+  geom_col() +
+  ylab("") +
+  theme_classic() + 
+  ggtitle("9/2 QOD: Are you a dog person, cat person, both, or other?") +
+  theme(axis.text = element_text(size = 14),
+        plot.title = element_text(size=16))
 
+```
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -91,10 +99,10 @@ library(tidyverse)
 -   Recall our motivation for good graphics
 -   Learn the general structure of `ggplot2`
 -   Learn five standard graphs for numerical/quantitative data:
-    -   **Histogram**: one numerical variable
-    -   **Boxplot**: one numerical variable
-    -   **Barplot**: one numerical variable$^*$ and at least one categorical variable
-    -   **Scatterplot** and **Linegraph**: two numerical variables
+    -   **Histogram**: one quantitative variable
+    -   **Boxplot**: one quantitative variable
+    -   **Barplot**: one categorical variable, one quantitative variable$^*$
+    -   **Scatterplot** and **Linegraph**: two quantitative variables
 
 ------------------------------------------------------------------------
 
@@ -152,7 +160,9 @@ glimpse(biketown)
 head(biketown)
 ```
 
-What does a row represent here?
+<br><br>
+
+**Q:** What does a row represent here?
 
 ------------------------------------------------------------------------
 
@@ -189,16 +199,20 @@ class(biketown)
 
 **Guiding Principle**: We will map variables from the **data** to the **aes**thetic attributes (e.g. location, size, shape, color) of **geom**etric objects (e.g. points, lines, bars).
 
+<br>
+
 ```{r, eval = FALSE, tidy = FALSE}
 ggplot(data = ---, mapping = aes(---)) +
   geom_---(---) 
 ```
 
+<br>
+
 -   There are other layers, such as `scale_---_---()` and `labs()`, but we will wait on those for a bit.
 
 <br>
 
--   We are about to touch on many details of graphs - focus on recognizing this general pattern, revisit the slides to refresh on the coding specifics
+-   We are about to touch on many details of graphs - focus on recognizing this general pattern, expect to revisit these slides to refresh on the specifics
 
 ------------------------------------------------------------------------
 
@@ -210,16 +224,18 @@ ggplot(data = ---, mapping = aes(---)) +
 
 -   Great for assessing data distribution and shape.
 
-- **Question**: are histograms used for *quantitative* or *categorical* variables?
+- **Q**: are histograms used for *quantitative* or *categorical* variables?
 
-- **Answer**: *Quantitative*. 
+<!-- - **Answer**: *Quantitative*.  -->
 :::
 
 ::: {.column width="66%"}
 ```{r, echo = FALSE}
 # Create histogram
 ggplot(data = biketown, mapping = aes(x = Distance_Miles)) +
-  geom_histogram()
+  geom_histogram() +
+  theme(axis.text = element_text(size=14),
+        axis.title = element_text(size=16))
 
 ```
 :::
@@ -296,11 +312,13 @@ ggplot(data = biketown,
 :::
 
 ::: {.column width="50%"}
-```{r echo = FALSE}
+```{r echo = FALSE, fig.height=7}
 ggplot(data = biketown, 
        mapping = aes(x = PaymentPlan, 
                      y = Distance_Miles)) +
-  geom_boxplot()
+  geom_boxplot() +
+  theme(axis.text = element_text(size=14),
+        axis.title = element_text(size=16))
 ```
 :::
 :::::
@@ -309,7 +327,7 @@ ggplot(data = biketown,
 
 ## Boxplots
 
-```{r}
+```{r, fig.height=7}
 #| output-location: column
 # Create boxplot
 ggplot(data = biketown, 
@@ -322,7 +340,7 @@ ggplot(data = biketown,
 
 ## Boxplots
 
-```{r box2}
+```{r box2, fig.height=7}
 #| output-location: column
 #| code-line-numbers: "4"
 ggplot(data = biketown, 
@@ -331,7 +349,7 @@ ggplot(data = biketown,
   geom_boxplot(fill = "springgreen3")
 ```
 
--   Is this `fill` an `aes`thetic mapping? 
+-   **Q**: Is this `fill` an `aes`thetic mapping? 
 
 ------------------------------------------------------------------------
 
@@ -347,9 +365,9 @@ ggplot(data = biketown,
   geom_boxplot()
 ```
 
--   Is this `fill` an `aes`thetic mapping? 
+-   **Q**: Is this `fill` an `aes`thetic mapping? 
 
--   What variable is mapped to `fill`? 
+-   **Q**: What variable is mapped to `fill`? 
 
 ------------------------------------------------------------------------
 
@@ -454,7 +472,9 @@ glimpse(near_Reed)
 head(near_Reed)
 ```
 
-What does a row represent here? 
+<br>
+
+**Q**: What does a row represent here? 
 
 
 
@@ -599,14 +619,11 @@ ggplot(data = near_Reed,
 ::::
 
 
-- Which do you prefer?
-- Does it depend on context?
+- Similar, but one might be preferred depending on context.
 
 
 
 ## A speedy peek at advanced techniques! 
-
-If we run out of time, we'll pick this back up during lab next Thursday.
 
 
 ## Faceting
@@ -632,9 +649,7 @@ ggplot(data = near_Reed,
 
 -   There are so **many** ways you can customize the look of your `ggplot2` plots 
 
--   Let's look quickly at some common changes:
-
-    -   Fussing with labels
+    -   Adjusting labels
     -   Zooming in
     -   Using multiple `geoms`
     -   Color!
@@ -642,7 +657,7 @@ ggplot(data = near_Reed,
 
 ------------------------------------------------------------------------
 
-## Fussing with Labels: Rotate
+## Adjusting Labels: Rotate
 
 ```{r bar4}
 
@@ -701,7 +716,7 @@ ggplot(data = biketown,
   geom_jitter(width = 0.1,
               height = 0, 
               alpha = 0.1) +
-    geom_boxplot(fill = NA, color = "black")
+  geom_boxplot(fill = NA, color = "black")
 ```
 
 ------------------------------------------------------------------------
@@ -732,6 +747,10 @@ colors()
 ::: fragment
 You can also use hex color codes to fully customize colors.
 ::: 
+
+::: fragment
+[This linked webpage is a permitted internet resource for going to town on color customization](https://r-charts.com/colors/)
+:::
 
 ------------------------------------------------------------------------
 
