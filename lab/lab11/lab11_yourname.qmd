@@ -1,7 +1,6 @@
 ---
 title: "Lab 11: Inference for Regression in R"
 subtitle: "STAT 141, Week 14"
-author: "Your name here"
 format: pdf
 execute:
   echo: true

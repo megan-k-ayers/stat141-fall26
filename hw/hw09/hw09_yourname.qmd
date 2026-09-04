@@ -1,7 +1,6 @@
 ---
 title: "Homework 9: Random Variables"
 subtitle: "STAT 141, Week 11"
-author: "Your name here"
 format: pdf
 execute:
   echo: true

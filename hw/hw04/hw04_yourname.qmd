@@ -1,7 +1,6 @@
 ---
 title: "Homework 4: Sampling, Study Design & SLR"
 subtitle: "STAT 141, Week 4"
-author: "Your name here"
 format: pdf
 execute:
   echo: true

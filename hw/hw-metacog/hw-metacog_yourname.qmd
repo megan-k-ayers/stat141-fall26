@@ -1,7 +1,6 @@
 ---
 title: "Homework 5.5: Practice-Based Study Guide"
 subtitle: "STAT 141, Week 6"
-author: "Your name here"
 format: pdf
 execute:
   echo: true

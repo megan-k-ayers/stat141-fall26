@@ -1,7 +1,6 @@
 ---
 title: "Lab 5: Multiple Linear Regression"
 subtitle: "STAT 141, Week 5"
-author: "Your name here"
 format: pdf
 execute:
   echo: true

@@ -1,7 +1,6 @@
 ---
 title: "Homework 6: Sampling and Bootstrap Distributions"
 subtitle: "STAT 141, Week 7"
-author: "Your name here"
 format: pdf
 execute:
   echo: true

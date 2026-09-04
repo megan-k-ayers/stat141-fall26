@@ -1,7 +1,6 @@
 ---
 title: "Lab 6: Sampling Distributions"
 subtitle: "STAT 141, Week 7"
-author: "Your name here"
 format: pdf
 execute:
   echo: true

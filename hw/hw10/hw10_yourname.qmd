@@ -1,7 +1,6 @@
 ---
 title: "Homework 10: Theory-Based Inference"
 subtitle: "STAT 141, Week 12"
-author: "Your name here"
 format: pdf
 execute:
   echo: true

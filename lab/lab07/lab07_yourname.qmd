@@ -1,7 +1,6 @@
 ---
 title: "Lab 7: Confidence Intervals"
 subtitle: "STAT 141, Week 9"
-author: "Your name here"
 format: pdf
 execute:
   echo: true
