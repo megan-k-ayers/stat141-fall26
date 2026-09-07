@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 9/4/26
+  draft-after: 9/11/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -68,24 +68,26 @@ scheduled-docs:
               href: readings/reading05.qmd
             - type: Slides
               href: slides/lecture04_summary-stats.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture04_summary-stats_handout.pdf
         - topic: "Lab: Data Visualization & Summary Statistics"
           display-date: Thursday, Sept 10
           date: 9/10/26
           docs:
             - type: Reading
               href: readings/reading06.qmd
-            - type: Download Lab 2
-              href: lab/lab02.zip
-            - type: Download HW 2
-              href: hw/hw02.zip
+            # - type: Download Lab 2
+            #   href: lab/lab02.zip
+            # - type: Download HW 2
+            #   href: hw/hw02.zip
         - topic: "Data Wrangling"
           display-date: Friday, Sept 11
           date: 9/11/26
           docs:
             - type: Reading
               href: readings/reading07.qmd
-            - type: Slides
-              href: slides/lecture05_data-wrangling.qmd
+            # - type: Slides
+            #   href: slides/lecture05_data-wrangling.qmd
       resources:
             - 'Submit assignment 1 (due Thurs 9/10 at 9am)'
             - 'Start assignment 2 (assigned 9/10)'

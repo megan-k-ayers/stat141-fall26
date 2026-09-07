@@ -1,7 +1,7 @@
 ---
 date: 9/10/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -10,6 +10,7 @@ execute:
 
 Before coming to lab today, please read the following material: 
 
+-   [Quarto markdown basics](https://quarto.org/docs/authoring/markdown-basics.html), through "Equations"
 -   MD Section 2.9
--   [Quarto markdown basics](https://quarto.org/docs/authoring/markdown-basics.html)
+-   Review the slides from our "Data Visualization: the 5 Named Graphs with `ggplot2`" lecture
 

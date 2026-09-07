@@ -1,7 +1,7 @@
 ---
 date: 9/11/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -10,7 +10,9 @@ execute:
 
 Before coming to lecture today, practice using `R` documentation to familiarize yourself with new functions: 
 
-- In the console of a RStudio window, run `library(dplyr)` followed by these R help commands. Skim the
+- In the console of a RStudio window, run `library(dplyr)`.
+
+Then, run the following commands one by one in the console. For each, skim the
 documentation that shows up in the "Help" pane (usually the bottom right of
 RStudio). Pay the most attention to the "Description", "Usage", "Arguments", 
 "Value", and "Examples" sections. Usually, the most common or important uses and arguments

@@ -84,6 +84,237 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture04_summary-stats.html#import-the-data",
+    "href": "slides/lecture04_summary-stats.html#import-the-data",
+    "title": "STAT 141",
+    "section": "Import the Data",
+    "text": "Import the Data\n\nbiketown &lt;- read.csv(\"data/biketown.csv\")\n\n# Inspect the data\nglimpse(biketown)\n\nRows: 9,999\nColumns: 19\n$ RouteID          &lt;int&gt; 4074085, 3719219, 3789757, 3576798, 3459987, 3947695,…\n$ PaymentPlan      &lt;chr&gt; \"Subscriber\", \"Casual\", \"Casual\", \"Subscriber\", \"Casu…\n$ StartHub         &lt;chr&gt; \"SE Elliott at Division\", \"SW Yamhill at Director Par…\n$ StartLatitude    &lt;dbl&gt; 45.50513, 45.51898, 45.52990, 45.52389, 45.53028, 45.…\n$ StartLongitude   &lt;dbl&gt; -122.6534, -122.6813, -122.6628, -122.6722, -122.6547…\n$ StartDate        &lt;chr&gt; \"8/17/2017\", \"7/22/2017\", \"7/27/2017\", \"7/12/2017\", \"…\n$ StartTime        &lt;chr&gt; \"10:44:00\", \"14:49:00\", \"14:13:00\", \"13:23:00\", \"19:3…\n$ EndHub           &lt;chr&gt; \"Blues Fest - SW Waterfront at Clay - Disabled\", \"SW …\n$ EndLatitude      &lt;dbl&gt; 45.51287, 45.52142, 45.55902, 45.53409, 45.52990, 45.…\n$ EndLongitude     &lt;dbl&gt; -122.6749, -122.6726, -122.6355, -122.6949, -122.6628…\n$ EndDate          &lt;chr&gt; \"8/17/2017\", \"7/22/2017\", \"7/27/2017\", \"7/12/2017\", \"…\n$ EndTime          &lt;chr&gt; \"10:56:00\", \"15:00:00\", \"14:42:00\", \"13:38:00\", \"20:3…\n$ TripType         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…\n$ BikeID           &lt;int&gt; 6163, 6843, 6409, 7375, 6354, 6088, 6089, 5988, 6857,…\n$ BikeName         &lt;chr&gt; \"0488 BIKETOWN\", \"0759 BIKETOWN\", \"0614 BIKETOWN\", \"0…\n$ Distance_Miles   &lt;dbl&gt; 1.91, 0.72, 3.42, 1.81, 4.51, 5.54, 1.59, 1.03, 0.70,…\n$ Duration         &lt;dbl&gt; 11.500, 11.383, 28.317, 14.917, 60.517, 53.783, 23.86…\n$ RentalAccessPath &lt;chr&gt; \"keypad\", \"keypad\", \"keypad\", \"keypad\", \"keypad\", \"ke…\n$ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE…"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#summarizing-data",
+    "href": "slides/lecture04_summary-stats.html#summarizing-data",
+    "title": "STAT 141",
+    "section": "Summarizing Data",
+    "text": "Summarizing Data\n\n\n\n\n\n\n\nRouteID\nPaymentPlan\nStartHub\nDistance_Miles\n\n\n\n\n25\n3596434\nSubscriber\nNW 18th at Flanders\n0.59\n\n\n26\n3607170\nSubscriber\nNW Raleigh at 21st\n0.71\n\n\n27\n3631639\nCasual\nSW 2nd at Pine\n3.15\n\n\n28\n3912181\nCasual\nSE Water at Taylor\n5.89\n\n\n29\n4031739\nCasual\nSE Clay at Water\n1.34\n\n\n30\n3859969\nCasual\nSW Naito at Morrison\n1.56\n\n\n31\n4315016\nCasual\nNW Everett at 22nd\n3.50\n\n\n32\n4252609\nCasual\nNW Flanders at 14th\n1.81\n\n\n33\n3809564\nCasual\nNA\n2.74\n\n\n\n\n\n\n\nHard to do by eyeballing a spreadsheet with many rows!"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#summarizing-data-visually",
+    "href": "slides/lecture04_summary-stats.html#summarizing-data-visually",
+    "title": "STAT 141",
+    "section": "Summarizing Data Visually",
+    "text": "Summarizing Data Visually\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor a quantitative variable, often want to answer:\n\nWhat is an average value (the center)?\nWhat is the trend/shape of the variable?\nHow much variation is there from case to case (spread)?\n\n\n\nQ: I will sometimes ask you to assess these qualitatively by eye. Let’s practice with these histograms.\n\n\n\nTo be more precise in assessing these we need to learn key summary statistics: Numerical values computed based on the observed cases."
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-center",
+    "href": "slides/lecture04_summary-stats.html#measures-of-center",
+    "title": "STAT 141",
+    "section": "Measures of Center",
+    "text": "Measures of Center\n\n\nMean: Average of all the observations\n\n\\(n\\) = Number of cases (sample size)\n\\(x_i\\) = value of the i-th observation\nDenote by \\(\\bar{x}\\)"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-center-1",
+    "href": "slides/lecture04_summary-stats.html#measures-of-center-1",
+    "title": "STAT 141",
+    "section": "Measures of Center",
+    "text": "Measures of Center\n\n\nMean: Average of all the observations\n\n\\(n\\) = Number of cases (sample size)\n\\(x_i\\) = value of the i-th observation\nDenote by \\(\\bar{x}\\)\n\n\\[\n\\bar{x}  = \\frac{1}{n} \\sum_{i = 1}^n x_i\n\\]"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-center-2",
+    "href": "slides/lecture04_summary-stats.html#measures-of-center-2",
+    "title": "STAT 141",
+    "section": "Measures of Center",
+    "text": "Measures of Center\n\n\nMean: Average of all the observations\n\n\\(n\\) = Number of cases (sample size)\n\\(x_i\\) = value of the i-th observation\nDenote by \\(\\bar{x}\\)\n\n\\[\n\\bar{x}  = \\frac{1}{n} \\sum_{i = 1}^n x_i\n\\]\n\n\n# Test out on first 6 values\nhead(biketown$Distance_Miles)\n\n[1] 1.91 0.72 3.42 1.81 4.51 5.54\n\n\n\n\n\n(1.91 + 0.72 + 3.42 + 1.81 + 4.51 + 5.54) / 6\n\n[1] 2.985\n\n\n\n\n\n\n# Compute in R for all values\nmean(biketown$Distance_Miles)\n\n[1] 2.044768"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-center-3",
+    "href": "slides/lecture04_summary-stats.html#measures-of-center-3",
+    "title": "STAT 141",
+    "section": "Measures of Center",
+    "text": "Measures of Center\n\n\nMedian: Middle value\n\nHalf of the data falls below the median\nDenote by \\(m\\)\nIf \\(n\\) is even, then it is the average of the middle two values"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-center-4",
+    "href": "slides/lecture04_summary-stats.html#measures-of-center-4",
+    "title": "STAT 141",
+    "section": "Measures of Center",
+    "text": "Measures of Center\n\n\nMedian: Middle value\n\nHalf of the data falls below the median\nDenote by \\(m\\)\nIf \\(n\\) is even, then it is the average of the middle two values\n\n\n# Test out on first 6 values\nhead(biketown$Distance_Miles)\n\n[1] 1.91 0.72 3.42 1.81 4.51 5.54\n\n\n\n\n\nsort(head(biketown$Distance_Miles))\n\n[1] 0.72 1.81 1.91 3.42 4.51 5.54\n\n\n\n\n\n\n(3.42 + 1.91) / 2\n\n[1] 2.665\n\n\n\n\nCompute in R across all values:\n\nmedian(biketown$Distance_Miles)\n\n[1] 1.48"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-center-5",
+    "href": "slides/lecture04_summary-stats.html#measures-of-center-5",
+    "title": "STAT 141",
+    "section": "Measures of Center",
+    "text": "Measures of Center\n\n\nQ: Why is the mean larger than the median?\n\nbiketown %&gt;%\n  summarize(mean_miles = mean(Distance_Miles),\n            median_miles = median(Distance_Miles))\n\n  mean_miles median_miles\n1   2.044768         1.48"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-center-6",
+    "href": "slides/lecture04_summary-stats.html#measures-of-center-6",
+    "title": "STAT 141",
+    "section": "Measures of Center",
+    "text": "Measures of Center\nNote: The mean is very sensitive to outliers, while the median is not.\n\nmy_data &lt;- c(1, 2, 5, 7, 8, 10)\nmy_data_with_outlier &lt;- c(1, 2, 5, 7, 8, 100)\n\n\n\n\n\n\nmean(my_data)\n\n[1] 5.5\n\n\n\n\nmean(my_data_with_outlier)\n\n[1] 20.5\n\n\n\n\n\n\n\n\n\nmedian(my_data)\n\n[1] 6\n\n\n\n\nmedian(my_data_with_outlier)\n\n[1] 6\n\n\n\n\n\n\nWe call the median a robust statistic."
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#summary-statistic-anecdote",
+    "href": "slides/lecture04_summary-stats.html#summary-statistic-anecdote",
+    "title": "STAT 141",
+    "section": "Summary statistic anecdote",
+    "text": "Summary statistic anecdote\n\nIn April 2026 the New York Times published an article titled “In Defense of Dumb Dogs.” The article describes research that found that a large majority (66%) of dog owners describe their dog as “smarter than average.”\n\n\nNYT’s morning newsletter stated that this result was “statistically impossible.” Apparently many readers wrote in to complain, because the next morning’s newsletter included a (somewhat defensive) mea culpa about this flawed statement.\n\n\n\nQ: Why was the NYT newsletter statement flawed?"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#computing-measures-of-center-by-groups",
+    "href": "slides/lecture04_summary-stats.html#computing-measures-of-center-by-groups",
+    "title": "STAT 141",
+    "section": "Computing Measures of Center by Groups",
+    "text": "Computing Measures of Center by Groups\nQuestion: Who travels further, on average? Casual biketown users or payment plan subscribers?"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#computing-measures-of-center-by-groups-1",
+    "href": "slides/lecture04_summary-stats.html#computing-measures-of-center-by-groups-1",
+    "title": "STAT 141",
+    "section": "Computing Measures of Center by Groups",
+    "text": "Computing Measures of Center by Groups\n\n\nHandy dplyr functions that we’ll learn: group_by() and summarize().\n\n\nlibrary(dplyr)\n\n# Calculate group *MEANS*\nbiketown %&gt;%\n  group_by(PaymentPlan) %&gt;%\n  summarize(mean_dist = mean(Distance_Miles))\n\n# A tibble: 2 × 2\n  PaymentPlan mean_dist\n  &lt;chr&gt;           &lt;dbl&gt;\n1 Casual           2.56\n2 Subscriber       1.45\n\n\n\n\n\n\n# Calculate group *MEDIANS*\nbiketown %&gt;%\n  group_by(PaymentPlan) %&gt;%\n  summarize(median_dist = median(Distance_Miles))\n\n# A tibble: 2 × 2\n  PaymentPlan median_dist\n  &lt;chr&gt;             &lt;dbl&gt;\n1 Casual             2.03\n2 Subscriber         1.02"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-variability",
+    "href": "slides/lecture04_summary-stats.html#measures-of-variability",
+    "title": "STAT 141",
+    "section": "Measures of Variability",
+    "text": "Measures of Variability\n\nWant a statistic that summarizes how much observations deviate from the mean\nIdea:\n\nFind how much each observation deviates from the mean.\nCompute the average of the deviations\n\n\n\n\\[\n\\frac{1}{n} \\sum_{i = 1}^n (x_i - \\bar{x})\n\\]\n\n\nTest out on 5 values: 5, 10, 20, 5, 25\n\n\nProblem?"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-variability-1",
+    "href": "slides/lecture04_summary-stats.html#measures-of-variability-1",
+    "title": "STAT 141",
+    "section": "Measures of Variability",
+    "text": "Measures of Variability\n\nWant a statistic that captures how much observations deviate from the mean\n\n\n\nNEW proposal:\n\nFind how much each observation deviates from the mean.\nCompute the average of the squared deviations."
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-variability-2",
+    "href": "slides/lecture04_summary-stats.html#measures-of-variability-2",
+    "title": "STAT 141",
+    "section": "Measures of Variability",
+    "text": "Measures of Variability\n\nWant a statistic that captures how much observations deviate from the mean\n\n\n\nNEW proposal:\n\nFind how much each observation deviates from the mean.\nCompute the average of the squared deviations.\n\n\n\n# Test out on first 6 values\nhead(biketown$Distance_Miles)\n\n[1] 1.91 0.72 3.42 1.81 4.51 5.54\n\n\n\n\n\n\n\n\n# Calculate mean by hand\n(1.91 + 0.72 + 3.42 + 1.81 + 4.51 + 5.54) / 6\n\n[1] 2.985\n\n\n\n\n\n\n# Calculate average squared deviations by hand\n((1.91 - 2.985)^2 + (0.72 - 2.985)^2 + \n  (3.42 - 2.985)^2 + (1.81 - 2.985)^2 +\n  (4.51 - 2.985)^2 + (5.54 - 2.985)^2) / 6\n\n[1] 2.784892"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-variability-3",
+    "href": "slides/lecture04_summary-stats.html#measures-of-variability-3",
+    "title": "STAT 141",
+    "section": "Measures of Variability",
+    "text": "Measures of Variability\n\nWant a statistic that captures how much observations deviate from the mean\n\n\n\nNEW proposal, formula:\n\nFind how much each observation deviates from the mean.\nCompute the (nearly) average of the squared deviations.\nCalled sample variance \\(s^2\\)."
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-variability-4",
+    "href": "slides/lecture04_summary-stats.html#measures-of-variability-4",
+    "title": "STAT 141",
+    "section": "Measures of Variability",
+    "text": "Measures of Variability\n\nWant a statistic that captures how much observations deviate from the mean\n\n\n\nNEW proposal, formula:\n\nFind how much each observation deviates from the mean.\nCompute the (nearly) average of the squared deviations.\nCalled sample variance \\(s^2\\).\n\n\\[\ns^2 = \\frac{1}{n - 1} \\sum_{i = 1}^n (x_i - \\bar{x})^2\n\\]\n\n\n\n\nWe’ll learn why we divide by \\(n-1\\) instead of \\(n\\) later in the course."
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-variability-5",
+    "href": "slides/lecture04_summary-stats.html#measures-of-variability-5",
+    "title": "STAT 141",
+    "section": "Measures of Variability",
+    "text": "Measures of Variability\n\nWant a statistic that captures how much observations deviate from the mean\n\n\n\nNEW proposal, formula:\n\nFind how much each observation deviates from the mean.\nCompute the (nearly) average of the squared deviations.\nCalled sample variance \\(s^2\\).\n\n\\[\ns^2 = \\frac{1}{n - 1} \\sum_{i = 1}^n (x_i - \\bar{x})^2\n\\]\n\nCompute with R:\n\nvar(biketown$Distance_Miles)\n\n[1] 3.805638"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-variability-6",
+    "href": "slides/lecture04_summary-stats.html#measures-of-variability-6",
+    "title": "STAT 141",
+    "section": "Measures of Variability",
+    "text": "Measures of Variability\n\n\nWant a statistic that captures how much observations deviate from the mean\n\n\n\n\n\n\nFind how much each observation deviates from the mean.\nCompute the (nearly) average of the squared deviations (\\(s^2\\)).\nBecause observations are squared, units differ from original data.\n\n\n\n\nThe square root of the sample variance is called the sample standard deviation \\(s\\).\n\n\n\n\n\nCompute in R:\n\n  # Variance\nvar(biketown$Distance_Miles)\n\n[1] 3.805638\n\n\n\n\n# Standard deviation \nsd(biketown$Distance_Miles)   \n\n[1] 1.950804\n\n\n\n\n\n\nsqrt(var(biketown$Distance_Miles))\n\n[1] 1.950804"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#visualizing-standard-deviation",
+    "href": "slides/lecture04_summary-stats.html#visualizing-standard-deviation",
+    "title": "STAT 141",
+    "section": "Visualizing Standard Deviation",
+    "text": "Visualizing Standard Deviation\n\nThe standard deviation measures the typical size of deviations from the mean.\nFor most data sets, the large majority of observations are within 2 standard deviations of the mean.\n\n\n\nsd(biketown$Distance_Miles)\n\n[1] 1.950804"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#measures-of-variability-7",
+    "href": "slides/lecture04_summary-stats.html#measures-of-variability-7",
+    "title": "STAT 141",
+    "section": "Measures of Variability",
+    "text": "Measures of Variability\n\nIn addition to the sample standard deviation and the sample variance, there is the sample interquartile range (IQR):\n\n\\[\n\\mbox{IQR} = \\mbox{Q}_3 - \\mbox{Q}_1\n\\]\n\nImagine we sort our data and divide it into four evenly sized chunks (quartiles)\n25% of all observations are less than the first quartile Q1\n25% of all observations are greater than the third quartile Q3\n\n\nCompute with R:\n\nIQR(biketown$Distance_Miles)\n\n[1] 1.89"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#visualizing-the-iqr",
+    "href": "slides/lecture04_summary-stats.html#visualizing-the-iqr",
+    "title": "STAT 141",
+    "section": "Visualizing the IQR",
+    "text": "Visualizing the IQR\n\nIn addition to the sample standard deviation and the sample variance, there is the sample interquartile range (IQR):\n\n\\[\n\\mbox{IQR} = \\mbox{Q}_3 - \\mbox{Q}_1\n\\]\n\n\nquantile(biketown$Distance_Miles, c(0.25, 0.5, 0.75))\n\n 25%  50%  75% \n0.79 1.48 2.68"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#comparing-measures-of-variability",
+    "href": "slides/lecture04_summary-stats.html#comparing-measures-of-variability",
+    "title": "STAT 141",
+    "section": "Comparing Measures of Variability",
+    "text": "Comparing Measures of Variability\n\nQ: Which is more robust to outliers, the IQR or \\(s\\)?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ: Which is more commonly used, the IQR or \\(s\\)?"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#new-data-set-cambridge-dogs",
+    "href": "slides/lecture04_summary-stats.html#new-data-set-cambridge-dogs",
+    "title": "STAT 141",
+    "section": "New data set: Cambridge dogs",
+    "text": "New data set: Cambridge dogs\n\ndogs &lt;- read.csv(\"https://data.cambridgema.gov/api/views/sckh-3xyx/rows.csv\")\nglimpse(dogs)\n\nRows: 27,774\nColumns: 10\n$ Dog_Name         &lt;chr&gt; \"Poppy Grace\", \"Clementine\", \"Momo\", \"Maple\", \"MICKEY…\n$ Dog_Breed        &lt;chr&gt; \"Pug\", \"Labrador Retriever\", \"Pomeranian\", \"Golden Re…\n$ Location_masked  &lt;chr&gt; \"POINT (-71.093036 42.371026)\", \"POINT (-71.115351 42…\n$ Latitude_masked  &lt;dbl&gt; 42.3710, 42.3807, 42.3725, 42.3807, 42.3682, 42.3852,…\n$ Longitude_masked &lt;dbl&gt; -71.0930, -71.1154, -71.1084, -71.1154, -71.0791, -71…\n$ Neighborhood     &lt;chr&gt; \"Wellington-Harrington\", \"Baldwin\", \"Mid-Cambridge\", …\n$ Birth.Year       &lt;chr&gt; \"01/01/2017 12:00:00 AM\", \"01/01/2015 12:00:00 AM\", \"…\n$ Gender           &lt;chr&gt; \"Female\", \"Female\", \"Male\", \"Female\", \"Male\", \"Female…\n$ Expiration.Date  &lt;chr&gt; \"01/01/2021 12:00:00 AM\", \"01/01/2024 12:00:00 AM\", \"…\n$ Is.Active        &lt;chr&gt; \"false\", \"false\", \"false\", \"true\", \"false\", \"false\", …"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#cambridge-dogs-data-set",
+    "href": "slides/lecture04_summary-stats.html#cambridge-dogs-data-set",
+    "title": "STAT 141",
+    "section": "Cambridge dogs data set",
+    "text": "Cambridge dogs data set\nMay want to focus on the dogs with the 5 most common names\n\ndogs &lt;- read.csv(\"https://data.cambridgema.gov/api/views/sckh-3xyx/rows.csv\")\n\n# Useful wrangling that we will come back to\ndogs_top5 &lt;- dogs %&gt;%\n  mutate(Breed = case_when(Dog_Breed == \"Mixed Breed\" ~ \"Mixed\",\n                           TRUE ~ \"Single\")) %&gt;%\n  filter(Dog_Name %in% c(\"Luna\", \"Charlie\", \"Lucy\", \"Cooper\", \"Rosie\"))\n\n\nhead(dogs_top5)\n\n  Dog_Name                                Dog_Breed\n1     Lucy                     Keeshond / Dachshund\n2     Luna         Labrador Retriever / Rat Terrier\n3     Luna Labrador Retriever / German Shepherd Dog\n4  Charlie      Siberian Husky / Labrador Retriever\n5     Luna                           French Bulldog\n6     Luna                       Labrador Retriever\n               Location_masked Latitude_masked Longitude_masked    Neighborhood\n1 POINT (-71.096823 42.365754)         42.3658         -71.0968        The Port\n2  POINT (-71.13607 42.395315)         42.3953         -71.1361 North Cambridge\n3 POINT (-71.108359 42.372506)         42.3725         -71.1084   Mid-Cambridge\n4  POINT (-71.152822 42.38067)         42.3807         -71.1528 Strawberry Hill\n5 POINT (-71.136168 42.376682)         42.3767         -71.1362  West Cambridge\n6  POINT (-71.152822 42.38067)         42.3807         -71.1528 Strawberry Hill\n              Birth.Year Gender        Expiration.Date Is.Active  Breed\n1 01/01/2018 12:00:00 AM Female 01/01/2026 12:00:00 AM     false Single\n2 01/01/2019 12:00:00 AM Female 01/01/2024 12:00:00 AM     false Single\n3 01/01/2025 12:00:00 AM Female 01/01/2027 12:00:00 AM      true Single\n4 01/01/2019 12:00:00 AM Female 01/01/2027 12:00:00 AM      true Single\n5 01/01/2021 12:00:00 AM Female 01/01/2022 12:00:00 AM     false Single\n6 01/01/2015 12:00:00 AM Female 01/01/2022 12:00:00 AM     false Single"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#frequency-table",
+    "href": "slides/lecture04_summary-stats.html#frequency-table",
+    "title": "STAT 141",
+    "section": "Frequency Table",
+    "text": "Frequency Table\nDistributions of categorical variables can be presented in tables and summarized in bar charts.\n\n\n\ncount(dogs_top5, Dog_Name)  # Handy function\n\n  Dog_Name   n\n1  Charlie 225\n2   Cooper 122\n3     Lucy 155\n4     Luna 260\n5    Rosie 147\n\n\n\n\nggplot(data = dogs_top5, \n    mapping = aes(x = Dog_Name)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\n\n\n\nQ: Why can’t we use mean or standard deviation here?"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#contingency-table",
+    "href": "slides/lecture04_summary-stats.html#contingency-table",
+    "title": "STAT 141",
+    "section": "Contingency Table",
+    "text": "Contingency Table\nTo compare 2 categorical variables, we can use a contingency table*\n\n\n\n# Using `count()` from dplyr\ncount(dogs_top5, Dog_Name, Breed)\n\n   Dog_Name  Breed   n\n1   Charlie  Mixed  22\n2   Charlie Single 203\n3    Cooper  Mixed  14\n4    Cooper Single 108\n5      Lucy  Mixed  19\n6      Lucy Single 136\n7      Luna  Mixed  29\n8      Luna Single 231\n9     Rosie  Mixed   8\n10    Rosie Single 139\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = dogs_top5, \n    mapping = aes(x = Dog_Name, fill = Breed)) +\n  geom_bar(position = \"dodge\")\n\n\n\n\n\n\n\n\n\n\n*(AKA a two-way table, often presented horizontally rather than vertically)"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#conditional-proportions",
+    "href": "slides/lecture04_summary-stats.html#conditional-proportions",
+    "title": "STAT 141",
+    "section": "Conditional Proportions",
+    "text": "Conditional Proportions\n\n\n\nBeyond raw counts, we often summarize categorical data with conditional proportions.\n\nEspecially when looking for relationships!\n\n\n\n\nggplot(data = dogs_top5, \n    mapping = aes(x = Dog_Name, fill = Breed)) +\n  geom_bar(position = \"fill\")"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#conditional-proportions-1",
+    "href": "slides/lecture04_summary-stats.html#conditional-proportions-1",
+    "title": "STAT 141",
+    "section": "Conditional Proportions",
+    "text": "Conditional Proportions\n\n\n\ncount(dogs_top5, Dog_Name, Breed)\n\n   Dog_Name  Breed   n\n1   Charlie  Mixed  22\n2   Charlie Single 203\n3    Cooper  Mixed  14\n4    Cooper Single 108\n5      Lucy  Mixed  19\n6      Lucy Single 136\n7      Luna  Mixed  29\n8      Luna Single 231\n9     Rosie  Mixed   8\n10    Rosie Single 139\n\n\n\n\ncount(dogs_top5, Dog_Name, Breed) %&gt;%\n  group_by(Dog_Name) %&gt;%     ## Conditions on Dog Name\n  mutate(prop = n / sum(n))  ## Adds/changes columns \n\n# A tibble: 10 × 4\n# Groups:   Dog_Name [5]\n   Dog_Name Breed      n   prop\n   &lt;chr&gt;    &lt;chr&gt;  &lt;int&gt;  &lt;dbl&gt;\n 1 Charlie  Mixed     22 0.0978\n 2 Charlie  Single   203 0.902 \n 3 Cooper   Mixed     14 0.115 \n 4 Cooper   Single   108 0.885 \n 5 Lucy     Mixed     19 0.123 \n 6 Lucy     Single   136 0.877 \n 7 Luna     Mixed     29 0.112 \n 8 Luna     Single   231 0.888 \n 9 Rosie    Mixed      8 0.0544\n10 Rosie    Single   139 0.946 \n\n\n\nWe’ll go over these data wrangling functions on Wednesday!"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#conditional-proportions-2",
+    "href": "slides/lecture04_summary-stats.html#conditional-proportions-2",
+    "title": "STAT 141",
+    "section": "Conditional Proportions",
+    "text": "Conditional Proportions\n\n\n\ncount(dogs_top5, Dog_Name, Breed) %&gt;%\n  group_by(Dog_Name) %&gt;%     ## Conditions on DOG NAME\n  mutate(prop = n / sum(n))  ## Adds/changes columns \n\n# A tibble: 10 × 4\n# Groups:   Dog_Name [5]\n   Dog_Name Breed      n   prop\n   &lt;chr&gt;    &lt;chr&gt;  &lt;int&gt;  &lt;dbl&gt;\n 1 Charlie  Mixed     22 0.0978\n 2 Charlie  Single   203 0.902 \n 3 Cooper   Mixed     14 0.115 \n 4 Cooper   Single   108 0.885 \n 5 Lucy     Mixed     19 0.123 \n 6 Lucy     Single   136 0.877 \n 7 Luna     Mixed     29 0.112 \n 8 Luna     Single   231 0.888 \n 9 Rosie    Mixed      8 0.0544\n10 Rosie    Single   139 0.946 \n\n\n\n\ncount(dogs_top5, Dog_Name, Breed) %&gt;%\n  group_by(Breed) %&gt;%     ## Conditions on BREED\n  mutate(prop = n / sum(n))  ## Adds/changes columns \n\n# A tibble: 10 × 4\n# Groups:   Breed [2]\n   Dog_Name Breed      n   prop\n   &lt;chr&gt;    &lt;chr&gt;  &lt;int&gt;  &lt;dbl&gt;\n 1 Charlie  Mixed     22 0.239 \n 2 Charlie  Single   203 0.248 \n 3 Cooper   Mixed     14 0.152 \n 4 Cooper   Single   108 0.132 \n 5 Lucy     Mixed     19 0.207 \n 6 Lucy     Single   136 0.166 \n 7 Luna     Mixed     29 0.315 \n 8 Luna     Single   231 0.283 \n 9 Rosie    Mixed      8 0.0870\n10 Rosie    Single   139 0.170 \n\n\n\nQ: What’s different between these two tables?"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#recap-quantitative-data",
+    "href": "slides/lecture04_summary-stats.html#recap-quantitative-data",
+    "title": "STAT 141",
+    "section": "Recap: quantitative data",
+    "text": "Recap: quantitative data\n\nWe’ll frequently summarize quantitative data by assessing a distribution’s:\n\nCenter\nSpread (aka variability)\nShape\n\nIf we want to assess these visually, we should use a boxplot or histogram\nWe quantify center and spread by calculating (or sometimes by eyeballing) summary statistics\n\nThe mean or median (mean(), median()) for center\nThe standard deviation, variance, or interquartile range (sd(), var(), IQR()) for spread\n\nIn this class we’ll usually assess shape visually (symmetric, right-skewed, or left-skewed?)\n\nWe’ll see a quantitative example on the homework"
+  },
+  {
+    "objectID": "slides/lecture04_summary-stats.html#recap-categorical-data",
+    "href": "slides/lecture04_summary-stats.html#recap-categorical-data",
+    "title": "STAT 141",
+    "section": "Recap: categorical data",
+    "text": "Recap: categorical data\n\nWe’ll frequently summarize categorical data by making tables of category counts or proportions\n\nTable of counts for 1 categorical variable = frequency table or one-way frequency table\nTable of counts for 2 categorical variables = contingency table or two-way frequency table\nTable of proportions with 2 categorical variables = conditional proportions table\n\nWe can most easily visualize these tables via barplots"
+  },
+  {
     "objectID": "slides/lecture02_data-viz-intro.html#what-areis-data",
     "href": "slides/lecture02_data-viz-intro.html#what-areis-data",
     "title": "STAT 141",
@@ -245,6 +476,13 @@
     "text": "Demo: Finding the lab files, tour of RStudio, starting the lab"
   },
   {
+    "objectID": "readings/reading06.html",
+    "href": "readings/reading06.html",
+    "title": "Stat 141: Readings for September 10, 2026",
+    "section": "",
+    "text": "Stat 141: Readings for September 10, 2026\nBefore coming to lab today, please read the following material:\n\nQuarto markdown basics, through “Equations”\nMD Section 2.9\nReview the slides from our “Data Visualization: the 5 Named Graphs with ggplot2” lecture"
+  },
+  {
     "objectID": "readings/reading04.html",
     "href": "readings/reading04.html",
     "title": "Stat 141: Readings for September 4, 2026",
@@ -306,6 +544,20 @@
     "title": "Stat 141: Readings for September 3, 2026",
     "section": "",
     "text": "In order to access the lab each week, you’ll have to follow these steps. Here, we detail the process of logging in to the RStudio Server and uploading a .zip file with the lab materials.\n\nFind today’s date on the course website home page schedule. Click “DOWNLOAD LAB.” This will download a .zip file to your computer.\nUse your web browser to navigate to the Reed RStudio server at https://rstudio.reed.edu.\nLog-in using your Reed username and password (the one you use for Moodle, Gmail, etc.).\nClick on the “Upload” button in the lower right quadrant in the RStudio screen.\n\n\n\n\nClick upload in RStudio to upload the lab files onto RStudio Server.\n\n\n\nClick on “Choose File” under “File to upload.” Find where the .zip file from step 1 downloaded onto your computer (usually the “Downloads” folder), select it, and hit “Open.”\nYou should be back in the RStudio window. If you want, you can change the “Target Directory” to be a “New Folder” called something like Math141. You will have ~10 other lab folders, so you can plan for them to all live there together if you want. Otherwise, click “OK.”\nYou should now see files in the bottom right quadrant of RStudio, near where you clicked “Upload.” Open the “lab01” folder to see its contents.\n\n\n\n\nFind your lab01 files in the bottom right quadrant of RStudio.\n\n\n\nOpen lab01_yournamehere.qmd. This is the Quarto document that you’ll complete the lab in. You can (and should) rename this file to include your actual name by checking the box next to the file, clicking “Rename”, and modifying the text to include your name, e.g. lab01_meganayers.qmd, rather than lab01_yournamehere.qmd.\n\n\n\n\nRename the lab .qmd file using your name."
+  },
+  {
+    "objectID": "readings/reading05.html",
+    "href": "readings/reading05.html",
+    "title": "Stat 141: Readings for September 9, 2026",
+    "section": "",
+    "text": "Stat 141: Readings for September 9, 2026\nBefore coming to lecture today, please read the following material:\n\nIMS 5.1 - 5.6, 4.1-4.2.1, 4.3"
+  },
+  {
+    "objectID": "readings/reading07.html",
+    "href": "readings/reading07.html",
+    "title": "Stat 141: Readings for September 11, 2026",
+    "section": "",
+    "text": "Stat 141: Readings for September 11, 2026\nBefore coming to lecture today, practice using R documentation to familiarize yourself with new functions:\n\nIn the console of a RStudio window, run library(dplyr).\n\nThen, run the following commands one by one in the console. For each, skim the documentation that shows up in the “Help” pane (usually the bottom right of RStudio). Pay the most attention to the “Description”, “Usage”, “Arguments”, “Value”, and “Examples” sections. Usually, the most common or important uses and arguments are mentioned first. Run a few of the provided examples in your own console for each command.\n\n?arrange\n?group_by\n?summarize\n?filter\n?mutate"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#goals-for-today",

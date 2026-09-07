@@ -1,7 +1,7 @@
 ---
 pagetitle: "Summary Statistics"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -60,41 +60,22 @@ library(dplyr)
 
 ### Announcements
 
-::: {.nonincremental}
-
--   The teaching team would love to see you in office hours!
-    -   **Megan's office hours**: For individual or small group help on problems or concepts
-    -   **Course assistant office hours**: To work on assignments with your peers and get help from the course assistants when you are stuck
-    
-:::
-
+- [Data Lab at Reed!](https://www.reed.edu/data-at-reed/data_lab/)
+    - Many resources including drop-in help, online `R` tutorials
 - Math/Stats colloquium tomorrow! Come and hear about examples of stats research! 
 
+
+<br><br>
 
 ::: fragment
 
 ### Reminders
 
 -  Test rendering your HW submission early
--  If you haven't already, make sure your access to Gradescope is set up
 -  Select pages for each problem part on Gradescope to receive full credit
 
 :::
 
-<!-- # ```{r, echo = FALSE, eval = FALSE} -->
-<!-- #  -->
-<!-- # qod <- read.csv("data/qod-music.csv") -->
-<!-- # qod$Section <- substr(qod$Section, 3, 3) -->
-<!-- # qod %>%  -->
-<!-- #   ggplot(aes(y = Section, fill = Cleaned)) + -->
-<!-- #   geom_bar(position = "fill") + -->
-<!-- #   ggtitle("Should we play music in lab?") + -->
-<!-- #   theme_classic() -->
-<!-- #  -->
-<!-- #  -->
-<!-- # table(qod$Section[qod$Notes!= ""], qod$Notes[qod$Notes!= ""]) -->
-<!-- #  -->
-<!-- # ``` -->
 
 ------------------------------------------------------------------------
 
@@ -102,15 +83,15 @@ library(dplyr)
 
 ::: nonincremental
 -   Learned about the structure of `ggplot2`
--   Learn five standard graphs for numerical/quantitative data: histograms, boxplots, barplots, scatterplots, and linegraphs
+-   Learn five standard graphs for **visualizing** data: histograms, boxplots, barplots, scatterplots, and linegraphs
 :::
 
 ### Goals for Today
 
--   Consider measures for numerically **summarizing** quantitative data
+-   Consider measures for **numerically summarizing** quantitative data
     -   Center
     -   Spread/variability
--   Consider measures for numerically **summarizing** categorical data
+-   Consider measures for **numerically summarizing** categorical data
     - Contingency tables
 
 
@@ -122,7 +103,7 @@ library(dplyr)
 biketown <- read.csv("data/biketown.csv")
 
 # Inspect the data
-str(biketown)
+glimpse(biketown)
 ```
 
 ------------------------------------------------------------------------
@@ -149,8 +130,9 @@ biketown[25:33,
 # Create histogram
 ggplot(data = biketown, mapping = aes(x = Distance_Miles)) + 
   geom_histogram(fill = "slateblue4", color = "ghostwhite") +
-  facet_wrap(~PaymentPlan, ncol = 1)
-
+  facet_wrap(~PaymentPlan, ncol = 1) +
+  theme(axis.text = element_text(size=14), axis.title = element_text(size=15),
+        strip.text = element_text(size=14))
 ```
 :::
 
@@ -345,7 +327,7 @@ biketown %>%
 ```
 :::
 
-::: {.column .fragment width="50%"}
+::: {.column width="50%"}
 ```{r, echo = FALSE}
 # Create histogram
 ggplot(data = biketown, mapping = aes(x = Distance_Miles)) + 
@@ -355,11 +337,11 @@ ggplot(data = biketown, mapping = aes(x = Distance_Miles)) +
 :::::
 
 
-::: fragment
+<!-- ::: fragment -->
 
-Answer: the distribution is **skewed**. In skewed distributions, the mean is pulled farther in the direction of skew than the median.
+<!-- Answer: the distribution is **skewed**. In skewed distributions, the mean is pulled farther in the direction of skew than the median. -->
 
-:::
+<!-- ::: -->
 
 
 ------------------------------------------------------------------------
@@ -432,7 +414,9 @@ We call the median a **robust** statistic.
 
 ------------------------------------------------------------------------
 
-## Summary statistic anecdote {.smaller}
+## Summary statistic anecdote
+
+::: {style="font-size: 0.75em;"}
 
 In April 2026 the New York Times published an article titled "In Defense of Dumb Dogs." The article describes research that found that a large majority (66%) of dog owners describe their dog as "smarter than average." 
 
@@ -448,11 +432,13 @@ NYT's morning newsletter stated that this result was **"statistically impossible
 
 ::: fragment
 
-**Q:** Why was their statement flawed? 
+**Q:** Why was the NYT newsletter statement flawed? 
 
 <!-- If we have a really left skewed distribution (a few *very* dumb dogs, many reasonably smart dogs), it's totally possible that the 0.66 quantile is above the mean! By "average" they meant "median"  -->
 
 <!-- Rachel saying everyone else has an "above average" # of legs is another funny story to show this point but maybe won't have time. -->
+
+:::
 
 :::
 
@@ -480,7 +466,7 @@ ggplot(data = biketown, mapping = aes(x = Distance_Miles)) +
 ## Computing Measures of Center by Groups
 
 ::::: columns
-::: {.column width="50%"}
+::: {.column width="50%" style="font-size:0.9em;"}
 
 Handy `dplyr` functions that we'll learn: `group_by()` and `summarize()`.
 
@@ -528,109 +514,28 @@ ggplot(data = biketown, mapping = aes(x = Distance_Miles)) +
 
 ## Measures of Variability
 
--   Want a statistic that captures how much observations **deviate** from the mean
+-   Want a statistic that summarizes how much observations **deviate** from the mean
 
-::::: columns
-::: {.column width="50%"}
--   Find how much each observation deviates from the mean.
--   **Idea**: Compute the average of the deviations
+-  **Idea**:
+    -   Find how much each observation deviates from the mean.
+    -   Compute the average of the deviations
 
-:::
-
-::: {.column width="50%" .nonincremental}
-
-:::
-:::::
-
-
-
-------------------------------------------------------------------------
-
-## Measures of Variability
-
-::: {.nonincremental}
-
--   Want a statistic that captures how much observations **deviate** from the mean
-
-:::
-
-::::: columns
-::: {.column width="50%" .nonincremental}
--   Find how much each observation deviates from the mean.
--   **Idea**: Compute the average of the deviations
+::: fragment
 
 $$
 \frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})
 $$
-:::
-
-::: {.column width="50%"}
-
-:::
-:::::
-
-
-
-------------------------------------------------------------------------
-
-
-## Measures of Variability
-
-::: {.nonincremental}
-
--   Want a statistic that captures how much observations **deviate** from the mean
 
 :::
 
-::::: columns
-::: {.column width="50%" .nonincremental}
--   Find how much each observation deviates from the mean.
--   **Idea**: Compute the average of the deviations
 
-$$
-\frac{1}{n} \sum_{i = 1}^n (x_i - \bar{x})
-$$
-:::
+- Test out on 5 values: `5, 10, 20, 5, 25`
 
-::: {.column width="50%"}
-```{r}
-# Test out on first 6 values
-head(biketown$Distance_Miles)
-```
-
-```{r}
-#| echo: false
-countdown::countdown(1.5)
-```
-
-:::
-:::::
 
 ::: fragment
 **Problem?**
 :::
 
-:::: columns
-::: {.column width=50%}
-::: fragment
-```{r}
-# Calculate mean by hand
-(1.91 + 0.72 + 3.42 + 1.81 + 4.51 + 5.54) / 6
-```
-:::
-:::
-
-::: {.column width=50%}
-::: fragment
-```{r}
-# Calculate average deviations by hand
-((1.91 - 2.985) + (0.72 - 2.985) + 
-  (3.42 - 2.985) + (1.81 - 2.985) +
-  (4.51 - 2.985) + (5.54 - 2.985)) / 6
-```
-:::
-:::
-:::::
 
 ------------------------------------------------------------------------
 
@@ -753,14 +658,14 @@ $$
 s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 $$
 
--   We'll learn why we divide by $n-1$ instead of $n$ later in the course.
-
 :::
 
 ::: {.column width="50%" .nonincremental}
 
 :::
 :::::
+
+-   We'll learn why we divide by $n-1$ instead of $n$ later in the course.
 
 ------------------------------------------------------------------------
 
@@ -992,7 +897,7 @@ gg2
 
 ```{r}
 dogs <- read.csv("https://data.cambridgema.gov/api/views/sckh-3xyx/rows.csv")
-str(dogs)
+glimpse(dogs)
 ```
 
 ------------------------------------------------------------------------
@@ -1029,13 +934,24 @@ count(dogs_top5, Dog_Name)  # Handy function
 :::
 
 ::: {.column width="50%" .fragment}
-```{r}
+
+```{r eval=FALSE}
 ggplot(data = dogs_top5, 
     mapping = aes(x = Dog_Name)) +
   geom_bar()
 
 ```
+
+```{r echo=FALSE}
+ggplot(data = dogs_top5, 
+    mapping = aes(x = Dog_Name)) +
+  geom_bar() +
+  theme(axis.text = element_text(size=14), axis.title = element_text(size=15))
+
+```
+
 :::
+
 :::::
 
 ::: fragment
@@ -1055,14 +971,31 @@ dog_counts
 
 <br>
 
-```{r}
-#| output-location: column
+::::: columns
 
+::: column
+
+```{r eval=F}
 ggplot(data = dog_counts,
-       mapping = aes(x = Dog_Name,
-                     y = n)) +
+       mapping = aes(x = Dog_Name, y = n)) +
   geom_col()
 ```
+
+:::
+
+::: column
+
+```{r echo=F}
+ggplot(data = dog_counts,
+       mapping = aes(x = Dog_Name, y = n)) +
+  geom_col() +
+  theme(axis.text = element_text(size=14),
+        axis.title = element_text(size=15))
+```
+
+:::
+:::::
+
 
 ------------------------------------------------------------------------
 
@@ -1077,8 +1010,11 @@ dog_counts
 
 <br>
 
-```{r}
-#| output-location: column
+::::: columns
+
+::: column
+
+```{r eval=F}
 library(forcats)
 ggplot(data = dog_counts,
        mapping = aes(x = fct_reorder(Dog_Name, n),
@@ -1086,11 +1022,30 @@ ggplot(data = dog_counts,
   geom_col()
 ```
 
+
+:::
+
+::: column
+
+```{r echo=F}
+library(forcats)
+ggplot(data = dog_counts,
+       mapping = aes(x = fct_reorder(Dog_Name, n),
+                     y = n)) +
+  geom_col()  +
+  theme(axis.text = element_text(size=14),
+        axis.title = element_text(size=15))
+```
+
+:::
+
+:::::
+
 ------------------------------------------------------------------------
 
 ## Contingency Table
 
-To compare 2 categorical variables, we can use a contingency table
+To compare 2 categorical variables, we can use a contingency table*
 
 
 ::::: columns
@@ -1103,12 +1058,12 @@ count(dogs_top5, Dog_Name, Breed)
 
 <br>
 
-::: fragment
-```{r}
-# More common presentation
-table(dogs_top5$Dog_Name, dogs_top5$Breed)
-```
-:::
+<!-- ::: fragment -->
+<!-- ```{r} -->
+<!-- # More common presentation -->
+<!-- table(dogs_top5$Dog_Name, dogs_top5$Breed) -->
+<!-- ``` -->
+<!-- ::: -->
 :::
 
 ::: {.column width="50%" .fragment}
@@ -1118,8 +1073,12 @@ ggplot(data = dogs_top5,
   geom_bar(position = "dodge")
 
 ```
+
 :::
+
 :::::
+
+- \*(*AKA a two-way table, often presented horizontally rather than vertically*)
 
 ------------------------------------------------------------------------
 
@@ -1174,7 +1133,7 @@ We'll go over these data wrangling functions on Wednesday!
 ::: {.nonincremental}
 ```{r}
 count(dogs_top5, Dog_Name, Breed) %>%
-  group_by(Dog_Name) %>%     ## Conditions on Dog Name
+  group_by(Dog_Name) %>%     ## Conditions on DOG NAME
   mutate(prop = n / sum(n))  ## Adds/changes columns 
 ```
 :::
@@ -1184,14 +1143,14 @@ count(dogs_top5, Dog_Name, Breed) %>%
 ::: {.nonincremental}
 ```{r}
 count(dogs_top5, Dog_Name, Breed) %>%
-  group_by(Breed) %>%     ## Conditions on Breed
+  group_by(Breed) %>%     ## Conditions on BREED
   mutate(prop = n / sum(n))  ## Adds/changes columns 
 ```
 :::
 :::
 :::::
 
-**Q:** How does the interpretation change based on which variable you condition on?
+**Q:** What's different between these two tables?
 
 
 ------------------------------------------------------------------------
@@ -1203,7 +1162,7 @@ count(dogs_top5, Dog_Name, Breed) %>%
     2. Spread (aka variability)
     3. Shape
     
-- We can most easily assess these visually via boxplot or histogram    
+- If we want to assess these visually, we should use a boxplot or histogram    
 
 - We quantify center and spread by calculating (or sometimes by eyeballing) **summary statistics** 
    1. The **mean** or **median** (`mean()`, `median()`) for center
@@ -1217,7 +1176,7 @@ count(dogs_top5, Dog_Name, Breed) %>%
 
 ## Recap: categorical data
 
--   We'll frequently **summarize** categorical data by making tables of category **counts** or proportions
+-   We'll frequently **summarize** categorical data by making **tables** of category **counts** or **proportions**
     - Table of *counts* for 1 categorical variable = **frequency table** or **one-way frequency table**
     - Table of *counts* for 2 categorical variables = **contingency table** or **two-way frequency table**
     - Table of *proportions* with 2 categorical variables = **conditional proportions table**
@@ -1229,7 +1188,7 @@ count(dogs_top5, Dog_Name, Breed) %>%
 
 ### Reminders
 
--   The teaching team would love to see you in office hours!
+-   The teaching team would love to see you in office hours! Check Moodle for the schedule.
 
 <br><br>
 
