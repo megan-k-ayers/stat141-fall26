@@ -64,7 +64,6 @@ library(dplyr)
     - Many resources including drop-in help, online `R` tutorials
 - Math/Stats colloquium tomorrow! Come and hear about examples of stats research! 
 
-
 <br><br>
 
 ::: fragment
@@ -355,7 +354,9 @@ my_data <- c(1, 2, 5, 7, 8, 10)
 my_data_with_outlier <- c(1, 2, 5, 7, 8, 100)
 ```
 
-<br><br>
+<br>
+
+- **Q**: How will the means compare? 
 
 ::::::: fragment
 ::::: columns
@@ -379,7 +380,9 @@ mean(my_data_with_outlier)
 :::::
 :::::::
 
-<br><br>
+<br>
+
+- **Q**: How will the medians compare? 
 
 ::::::: fragment
 ::::: columns
@@ -549,10 +552,13 @@ $$
 
 ::::: columns
 ::: {.column width="50%"}
+
 **NEW** proposal:
 
 -   Find how much each observation deviates from the mean.
 -   Compute the average of the **squared** deviations.
+    - Why?
+    
 :::
 
 ::: {.column width="50%" .nonincremental}
@@ -576,6 +582,8 @@ $$
 
 -   Find how much each observation deviates from the mean.
 -   Compute the average of the **squared** deviations.
+    - Why?
+  
 :::
 
 ::: {.column width="50%"}
@@ -713,9 +721,9 @@ var(biketown$Distance_Miles)
 ::::: columns
 ::: {.column width="55%"}
 ::: {.nonincremental .fragment style="font-size: 0.9em;"}
--   Find how much each observation deviates from the mean.
--   Compute the (nearly) average of the **squared** deviations ($s^2$).
--   Because observations are squared, units differ from original data.
+-   We found how much each observation deviates from the mean.
+-   Computed the (nearly) average of the **squared** deviations ($s^2$).
+-   But because observations are squared, units differ from original data.
 :::
 ::: {.nonincremental .fragment style="font-size: 0.9em;"}
 -   The square root of the sample variance is called the **sample standard deviation** $s$.
@@ -738,7 +746,7 @@ var(biketown$Distance_Miles)
 
 ```{r}
 # Standard deviation 
-sd(biketown$Distance_Miles)   
+sqrt(var(biketown$Distance_Miles))
 ```
 
 :::
@@ -747,7 +755,8 @@ sd(biketown$Distance_Miles)
 
 ::: fragment
 ```{r}
-sqrt(var(biketown$Distance_Miles))
+# Standard deviation (built-in)
+sd(biketown$Distance_Miles)   
 ```
 :::
 :::
@@ -906,6 +915,8 @@ glimpse(dogs)
 
 May want to focus on the dogs with the 5 most common names
 
+::: fragment
+
 ```{r}
 dogs <- read.csv("https://data.cambridgema.gov/api/views/sckh-3xyx/rows.csv")
 
@@ -918,6 +929,8 @@ dogs_top5 <- dogs %>%
 
 head(dogs_top5)
 ```
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -1078,7 +1091,7 @@ ggplot(data = dogs_top5,
 
 :::::
 
-- \*(*AKA a two-way table, often presented horizontally rather than vertically*)
+- \*(*AKA a two-way table, often presented horizontally rather than all vertically*)
 
 ------------------------------------------------------------------------
 

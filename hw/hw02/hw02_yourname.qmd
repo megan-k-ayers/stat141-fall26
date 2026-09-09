@@ -198,7 +198,7 @@ e. Now give your graph from (e) nice labels and a title. [Only code is needed fo
 
 *******************************************************************************
 
-Students might say barplot here, which can work when the quantitative variable is already aggregated for each category of the categorical variable. But if we want to see how the non-aggregated distribution of a continuous variable varies according to the categories, we'd want to do something like a faceted histogram or side-by-side boxplot.
+
 
 *******************************************************************************
 

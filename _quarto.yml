@@ -12,6 +12,7 @@ project:
     - "!quiz-solutions"
     - "!in_class/"
     - "!handouts/"
+    - "!slides/labslides02.qmd"
 
 website:
   title: "STAT 141"

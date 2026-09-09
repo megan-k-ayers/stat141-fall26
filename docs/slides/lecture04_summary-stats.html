@@ -567,7 +567,10 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>my_data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>)</span>
 <span id="cb19-2"><a></a>my_data_with_outlier <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">100</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><br><br></p>
+<p><br></p>
+<ul>
+<li class="fragment"><strong>Q</strong>: How will the means compare?</li>
+</ul>
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -586,7 +589,10 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 </div>
 </div></div>
 </div>
-<p><br><br></p>
+<p><br></p>
+<ul>
+<li class="fragment"><strong>Q</strong>: How will the medians compare?</li>
+</ul>
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -726,7 +732,10 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 <p><strong>NEW</strong> proposal:</p>
 <ul>
 <li class="fragment">Find how much each observation deviates from the mean.</li>
-<li class="fragment">Compute the average of the <strong>squared</strong> deviations.</li>
+<li class="fragment">Compute the average of the <strong>squared</strong> deviations.
+<ul>
+<li class="fragment">Why?</li>
+</ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
 
@@ -742,7 +751,10 @@ $ MultipleRental   &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F
 <p><strong>NEW</strong> proposal:</p>
 <ul>
 <li>Find how much each observation deviates from the mean.</li>
-<li>Compute the average of the <strong>squared</strong> deviations.</li>
+<li>Compute the average of the <strong>squared</strong> deviations.
+<ul>
+<li>Why?</li>
+</ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -856,9 +868,9 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <div class="column" style="width:55%;">
 <div class="fragment" style="font-size: 0.9em;">
 <ul>
-<li>Find how much each observation deviates from the mean.</li>
-<li>Compute the (nearly) average of the <strong>squared</strong> deviations (<span class="math inline">\(s^2\)</span>).</li>
-<li>Because observations are squared, units differ from original data.</li>
+<li>We found how much each observation deviates from the mean.</li>
+<li>Computed the (nearly) average of the <strong>squared</strong> deviations (<span class="math inline">\(s^2\)</span>).</li>
+<li>But because observations are squared, units differ from original data.</li>
 </ul>
 </div>
 <div class="fragment" style="font-size: 0.9em;">
@@ -880,7 +892,7 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="co"># Standard deviation </span></span>
-<span id="cb42-2"><a></a><span class="fu">sd</span>(biketown<span class="sc">$</span>Distance_Miles)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb42-2"><a></a><span class="fu">sqrt</span>(<span class="fu">var</span>(biketown<span class="sc">$</span>Distance_Miles))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.950804</code></pre>
 </div>
@@ -889,7 +901,8 @@ s^2 = \frac{1}{n - 1} \sum_{i = 1}^n (x_i - \bar{x})^2
 <p><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">sqrt</span>(<span class="fu">var</span>(biketown<span class="sc">$</span>Distance_Miles))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="co"># Standard deviation (built-in)</span></span>
+<span id="cb44-2"><a></a><span class="fu">sd</span>(biketown<span class="sc">$</span>Distance_Miles)   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.950804</code></pre>
 </div>
@@ -1032,6 +1045,7 @@ $ Is.Active        &lt;chr&gt; "false", "false", "false", "true", "false", "fals
 <section id="cambridge-dogs-data-set" class="slide level2">
 <h2>Cambridge dogs data set</h2>
 <p>May want to focus on the dogs with the 5 most common names</p>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>dogs <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://data.cambridgema.gov/api/views/sckh-3xyx/rows.csv"</span>)</span>
 <span id="cb54-2"><a></a></span>
@@ -1065,6 +1079,7 @@ $ Is.Active        &lt;chr&gt; "false", "false", "false", "true", "false", "fals
 4 01/01/2019 12:00:00 AM Female 01/01/2027 12:00:00 AM      true Single
 5 01/01/2021 12:00:00 AM Female 01/01/2022 12:00:00 AM     false Single
 6 01/01/2015 12:00:00 AM Female 01/01/2022 12:00:00 AM     false Single</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -1222,7 +1237,7 @@ $ Is.Active        &lt;chr&gt; "false", "false", "false", "true", "false", "fals
 </div>
 </div></div>
 <ul>
-<li class="fragment">*(<em>AKA a two-way table, often presented horizontally rather than vertically</em>)</li>
+<li class="fragment">*(<em>AKA a two-way table, often presented horizontally rather than all vertically</em>)</li>
 </ul>
 </section>
 <section id="conditional-proportions" class="slide level2">
