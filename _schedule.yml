@@ -86,8 +86,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading07.qmd
-            # - type: Slides
-            #   href: slides/lecture05_data-wrangling.qmd
+            - type: Slides
+              href: slides/lecture05_data-wrangling.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture05_data-wrangling_handout.pdf
       resources:
             - 'Submit assignment 1 (due Thurs 9/10 at 9am)'
             - 'Start assignment 2 (assigned 9/10)'

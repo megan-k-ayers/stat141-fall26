@@ -76,7 +76,8 @@ ggplot(data = ---, mapping = aes(x = ---)) +
 
 ```{r}
 # Create bar graph
-
+ggplot(data = somerville, mapping = aes(x = primary_transport)) +
+  geom_bar()
 ```
 
 *******************************************************************************
@@ -93,10 +94,15 @@ Compare and contrast the information provided in the two plots.  [Code and text 
 
 ```{r}
 # Bar plot: Counts
-
+ggplot(data = somerville, mapping = aes(x = primary_transport,
+                                        fill = direction_somerville)) +
+  geom_bar()
 
 # Bar plot: Proportions
-
+ggplot(data = somerville, mapping = aes(x = primary_transport,
+                                        fill = direction_somerville)) +
+  geom_bar(position = "fill") + 
+  labs(y = "Proportion")
 ```
 
 

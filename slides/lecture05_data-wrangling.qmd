@@ -1,7 +1,7 @@
 ---
 pagetitle: "Data Wrangling"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -51,6 +51,14 @@ library(tidyverse)
 [Stat 141 \| Fall 2026 <br> Friday, Week 2]{.custom-subtitle}
 :::
 :::::
+
+------------------------------------------------------------------------
+
+## Announcement/Reminders
+
+- First quiz will be next week during lab
+    - Based closely on HW 2 exercises
+    - No live coding - but maybe explaining code
 
 ------------------------------------------------------------------------
 
