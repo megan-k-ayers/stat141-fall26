@@ -216,6 +216,17 @@
 <li class="fragment">Briefly discuss packages and the difference between base R and <code>dplyr</code></li>
 <li class="fragment">Learn to wrangle data, mainly with <code>dplyr</code></li>
 </ul>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture05_data-wrangling_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="packages" class="slide level2">
 <h2>Packages</h2>
@@ -248,30 +259,37 @@
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>dogs <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://data.cambridgema.gov/api/views/sckh-3xyx/rows.csv"</span>)</span>
 <span id="cb1-2"><a></a></span>
 <span id="cb1-3"><a></a><span class="co"># Useful wrangling that we will come back to</span></span>
-<span id="cb1-4"><a></a>dogs <span class="ot">&lt;-</span> dogs[, <span class="fu">c</span>(<span class="st">"Dog_Name"</span>, <span class="st">"Dog_Breed"</span>, <span class="st">"Neighborhood"</span>)]</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a>dogs_top5 <span class="ot">&lt;-</span> dogs <span class="sc">%&gt;%</span></span>
-<span id="cb1-7"><a></a>  <span class="fu">mutate</span>(<span class="at">Dog_Breed =</span> <span class="fu">case_when</span>(Dog_Breed <span class="sc">==</span> <span class="st">"Mixed Breed"</span> <span class="sc">~</span> <span class="st">"Mixed"</span>,</span>
-<span id="cb1-8"><a></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Single"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb1-9"><a></a>  <span class="fu">filter</span>(Dog_Name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Luna"</span>, <span class="st">"Charlie"</span>, <span class="st">"Lucy"</span>, <span class="st">"Cooper"</span>, <span class="st">"Rosie"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a></a>dogs_top5 <span class="ot">&lt;-</span> dogs <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a></a>  <span class="fu">select</span>(<span class="st">"Dog_Name"</span>, <span class="st">"Dog_Breed"</span>, <span class="st">"Neighborhood"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a></a>  <span class="fu">mutate</span>(<span class="at">Dog_Breed =</span> <span class="fu">case_when</span>(Dog_Breed <span class="sc">==</span> <span class="st">"Mixed Breed"</span> <span class="sc">~</span> <span class="st">"Mixed"</span>, <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Single"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-7"><a></a>  <span class="fu">filter</span>(Dog_Name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Luna"</span>, <span class="st">"Charlie"</span>, <span class="st">"Lucy"</span>, <span class="st">"Cooper"</span>, <span class="st">"Rosie"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="data-for-today-1" class="slide level2">
 <h2>Data for today</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">str</span>(dogs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">glimpse</span>(dogs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   31820 obs. of  3 variables:
- $ Dog_Name    : chr  "STELLA" "George" "Jack" "Tika" ...
- $ Dog_Breed   : chr  "SCHNOODLE" "Maltipoo" "Poodle" "Hound" ...
- $ Neighborhood: chr  "West Cambridge" "North Cambridge" "Riverside" "Mid-Cambridge" ...</code></pre>
+<pre><code>Rows: 27,774
+Columns: 10
+$ Dog_Name         &lt;chr&gt; "Poppy Grace", "Clementine", "Momo", "Maple", "MICKEY…
+$ Dog_Breed        &lt;chr&gt; "Pug", "Labrador Retriever", "Pomeranian", "Golden Re…
+$ Location_masked  &lt;chr&gt; "POINT (-71.093036 42.371026)", "POINT (-71.115351 42…
+$ Latitude_masked  &lt;dbl&gt; 42.3710, 42.3807, 42.3725, 42.3807, 42.3682, 42.3852,…
+$ Longitude_masked &lt;dbl&gt; -71.0930, -71.1154, -71.1084, -71.1154, -71.0791, -71…
+$ Neighborhood     &lt;chr&gt; "Wellington-Harrington", "Baldwin", "Mid-Cambridge", …
+$ Birth.Year       &lt;chr&gt; "01/01/2017 12:00:00 AM", "01/01/2015 12:00:00 AM", "…
+$ Gender           &lt;chr&gt; "Female", "Female", "Male", "Female", "Male", "Female…
+$ Expiration.Date  &lt;chr&gt; "01/01/2021 12:00:00 AM", "01/01/2024 12:00:00 AM", "…
+$ Is.Active        &lt;chr&gt; "false", "false", "false", "true", "false", "false", …</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">str</span>(dogs_top5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">glimpse</span>(dogs_top5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   1015 obs. of  3 variables:
- $ Dog_Name    : chr  "Rosie" "Luna" "Charlie" "Rosie" ...
- $ Dog_Breed   : chr  "Single" "Single" "Single" "Mixed" ...
- $ Neighborhood: chr  "Riverside" "Strawberry Hill" "Cambridgeport" "West Cambridge" ...</code></pre>
+<pre><code>Rows: 909
+Columns: 3
+$ Dog_Name     &lt;chr&gt; "Lucy", "Luna", "Luna", "Charlie", "Luna", "Luna", "Luna"…
+$ Dog_Breed    &lt;chr&gt; "Single", "Single", "Single", "Single", "Single", "Single…
+$ Neighborhood &lt;chr&gt; "The Port", "North Cambridge", "Mid-Cambridge", "Strawber…</code></pre>
 </div>
 </div>
 </section>
@@ -343,20 +361,20 @@
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">count</span>(dogs, Dog_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5,885 × 2
+<pre><code># A tibble: 4,982 × 2
    Dog_Name     n
    &lt;chr&gt;    &lt;int&gt;
  1 2 Chains     1
- 2 ABBY        17
- 3 ABE          1
- 4 ACE          1
- 5 ADDIE        3
- 6 ADELAIDE    12
- 7 AGATHA       1
- 8 AINSLEY      8
- 9 AJ           7
-10 AJAX        10
-# ℹ 5,875 more rows</code></pre>
+ 2 ABBY        12
+ 3 ADELAIDE     9
+ 4 AINSLEY      7
+ 5 AJ           7
+ 6 AJAX         8
+ 7 ALFIE        1
+ 8 ALI          3
+ 9 ALICE        2
+10 ALLI         6
+# ℹ 4,972 more rows</code></pre>
 </div>
 </div>
 </section>
@@ -370,24 +388,25 @@
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>freddy <span class="ot">&lt;-</span> <span class="fu">filter</span>(dogs, Dog_Name <span class="sc">==</span> <span class="st">"Freddy"</span>)</span>
 <span id="cb8-2"><a></a>freddy</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 15 × 3
-   Dog_Name Dog_Breed                   Neighborhood     
-   &lt;chr&gt;    &lt;chr&gt;                       &lt;chr&gt;            
- 1 Freddy   Shep Mix                    Neighborhood Nine
- 2 Freddy   American Cocker Spaniel     Mid-Cambridge    
- 3 Freddy   American Cocker Spaniel     Mid-Cambridge    
- 4 Freddy   Terrier Mix                 North Cambridge  
- 5 Freddy   German Shepherd Dog / Boxer Neighborhood Nine
- 6 Freddy   Poodle                      The Port         
- 7 Freddy   German Shepherd Dog / Boxer Neighborhood Nine
- 8 Freddy   American Cocker Spaniel     Mid-Cambridge    
- 9 Freddy   Shep Mix                    Neighborhood Nine
-10 Freddy   Goldendoodle                East Cambridge   
-11 Freddy   German Shepherd Dog / Boxer Neighborhood Nine
-12 Freddy   German Shepherd Dog / Boxer Neighborhood Nine
-13 Freddy   American Cocker Spaniel     Mid-Cambridge    
-14 Freddy   Shep Mix                    Neighborhood Nine
-15 Freddy   German Shepherd Dog / Boxer Neighborhood Nine</code></pre>
+<pre><code># A tibble: 14 × 10
+   Dog_Name Dog_Breed           Location_masked Latitude_masked Longitude_masked
+   &lt;chr&gt;    &lt;chr&gt;               &lt;chr&gt;                     &lt;dbl&gt;            &lt;dbl&gt;
+ 1 Freddy   German Shepherd Do… POINT (-71.128…            42.4            -71.1
+ 2 Freddy   American Cocker Sp… POINT (-71.108…            42.4            -71.1
+ 3 Freddy   American Cocker Sp… POINT (-71.108…            42.4            -71.1
+ 4 Freddy   Poodle              POINT (-71.096…            42.4            -71.1
+ 5 Freddy   Shep Mix            POINT (-71.128…            42.4            -71.1
+ 6 Freddy   Shep Mix            POINT (-71.128…            42.4            -71.1
+ 7 Freddy   German Shepherd Do… POINT (-71.128…            42.4            -71.1
+ 8 Freddy   American Cocker Sp… POINT (-71.108…            42.4            -71.1
+ 9 Freddy   Goldendoodle        POINT (-71.079…            42.4            -71.1
+10 Freddy   German Shepherd Do… POINT (-71.128…            42.4            -71.1
+11 Freddy   German Shepherd Do… POINT (-71.128…            42.4            -71.1
+12 Freddy   Shep Mix            POINT (-71.128…            42.4            -71.1
+13 Freddy   German Shepherd Do… POINT (-71.128…            42.4            -71.1
+14 Freddy   American Cocker Sp… POINT (-71.108…            42.4            -71.1
+# ℹ 5 more variables: Neighborhood &lt;chr&gt;, Birth.Year &lt;chr&gt;, Gender &lt;chr&gt;,
+#   Expiration.Date &lt;chr&gt;, Is.Active &lt;chr&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -397,15 +416,17 @@
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>not_freddy <span class="ot">&lt;-</span> <span class="fu">filter</span>(dogs, Dog_Name <span class="sc">!=</span> <span class="st">"Freddy"</span>)</span>
 <span id="cb10-2"><a></a><span class="fu">head</span>(not_freddy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  Dog_Name Dog_Breed                 Neighborhood   
-  &lt;chr&gt;    &lt;chr&gt;                     &lt;chr&gt;          
-1 STELLA   SCHNOODLE                 West Cambridge 
-2 George   Maltipoo                  North Cambridge
-3 Jack     Poodle                    Riverside      
-4 Tika     Hound                     Mid-Cambridge  
-5 Ponchi   Cocker Spaniel / Brittany Cambridgeport  
-6 Thomas   Whippet                   Baldwin        </code></pre>
+<pre><code># A tibble: 6 × 10
+  Dog_Name     Dog_Breed        Location_masked Latitude_masked Longitude_masked
+  &lt;chr&gt;        &lt;chr&gt;            &lt;chr&gt;                     &lt;dbl&gt;            &lt;dbl&gt;
+1 Poppy Grace  Pug              POINT (-71.093…            42.4            -71.1
+2 Clementine   Labrador Retrie… POINT (-71.115…            42.4            -71.1
+3 Momo         Pomeranian       POINT (-71.108…            42.4            -71.1
+4 Maple        Golden Retriever POINT (-71.115…            42.4            -71.1
+5 MICKEY       Yorkshire Terri… POINT (-71.079…            42.4            -71.1
+6 Penny Fisher Bernedoodle      POINT (-71.128…            42.4            -71.1
+# ℹ 5 more variables: Neighborhood &lt;chr&gt;, Birth.Year &lt;chr&gt;, Gender &lt;chr&gt;,
+#   Expiration.Date &lt;chr&gt;, Is.Active &lt;chr&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -421,20 +442,22 @@
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">filter</span>(dogs, Dog_Name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Freddy"</span>, <span class="st">"Bo"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 49 × 3
-   Dog_Name Dog_Breed                                Neighborhood     
-   &lt;chr&gt;    &lt;chr&gt;                                    &lt;chr&gt;            
- 1 Freddy   Shep Mix                                 Neighborhood Nine
- 2 Freddy   American Cocker Spaniel                  Mid-Cambridge    
- 3 Freddy   American Cocker Spaniel                  Mid-Cambridge    
- 4 Bo       Mixed Breed                              North Cambridge  
- 5 Bo       Rhodesian Ridgeback / Labrador Retriever East Cambridge   
- 6 Freddy   Terrier Mix                              North Cambridge  
- 7 Bo       American Bulldog                         North Cambridge  
- 8 Bo       Mixed Breed                              North Cambridge  
- 9 Freddy   German Shepherd Dog / Boxer              Neighborhood Nine
-10 Bo       Boxer / Pointer                          North Cambridge  
-# ℹ 39 more rows</code></pre>
+<pre><code># A tibble: 45 × 10
+   Dog_Name Dog_Breed           Location_masked Latitude_masked Longitude_masked
+   &lt;chr&gt;    &lt;chr&gt;               &lt;chr&gt;                     &lt;dbl&gt;            &lt;dbl&gt;
+ 1 Bo       Cairn Terrier / Bo… POINT (-71.108…            42.4            -71.1
+ 2 Freddy   German Shepherd Do… POINT (-71.128…            42.4            -71.1
+ 3 Freddy   American Cocker Sp… POINT (-71.108…            42.4            -71.1
+ 4 Bo       Rhodesian Ridgebac… POINT (-71.079…            42.4            -71.1
+ 5 Bo       Mixed Breed         POINT (-71.136…            42.4            -71.1
+ 6 Freddy   American Cocker Sp… POINT (-71.108…            42.4            -71.1
+ 7 Bo       Cairn Terrier       POINT (-71.108…            42.4            -71.1
+ 8 Bo       Cairn Terrier / Bo… POINT (-71.108…            42.4            -71.1
+ 9 Bo       Mixed Breed         POINT (-71.136…            42.4            -71.1
+10 Bo       American Cocker Sp… POINT (-71.108…            42.4            -71.1
+# ℹ 35 more rows
+# ℹ 5 more variables: Neighborhood &lt;chr&gt;, Birth.Year &lt;chr&gt;, Gender &lt;chr&gt;,
+#   Expiration.Date &lt;chr&gt;, Is.Active &lt;chr&gt;</code></pre>
 </div>
 </div>
 </div>
@@ -446,72 +469,58 @@
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">filter</span>(dogs, Dog_Name <span class="sc">==</span> <span class="st">"Freddy"</span> <span class="sc">|</span> Dog_Name <span class="sc">==</span> <span class="st">"Bo"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 49 × 3
-   Dog_Name Dog_Breed                                Neighborhood     
-   &lt;chr&gt;    &lt;chr&gt;                                    &lt;chr&gt;            
- 1 Freddy   Shep Mix                                 Neighborhood Nine
- 2 Freddy   American Cocker Spaniel                  Mid-Cambridge    
- 3 Freddy   American Cocker Spaniel                  Mid-Cambridge    
- 4 Bo       Mixed Breed                              North Cambridge  
- 5 Bo       Rhodesian Ridgeback / Labrador Retriever East Cambridge   
- 6 Freddy   Terrier Mix                              North Cambridge  
- 7 Bo       American Bulldog                         North Cambridge  
- 8 Bo       Mixed Breed                              North Cambridge  
- 9 Freddy   German Shepherd Dog / Boxer              Neighborhood Nine
-10 Bo       Boxer / Pointer                          North Cambridge  
-# ℹ 39 more rows</code></pre>
+<pre><code># A tibble: 45 × 10
+   Dog_Name Dog_Breed           Location_masked Latitude_masked Longitude_masked
+   &lt;chr&gt;    &lt;chr&gt;               &lt;chr&gt;                     &lt;dbl&gt;            &lt;dbl&gt;
+ 1 Bo       Cairn Terrier / Bo… POINT (-71.108…            42.4            -71.1
+ 2 Freddy   German Shepherd Do… POINT (-71.128…            42.4            -71.1
+ 3 Freddy   American Cocker Sp… POINT (-71.108…            42.4            -71.1
+ 4 Bo       Rhodesian Ridgebac… POINT (-71.079…            42.4            -71.1
+ 5 Bo       Mixed Breed         POINT (-71.136…            42.4            -71.1
+ 6 Freddy   American Cocker Sp… POINT (-71.108…            42.4            -71.1
+ 7 Bo       Cairn Terrier       POINT (-71.108…            42.4            -71.1
+ 8 Bo       Cairn Terrier / Bo… POINT (-71.108…            42.4            -71.1
+ 9 Bo       Mixed Breed         POINT (-71.136…            42.4            -71.1
+10 Bo       American Cocker Sp… POINT (-71.108…            42.4            -71.1
+# ℹ 35 more rows
+# ℹ 5 more variables: Neighborhood &lt;chr&gt;, Birth.Year &lt;chr&gt;, Gender &lt;chr&gt;,
+#   Expiration.Date &lt;chr&gt;, Is.Active &lt;chr&gt;</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">filter</span>(dogs, Dog_Name <span class="sc">==</span> <span class="st">"Rosie"</span> <span class="sc">&amp;</span> Dog_Breed <span class="sc">==</span> <span class="st">"Terrier"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">filter</span>(dogs, Dog_Name <span class="sc">==</span> <span class="st">"Rosie"</span> <span class="sc">&amp;</span> Dog_Breed <span class="sc">==</span> <span class="st">"Schnoodle"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  Dog_Name Dog_Breed Neighborhood   
-  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;          
-1 Rosie    Terrier   North Cambridge
-2 Rosie    Terrier   North Cambridge
-3 Rosie    Terrier   North Cambridge
-4 Rosie    Terrier   North Cambridge
-5 Rosie    Terrier   North Cambridge
-6 Rosie    Terrier   North Cambridge</code></pre>
+<pre><code># A tibble: 2 × 10
+  Dog_Name Dog_Breed Location_masked            Latitude_masked Longitude_masked
+  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;                                &lt;dbl&gt;            &lt;dbl&gt;
+1 Rosie    Schnoodle POINT (-71.12829 42.38515…            42.4            -71.1
+2 Rosie    Schnoodle POINT (-71.12829 42.38515…            42.4            -71.1
+# ℹ 5 more variables: Neighborhood &lt;chr&gt;, Birth.Year &lt;chr&gt;, Gender &lt;chr&gt;,
+#   Expiration.Date &lt;chr&gt;, Is.Active &lt;chr&gt;</code></pre>
 </div>
 </div>
 </div>
 </section>
 <section id="the-pipe" class="slide level2">
 <h2>The pipe: <code>%&gt;%</code></h2>
-<p>The pipe operator <code>%&gt;%</code> is a handy way to string multiple commands together in <code>dplyr</code>. Instead of:</p>
+<p>The pipe operator <code>%&gt;%</code> is a handy way to string multiple commands together in <code>dplyr</code>.</p>
+<p><br></p>
+<p>Instead of:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>not_freddy <span class="ot">&lt;-</span> <span class="fu">filter</span>(dogs, Dog_Name <span class="sc">!=</span> <span class="st">"Freddy"</span>)</span>
 <span id="cb18-2"><a></a><span class="fu">head</span>(not_freddy, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  Dog_Name Dog_Breed Neighborhood   
-  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;          
-1 STELLA   SCHNOODLE West Cambridge 
-2 George   Maltipoo  North Cambridge
-3 Jack     Poodle    Riverside      </code></pre>
-</div>
 </div>
 </div>
 <p><br></p>
 <div class="fragment">
 <p>… we can write:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>dogs <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dog_Name <span class="sc">!=</span> <span class="st">"Freddy"</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  Dog_Name Dog_Breed Neighborhood   
-  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;          
-1 STELLA   SCHNOODLE West Cambridge 
-2 George   Maltipoo  North Cambridge
-3 Jack     Poodle    Riverside      </code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>dogs <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Dog_Name <span class="sc">!=</span> <span class="st">"Freddy"</span>) <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
@@ -525,31 +534,33 @@
 </ul></li>
 </ul>
 </div></div>
+<div class="fragment">
+<p>Think of the pipe operator <code>%&gt;%</code> as flowing our data frame through each command.</p>
+</div>
 </section>
 <section id="extracting-variables" class="slide level2">
 <h2>Extracting variables</h2>
 <p>To extract variables, we can use the <code>dplyr</code> funtion <code>select()</code></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>dogs_top5 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">"Dog_Name"</span>, <span class="st">"Dog_Breed"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-2"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>dogs_top5 <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">"Dog_Name"</span>, <span class="st">"Dog_Breed"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Dog_Name Dog_Breed
-1    Rosie    Single
+1     Lucy    Single
 2     Luna    Single
-3  Charlie    Single
-4    Rosie     Mixed
-5     Lucy    Single
-6     Lucy    Single</code></pre>
+3     Luna    Single
+4  Charlie    Single
+5     Luna    Single
+6     Luna    Single</code></pre>
 </div>
 </div>
 <p><br></p>
 <div class="fragment">
-<p>To extract just one variable it can sometimes be easier to just use <code>$</code> if we don’t need to data wrangle</p>
+<p>To extract just one variable for a one-time use, it can be easier to just use <code>$</code></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-code-line-numbers="1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>just_dog_name <span class="ot">&lt;-</span> dogs_top5<span class="sc">$</span>Dog_Name</span>
-<span id="cb24-2"><a></a><span class="fu">head</span>(just_dog_name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">head</span>(dogs_top5<span class="sc">$</span>Dog_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Rosie"   "Luna"    "Charlie" "Rosie"   "Lucy"    "Lucy"   </code></pre>
+<pre><code>[1] "Lucy"    "Luna"    "Luna"    "Charlie" "Luna"    "Luna"   </code></pre>
 </div>
 </div>
 </div>
@@ -570,1025 +581,919 @@
 <p><br></p>
 <p>Use <code>arrange()</code> to change the order of cases in a data frame</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>dogs_top5 <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a></a>  <span class="fu">arrange</span>(Dog_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>dogs_top5 <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a></a>  <span class="fu">arrange</span>(Dog_Name)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     Dog_Name Dog_Breed          Neighborhood
-1     Charlie    Single         Cambridgeport
-2     Charlie    Single        West Cambridge
-3     Charlie    Single     Neighborhood Nine
-4     Charlie    Single     Neighborhood Nine
-5     Charlie    Single       North Cambridge
-6     Charlie    Single         Cambridgeport
-7     Charlie    Single        West Cambridge
-8     Charlie    Single       North Cambridge
-9     Charlie    Single         Cambridgeport
-10    Charlie    Single         Mid-Cambridge
-11    Charlie     Mixed         Mid-Cambridge
-12    Charlie    Single     Neighborhood Nine
-13    Charlie    Single         Cambridgeport
-14    Charlie    Single     Neighborhood Nine
-15    Charlie    Single         Cambridgeport
-16    Charlie    Single        West Cambridge
-17    Charlie    Single         Cambridgeport
-18    Charlie    Single        East Cambridge
-19    Charlie     Mixed              The Port
-20    Charlie    Single       North Cambridge
-21    Charlie    Single         Cambridgeport
-22    Charlie    Single     Neighborhood Nine
-23    Charlie    Single   Cambridge Highlands
-24    Charlie    Single         Mid-Cambridge
-25    Charlie    Single        East Cambridge
-26    Charlie    Single     Neighborhood Nine
-27    Charlie    Single     Neighborhood Nine
-28    Charlie    Single        West Cambridge
-29    Charlie    Single         Mid-Cambridge
-30    Charlie    Single         Mid-Cambridge
-31    Charlie    Single        West Cambridge
-32    Charlie    Single       North Cambridge
-33    Charlie     Mixed        East Cambridge
-34    Charlie    Single               Baldwin
-35    Charlie     Mixed       Strawberry Hill
-36    Charlie     Mixed         Mid-Cambridge
-37    Charlie    Single              The Port
-38    Charlie    Single       Strawberry Hill
-39    Charlie    Single         Cambridgeport
-40    Charlie    Single         Cambridgeport
-41    Charlie    Single   Cambridge Highlands
-42    Charlie    Single         Mid-Cambridge
-43    Charlie    Single     Neighborhood Nine
-44    Charlie    Single     Neighborhood Nine
-45    Charlie    Single Wellington-Harrington
-46    Charlie    Single       Strawberry Hill
-47    Charlie    Single        West Cambridge
-48    Charlie     Mixed Wellington-Harrington
-49    Charlie    Single       Strawberry Hill
-50    Charlie    Single     Neighborhood Nine
-51    Charlie     Mixed         Cambridgeport
-52    Charlie    Single     Neighborhood Nine
-53    Charlie    Single       North Cambridge
-54    Charlie    Single         Cambridgeport
-55    Charlie    Single     Neighborhood Nine
-56    Charlie    Single        West Cambridge
-57    Charlie    Single     Neighborhood Nine
-58    Charlie    Single        West Cambridge
-59    Charlie    Single              The Port
-60    Charlie     Mixed               Baldwin
-61    Charlie    Single         Mid-Cambridge
-62    Charlie    Single         Cambridgeport
-63    Charlie    Single        West Cambridge
-64    Charlie    Single               Baldwin
-65    Charlie    Single             Riverside
-66    Charlie    Single        West Cambridge
-67    Charlie    Single   Cambridge Highlands
-68    Charlie    Single         Mid-Cambridge
-69    Charlie    Single         Mid-Cambridge
-70    Charlie    Single        West Cambridge
-71    Charlie     Mixed Wellington-Harrington
-72    Charlie    Single              The Port
-73    Charlie    Single        East Cambridge
-74    Charlie     Mixed        East Cambridge
-75    Charlie    Single       North Cambridge
-76    Charlie    Single Wellington-Harrington
-77    Charlie    Single        East Cambridge
-78    Charlie    Single        West Cambridge
-79    Charlie    Single       North Cambridge
-80    Charlie    Single            Area 2/MIT
-81    Charlie    Single        East Cambridge
-82    Charlie    Single        East Cambridge
-83    Charlie    Single         Cambridgeport
-84    Charlie    Single       North Cambridge
-85    Charlie    Single        East Cambridge
-86    Charlie    Single         Cambridgeport
-87    Charlie    Single     Neighborhood Nine
-88    Charlie    Single       Strawberry Hill
-89    Charlie    Single         Cambridgeport
-90    Charlie    Single         Mid-Cambridge
-91    Charlie    Single         Cambridgeport
-92    Charlie    Single             Riverside
-93    Charlie    Single              The Port
-94    Charlie    Single         Cambridgeport
-95    Charlie    Single       Strawberry Hill
-96    Charlie    Single        East Cambridge
-97    Charlie    Single         Cambridgeport
-98    Charlie    Single         Mid-Cambridge
-99    Charlie    Single     Neighborhood Nine
-100   Charlie    Single         Cambridgeport
-101   Charlie    Single         Cambridgeport
-102   Charlie    Single         Cambridgeport
-103   Charlie    Single         Mid-Cambridge
-104   Charlie    Single         Cambridgeport
-105   Charlie    Single     Neighborhood Nine
-106   Charlie    Single       North Cambridge
-107   Charlie    Single        West Cambridge
-108   Charlie    Single       North Cambridge
-109   Charlie    Single         Cambridgeport
-110   Charlie    Single     Neighborhood Nine
-111   Charlie    Single         Mid-Cambridge
-112   Charlie    Single         Cambridgeport
-113   Charlie    Single        East Cambridge
-114   Charlie     Mixed        East Cambridge
-115   Charlie    Single        West Cambridge
-116   Charlie     Mixed         Mid-Cambridge
-117   Charlie    Single             Riverside
-118   Charlie     Mixed       Strawberry Hill
-119   Charlie    Single             Riverside
-120   Charlie    Single        East Cambridge
-121   Charlie    Single        East Cambridge
-122   Charlie    Single         Cambridgeport
-123   Charlie    Single     Neighborhood Nine
-124   Charlie    Single         Cambridgeport
-125   Charlie    Single     Neighborhood Nine
-126   Charlie    Single             Riverside
-127   Charlie    Single     Neighborhood Nine
-128   Charlie    Single       North Cambridge
-129   Charlie    Single       North Cambridge
-130   Charlie    Single Wellington-Harrington
-131   Charlie    Single     Neighborhood Nine
-132   Charlie     Mixed               Baldwin
-133   Charlie    Single         Cambridgeport
-134   Charlie    Single         Cambridgeport
-135   Charlie    Single     Neighborhood Nine
-136   Charlie    Single       Strawberry Hill
-137   Charlie    Single         Cambridgeport
-138   Charlie    Single     Neighborhood Nine
-139   Charlie    Single     Neighborhood Nine
-140   Charlie    Single        West Cambridge
-141   Charlie    Single        West Cambridge
-142   Charlie    Single     Neighborhood Nine
-143   Charlie    Single         Mid-Cambridge
-144   Charlie    Single     Neighborhood Nine
-145   Charlie    Single        East Cambridge
-146   Charlie    Single       Strawberry Hill
-147   Charlie     Mixed              The Port
-148   Charlie    Single         Cambridgeport
-149   Charlie    Single              The Port
-150   Charlie    Single        West Cambridge
-151   Charlie     Mixed         Mid-Cambridge
-152   Charlie    Single         Mid-Cambridge
-153   Charlie    Single       Strawberry Hill
-154   Charlie    Single        East Cambridge
-155   Charlie    Single       Strawberry Hill
-156   Charlie     Mixed             Riverside
-157   Charlie    Single        West Cambridge
-158   Charlie    Single       North Cambridge
-159   Charlie    Single       North Cambridge
-160   Charlie    Single     Neighborhood Nine
-161   Charlie    Single       Strawberry Hill
-162   Charlie    Single        West Cambridge
-163   Charlie    Single        West Cambridge
-164   Charlie    Single         Cambridgeport
-165   Charlie    Single       Strawberry Hill
-166   Charlie    Single       North Cambridge
-167   Charlie    Single        West Cambridge
-168   Charlie    Single             Riverside
-169   Charlie    Single   Cambridge Highlands
-170   Charlie    Single       North Cambridge
-171   Charlie    Single              The Port
-172   Charlie    Single Wellington-Harrington
-173   Charlie    Single               Baldwin
-174   Charlie    Single        West Cambridge
-175   Charlie    Single       North Cambridge
-176   Charlie    Single        East Cambridge
-177   Charlie    Single     Neighborhood Nine
-178   Charlie    Single       North Cambridge
-179   Charlie    Single       North Cambridge
-180   Charlie    Single         Cambridgeport
-181   Charlie    Single        East Cambridge
-182   Charlie    Single Wellington-Harrington
-183   Charlie    Single       North Cambridge
-184   Charlie    Single        West Cambridge
-185   Charlie    Single       North Cambridge
-186   Charlie    Single       Strawberry Hill
-187   Charlie    Single       Strawberry Hill
-188   Charlie     Mixed         Mid-Cambridge
-189   Charlie    Single         Cambridgeport
-190   Charlie    Single         Mid-Cambridge
-191   Charlie    Single              The Port
-192   Charlie    Single         Mid-Cambridge
-193   Charlie    Single        West Cambridge
-194   Charlie    Single               Baldwin
-195   Charlie    Single     Neighborhood Nine
-196   Charlie    Single        East Cambridge
-197   Charlie    Single       North Cambridge
-198   Charlie    Single     Neighborhood Nine
-199   Charlie    Single        West Cambridge
-200   Charlie    Single       Strawberry Hill
-201   Charlie    Single       Strawberry Hill
-202   Charlie    Single        East Cambridge
-203   Charlie    Single              The Port
-204   Charlie    Single       Strawberry Hill
-205   Charlie    Single        East Cambridge
-206   Charlie    Single     Neighborhood Nine
-207   Charlie    Single              The Port
-208   Charlie    Single         Cambridgeport
-209   Charlie    Single     Neighborhood Nine
-210   Charlie    Single         Cambridgeport
-211   Charlie    Single            Area 2/MIT
-212   Charlie    Single       North Cambridge
-213   Charlie    Single     Neighborhood Nine
-214   Charlie    Single         Cambridgeport
-215   Charlie    Single       North Cambridge
-216   Charlie    Single       Strawberry Hill
-217   Charlie    Single         Mid-Cambridge
-218   Charlie    Single         Mid-Cambridge
-219   Charlie    Single         Cambridgeport
-220   Charlie    Single              The Port
-221   Charlie    Single         Mid-Cambridge
-222   Charlie    Single         Cambridgeport
-223   Charlie    Single        East Cambridge
-224   Charlie    Single   Cambridge Highlands
-225   Charlie    Single        West Cambridge
-226   Charlie    Single            Area 2/MIT
-227   Charlie     Mixed              The Port
-228   Charlie    Single                      
-229   Charlie    Single       North Cambridge
-230   Charlie    Single     Neighborhood Nine
-231   Charlie    Single                      
-232   Charlie    Single         Cambridgeport
-233   Charlie    Single       North Cambridge
-234   Charlie    Single         Mid-Cambridge
-235   Charlie    Single                      
-236   Charlie    Single       Strawberry Hill
-237   Charlie    Single                      
-238   Charlie     Mixed Wellington-Harrington
-239   Charlie    Single     Neighborhood Nine
-240   Charlie    Single        East Cambridge
-241   Charlie    Single        West Cambridge
-242   Charlie    Single              The Port
-243   Charlie     Mixed         Mid-Cambridge
-244   Charlie    Single                      
-245   Charlie     Mixed               Baldwin
-246   Charlie    Single         Cambridgeport
-247   Charlie    Single                      
-248   Charlie    Single               Baldwin
-249   Charlie    Single            Area 2/MIT
-250   Charlie    Single                      
-251   Charlie    Single                      
-252   Charlie    Single                      
-253    Cooper    Single       North Cambridge
-254    Cooper    Single     Neighborhood Nine
-255    Cooper    Single        West Cambridge
-256    Cooper    Single        West Cambridge
-257    Cooper    Single       North Cambridge
-258    Cooper    Single     Neighborhood Nine
-259    Cooper    Single             Riverside
-260    Cooper    Single     Neighborhood Nine
-261    Cooper    Single         Mid-Cambridge
-262    Cooper    Single        West Cambridge
-263    Cooper    Single       North Cambridge
-264    Cooper    Single         Cambridgeport
-265    Cooper    Single        West Cambridge
-266    Cooper    Single         Cambridgeport
-267    Cooper    Single         Mid-Cambridge
-268    Cooper    Single             Riverside
-269    Cooper     Mixed             Riverside
-270    Cooper    Single        East Cambridge
-271    Cooper    Single     Neighborhood Nine
-272    Cooper    Single     Neighborhood Nine
-273    Cooper    Single         Cambridgeport
-274    Cooper    Single               Baldwin
-275    Cooper    Single         Mid-Cambridge
-276    Cooper    Single Wellington-Harrington
-277    Cooper    Single         Mid-Cambridge
-278    Cooper    Single         Cambridgeport
-279    Cooper     Mixed        East Cambridge
-280    Cooper    Single       North Cambridge
-281    Cooper    Single       North Cambridge
-282    Cooper    Single     Neighborhood Nine
-283    Cooper    Single         Mid-Cambridge
-284    Cooper    Single       North Cambridge
-285    Cooper    Single         Mid-Cambridge
-286    Cooper    Single        West Cambridge
-287    Cooper    Single         Cambridgeport
-288    Cooper     Mixed       North Cambridge
-289    Cooper    Single         Cambridgeport
-290    Cooper    Single        West Cambridge
-291    Cooper    Single     Neighborhood Nine
-292    Cooper     Mixed         Cambridgeport
-293    Cooper    Single               Baldwin
-294    Cooper    Single             Riverside
-295    Cooper    Single     Neighborhood Nine
-296    Cooper    Single        East Cambridge
-297    Cooper    Single        West Cambridge
-298    Cooper    Single       North Cambridge
-299    Cooper    Single        East Cambridge
-300    Cooper    Single        East Cambridge
-301    Cooper    Single     Neighborhood Nine
-302    Cooper    Single        West Cambridge
-303    Cooper    Single       North Cambridge
-304    Cooper    Single       North Cambridge
-305    Cooper    Single     Neighborhood Nine
-306    Cooper    Single        West Cambridge
-307    Cooper    Single        East Cambridge
-308    Cooper    Single        West Cambridge
-309    Cooper    Single         Cambridgeport
-310    Cooper    Single       North Cambridge
-311    Cooper    Single     Neighborhood Nine
-312    Cooper    Single         Mid-Cambridge
-313    Cooper    Single       North Cambridge
-314    Cooper    Single        West Cambridge
-315    Cooper    Single        East Cambridge
-316    Cooper    Single     Neighborhood Nine
-317    Cooper    Single         Mid-Cambridge
-318    Cooper    Single        West Cambridge
-319    Cooper    Single       North Cambridge
-320    Cooper     Mixed       North Cambridge
-321    Cooper     Mixed        West Cambridge
-322    Cooper     Mixed   Cambridge Highlands
-323    Cooper    Single             Riverside
-324    Cooper    Single       North Cambridge
-325    Cooper    Single       North Cambridge
-326    Cooper    Single       North Cambridge
-327    Cooper    Single        East Cambridge
-328    Cooper    Single       North Cambridge
-329    Cooper    Single       North Cambridge
-330    Cooper    Single        East Cambridge
-331    Cooper    Single        East Cambridge
-332    Cooper    Single        East Cambridge
-333    Cooper    Single     Neighborhood Nine
-334    Cooper    Single     Neighborhood Nine
-335    Cooper    Single       North Cambridge
-336    Cooper    Single       North Cambridge
-337    Cooper    Single        West Cambridge
-338    Cooper     Mixed Wellington-Harrington
-339    Cooper    Single        West Cambridge
-340    Cooper    Single     Neighborhood Nine
-341    Cooper     Mixed         Cambridgeport
-342    Cooper    Single        West Cambridge
-343    Cooper    Single        West Cambridge
-344    Cooper    Single             Riverside
-345    Cooper    Single        West Cambridge
-346    Cooper    Single        East Cambridge
-347    Cooper    Single        West Cambridge
-348    Cooper    Single     Neighborhood Nine
-349    Cooper    Single   Cambridge Highlands
-350    Cooper     Mixed Wellington-Harrington
-351    Cooper    Single Wellington-Harrington
-352    Cooper    Single       North Cambridge
-353    Cooper    Single     Neighborhood Nine
-354    Cooper    Single         Cambridgeport
-355    Cooper    Single     Neighborhood Nine
-356    Cooper    Single       Strawberry Hill
-357    Cooper    Single     Neighborhood Nine
-358    Cooper    Single         Cambridgeport
-359    Cooper    Single        East Cambridge
-360    Cooper    Single     Neighborhood Nine
-361    Cooper    Single     Neighborhood Nine
-362    Cooper    Single       North Cambridge
-363    Cooper    Single        West Cambridge
-364    Cooper    Single        West Cambridge
-365    Cooper    Single        West Cambridge
-366    Cooper    Single     Neighborhood Nine
-367    Cooper    Single       North Cambridge
-368    Cooper     Mixed         Mid-Cambridge
-369    Cooper    Single       North Cambridge
-370    Cooper     Mixed   Cambridge Highlands
-371    Cooper    Single        West Cambridge
-372    Cooper    Single         Cambridgeport
-373    Cooper    Single     Neighborhood Nine
-374    Cooper    Single                      
-375    Cooper    Single       North Cambridge
-376    Cooper    Single                      
-377    Cooper    Single     Neighborhood Nine
-378    Cooper    Single                      
-379    Cooper    Single         Mid-Cambridge
-380    Cooper     Mixed        East Cambridge
-381    Cooper    Single        West Cambridge
-382    Cooper    Single        West Cambridge
-383    Cooper    Single     Neighborhood Nine
-384    Cooper    Single        West Cambridge
-385    Cooper     Mixed   Cambridge Highlands
-386    Cooper    Single     Neighborhood Nine
-387      Lucy    Single        West Cambridge
-388      Lucy    Single              The Port
-389      Lucy    Single        East Cambridge
-390      Lucy    Single         Mid-Cambridge
-391      Lucy    Single              The Port
-392      Lucy    Single       North Cambridge
-393      Lucy    Single     Neighborhood Nine
-394      Lucy    Single              The Port
-395      Lucy    Single       North Cambridge
-396      Lucy    Single       North Cambridge
-397      Lucy     Mixed         Mid-Cambridge
-398      Lucy     Mixed Wellington-Harrington
-399      Lucy    Single        East Cambridge
-400      Lucy     Mixed              The Port
-401      Lucy    Single        East Cambridge
-402      Lucy    Single        West Cambridge
-403      Lucy    Single        West Cambridge
-404      Lucy    Single         Mid-Cambridge
-405      Lucy    Single         Mid-Cambridge
-406      Lucy    Single     Neighborhood Nine
-407      Lucy    Single       North Cambridge
-408      Lucy     Mixed     Neighborhood Nine
-409      Lucy    Single   Cambridge Highlands
-410      Lucy    Single     Neighborhood Nine
-411      Lucy    Single     Neighborhood Nine
-412      Lucy    Single         Mid-Cambridge
-413      Lucy    Single     Neighborhood Nine
-414      Lucy    Single         Mid-Cambridge
-415      Lucy     Mixed        West Cambridge
-416      Lucy    Single       North Cambridge
-417      Lucy    Single     Neighborhood Nine
-418      Lucy    Single         Mid-Cambridge
-419      Lucy    Single        West Cambridge
-420      Lucy    Single         Mid-Cambridge
-421      Lucy    Single       North Cambridge
-422      Lucy    Single         Mid-Cambridge
-423      Lucy    Single              The Port
-424      Lucy    Single     Neighborhood Nine
-425      Lucy    Single Wellington-Harrington
-426      Lucy    Single       North Cambridge
-427      Lucy    Single       North Cambridge
-428      Lucy    Single     Neighborhood Nine
-429      Lucy     Mixed       North Cambridge
-430      Lucy    Single       North Cambridge
-431      Lucy     Mixed         Mid-Cambridge
-432      Lucy    Single         Mid-Cambridge
-433      Lucy    Single               Baldwin
-434      Lucy    Single         Cambridgeport
-435      Lucy     Mixed       North Cambridge
-436      Lucy    Single       North Cambridge
-437      Lucy    Single       North Cambridge
-438      Lucy    Single       North Cambridge
-439      Lucy    Single        East Cambridge
-440      Lucy    Single         Mid-Cambridge
-441      Lucy    Single       North Cambridge
-442      Lucy    Single       North Cambridge
-443      Lucy    Single               Baldwin
-444      Lucy    Single       North Cambridge
-445      Lucy    Single     Neighborhood Nine
-446      Lucy    Single        West Cambridge
-447      Lucy    Single              The Port
-448      Lucy    Single       North Cambridge
-449      Lucy    Single               Baldwin
-450      Lucy    Single               Baldwin
-451      Lucy    Single               Baldwin
-452      Lucy    Single       North Cambridge
-453      Lucy     Mixed     Neighborhood Nine
-454      Lucy    Single         Mid-Cambridge
-455      Lucy    Single         Mid-Cambridge
-456      Lucy    Single       North Cambridge
-457      Lucy     Mixed        East Cambridge
-458      Lucy    Single     Neighborhood Nine
-459      Lucy    Single     Neighborhood Nine
-460      Lucy    Single         Mid-Cambridge
-461      Lucy    Single     Neighborhood Nine
-462      Lucy    Single       North Cambridge
-463      Lucy    Single        East Cambridge
-464      Lucy    Single        East Cambridge
-465      Lucy    Single     Neighborhood Nine
-466      Lucy    Single        East Cambridge
-467      Lucy    Single     Neighborhood Nine
-468      Lucy    Single        West Cambridge
-469      Lucy    Single Wellington-Harrington
-470      Lucy    Single        West Cambridge
-471      Lucy    Single        East Cambridge
-472      Lucy    Single       North Cambridge
-473      Lucy    Single        West Cambridge
-474      Lucy    Single   Cambridge Highlands
-475      Lucy    Single        West Cambridge
-476      Lucy    Single         Mid-Cambridge
-477      Lucy    Single       North Cambridge
-478      Lucy    Single       North Cambridge
-479      Lucy    Single        East Cambridge
-480      Lucy    Single         Cambridgeport
-481      Lucy    Single       North Cambridge
-482      Lucy    Single       North Cambridge
-483      Lucy    Single        West Cambridge
-484      Lucy    Single         Mid-Cambridge
-485      Lucy    Single        West Cambridge
-486      Lucy    Single       North Cambridge
-487      Lucy    Single Wellington-Harrington
-488      Lucy    Single         Mid-Cambridge
-489      Lucy    Single        West Cambridge
-490      Lucy    Single        East Cambridge
-491      Lucy    Single       North Cambridge
-492      Lucy    Single     Neighborhood Nine
-493      Lucy    Single     Neighborhood Nine
-494      Lucy    Single     Neighborhood Nine
-495      Lucy     Mixed              The Port
-496      Lucy     Mixed        West Cambridge
-497      Lucy    Single         Mid-Cambridge
-498      Lucy     Mixed       North Cambridge
-499      Lucy    Single        West Cambridge
-500      Lucy    Single              The Port
-501      Lucy    Single         Mid-Cambridge
-502      Lucy    Single       North Cambridge
-503      Lucy    Single       North Cambridge
-504      Lucy    Single        West Cambridge
-505      Lucy    Single       North Cambridge
-506      Lucy    Single       North Cambridge
-507      Lucy    Single        East Cambridge
-508      Lucy    Single               Baldwin
-509      Lucy    Single       North Cambridge
-510      Lucy    Single       North Cambridge
-511      Lucy    Single         Cambridgeport
-512      Lucy    Single     Neighborhood Nine
-513      Lucy    Single        West Cambridge
-514      Lucy    Single         Mid-Cambridge
-515      Lucy    Single       North Cambridge
-516      Lucy    Single       North Cambridge
-517      Lucy    Single     Neighborhood Nine
-518      Lucy    Single       North Cambridge
-519      Lucy    Single     Neighborhood Nine
-520      Lucy    Single        East Cambridge
-521      Lucy    Single         Mid-Cambridge
-522      Lucy    Single     Neighborhood Nine
-523      Lucy    Single       North Cambridge
-524      Lucy    Single       North Cambridge
-525      Lucy    Single               Baldwin
-526      Lucy    Single        West Cambridge
-527      Lucy    Single     Neighborhood Nine
-528      Lucy    Single Wellington-Harrington
-529      Lucy    Single       North Cambridge
-530      Lucy    Single       North Cambridge
-531      Lucy    Single     Neighborhood Nine
-532      Lucy    Single        East Cambridge
-533      Lucy    Single       North Cambridge
-534      Lucy    Single               Baldwin
-535      Lucy    Single        West Cambridge
-536      Lucy    Single     Neighborhood Nine
-537      Lucy    Single Wellington-Harrington
-538      Lucy    Single         Mid-Cambridge
-539      Lucy    Single       North Cambridge
-540      Lucy    Single         Mid-Cambridge
-541      Lucy    Single       North Cambridge
-542      Lucy    Single               Baldwin
-543      Lucy     Mixed         Mid-Cambridge
-544      Lucy    Single        West Cambridge
-545      Lucy    Single         Mid-Cambridge
-546      Lucy     Mixed             Riverside
-547      Lucy    Single         Cambridgeport
-548      Lucy    Single               Baldwin
-549      Lucy    Single                      
-550      Lucy    Single                      
-551      Lucy    Single     Neighborhood Nine
-552      Lucy     Mixed              The Port
-553      Lucy     Mixed       North Cambridge
-554      Lucy    Single       North Cambridge
-555      Lucy     Mixed     Neighborhood Nine
-556      Lucy    Single       North Cambridge
-557      Lucy     Mixed       North Cambridge
-558      Lucy    Single        East Cambridge
-559      Lucy    Single                      
-560      Lucy    Single                      
-561      Lucy    Single       North Cambridge
-562      Luna    Single       Strawberry Hill
-563      Luna    Single             Riverside
-564      Luna     Mixed       North Cambridge
-565      Luna    Single       North Cambridge
-566      Luna     Mixed     Neighborhood Nine
-567      Luna    Single        East Cambridge
-568      Luna    Single     Neighborhood Nine
-569      Luna     Mixed             Riverside
-570      Luna    Single        West Cambridge
-571      Luna    Single        East Cambridge
-572      Luna    Single         Cambridgeport
-573      Luna    Single        East Cambridge
-574      Luna    Single        West Cambridge
-575      Luna    Single       Strawberry Hill
-576      Luna    Single            Area 2/MIT
-577      Luna    Single         Mid-Cambridge
-578      Luna    Single       North Cambridge
-579      Luna    Single         Mid-Cambridge
-580      Luna    Single             Riverside
-581      Luna    Single        West Cambridge
-582      Luna    Single        East Cambridge
-583      Luna    Single         Cambridgeport
-584      Luna    Single     Neighborhood Nine
-585      Luna    Single        West Cambridge
-586      Luna    Single        West Cambridge
-587      Luna    Single        West Cambridge
-588      Luna    Single       North Cambridge
-589      Luna    Single              The Port
-590      Luna    Single        West Cambridge
-591      Luna    Single     Neighborhood Nine
-592      Luna    Single     Neighborhood Nine
-593      Luna    Single        East Cambridge
-594      Luna    Single        East Cambridge
-595      Luna     Mixed        East Cambridge
-596      Luna    Single       North Cambridge
-597      Luna     Mixed         Cambridgeport
-598      Luna    Single       North Cambridge
-599      Luna    Single     Neighborhood Nine
-600      Luna    Single       North Cambridge
-601      Luna    Single        West Cambridge
-602      Luna     Mixed     Neighborhood Nine
-603      Luna    Single     Neighborhood Nine
-604      Luna    Single     Neighborhood Nine
-605      Luna    Single        East Cambridge
-606      Luna    Single     Neighborhood Nine
-607      Luna    Single     Neighborhood Nine
-608      Luna    Single         Mid-Cambridge
-609      Luna    Single         Cambridgeport
-610      Luna    Single        East Cambridge
-611      Luna    Single             Riverside
-612      Luna    Single        East Cambridge
-613      Luna    Single               Baldwin
-614      Luna    Single       North Cambridge
-615      Luna    Single         Cambridgeport
-616      Luna    Single        West Cambridge
-617      Luna    Single         Mid-Cambridge
-618      Luna     Mixed       Strawberry Hill
-619      Luna    Single        East Cambridge
-620      Luna    Single     Neighborhood Nine
-621      Luna    Single       North Cambridge
-622      Luna    Single     Neighborhood Nine
-623      Luna    Single        West Cambridge
-624      Luna    Single     Neighborhood Nine
-625      Luna    Single   Cambridge Highlands
-626      Luna    Single   Cambridge Highlands
-627      Luna    Single     Neighborhood Nine
-628      Luna    Single              The Port
-629      Luna    Single     Neighborhood Nine
-630      Luna    Single        East Cambridge
-631      Luna    Single        West Cambridge
-632      Luna     Mixed             Riverside
-633      Luna    Single               Baldwin
-634      Luna    Single     Neighborhood Nine
-635      Luna    Single        West Cambridge
-636      Luna    Single       North Cambridge
-637      Luna    Single        West Cambridge
-638      Luna    Single        East Cambridge
-639      Luna    Single     Neighborhood Nine
-640      Luna    Single     Neighborhood Nine
-641      Luna    Single              The Port
-642      Luna    Single     Neighborhood Nine
-643      Luna    Single              The Port
-644      Luna     Mixed       North Cambridge
-645      Luna    Single     Neighborhood Nine
-646      Luna    Single       Strawberry Hill
-647      Luna    Single     Neighborhood Nine
-648      Luna    Single         Cambridgeport
-649      Luna    Single        East Cambridge
-650      Luna     Mixed         Mid-Cambridge
-651      Luna    Single     Neighborhood Nine
-652      Luna    Single         Mid-Cambridge
-653      Luna    Single               Baldwin
-654      Luna    Single         Cambridgeport
-655      Luna    Single       North Cambridge
-656      Luna    Single       North Cambridge
-657      Luna     Mixed             Riverside
-658      Luna    Single     Neighborhood Nine
-659      Luna    Single        East Cambridge
-660      Luna    Single        West Cambridge
-661      Luna    Single             Riverside
-662      Luna    Single               Baldwin
-663      Luna     Mixed       North Cambridge
-664      Luna    Single       Strawberry Hill
-665      Luna    Single        East Cambridge
-666      Luna    Single     Neighborhood Nine
-667      Luna    Single             Riverside
-668      Luna    Single        East Cambridge
-669      Luna    Single         Cambridgeport
-670      Luna    Single        West Cambridge
-671      Luna    Single        West Cambridge
-672      Luna    Single         Cambridgeport
-673      Luna     Mixed        East Cambridge
-674      Luna    Single        East Cambridge
-675      Luna    Single         Mid-Cambridge
-676      Luna    Single       North Cambridge
-677      Luna    Single     Neighborhood Nine
-678      Luna    Single              The Port
-679      Luna    Single             Riverside
-680      Luna    Single       North Cambridge
-681      Luna    Single     Neighborhood Nine
-682      Luna    Single        East Cambridge
-683      Luna    Single        West Cambridge
-684      Luna    Single       North Cambridge
-685      Luna    Single        East Cambridge
-686      Luna    Single     Neighborhood Nine
-687      Luna    Single     Neighborhood Nine
-688      Luna    Single     Neighborhood Nine
-689      Luna    Single              The Port
-690      Luna    Single     Neighborhood Nine
-691      Luna    Single         Mid-Cambridge
-692      Luna    Single         Mid-Cambridge
-693      Luna    Single       Strawberry Hill
-694      Luna    Single        West Cambridge
-695      Luna    Single     Neighborhood Nine
-696      Luna    Single     Neighborhood Nine
-697      Luna    Single              The Port
-698      Luna    Single         Cambridgeport
-699      Luna    Single             Riverside
-700      Luna    Single     Neighborhood Nine
-701      Luna    Single        West Cambridge
-702      Luna    Single             Riverside
-703      Luna    Single         Cambridgeport
-704      Luna    Single       North Cambridge
-705      Luna     Mixed       North Cambridge
-706      Luna    Single        West Cambridge
-707      Luna    Single             Riverside
-708      Luna    Single       North Cambridge
-709      Luna    Single       North Cambridge
-710      Luna    Single     Neighborhood Nine
-711      Luna     Mixed       Strawberry Hill
-712      Luna    Single   Cambridge Highlands
-713      Luna    Single        West Cambridge
-714      Luna    Single         Mid-Cambridge
-715      Luna    Single     Neighborhood Nine
-716      Luna    Single              The Port
-717      Luna    Single     Neighborhood Nine
-718      Luna    Single         Cambridgeport
-719      Luna    Single             Riverside
-720      Luna     Mixed         Cambridgeport
-721      Luna    Single       North Cambridge
-722      Luna     Mixed         Mid-Cambridge
-723      Luna     Mixed         Cambridgeport
-724      Luna    Single       North Cambridge
-725      Luna    Single             Riverside
-726      Luna    Single     Neighborhood Nine
-727      Luna    Single             Riverside
-728      Luna    Single        West Cambridge
-729      Luna    Single     Neighborhood Nine
-730      Luna    Single   Cambridge Highlands
-731      Luna    Single        West Cambridge
-732      Luna    Single         Mid-Cambridge
-733      Luna    Single         Cambridgeport
-734      Luna    Single        East Cambridge
-735      Luna    Single        East Cambridge
-736      Luna    Single     Neighborhood Nine
-737      Luna    Single         Mid-Cambridge
-738      Luna    Single         Cambridgeport
-739      Luna    Single         Cambridgeport
-740      Luna    Single         Mid-Cambridge
-741      Luna    Single             Riverside
-742      Luna    Single        East Cambridge
-743      Luna    Single     Neighborhood Nine
-744      Luna    Single         Cambridgeport
-745      Luna    Single       North Cambridge
-746      Luna    Single       North Cambridge
-747      Luna    Single     Neighborhood Nine
-748      Luna    Single         Mid-Cambridge
-749      Luna    Single        East Cambridge
-750      Luna    Single     Neighborhood Nine
-751      Luna    Single       North Cambridge
-752      Luna    Single        East Cambridge
-753      Luna    Single         Mid-Cambridge
-754      Luna    Single        East Cambridge
-755      Luna    Single        West Cambridge
-756      Luna     Mixed       North Cambridge
-757      Luna    Single     Neighborhood Nine
-758      Luna     Mixed     Neighborhood Nine
-759      Luna    Single         Cambridgeport
-760      Luna    Single        East Cambridge
-761      Luna    Single              The Port
-762      Luna    Single         Mid-Cambridge
-763      Luna    Single        West Cambridge
-764      Luna    Single     Neighborhood Nine
-765      Luna    Single        West Cambridge
-766      Luna     Mixed        East Cambridge
-767      Luna    Single        East Cambridge
-768      Luna    Single              The Port
-769      Luna    Single     Neighborhood Nine
-770      Luna    Single     Neighborhood Nine
-771      Luna    Single             Riverside
-772      Luna    Single              The Port
-773      Luna    Single         Mid-Cambridge
-774      Luna    Single       North Cambridge
-775      Luna    Single         Mid-Cambridge
-776      Luna    Single        West Cambridge
-777      Luna    Single       Strawberry Hill
-778      Luna    Single             Riverside
-779      Luna    Single        West Cambridge
-780      Luna    Single              The Port
-781      Luna    Single   Cambridge Highlands
-782      Luna    Single       North Cambridge
-783      Luna    Single         Mid-Cambridge
-784      Luna    Single         Mid-Cambridge
-785      Luna    Single               Baldwin
-786      Luna    Single       North Cambridge
-787      Luna    Single        East Cambridge
-788      Luna    Single     Neighborhood Nine
-789      Luna    Single     Neighborhood Nine
-790      Luna    Single     Neighborhood Nine
-791      Luna     Mixed Wellington-Harrington
-792      Luna    Single       North Cambridge
-793      Luna    Single         Mid-Cambridge
-794      Luna    Single       North Cambridge
-795      Luna     Mixed             Riverside
-796      Luna     Mixed        East Cambridge
-797      Luna    Single        West Cambridge
-798      Luna    Single        West Cambridge
-799      Luna    Single   Cambridge Highlands
-800      Luna    Single     Neighborhood Nine
-801      Luna    Single        West Cambridge
-802      Luna    Single        West Cambridge
-803      Luna    Single     Neighborhood Nine
-804      Luna    Single        East Cambridge
-805      Luna    Single        West Cambridge
-806      Luna     Mixed       North Cambridge
-807      Luna    Single     Neighborhood Nine
-808      Luna    Single              The Port
-809      Luna    Single              The Port
-810      Luna     Mixed         Mid-Cambridge
-811      Luna    Single        West Cambridge
-812      Luna    Single        East Cambridge
-813      Luna    Single        West Cambridge
-814      Luna    Single        East Cambridge
-815      Luna    Single             Riverside
-816      Luna    Single       North Cambridge
-817      Luna    Single         Mid-Cambridge
-818      Luna    Single         Cambridgeport
-819      Luna    Single     Neighborhood Nine
-820      Luna    Single     Neighborhood Nine
-821      Luna    Single       North Cambridge
-822      Luna    Single             Riverside
-823      Luna    Single       North Cambridge
-824      Luna    Single        West Cambridge
-825      Luna    Single              The Port
-826      Luna    Single             Riverside
-827      Luna    Single     Neighborhood Nine
-828      Luna    Single             Riverside
-829      Luna     Mixed        East Cambridge
-830      Luna    Single        West Cambridge
-831      Luna    Single     Neighborhood Nine
-832      Luna    Single       North Cambridge
-833      Luna     Mixed        West Cambridge
-834      Luna    Single               Baldwin
-835      Luna    Single       North Cambridge
-836      Luna    Single                      
-837      Luna    Single                      
-838      Luna    Single         Mid-Cambridge
-839      Luna    Single         Mid-Cambridge
-840      Luna     Mixed             Riverside
-841      Luna    Single     Neighborhood Nine
-842      Luna    Single               Baldwin
-843      Luna    Single        East Cambridge
-844      Luna    Single        East Cambridge
-845      Luna    Single                      
-846      Luna     Mixed Wellington-Harrington
-847      Luna    Single                      
-848      Luna    Single       North Cambridge
-849     Rosie    Single             Riverside
-850     Rosie     Mixed        West Cambridge
-851     Rosie    Single        West Cambridge
-852     Rosie    Single        East Cambridge
-853     Rosie    Single         Mid-Cambridge
-854     Rosie    Single        West Cambridge
-855     Rosie    Single         Mid-Cambridge
-856     Rosie    Single              The Port
-857     Rosie    Single               Baldwin
-858     Rosie    Single              The Port
-859     Rosie    Single        East Cambridge
-860     Rosie    Single       Strawberry Hill
-861     Rosie    Single             Riverside
-862     Rosie    Single        East Cambridge
-863     Rosie    Single         Cambridgeport
-864     Rosie    Single         Cambridgeport
-865     Rosie    Single        West Cambridge
-866     Rosie    Single        East Cambridge
-867     Rosie     Mixed       North Cambridge
-868     Rosie    Single        West Cambridge
-869     Rosie    Single               Baldwin
-870     Rosie    Single        East Cambridge
-871     Rosie    Single        West Cambridge
-872     Rosie    Single        West Cambridge
-873     Rosie     Mixed        West Cambridge
-874     Rosie    Single        West Cambridge
-875     Rosie    Single        West Cambridge
-876     Rosie    Single        West Cambridge
-877     Rosie    Single         Mid-Cambridge
-878     Rosie    Single        East Cambridge
-879     Rosie    Single        West Cambridge
-880     Rosie    Single        East Cambridge
-881     Rosie    Single        East Cambridge
-882     Rosie    Single        East Cambridge
-883     Rosie    Single        West Cambridge
-884     Rosie     Mixed       North Cambridge
-885     Rosie    Single       North Cambridge
-886     Rosie    Single        West Cambridge
-887     Rosie    Single         Mid-Cambridge
-888     Rosie    Single       North Cambridge
-889     Rosie    Single         Mid-Cambridge
-890     Rosie    Single       North Cambridge
-891     Rosie    Single        West Cambridge
-892     Rosie    Single        West Cambridge
-893     Rosie    Single        West Cambridge
-894     Rosie    Single        East Cambridge
-895     Rosie    Single               Baldwin
-896     Rosie    Single        East Cambridge
-897     Rosie    Single        West Cambridge
-898     Rosie    Single        West Cambridge
-899     Rosie    Single         Cambridgeport
-900     Rosie    Single        West Cambridge
-901     Rosie    Single        West Cambridge
-902     Rosie    Single         Mid-Cambridge
-903     Rosie    Single         Mid-Cambridge
-904     Rosie    Single        West Cambridge
-905     Rosie    Single        West Cambridge
-906     Rosie    Single        East Cambridge
-907     Rosie    Single        West Cambridge
-908     Rosie    Single         Mid-Cambridge
-909     Rosie    Single        East Cambridge
-910     Rosie    Single        West Cambridge
-911     Rosie    Single             Riverside
-912     Rosie    Single       North Cambridge
-913     Rosie    Single Wellington-Harrington
-914     Rosie    Single               Baldwin
-915     Rosie    Single        West Cambridge
-916     Rosie    Single         Mid-Cambridge
-917     Rosie    Single     Neighborhood Nine
-918     Rosie    Single        West Cambridge
-919     Rosie    Single        East Cambridge
-920     Rosie    Single     Neighborhood Nine
-921     Rosie    Single       Strawberry Hill
-922     Rosie    Single        East Cambridge
-923     Rosie    Single        East Cambridge
-924     Rosie    Single        West Cambridge
-925     Rosie    Single        West Cambridge
-926     Rosie    Single        East Cambridge
-927     Rosie    Single        West Cambridge
-928     Rosie    Single             Riverside
-929     Rosie    Single        East Cambridge
-930     Rosie    Single        East Cambridge
-931     Rosie    Single        East Cambridge
-932     Rosie    Single        West Cambridge
-933     Rosie    Single       North Cambridge
-934     Rosie    Single     Neighborhood Nine
-935     Rosie    Single     Neighborhood Nine
-936     Rosie    Single        East Cambridge
-937     Rosie    Single        East Cambridge
-938     Rosie    Single        West Cambridge
-939     Rosie    Single        West Cambridge
-940     Rosie    Single         Cambridgeport
-941     Rosie     Mixed       North Cambridge
-942     Rosie    Single         Mid-Cambridge
-943     Rosie    Single       North Cambridge
-944     Rosie    Single Wellington-Harrington
-945     Rosie    Single        East Cambridge
-946     Rosie    Single       North Cambridge
-947     Rosie    Single        West Cambridge
-948     Rosie    Single               Baldwin
-949     Rosie    Single               Baldwin
-950     Rosie     Mixed             Riverside
-951     Rosie    Single     Neighborhood Nine
-952     Rosie    Single Wellington-Harrington
-953     Rosie    Single        West Cambridge
-954     Rosie    Single       North Cambridge
-955     Rosie    Single        East Cambridge
-956     Rosie    Single         Mid-Cambridge
-957     Rosie    Single             Riverside
-958     Rosie    Single             Riverside
-959     Rosie    Single        West Cambridge
-960     Rosie    Single        West Cambridge
-961     Rosie    Single     Neighborhood Nine
-962     Rosie    Single       North Cambridge
-963     Rosie    Single         Cambridgeport
-964     Rosie    Single        West Cambridge
-965     Rosie    Single       North Cambridge
-966     Rosie    Single        East Cambridge
-967     Rosie    Single        East Cambridge
-968     Rosie    Single             Riverside
-969     Rosie    Single        West Cambridge
-970     Rosie    Single         Mid-Cambridge
-971     Rosie    Single        East Cambridge
-972     Rosie    Single        East Cambridge
-973     Rosie    Single        East Cambridge
-974     Rosie    Single        West Cambridge
-975     Rosie    Single              The Port
-976     Rosie    Single         Mid-Cambridge
-977     Rosie    Single         Mid-Cambridge
-978     Rosie    Single               Baldwin
-979     Rosie    Single       North Cambridge
-980     Rosie    Single Wellington-Harrington
-981     Rosie    Single        West Cambridge
-982     Rosie    Single        West Cambridge
-983     Rosie    Single     Neighborhood Nine
-984     Rosie    Single        West Cambridge
-985     Rosie    Single       North Cambridge
-986     Rosie    Single        East Cambridge
-987     Rosie    Single        West Cambridge
-988     Rosie    Single               Baldwin
-989     Rosie    Single               Baldwin
-990     Rosie    Single        West Cambridge
-991     Rosie    Single        West Cambridge
-992     Rosie    Single     Neighborhood Nine
-993     Rosie    Single        West Cambridge
-994     Rosie    Single     Neighborhood Nine
-995     Rosie     Mixed     Neighborhood Nine
-996     Rosie    Single       North Cambridge
-997     Rosie    Single             Riverside
-998     Rosie    Single       North Cambridge
-999     Rosie    Single Wellington-Harrington
-1000    Rosie    Single        West Cambridge
-1001    Rosie    Single        West Cambridge
-1002    Rosie    Single                      
-1003    Rosie    Single              The Port
-1004    Rosie    Single                      
-1005    Rosie    Single                      
-1006    Rosie    Single                      
-1007    Rosie    Single     Neighborhood Nine
-1008    Rosie     Mixed       North Cambridge
-1009    Rosie    Single                      
-1010    Rosie    Single         Mid-Cambridge
-1011    Rosie    Single        West Cambridge
-1012    Rosie    Single        East Cambridge
-1013    Rosie    Single                      
-1014    Rosie    Single     Neighborhood Nine
-1015    Rosie    Single             Riverside</code></pre>
+<pre><code>    Dog_Name Dog_Breed          Neighborhood
+1    Charlie    Single       Strawberry Hill
+2    Charlie    Single     Neighborhood Nine
+3    Charlie    Single              The Port
+4    Charlie    Single         Mid-Cambridge
+5    Charlie    Single        East Cambridge
+6    Charlie    Single         Cambridgeport
+7    Charlie    Single             Riverside
+8    Charlie    Single        East Cambridge
+9    Charlie    Single               Baldwin
+10   Charlie    Single       North Cambridge
+11   Charlie    Single         Mid-Cambridge
+12   Charlie    Single       North Cambridge
+13   Charlie     Mixed       Strawberry Hill
+14   Charlie    Single     Neighborhood Nine
+15   Charlie    Single         Mid-Cambridge
+16   Charlie    Single         Cambridgeport
+17   Charlie    Single     Neighborhood Nine
+18   Charlie    Single         Cambridgeport
+19   Charlie    Single         Cambridgeport
+20   Charlie    Single         Cambridgeport
+21   Charlie    Single         Mid-Cambridge
+22   Charlie    Single            Area 2/MIT
+23   Charlie     Mixed        East Cambridge
+24   Charlie    Single       Strawberry Hill
+25   Charlie    Single     Neighborhood Nine
+26   Charlie    Single              The Port
+27   Charlie    Single       North Cambridge
+28   Charlie    Single         Cambridgeport
+29   Charlie    Single       Strawberry Hill
+30   Charlie    Single         Cambridgeport
+31   Charlie    Single        East Cambridge
+32   Charlie    Single        East Cambridge
+33   Charlie    Single       North Cambridge
+34   Charlie     Mixed Wellington-Harrington
+35   Charlie    Single         Mid-Cambridge
+36   Charlie    Single       North Cambridge
+37   Charlie    Single         Cambridgeport
+38   Charlie    Single Wellington-Harrington
+39   Charlie    Single         Cambridgeport
+40   Charlie     Mixed         Mid-Cambridge
+41   Charlie    Single     Neighborhood Nine
+42   Charlie    Single       North Cambridge
+43   Charlie     Mixed         Mid-Cambridge
+44   Charlie    Single         Cambridgeport
+45   Charlie    Single             Riverside
+46   Charlie    Single        West Cambridge
+47   Charlie    Single     Neighborhood Nine
+48   Charlie    Single         Cambridgeport
+49   Charlie    Single       Strawberry Hill
+50   Charlie    Single     Neighborhood Nine
+51   Charlie    Single         Cambridgeport
+52   Charlie    Single        West Cambridge
+53   Charlie    Single     Neighborhood Nine
+54   Charlie    Single        East Cambridge
+55   Charlie    Single       Strawberry Hill
+56   Charlie    Single       North Cambridge
+57   Charlie    Single     Neighborhood Nine
+58   Charlie     Mixed         Mid-Cambridge
+59   Charlie    Single         Mid-Cambridge
+60   Charlie    Single              The Port
+61   Charlie     Mixed Wellington-Harrington
+62   Charlie    Single         Mid-Cambridge
+63   Charlie    Single     Neighborhood Nine
+64   Charlie    Single         Mid-Cambridge
+65   Charlie     Mixed               Baldwin
+66   Charlie     Mixed Wellington-Harrington
+67   Charlie    Single     Neighborhood Nine
+68   Charlie    Single         Cambridgeport
+69   Charlie    Single        West Cambridge
+70   Charlie     Mixed         Mid-Cambridge
+71   Charlie    Single        West Cambridge
+72   Charlie    Single       Strawberry Hill
+73   Charlie    Single       Strawberry Hill
+74   Charlie    Single     Neighborhood Nine
+75   Charlie    Single        East Cambridge
+76   Charlie    Single              The Port
+77   Charlie     Mixed              The Port
+78   Charlie    Single        West Cambridge
+79   Charlie    Single   Cambridge Highlands
+80   Charlie    Single       North Cambridge
+81   Charlie    Single       North Cambridge
+82   Charlie    Single        East Cambridge
+83   Charlie    Single              The Port
+84   Charlie     Mixed             Riverside
+85   Charlie    Single         Cambridgeport
+86   Charlie    Single         Mid-Cambridge
+87   Charlie     Mixed       Strawberry Hill
+88   Charlie    Single     Neighborhood Nine
+89   Charlie    Single            Area 2/MIT
+90   Charlie    Single        West Cambridge
+91   Charlie    Single     Neighborhood Nine
+92   Charlie    Single       Strawberry Hill
+93   Charlie    Single            Area 2/MIT
+94   Charlie    Single         Mid-Cambridge
+95   Charlie     Mixed         Mid-Cambridge
+96   Charlie    Single         Cambridgeport
+97   Charlie    Single     Neighborhood Nine
+98   Charlie    Single     Neighborhood Nine
+99   Charlie    Single     Neighborhood Nine
+100  Charlie    Single       North Cambridge
+101  Charlie    Single   Cambridge Highlands
+102  Charlie    Single        West Cambridge
+103  Charlie    Single        East Cambridge
+104  Charlie    Single       North Cambridge
+105  Charlie    Single Wellington-Harrington
+106  Charlie    Single         Cambridgeport
+107  Charlie    Single             Riverside
+108  Charlie    Single              The Port
+109  Charlie    Single     Neighborhood Nine
+110  Charlie    Single         Cambridgeport
+111  Charlie    Single         Cambridgeport
+112  Charlie    Single     Neighborhood Nine
+113  Charlie    Single     Neighborhood Nine
+114  Charlie    Single     Neighborhood Nine
+115  Charlie    Single        East Cambridge
+116  Charlie    Single   Cambridge Highlands
+117  Charlie    Single               Baldwin
+118  Charlie    Single       North Cambridge
+119  Charlie    Single        East Cambridge
+120  Charlie    Single              The Port
+121  Charlie    Single     Neighborhood Nine
+122  Charlie    Single         Mid-Cambridge
+123  Charlie    Single        East Cambridge
+124  Charlie    Single        East Cambridge
+125  Charlie    Single         Mid-Cambridge
+126  Charlie    Single     Neighborhood Nine
+127  Charlie    Single              The Port
+128  Charlie    Single       Strawberry Hill
+129  Charlie     Mixed        East Cambridge
+130  Charlie    Single       Strawberry Hill
+131  Charlie    Single       North Cambridge
+132  Charlie     Mixed         Mid-Cambridge
+133  Charlie    Single     Neighborhood Nine
+134  Charlie    Single         Cambridgeport
+135  Charlie    Single       North Cambridge
+136  Charlie    Single        West Cambridge
+137  Charlie    Single        West Cambridge
+138  Charlie    Single              The Port
+139  Charlie    Single        West Cambridge
+140  Charlie    Single              The Port
+141  Charlie    Single        West Cambridge
+142  Charlie    Single        West Cambridge
+143  Charlie    Single       North Cambridge
+144  Charlie    Single Wellington-Harrington
+145  Charlie    Single         Cambridgeport
+146  Charlie    Single       North Cambridge
+147  Charlie    Single     Neighborhood Nine
+148  Charlie     Mixed        East Cambridge
+149  Charlie    Single        West Cambridge
+150  Charlie    Single     Neighborhood Nine
+151  Charlie    Single       Strawberry Hill
+152  Charlie    Single         Cambridgeport
+153  Charlie    Single       North Cambridge
+154  Charlie    Single       North Cambridge
+155  Charlie    Single         Cambridgeport
+156  Charlie    Single         Mid-Cambridge
+157  Charlie     Mixed              The Port
+158  Charlie    Single        West Cambridge
+159  Charlie    Single         Cambridgeport
+160  Charlie    Single               Baldwin
+161  Charlie    Single         Mid-Cambridge
+162  Charlie    Single        West Cambridge
+163  Charlie    Single         Cambridgeport
+164  Charlie    Single         Cambridgeport
+165  Charlie    Single         Mid-Cambridge
+166  Charlie    Single        West Cambridge
+167  Charlie    Single       Strawberry Hill
+168  Charlie    Single       North Cambridge
+169  Charlie    Single       Strawberry Hill
+170  Charlie    Single         Cambridgeport
+171  Charlie    Single       North Cambridge
+172  Charlie    Single         Mid-Cambridge
+173  Charlie    Single        West Cambridge
+174  Charlie     Mixed              The Port
+175  Charlie    Single       Strawberry Hill
+176  Charlie     Mixed               Baldwin
+177  Charlie    Single       North Cambridge
+178  Charlie    Single       Strawberry Hill
+179  Charlie     Mixed         Cambridgeport
+180  Charlie    Single        West Cambridge
+181  Charlie    Single        East Cambridge
+182  Charlie    Single     Neighborhood Nine
+183  Charlie    Single        East Cambridge
+184  Charlie    Single        West Cambridge
+185  Charlie    Single         Cambridgeport
+186  Charlie     Mixed               Baldwin
+187  Charlie    Single         Cambridgeport
+188  Charlie    Single        West Cambridge
+189  Charlie    Single       Strawberry Hill
+190  Charlie    Single         Cambridgeport
+191  Charlie    Single               Baldwin
+192  Charlie    Single         Cambridgeport
+193  Charlie    Single        West Cambridge
+194  Charlie    Single        West Cambridge
+195  Charlie    Single     Neighborhood Nine
+196  Charlie    Single         Cambridgeport
+197  Charlie    Single     Neighborhood Nine
+198  Charlie    Single         Cambridgeport
+199  Charlie    Single       North Cambridge
+200  Charlie    Single        East Cambridge
+201  Charlie    Single     Neighborhood Nine
+202  Charlie    Single   Cambridge Highlands
+203  Charlie    Single             Riverside
+204  Charlie    Single     Neighborhood Nine
+205  Charlie    Single        West Cambridge
+206  Charlie    Single         Mid-Cambridge
+207  Charlie    Single        West Cambridge
+208  Charlie    Single     Neighborhood Nine
+209  Charlie    Single   Cambridge Highlands
+210  Charlie    Single     Neighborhood Nine
+211  Charlie    Single        East Cambridge
+212  Charlie    Single             Riverside
+213  Charlie    Single        West Cambridge
+214  Charlie    Single         Mid-Cambridge
+215  Charlie    Single        East Cambridge
+216  Charlie    Single         Cambridgeport
+217  Charlie    Single         Cambridgeport
+218  Charlie    Single        East Cambridge
+219  Charlie    Single         Cambridgeport
+220  Charlie    Single              The Port
+221  Charlie    Single       North Cambridge
+222  Charlie    Single     Neighborhood Nine
+223  Charlie    Single        East Cambridge
+224  Charlie    Single       North Cambridge
+225  Charlie    Single       Strawberry Hill
+226   Cooper    Single     Neighborhood Nine
+227   Cooper     Mixed   Cambridge Highlands
+228   Cooper    Single         Mid-Cambridge
+229   Cooper    Single       North Cambridge
+230   Cooper    Single         Mid-Cambridge
+231   Cooper     Mixed         Mid-Cambridge
+232   Cooper    Single        East Cambridge
+233   Cooper    Single         Mid-Cambridge
+234   Cooper    Single               Baldwin
+235   Cooper    Single        West Cambridge
+236   Cooper    Single     Neighborhood Nine
+237   Cooper     Mixed        West Cambridge
+238   Cooper    Single       North Cambridge
+239   Cooper    Single        West Cambridge
+240   Cooper    Single        West Cambridge
+241   Cooper    Single       North Cambridge
+242   Cooper    Single        East Cambridge
+243   Cooper    Single        West Cambridge
+244   Cooper    Single        West Cambridge
+245   Cooper     Mixed        East Cambridge
+246   Cooper    Single        East Cambridge
+247   Cooper    Single       North Cambridge
+248   Cooper    Single        West Cambridge
+249   Cooper    Single        West Cambridge
+250   Cooper    Single             Riverside
+251   Cooper    Single        West Cambridge
+252   Cooper    Single       North Cambridge
+253   Cooper    Single       North Cambridge
+254   Cooper    Single     Neighborhood Nine
+255   Cooper     Mixed   Cambridge Highlands
+256   Cooper    Single         Mid-Cambridge
+257   Cooper    Single               Baldwin
+258   Cooper    Single     Neighborhood Nine
+259   Cooper    Single       North Cambridge
+260   Cooper    Single     Neighborhood Nine
+261   Cooper     Mixed       North Cambridge
+262   Cooper    Single         Cambridgeport
+263   Cooper    Single         Mid-Cambridge
+264   Cooper    Single        East Cambridge
+265   Cooper    Single        West Cambridge
+266   Cooper    Single     Neighborhood Nine
+267   Cooper    Single     Neighborhood Nine
+268   Cooper    Single       North Cambridge
+269   Cooper    Single        East Cambridge
+270   Cooper    Single       North Cambridge
+271   Cooper    Single     Neighborhood Nine
+272   Cooper    Single     Neighborhood Nine
+273   Cooper    Single        West Cambridge
+274   Cooper    Single         Cambridgeport
+275   Cooper    Single       North Cambridge
+276   Cooper    Single     Neighborhood Nine
+277   Cooper    Single         Cambridgeport
+278   Cooper    Single        West Cambridge
+279   Cooper     Mixed       North Cambridge
+280   Cooper    Single       North Cambridge
+281   Cooper    Single         Cambridgeport
+282   Cooper     Mixed             Riverside
+283   Cooper    Single       North Cambridge
+284   Cooper    Single     Neighborhood Nine
+285   Cooper    Single        East Cambridge
+286   Cooper    Single        West Cambridge
+287   Cooper    Single     Neighborhood Nine
+288   Cooper    Single       North Cambridge
+289   Cooper    Single        East Cambridge
+290   Cooper    Single         Cambridgeport
+291   Cooper    Single       North Cambridge
+292   Cooper    Single     Neighborhood Nine
+293   Cooper     Mixed         Cambridgeport
+294   Cooper     Mixed Wellington-Harrington
+295   Cooper    Single     Neighborhood Nine
+296   Cooper    Single     Neighborhood Nine
+297   Cooper    Single     Neighborhood Nine
+298   Cooper    Single             Riverside
+299   Cooper    Single     Neighborhood Nine
+300   Cooper    Single             Riverside
+301   Cooper    Single        West Cambridge
+302   Cooper    Single        West Cambridge
+303   Cooper    Single        West Cambridge
+304   Cooper    Single       North Cambridge
+305   Cooper    Single         Mid-Cambridge
+306   Cooper    Single        West Cambridge
+307   Cooper    Single        West Cambridge
+308   Cooper    Single        West Cambridge
+309   Cooper    Single       North Cambridge
+310   Cooper    Single       North Cambridge
+311   Cooper     Mixed        East Cambridge
+312   Cooper    Single        West Cambridge
+313   Cooper     Mixed Wellington-Harrington
+314   Cooper    Single        East Cambridge
+315   Cooper    Single       North Cambridge
+316   Cooper    Single     Neighborhood Nine
+317   Cooper    Single     Neighborhood Nine
+318   Cooper    Single       North Cambridge
+319   Cooper    Single   Cambridge Highlands
+320   Cooper    Single         Mid-Cambridge
+321   Cooper    Single         Cambridgeport
+322   Cooper    Single         Cambridgeport
+323   Cooper    Single       North Cambridge
+324   Cooper    Single         Cambridgeport
+325   Cooper    Single     Neighborhood Nine
+326   Cooper    Single     Neighborhood Nine
+327   Cooper    Single        West Cambridge
+328   Cooper    Single        East Cambridge
+329   Cooper    Single       North Cambridge
+330   Cooper    Single     Neighborhood Nine
+331   Cooper     Mixed   Cambridge Highlands
+332   Cooper    Single        East Cambridge
+333   Cooper    Single Wellington-Harrington
+334   Cooper    Single        East Cambridge
+335   Cooper    Single     Neighborhood Nine
+336   Cooper    Single       North Cambridge
+337   Cooper    Single Wellington-Harrington
+338   Cooper     Mixed         Cambridgeport
+339   Cooper    Single        West Cambridge
+340   Cooper    Single     Neighborhood Nine
+341   Cooper    Single             Riverside
+342   Cooper    Single       North Cambridge
+343   Cooper    Single       Strawberry Hill
+344   Cooper    Single         Mid-Cambridge
+345   Cooper    Single         Cambridgeport
+346   Cooper    Single        East Cambridge
+347   Cooper    Single     Neighborhood Nine
+348     Lucy    Single              The Port
+349     Lucy    Single     Neighborhood Nine
+350     Lucy    Single        East Cambridge
+351     Lucy     Mixed Wellington-Harrington
+352     Lucy    Single         Mid-Cambridge
+353     Lucy    Single       North Cambridge
+354     Lucy    Single         Mid-Cambridge
+355     Lucy    Single       North Cambridge
+356     Lucy    Single     Neighborhood Nine
+357     Lucy    Single        East Cambridge
+358     Lucy    Single               Baldwin
+359     Lucy    Single        West Cambridge
+360     Lucy    Single         Cambridgeport
+361     Lucy    Single       North Cambridge
+362     Lucy    Single        East Cambridge
+363     Lucy    Single       North Cambridge
+364     Lucy    Single         Mid-Cambridge
+365     Lucy    Single       North Cambridge
+366     Lucy    Single     Neighborhood Nine
+367     Lucy     Mixed     Neighborhood Nine
+368     Lucy    Single     Neighborhood Nine
+369     Lucy    Single        West Cambridge
+370     Lucy    Single       North Cambridge
+371     Lucy    Single              The Port
+372     Lucy    Single       North Cambridge
+373     Lucy    Single        West Cambridge
+374     Lucy    Single       North Cambridge
+375     Lucy    Single         Mid-Cambridge
+376     Lucy     Mixed     Neighborhood Nine
+377     Lucy    Single        West Cambridge
+378     Lucy    Single         Mid-Cambridge
+379     Lucy    Single       North Cambridge
+380     Lucy    Single       North Cambridge
+381     Lucy    Single       North Cambridge
+382     Lucy    Single       North Cambridge
+383     Lucy     Mixed             Riverside
+384     Lucy    Single       North Cambridge
+385     Lucy     Mixed         Mid-Cambridge
+386     Lucy    Single   Cambridge Highlands
+387     Lucy    Single       North Cambridge
+388     Lucy     Mixed              The Port
+389     Lucy    Single       North Cambridge
+390     Lucy    Single       North Cambridge
+391     Lucy    Single         Mid-Cambridge
+392     Lucy    Single       North Cambridge
+393     Lucy    Single         Mid-Cambridge
+394     Lucy    Single         Mid-Cambridge
+395     Lucy    Single         Mid-Cambridge
+396     Lucy    Single               Baldwin
+397     Lucy     Mixed       North Cambridge
+398     Lucy    Single       North Cambridge
+399     Lucy     Mixed       North Cambridge
+400     Lucy    Single        West Cambridge
+401     Lucy    Single       North Cambridge
+402     Lucy    Single     Neighborhood Nine
+403     Lucy    Single        West Cambridge
+404     Lucy    Single     Neighborhood Nine
+405     Lucy    Single        East Cambridge
+406     Lucy    Single         Mid-Cambridge
+407     Lucy    Single       North Cambridge
+408     Lucy    Single       North Cambridge
+409     Lucy    Single        East Cambridge
+410     Lucy     Mixed              The Port
+411     Lucy    Single         Mid-Cambridge
+412     Lucy    Single       North Cambridge
+413     Lucy    Single        West Cambridge
+414     Lucy    Single        West Cambridge
+415     Lucy    Single       North Cambridge
+416     Lucy    Single        West Cambridge
+417     Lucy    Single       North Cambridge
+418     Lucy    Single         Mid-Cambridge
+419     Lucy     Mixed       North Cambridge
+420     Lucy     Mixed         Mid-Cambridge
+421     Lucy    Single        West Cambridge
+422     Lucy    Single     Neighborhood Nine
+423     Lucy    Single        West Cambridge
+424     Lucy    Single       North Cambridge
+425     Lucy    Single               Baldwin
+426     Lucy    Single               Baldwin
+427     Lucy    Single         Mid-Cambridge
+428     Lucy    Single     Neighborhood Nine
+429     Lucy    Single         Mid-Cambridge
+430     Lucy     Mixed       North Cambridge
+431     Lucy    Single        East Cambridge
+432     Lucy    Single         Mid-Cambridge
+433     Lucy    Single     Neighborhood Nine
+434     Lucy    Single       North Cambridge
+435     Lucy    Single Wellington-Harrington
+436     Lucy     Mixed        West Cambridge
+437     Lucy    Single              The Port
+438     Lucy    Single       North Cambridge
+439     Lucy    Single       North Cambridge
+440     Lucy    Single     Neighborhood Nine
+441     Lucy    Single       North Cambridge
+442     Lucy     Mixed       North Cambridge
+443     Lucy    Single         Mid-Cambridge
+444     Lucy    Single     Neighborhood Nine
+445     Lucy     Mixed         Mid-Cambridge
+446     Lucy    Single              The Port
+447     Lucy    Single   Cambridge Highlands
+448     Lucy    Single       North Cambridge
+449     Lucy    Single               Baldwin
+450     Lucy    Single        East Cambridge
+451     Lucy    Single        East Cambridge
+452     Lucy    Single        West Cambridge
+453     Lucy    Single     Neighborhood Nine
+454     Lucy    Single        East Cambridge
+455     Lucy    Single        East Cambridge
+456     Lucy    Single       North Cambridge
+457     Lucy    Single       North Cambridge
+458     Lucy    Single Wellington-Harrington
+459     Lucy     Mixed              The Port
+460     Lucy    Single     Neighborhood Nine
+461     Lucy    Single         Mid-Cambridge
+462     Lucy    Single     Neighborhood Nine
+463     Lucy    Single       North Cambridge
+464     Lucy     Mixed        East Cambridge
+465     Lucy    Single     Neighborhood Nine
+466     Lucy    Single       North Cambridge
+467     Lucy    Single         Mid-Cambridge
+468     Lucy    Single       North Cambridge
+469     Lucy    Single        West Cambridge
+470     Lucy    Single              The Port
+471     Lucy    Single       North Cambridge
+472     Lucy    Single       North Cambridge
+473     Lucy    Single               Baldwin
+474     Lucy    Single     Neighborhood Nine
+475     Lucy    Single Wellington-Harrington
+476     Lucy    Single        West Cambridge
+477     Lucy    Single        East Cambridge
+478     Lucy    Single         Mid-Cambridge
+479     Lucy    Single               Baldwin
+480     Lucy    Single       North Cambridge
+481     Lucy    Single               Baldwin
+482     Lucy    Single       North Cambridge
+483     Lucy    Single     Neighborhood Nine
+484     Lucy    Single         Mid-Cambridge
+485     Lucy    Single     Neighborhood Nine
+486     Lucy    Single Wellington-Harrington
+487     Lucy    Single     Neighborhood Nine
+488     Lucy    Single     Neighborhood Nine
+489     Lucy    Single        West Cambridge
+490     Lucy    Single       North Cambridge
+491     Lucy    Single       North Cambridge
+492     Lucy    Single         Cambridgeport
+493     Lucy    Single     Neighborhood Nine
+494     Lucy    Single         Cambridgeport
+495     Lucy     Mixed        West Cambridge
+496     Lucy    Single       North Cambridge
+497     Lucy     Mixed     Neighborhood Nine
+498     Lucy    Single     Neighborhood Nine
+499     Lucy    Single        West Cambridge
+500     Lucy    Single               Baldwin
+501     Lucy    Single Wellington-Harrington
+502     Lucy    Single        East Cambridge
+503     Luna    Single       North Cambridge
+504     Luna    Single         Mid-Cambridge
+505     Luna    Single        West Cambridge
+506     Luna    Single       Strawberry Hill
+507     Luna    Single        East Cambridge
+508     Luna    Single     Neighborhood Nine
+509     Luna    Single   Cambridge Highlands
+510     Luna    Single       North Cambridge
+511     Luna    Single              The Port
+512     Luna    Single             Riverside
+513     Luna     Mixed             Riverside
+514     Luna    Single     Neighborhood Nine
+515     Luna    Single        East Cambridge
+516     Luna    Single       North Cambridge
+517     Luna     Mixed       North Cambridge
+518     Luna    Single     Neighborhood Nine
+519     Luna    Single         Mid-Cambridge
+520     Luna    Single        East Cambridge
+521     Luna    Single         Mid-Cambridge
+522     Luna    Single        West Cambridge
+523     Luna    Single       North Cambridge
+524     Luna    Single               Baldwin
+525     Luna    Single         Mid-Cambridge
+526     Luna    Single        East Cambridge
+527     Luna    Single             Riverside
+528     Luna    Single     Neighborhood Nine
+529     Luna    Single        East Cambridge
+530     Luna    Single       Strawberry Hill
+531     Luna    Single         Cambridgeport
+532     Luna    Single         Cambridgeport
+533     Luna     Mixed       Strawberry Hill
+534     Luna    Single     Neighborhood Nine
+535     Luna     Mixed             Riverside
+536     Luna    Single              The Port
+537     Luna    Single     Neighborhood Nine
+538     Luna    Single              The Port
+539     Luna    Single        West Cambridge
+540     Luna    Single        West Cambridge
+541     Luna    Single         Cambridgeport
+542     Luna    Single        East Cambridge
+543     Luna    Single              The Port
+544     Luna     Mixed        West Cambridge
+545     Luna     Mixed     Neighborhood Nine
+546     Luna    Single         Mid-Cambridge
+547     Luna    Single     Neighborhood Nine
+548     Luna    Single     Neighborhood Nine
+549     Luna    Single        West Cambridge
+550     Luna    Single   Cambridge Highlands
+551     Luna    Single     Neighborhood Nine
+552     Luna    Single       Strawberry Hill
+553     Luna    Single         Mid-Cambridge
+554     Luna    Single        East Cambridge
+555     Luna    Single        West Cambridge
+556     Luna    Single     Neighborhood Nine
+557     Luna    Single       North Cambridge
+558     Luna    Single         Mid-Cambridge
+559     Luna     Mixed         Mid-Cambridge
+560     Luna    Single       North Cambridge
+561     Luna    Single        East Cambridge
+562     Luna    Single        West Cambridge
+563     Luna    Single     Neighborhood Nine
+564     Luna    Single             Riverside
+565     Luna    Single       North Cambridge
+566     Luna    Single        East Cambridge
+567     Luna    Single        West Cambridge
+568     Luna    Single        East Cambridge
+569     Luna    Single     Neighborhood Nine
+570     Luna    Single       North Cambridge
+571     Luna    Single     Neighborhood Nine
+572     Luna    Single     Neighborhood Nine
+573     Luna    Single        East Cambridge
+574     Luna    Single     Neighborhood Nine
+575     Luna    Single       North Cambridge
+576     Luna    Single        West Cambridge
+577     Luna    Single     Neighborhood Nine
+578     Luna    Single        West Cambridge
+579     Luna    Single     Neighborhood Nine
+580     Luna    Single        East Cambridge
+581     Luna    Single       North Cambridge
+582     Luna    Single              The Port
+583     Luna    Single        West Cambridge
+584     Luna    Single        West Cambridge
+585     Luna    Single     Neighborhood Nine
+586     Luna     Mixed       North Cambridge
+587     Luna    Single        West Cambridge
+588     Luna    Single               Baldwin
+589     Luna    Single       North Cambridge
+590     Luna    Single             Riverside
+591     Luna    Single        West Cambridge
+592     Luna    Single     Neighborhood Nine
+593     Luna    Single       North Cambridge
+594     Luna    Single        East Cambridge
+595     Luna     Mixed        East Cambridge
+596     Luna    Single        West Cambridge
+597     Luna    Single         Mid-Cambridge
+598     Luna    Single         Mid-Cambridge
+599     Luna    Single        West Cambridge
+600     Luna    Single     Neighborhood Nine
+601     Luna     Mixed     Neighborhood Nine
+602     Luna    Single        West Cambridge
+603     Luna    Single       North Cambridge
+604     Luna    Single         Mid-Cambridge
+605     Luna    Single         Cambridgeport
+606     Luna    Single       North Cambridge
+607     Luna    Single       North Cambridge
+608     Luna    Single              The Port
+609     Luna    Single     Neighborhood Nine
+610     Luna    Single     Neighborhood Nine
+611     Luna    Single       North Cambridge
+612     Luna     Mixed         Mid-Cambridge
+613     Luna    Single     Neighborhood Nine
+614     Luna    Single        East Cambridge
+615     Luna    Single              The Port
+616     Luna    Single     Neighborhood Nine
+617     Luna    Single               Baldwin
+618     Luna    Single             Riverside
+619     Luna    Single         Mid-Cambridge
+620     Luna    Single             Riverside
+621     Luna    Single         Cambridgeport
+622     Luna    Single        East Cambridge
+623     Luna    Single             Riverside
+624     Luna    Single       North Cambridge
+625     Luna    Single        West Cambridge
+626     Luna    Single              The Port
+627     Luna     Mixed        East Cambridge
+628     Luna    Single        West Cambridge
+629     Luna    Single     Neighborhood Nine
+630     Luna    Single            Area 2/MIT
+631     Luna    Single         Cambridgeport
+632     Luna    Single     Neighborhood Nine
+633     Luna    Single       North Cambridge
+634     Luna    Single              The Port
+635     Luna    Single         Mid-Cambridge
+636     Luna    Single        West Cambridge
+637     Luna    Single        West Cambridge
+638     Luna    Single         Cambridgeport
+639     Luna    Single   Cambridge Highlands
+640     Luna    Single         Mid-Cambridge
+641     Luna    Single       North Cambridge
+642     Luna    Single         Mid-Cambridge
+643     Luna    Single        East Cambridge
+644     Luna    Single        East Cambridge
+645     Luna    Single        East Cambridge
+646     Luna    Single     Neighborhood Nine
+647     Luna    Single              The Port
+648     Luna    Single     Neighborhood Nine
+649     Luna    Single     Neighborhood Nine
+650     Luna    Single        East Cambridge
+651     Luna    Single         Cambridgeport
+652     Luna    Single         Cambridgeport
+653     Luna    Single     Neighborhood Nine
+654     Luna    Single        East Cambridge
+655     Luna    Single     Neighborhood Nine
+656     Luna    Single       North Cambridge
+657     Luna    Single        West Cambridge
+658     Luna     Mixed             Riverside
+659     Luna    Single         Cambridgeport
+660     Luna    Single         Mid-Cambridge
+661     Luna    Single        East Cambridge
+662     Luna    Single              The Port
+663     Luna    Single   Cambridge Highlands
+664     Luna    Single        West Cambridge
+665     Luna    Single             Riverside
+666     Luna    Single     Neighborhood Nine
+667     Luna    Single         Cambridgeport
+668     Luna    Single              The Port
+669     Luna    Single        East Cambridge
+670     Luna    Single         Mid-Cambridge
+671     Luna    Single        West Cambridge
+672     Luna    Single     Neighborhood Nine
+673     Luna    Single        West Cambridge
+674     Luna    Single             Riverside
+675     Luna    Single     Neighborhood Nine
+676     Luna     Mixed        East Cambridge
+677     Luna    Single         Mid-Cambridge
+678     Luna    Single       North Cambridge
+679     Luna    Single       Strawberry Hill
+680     Luna     Mixed        East Cambridge
+681     Luna    Single         Cambridgeport
+682     Luna     Mixed       North Cambridge
+683     Luna     Mixed       North Cambridge
+684     Luna    Single        West Cambridge
+685     Luna    Single       North Cambridge
+686     Luna     Mixed             Riverside
+687     Luna    Single         Cambridgeport
+688     Luna    Single         Mid-Cambridge
+689     Luna    Single        West Cambridge
+690     Luna    Single             Riverside
+691     Luna     Mixed        East Cambridge
+692     Luna     Mixed       Strawberry Hill
+693     Luna    Single       North Cambridge
+694     Luna    Single       Strawberry Hill
+695     Luna    Single              The Port
+696     Luna    Single     Neighborhood Nine
+697     Luna    Single     Neighborhood Nine
+698     Luna    Single             Riverside
+699     Luna    Single             Riverside
+700     Luna    Single         Mid-Cambridge
+701     Luna    Single        West Cambridge
+702     Luna     Mixed Wellington-Harrington
+703     Luna    Single     Neighborhood Nine
+704     Luna    Single     Neighborhood Nine
+705     Luna    Single     Neighborhood Nine
+706     Luna    Single     Neighborhood Nine
+707     Luna    Single        East Cambridge
+708     Luna    Single        West Cambridge
+709     Luna    Single     Neighborhood Nine
+710     Luna    Single         Cambridgeport
+711     Luna     Mixed         Cambridgeport
+712     Luna    Single        East Cambridge
+713     Luna    Single        East Cambridge
+714     Luna    Single        West Cambridge
+715     Luna    Single              The Port
+716     Luna    Single     Neighborhood Nine
+717     Luna     Mixed       North Cambridge
+718     Luna    Single       North Cambridge
+719     Luna    Single         Mid-Cambridge
+720     Luna    Single     Neighborhood Nine
+721     Luna    Single        East Cambridge
+722     Luna    Single     Neighborhood Nine
+723     Luna    Single        East Cambridge
+724     Luna    Single        East Cambridge
+725     Luna    Single     Neighborhood Nine
+726     Luna    Single         Cambridgeport
+727     Luna    Single        West Cambridge
+728     Luna    Single     Neighborhood Nine
+729     Luna     Mixed       North Cambridge
+730     Luna    Single     Neighborhood Nine
+731     Luna     Mixed         Cambridgeport
+732     Luna    Single             Riverside
+733     Luna    Single     Neighborhood Nine
+734     Luna     Mixed Wellington-Harrington
+735     Luna    Single         Cambridgeport
+736     Luna     Mixed         Cambridgeport
+737     Luna    Single              The Port
+738     Luna    Single       North Cambridge
+739     Luna    Single               Baldwin
+740     Luna    Single         Cambridgeport
+741     Luna    Single       North Cambridge
+742     Luna    Single       North Cambridge
+743     Luna    Single             Riverside
+744     Luna    Single         Mid-Cambridge
+745     Luna    Single        West Cambridge
+746     Luna    Single       North Cambridge
+747     Luna     Mixed             Riverside
+748     Luna     Mixed         Mid-Cambridge
+749     Luna    Single        East Cambridge
+750     Luna    Single   Cambridge Highlands
+751     Luna    Single             Riverside
+752     Luna    Single        West Cambridge
+753     Luna    Single     Neighborhood Nine
+754     Luna    Single       North Cambridge
+755     Luna    Single        East Cambridge
+756     Luna    Single     Neighborhood Nine
+757     Luna    Single        West Cambridge
+758     Luna    Single               Baldwin
+759     Luna    Single        West Cambridge
+760     Luna    Single     Neighborhood Nine
+761     Luna    Single     Neighborhood Nine
+762     Luna    Single             Riverside
+763    Rosie    Single         Mid-Cambridge
+764    Rosie    Single        West Cambridge
+765    Rosie    Single        West Cambridge
+766    Rosie    Single        East Cambridge
+767    Rosie     Mixed     Neighborhood Nine
+768    Rosie    Single        East Cambridge
+769    Rosie    Single        East Cambridge
+770    Rosie    Single        West Cambridge
+771    Rosie    Single         Mid-Cambridge
+772    Rosie    Single         Cambridgeport
+773    Rosie    Single     Neighborhood Nine
+774    Rosie    Single        West Cambridge
+775    Rosie    Single        West Cambridge
+776    Rosie    Single              The Port
+777    Rosie    Single        West Cambridge
+778    Rosie    Single     Neighborhood Nine
+779    Rosie    Single       North Cambridge
+780    Rosie    Single        West Cambridge
+781    Rosie    Single        East Cambridge
+782    Rosie    Single             Riverside
+783    Rosie    Single        West Cambridge
+784    Rosie    Single             Riverside
+785    Rosie    Single        East Cambridge
+786    Rosie    Single        East Cambridge
+787    Rosie    Single       North Cambridge
+788    Rosie    Single         Cambridgeport
+789    Rosie    Single        East Cambridge
+790    Rosie    Single        West Cambridge
+791    Rosie    Single               Baldwin
+792    Rosie    Single       North Cambridge
+793    Rosie    Single        East Cambridge
+794    Rosie    Single Wellington-Harrington
+795    Rosie    Single         Mid-Cambridge
+796    Rosie    Single Wellington-Harrington
+797    Rosie     Mixed             Riverside
+798    Rosie    Single         Mid-Cambridge
+799    Rosie    Single        West Cambridge
+800    Rosie    Single        East Cambridge
+801    Rosie    Single       North Cambridge
+802    Rosie    Single       North Cambridge
+803    Rosie    Single         Mid-Cambridge
+804    Rosie    Single               Baldwin
+805    Rosie    Single         Mid-Cambridge
+806    Rosie    Single        West Cambridge
+807    Rosie    Single        East Cambridge
+808    Rosie    Single         Mid-Cambridge
+809    Rosie    Single        West Cambridge
+810    Rosie    Single        West Cambridge
+811    Rosie    Single        West Cambridge
+812    Rosie    Single        West Cambridge
+813    Rosie    Single        West Cambridge
+814    Rosie    Single        West Cambridge
+815    Rosie    Single        West Cambridge
+816    Rosie    Single Wellington-Harrington
+817    Rosie    Single       North Cambridge
+818    Rosie    Single         Cambridgeport
+819    Rosie    Single         Mid-Cambridge
+820    Rosie    Single       North Cambridge
+821    Rosie    Single        West Cambridge
+822    Rosie    Single               Baldwin
+823    Rosie    Single     Neighborhood Nine
+824    Rosie    Single               Baldwin
+825    Rosie    Single       North Cambridge
+826    Rosie    Single        West Cambridge
+827    Rosie    Single        West Cambridge
+828    Rosie    Single        East Cambridge
+829    Rosie    Single        West Cambridge
+830    Rosie    Single               Baldwin
+831    Rosie     Mixed        West Cambridge
+832    Rosie    Single        West Cambridge
+833    Rosie    Single Wellington-Harrington
+834    Rosie    Single        East Cambridge
+835    Rosie    Single        East Cambridge
+836    Rosie    Single        West Cambridge
+837    Rosie    Single        West Cambridge
+838    Rosie     Mixed       North Cambridge
+839    Rosie    Single       North Cambridge
+840    Rosie    Single       North Cambridge
+841    Rosie    Single        East Cambridge
+842    Rosie    Single        East Cambridge
+843    Rosie    Single        West Cambridge
+844    Rosie    Single     Neighborhood Nine
+845    Rosie    Single         Mid-Cambridge
+846    Rosie    Single               Baldwin
+847    Rosie    Single        West Cambridge
+848    Rosie    Single       North Cambridge
+849    Rosie    Single        East Cambridge
+850    Rosie    Single             Riverside
+851    Rosie     Mixed       North Cambridge
+852    Rosie    Single        West Cambridge
+853    Rosie    Single Wellington-Harrington
+854    Rosie    Single        West Cambridge
+855    Rosie    Single        West Cambridge
+856    Rosie    Single        West Cambridge
+857    Rosie    Single     Neighborhood Nine
+858    Rosie    Single        West Cambridge
+859    Rosie     Mixed        West Cambridge
+860    Rosie    Single        West Cambridge
+861    Rosie    Single              The Port
+862    Rosie    Single        West Cambridge
+863    Rosie    Single        East Cambridge
+864    Rosie    Single        East Cambridge
+865    Rosie    Single        East Cambridge
+866    Rosie    Single        West Cambridge
+867    Rosie    Single        West Cambridge
+868    Rosie    Single               Baldwin
+869    Rosie    Single        West Cambridge
+870    Rosie    Single         Mid-Cambridge
+871    Rosie    Single             Riverside
+872    Rosie    Single             Riverside
+873    Rosie    Single     Neighborhood Nine
+874    Rosie    Single        East Cambridge
+875    Rosie    Single        West Cambridge
+876    Rosie    Single        East Cambridge
+877    Rosie    Single     Neighborhood Nine
+878    Rosie    Single        East Cambridge
+879    Rosie    Single        West Cambridge
+880    Rosie    Single        East Cambridge
+881    Rosie     Mixed       North Cambridge
+882    Rosie    Single             Riverside
+883    Rosie    Single     Neighborhood Nine
+884    Rosie    Single         Mid-Cambridge
+885    Rosie    Single       North Cambridge
+886    Rosie    Single     Neighborhood Nine
+887    Rosie     Mixed       North Cambridge
+888    Rosie    Single        West Cambridge
+889    Rosie    Single         Mid-Cambridge
+890    Rosie    Single        West Cambridge
+891    Rosie    Single        West Cambridge
+892    Rosie    Single              The Port
+893    Rosie    Single         Mid-Cambridge
+894    Rosie    Single             Riverside
+895    Rosie    Single     Neighborhood Nine
+896    Rosie    Single        West Cambridge
+897    Rosie    Single        West Cambridge
+898    Rosie    Single        East Cambridge
+899    Rosie    Single        East Cambridge
+900    Rosie    Single         Mid-Cambridge
+901    Rosie    Single     Neighborhood Nine
+902    Rosie    Single        East Cambridge
+903    Rosie    Single        East Cambridge
+904    Rosie    Single         Mid-Cambridge
+905    Rosie    Single        East Cambridge
+906    Rosie    Single       North Cambridge
+907    Rosie    Single               Baldwin
+908    Rosie    Single         Cambridgeport
+909    Rosie    Single             Riverside</code></pre>
 </div>
 </div>
 </section>
@@ -1596,32 +1501,32 @@
 <h2>Creating a <strong>new variable</strong></h2>
 <p>We use <code>mutate()</code> to create new variables, or overwrite existing ones</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">head</span>(dogs_top5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">head</span>(dogs_top5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Dog_Name Dog_Breed    Neighborhood
-1    Rosie    Single       Riverside
-2     Luna    Single Strawberry Hill
-3  Charlie    Single   Cambridgeport
-4    Rosie     Mixed  West Cambridge
-5     Lucy    Single  West Cambridge
-6     Lucy    Single        The Port</code></pre>
+1     Lucy    Single        The Port
+2     Luna    Single North Cambridge
+3     Luna    Single   Mid-Cambridge
+4  Charlie    Single Strawberry Hill
+5     Luna    Single  West Cambridge
+6     Luna    Single Strawberry Hill</code></pre>
 </div>
 </div>
 <p><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>dogs_top5 <span class="sc">%&gt;%</span></span>
-<span id="cb30-2"><a></a>  <span class="fu">mutate</span>(<span class="at">animal =</span> <span class="st">"dog"</span>,</span>
-<span id="cb30-3"><a></a>         <span class="at">Dog_Name =</span> <span class="fu">toupper</span>(Dog_Name)) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-4"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>dogs_top5 <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a></a>  <span class="fu">mutate</span>(<span class="at">animal =</span> <span class="st">"dog"</span>,</span>
+<span id="cb28-3"><a></a>         <span class="at">Dog_Name =</span> <span class="fu">toupper</span>(Dog_Name)) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-4"><a></a>  <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Dog_Name Dog_Breed    Neighborhood animal
-1    ROSIE    Single       Riverside    dog
-2     LUNA    Single Strawberry Hill    dog
-3  CHARLIE    Single   Cambridgeport    dog
-4    ROSIE     Mixed  West Cambridge    dog
-5     LUCY    Single  West Cambridge    dog
-6     LUCY    Single        The Port    dog</code></pre>
+1     LUCY    Single        The Port    dog
+2     LUNA    Single North Cambridge    dog
+3     LUNA    Single   Mid-Cambridge    dog
+4  CHARLIE    Single Strawberry Hill    dog
+5     LUNA    Single  West Cambridge    dog
+6     LUNA    Single Strawberry Hill    dog</code></pre>
 </div>
 </div>
 </div>
@@ -1631,8 +1536,8 @@
 <p><strong>BLS Mission</strong>: “Measures labor market activity, working conditions, price changes, and productivity in the U.S. economy to support public and private decision making.”</p>
 <p><strong>Data</strong>: Last quarter of the 2016 BLS Consumer Expenditure Survey.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>ce_raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/fmli.csv"</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"NA"</span>, <span class="st">"."</span>))</span>
-<span id="cb32-2"><a></a><span class="fu">str</span>(ce_raw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>ce_raw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/fmli.csv"</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">"NA"</span>, <span class="st">"."</span>))</span>
+<span id="cb30-2"><a></a><span class="fu">str</span>(ce_raw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   6301 obs. of  51 variables:
  $ NEWID   : int  3324174 3324204 3324214 3324244 3324274 3324284 3324294 3324304 3324324 3324334 ...
@@ -1693,8 +1598,8 @@
 <h2>Wrangling CE Data</h2>
 <p>Want to better understand a family’s income and expenditures</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>ce <span class="ot">&lt;-</span> ce_raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">"NEWID"</span>, <span class="st">"PRINEARN"</span>, <span class="st">"FINCBTAX"</span>, <span class="st">"BLS_URBN"</span>, <span class="st">"HIGH_EDU"</span>, <span class="st">"TOTEXPCQ"</span>, <span class="st">"IRAX"</span>)</span>
-<span id="cb34-2"><a></a><span class="fu">dim</span>(ce)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>ce <span class="ot">&lt;-</span> ce_raw <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">"NEWID"</span>, <span class="st">"PRINEARN"</span>, <span class="st">"FINCBTAX"</span>, <span class="st">"BLS_URBN"</span>, <span class="st">"HIGH_EDU"</span>, <span class="st">"TOTEXPCQ"</span>, <span class="st">"IRAX"</span>)</span>
+<span id="cb32-2"><a></a><span class="fu">dim</span>(ce)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6301    7</code></pre>
 </div>
@@ -1721,9 +1626,9 @@
 <p><strong>Q:</strong> What is this code doing?</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>ce <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
-<span id="cb36-2"><a></a>  <span class="fu">mutate</span>(<span class="at">YEARLY_EXP =</span> TOTEXPCQ<span class="sc">*</span><span class="dv">4</span>)</span>
-<span id="cb36-3"><a></a>ce</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>ce <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a></a>  <span class="fu">mutate</span>(<span class="at">YEARLY_EXP =</span> TOTEXPCQ<span class="sc">*</span><span class="dv">4</span>)</span>
+<span id="cb34-3"><a></a>ce</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       NEWID PRINEARN FINCBTAX BLS_URBN HIGH_EDU   TOTEXPCQ    IRAX  YEARLY_EXP
 1    3324174        1   116920        1       16     0.0000 1000000      0.0000
@@ -8035,9 +7940,9 @@
 <p><strong>Q:</strong> What is this code doing?</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
-<span id="cb38-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, BLS_URBN <span class="sc">==</span> <span class="dv">1</span>, HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>)</span>
-<span id="cb38-3"><a></a>ce_sub</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
+<span id="cb36-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, BLS_URBN <span class="sc">==</span> <span class="dv">1</span>, HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>)</span>
+<span id="cb36-3"><a></a>ce_sub</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       NEWID PRINEARN FINCBTAX BLS_URBN HIGH_EDU   TOTEXPCQ    IRAX  YEARLY_EXP
 1    3335204        1    37000        1       14  2491.9167       0   9967.6668
@@ -12002,9 +11907,9 @@
 <p><strong>Q:</strong> What is this code doing?</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
-<span id="cb40-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, (BLS_URBN <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>))</span>
-<span id="cb40-3"><a></a>ce_sub</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, (BLS_URBN <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>))</span>
+<span id="cb38-3"><a></a>ce_sub</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       NEWID PRINEARN FINCBTAX BLS_URBN HIGH_EDU   TOTEXPCQ    IRAX  YEARLY_EXP
 1    3335204        1    37000        1       14  2491.9167       0   9967.6668
@@ -16193,13 +16098,13 @@
 <p><strong>Q:</strong> Which version leaves more cases in the data frame?</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
-<span id="cb42-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, BLS_URBN <span class="sc">==</span> <span class="dv">1</span>, HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, BLS_URBN <span class="sc">==</span> <span class="dv">1</span>, HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
-<span id="cb43-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, (BLS_URBN <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, (BLS_URBN <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="using-logical-operators-3" class="slide level2">
@@ -16207,18 +16112,18 @@
 <p><strong>Q:</strong> Which version leaves more cases in the data frame?</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
-<span id="cb44-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, BLS_URBN <span class="sc">==</span> <span class="dv">1</span>, HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>)</span>
-<span id="cb44-3"><a></a><span class="fu">dim</span>(ce_sub)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
+<span id="cb42-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, BLS_URBN <span class="sc">==</span> <span class="dv">1</span>, HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>)</span>
+<span id="cb42-3"><a></a><span class="fu">dim</span>(ce_sub)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3954    8</code></pre>
 </div>
 </div>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
-<span id="cb46-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, (BLS_URBN <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>))</span>
-<span id="cb46-3"><a></a><span class="fu">dim</span>(ce_sub)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>ce_sub <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a></a>  <span class="fu">filter</span>(YEARLY_EXP <span class="sc">&gt;</span> <span class="dv">0</span>, (BLS_URBN <span class="sc">==</span> <span class="dv">1</span> <span class="sc">|</span> HIGH_EDU <span class="sc">!=</span> <span class="st">"00"</span>))</span>
+<span id="cb44-3"><a></a><span class="fu">dim</span>(ce_sub)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4178    8</code></pre>
 </div>
@@ -16227,7 +16132,7 @@
 <section id="recoding-variables-with-case_when" class="slide level2">
 <h2>Recoding Variables with <code>case_when()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">count</span>(ce, BLS_URBN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a><span class="fu">count</span>(ce, BLS_URBN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  BLS_URBN    n
 1        1 5952
@@ -16239,12 +16144,12 @@
 <p><strong>Q:</strong> What is this code doing?</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>ce <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
-<span id="cb50-2"><a></a>  <span class="fu">mutate</span>(<span class="at">BLS_URBN =</span> <span class="fu">case_when</span>(BLS_URBN <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Urban"</span>,</span>
-<span id="cb50-3"><a></a>                              BLS_URBN <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Rural"</span>,</span>
-<span id="cb50-4"><a></a>                              <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span>))</span>
-<span id="cb50-5"><a></a></span>
-<span id="cb50-6"><a></a><span class="fu">count</span>(ce, BLS_URBN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a>ce <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a></a>  <span class="fu">mutate</span>(<span class="at">BLS_URBN =</span> <span class="fu">case_when</span>(BLS_URBN <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Urban"</span>,</span>
+<span id="cb48-3"><a></a>                              BLS_URBN <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Rural"</span>,</span>
+<span id="cb48-4"><a></a>                              <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span>))</span>
+<span id="cb48-5"><a></a></span>
+<span id="cb48-6"><a></a><span class="fu">count</span>(ce, BLS_URBN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  BLS_URBN    n
 1    Rural  349
@@ -16256,9 +16161,9 @@
 <section id="creating-variables-with-case_when" class="slide level2">
 <h2>Creating Variables with <code>case_when()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>ce <span class="sc">%&gt;%</span> </span>
-<span id="cb52-2"><a></a>  <span class="fu">mutate</span>(<span class="at">HIGH_EDU =</span> <span class="fu">as.numeric</span>(HIGH_EDU)) <span class="sc">%&gt;%</span></span>
-<span id="cb52-3"><a></a>  <span class="fu">count</span>(HIGH_EDU)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a></a>ce <span class="sc">%&gt;%</span> </span>
+<span id="cb50-2"><a></a>  <span class="fu">mutate</span>(<span class="at">HIGH_EDU =</span> <span class="fu">as.numeric</span>(HIGH_EDU)) <span class="sc">%&gt;%</span></span>
+<span id="cb50-3"><a></a>  <span class="fu">count</span>(HIGH_EDU)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  HIGH_EDU    n
 1        0    8
@@ -16274,13 +16179,13 @@
 <p><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a>ce <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span> </span>
-<span id="cb54-2"><a></a>  <span class="fu">mutate</span>(<span class="at">HIGH_EDU2 =</span> <span class="fu">case_when</span>(HIGH_EDU <span class="sc">&lt;=</span> <span class="dv">11</span> <span class="sc">~</span> <span class="st">"Less than high school degree"</span>,</span>
-<span id="cb54-3"><a></a>                               HIGH_EDU <span class="sc">&lt;=</span> <span class="dv">13</span> <span class="sc">~</span> <span class="st">"High school degree"</span>,</span>
-<span id="cb54-4"><a></a>                               HIGH_EDU <span class="sc">&gt;=</span> <span class="dv">14</span> <span class="sc">~</span> <span class="st">"College degree"</span>,</span>
-<span id="cb54-5"><a></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span>))</span>
-<span id="cb54-6"><a></a></span>
-<span id="cb54-7"><a></a><span class="fu">count</span>(ce, HIGH_EDU2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>ce <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a></a>  <span class="fu">mutate</span>(<span class="at">HIGH_EDU2 =</span> <span class="fu">case_when</span>(HIGH_EDU <span class="sc">&lt;=</span> <span class="dv">11</span> <span class="sc">~</span> <span class="st">"Less than high school degree"</span>,</span>
+<span id="cb52-3"><a></a>                               HIGH_EDU <span class="sc">&lt;=</span> <span class="dv">13</span> <span class="sc">~</span> <span class="st">"High school degree"</span>,</span>
+<span id="cb52-4"><a></a>                               HIGH_EDU <span class="sc">&gt;=</span> <span class="dv">14</span> <span class="sc">~</span> <span class="st">"College degree"</span>,</span>
+<span id="cb52-5"><a></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA</span>))</span>
+<span id="cb52-6"><a></a></span>
+<span id="cb52-7"><a></a><span class="fu">count</span>(ce, HIGH_EDU2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     HIGH_EDU2    n
 1               College degree 3312
@@ -16294,7 +16199,7 @@
 <h2>Variable Names</h2>
 <p>Sometimes datasets come with terrible variable names.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a><span class="fu">names</span>(ce)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a></a><span class="fu">names</span>(ce)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "NEWID"      "PRINEARN"   "FINCBTAX"   "BLS_URBN"   "HIGH_EDU"  
 [6] "TOTEXPCQ"   "IRAX"       "YEARLY_EXP" "HIGH_EDU2" </code></pre>
@@ -16304,8 +16209,8 @@
 <div class="fragment">
 <p>We can fix that with <code>rename()</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>ce <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
-<span id="cb58-2"><a></a>  <span class="fu">rename</span>(<span class="at">INCOME =</span> FINCBTAX)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a></a>ce <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a></a>  <span class="fu">rename</span>(<span class="at">INCOME =</span> FINCBTAX)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -16315,22 +16220,22 @@
 <div class="columns">
 <div class="column" style="width:&quot;50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="fu">mean</span>(ce<span class="sc">$</span>INCOME)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a></a><span class="fu">mean</span>(ce<span class="sc">$</span>INCOME)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 62480.12</code></pre>
 </div>
 </div>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a><span class="fu">mean</span>(ce<span class="sc">$</span>IRAX)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a></a><span class="fu">mean</span>(ce<span class="sc">$</span>IRAX)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] NA</code></pre>
 </div>
 </div>
 </div><div class="column fragment" style="width:&quot;50%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>ce_aggressive <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(ce_raw)</span>
-<span id="cb63-2"><a></a>ce_aggressive</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>ce_aggressive <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(ce_raw)</span>
+<span id="cb61-2"><a></a>ce_aggressive</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] NEWID    PRINEARN FINLWT21 FINCBTAX BLS_URBN POPSIZE  EDUC_REF EDUCA2  
  [9] AGE_REF  AGE2     SEX_REF  SEX2     REF_RACE RACE2    HISP_REF HISP2   
@@ -16343,22 +16248,21 @@
 </div>
 </div>
 </div><ul>
-<li class="fragment"><strong>Q</strong>: Guesses about what’s going on here?</li>
-<li class="fragment"><strong>A</strong>: <code>na.omit()</code> drops a row if it has a missing value in <em>any</em> column.</li>
+<li class="fragment"><strong>Q</strong>: Guesses about what’s going on here? <!-- -   **A**: `na.omit()` drops a row if it has a missing value in *any* column. --></li>
 </ul>
 </div>
 </section>
 <section id="handling-missing-data-1" class="slide level2">
 <h2>Handling Missing Data</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a>ce_moderate <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
-<span id="cb65-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(IRAX), <span class="sc">!</span><span class="fu">is.na</span>(INCOME))</span>
-<span id="cb65-3"><a></a></span>
-<span id="cb65-4"><a></a><span class="fu">mean</span>(ce_moderate<span class="sc">$</span>INCOME)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a></a>ce_moderate <span class="ot">&lt;-</span> ce <span class="sc">%&gt;%</span></span>
+<span id="cb63-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(IRAX), <span class="sc">!</span><span class="fu">is.na</span>(INCOME))</span>
+<span id="cb63-3"><a></a></span>
+<span id="cb63-4"><a></a><span class="fu">mean</span>(ce_moderate<span class="sc">$</span>INCOME)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 57771.14</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="fu">mean</span>(ce_moderate<span class="sc">$</span>IRAX)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a></a><span class="fu">mean</span>(ce_moderate<span class="sc">$</span>IRAX)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 91075.09</code></pre>
 </div>
@@ -16367,11 +16271,11 @@
 <div class="fragment">
 <p>Or, to be very conservative about preserving data:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a><span class="fu">mean</span>(ce<span class="sc">$</span>INCOME, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a></a><span class="fu">mean</span>(ce<span class="sc">$</span>INCOME, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 62480.12</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a><span class="fu">mean</span>(ce<span class="sc">$</span>IRAX, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a></a><span class="fu">mean</span>(ce<span class="sc">$</span>IRAX, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 91075.09</code></pre>
 </div>
@@ -16388,9 +16292,9 @@
 <section id="summarizing-within-groups-using-group_by-and-summarize" class="slide level2">
 <h2>Summarizing within groups using <code>group_by()</code> and <code>summarize()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a>ce_moderate <span class="sc">%&gt;%</span></span>
-<span id="cb73-2"><a></a>  <span class="fu">group_by</span>(BLS_URBN) <span class="sc">%&gt;%</span></span>
-<span id="cb73-3"><a></a>  <span class="fu">summarize</span>(<span class="at">mean_IRAX =</span> <span class="fu">mean</span>(IRAX))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a></a>ce_moderate <span class="sc">%&gt;%</span></span>
+<span id="cb71-2"><a></a>  <span class="fu">group_by</span>(BLS_URBN) <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a></a>  <span class="fu">summarize</span>(<span class="at">mean_IRAX =</span> <span class="fu">mean</span>(IRAX))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 2
   BLS_URBN mean_IRAX
@@ -16402,9 +16306,9 @@
 <p><br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a>ce_moderate <span class="sc">%&gt;%</span></span>
-<span id="cb75-2"><a></a>  <span class="fu">group_by</span>(BLS_URBN, HIGH_EDU2) <span class="sc">%&gt;%</span></span>
-<span id="cb75-3"><a></a>  <span class="fu">summarize</span>(<span class="at">mean_IRAX =</span> <span class="fu">mean</span>(IRAX))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a></a>ce_moderate <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a></a>  <span class="fu">group_by</span>(BLS_URBN, HIGH_EDU2) <span class="sc">%&gt;%</span></span>
+<span id="cb73-3"><a></a>  <span class="fu">summarize</span>(<span class="at">mean_IRAX =</span> <span class="fu">mean</span>(IRAX))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
 # Groups:   BLS_URBN [2]
@@ -16444,8 +16348,8 @@
 <h2>In-Class Exercise: Data wrangling pseudocode</h2>
 <p>Anonymized data from a 2017 study on the effect of the higher education system on upward mobility <a href="http://www.equality-of-opportunity.org/data/">(Chetty et al.&nbsp;2017)</a>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a></a><span class="fu">load</span>(<span class="st">"data/colleges.Rdata"</span>)</span>
-<span id="cb77-2"><a></a><span class="fu">head</span>(colleges[, <span class="fu">c</span>(<span class="st">"region"</span>, <span class="st">"state"</span>, <span class="st">"tier_name"</span>, <span class="st">"name"</span>, <span class="st">"mr_kq5_pq1"</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="fu">load</span>(<span class="st">"data/colleges.Rdata"</span>)</span>
+<span id="cb75-2"><a></a><span class="fu">head</span>(colleges[, <span class="fu">c</span>(<span class="st">"region"</span>, <span class="st">"state"</span>, <span class="st">"tier_name"</span>, <span class="st">"name"</span>, <span class="st">"mr_kq5_pq1"</span>)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 5
   region state tier_name                   name                       mr_kq5_pq1
@@ -16477,7 +16381,7 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_ee243d49" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_aed7c593" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>

@@ -476,6 +476,20 @@
     "text": "Demo: Finding the lab files, tour of RStudio, starting the lab"
   },
   {
+    "objectID": "readings/reading10.html",
+    "href": "readings/reading10.html",
+    "title": "Stat 141: Readings for September 18, 2026",
+    "section": "",
+    "text": "Stat 141: Readings for September 18, 2026\nBefore coming to lecture today, please read the following material:\n\nIMS 2.1"
+  },
+  {
+    "objectID": "readings/reading08.html",
+    "href": "readings/reading08.html",
+    "title": "Stat 141: Readings for September 14, 2026",
+    "section": "",
+    "text": "Stat 141: Readings for September 14, 2026\nBefore coming to lecture today, please read the following material:\n\nOI Section 3.1.1-3.1.6 and 3.2.1-3.2.3"
+  },
+  {
     "objectID": "readings/reading06.html",
     "href": "readings/reading06.html",
     "title": "Stat 141: Readings for September 10, 2026",
@@ -558,6 +572,13 @@
     "title": "Stat 141: Readings for September 11, 2026",
     "section": "",
     "text": "Stat 141: Readings for September 11, 2026\nBefore coming to lecture today, practice using R documentation to familiarize yourself with new functions:\n\nIn the console of a RStudio window, run library(dplyr).\n\nThen, run the following commands one by one in the console. For each, skim the documentation that shows up in the “Help” pane (usually the bottom right of RStudio). Pay the most attention to the “Description”, “Usage”, “Arguments”, “Value”, and “Examples” sections. Usually, the most common or important uses and arguments are mentioned first. Run a few of the provided examples in your own console for each command.\n\n?arrange\n?group_by\n?summarize\n?filter\n?mutate"
+  },
+  {
+    "objectID": "readings/reading09.html",
+    "href": "readings/reading09.html",
+    "title": "Stat 141: Readings for September 16, 2026",
+    "section": "",
+    "text": "Stat 141: Readings for September 16, 2026\nBefore coming to lecture today, please review/read the following material:\n\nOI 3.2"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#goals-for-today",

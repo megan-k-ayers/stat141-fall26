@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 9/11/26
+  draft-after: 9/18/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -76,10 +76,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading06.qmd
-            # - type: Download Lab 2
-            #   href: lab/lab02.zip
-            # - type: Download HW 2
-            #   href: hw/hw02.zip
+            - type: Download Lab 2
+              href: lab/lab02.zip
+            - type: Download HW 2
+              href: hw/hw02.zip
         - topic: "Data Wrangling"
           display-date: Friday, Sept 11
           date: 9/11/26
@@ -100,32 +100,32 @@ scheduled-docs:
           docs:
               - type: Reading
                 href: readings/reading08.qmd
-              - type: Slides
-                href: slides/lecture06_probability-intro-lln.qmd
+              # - type: Slides
+              #   href: slides/lecture06_probability-intro-lln.qmd
         - topic: "Probability II: Properties and Rules"
           display-date: Wednesday, Sept 16
           date: 9/16/26
           docs:
             - type: Reading
               href: readings/reading09.qmd
-            - type: Slides
-              href: slides/lecture07_probability-rules.qmd
+            # - type: Slides
+            #   href: slides/lecture07_probability-rules.qmd
         - topic: "Lab: Data Wrangling & Probability | Quiz 1"
           display-date: Thursday, Sept 17
           date: 9/17/26
           docs:
-          - type: Download Lab 3
-            href: lab/lab03.zip
-          - type: Download HW 3
-            href: hw/hw03.zip
+          # - type: Download Lab 3
+          #   href: lab/lab03.zip
+          # - type: Download HW 3
+          #   href: hw/hw03.zip
         - topic: "Data Collection and Sampling"
           display-date: Friday, Sept 18
           date: 9/18/26
           docs:
             - type: Reading
               href: readings/reading10.qmd
-            - type: Slides
-              href: slides/lecture08_data-collection-sampling.qmd
+            # - type: Slides
+            #   href: slides/lecture08_data-collection-sampling.qmd
       resources:
             - 'Submit assignment 2 (due Thurs 9/17 at 9am)'
             - 'Take Quiz 1 during lab'
