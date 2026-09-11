@@ -317,7 +317,7 @@ $ Neighborhood &lt;chr&gt; "The Port", "North Cambridge", "Mid-Cambridge", "Stra
 <div class="column fragment" style="width:50%;">
 <p>To <strong>drop</strong> missing values. (Need to be careful here!)</p>
 </div><div class="column fragment" style="width:50%;">
-<p>→ In our Lab 2, we’ll see that <code>ggplot2</code> will often drop observations before creating a graph.</p>
+<p>→ In our Lab 2, we saw that <code>ggplot2</code> drops <code>NA</code> observations before creating a graph.</p>
 </div></div>
 <div class="columns">
 <div class="column fragment" style="width:50%;">
@@ -352,17 +352,17 @@ $ Neighborhood &lt;chr&gt; "The Port", "North Cambridge", "Mid-Cambridge", "Stra
 <section id="dplyr-for-data-wrangling" class="slide level2">
 <h2><code>dplyr</code> for Data Wrangling</h2>
 <ul>
-<li class="fragment">Five common wrangling verbs:
+<li>Five common wrangling verbs:
 <ul>
-<li class="fragment"><code>count()</code></li>
-<li class="fragment"><code>filter()</code></li>
-<li class="fragment"><code>arrange()</code></li>
-<li class="fragment"><code>mutate()</code></li>
-<li class="fragment"><code>summarize()</code></li>
+<li><code>count()</code></li>
+<li><code>filter()</code></li>
+<li><code>arrange()</code></li>
+<li><code>mutate()</code></li>
+<li><code>summarize()</code></li>
 </ul></li>
-<li class="fragment">One action:
+<li>One action:
 <ul>
-<li class="fragment"><code>group_by()</code></li>
+<li><code>group_by()</code></li>
 </ul></li>
 </ul>
 </section>
@@ -1626,7 +1626,7 @@ $ Neighborhood &lt;chr&gt; "The Port", "North Cambridge", "Mid-Cambridge", "Stra
 </div><div class="column" style="width:&quot;50%;">
 <ul>
 <li><code>HIGH_EDU</code>: Highest education in the household. 00 = Never attended, 10 = Grades 1-8, 11 = Grades 9-12, no degree, 12 = High school graduate, 13 = Some college, no degree, 14 = Associates degree, 15 = Bachelor’s degree, 16 = Masters, Professional/doctorate degree</li>
-<li><code>TOTEXPCQ</code> = Total household expenditures for the current quarter</li>
+<li><code>TOTEXPCQ</code> = Total household expenditures for the current <strong>quarter</strong></li>
 <li><code>IRAX</code> = Total in retirement funds</li>
 </ul>
 </div></div>
@@ -7944,6 +7944,8 @@ $ Neighborhood &lt;chr&gt; "The Port", "North Cambridge", "Mid-Cambridge", "Stra
 6301 3556331        1    36000        1       16  2731.9333      NA  10927.7332</code></pre>
 </div>
 </div>
+<p><br></p>
+<p>(<em>Reminder that <code>TOTEXPCQ</code> is total quarterly expenditures.</em>)</p>
 </section>
 <section id="using-logical-operators" class="slide level2">
 <h2>Using logical operators</h2>
@@ -16226,6 +16228,9 @@ $ Neighborhood &lt;chr&gt; "The Port", "North Cambridge", "Mid-Cambridge", "Stra
 </section>
 <section id="handling-missing-data" class="slide level2">
 <h2>Handling Missing Data</h2>
+<ul>
+<li class="fragment">(<em>Time check - possibly skip and review independently</em>)</li>
+</ul>
 <p>Want to compute mean income and mean retirement funds.</p>
 <div class="columns">
 <div class="column" style="width:&quot;50%;">
@@ -16356,6 +16361,7 @@ $ Neighborhood &lt;chr&gt; "The Port", "North Cambridge", "Mid-Cambridge", "Stra
 </section>
 <section id="in-class-exercise-data-wrangling-pseudocode" class="slide level2">
 <h2>In-Class Exercise: Data wrangling pseudocode</h2>
+<div style="font-size:0.9em;">
 <p>Anonymized data from a 2017 study on the effect of the higher education system on upward mobility <a href="http://www.equality-of-opportunity.org/data/">(Chetty et al.&nbsp;2017)</a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a></a><span class="fu">load</span>(<span class="st">"data/colleges.Rdata"</span>)</span>
@@ -16387,11 +16393,12 @@ $ Neighborhood &lt;chr&gt; "The Port", "North Cambridge", "Mid-Cambridge", "Stra
 </ul>
 </div></div>
 <div class="fragment">
-<p><strong>In groups of 3-4, on paper or the board, write pseudocode to answer</strong>: what states in the west have the highest average mobility rate across their private and elite colleges?</p>
+<p><strong>In groups of 3-4, on paper or the board, write pseudocode to answer</strong>: what states in the west have the highest average mobility rate across their selective private and selective public colleges?</p>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_1f7f9712" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_17961128" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
 </div>
 </div>
 </section>

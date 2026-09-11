@@ -157,7 +157,7 @@ To **drop** missing values. (Need to be careful here!)
 :::
 
 ::: {.column .fragment width="50%"}
-→ In our Lab 2, we'll see that `ggplot2` will often drop observations before creating a graph.
+→ In our Lab 2, we saw that `ggplot2` drops `NA` observations before creating a graph.
 :::
 :::::
 
@@ -211,6 +211,9 @@ To fix how R **stores** a variable (or make a new one).
 
 ## `dplyr` for Data Wrangling
 
+
+::: nonincremental
+
 -   Five common wrangling verbs:
     - `count()`
     - `filter()`
@@ -219,6 +222,8 @@ To fix how R **stores** a variable (or make a new one).
     - `summarize()` 
 -   One action:
     - `group_by()`
+    
+:::
 
 ------------------------------------------------------------------------
 
@@ -470,7 +475,7 @@ dim(ce)
 :::: {.column width="\"50%"}
 ::: nonincremental
 -   `HIGH_EDU`: Highest education in the household. 00 = Never attended, 10 = Grades 1-8, 11 = Grades 9-12, no degree, 12 = High school graduate, 13 = Some college, no degree, 14 = Associates degree, 15 = Bachelor's degree, 16 = Masters, Professional/doctorate degree
--   `TOTEXPCQ` = Total household expenditures for the current quarter
+-   `TOTEXPCQ` = Total household expenditures for the current **quarter**
 -   `IRAX` = Total in retirement funds
 :::
 ::::
@@ -489,6 +494,10 @@ ce <- ce %>%
   mutate(YEARLY_EXP = TOTEXPCQ*4)
 ce
 ```
+
+<br>
+
+(*Reminder that `TOTEXPCQ` is total quarterly expenditures.*)
 
 ------------------------------------------------------------------------
 
@@ -643,6 +652,8 @@ ce <- ce %>%
 
 ## Handling Missing Data
 
+- (*Time check - possibly skip and review independently*)
+
 Want to compute mean income and mean retirement funds.
 
 ::::: columns
@@ -747,6 +758,8 @@ When I make a new data frame, what name should I give it? Importantly, should I 
 
 ## In-Class Exercise: Data wrangling pseudocode
 
+::: {style="font-size:0.9em;"}
+
 Anonymized data from a 2017 study on the effect of the higher education system on upward mobility [(Chetty et al. 2017)](http://www.equality-of-opportunity.org/data/).
 
 ```{r}
@@ -773,7 +786,7 @@ head(colleges[, c("region", "state", "tier_name", "name", "mr_kq5_pq1")])
 
 
 ::: {.fragment}
-**In groups of 3-4, on paper or the board, write pseudocode to answer**: what states in the west have the highest average mobility rate across their private and elite colleges? 
+**In groups of 3-4, on paper or the board, write pseudocode to answer**: what states in the west have the highest average mobility rate across their selective private and selective public colleges? 
 :::
 
 ```{r}
@@ -781,6 +794,7 @@ head(colleges[, c("region", "state", "tier_name", "name", "mr_kq5_pq1")])
 countdown::countdown(7)
 ```
 
+:::
 
 ```{r include=FALSE, eval=FALSE}
 load("data/colleges.Rdata")
@@ -788,7 +802,7 @@ load("data/colleges.Rdata")
 # For "selective private" or "elite" schools in the west, which western state has the highest average  mobility rate (top 1\% of the income distribution) amongst selective private/elite schools? 
 
 colleges %>%
-  filter(tier_name %in% c("Selective private", "Other elite schools (private and public)"),
+  filter(tier_name %in% c("Selective private", "Selective public"),
          region == 4) %>%
   group_by(state) %>%
   summarize(mean_mr = mean(mr_kq5_pq1)) %>%
