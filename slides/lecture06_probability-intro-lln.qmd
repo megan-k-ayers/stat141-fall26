@@ -1,7 +1,7 @@
 ---
 pagetitle: "Probability I: Introduction and LLN"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -58,15 +58,6 @@ library(infer)
 :::::
 
 
-------------------------------------------------------------------------
-
-## Announcements/reminders
-::: {.incremental}
-
--   
-
-:::
-
 
 ------------------------------------------------------------------------
 
@@ -104,7 +95,7 @@ An **event** is a potential result of some particular random process.
 
 ::: {.incremental}
 - Example: If we roll a 6-sided die, one event is *"the die rolls a 6"*. Another is *"the die rolls an odd number"*.
-- The statement *"it will rain at 9am in Portland on 2/6"* is *an* event, but not one for the die-rolling process.
+- The statement *"it will rain at 9am in Portland on 9/14"* is *an* event, but not one for the die-rolling process.
 :::
 :::
 
@@ -168,7 +159,7 @@ The **probability** of a particular event is the proportion of times the event w
 To say that *a coin has 50% probability of landing heads*, means that...
   
 ::: {.incremental}
-- We expect the proportion of heads in a large number of coin flips to be close to 0.5
+- We expect the proportion of heads [in a large number of coin flips]{.underline} to be close to 0.5
 :::
 :::
 
@@ -204,6 +195,8 @@ The probability of an event refers to the **long-run tendency of the proportion.
 - But as you conduct more and more trials, the deviation decreases
 :::
 
+::: fragment
+
 ```{r}
 #| fig-height: 4
 #| fig-width: 10
@@ -228,7 +221,7 @@ lln[1:200,] %>% filter(flips > 2) %>%
   scale_x_continuous(breaks = seq(0, 2000, by = 200), limits = c(0, 2000))
 ```
 
-::: {.fragment}
+
 The proportion of heads deviates wildly from 0.5 during the first 200 flips
 :::
 
@@ -352,30 +345,30 @@ Suppose you're interested in winning the Powerball Jackpot, where the chance of 
 countdown::countdown(4)
 ```
 
-------------------------------------------------------------------------
+<!-- ## Check Your Understanding (Answers) -->
 
-## Check Your Understanding (Answers)
+<!-- ::: {.fragment} -->
+<!-- 1. When playing the lottery (a *random process*), what are the two possible outcomes (**events**)? -->
+<!--     - Winning and Losing -->
+<!-- ::: -->
 
-::: {.fragment}
-1. When playing the lottery (a *random process*), what are the two possible outcomes (**events**)?
-    - Winning and Losing
-:::
+<!-- ::: {.fragment} -->
+<!-- 2. Write down the probability of your two events. -->
+<!--     - P(Winning) = 1/292,000,000 -->
+<!--     - P(Losing) = 291,999,999/292,000,000 or 1 - P(Winning) -->
+<!-- ::: -->
 
-::: {.fragment}
-2. Write down the probability of your two events.
-    - P(Winning) = 1/292,000,000
-    - P(Losing) = 291,999,999/292,000,000 or 1 - P(Winning)
-:::
+<!-- ::: {.fragment} -->
+<!-- 3. If you played the lottery 1 million times, should you **expect** to win? What about 292 million times? -->
+<!--     - You shouldn't *expect* to win after playing 1 million times. But you might win after playing 292 million times! -->
+<!-- ::: -->
 
-::: {.fragment}
-3. If you played the lottery 1 million times, should you **expect** to win? What about 292 million times?
-    - You shouldn't *expect* to win after playing 1 million times. But you might win after playing 292 million times!
-:::
+<!-- ::: {.fragment} -->
+<!-- 4. If you played the lottery 1 billion times, are you **guaranteed** to win? -->
+<!--     - You are *never guaranteed* to win! Each time you play, your chance of winning is so small! -->
+<!-- ::: -->
 
-::: {.fragment}
-4. If you played the lottery 1 billion times, are you **guaranteed** to win?
-    - You are *never guaranteed* to win! Each time you play, your chance of winning is so small!
-:::
+<!-- ------------------------------------------------------------------------ -->
 
 ------------------------------------------------------------------------
 
@@ -403,8 +396,6 @@ A **probability model** has two components:
 
 ::: {.fragment}
 When discussing probability, we always (explicitly or implicitly) define a probability model.
-
-- Probability models help us make sense of complex, random processes.
 :::
 
 
@@ -430,7 +421,7 @@ Two events $A$ and $B$ are said to be **mutually exclusive** (or **disjoint**) i
 
 ## The Addition Rule
 
-::: {.callout-note icon=false}
+::: {.callout-note .fragment icon=false}
 ## Theorem: Addition Rule
 The probability that at least one event occurs in a pair of disjoint events is the sum of their individual probabilities:
 $$
@@ -528,7 +519,9 @@ $$
 
 ------------------------------------------------------------------------
 
-## The Addition Rule: Only for Disjoint events! {.small}
+## The Addition Rule: Only for Disjoint events!
+
+::: {style="font-size:0.9em;"}
 
 ::: {.callout-note icon=false}
 ## Theorem: Addition Rule
@@ -564,6 +557,8 @@ $$
 
 ::: {.fragment}
 - But $P(\text{Even}) + P(\geq 3) = \frac{1}{2} + \frac{2}{3} = \frac{7}{6}$... that's not even between 0 and 1!
+:::
+
 :::
 
 ------------------------------------------------------------------------
@@ -623,29 +618,35 @@ In the city of Portland, there's rain on 60% of days and snow on 1% of days.
 3. What if I told you it rains OR snows 61% of days in Portland. What's the **flaw** in my reasoning?
 :::
 
-------------------------------------------------------------------------
+```{r}
+#| echo: FALSE
+countdown::countdown(2)
+```
 
-## Check Your Understanding (Answers)
 
-In the city of Portland, there's rain on 60% of days and snow on 1% of days.
+<!-- ------------------------------------------------------------------------ -->
 
-::: {.fragment}
-1. On a given day, what's the probability that it **doesn't rain?**
+<!-- ## Check Your Understanding (Answers) -->
 
-$$P(\text{Doesn't Rain}) = P(\text{Rain}^c) = 1-P(\text{Rain}) = 1-0.6=0.4$$
-:::
+<!-- In the city of Portland, there's rain on 60% of days and snow on 1% of days. -->
 
-::: {.fragment}
-2. On a given day, what's the probability that it rains **OR** doesn't rain?
+<!-- ::: {.fragment} -->
+<!-- 1. On a given day, what's the probability that it **doesn't rain?** -->
 
-$$P(\text{Rain or Doesn't Rain}) = P(\text{Rain}) + P(\text{Doesn't Rain}) = 0.6+0.4=1$$
-:::
+<!-- $$P(\text{Doesn't Rain}) = P(\text{Rain}^c) = 1-P(\text{Rain}) = 1-0.6=0.4$$ -->
+<!-- ::: -->
 
-::: {.fragment}
-3. What if I told you it rains OR snows 61% of days in Portland. What's the **flaw** in my reasoning?
+<!-- ::: {.fragment} -->
+<!-- 2. On a given day, what's the probability that it rains **OR** doesn't rain? -->
 
-It can rain *and* snow in one day! Thus, we *can't use the addition rule!*
-:::
+<!-- $$P(\text{Rain or Doesn't Rain}) = P(\text{Rain}) + P(\text{Doesn't Rain}) = 0.6+0.4=1$$ -->
+<!-- ::: -->
+
+<!-- ::: {.fragment} -->
+<!-- 3. What if I told you it rains OR snows 61% of days in Portland. What's the **flaw** in my reasoning? -->
+
+<!-- It can rain *and* snow in one day! Thus, we *can't use the addition rule!* -->
+<!-- ::: -->
 
 
 
@@ -655,7 +656,7 @@ It can rain *and* snow in one day! Thus, we *can't use the addition rule!*
 
 ## Activity: Coffee or Tea?
 
-A survey was given to 100 Math 141 students in 2017. Some results are summarized below:
+A survey was given to 100 Stat 141 students in 2017. Some results are summarized below:
 
 :::: {.columns}
 
@@ -723,12 +724,7 @@ In the previous example,
 How do we calculate conditional probabilities?
 
 ::: {.fragment}
-$$
-P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
-$$
-:::
 
-::: {.fragment}
 In general,
 
 ::: {.callout-note icon=false}
@@ -738,11 +734,18 @@ $$
 P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
 $$
 :::
+
+:::
+
+::: {.fragment}
+$$
+P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
+$$
 :::
 
 ::: fragment
 
-- Example: the probability that a student who is a sophomore (B) prefers coffee (A):
+- The probability that a student who is a sophomore (B) prefers coffee (A):
 $$P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}$$
 
 :::

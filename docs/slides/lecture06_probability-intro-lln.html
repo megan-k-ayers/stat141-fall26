@@ -144,12 +144,6 @@
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 3</span></p>
 </div></div>
 </section>
-<section id="announcementsreminders" class="slide level2">
-<h2>Announcements/reminders</h2>
-<ul>
-<li class="fragment"></li>
-</ul>
-</section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals For Today</h2>
 <ul>
@@ -178,7 +172,7 @@
 <p>An <strong>event</strong> is a potential result of some particular random process.</p>
 <ul>
 <li class="fragment">Example: If we roll a 6-sided die, one event is <em>“the die rolls a 6”</em>. Another is <em>“the die rolls an odd number”</em>.</li>
-<li class="fragment">The statement <em>“it will rain at 9am in Portland on 2/6”</em> is <em>an</em> event, but not one for the die-rolling process.</li>
+<li class="fragment">The statement <em>“it will rain at 9am in Portland on 9/14”</em> is <em>an</em> event, but not one for the die-rolling process.</li>
 </ul>
 </div>
 </section>
@@ -207,7 +201,7 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_59f7869c" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_0b346d3f" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -242,7 +236,7 @@
 <div class="fragment">
 <p>To say that <em>a coin has 50% probability of landing heads</em>, means that…</p>
 <ul>
-<li class="fragment">We expect the proportion of heads in a large number of coin flips to be close to 0.5</li>
+<li class="fragment">We expect the proportion of heads <u>in a large number of coin flips</u> to be close to 0.5</li>
 </ul>
 </div>
 <div class="fragment">
@@ -269,6 +263,7 @@ P(\textrm{Heads})=0.5 \quad \textrm{or} \quad P(H)=0.5
 <li class="fragment">Observed proportions can deviate from expected probabilities in a finite number of trials</li>
 <li class="fragment">But as you conduct more and more trials, the deviation decreases</li>
 </ul>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -278,7 +273,6 @@ P(\textrm{Heads})=0.5 \quad \textrm{or} \quad P(H)=0.5
 </div>
 </div>
 </div>
-<div class="fragment">
 <p>The proportion of heads deviates wildly from 0.5 during the first 200 flips</p>
 </div>
 </section>
@@ -356,45 +350,28 @@ P(\textrm{Heads})=0.5 \quad \textrm{or} \quad P(H)=0.5
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_460a5003" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e58b5812" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
-</section>
-<section id="check-your-understanding-answers" class="slide level2">
-<h2>Check Your Understanding (Answers)</h2>
-<div class="fragment">
-<ol type="1">
-<li>When playing the lottery (a <em>random process</em>), what are the two possible outcomes (<strong>events</strong>)?
-<ul>
-<li>Winning and Losing</li>
-</ul></li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="2" type="1">
-<li>Write down the probability of your two events.
-<ul>
-<li>P(Winning) = 1/292,000,000</li>
-<li>P(Losing) = 291,999,999/292,000,000 or 1 - P(Winning)</li>
-</ul></li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="3" type="1">
-<li>If you played the lottery 1 million times, should you <strong>expect</strong> to win? What about 292 million times?
-<ul>
-<li>You shouldn’t <em>expect</em> to win after playing 1 million times. But you might win after playing 292 million times!</li>
-</ul></li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="4" type="1">
-<li>If you played the lottery 1 billion times, are you <strong>guaranteed</strong> to win?
-<ul>
-<li>You are <em>never guaranteed</em> to win! Each time you play, your chance of winning is so small!</li>
-</ul></li>
-</ol>
-</div>
+<!-- ## Check Your Understanding (Answers) -->
+<!-- ::: {.fragment} -->
+<!-- 1. When playing the lottery (a *random process*), what are the two possible outcomes (**events**)? -->
+<!--     - Winning and Losing -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- 2. Write down the probability of your two events. -->
+<!--     - P(Winning) = 1/292,000,000 -->
+<!--     - P(Losing) = 291,999,999/292,000,000 or 1 - P(Winning) -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- 3. If you played the lottery 1 million times, should you **expect** to win? What about 292 million times? -->
+<!--     - You shouldn't *expect* to win after playing 1 million times. But you might win after playing 292 million times! -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- 4. If you played the lottery 1 billion times, are you **guaranteed** to win? -->
+<!--     - You are *never guaranteed* to win! Each time you play, your chance of winning is so small! -->
+<!-- ::: -->
+<!-- ------------------------------------------------------------------------ -->
 </section>
 <section id="probability-models" class="slide level2">
 <h2>Probability Models</h2>
@@ -415,9 +392,6 @@ P(\textrm{Heads})=0.5 \quad \textrm{or} \quad P(H)=0.5
 </div>
 <div class="fragment">
 <p>When discussing probability, we always (explicitly or implicitly) define a probability model.</p>
-<ul>
-<li>Probability models help us make sense of complex, random processes.</li>
-</ul>
 </div>
 </section></section>
 <section>
@@ -439,6 +413,7 @@ P(\textrm{Heads})=0.5 \quad \textrm{or} \quad P(H)=0.5
 </section>
 <section id="the-addition-rule" class="slide level2">
 <h2>The Addition Rule</h2>
+<div class="fragment">
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -448,6 +423,7 @@ P(\textrm{Heads})=0.5 \quad \textrm{or} \quad P(H)=0.5
 <p>The probability that at least one event occurs in a pair of disjoint events is the sum of their individual probabilities: <span class="math display">\[
 P(A \textrm{ or } B) = P(A) + P(B)
 \]</span></p>
+</div>
 </div>
 </div>
 </div>
@@ -531,8 +507,9 @@ P( \textrm{Odd} ) &amp;= P(\textrm{roll a 1, 3, or 5})\\
 \end{aligned}
 \]</span></p>
 </section>
-<section id="the-addition-rule-only-for-disjoint-events" class="slide level2 small">
+<section id="the-addition-rule-only-for-disjoint-events" class="slide level2">
 <h2>The Addition Rule: Only for Disjoint events!</h2>
+<div style="font-size:0.9em;">
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -573,6 +550,7 @@ P(A \textrm{ or } B) = P(A) + P(B)
 <ul>
 <li>But <span class="math inline">\(P(\text{Even}) + P(\geq 3) = \frac{1}{2} + \frac{2}{3} = \frac{7}{6}\)</span>… that’s not even between 0 and 1!</li>
 </ul>
+</div>
 </div>
 </section>
 <section id="complementary-events" class="slide level2">
@@ -636,28 +614,26 @@ P(A^c) = 1 - P(A)
 <li class="fragment"><p>On a given day, what’s the probability that it rains <strong>OR</strong> doesn’t rain?</p></li>
 <li class="fragment"><p>What if I told you it rains OR snows 61% of days in Portland. What’s the <strong>flaw</strong> in my reasoning?</p></li>
 </ol>
-</section>
-<section id="check-your-understanding-answers-1" class="slide level2">
-<h2>Check Your Understanding (Answers)</h2>
-<p>In the city of Portland, there’s rain on 60% of days and snow on 1% of days.</p>
-<div class="fragment">
-<ol type="1">
-<li>On a given day, what’s the probability that it <strong>doesn’t rain?</strong></li>
-</ol>
-<p><span class="math display">\[P(\text{Doesn't Rain}) = P(\text{Rain}^c) = 1-P(\text{Rain}) = 1-0.6=0.4\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_e428e974" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
-<div class="fragment">
-<ol start="2" type="1">
-<li>On a given day, what’s the probability that it rains <strong>OR</strong> doesn’t rain?</li>
-</ol>
-<p><span class="math display">\[P(\text{Rain or Doesn't Rain}) = P(\text{Rain}) + P(\text{Doesn't Rain}) = 0.6+0.4=1\]</span></p>
 </div>
-<div class="fragment">
-<ol start="3" type="1">
-<li>What if I told you it rains OR snows 61% of days in Portland. What’s the <strong>flaw</strong> in my reasoning?</li>
-</ol>
-<p>It can rain <em>and</em> snow in one day! Thus, we <em>can’t use the addition rule!</em></p>
-</div>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Check Your Understanding (Answers) -->
+<!-- In the city of Portland, there's rain on 60% of days and snow on 1% of days. -->
+<!-- ::: {.fragment} -->
+<!-- 1. On a given day, what's the probability that it **doesn't rain?** -->
+<!-- $$P(\text{Doesn't Rain}) = P(\text{Rain}^c) = 1-P(\text{Rain}) = 1-0.6=0.4$$ -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- 2. On a given day, what's the probability that it rains **OR** doesn't rain? -->
+<!-- $$P(\text{Rain or Doesn't Rain}) = P(\text{Rain}) + P(\text{Doesn't Rain}) = 0.6+0.4=1$$ -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- 3. What if I told you it rains OR snows 61% of days in Portland. What's the **flaw** in my reasoning? -->
+<!-- It can rain *and* snow in one day! Thus, we *can't use the addition rule!* -->
+<!-- ::: -->
 </section></section>
 <section>
 <section id="conditional-probability" class="title-slide slide level1 center">
@@ -666,7 +642,7 @@ P(A^c) = 1 - P(A)
 </section>
 <section id="activity-coffee-or-tea" class="slide level2">
 <h2>Activity: Coffee or Tea?</h2>
-<p>A survey was given to 100 Math 141 students in 2017. Some results are summarized below:</p>
+<p>A survey was given to 100 Stat 141 students in 2017. Some results are summarized below:</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <table class="caption-top">
@@ -721,7 +697,7 @@ P(A^c) = 1 - P(A)
 </div></div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_2913800c" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_ba93171b" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -746,11 +722,6 @@ P(A^c) = 1 - P(A)
 <h2>Conditional Probability</h2>
 <p>How do we calculate conditional probabilities?</p>
 <div class="fragment">
-<p><span class="math display">\[
-P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
-\]</span></p>
-</div>
-<div class="fragment">
 <p>In general,</p>
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
@@ -766,8 +737,13 @@ P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
 </div>
 </div>
 <div class="fragment">
+<p><span class="math display">\[
+P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
+\]</span></p>
+</div>
+<div class="fragment">
 <ul>
-<li>Example: the probability that a student who is a sophomore (B) prefers coffee (A): <span class="math display">\[P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}\]</span></li>
+<li>The probability that a student who is a sophomore (B) prefers coffee (A): <span class="math display">\[P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}\]</span></li>
 </ul>
 </div>
 </section>

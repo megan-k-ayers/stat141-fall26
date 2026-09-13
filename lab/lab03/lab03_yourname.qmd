@@ -10,6 +10,7 @@ execute:
 
 
 In this lab, you will
+
   - Practice using data wrangling functions
   - Practice applying probability rules to answer questions about data
 
@@ -69,7 +70,7 @@ print(covid)
 *******************************************************************************
 
 
-**d.** Using `R` in a new chunk below, now calculate the overall case fatality rate within each country (not broken down by age). *This will require you to chain together two `dplyr` functions:* `group_by()` and `summarize()`. How do the overall case fatality rates compare between the two countries? Is this what you would expect based on part (c)? [Text and code for this question]
+**d.** Using `R` in a new chunk below, now calculate the overall case fatality rate within each country (summarizing across ages). *This will require you to chain together two `dplyr` functions:* `group_by()` and `summarize()`. How do the overall case fatality rates compare between the two countries? Is this what you would expect based on part (c)? [Text and code for this question]
 
 *******************************************************************************
 

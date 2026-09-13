@@ -84,6 +84,174 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture06_probability-intro-lln.html#goals-for-today",
+    "href": "slides/lecture06_probability-intro-lln.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals For Today",
+    "text": "Goals For Today\n\nIntroduce probability theory\nSee the Law of Large Numbers\nDefine and practice using key rules of probability\nIntroduce conditional probability"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#random-processes-and-events",
+    "href": "slides/lecture06_probability-intro-lln.html#random-processes-and-events",
+    "title": "STAT 141",
+    "section": "Random Processes and Events",
+    "text": "Random Processes and Events\nProbability Theory: the study and quantification of uncertainty/randomness in outcomes of repeated experiments.\n\nA random process is one which we know what results could happen, but don’t know which particular result will happen.\n\nCan be used to model processes that are complicated, but not truly random, to figure out how they work\nExample: Rolling a 6-sided die\n\n\n\nAn event is a potential result of some particular random process.\n\nExample: If we roll a 6-sided die, one event is “the die rolls a 6”. Another is “the die rolls an odd number”.\nThe statement “it will rain at 9am in Portland on 9/14” is an event, but not one for the die-rolling process."
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#perception-of-probability",
+    "href": "slides/lecture06_probability-intro-lln.html#perception-of-probability",
+    "title": "STAT 141",
+    "section": "Perception of Probability",
+    "text": "Perception of Probability\nWe will soon define the word “probability.” Before that, consider the following questions in small groups:\n\n\nWhen flipping a fair coin, we might say that “the probability of flipping Heads is 0.5.” How do you interpret this sentence?\n\nIf I flip this coin over and over, roughly 50% will be Heads.\nHeads and Tails are equally plausible.\nBoth a and b make sense.\n\n\n\n\n\nAn election is coming up and a pollster claims “candidate A has a 0.9 probability of winning”. How do you interpret this sentence?\n\nIf we observe the election over and over, candidate A will win roughly 90% of the time.\nCandidate A is much more likely to win than to lose.\nBoth a and b make sense."
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#perception-of-probability-notes",
+    "href": "slides/lecture06_probability-intro-lln.html#perception-of-probability-notes",
+    "title": "STAT 141",
+    "section": "Perception of Probability (Notes)",
+    "text": "Perception of Probability (Notes)\n\nIf you answered (a), you may naturally subscribe to the “Frequentist” view of probability (long-run proportion)\nIf you answered (b), you may naturally subscribe to the “Bayesian” view of probability (relative chance)\nIf you answered (c), you fall somewhere in between!\n\n\nNeither definition is “correct”. Statisticians are divided on how to interpret probability.\n\n\nIn this class, we’ll discuss frequentist probability (see next slide)"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#probability",
+    "href": "slides/lecture06_probability-intro-lln.html#probability",
+    "title": "STAT 141",
+    "section": "Probability",
+    "text": "Probability\nThe “frequentist” definition of probability is…\n\n\n\nDefinition: Probability\n\n\nThe probability of a particular event is the proportion of times the event would occur, if we observed the random process an arbitrarily large number of times.\n\n\n\n\nTo say that a coin has 50% probability of landing heads, means that…\n\nWe expect the proportion of heads in a large number of coin flips to be close to 0.5\n\n\n\nSince probabilities are defined as a proportion, they will always be values between 0 and 1.\n\n\nFor brevity, we’ll represent statements like the probability of the event “the coin lands heads” is 50% using the notation: \\[\nP(\\textrm{Heads})=0.5 \\quad \\textrm{or} \\quad P(H)=0.5\n\\]"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#law-of-large-numbers",
+    "href": "slides/lecture06_probability-intro-lln.html#law-of-large-numbers",
+    "title": "STAT 141",
+    "section": "Law of Large Numbers",
+    "text": "Law of Large Numbers\n\nQ: If I flip a fair coin 10 times, do we expect the proportion of heads observed to be 0.5?\nQ: What if I flip it 1000 times?\nQ: What do you expect to happen to the proportion of heads as we increase the number of flips?"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#law-of-large-numbers-1",
+    "href": "slides/lecture06_probability-intro-lln.html#law-of-large-numbers-1",
+    "title": "STAT 141",
+    "section": "Law of Large Numbers",
+    "text": "Law of Large Numbers\nThe probability of an event refers to the long-run tendency of the proportion.\n\nObserved proportions can deviate from expected probabilities in a finite number of trials\nBut as you conduct more and more trials, the deviation decreases\n\n\n\n\n\n\n\n\n\n\n\nThe proportion of heads deviates wildly from 0.5 during the first 200 flips"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#law-of-large-numbers-2",
+    "href": "slides/lecture06_probability-intro-lln.html#law-of-large-numbers-2",
+    "title": "STAT 141",
+    "section": "Law of Large Numbers",
+    "text": "Law of Large Numbers\nThe probability of an event refers to the long-run tendency of the proportion.\n\nObserved proportions can deviate from expected probabilities in a finite number of trials\nBut as you conduct more and more trials, the deviation decreases\n\n\n\n\n\n\n\n\n\n\nThe proportion of heads gets closer to 0.5 after 1000 flips"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#law-of-large-numbers-3",
+    "href": "slides/lecture06_probability-intro-lln.html#law-of-large-numbers-3",
+    "title": "STAT 141",
+    "section": "Law of Large Numbers",
+    "text": "Law of Large Numbers\nThe probability of an event refers to the long-run tendency of the proportion.\n\nObserved proportions can deviate from expected probabilities in a finite number of trials\nBut as you conduct more and more trials, the deviation decreases\n\n\n\n\n\n\n\n\n\n\nThe proportion of heads is very close to 0.5 after 2000 flips!"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#law-of-large-numbers-4",
+    "href": "slides/lecture06_probability-intro-lln.html#law-of-large-numbers-4",
+    "title": "STAT 141",
+    "section": "Law of Large Numbers",
+    "text": "Law of Large Numbers\nThe probability of an event refers to the long-run tendency of the proportion.\n\nObserved proportions can deviate from expected probabilities in a finite number of trials\nBut as you conduct more and more trials, the deviation decreases\n\n\n\n\n\n\n\n\n\n\nThis is the Law of Large Numbers in effect!"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#check-your-understanding",
+    "href": "slides/lecture06_probability-intro-lln.html#check-your-understanding",
+    "title": "STAT 141",
+    "section": "Check Your Understanding",
+    "text": "Check Your Understanding\nSuppose you’re interested in winning the Powerball Jackpot, where the chance of winning is 1 in 292 million. You buy a single lottery ticket and wait to see if you won.\n\nWhen playing the lottery (a random process), what are the two possible outcomes (events)?\n\n\n\nWrite down the probability of your two events.\n\n\n\nIf you played the lottery 1 million times, should you expect to win? What about 292 million times?\n\n\n\nIf you played the lottery 1 billion times, are you guaranteed to win?"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#probability-models",
+    "href": "slides/lecture06_probability-intro-lln.html#probability-models",
+    "title": "STAT 141",
+    "section": "Probability Models",
+    "text": "Probability Models\nWe can formalize the connection between random processes/events with probabilities using a Probability Model\n\nA probability model has two components:\n\nA list of the possible results of a random process (called events)\nA rule (called the probability function) that assigns to each event a probability between 0 and 1, in a consistent manner.\n\n\n\nExample: Probability Model for a Coin Toss:\n\nHeads or Tails\n\\(P(Heads) = 0.5\\) and \\(P(Tails) = 0.5\\)\n\n\n\nWhen discussing probability, we always (explicitly or implicitly) define a probability model."
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#definition-disjoint-events",
+    "href": "slides/lecture06_probability-intro-lln.html#definition-disjoint-events",
+    "title": "STAT 141",
+    "section": "Definition: Disjoint Events",
+    "text": "Definition: Disjoint Events\nTwo events \\(A\\) and \\(B\\) are said to be mutually exclusive (or disjoint) if it is not possible for both to occur at the same time.\n\nExample: Single Roll of a Die\n\nLet \\(A\\) denote the event “a 1 is rolled on 6-sided die”\nLet \\(B\\) denote the event “a 2 is rolled on 6-sided die”\n\\(A\\) and \\(B\\) are disjoint events for the random process"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#the-addition-rule",
+    "href": "slides/lecture06_probability-intro-lln.html#the-addition-rule",
+    "title": "STAT 141",
+    "section": "The Addition Rule",
+    "text": "The Addition Rule\n\n\n\n\nTheorem: Addition Rule\n\n\nThe probability that at least one event occurs in a pair of disjoint events is the sum of their individual probabilities: \\[\nP(A \\textrm{ or } B) = P(A) + P(B)\n\\]\n\n\n\n\n\nQ: When a die is rolled, what is the probability that an odd number is rolled?\n\n\n\\[\n\\begin{aligned}\nP( \\textrm{Odd} ) &= P(\\textrm{roll a 1, 3, or 5})\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#the-addition-rule-1",
+    "href": "slides/lecture06_probability-intro-lln.html#the-addition-rule-1",
+    "title": "STAT 141",
+    "section": "The Addition Rule",
+    "text": "The Addition Rule\n\n\n\nTheorem: Addition Rule\n\n\nThe probability that at least one event occurs in a pair of disjoint events is the sum of their individual probabilities: \\[\nP(A \\textrm{ or } B) = P(A) + P(B)\n\\]\n\n\n\nQ: When a die is rolled, what is the probability that an odd number is rolled?\n\\[\n\\begin{aligned}\nP( \\textrm{Odd} ) &= P(\\textrm{roll a 1, 3, or 5})\\\\\n&= P(\\textrm{roll a 1}) + P(\\textrm{roll a 3}) + P(\\textrm{roll a 5})  && \\text{(by the Addition Rule)}\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#the-addition-rule-2",
+    "href": "slides/lecture06_probability-intro-lln.html#the-addition-rule-2",
+    "title": "STAT 141",
+    "section": "The Addition Rule",
+    "text": "The Addition Rule\n\n\n\nTheorem: Addition Rule\n\n\nThe probability that at least one event occurs in a pair of disjoint events is the sum of their individual probabilities: \\[\nP(A \\textrm{ or } B) = P(A) + P(B)\n\\]\n\n\n\nQ: When a die is rolled, what is the probability that an odd number is rolled?\n\\[\n\\begin{aligned}\nP( \\textrm{Odd} ) &= P(\\textrm{roll a 1, 3, or 5})\\\\\n&= P(\\textrm{roll a 1}) + P(\\textrm{roll a 3}) + P(\\textrm{roll a 5})  && \\text{(by the Addition Rule)}\\\\\n&= \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6}\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#the-addition-rule-3",
+    "href": "slides/lecture06_probability-intro-lln.html#the-addition-rule-3",
+    "title": "STAT 141",
+    "section": "The Addition Rule",
+    "text": "The Addition Rule\n\n\n\nTheorem: Addition Rule\n\n\nThe probability that at least one event occurs in a pair of disjoint events is the sum of their individual probabilities: \\[\nP(A \\textrm{ or } B) = P(A) + P(B)\n\\]\n\n\n\nQ: When a die is rolled, what is the probability that an odd number is rolled?\n\\[\n\\begin{aligned}\nP( \\textrm{Odd} ) &= P(\\textrm{roll a 1, 3, or 5})\\\\\n&= P(\\textrm{roll a 1}) + P(\\textrm{roll a 3}) + P(\\textrm{roll a 5})  && \\text{(by the Addition Rule)}\\\\\n&= \\frac{1}{6} + \\frac{1}{6} + \\frac{1}{6} \\\\\n&= \\frac{3}{6}\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#the-addition-rule-only-for-disjoint-events",
+    "href": "slides/lecture06_probability-intro-lln.html#the-addition-rule-only-for-disjoint-events",
+    "title": "STAT 141",
+    "section": "The Addition Rule: Only for Disjoint events!",
+    "text": "The Addition Rule: Only for Disjoint events!\n\n\n\n\nTheorem: Addition Rule\n\n\nThe probability that at least one event occurs in a pair of disjoint events is the sum of their individual probabilities: \\[\nP(A \\textrm{ or } B) = P(A) + P(B)\n\\]\n\n\n\n\nQ: In a die-roll, what’s the probability we get an even number?\n\n\n\n\\(P(\\text{Even}) = P(\\text{ Roll a 2, 4, or 6}) = \\frac{3}{6} = \\frac{1}{2}\\)\n\n\n\nQ: In a die-roll, what’s the probability we get at least a 3?\n\n\n\n\\(P(\\text{$\\geq 3$}) = P(\\text{ Roll a 3, 4, 5, or 6}) = \\frac{4}{6} = \\frac{2}{3}\\)\n\n\n\nQ: What’s the probability you get an even number OR at least a 3?\n\n\n\n\\(P(\\text{ Even OR $\\geq 3$}) = P(\\text{ Roll a 2, 3, 4, 5, 6}) = \\frac{5}{6}\\)\n\n\n\n\nBut \\(P(\\text{Even}) + P(\\geq 3) = \\frac{1}{2} + \\frac{2}{3} = \\frac{7}{6}\\)… that’s not even between 0 and 1!"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#complementary-events",
+    "href": "slides/lecture06_probability-intro-lln.html#complementary-events",
+    "title": "STAT 141",
+    "section": "Complementary Events",
+    "text": "Complementary Events\nThe complement to an event \\(A\\) (denoted \\(A^c\\)) is the event that occurs exactly when the original does not.\n\n\nIf \\(A\\) is the event that a 1 is rolled on a die, then \\(A^c\\) is the event that any other number (2,3,4,5, or 6) is rolled.\n\n\n\n\n\n\nTheorem: Complement Rule\n\n\nThe probability that the complement of an event occurs is 1 minus the probability of the event: \\[\nP(A^c) = 1 - P(A)\n\\]\n\n\n\n\n\nWhat is the probability that any number other than a 1 is rolled on a fair 6-sided die?\n\\[\nP(\\textrm{roll something other than a 1}) = 1 - P( \\textrm{roll a 1}) = 1 - \\frac{1}{6} = \\frac{5}{6}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#check-your-understanding-1",
+    "href": "slides/lecture06_probability-intro-lln.html#check-your-understanding-1",
+    "title": "STAT 141",
+    "section": "Check Your Understanding",
+    "text": "Check Your Understanding\n\n\n\nTheorem: Addition Rule\n\n\nThe probability that at least one event occurs in a pair of disjoint events is the sum of their individual probabilities: \\[\nP(A \\textrm{ or } B) = P(A) + P(B)\n\\]\n\n\n\n\n\n\nTheorem: Complement Rule\n\n\nThe probability that the complement of an event occurs is 1 minus the probability of the event: \\[\nP(A^c) = 1 - P(A)\n\\]\n\n\n\nIn the city of Portland, there’s rain on 60% of days and snow on 1% of days.\n\nOn a given day, what’s the probability that it doesn’t rain?\nOn a given day, what’s the probability that it rains OR doesn’t rain?\nWhat if I told you it rains OR snows 61% of days in Portland. What’s the flaw in my reasoning?"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#activity-coffee-or-tea",
+    "href": "slides/lecture06_probability-intro-lln.html#activity-coffee-or-tea",
+    "title": "STAT 141",
+    "section": "Activity: Coffee or Tea?",
+    "text": "Activity: Coffee or Tea?\nA survey was given to 100 Stat 141 students in 2017. Some results are summarized below:\n\n\n\n\n\n\nCoffee\nTea\ntotal\n\n\n\n\nFirst-year\n7\n10\n17\n\n\nSophomore\n25\n20\n45\n\n\nJunior\n13\n12\n25\n\n\nSenior\n8\n5\n13\n\n\ntotal\n53\n47\n100\n\n\n\n\n\nWhat is the probability that a random student prefers coffee?\nWhat is the probability that a random student was a sophomore?\nWhat is the probability that a random student was a sophomore and preferred coffee?\nWhat is the probability that a random sophomore preferred coffee?"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#conditional-probability-1",
+    "href": "slides/lecture06_probability-intro-lln.html#conditional-probability-1",
+    "title": "STAT 141",
+    "section": "Conditional Probability",
+    "text": "Conditional Probability\nConditional Probability: probability of something occurring, given that another event has already occurred.\n\nWe write the conditional probability of Event A given Event B has occurred as,\n\\[P(A\\ | \\ B)\\]\n\n\nIn the previous example,\n\nQuestion: What is the probability that a random sophomore preferred coffee?\nEvent A: The student prefers coffee\nEvent B: The student is a sophomore\nAnswer: P(Coffee | Sophomore) = P(A|B)"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#conditional-probability-2",
+    "href": "slides/lecture06_probability-intro-lln.html#conditional-probability-2",
+    "title": "STAT 141",
+    "section": "Conditional Probability",
+    "text": "Conditional Probability\nHow do we calculate conditional probabilities?\n\nIn general,\n\n\n\nTheorem: Conditional Probability Rule\n\n\nThe Conditional Probability of an event \\(A\\) given another event \\(B\\) is \\[\nP(A | B)= \\frac{P(A \\textrm{ and } B)}{P(B)}\n\\]\n\n\n\n\n\n\\[\nP(\\text{Coffee} | \\text{Sophomore} ) = \\frac{P(\\text{Sophomore and prefers Coffee})}{P(\\text{Sophomore})}\n\\]\n\n\n\nThe probability that a student who is a sophomore (B) prefers coffee (A): \\[P(\\text{A | B}) = \\frac{P(\\text{A and B})}{P(\\text{B})} = \\frac{25}{100}\\Big/\\frac{45}{100} = \\frac{25}{45}\\]"
+  },
+  {
+    "objectID": "slides/lecture06_probability-intro-lln.html#recap",
+    "href": "slides/lecture06_probability-intro-lln.html#recap",
+    "title": "STAT 141",
+    "section": "Recap",
+    "text": "Recap\n\n\n\n\n\nDefinition: Probability\n\n\nThe probability of a particular event is the proportion of times the event would occur, if we observed the random process an arbitrarily large number of times.\n\n\n\n\n\n\n\n\n\nLaw of Large Numbers\n\n\nObserved proportions may deviate from expected probabilities when \\(n\\) is small, but the deviation decreases as \\(n\\) increases. Think about the proportion of heads you expect from 10 vs 1,000,000 coin flips.\n\n\n\n\n\n\n\n\nTheorem: Addition Rule\n\n\nThe probability that at least one event occurs in a pair of disjoint events is the sum of their individual probabilities: \\[\nP(A \\textrm{ or } B) = P(A) + P(B)\n\\]\n\n\n\n\n\n\n\n\n\n\nTheorem: Complement Rule\n\n\n\\[\nP(A^c) = 1 - P(A)\n\\]\n\n\n\n\n\n\n\n\n\nTheorem: Conditional Probability Rule\n\n\nThe Conditional Probability of an event \\(A\\) given another event \\(B\\) is \\[\nP(A | B)= \\frac{P(A \\textrm{ and } B)}{P(B)}\n\\]"
+  },
+  {
     "objectID": "slides/lecture04_summary-stats.html#import-the-data",
     "href": "slides/lecture04_summary-stats.html#import-the-data",
     "title": "STAT 141",

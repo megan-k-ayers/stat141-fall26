@@ -149,7 +149,7 @@ In this exercise, we'll investigate whether the data provides evidence that chan
 
 - Passengers in third class had cabins located in lower decks, deeper within the ship, while first class cabins were located in higher decks for better views outside.
 
-- Nowadays we might prioritize helping the most vulnerable individuals first during an emergency, regardless of demographics. But for most of the 19th-21st centuries, the Birkenhead drill ("women and children first") was seen as the norm for many.
+- Nowadays we might prioritize helping the most vulnerable individuals first during an emergency, regardless of other demographics. But for most of the 19th-21st centuries, the Birkenhead drill ("women and children first") was seen as the norm for many.
 
 
 **a.** Use R and probability rules to determine if survival was independent of gender in this data set. **Show the values of the probabilities that you calculate to make your argument. Would you expect gender to be related to survival at this point in history?** [Code and text is needed for this question]
@@ -312,7 +312,7 @@ head(profit_df)
 
 **d.** Jerry figured out that *in the long run*, ticket buyers should make money from playing Winfall on roll-down days. **What do you observe in the barplot in part (c)? How does this relate to the law of large numbers?** [Only text is needed for this question]
 
-*Fun fact: The first time Jerry tested his idea out, he bought 2200 tickets, and lost $50 (an average per ticket profit of -\$0.023). Next time he bought 8000 tickets, and won $15,700 (an average per ticket profit of \$0.963).*
+*Fun fact: The first time Jerry tested his idea out, he bought 2200 tickets, and lost $50 (a sample average per ticket profit of -\$0.023). Next time he bought 8000 tickets, and won $15,700 (a sample average per ticket profit of \$0.963).*
 
 *******************************************************************************
 
