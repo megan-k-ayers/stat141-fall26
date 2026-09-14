@@ -214,7 +214,7 @@
     "href": "slides/lecture06_probability-intro-lln.html#complementary-events",
     "title": "STAT 141",
     "section": "Complementary Events",
-    "text": "Complementary Events\nThe complement to an event \\(A\\) (denoted \\(A^c\\)) is the event that occurs exactly when the original does not.\n\n\nIf \\(A\\) is the event that a 1 is rolled on a die, then \\(A^c\\) is the event that any other number (2,3,4,5, or 6) is rolled.\n\n\n\n\n\n\nTheorem: Complement Rule\n\n\nThe probability that the complement of an event occurs is 1 minus the probability of the event: \\[\nP(A^c) = 1 - P(A)\n\\]\n\n\n\n\n\nWhat is the probability that any number other than a 1 is rolled on a fair 6-sided die?\n\\[\nP(\\textrm{roll something other than a 1}) = 1 - P( \\textrm{roll a 1}) = 1 - \\frac{1}{6} = \\frac{5}{6}\n\\]"
+    "text": "Complementary Events\nThe complement to an event \\(A\\) (denoted \\(A^c\\)) is the event that occurs exactly when the original does not.\n\n\nIf \\(A\\) is the event that a 1 is rolled on a die, then \\(A^c\\) is the event that any other number (2,3,4,5, or 6) is rolled.\n\n\n\n\n\n\nTheorem: Complement Rule\n\n\nThe probability that the complement of an event occurs is 1 minus the probability of the event: \\[\nP(A^c) = 1 - P(A)\n\\]\n\n\n\n\n\nWhat is the probability that any number other than a 1 is rolled on a fair 6-sided die?\n\\[\nP(\\textrm{roll something other than a 1}) = 1 - P( \\textrm{roll a 1}) = 1 - \\frac{1}{6} = \\frac{5}{6}\n\\]\n\n\n\nBy definition, complementary events are mutually exclusive"
   },
   {
     "objectID": "slides/lecture06_probability-intro-lln.html#check-your-understanding-1",
@@ -235,7 +235,7 @@
     "href": "slides/lecture06_probability-intro-lln.html#conditional-probability-1",
     "title": "STAT 141",
     "section": "Conditional Probability",
-    "text": "Conditional Probability\nConditional Probability: probability of something occurring, given that another event has already occurred.\n\nWe write the conditional probability of Event A given Event B has occurred as,\n\\[P(A\\ | \\ B)\\]\n\n\nIn the previous example,\n\nQuestion: What is the probability that a random sophomore preferred coffee?\nEvent A: The student prefers coffee\nEvent B: The student is a sophomore\nAnswer: P(Coffee | Sophomore) = P(A|B)"
+    "text": "Conditional Probability\nConditional Probability: probability of something occurring, given that another event has already occurred.\n\nWe write the conditional probability of Event A given Event B has occurred as,\n\\[P(A\\ | \\ B)\\]\n\n\nIn the previous example,\n\nQuestion: What is the probability that a random sophomore preferred coffee?\nEvent A: The student prefers coffee\nEvent B: The student is a sophomore\nAnswer: P(Coffee | Sophomore) = P(A|B)\n\n\n\nWe calculated this intuitively before, but we can generalize."
   },
   {
     "objectID": "slides/lecture06_probability-intro-lln.html#conditional-probability-2",

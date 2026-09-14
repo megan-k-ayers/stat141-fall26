@@ -588,6 +588,12 @@ P(\textrm{roll something other than a 1}) = 1 - P( \textrm{roll a 1}) = 1 - \fra
 $$
 :::
 
+::: fragment
+
+- By definition, complementary events are mutually exclusive
+
+:::
+
 ------------------------------------------------------------------------
 
 ## Check Your Understanding
@@ -715,6 +721,10 @@ In the previous example,
 - Event B: The student is a sophomore
 - Answer: P(Coffee | Sophomore) = P(A|B)
 :::
+:::
+
+::: fragment
+We calculated this intuitively before, but we can generalize.
 :::
 
 ------------------------------------------------------------------------

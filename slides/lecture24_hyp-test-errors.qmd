@@ -204,6 +204,8 @@ ggplot(mapping = aes(x = sex,
 
 ## Two-Sided Hypothesis Test
 
+::: {style="font-size:0.9em;"}
+
 Compute observed test statistic:
 
 ```{r}
@@ -218,7 +220,7 @@ $\rightarrow$ Our test statistic is: `r 204.5060 - 197.3636`
 
 ::: fragment
 
-Generate the null distribution by simulating many data sets where gender is shuffled (code not shown for brevity), and visualize null sampling distribution compared to our test statistic:
+Generate the null distribution by simulating many data sets where gender is shuffled (code on next slide for brevity), and visualize null sampling distribution compared to our test statistic:
 
 ```{r, echo = FALSE}
 
@@ -256,6 +258,33 @@ ggplot(peng_null_stats, aes(x = stat)) +
 **Q**: Guesses for p-value?
 
 :::
+
+:::
+
+
+------------------------------------------------------------------------
+
+## Two-Sided Hypothesis Test (Code)
+
+```{r eval = FALSE}
+
+test_stat <- 204.5060 - 197.3636
+
+p_df <- penguins %>% drop_na(sex)
+
+# Generate null distribution 
+peng_null_stats <- p_df %>% select(sex) %>%
+  rep_sample_n(size = nrow(p_df), replace = FALSE,
+               reps = 5000) %>%
+  add_column(flipper = rep(p_df$flipper_length_mm,
+                        times = 5000)) %>%
+  group_by(replicate, sex) %>%
+  summarize(ybar = mean(flipper)) %>% 
+  pivot_wider(names_from = sex, values_from = ybar) %>%
+  mutate(stat = male - female) %>%
+  select(replicate, stat)
+
+```
 
 ------------------------------------------------------------------------
 
@@ -397,7 +426,9 @@ Use $\alpha$ to determine "small" for a p-value.
 
 ------------------------------------------------------------------------
 
-### Example
+### Power Example
+
+::: {style="font-size:0.8em;"}
 
 Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant 10 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant's true (long-run) detection rate is **70%**. 
 
@@ -487,9 +518,13 @@ power <- alt %>%
 
 :::
 
+:::
+
 ------------------------------------------------------------------------
 
-### Example
+### Power Example
+
+::: {style="font-size:0.8em;"}
 
 Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant ~~10~~ 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant's true (long-run) detection rate is **70%**. 
 
@@ -544,9 +579,13 @@ power <- alt %>%
 :::
 :::
 
+:::
+
 ------------------------------------------------------------------------
 
-### Example
+### Power Example
+
+::: {style="font-size:0.8em;"}
 
 Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant ~~10~~ 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant's true (long-run) detection rate is **70%**. 
 
@@ -581,9 +620,13 @@ power <- alt %>%
 :::
 :::
 
+:::
+
 ------------------------------------------------------------------------
 
-### Example
+### Power Example
+
+::: {style="font-size:0.8em;"}
 
 Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant ~~10~~ 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant's true (long-run) detection rate is ~~70%~~ **80%**. 
 
@@ -642,6 +685,8 @@ power <- alt %>%
 -   When $\alpha$ is set back to **$0.05$**, the sample size is 50, and the true probability of detecting AI is 0.8, the power of this test is **`r round(power, 3)`**.
 :::
 :::
+:::
+
 :::
 
 ------------------------------------------------------------------------

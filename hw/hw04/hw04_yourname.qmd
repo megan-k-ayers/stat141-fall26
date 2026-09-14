@@ -85,9 +85,9 @@ library(pdxTrees)
 
 During the Lab 2 we collected data to see if our class exhibits an "anchoring effect". The anchoring effect is a cognitive bias in which an individual's decisions in an uncertain situation are reliant on the first piece of information received. Half of you received the number $x = 82$ and the other half the number $x = 531$ and then you took a survey. The numbers were handed out at random. We want to answer the following question: Does the number received serve as an anchor value for answering the second question?  In other words, does the number seem to serve as a starting point when estimating the number of dog breeds in the world?
 
-As a reminder, [here is the survey with the survey questions](https://forms.gle/p3139QL3ZyFgTT9C9).
+As a reminder, [here is the survey with the survey questions](https://forms.gle/RnHhn1Bt72wHtzrj8).
 
-Last year, students in 141 participated in the same experiment. The chunk below loads the combined data from our class and last semester's class, and does some cleaning.
+Last year, students in 141 participated in the same experiment. The chunk below loads the combined data from our class and last year's classes, and does some cleaning.
 
 
 ```{r}

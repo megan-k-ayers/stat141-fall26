@@ -324,6 +324,7 @@
 </section>
 <section id="two-sided-hypothesis-test" class="slide level2">
 <h2>Two-Sided Hypothesis Test</h2>
+<div style="font-size:0.9em;">
 <p>Compute observed test statistic:</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
@@ -341,7 +342,7 @@
 </div></div>
 <p><span class="math inline">\(\rightarrow\)</span> Our test statistic is: 7.1424</p>
 <div class="fragment">
-<p>Generate the null distribution by simulating many data sets where gender is shuffled (code not shown for brevity), and visualize null sampling distribution compared to our test statistic:</p>
+<p>Generate the null distribution by simulating many data sets where gender is shuffled (code on next slide for brevity), and visualize null sampling distribution compared to our test statistic:</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">ggplot</span>(peng_null_stats, <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
@@ -361,6 +362,27 @@
 </div></div>
 <p><strong>Q</strong>: Guesses for p-value?</p>
 </div>
+</div>
+</section>
+<section id="two-sided-hypothesis-test-code" class="slide level2">
+<h2>Two-Sided Hypothesis Test (Code)</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>test_stat <span class="ot">&lt;-</span> <span class="fl">204.5060</span> <span class="sc">-</span> <span class="fl">197.3636</span></span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a>p_df <span class="ot">&lt;-</span> penguins <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(sex)</span>
+<span id="cb8-4"><a></a></span>
+<span id="cb8-5"><a></a><span class="co"># Generate null distribution </span></span>
+<span id="cb8-6"><a></a>peng_null_stats <span class="ot">&lt;-</span> p_df <span class="sc">%&gt;%</span> <span class="fu">select</span>(sex) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="fu">nrow</span>(p_df), <span class="at">replace =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-8"><a></a>               <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-9"><a></a>  <span class="fu">add_column</span>(<span class="at">flipper =</span> <span class="fu">rep</span>(p_df<span class="sc">$</span>flipper_length_mm,</span>
+<span id="cb8-10"><a></a>                        <span class="at">times =</span> <span class="dv">5000</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-11"><a></a>  <span class="fu">group_by</span>(replicate, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb8-12"><a></a>  <span class="fu">summarize</span>(<span class="at">ybar =</span> <span class="fu">mean</span>(flipper)) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-13"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> sex, <span class="at">values_from =</span> ybar) <span class="sc">%&gt;%</span></span>
+<span id="cb8-14"><a></a>  <span class="fu">mutate</span>(<span class="at">stat =</span> male <span class="sc">-</span> female) <span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a></a>  <span class="fu">select</span>(replicate, stat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="two-sided-hypothesis-test-1" class="slide level2">
 <h2>Two-Sided Hypothesis Test</h2>
@@ -368,7 +390,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -376,9 +398,9 @@
 <p>Calculate the p-value for a two-sided test:</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># Compute p-value</span></span>
-<span id="cb8-2"><a></a>(p_val <span class="ot">&lt;-</span> <span class="fu">mean</span>(peng_null_stats<span class="sc">$</span>stat <span class="sc">&gt;</span> <span class="fu">abs</span>(test_stat)) <span class="sc">+</span></span>
-<span id="cb8-3"><a></a>   <span class="fu">mean</span>(peng_null_stats<span class="sc">$</span>stat <span class="sc">&lt;</span> <span class="sc">-</span><span class="fu">abs</span>(test_stat)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># Compute p-value</span></span>
+<span id="cb9-2"><a></a>(p_val <span class="ot">&lt;-</span> <span class="fu">mean</span>(peng_null_stats<span class="sc">$</span>stat <span class="sc">&gt;</span> <span class="fu">abs</span>(test_stat)) <span class="sc">+</span></span>
+<span id="cb9-3"><a></a>   <span class="fu">mean</span>(peng_null_stats<span class="sc">$</span>stat <span class="sc">&lt;</span> <span class="sc">-</span><span class="fu">abs</span>(test_stat)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0</code></pre>
@@ -489,7 +511,8 @@
 </section>
 <section class="slide level2">
 
-<h3 id="example">Example</h3>
+<h3 id="power-example">Power Example</h3>
+<div style="font-size:0.8em;">
 <p>Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant 10 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant’s true (long-run) detection rate is <strong>70%</strong>.</p>
 <div class="fragment">
 <div class="columns">
@@ -506,7 +529,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -531,38 +554,15 @@
 </ul>
 </div></div>
 </div>
+</div>
 </section>
 <section class="slide level2">
 
-<h3 id="example-1">Example</h3>
+<h3 id="power-example-1">Power Example</h3>
+<div style="font-size:0.8em;">
 <p>Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant <del>10</del> 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant’s true (long-run) detection rate is <strong>70%</strong>.</p>
 <ul>
 <li><strong>What will happen to the power of the test if we increase the sample size?</strong></li>
-</ul>
-<div class="columns">
-<div class="column">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column">
-<ul>
-<li class="fragment"><p>Increasing the sample size narrows the sampling distributions and increases the power.</p></li>
-<li class="fragment"><p>When <span class="math inline">\(\alpha\)</span> is set to <span class="math inline">\(0.05\)</span> and the sample size is now 50, the power of this test is <strong>0.87</strong>.</p></li>
-</ul>
-</div></div>
-</section>
-<section class="slide level2">
-
-<h3 id="example-2">Example</h3>
-<p>Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant <del>10</del> 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant’s true (long-run) detection rate is <strong>70%</strong>.</p>
-<ul>
-<li><strong>What will happen to the power of the test if we increase</strong> <span class="math inline">\(\alpha\)</span> to 0.1?</li>
 </ul>
 <div class="columns">
 <div class="column">
@@ -577,21 +577,19 @@
 </div>
 </div><div class="column">
 <ul>
-<li class="fragment">Increasing <span class="math inline">\(\alpha\)</span> increases the power.
-<ul>
-<li class="fragment">Decreases <span class="math inline">\(\beta\)</span>.</li>
-<li class="fragment">(But remember, also increasing our chances of false alarms)</li>
-</ul></li>
-<li class="fragment">When <span class="math inline">\(\alpha\)</span> is set to <span class="math inline">\(0.1\)</span> and the sample size is 50, the power of this test is <strong>0.98</strong>!</li>
+<li class="fragment"><p>Increasing the sample size narrows the sampling distributions and increases the power.</p></li>
+<li class="fragment"><p>When <span class="math inline">\(\alpha\)</span> is set to <span class="math inline">\(0.05\)</span> and the sample size is now 50, the power of this test is <strong>0.87</strong>.</p></li>
 </ul>
 </div></div>
+</div>
 </section>
 <section class="slide level2">
 
-<h3 id="example-3">Example</h3>
-<p>Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant <del>10</del> 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant’s true (long-run) detection rate is <del>70%</del> <strong>80%</strong>.</p>
+<h3 id="power-example-2">Power Example</h3>
+<div style="font-size:0.8em;">
+<p>Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant <del>10</del> 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant’s true (long-run) detection rate is <strong>70%</strong>.</p>
 <ul>
-<li><strong>What will happen to the power of the test if the participant is even better at detecting AI?</strong></li>
+<li><strong>What will happen to the power of the test if we increase</strong> <span class="math inline">\(\alpha\)</span> to 0.1?</li>
 </ul>
 <div class="columns">
 <div class="column">
@@ -606,6 +604,37 @@
 </div>
 </div><div class="column">
 <ul>
+<li class="fragment">Increasing <span class="math inline">\(\alpha\)</span> increases the power.
+<ul>
+<li class="fragment">Decreases <span class="math inline">\(\beta\)</span>.</li>
+<li class="fragment">(But remember, also increasing our chances of false alarms)</li>
+</ul></li>
+<li class="fragment">When <span class="math inline">\(\alpha\)</span> is set to <span class="math inline">\(0.1\)</span> and the sample size is 50, the power of this test is <strong>0.98</strong>!</li>
+</ul>
+</div></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="power-example-3">Power Example</h3>
+<div style="font-size:0.8em;">
+<p>Suppose we want to test whether someone can detect AI-generated text from real text. We show a participant <del>10</del> 50 short passages that are each either written by a human or an AI agent, and ask them to identify which are written by AI. Suppose the participant’s true (long-run) detection rate is <del>70%</del> <strong>80%</strong>.</p>
+<ul>
+<li><strong>What will happen to the power of the test if the participant is even better at detecting AI?</strong></li>
+</ul>
+<div class="columns">
+<div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<ul>
 <li><p><strong>Effect size</strong>: Difference between true value of the parameter and null value.</p>
 <ul>
 <li>Often standardized.</li>
@@ -614,6 +643,7 @@
 <li><p>When <span class="math inline">\(\alpha\)</span> is set back to <strong><span class="math inline">\(0.05\)</span></strong>, the sample size is 50, and the true probability of detecting AI is 0.8, the power of this test is <strong>0.998</strong>.</p></li>
 </ul>
 </div></div>
+</div>
 </section>
 <section class="slide level2">
 
@@ -623,20 +653,20 @@
 </ol>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="co"># Generate null distribution</span></span>
-<span id="cb10-2"><a></a>null_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">correct =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-4"><a></a>               <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
-<span id="cb10-6"><a></a>  <span class="fu">summarize</span>(<span class="at">stat =</span> <span class="fu">mean</span>(correct))</span>
-<span id="cb10-7"><a></a></span>
-<span id="cb10-8"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> null_stats, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
-<span id="cb10-9"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="co"># Generate null distribution</span></span>
+<span id="cb11-2"><a></a>null_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">correct =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-4"><a></a>               <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a></a>  <span class="fu">summarize</span>(<span class="at">stat =</span> <span class="fu">mean</span>(correct))</span>
+<span id="cb11-7"><a></a></span>
+<span id="cb11-8"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> null_stats, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
+<span id="cb11-9"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -651,7 +681,7 @@
 <div class="fragment">
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">quantile</span>(null_stats<span class="sc">$</span>stat, <span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">quantile</span>(null_stats<span class="sc">$</span>stat, <span class="fl">0.95</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code> 95% 
@@ -663,7 +693,7 @@
 <div class="fragment">
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>stat <span class="sc">&gt;=</span> <span class="fl">0.62</span>)  <span class="co"># 31/50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>stat <span class="sc">&gt;=</span> <span class="fl">0.62</span>)  <span class="co"># 31/50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0518</code></pre>
@@ -674,7 +704,7 @@
 <div class="fragment">
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>stat <span class="sc">&gt;=</span> <span class="fl">0.64</span>)  <span class="co"># 32/50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>stat <span class="sc">&gt;=</span> <span class="fl">0.64</span>)  <span class="co"># 32/50</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0246</code></pre>
@@ -685,15 +715,15 @@
 <div class="fragment">
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> null_stats, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
-<span id="cb17-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb17-3"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.64</span>, <span class="at">size =</span> <span class="dv">2</span>,</span>
-<span id="cb17-4"><a></a>             <span class="at">color =</span> <span class="st">"turquoise4"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> null_stats, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
+<span id="cb18-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb18-3"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.64</span>, <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb18-4"><a></a>             <span class="at">color =</span> <span class="st">"turquoise4"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -711,22 +741,22 @@
 </ol>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>alt_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">correct =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb18-2"><a></a>                        <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb18-4"><a></a>               <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
-<span id="cb18-6"><a></a>  <span class="fu">summarize</span>(<span class="at">stat =</span> <span class="fu">mean</span>(correct))</span>
-<span id="cb18-7"><a></a></span>
-<span id="cb18-8"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> alt_stats, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
-<span id="cb18-9"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb18-10"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.64</span>,</span>
-<span id="cb18-11"><a></a>             <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"turquoise4"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>alt_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">correct =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb19-2"><a></a>                        <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-4"><a></a>               <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a></a>  <span class="fu">summarize</span>(<span class="at">stat =</span> <span class="fu">mean</span>(correct))</span>
+<span id="cb19-7"><a></a></span>
+<span id="cb19-8"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> alt_stats, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
+<span id="cb19-9"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb19-10"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.64</span>,</span>
+<span id="cb19-11"><a></a>             <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"turquoise4"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -739,8 +769,8 @@
 <li>Find the probability of the critical value or more extreme under the <strong>alternative distribution</strong>.</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>alt_stats <span class="sc">%&gt;%</span></span>
-<span id="cb19-2"><a></a>  <span class="fu">summarize</span>(<span class="at">power =</span> <span class="fu">mean</span>(stat <span class="sc">&gt;=</span> <span class="fl">0.64</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>alt_stats <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a></a>  <span class="fu">summarize</span>(<span class="at">power =</span> <span class="fu">mean</span>(stat <span class="sc">&gt;=</span> <span class="fl">0.64</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   power

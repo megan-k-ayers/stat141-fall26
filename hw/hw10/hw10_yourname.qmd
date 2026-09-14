@@ -350,11 +350,3 @@ head(dogs)
 
 
 
-**h.** Given all of the results above, including the effect size, confidence interval, and p-value, do you think there is *any* evidence of an anchoring effect worth investigating further? [Text only for this question]
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
