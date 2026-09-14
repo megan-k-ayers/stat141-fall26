@@ -1517,5 +1517,124 @@
     "title": "STAT 141",
     "section": "Next Time",
     "text": "Next Time\n\nShifting gears into probability"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#conditional-probability",
+    "href": "slides/lecture07_probability-rules.html#conditional-probability",
+    "title": "STAT 141",
+    "section": "Conditional Probability",
+    "text": "Conditional Probability\nConditional Probability: probability of something occurring, given that another event has already occurred.\n\nWe write the conditional probability of Event A given Event B has occurred as,\n\\[P(A\\ | \\ B)\\]\n\n\nExample from the end of last class,\n\nQuestion: What is the probability that a random sophomore preferred coffee?\nEvent A: The student prefers coffee\nEvent B: The student is a sophomore\nAnswer: P(Coffee | Sophomore) = P(A|B)"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#conditional-probability-1",
+    "href": "slides/lecture07_probability-rules.html#conditional-probability-1",
+    "title": "STAT 141",
+    "section": "Conditional Probability",
+    "text": "Conditional Probability\nHow do we calculate conditional probabilities?\n\nIn general,\n\n\n\nTheorem: Conditional Probability Rule\n\n\nThe Conditional Probability of an event \\(A\\) given another event \\(B\\) is \\[\nP(A | B)= \\frac{P(A \\textrm{ and } B)}{P(B)}\n\\]\n\n\n\n\n\n\\[\nP(\\text{Coffee} | \\text{Sophomore} ) = \\frac{P(\\text{Sophomore and prefers Coffee})}{P(\\text{Sophomore})}\n\\]\n\n\n\nThe probability that a student who is a sophomore (B) prefers coffee (A): \\[P(\\text{A | B}) = \\frac{P(\\text{A and B})}{P(\\text{B})} = \\frac{25}{100}\\Big/\\frac{45}{100} = \\frac{25}{45}\\]"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#activity-from-last-class-coffee-or-tea",
+    "href": "slides/lecture07_probability-rules.html#activity-from-last-class-coffee-or-tea",
+    "title": "STAT 141",
+    "section": "Activity from last class : Coffee or Tea?",
+    "text": "Activity from last class : Coffee or Tea?\n\n\n\n\n\n\nCoffee\nTea\ntotal\n\n\n\n\nFirst-year\n7\n10\n17\n\n\nSophomore\n25\n20\n45\n\n\nJunior\n13\n12\n25\n\n\nSenior\n8\n5\n13\n\n\ntotal\n53\n47\n100\n\n\n\n\n\n\nEvent \\(A\\): The student prefers coffee\nEvent \\(B\\): The student is a sophomore\n\n\n\n\n\nProbability student prefers coffee: \\(P(\\text{Coffee}) = P(A) = \\frac{53}{100}\\)\n\n\n\n\nProbability student is a sophomore: \\(P(\\text{Sophomore}) = P(B) = \\frac{45}{100}\\)\n\n\n\n\nProbability student is a sophomore and prefers coffee: \\(P(\\text{Sophomore and Coffee}) = P(\\text{A and B}) = \\frac{25}{100}\\)\n\n\n\n\nProbability a random sophomore prefers coffee: \\[P(\\text{A | B}) = \\frac{P(\\text{A and B})}{P(\\text{B})} = \\frac{25}{100}\\Big/\\frac{45}{100} = \\frac{25}{45}\\]"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#using-conditional-probabilities",
+    "href": "slides/lecture07_probability-rules.html#using-conditional-probabilities",
+    "title": "STAT 141",
+    "section": "Using Conditional Probabilities…",
+    "text": "Using Conditional Probabilities…\nIn the next few slides, we’re going to use the concept of conditional probability to explore 4 more concepts:\n\nIndependence\nMultiplication Rule\nLaw of Total Probability\nBayes’ Rule"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#independence",
+    "href": "slides/lecture07_probability-rules.html#independence",
+    "title": "STAT 141",
+    "section": "Independence",
+    "text": "Independence\nWe say two events are independent if knowing one occurs doesn’t change the probability that another occurs.\n\n\nFor example, rolling a 3 on a die (event B) doesn’t change the probability that it rains today (event A), so these two events are independent.\n\n\n\n\nLearning that an even number has been rolled on a die (event B) does change the probability that a 4 was rolled (event A), so these two events are not independent.\n\n\n\n\n\n\nTheorem: Criteria for Independence\n\n\nTwo events \\(A\\) and \\(B\\) are independent if and only if \\[\nP(A | B) = P(A) \\quad \\text{and} \\quad P(B | A) = P(B)\n\\]\n\n\n\n\n\nQ: Were the events “preferring coffee” (A) and “being a sophomore at Reed” (B) independent?\n\n\nNo! That’s because \\(P(A)=\\frac{53}{100}\\) and \\(P(A|B)=\\frac{25}{45}\\), so \\(P(A)\\neq P(A|B)\\)"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#multiplication-rule",
+    "href": "slides/lecture07_probability-rules.html#multiplication-rule",
+    "title": "STAT 141",
+    "section": "Multiplication Rule",
+    "text": "Multiplication Rule\nWhat if we want to know the probability that two events both occur?\n\nOne approach: Rearrange our formula for conditional probability!\n\\[\\begin{align}\n    P(A | B)&= \\frac{P(A \\textrm{ and } B)}{P(B)}   \\\\\n    \\implies  P(A | B) P(B) &= P(A \\textrm{ and } B)\n  \\end{align}\\]\n\n\n\n\n\nTheorem: Multiplication Rule\n\n\nFor any events \\(A\\) and \\(B\\), \\[\nP(A \\textrm{ and } B ) = P(A|B) \\times P(B)\n\\]"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#multiplication-rule-1",
+    "href": "slides/lecture07_probability-rules.html#multiplication-rule-1",
+    "title": "STAT 141",
+    "section": "Multiplication Rule",
+    "text": "Multiplication Rule\n\n\n\n\n\nTheorem: Multiplication Rule\n\n\nFor any events \\(A\\) and \\(B\\), \\[\nP(A \\textrm{ and } B ) = P(A|B) \\times P(B)\n\\]\n\n\n\n\nIn the previous example…\n\nEvent \\(A\\): The student prefers coffee\nEvent \\(B\\): The student is a sophomore\n\n\n\nand\n\n\\(P(B) = \\frac{45}{100}\\)\n\\(P(A|B) = \\frac{25}{45}\\)\n\\(P(A \\ \\text{and} \\ B) = \\frac{25}{100}\\)\n\n\n\n\n\n\nDoes it work?\n\n\n\\[ P(A|B) P(B) = \\left(\\frac{25}{45}\\right) \\left(\\frac{45}{100}\\right) = \\frac{25}{100}\\]\nChecks out!"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#multiplication-rule---independent-events",
+    "href": "slides/lecture07_probability-rules.html#multiplication-rule---independent-events",
+    "title": "STAT 141",
+    "section": "Multiplication Rule - Independent Events",
+    "text": "Multiplication Rule - Independent Events\n\n\n\nTheorem: Multiplication Rule\n\n\nFor any events \\(A\\) and \\(B\\), \\[\nP(A \\textrm{ and } B ) = P(A|B) \\times P(B)\n\\]\n\n\n\n\nQ: If events \\(A\\) and \\(B\\) are independent, what happens to the multiplication rule?\n\n\n\n\n\nTheorem: Multiplication Rule for Independent Events\n\n\nFor any events \\(A\\) and \\(B\\) that are independent, \\[\nP(A \\textrm{ and } B ) = P(A) \\times P(B)\n\\]"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#the-law-of-total-probability",
+    "href": "slides/lecture07_probability-rules.html#the-law-of-total-probability",
+    "title": "STAT 141",
+    "section": "The Law of Total Probability",
+    "text": "The Law of Total Probability\nConsider two events:\n\nEvent \\(A\\): The student prefers coffee\nEvent \\(B\\): The student is a sophomore\n\n\nIn this scenario, notice for any student who prefers coffee (\\(A\\)), it’s possible…\n\nthey’re a sophomore (\\(B\\))\nthey’re not a sophomore (\\(B^c\\))\n\n\n\nThus, \\[\n\\begin{align}\nP(A) &= P(A\\text{ and }B) + P(A\\text{ and }B^c) \\tag{Addition Rule}\\\\\n&=P(A | B)P(B) + P(A|B^c)P(B^c) \\tag{Multiplication Rule}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#the-law-of-total-probability-1",
+    "href": "slides/lecture07_probability-rules.html#the-law-of-total-probability-1",
+    "title": "STAT 141",
+    "section": "The Law of Total Probability",
+    "text": "The Law of Total Probability\n\n\n\nTheorem: The Law of Total Probability\n\n\nLet \\(A\\) and \\(B\\) be events. Then \\[\nP(A) = P(A  | B)P(B) + P(A  | B^c)P(B^c)\n\\]\n\n\n\n\n\nThe Law of Total Probability is useful for finding “overall” probabilities when we only have the “pieces”.\nWe’ll see a real-world example next!"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#patient-health",
+    "href": "slides/lecture07_probability-rules.html#patient-health",
+    "title": "STAT 141",
+    "section": "Patient Health",
+    "text": "Patient Health\nSuppose you’re a medical researcher interested in population health.\n\n\n80% of individuals see a physician each year\n20% do not\n\n\n\n\nAmong people who see a physician, 95% are generally healthy.\nAmong people who don’t see a physician, 70% are generally healthy.\n\n\n\nQ: What proportion of adults are generally healthy?\n\n\nLet\n\nEvent \\(A\\): Individual is healthy\nEvent \\(B\\): Individual sees a physician each year\nEvent: \\(B^c\\): Individual doesn’t see a physician each year\n\n\n\nThis question is asking: \\(P(A)=\\)???"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#patient-health-1",
+    "href": "slides/lecture07_probability-rules.html#patient-health-1",
+    "title": "STAT 141",
+    "section": "Patient Health",
+    "text": "Patient Health\n\n\n\nTheorem: The Law of Total Probability\n\n\nLet \\(A\\) and \\(B\\) be events. Then \\[\nP(A) = P(A  | B)P(B) + P(A  | B^c)P(B^c)\n\\]\n\n\n\nWe want to answer \\(P(\\text{Healthy})\\).\n\nUsing the Law of Total Probability:\n\\[\n\\begin{align}\nP(\\text{Healthy}) &= P(\\text{Healthy}|\\text{Doctor})P(\\text{Doctor})+P(\\text{Healthy}|\\text{Doctor}^c)P(\\text{Doctor}^c)\\\\\n&= P(A|B)P(B) + P(A|B^c)P(B^c)\\\\\n&= (.95)(.80) + (.70)(.20)\\\\\n&= 0.90\n\\end{align}\n\\]\n\n\nThus, 90% of adults are generally healthy!"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#bayes-rule",
+    "href": "slides/lecture07_probability-rules.html#bayes-rule",
+    "title": "STAT 141",
+    "section": "Bayes’ Rule",
+    "text": "Bayes’ Rule\nWhat if we know \\(P(B|A)\\), but we want to know \\(P(A|B)\\)?\n\n\n\n\nTheorem: Bayes’ Rule\n\n\nLet \\(A\\) and \\(B\\) be events. Then, \\[\nP(A|B) = \\frac{P(B  | A)P(A)}{P(B)}\n\\]\n\n\n\n\n\nProof: From the definition of multiplication rule, \\[\n\\begin{align}\nP(A \\text{ and } B) &= P(A|B)\\times P(B)\\\\\nP(A \\text{ and } B) &= P(B|A)\\times P(A)\n\\end{align}\n\\]\n\n\nSetting these two equations equal, we find \\[\n\\begin{align}\nP(A|B)\\times P(B) &= P(B|A)\\times P(A)\\\\\n\\implies P(A|B) &= \\frac{P(B|A)P(A)}{P(B)}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#activity-1-testing-for-a-rare-disease",
+    "href": "slides/lecture07_probability-rules.html#activity-1-testing-for-a-rare-disease",
+    "title": "STAT 141",
+    "section": "Activity 1: Testing for a Rare Disease",
+    "text": "Activity 1: Testing for a Rare Disease\nSuppose that we have a rapid COVID-19 test where:\n\nGiven a person does not have COVID, the test is (correctly) negative 99% of the time.\nGiven a person does have COVID, the test is (correctly) positive 80% of the time.\n\n\nAssume that the overall prevalence of COVID at the time of the test was 1%.\n\n\nQ: Suppose a person takes this test and receives a positive diagnosis – what is the probability that the person has COVID?\n\n\n\nHint 1: Write out the object in question in terms of a conditional probability\n\n\n\n\nHint 2: Define the relevant events and their complements in this setting\n\n\n\n\nHint 3: Write out all the info given in terms of probabilities and events \\(A\\) and \\(B\\).\n\n\n\n\nHint 4: Start with Bayes’ Rule! You’ll also need the Law of Total Probability!"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#bonus-activity-bayes-rule",
+    "href": "slides/lecture07_probability-rules.html#bonus-activity-bayes-rule",
+    "title": "STAT 141",
+    "section": "Bonus Activity: Bayes’ Rule",
+    "text": "Bonus Activity: Bayes’ Rule\n\n\n\nTheorem: Bayes’ Rule\n\n\nLet \\(A\\) and \\(B\\) be events. Then \\[\nP(A|B) = \\frac{P(B  | A)P(A)}{P(B)}\n\\]\n\n\n\nQ: Consider Bayes’ Rule. Under what circumstances will \\(P(A|B) = P(B|A)\\)?\n\nQ: Suppose \\(P(B|A) = 1\\):\n\nWhat does this suggest about \\(A\\) and \\(B\\)?\nWhat is \\(P(A|B)\\) in this case?"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#story-time-independence-and-lumpy-randomness",
+    "href": "slides/lecture07_probability-rules.html#story-time-independence-and-lumpy-randomness",
+    "title": "STAT 141",
+    "section": "Story time: Independence and “Lumpy” Randomness",
+    "text": "Story time: Independence and “Lumpy” Randomness\nA professor from the Georgia Institute of Technology asked students on their homework assignment to either flip a coin 200 times and record the results, or pretend to flip a coin and fake 200 results. After HW submission, students were amazed that he could correctly identify whether everyone’s results were real or fake…\n\n\nWas he omniscient?\n\n\n\nNope! His strategy was simply to look for runs of at least six heads or six tails in a row. Why did this work?\n\nIndependence and a large number of trials means a run of six is very likely from real coin flips.\nHumans writing pretend coin flips are influenced by previously written outcomes.\n\n\n\n\nThis idea has connections to many topics, ranging from video games to fraud detection!"
+  },
+  {
+    "objectID": "slides/lecture07_probability-rules.html#recap",
+    "href": "slides/lecture07_probability-rules.html#recap",
+    "title": "STAT 141",
+    "section": "Recap",
+    "text": "Recap\n\n\n\n\n\n\nTheorem: Criteria for Independence\n\n\nTwo events \\(A\\) and \\(B\\) are independent if and only if \\[\nP(A | B) = P(A) \\quad \\text{and} \\quad P(B | A) = P(B)\n\\]\nIn words: \\(A\\) and \\(B\\) are independent if and only if knowing about \\(B\\) tells us nothing about the probability of \\(A\\), and vise versa\n\n\n\n\n\n\n\n\n\nTheorem: Multiplication Rule\n\n\nFor any events \\(A\\) and \\(B\\), \\[\nP(A \\textrm{ and } B ) = P(A|B) \\times P(B) = P(B) \\times P(A|B)\n\\]\nCan think: \\(A\\) and \\(B\\) means that first \\(B\\) happens, then given that \\(B\\) happens, \\(A\\) also happens.\n\n\n\n\n\n\n\n\n\nTheorem: The Law of Total Probability\n\n\nLet \\(A\\) and \\(B\\) be events. Then \\[\nP(A) = P(A  | B)P(B) + P(A  | B^c)P(B^c)\n\\]\nThink about breaking \\(A\\) into two disjoint pieces: (\\(A\\) and \\(B\\)) or (\\(A\\) and \\(B^c\\)) [addition rule]. Then we apply the multiplication rule to each piece.\n\n\n\n\n\n\n\n\n\nTheorem: Bayes’ Rule\n\n\nLet \\(A\\) and \\(B\\) be events. Then, \\[\nP(A|B) = \\frac{P(B  | A)P(A)}{P(B)}\n\\] This follows algebraically from conditional probability and the multiplication rule."
   }
 ]
