@@ -1,7 +1,7 @@
 ---
 pagetitle: "Probability II: Properties and Rules"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -61,7 +61,10 @@ theme_set(theme_bw())
 
 ### Announcements/Reminders
 
-- Quiz tomorrow
+- Quiz tomorrow during lab
+    - Arrive on time to use the full 30 mins
+    - Bring something to write with
+    - Be mindful of others when arriving / if finished early
 
 ------------------------------------------------------------------------
 
@@ -115,12 +118,7 @@ Example from the end of last class,
 How do we calculate conditional probabilities?
 
 ::: {.fragment}
-$$
-P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
-$$
-:::
 
-::: {.fragment}
 In general,
 
 ::: {.callout-note icon=false}
@@ -130,6 +128,20 @@ $$
 P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
 $$
 :::
+
+:::
+
+::: {.fragment}
+$$
+P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
+$$
+:::
+
+::: fragment
+
+- The probability that a student who is a sophomore (B) prefers coffee (A):
+$$P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}$$
+
 :::
 
 ------------------------------------------------------------------------
@@ -174,6 +186,8 @@ $$
 
 ::: {.fragment}
 2. **Probability student is a sophomore:** $P(\text{Sophomore}) = P(B) = \frac{45}{100}$
+
+
 :::
 
 ::: {.fragment}
@@ -183,7 +197,9 @@ $$
 ::: {.fragment}
 4. **Probability a random sophomore prefers coffee:** 
 $$P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}$$
+
 :::
+
 
 
 # Using Conditional Probability
@@ -227,7 +243,7 @@ $$
 :::
 
 ::: {.fragment}
-**Q:** Are the events "preferring coffee" (A) and "being a sophomore at Reed" (B) independent?
+**Q:** Were the events "preferring coffee" (A) and "being a sophomore at Reed" (B) independent?
 :::
 
 ::: {.fragment}
@@ -241,7 +257,7 @@ No! That's because $P(A)=\frac{53}{100}$ and $P(A|B)=\frac{25}{45}$, so $P(A)\ne
 What if we want to know the probability that two events **both** occur?
 
 ::: {.fragment}
-Rearrange our formula for conditional probability!
+One approach: Rearrange our formula for conditional probability!
 
 
 \begin{align}
@@ -516,67 +532,67 @@ countdown::countdown(12)
 ```
 
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Activity 1: Solution
+<!-- ## Activity 1: Solution -->
 
-**Q:** Suppose a person takes this test and receives a positive diagnosis -- what is the probability that the person has COVID?
+<!-- **Q:** Suppose a person takes this test and receives a positive diagnosis -- what is the probability that the person has COVID? -->
 
-::: {.fragment}
-- This is asking for $P(\text{Have Covid} \ | \ \text{Positive Test})$
-:::
+<!-- ::: {.fragment} -->
+<!-- - This is asking for $P(\text{Have Covid} \ | \ \text{Positive Test})$ -->
+<!-- ::: -->
 
-::: {.fragment}
-- $C$ = Has COVID,  $C^c$ = No COVID,  $+$ = Positive Test,  $+^c$ = Negative Test
-:::
+<!-- ::: {.fragment} -->
+<!-- - $C$ = Has COVID,  $C^c$ = No COVID,  $+$ = Positive Test,  $+^c$ = Negative Test -->
+<!-- ::: -->
 
-::: {.fragment}
-- Express what we know using probability language...
-:::
+<!-- ::: {.fragment} -->
+<!-- - Express what we know using probability language... -->
+<!-- ::: -->
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Activity 1: Solution {.smaller}
+<!-- ## Activity 1: Solution {.smaller} -->
 
-::: {.incremental}
+<!-- ::: {.incremental} -->
 
-- Test correctly diagnoses a person who **does not** have COVID 99% of the time  
-  $P(+^c | C^c) = 0.99$ and $P(+ | C^c) = 0.01$
+<!-- - Test correctly diagnoses a person who **does not** have COVID 99% of the time   -->
+<!--   $P(+^c | C^c) = 0.99$ and $P(+ | C^c) = 0.01$ -->
 
-- Test correctly diagnoses a patient who **does** have COVID 80% of the time.  
-  $P(+ | C) = 0.80$ and $P(+^c | C) = 0.20$
+<!-- - Test correctly diagnoses a patient who **does** have COVID 80% of the time.   -->
+<!--   $P(+ | C) = 0.80$ and $P(+^c | C) = 0.20$ -->
 
-- The overall prevalence of COVID at the time of the test was 1%.  
-  $P(C) = 0.01$ and $P(C^c) = 0.99$
+<!-- - The overall prevalence of COVID at the time of the test was 1%.   -->
+<!--   $P(C) = 0.01$ and $P(C^c) = 0.99$ -->
 
-:::
+<!-- ::: -->
 
-::: {.fragment}
+<!-- ::: {.fragment} -->
 
-Bayes' Rule:
+<!-- Bayes' Rule: -->
 
-$$
-P (C  | +) =  \frac{P(+ | C)P(C)}{P(+)} =  \frac{0.80 * 0.01}{P(+)=\text{???}}
-$$
-:::
+<!-- $$ -->
+<!-- P (C  | +) =  \frac{P(+ | C)P(C)}{P(+)} =  \frac{0.80 * 0.01}{P(+)=\text{???}} -->
+<!-- $$ -->
+<!-- ::: -->
 
-::: {.fragment}
+<!-- ::: {.fragment} -->
 
-Law of Total Probability:
+<!-- Law of Total Probability: -->
 
-$$
-P (+) = P(+ | C) P(C) + P(+ | C^c) P(C^c) = 0.80(0.01) + 0.01(0.99) = 0.0179 
-$$
-:::
+<!-- $$ -->
+<!-- P (+) = P(+ | C) P(C) + P(+ | C^c) P(C^c) = 0.80(0.01) + 0.01(0.99) = 0.0179  -->
+<!-- $$ -->
+<!-- ::: -->
 
-::: {.fragment}
+<!-- ::: {.fragment} -->
 
-Combining the above:
+<!-- Combining the above: -->
 
-$$
-\implies P (C | +) = \frac{0.80 * 0.01}{0.0179} \approx \boxed{0.447}
-$$
-:::
+<!-- $$ -->
+<!-- \implies P (C | +) = \frac{0.80 * 0.01}{0.0179} \approx \boxed{0.447} -->
+<!-- $$ -->
+<!-- ::: -->
 
 ------------------------------------------------------------------------
 
@@ -599,43 +615,43 @@ $$
 - What does this suggest about $A$ and $B$?
 - What is $P(A|B)$ in this case?
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Bonus Activity: Answers
+<!-- ## Bonus Activity: Answers -->
 
-::: {.callout-note icon=false}
-## Theorem: Bayes' Rule
-Let $A$ and $B$ be events. Then
-$$
-P(A|B) = \frac{P(B  | A)P(A)}{P(B)}
-$$
-:::
+<!-- ::: {.callout-note icon=false} -->
+<!-- ## Theorem: Bayes' Rule -->
+<!-- Let $A$ and $B$ be events. Then -->
+<!-- $$ -->
+<!-- P(A|B) = \frac{P(B  | A)P(A)}{P(B)} -->
+<!-- $$ -->
+<!-- ::: -->
 
-::: {.fragment}
-**Q:** Under what circumstances will $P(A|B) = P(B|A)$?
+<!-- ::: {.fragment} -->
+<!-- **Q:** Under what circumstances will $P(A|B) = P(B|A)$? -->
 
-**Answer:** Whenever $P(A)=P(B)$
-:::
+<!-- **Answer:** Whenever $P(A)=P(B)$ -->
+<!-- ::: -->
 
-::: {.fragment}
-**Q:** Suppose $P(B|A) = 1$:
+<!-- ::: {.fragment} -->
+<!-- **Q:** Suppose $P(B|A) = 1$: -->
 
-- What does this suggest about $A$ and $B$?
-:::
+<!-- - What does this suggest about $A$ and $B$? -->
+<!-- ::: -->
 
-::: {.fragment}
-**A:** Whenever A occurs, so does B.
-:::
+<!-- ::: {.fragment} -->
+<!-- **A:** Whenever A occurs, so does B. -->
+<!-- ::: -->
 
-::: {.fragment}
-- What is $P(A|B)$ in this case?
-:::
+<!-- ::: {.fragment} -->
+<!-- - What is $P(A|B)$ in this case? -->
+<!-- ::: -->
 
-::: {.fragment}
-**A:** $P(A|B) = P(A)/P(B)$
-:::
+<!-- ::: {.fragment} -->
+<!-- **A:** $P(A|B) = P(A)/P(B)$ -->
+<!-- ::: -->
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
 ## Story time: Independence and "Lumpy" Randomness
 

@@ -148,7 +148,12 @@
 
 <h3 id="announcementsreminders">Announcements/Reminders</h3>
 <ul>
-<li>Quiz tomorrow</li>
+<li>Quiz tomorrow during lab
+<ul>
+<li>Arrive on time to use the full 30 mins</li>
+<li>Bring something to write with</li>
+<li>Be mindful of others when arriving / if finished early</li>
+</ul></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -189,11 +194,6 @@
 <h2>Conditional Probability</h2>
 <p>How do we calculate conditional probabilities?</p>
 <div class="fragment">
-<p><span class="math display">\[
-P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
-\]</span></p>
-</div>
-<div class="fragment">
 <p>In general,</p>
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
@@ -207,6 +207,16 @@ P(A | B)= \frac{P(A \textrm{ and } B)}{P(B)}
 </div>
 </div>
 </div>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+P(\text{Coffee} | \text{Sophomore} ) = \frac{P(\text{Sophomore and prefers Coffee})}{P(\text{Sophomore})}
+\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li>The probability that a student who is a sophomore (B) prefers coffee (A): <span class="math display">\[P(\text{A | B}) = \frac{P(\text{A and B})}{P(\text{B})} = \frac{25}{100}\Big/\frac{45}{100} = \frac{25}{45}\]</span></li>
+</ul>
 </div>
 </section>
 <section id="activity-from-last-class-coffee-or-tea" class="slide level2 small">
@@ -327,7 +337,7 @@ P(A | B) = P(A) \quad \text{and} \quad P(B | A) = P(B)
 </div>
 </div>
 <div class="fragment">
-<p><strong>Q:</strong> Are the events “preferring coffee” (A) and “being a sophomore at Reed” (B) independent?</p>
+<p><strong>Q:</strong> Were the events “preferring coffee” (A) and “being a sophomore at Reed” (B) independent?</p>
 </div>
 <div class="fragment">
 <p>No! That’s because <span class="math inline">\(P(A)=\frac{53}{100}\)</span> and <span class="math inline">\(P(A|B)=\frac{25}{45}\)</span>, so <span class="math inline">\(P(A)\neq P(A|B)\)</span></p>
@@ -337,7 +347,7 @@ P(A | B) = P(A) \quad \text{and} \quad P(B | A) = P(B)
 <h2>Multiplication Rule</h2>
 <p>What if we want to know the probability that two events <strong>both</strong> occur?</p>
 <div class="fragment">
-<p>Rearrange our formula for conditional probability!</p>
+<p>One approach: Rearrange our formula for conditional probability!</p>
 <p><span class="math display">\[\begin{align}
     P(A | B)&amp;= \frac{P(A \textrm{ and } B)}{P(B)}   \\
     \implies  P(A | B) P(B) &amp;= P(A \textrm{ and } B)
@@ -611,57 +621,49 @@ P(A|B)\times P(B) &amp;= P(B|A)\times P(A)\\
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_69ab6fc8" minutes="12" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e652ade6" minutes="12" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
-</section>
-<section id="activity-1-solution" class="slide level2">
-<h2>Activity 1: Solution</h2>
-<p><strong>Q:</strong> Suppose a person takes this test and receives a positive diagnosis – what is the probability that the person has COVID?</p>
-<div class="fragment">
-<ul>
-<li>This is asking for <span class="math inline">\(P(\text{Have Covid} \ | \ \text{Positive Test})\)</span></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li><span class="math inline">\(C\)</span> = Has COVID, <span class="math inline">\(C^c\)</span> = No COVID, <span class="math inline">\(+\)</span> = Positive Test, <span class="math inline">\(+^c\)</span> = Negative Test</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>Express what we know using probability language…</li>
-</ul>
-</div>
-</section>
-<section id="activity-1-solution-1" class="slide level2 smaller">
-<h2>Activity 1: Solution</h2>
-<ul>
-<li class="fragment"><p>Test correctly diagnoses a person who <strong>does not</strong> have COVID 99% of the time<br>
-<span class="math inline">\(P(+^c | C^c) = 0.99\)</span> and <span class="math inline">\(P(+ | C^c) = 0.01\)</span></p></li>
-<li class="fragment"><p>Test correctly diagnoses a patient who <strong>does</strong> have COVID 80% of the time.<br>
-<span class="math inline">\(P(+ | C) = 0.80\)</span> and <span class="math inline">\(P(+^c | C) = 0.20\)</span></p></li>
-<li class="fragment"><p>The overall prevalence of COVID at the time of the test was 1%.<br>
-<span class="math inline">\(P(C) = 0.01\)</span> and <span class="math inline">\(P(C^c) = 0.99\)</span></p></li>
-</ul>
-<div class="fragment">
-<p>Bayes’ Rule:</p>
-<p><span class="math display">\[
-P (C  | +) =  \frac{P(+ | C)P(C)}{P(+)} =  \frac{0.80 * 0.01}{P(+)=\text{???}}
-\]</span></p>
-</div>
-<div class="fragment">
-<p>Law of Total Probability:</p>
-<p><span class="math display">\[
-P (+) = P(+ | C) P(C) + P(+ | C^c) P(C^c) = 0.80(0.01) + 0.01(0.99) = 0.0179
-\]</span></p>
-</div>
-<div class="fragment">
-<p>Combining the above:</p>
-<p><span class="math display">\[
-\implies P (C | +) = \frac{0.80 * 0.01}{0.0179} \approx \boxed{0.447}
-\]</span></p>
-</div>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Activity 1: Solution -->
+<!-- **Q:** Suppose a person takes this test and receives a positive diagnosis -- what is the probability that the person has COVID? -->
+<!-- ::: {.fragment} -->
+<!-- - This is asking for $P(\text{Have Covid} \ | \ \text{Positive Test})$ -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- - $C$ = Has COVID,  $C^c$ = No COVID,  $+$ = Positive Test,  $+^c$ = Negative Test -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- - Express what we know using probability language... -->
+<!-- ::: -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Activity 1: Solution {.smaller} -->
+<!-- ::: {.incremental} -->
+<!-- - Test correctly diagnoses a person who **does not** have COVID 99% of the time   -->
+<!--   $P(+^c | C^c) = 0.99$ and $P(+ | C^c) = 0.01$ -->
+<!-- - Test correctly diagnoses a patient who **does** have COVID 80% of the time.   -->
+<!--   $P(+ | C) = 0.80$ and $P(+^c | C) = 0.20$ -->
+<!-- - The overall prevalence of COVID at the time of the test was 1%.   -->
+<!--   $P(C) = 0.01$ and $P(C^c) = 0.99$ -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- Bayes' Rule: -->
+<!-- $$ -->
+<!-- P (C  | +) =  \frac{P(+ | C)P(C)}{P(+)} =  \frac{0.80 * 0.01}{P(+)=\text{???}} -->
+<!-- $$ -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- Law of Total Probability: -->
+<!-- $$ -->
+<!-- P (+) = P(+ | C) P(C) + P(+ | C^c) P(C^c) = 0.80(0.01) + 0.01(0.99) = 0.0179  -->
+<!-- $$ -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- Combining the above: -->
+<!-- $$ -->
+<!-- \implies P (C | +) = \frac{0.80 * 0.01}{0.0179} \approx \boxed{0.447} -->
+<!-- $$ -->
+<!-- ::: -->
 </section>
 <section id="bonus-activity-bayes-rule" class="slide level2">
 <h2>Bonus Activity: Bayes’ Rule</h2>
@@ -684,42 +686,33 @@ P(A|B) = \frac{P(B  | A)P(A)}{P(B)}
 <li>What does this suggest about <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>?</li>
 <li>What is <span class="math inline">\(P(A|B)\)</span> in this case?</li>
 </ul>
-</section>
-<section id="bonus-activity-answers" class="slide level2">
-<h2>Bonus Activity: Answers</h2>
-<div class="callout callout-note no-icon callout-titled callout-style-simple">
-<div class="callout-body">
-<div class="callout-title">
-<p><strong>Theorem: Bayes’ Rule</strong></p>
-</div>
-<div class="callout-content">
-<p>Let <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> be events. Then <span class="math display">\[
-P(A|B) = \frac{P(B  | A)P(A)}{P(B)}
-\]</span></p>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p><strong>Q:</strong> Under what circumstances will <span class="math inline">\(P(A|B) = P(B|A)\)</span>?</p>
-<p><strong>Answer:</strong> Whenever <span class="math inline">\(P(A)=P(B)\)</span></p>
-</div>
-<div class="fragment">
-<p><strong>Q:</strong> Suppose <span class="math inline">\(P(B|A) = 1\)</span>:</p>
-<ul>
-<li>What does this suggest about <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>?</li>
-</ul>
-</div>
-<div class="fragment">
-<p><strong>A:</strong> Whenever A occurs, so does B.</p>
-</div>
-<div class="fragment">
-<ul>
-<li>What is <span class="math inline">\(P(A|B)\)</span> in this case?</li>
-</ul>
-</div>
-<div class="fragment">
-<p><strong>A:</strong> <span class="math inline">\(P(A|B) = P(A)/P(B)\)</span></p>
-</div>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Bonus Activity: Answers -->
+<!-- ::: {.callout-note icon=false} -->
+<!-- ## Theorem: Bayes' Rule -->
+<!-- Let $A$ and $B$ be events. Then -->
+<!-- $$ -->
+<!-- P(A|B) = \frac{P(B  | A)P(A)}{P(B)} -->
+<!-- $$ -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- **Q:** Under what circumstances will $P(A|B) = P(B|A)$? -->
+<!-- **Answer:** Whenever $P(A)=P(B)$ -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- **Q:** Suppose $P(B|A) = 1$: -->
+<!-- - What does this suggest about $A$ and $B$? -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- **A:** Whenever A occurs, so does B. -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- - What is $P(A|B)$ in this case? -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- **A:** $P(A|B) = P(A)/P(B)$ -->
+<!-- ::: -->
+<!-- ------------------------------------------------------------------------ -->
 </section>
 <section id="story-time-independence-and-lumpy-randomness" class="slide level2">
 <h2>Story time: Independence and “Lumpy” Randomness</h2>

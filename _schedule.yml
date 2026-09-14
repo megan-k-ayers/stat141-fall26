@@ -112,8 +112,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading09.qmd
-            # - type: Slides
-            #   href: slides/lecture07_probability-rules.qmd
+            - type: Slides
+              href: slides/lecture07_probability-rules.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture07_probability-rules_handout.pdf
         - topic: "Lab: Data Wrangling & Probability | Quiz 1"
           display-date: Thursday, Sept 17
           date: 9/17/26
