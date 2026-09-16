@@ -65,6 +65,10 @@ theme_set(theme_bw())
     - Arrive on time to use the full 30 mins
     - Bring something to write with
     - Be mindful of others when arriving / if finished early
+    
+<br>
+    
+- Math/Stats colloquium tomorrow - student summer research! 
 
 ------------------------------------------------------------------------
 
