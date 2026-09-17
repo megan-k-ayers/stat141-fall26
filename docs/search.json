@@ -84,6 +84,76 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture08_data-collection-sampling.html#goals-for-today",
+    "href": "slides/lecture08_data-collection-sampling.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for Today",
+    "text": "Goals for Today\n\nQuick clarification: independent vs disjoint\nDiscuss principles of data collection/acquisition\nInvestigate 3 methods of drawing random samples"
+  },
+  {
+    "objectID": "slides/lecture08_data-collection-sampling.html#moving-into-data-collection",
+    "href": "slides/lecture08_data-collection-sampling.html#moving-into-data-collection",
+    "title": "STAT 141",
+    "section": "Moving into Data Collection",
+    "text": "Moving into Data Collection"
+  },
+  {
+    "objectID": "slides/lecture08_data-collection-sampling.html#who-are-the-data-supposed-to-represent",
+    "href": "slides/lecture08_data-collection-sampling.html#who-are-the-data-supposed-to-represent",
+    "title": "STAT 141",
+    "section": "Who are the data supposed to represent?",
+    "text": "Who are the data supposed to represent?\nEvery statistical investigation should clearly identify and compare:\n\nThe population to be studied\nThe sample from which measurements (data) will be taken\n\n\nKey questions:\n\nWhat evidence is there that the sample is representative of the population?\nWho is present? Who is absent?\nWho is overrepresented? Who is underrepresented?"
+  },
+  {
+    "objectID": "slides/lecture08_data-collection-sampling.html#who-are-the-data-supposed-to-represent-1",
+    "href": "slides/lecture08_data-collection-sampling.html#who-are-the-data-supposed-to-represent-1",
+    "title": "STAT 141",
+    "section": "Who are the data supposed to represent?",
+    "text": "Who are the data supposed to represent?\n\n\n\n\n\nIn a census, we have data on the entire population!\nLets us calculate summary statistics about the whole population (we call these parameters).\n\nBut usually, we don’t have the money, time, or ability to do this :(\n\n\nThe 2020 census cost about $13.7B!!"
+  },
+  {
+    "objectID": "slides/lecture08_data-collection-sampling.html#who-are-the-data-supposed-to-represent-2",
+    "href": "slides/lecture08_data-collection-sampling.html#who-are-the-data-supposed-to-represent-2",
+    "title": "STAT 141",
+    "section": "Who are the data supposed to represent?",
+    "text": "Who are the data supposed to represent?\n\n\n\n\n\nInstead, we use a sample of the population, and use the sample to draw conclusions about the population.\n\n\nWe calculate statistics based on our sample and use these as estimates of the population parameters that we really want to know."
+  },
+  {
+    "objectID": "slides/lecture08_data-collection-sampling.html#who-are-the-data-supposed-to-represent-3",
+    "href": "slides/lecture08_data-collection-sampling.html#who-are-the-data-supposed-to-represent-3",
+    "title": "STAT 141",
+    "section": "Who are the data supposed to represent?",
+    "text": "Who are the data supposed to represent?\n\n\n\n\n\nKey questions:\n\nWhat evidence is there that the sample is representative of the population?\nWho is present? Who is absent?\nWho is overrepresented? Who is underrepresented?"
+  },
+  {
+    "objectID": "slides/lecture08_data-collection-sampling.html#sampling-bias",
+    "href": "slides/lecture08_data-collection-sampling.html#sampling-bias",
+    "title": "STAT 141",
+    "section": "Sampling Bias",
+    "text": "Sampling Bias\n\n\n\n\n\nSampling bias: When certain individuals are more likely to be sampled than others"
+  },
+  {
+    "objectID": "slides/lecture08_data-collection-sampling.html#sampling-bias-1",
+    "href": "slides/lecture08_data-collection-sampling.html#sampling-bias-1",
+    "title": "STAT 141",
+    "section": "Sampling Bias",
+    "text": "Sampling Bias\n\n\n\n\n\nSampling bias: When certain individuals are more likely to be sampled than others\nQ: Consider a telephone poll for an election - where might we get sampling bias?\n\nNon-response: individual can’t or won’t contribute\nUndercoverage: some groups are less likely to be called\nInaccurate response\nSelf-selection: membership in the sample is voluntary\nConvenience: selecting a convenient but non-representative block to sample"
+  },
+  {
+    "objectID": "slides/lecture08_data-collection-sampling.html#random-sampling",
+    "href": "slides/lecture08_data-collection-sampling.html#random-sampling",
+    "title": "STAT 141",
+    "section": "Random Sampling",
+    "text": "Random Sampling\nUse random sampling (a random mechanism for selecting cases from the population) to remove sampling bias.\nTypes of random sampling\nWe’ll explore 3 types of random sampling\n\nSimple random sampling\nCluster sampling\nStratified random sampling"
+  },
+  {
+    "objectID": "slides/lecture08_data-collection-sampling.html#responsibilities-to-research-subjects",
+    "href": "slides/lecture08_data-collection-sampling.html#responsibilities-to-research-subjects",
+    "title": "STAT 141",
+    "section": "Responsibilities to Research Subjects",
+    "text": "Responsibilities to Research Subjects\n\n“The ethical statistician protects and respects the rights and interests of human and animal subjects at all stages of their involvement in a project. This includes respondents to the census or to surveys, those whose data are contained in administrative records, and subjects of physically or psychologically invasive research.”"
+  },
+  {
     "objectID": "slides/lecture06_probability-intro-lln.html#goals-for-today",
     "href": "slides/lecture06_probability-intro-lln.html#goals-for-today",
     "title": "STAT 141",
@@ -644,6 +714,20 @@
     "text": "Demo: Finding the lab files, tour of RStudio, starting the lab"
   },
   {
+    "objectID": "readings/reading12.html",
+    "href": "readings/reading12.html",
+    "title": "Stat 141: Readings for September 23, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nMD 5, 5.1 [Note: we may not always use the same functions as MD, but the general concepts are the same.]"
+  },
+  {
+    "objectID": "readings/reading12.html#reading",
+    "href": "readings/reading12.html#reading",
+    "title": "Stat 141: Readings for September 23, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nMD 5, 5.1 [Note: we may not always use the same functions as MD, but the general concepts are the same.]"
+  },
+  {
     "objectID": "readings/reading10.html",
     "href": "readings/reading10.html",
     "title": "Stat 141: Readings for September 18, 2026",
@@ -747,6 +831,27 @@
     "title": "Stat 141: Readings for September 16, 2026",
     "section": "",
     "text": "Stat 141: Readings for September 16, 2026\nBefore coming to lecture today, please review/read the following material:\n\nOI 3.2"
+  },
+  {
+    "objectID": "readings/reading11.html",
+    "href": "readings/reading11.html",
+    "title": "Stat 141: Readings for September 21, 2026",
+    "section": "",
+    "text": "Stat 141: Readings for September 21, 2026\nBefore coming to lecture today, please read the following material:\n\nIMS 2.2-2.3"
+  },
+  {
+    "objectID": "readings/reading13.html",
+    "href": "readings/reading13.html",
+    "title": "Stat 141: Readings for September 25, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS (2nd edition) Section 7.1 (This will cover a lot of the same ground as the last reading, but is an opportunity to see some more examples and a bit of a deeper treatment on residuals)"
+  },
+  {
+    "objectID": "readings/reading13.html#reading",
+    "href": "readings/reading13.html#reading",
+    "title": "Stat 141: Readings for September 25, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS (2nd edition) Section 7.1 (This will cover a lot of the same ground as the last reading, but is an opportunity to see some more examples and a bit of a deeper treatment on residuals)"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#goals-for-today",

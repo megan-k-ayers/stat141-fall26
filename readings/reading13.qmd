@@ -1,7 +1,7 @@
 ---
 date: 9/25/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -12,6 +12,6 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
--   IMS (2nd edition) Section 7.1
+-   IMS (2nd edition) Section 7.1 (This will cover a lot of the same ground as the last reading, but is an opportunity to see some more examples and a bit of a deeper treatment on residuals)
 
 
