@@ -206,7 +206,7 @@ We want to know how Portlanders feel about a new coffee shop in Woodstock.
 
 ```{r}
 #| echo: false
-countdown::countdown(4)
+countdown::countdown(3)
 ```
 
 ------------------------------------------------------------------------
@@ -636,7 +636,7 @@ ggplot(data = NHANES, mapping = aes(x = Age, y = Height)) +
 -   **Sampling bias** occurs when systematic differences between our sample and the population lead us to make incorrect conclusions
 -   Three ways to obtain a representative sample:
     - **Simple random sampling** (select cards from *one* hat)
-    - **Cluster random sampling** (select *some* from a group of many *similar* hats, take their cards)
+    - **Cluster random sampling** (select *some* hats from a group of many *similar* hats, take their cards)
     - **Stratified random sampling** (select some cards from *every* hat in a group of very *different* hats)
 
 :::
