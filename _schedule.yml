@@ -147,8 +147,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading11.qmd
-            # - type: Slides
-            #   href: slides/lecture09_study-design.qmd
+            - type: Slides
+              href: slides/lecture09_study-design.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture09_study-design_handout.pdf
         - topic: "Linear Models I: Introduction"
           display-date: Wednesday, Sept 23
           date: 9/23/26

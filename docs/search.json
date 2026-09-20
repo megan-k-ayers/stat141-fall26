@@ -1741,5 +1741,138 @@
     "title": "STAT 141",
     "section": "Recap",
     "text": "Recap\n\n\n\n\n\n\nTheorem: Criteria for Independence\n\n\nTwo events \\(A\\) and \\(B\\) are independent if and only if \\[\nP(A | B) = P(A) \\quad \\text{and} \\quad P(B | A) = P(B)\n\\]\nIn words: \\(A\\) and \\(B\\) are independent if and only if knowing about \\(B\\) tells us nothing about the probability of \\(A\\), and vise versa\n\n\n\n\n\n\n\n\n\nTheorem: Multiplication Rule\n\n\nFor any events \\(A\\) and \\(B\\), \\[\nP(A \\textrm{ and } B ) = P(A|B) \\times P(B) = P(B) \\times P(A|B)\n\\]\nCan think: \\(A\\) and \\(B\\) means that first \\(B\\) happens, then given that \\(B\\) happens, \\(A\\) also happens.\n\n\n\n\n\n\n\n\n\nTheorem: The Law of Total Probability\n\n\nLet \\(A\\) and \\(B\\) be events. Then \\[\nP(A) = P(A  | B)P(B) + P(A  | B^c)P(B^c)\n\\]\nThink about breaking \\(A\\) into two disjoint pieces: (\\(A\\) and \\(B\\)) or (\\(A\\) and \\(B^c\\)) [addition rule]. Then we apply the multiplication rule to each piece.\n\n\n\n\n\n\n\n\n\nTheorem: Bayes’ Rule\n\n\nLet \\(A\\) and \\(B\\) be events. Then, \\[\nP(A|B) = \\frac{P(B  | A)P(A)}{P(B)}\n\\] This follows algebraically from conditional probability and the multiplication rule."
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#quiz-revisions-logistics",
+    "href": "slides/lecture09_study-design.html#quiz-revisions-logistics",
+    "title": "STAT 141",
+    "section": "Quiz Revisions Logistics",
+    "text": "Quiz Revisions Logistics\nWho is eligible:\n\nIf you scored below a 75%, you can revise your work for 50% credit back up to a 75%\n\nEx. If you scored 60%, you can earn up to a 75% after revisions\nEx. If you scored 30%, you can earn up to a 65% after revisions\n\nYou must have taken a quiz during lab to revise it"
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#quiz-revisions-logistics-1",
+    "href": "slides/lecture09_study-design.html#quiz-revisions-logistics-1",
+    "title": "STAT 141",
+    "section": "Quiz Revisions Logistics",
+    "text": "Quiz Revisions Logistics\nHow to submit revisions:\n\nReview your in-class quiz, scores, and feedback on Gradescope\nFor any questions where you lost points, each revision item should include:\n\nName of the question part (ex. “Q2(a)”)\nBrief explanation (1-2 sentences) of where the original response went wrong\nYour revised, complete solution (even if your work was partially correct before)\n\nSubmit your compiled revisions as a PDF on Gradescope by Monday 9/28 at 11:59pm"
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#quiz-revisions-logistics-2",
+    "href": "slides/lecture09_study-design.html#quiz-revisions-logistics-2",
+    "title": "STAT 141",
+    "section": "Quiz Revisions Logistics",
+    "text": "Quiz Revisions Logistics\nResources you can use:\n\nYou can (should!) use all of your regularly permitted course resources as you revise (online slides, your notes, your assignments)\nYou can not discuss the quiz or revisions with other students or with the course assistants\nYou can ask me clarifying questions in office hours"
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#who-are-the-data-supposed-to-represent",
+    "href": "slides/lecture09_study-design.html#who-are-the-data-supposed-to-represent",
+    "title": "STAT 141",
+    "section": "Who are the data supposed to represent?",
+    "text": "Who are the data supposed to represent?"
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#who-are-the-data-supposed-to-represent-1",
+    "href": "slides/lecture09_study-design.html#who-are-the-data-supposed-to-represent-1",
+    "title": "STAT 141",
+    "section": "Who are the data supposed to represent?",
+    "text": "Who are the data supposed to represent?\n\n\n\n\n\n\nKey questions:\n\nWhat evidence is there that the respondents are representative of the population?\nWho is present? Who is absent?\nWho is overrepresented? Who is underrepresented?"
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#nonresponse-bias",
+    "href": "slides/lecture09_study-design.html#nonresponse-bias",
+    "title": "STAT 141",
+    "section": "Nonresponse bias",
+    "text": "Nonresponse bias\n\n\n\n\n\nNonresponse bias: The respondents are systematically different from the non-respondents for the variables of interest."
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#nonresponse-bias-1",
+    "href": "slides/lecture09_study-design.html#nonresponse-bias-1",
+    "title": "STAT 141",
+    "section": "Nonresponse bias",
+    "text": "Nonresponse bias\n\n\n\n\n\nNonresponse bias: The respondents are systematically different from the non-respondents for the variables of interest."
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#tackling-nonresponse-bias",
+    "href": "slides/lecture09_study-design.html#tackling-nonresponse-bias",
+    "title": "STAT 141",
+    "section": "Tackling Nonresponse bias",
+    "text": "Tackling Nonresponse bias\n\n\n\n\n\n\nUse multiple modes (mail, phone, in-person) and multiple attempts for reaching sampled cases.\nExplore key demographic variables to see how respondents and non-respondents vary.\nIn survey statistics, we can create survey weights to adjust for potential nonresponse bias."
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#thoughts-on-sampling",
+    "href": "slides/lecture09_study-design.html#thoughts-on-sampling",
+    "title": "STAT 141",
+    "section": "Thoughts on Sampling",
+    "text": "Thoughts on Sampling\n\nRandom sampling is important to ensure the sample is representative of the population.\n\nWord we will use: generalizability\n\nRepresentativeness isn’t about size.\n\nSmall random samples will tend to be more representative than large non-random samples.\n\nHowever, I bet most samples you will encounter won’t have arisen from a random mechanism.\nHow do we draw conclusions about the population from non-random samples?\n\nDetermine if your sampled cases (and respondents) are systematically different from the non-sampled cases (and non-respondents) for the variables you care about.\nAdjust your population of interest."
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#careful-with-non-random-assignment-data",
+    "href": "slides/lecture09_study-design.html#careful-with-non-random-assignment-data",
+    "title": "STAT 141",
+    "section": "Careful with Non-Random Assignment Data",
+    "text": "Careful with Non-Random Assignment Data\n\n\nWe have data on the number of Methodist ministers in New England and the number of barrels of rum imported into Boston each year. The data range from 1860 to 1940.\n\nQ: Should we conclude that ministers drink a lot of rum? Or maybe that rum drinking encourages church attendance?\n\n\n\n\n\n\n\n\n\n\n\n\n\nConfounding variable: A third variable that is associated with both the explanatory variable and the response variable.\nUnclear if the explanatory variable or the confounder (or some other variable) is causing changes in the response."
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#causal-inference",
+    "href": "slides/lecture09_study-design.html#causal-inference",
+    "title": "STAT 141",
+    "section": "Causal Inference",
+    "text": "Causal Inference\n\nSpurious relationship: Two variables are associated but not causally related\n\nIn the age of big data, lots of good examples out there.\n\n\n\n→ “Correlation does not imply causation.”\n\n\n→ “Correlation does not imply not causation.”\n\n\nCausal inference: Methods for measuring causal relationships, both with and without random assignment."
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#an-infamous-historical-example-smoking-and-lung-cancer",
+    "href": "slides/lecture09_study-design.html#an-infamous-historical-example-smoking-and-lung-cancer",
+    "title": "STAT 141",
+    "section": "An (In)famous Historical Example: Smoking and Lung Cancer",
+    "text": "An (In)famous Historical Example: Smoking and Lung Cancer\nCorrelation does not imply causation … but sometimes there’s causation!\n\nIn 1950, a large study showed extremely strong association between smoking and lung cancer.\nIn a 1958 article in Nature, R.A. Fisher argued that smoking does not cause lung cancer\nHe argued “correlation does not imply causation”\nContext: Fisher was a smoker, and happened to be being paid by big tobacco\nHow do we know Fisher was wrong? Tools from causal inference!"
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#notes-on-correlation-and-causation",
+    "href": "slides/lecture09_study-design.html#notes-on-correlation-and-causation",
+    "title": "STAT 141",
+    "section": "Notes on Correlation and Causation",
+    "text": "Notes on Correlation and Causation\n\nEven if we aren’t intending to make rigorous causal claims, we often use the terms explanatory and response variables in analyses and modeling.\nCorrelation is bi-directional: If \\(X\\) is correlated with \\(Y\\), then \\(Y\\) is correlated with \\(X\\)\nCausation is mono-directional: If \\(X\\) causes \\(Y\\), \\(Y\\) may not cause \\(X\\).\n\n\n\nThose working in quantitative fields can be very sensitive to implications of causal claims - be careful with your vocab choices (“caused” vs “is associated with” vs “trends with”)."
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#observational-studies",
+    "href": "slides/lecture09_study-design.html#observational-studies",
+    "title": "STAT 141",
+    "section": "Observational Studies",
+    "text": "Observational Studies\n\nA study in which the researchers don’t actively control the value of any variable, but simply observe the values as they naturally exist.\nExample: Hand washing study\n\nTo estimate what percent of people in the US wash their hands after using a public restroom, researchers pretended to comb their hair while observing 6000 people in public restrooms throughout the United States. They found that 85% of the people who were observed washed their hands after going to the bathroom."
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#randomized-experiment",
+    "href": "slides/lecture09_study-design.html#randomized-experiment",
+    "title": "STAT 141",
+    "section": "(Randomized) Experiment",
+    "text": "(Randomized) Experiment\n\nA study in which the researcher actively controls one or more of the explanatory variables through random assignment.\nExample: COVID Trial\nCommon features:\n\nControl group that gets no treatment or a standard treatment.\nPlacebo: A fake treatment to control for the placebo effect where if people believe they are receiving a treatment, they may experience the desired effect regardless of whether the treatment is any good.\nBlinding: When the subjects and/or researchers don’t know the explanatory group assignments.\nDeception: When information is witheld or participants are mislead in order to prevent bias or maintain natural reactions"
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#randomized-experiment-1",
+    "href": "slides/lecture09_study-design.html#randomized-experiment-1",
+    "title": "STAT 141",
+    "section": "(Randomized) Experiment",
+    "text": "(Randomized) Experiment\n\nA study in which the researcher actively controls one or more of the explanatory variables through random assignment.\n\n\nAnother Example: Experiment in Lab 2!\n\nI randomly assigned you each a piece of paper with either 82 or 531 on it\nI asked you to guess the number of dog breeds in the world\nWe’ll investigate the results in Lab 04 to see if there was an “anchoring effect”"
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#thoughts-on-data-collection-goals",
+    "href": "slides/lecture09_study-design.html#thoughts-on-data-collection-goals",
+    "title": "STAT 141",
+    "section": "Thoughts on Data Collection Goals",
+    "text": "Thoughts on Data Collection Goals\n\nRandom assignment allows you to explore causal relationships between your explanatory variables and the predictor variables by removing the possibility of a confounding variable\nHow do we draw causal conclusions from studies without random assignment?\n\nWith extreme care! Try to control for all possible confounding variables.\nDiscuss the associations/correlations you found. Use domain knowledge to address potentially causal links.\nTake Math 394: Causal Inference to learn more about causal inference.\n\nBut also consider the goals of your analysis. Often the research question isn’t causal.\nBottom Line: We often have to use imperfect data to make decisions. But whenever possible, use random assignment or find pseudo-random contexts for the strongest causal claims."
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#john-snow-cholera-and-shoe-leather-think-pair-share",
+    "href": "slides/lecture09_study-design.html#john-snow-cholera-and-shoe-leather-think-pair-share",
+    "title": "STAT 141",
+    "section": "John Snow, Cholera, and Shoe Leather: Think-pair-share",
+    "text": "John Snow, Cholera, and Shoe Leather: Think-pair-share\n\nJohn Snow was a 19th century physician who is considered a founder of modern epidemiology. In 1854, he was investigating the drivers of a cholera epidemic in London. He suspected that contaminated water was the key cause. He realized there seemed to be no rhyme or reason to the water source that homes were connected to, and that one source was near sewage collection points, and the other further upstream. By surveying residents of homes across London, Snow created a data set that allowed him to compare cholera outcomes between those with water servicing from each source.\n\n\nWhat columns would you expect to be in John Snow’s data set?\nWas this an experiment or an observational study?\nWhy is it important that water servicing wasn’t determined by location (e.g. city block or neighborhood)?\nStatistician David Freedman described Snow’s work as a historic statistical success story, in part because of the amount of “shoe leather” involved. What do you think he meant?"
+  },
+  {
+    "objectID": "slides/lecture09_study-design.html#recap",
+    "href": "slides/lecture09_study-design.html#recap",
+    "title": "STAT 141",
+    "section": "Recap",
+    "text": "Recap\n\nRandomized experiments:\n\nA study where researchers actively control an explanatory variable (i.e. randomize a “treatment”)\nCan lead directly to causal conclusions\n\nObservational study:\n\nA study where researchers observe and collect data but do not actively control them\nTypically cannot lead to causal conclusions due to confounding variables - can be possible with more assumptions and advanced techniques\nCan still generate meaningful evidence for research questions\n\n\n\n\nNote that both of these types of studies can involve surveys, and both can involve random selection of participants or cases"
   }
 ]

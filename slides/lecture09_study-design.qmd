@@ -1,7 +1,7 @@
 ---
 pagetitle: "Study Design"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -54,16 +54,59 @@ library(tidyverse)
 
 ------------------------------------------------------------------------
 
-## Reminders/Announcements
+### Announcements/Reminders
 
--   
+::: nonincremental
+
+- I'll post Quiz 1 scores/feedback on Gradescope around noon
+
+:::
+
+::: {.fragment .nonincremental}
+
+### Goals for Today
+
+-   Quiz revision logistics
+-   Recap sampling bias
+-   Discuss drawing conclusions from our sample and types of studies
+
+:::
+
 
 ------------------------------------------------------------------------
 
-## Goals for Today
+## Quiz Revisions Logistics
 
--   Recap sampling bias
--   Discuss drawing conclusions from our sample and types of studies
+Who is eligible:
+
+- If you scored below a 75%, you can revise your work for 50% credit back up to a 75%
+    - Ex. If you scored 60%, you can earn up to a 75% after revisions
+    - Ex. If you scored 30%, you can earn up to a 65% after revisions
+- You must have taken a quiz during lab to revise it
+
+------------------------------------------------------------------------
+
+## Quiz Revisions Logistics
+
+How to submit revisions:
+
+- Review your in-class quiz, scores, and feedback on Gradescope
+- For any questions where you lost points, each revision item should include:
+    1. Name of the question part (ex. "Q2(a)")
+    2. Brief explanation (1-2 sentences) of where the original response went wrong
+    3. Your revised, **complete** solution (even if your work was partially correct before)
+- Submit your compiled revisions as a PDF on Gradescope by **Monday 9/28 at 11:59pm**
+
+------------------------------------------------------------------------
+
+## Quiz Revisions Logistics
+
+Resources you can use:
+
+- You **can (should!)** use all of your regularly permitted course resources as you revise (online slides, your notes, your assignments)
+- You **can not** discuss the quiz or revisions with other students or with the course assistants
+- You **can** ask me clarifying questions in office hours
+
 
 # Data Collection
 
@@ -119,13 +162,19 @@ Of the 10 million people surveyed, more than 2.4 million responded with 57% indi
 
 <!-- Additionally, nonresponse bias. -->
 
-<br> <br> <br> <br> <br> <br>
+<br> <br> <br>
 
 ::: fragment
 
-**Note:** The response rate (less than 25%) is not the problem here - it's who is responding!
+**Takeaways:** 
 
 :::
+
+- The sample size is huge! But large $n$ can still have sampling bias.
+- The response rate (less than 25%) is not the problem here - it's who is responding!
+- Gallup predicted Roosevelt would win based on a survey of only **50,000** people
+- Quality over quantity!
+
 
 ------------------------------------------------------------------------
 
@@ -139,15 +188,6 @@ Of the 10 million people surveyed, more than 2.4 million responded with 57% indi
 
 -   In survey statistics, we can create **survey weights** to adjust for potential nonresponse bias.
 
-------------------------------------------------------------------------
-
-## Is Bigger Always Better?
-
-For our **Literary Digest Example**, Gallup predicted Roosevelt would win based on a survey of **50,000** people (instead of 2.4 million).
-
-<br><br>
-
-Quality over quantity! 
 
 ------------------------------------------------------------------------
 
@@ -306,8 +346,7 @@ Correlation does not imply causation ... but sometimes there's causation!
 
 <br><br>
 
--   Academics in quantitative fields can be **very** sensitive to implications of causal claims - be careful with your vocab choices ("caused" vs "is associated with" vs "trends with"). 
--   At the same time, p-hacking (for both causal and correlational findings) is a common unethical practice! We'll return to this.
+-   Those working in quantitative fields can be **very** sensitive to implications of causal claims - be careful with your vocab choices ("caused" vs "is associated with" vs "trends with"). 
 
 
 # Types of Studies
@@ -394,10 +433,10 @@ countdown::countdown(5)
 
 - **Randomized experiments**:
     - A study where researchers actively control an explanatory variable (i.e. randomize a "treatment")
-    - Can lead to causal conclusions 
+    - Can lead directly to causal conclusions 
 - **Observational study**: 
     - A study where researchers observe and collect data but do not actively control them
-    - Generally cannot lead to causal conclusions due to confounding variables, unless we make more assumptions and use more advanced causal inference methods
+    - Typically cannot lead to causal conclusions due to confounding variables - can be possible with more assumptions and advanced techniques 
     - Can still generate meaningful evidence for research questions
     
 <br> 

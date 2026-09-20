@@ -144,17 +144,54 @@
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 4</span></p>
 </div></div>
 </section>
-<section id="remindersannouncements" class="slide level2">
-<h2>Reminders/Announcements</h2>
+<section class="slide level2">
+
+<h3 id="announcementsreminders">Announcements/Reminders</h3>
 <ul>
-<li class="fragment"></li>
+<li>I’ll post Quiz 1 scores/feedback on Gradescope around noon</li>
+</ul>
+<div class="fragment">
+<h3 id="goals-for-today">Goals for Today</h3>
+<ul>
+<li>Quiz revision logistics</li>
+<li>Recap sampling bias</li>
+<li>Discuss drawing conclusions from our sample and types of studies</li>
+</ul>
+</div>
+</section>
+<section id="quiz-revisions-logistics" class="slide level2">
+<h2>Quiz Revisions Logistics</h2>
+<p>Who is eligible:</p>
+<ul>
+<li class="fragment">If you scored below a 75%, you can revise your work for 50% credit back up to a 75%
+<ul>
+<li class="fragment">Ex. If you scored 60%, you can earn up to a 75% after revisions</li>
+<li class="fragment">Ex. If you scored 30%, you can earn up to a 65% after revisions</li>
+</ul></li>
+<li class="fragment">You must have taken a quiz during lab to revise it</li>
 </ul>
 </section>
-<section id="goals-for-today" class="slide level2">
-<h2>Goals for Today</h2>
+<section id="quiz-revisions-logistics-1" class="slide level2">
+<h2>Quiz Revisions Logistics</h2>
+<p>How to submit revisions:</p>
 <ul>
-<li class="fragment">Recap sampling bias</li>
-<li class="fragment">Discuss drawing conclusions from our sample and types of studies</li>
+<li class="fragment">Review your in-class quiz, scores, and feedback on Gradescope</li>
+<li class="fragment">For any questions where you lost points, each revision item should include:
+<ol type="1">
+<li class="fragment">Name of the question part (ex. “Q2(a)”)</li>
+<li class="fragment">Brief explanation (1-2 sentences) of where the original response went wrong</li>
+<li class="fragment">Your revised, <strong>complete</strong> solution (even if your work was partially correct before)</li>
+</ol></li>
+<li class="fragment">Submit your compiled revisions as a PDF on Gradescope by <strong>Monday 9/28 at 11:59pm</strong></li>
+</ul>
+</section>
+<section id="quiz-revisions-logistics-2" class="slide level2">
+<h2>Quiz Revisions Logistics</h2>
+<p>Resources you can use:</p>
+<ul>
+<li class="fragment">You <strong>can (should!)</strong> use all of your regularly permitted course resources as you revise (online slides, your notes, your assignments)</li>
+<li class="fragment">You <strong>can not</strong> discuss the quiz or revisions with other students or with the course assistants</li>
+<li class="fragment">You <strong>can</strong> ask me clarifying questions in office hours</li>
 </ul>
 </section>
 <section>
@@ -212,10 +249,16 @@
 <p><strong>Non-response bias? Sample creation issues?</strong></p>
 <!-- Sample generated using lists of phone numbers, drivers registrations, COUNTRY CLUB MEMBERSHIPS!! At the height of the depression. Sampling skewed heavily wealthy, in an election greatly determined by economic policy. -->
 <!-- Additionally, nonresponse bias. -->
-<p><br> <br> <br> <br> <br> <br></p>
+<p><br> <br> <br></p>
 <div class="fragment">
-<p><strong>Note:</strong> The response rate (less than 25%) is not the problem here - it’s who is responding!</p>
+<p><strong>Takeaways:</strong></p>
 </div>
+<ul>
+<li class="fragment">The sample size is huge! But large <span class="math inline">\(n\)</span> can still have sampling bias.</li>
+<li class="fragment">The response rate (less than 25%) is not the problem here - it’s who is responding!</li>
+<li class="fragment">Gallup predicted Roosevelt would win based on a survey of only <strong>50,000</strong> people</li>
+<li class="fragment">Quality over quantity!</li>
+</ul>
 </section>
 <section id="tackling-nonresponse-bias" class="slide level2">
 <h2>Tackling Nonresponse bias</h2>
@@ -229,12 +272,6 @@
 <li class="fragment"><p>Explore key demographic variables to see how respondents and non-respondents vary.</p></li>
 <li class="fragment"><p>In survey statistics, we can create <strong>survey weights</strong> to adjust for potential nonresponse bias.</p></li>
 </ul>
-</section>
-<section id="is-bigger-always-better" class="slide level2">
-<h2>Is Bigger Always Better?</h2>
-<p>For our <strong>Literary Digest Example</strong>, Gallup predicted Roosevelt would win based on a survey of <strong>50,000</strong> people (instead of 2.4 million).</p>
-<p><br><br></p>
-<p>Quality over quantity!</p>
 </section>
 <section id="thoughts-on-sampling" class="slide level2">
 <h2>Thoughts on Sampling</h2>
@@ -373,8 +410,7 @@
 </ul>
 <p><br><br></p>
 <ul>
-<li class="fragment">Academics in quantitative fields can be <strong>very</strong> sensitive to implications of causal claims - be careful with your vocab choices (“caused” vs “is associated with” vs “trends with”).</li>
-<li class="fragment">At the same time, p-hacking (for both causal and correlational findings) is a common unethical practice! We’ll return to this.</li>
+<li class="fragment">Those working in quantitative fields can be <strong>very</strong> sensitive to implications of causal claims - be careful with your vocab choices (“caused” vs “is associated with” vs “trends with”).</li>
 </ul>
 </section></section>
 <section>
@@ -447,7 +483,7 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_c33d5c66" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_ad3213c2" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -457,12 +493,12 @@
 <li class="fragment"><strong>Randomized experiments</strong>:
 <ul>
 <li class="fragment">A study where researchers actively control an explanatory variable (i.e.&nbsp;randomize a “treatment”)</li>
-<li class="fragment">Can lead to causal conclusions</li>
+<li class="fragment">Can lead directly to causal conclusions</li>
 </ul></li>
 <li class="fragment"><strong>Observational study</strong>:
 <ul>
 <li class="fragment">A study where researchers observe and collect data but do not actively control them</li>
-<li class="fragment">Generally cannot lead to causal conclusions due to confounding variables, unless we make more assumptions and use more advanced causal inference methods</li>
+<li class="fragment">Typically cannot lead to causal conclusions due to confounding variables - can be possible with more assumptions and advanced techniques</li>
 <li class="fragment">Can still generate meaningful evidence for research questions</li>
 </ul></li>
 </ul>
