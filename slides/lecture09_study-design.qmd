@@ -59,6 +59,7 @@ library(tidyverse)
 ::: nonincremental
 
 - I'll post Quiz 1 scores/feedback on Gradescope around noon
+- Quiz 2 is this Thursday, material from HW 3 
 
 :::
 
@@ -236,25 +237,19 @@ Of the 10 million people surveyed, more than 2.4 million responded with 57% indi
 
 ### Typical Analysis Goals
 
-For these goals we'll differentiate between the roles of the variables:
+For these goals we'll differentiate between the roles of these variables:
 
 -   **Response variable**: Variable I want to better understand
 
 -   **Explanatory/predictor variables**: Variables I think might explain/predict the response variable
 
-::: fragment
+::: {.fragment .nonincremental}
 **Q**: What is the role of each variable for each goal?
-:::
 
-::: fragment
 → *How many trees are in the Amazon?*
-:::
 
-::: fragment
 → *Can I use remotely sensed data to predict forest types in the Amazon?*
-:::
 
-::: fragment
 → *Do financial contracts prevent people from deforesting their land in the Amazon?*
 :::
 
