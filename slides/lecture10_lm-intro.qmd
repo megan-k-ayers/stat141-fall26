@@ -1,7 +1,7 @@
 ---
 pagetitle: "Linear Models I: Introduction"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -195,7 +195,7 @@ ggplot(data = hitters,
 
 ::::: columns
 ::: {.column width=30%}
--   A simple linear regression model would be suitable for these data:
+-   A simple linear regression model could represent this data:
 
 ::: fragment
 $$
@@ -381,7 +381,7 @@ cat(paste0(temp$data, ": ", temp$cor_xy, "   "))
 
 ```{r}
 #| echo: false
-countdown::countdown(3)
+countdown::countdown(2)
 ```
 
 ------------------------------------------------------------------------
@@ -476,6 +476,7 @@ $$
     -   Based on the **population**
     -   Unknown if we don't have data on the whole population
     -   EX: $\beta_0$ and $\beta_1$, AKA population coefficients
+    
 :::
 
 ::: column
@@ -488,6 +489,8 @@ $$
     -   Known
     -   Usually estimate a population parameter
     -   EX: $\widehat{\beta}_0$ and $\widehat{\beta}_1$, AKA estimated or "fitted" coefficients
+    - No $\epsilon$ over here!
+    
 :::
 :::::
 
@@ -586,7 +589,7 @@ ggplot(data = temp,
 $$ 
 \begin{align}
 \widehat{\beta}_1 &= \frac{ \sum_{i = 1}^n (x_i - \bar{x}) (y_i - \bar{y})}{ \sum_{i = 1}^n (x_i - \bar{x})^2} \\
-\widehat{\beta}_o &= \bar{y} - \widehat{\beta}_1 \bar{x}
+\widehat{\beta}_0 &= \bar{y} - \widehat{\beta}_1 \bar{x}
 \end{align}
 $$ where
 
@@ -610,7 +613,7 @@ $$
 $$ 
 \begin{align}
 \widehat{\beta}_1 &= \frac{ \sum_{i = 1}^n (x_i - \bar{x}) (y_i - \bar{y})}{ \sum_{i = 1}^n (x_i - \bar{x})^2} = \frac{s_y}{s_x}r \\
-\widehat{\beta}_o &= \bar{y} - \widehat{\beta}_1 \bar{x}
+\widehat{\beta}_0 &= \bar{y} - \widehat{\beta}_1 \bar{x}
 \end{align}
 $$ where
 

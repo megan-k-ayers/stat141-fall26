@@ -157,8 +157,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading12.qmd
-            # - type: Slides
-            #   href: slides/lecture10_lm-intro.qmd
+            - type: Slides
+              href: slides/lecture10_lm-intro.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture10_lm-intro_handout.pdf
         - topic: "Lab: Sampling, Study Design & SLR | Quiz 2"
           display-date: Thursday, Sept 24
           date: 9/24/26

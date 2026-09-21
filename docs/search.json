@@ -84,6 +84,83 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture10_lm-intro.html#typical-analysis-goals",
+    "href": "slides/lecture10_lm-intro.html#typical-analysis-goals",
+    "title": "STAT 141",
+    "section": "Typical Analysis Goals",
+    "text": "Typical Analysis Goals\n\nDescriptive: Want to estimate quantities (summary statistics) related to the population.\n→ How many trees are in the Amazon?\n\n\n\nPredictive: Want to predict the value of a variable.\n→ Can I use remotely sensed data to predict forest types in the Amazon?\n\n\n\nCausal: Want to determine if changes in a variable cause changes in another variable.\n→ Do financial contracts prevent people from deforesting their land in the Amazon?\n\n\n\nWe will focus mainly on descriptive modeling in this course, and occasionally on predictive modeling (take Stat 243: Statistical Learning to learn more). If you want to learn more about causality, take Stat 394: Causal Inference."
+  },
+  {
+    "objectID": "slides/lecture10_lm-intro.html#form-of-the-model",
+    "href": "slides/lecture10_lm-intro.html#form-of-the-model",
+    "title": "STAT 141",
+    "section": "Form of the Model",
+    "text": "Form of the Model\n\n\\[\ny = f(x) + \\epsilon\n\\]\nwhere \\(\\epsilon\\) represents an error term.\n\nGoal:\n\nDetermine a reasonable form for \\(f()\\). (Ex: Line, curve, …)\nEstimate \\(f()\\) with \\(\\widehat{f}()\\) (“f hat”) using the data.\nGenerate predicted values: \\(\\widehat y = \\widehat{f}(x)\\)."
+  },
+  {
+    "objectID": "slides/lecture10_lm-intro.html#finding-the-right-coefficients",
+    "href": "slides/lecture10_lm-intro.html#finding-the-right-coefficients",
+    "title": "STAT 141",
+    "section": "Finding the Right Coefficients",
+    "text": "Finding the Right Coefficients\n\nWe want to find \\(\\beta_1\\) (slope) and \\(\\beta_0\\) (intercept) so that the line fits our data well\n→ Need summary statistics that quantify the strength and relationship of the linear trend\n→ These will help us find a value for slope and determine how well a line fits our data"
+  },
+  {
+    "objectID": "slides/lecture10_lm-intro.html#sample-correlation-coefficient",
+    "href": "slides/lecture10_lm-intro.html#sample-correlation-coefficient",
+    "title": "STAT 141",
+    "section": "(Sample) Correlation Coefficient",
+    "text": "(Sample) Correlation Coefficient\n\n\n\nMeasures the strength and direction of linear relationship between two quantitative variables\nSymbol: \\(r\\)\nAlways between -1 and 1\nSign indicates the direction of the relationship\nMagnitude indicates the strength of the linear relationship\n\n\n\ncor(hitters$HmRun, hitters$Salary)\n\n[1] 0.3430281\n\n\n\n\n\n\n\n\\(r\\) is calculated using the sample means (\\(\\bar{x}\\), \\(\\bar{y}\\)) and standard deviations (\\(s_x\\), \\(s_y\\)) of the variables \\(x\\) and \\(y\\):\n\n\n\\[r = \\frac{1}{s_x s_y} \\cdot \\frac{1}{n-1} \\sum_{i =1}^n (x_i - \\bar{x} )  (y_i - \\bar{y} ) \\]"
+  },
+  {
+    "objectID": "slides/lecture10_lm-intro.html#sidenote-sample-covariance",
+    "href": "slides/lecture10_lm-intro.html#sidenote-sample-covariance",
+    "title": "STAT 141",
+    "section": "Sidenote: (Sample) Covariance",
+    "text": "Sidenote: (Sample) Covariance\nSample Correlation Coefficient: \\[\nr = \\frac{1}{s_x s_y} \\cdot \\frac{1}{n-1} \\sum_{i =1}^n (x_i - \\bar{x} )  (y_i - \\bar{y} )\n\\]\n\nSample Covariance:\n\\[\ncov(x, y) = r \\times s_x s_y = \\frac{1}{n-1} \\sum_{i =1}^n (x_i - \\bar{x} )  (y_i - \\bar{y} )\n\\]\n\n\nThe sample correlation coefficient is a standardized sample covariance, which is what causes it to only take values from -1 to 1. The sample covariance can take any real value."
+  },
+  {
+    "objectID": "slides/lecture10_lm-intro.html#correlation-covariance-and-slope",
+    "href": "slides/lecture10_lm-intro.html#correlation-covariance-and-slope",
+    "title": "STAT 141",
+    "section": "Correlation, Covariance, and Slope",
+    "text": "Correlation, Covariance, and Slope\n\n\n\nQ: Which will have the largest positive correlation?\n\n\nQ: Which will have the largest negative correlation?\n\n\nQ: Which will have correlation closest to 0?\n\n\n\n\nA: 0.7568    B: -0.2172    C: -0.5373    D: -0.1133    E: 0.863    F: -0.8343   \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCorrelation: how strong is the linear relationship relative to noise\nCorrelation and slope are related, but not the same (ex. A vs E)"
+  },
+  {
+    "objectID": "slides/lecture10_lm-intro.html#new-example",
+    "href": "slides/lecture10_lm-intro.html#new-example",
+    "title": "STAT 141",
+    "section": "New Example",
+    "text": "New Example\n\n\n\n# Correlation coefficients\ndat2 %&gt;%\n  group_by(dataset) %&gt;%\n  summarize(cor = cor(x, y))\n\n# A tibble: 12 × 2\n   dataset        cor\n   &lt;chr&gt;        &lt;dbl&gt;\n 1 away       -0.0641\n 2 bullseye   -0.0686\n 3 circle     -0.0683\n 4 dino       -0.0645\n 5 dots       -0.0603\n 6 h_lines    -0.0617\n 7 high_lines -0.0685\n 8 slant_down -0.0690\n 9 star       -0.0630\n10 v_lines    -0.0694\n11 wide_lines -0.0666\n12 x_shape    -0.0656\n\n\n\n\nConclude that \\(x\\) and \\(y\\) have the same relationship across these different datasets because the correlation is the same?"
+  },
+  {
+    "objectID": "slides/lecture10_lm-intro.html#residual-plot-preview",
+    "href": "slides/lecture10_lm-intro.html#residual-plot-preview",
+    "title": "STAT 141",
+    "section": "Residual plot preview",
+    "text": "Residual plot preview\nWe can visualize the accuracy of a linear model using residual plots:\n\n\n\n\n\n\n\n\n\n\nWe’ll learn to use different residual plots to more formally assess linear model assumptions"
+  },
+  {
+    "objectID": "slides/lecture10_lm-intro.html#activity-extra-practice-interpreting-coefficients",
+    "href": "slides/lecture10_lm-intro.html#activity-extra-practice-interpreting-coefficients",
+    "title": "STAT 141",
+    "section": "Activity: Extra practice interpreting coefficients",
+    "text": "Activity: Extra practice interpreting coefficients\n\n\n\nx &lt;- read.csv(\"data/qods-anon.csv\")\nnames(x) &lt;- c(\"lab_difficulty\", \"hw_difficulty\")\n\nset.seed(123)\nggplot(x, aes(x = lab_difficulty, y = hw_difficulty)) +\n  geom_jitter() +\n  geom_smooth(method = \"lm\", se = FALSE) +\n  theme_classic()\n\n\n\n\n\n\n\n\n\ncoef(lm(hw_difficulty ~ lab_difficulty, x))\n\n   (Intercept) lab_difficulty \n     1.9365233      0.6022233 \n\n\n\n\nQ1: How should we interpret the intercept?\nQ2: How should we interpret the coefficient on lab_difficulty?"
+  },
+  {
+    "objectID": "slides/lecture10_lm-intro.html#recap",
+    "href": "slides/lecture10_lm-intro.html#recap",
+    "title": "STAT 141",
+    "section": "Recap",
+    "text": "Recap\nWe considered the simple linear model:\n\n\\[\ny = \\beta_0 + \\beta_1 x + \\epsilon\n\\]\n\n\n\\(\\beta_0\\) and \\(\\beta_1\\) are fixed numbers (“coefficients”)\n\\(\\beta_0\\) represents the intercept of a line\n\\(\\beta_1\\) represents the slope of a line\n\n\nWe estimate these population coefficients using sample data via the method of least squares, which finds \\(\\widehat{\\beta}_0\\) and \\(\\widehat{\\beta}_1\\) such that the sum of squared residuals is minimized.\n\n\nKnowing \\(\\widehat{\\beta}_0\\) and \\(\\widehat{\\beta}_1\\) allows us to predict values of \\(y\\) given specific values of \\(x\\)\nThere is a precise way that we should interpret \\(\\widehat{\\beta}_0\\) and \\(\\widehat{\\beta}_1\\) (see slides)"
+  },
+  {
+    "objectID": "slides/lecture10_lm-intro.html#next-time-more-simple-linear-regression",
+    "href": "slides/lecture10_lm-intro.html#next-time-more-simple-linear-regression",
+    "title": "STAT 141",
+    "section": "Next time: more simple linear regression",
+    "text": "Next time: more simple linear regression\n\nWe’ll use R to compute the least squares line and the values of \\(\\widehat{\\beta}_0\\) and \\(\\widehat{\\beta}_1\\) (we’ll start practicing in lab).\nWe’ll introduce the formal assumptions we must make when doing linear regression, and diagnostic plots to check these assumptions."
+  },
+  {
     "objectID": "slides/lecture08_data-collection-sampling.html#goals-for-today",
     "href": "slides/lecture08_data-collection-sampling.html#goals-for-today",
     "title": "STAT 141",

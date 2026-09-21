@@ -226,7 +226,7 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_b511251e" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_4bb5a887" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -350,7 +350,7 @@ $ NewLeague &lt;fct&gt; N, A, N, N, A, A, A, N, A, A, N, N, A, N, N, A, N, N, N,
 <div class="columns">
 <div class="column" style="width:30%;">
 <ul>
-<li class="fragment">A simple linear regression model would be suitable for these data:</li>
+<li class="fragment">A simple linear regression model could represent this data:</li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[
@@ -480,7 +480,7 @@ cov(x, y) = r \times s_x s_y = \frac{1}{n-1} \sum_{i =1}^n (x_i - \bar{x} )  (y_
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_24e49c13" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_3c1d6f29" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -595,6 +595,7 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 <li class="fragment">Known</li>
 <li class="fragment">Usually estimate a population parameter</li>
 <li class="fragment">EX: <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span>, AKA estimated or “fitted” coefficients</li>
+<li class="fragment">No <span class="math inline">\(\epsilon\)</span> over here!</li>
 </ul></li>
 </ul>
 </div></div>
@@ -669,7 +670,7 @@ e_i = y_i - \widehat{y}_i
 <p><span class="math display">\[
 \begin{align}
 \widehat{\beta}_1 &amp;= \frac{ \sum_{i = 1}^n (x_i - \bar{x}) (y_i - \bar{y})}{ \sum_{i = 1}^n (x_i - \bar{x})^2} \\
-\widehat{\beta}_o &amp;= \bar{y} - \widehat{\beta}_1 \bar{x}
+\widehat{\beta}_0 &amp;= \bar{y} - \widehat{\beta}_1 \bar{x}
 \end{align}
 \]</span> where</p>
 <p><span class="math display">\[
@@ -689,7 +690,7 @@ e_i = y_i - \widehat{y}_i
 <p><span class="math display">\[
 \begin{align}
 \widehat{\beta}_1 &amp;= \frac{ \sum_{i = 1}^n (x_i - \bar{x}) (y_i - \bar{y})}{ \sum_{i = 1}^n (x_i - \bar{x})^2} = \frac{s_y}{s_x}r \\
-\widehat{\beta}_o &amp;= \bar{y} - \widehat{\beta}_1 \bar{x}
+\widehat{\beta}_0 &amp;= \bar{y} - \widehat{\beta}_1 \bar{x}
 \end{align}
 \]</span> where</p>
 <p><span class="math display">\[
@@ -903,7 +904,7 @@ e_i = y_i - \widehat{y}_i
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_8fcb21eb" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_4f7c97d4" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
