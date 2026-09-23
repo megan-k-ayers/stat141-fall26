@@ -487,9 +487,9 @@ $$
 -   Statistics:
     -   Based on the **sample** data
     -   Known
-    -   Usually estimate a population parameter
+    -   Usually **estimate** a population parameter (cutie little hats $\widehat{}$)
     -   EX: $\widehat{\beta}_0$ and $\widehat{\beta}_1$, AKA estimated or "fitted" coefficients
-    - No $\epsilon$ over here!
+    -   No $\epsilon$ over here!
     
 :::
 :::::
