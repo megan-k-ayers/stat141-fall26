@@ -1,7 +1,7 @@
 ---
 date: 10/02/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---

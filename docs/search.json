@@ -791,6 +791,34 @@
     "text": "Demo: Finding the lab files, tour of RStudio, starting the lab"
   },
   {
+    "objectID": "readings/reading16.html",
+    "href": "readings/reading16.html",
+    "title": "Stat 141: Readings for October 2, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nMD 6.2"
+  },
+  {
+    "objectID": "readings/reading16.html#reading",
+    "href": "readings/reading16.html#reading",
+    "title": "Stat 141: Readings for October 2, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nMD 6.2"
+  },
+  {
+    "objectID": "readings/reading14.html",
+    "href": "readings/reading14.html",
+    "title": "Stat 141: Readings for September 28, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nMD 5.2 (focus on concepts in 5.2.2 and 5.2.3, but 5.2.1 has info on the data they are working with)"
+  },
+  {
+    "objectID": "readings/reading14.html#reading",
+    "href": "readings/reading14.html#reading",
+    "title": "Stat 141: Readings for September 28, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nMD 5.2 (focus on concepts in 5.2.2 and 5.2.3, but 5.2.1 has info on the data they are working with)"
+  },
+  {
     "objectID": "readings/reading12.html",
     "href": "readings/reading12.html",
     "title": "Stat 141: Readings for September 23, 2026",
@@ -929,6 +957,20 @@
     "title": "Stat 141: Readings for September 25, 2026",
     "section": "",
     "text": "Before coming to lecture today, please read the following material:\n\nIMS (2nd edition) Section 7.1 (This will cover a lot of the same ground as the last reading, but is an opportunity to see some more examples and a bit of a deeper treatment on residuals)"
+  },
+  {
+    "objectID": "readings/reading15.html",
+    "href": "readings/reading15.html",
+    "title": "Stat 141: Readings for September 30, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nMD 5.3.2, 6.1"
+  },
+  {
+    "objectID": "readings/reading15.html#reading",
+    "href": "readings/reading15.html#reading",
+    "title": "Stat 141: Readings for September 30, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nMD 5.3.2, 6.1"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#goals-for-today",
@@ -1951,5 +1993,131 @@
     "title": "STAT 141",
     "section": "Recap",
     "text": "Recap\n\nRandomized experiments:\n\nA study where researchers actively control an explanatory variable (i.e. randomize a “treatment”)\nCan lead directly to causal conclusions\n\nObservational study:\n\nA study where researchers observe and collect data but do not actively control them\nTypically cannot lead to causal conclusions due to confounding variables - can be possible with more assumptions and advanced techniques\nCan still generate meaningful evidence for research questions\n\n\n\n\nNote that both of these types of studies can involve surveys, and both can involve random selection of participants or cases"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#form-of-the-model",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#form-of-the-model",
+    "title": "STAT 141",
+    "section": "Form of the Model",
+    "text": "Form of the Model\n\n\\[\ny = f(x) + \\epsilon\n\\]\nwhere \\(\\epsilon\\) represents an error term.\n\nGoal:\n\nDetermine a reasonable form for \\(f()\\). (Ex: Line, curve, …)\nEstimate \\(f()\\) with \\(\\widehat{f}()\\) using the data.\nGenerate predicted values: \\(\\widehat y = \\widehat{f}(x)\\)."
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#regression-goals",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#regression-goals",
+    "title": "STAT 141",
+    "section": "Regression goals",
+    "text": "Regression goals\nWe’ll use linear regression for 2 tasks (mostly the first):\n\nExplaining relationships between variables in a data set so that we can infer relationships in the population\n\nEx. We observe that a sample of Reed students who sleep more have higher test scores, infer about the population in general\nWe focus most on coefficients\n\nPredicting values of the response variable based on values of the explanatory variable\n\nEx. Using data from 1960-2015, we predict the atmosphere will contain 410 ppm CO2 in 2025\nWe focus most on fitted values and residuals"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#linear-regression-assumptions",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#linear-regression-assumptions",
+    "title": "STAT 141",
+    "section": "Linear Regression Assumptions",
+    "text": "Linear Regression Assumptions\nWe can always find the line of best fit to explore data, but…\n\nTo make accurate predictions or inferences, certain conditions should be met.\n\n\nTo responsibly use linear regression tools for prediction or inference, we require:\n\n\n\nLinearity: The relationship between explanatory and response variables must be approximately linear\n\nCheck using scatterplot of data, or residual plot\n\n\n\n\n\nIndependence: The observations should be independent of one another.\n\nCan check by considering data context, and\nsometimes by looking at scatterplots/residual plots\n\n\n\n\n\nNormality: The distribution of residuals should be approximately bell-shaped, unimodal, symmetric, and centered at 0 at every “slice” of the explanatory variable\n\nSimple check: look at histogram of residuals\nBetter to use a Q-Q plot\n\n\n\n\n\nEqual Variability: Variance of residuals should be roughly constant across data set. Also called “homoscedasticity”. Models that violate this assumption are sometimes called “heteroscedastic”\n\nCheck using residual plot."
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#a-cute-way-to-remember-this-line",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#a-cute-way-to-remember-this-line",
+    "title": "STAT 141",
+    "section": "A cute way to remember this: “LINE”",
+    "text": "A cute way to remember this: “LINE”\n\nLinearity\nIndependence\nNormality\nEqual Variability\n\n\n\nWe assess these using diagnostic plots (y vs x scatterplot, residual plot, residual histogram, q-q plot)\nLater in the course, we’ll learn how I, N, and E are required for inference"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-linearity",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-linearity",
+    "title": "STAT 141",
+    "section": "Assessing conditions: Linearity",
+    "text": "Assessing conditions: Linearity\n\nLinearity: The relationship between explanatory and response variables must be approximately linear\n\n\n\n\n\n\n\n\n\n\nPoints should be evenly distributed above and below the regression line at each “slice” of x\nIf data is non-linear:\n\nSlope does not adequately describe relationship and predictions can be very inaccurate\nMore advanced modeling techniques should be used instead (take STAT 243)"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-linearity-1",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-linearity-1",
+    "title": "STAT 141",
+    "section": "Assessing conditions: Linearity",
+    "text": "Assessing conditions: Linearity\n\n\n\n\n\n\n\n\n\n\nResidual plots can also be useful for checking linearity\nThese plot model residuals against the fitted values\nWe don’t want to see any trends here"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-linearity-code-example",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-linearity-code-example",
+    "title": "STAT 141",
+    "section": "Assessing conditions: Linearity (Code Example)",
+    "text": "Assessing conditions: Linearity (Code Example)\n\nlibrary(moderndive)\n\n# Creating the model\nlm1 &lt;- lm(data = my_df, y1 ~ x)\n\n# *** Pulling out model inputs, residuals, and fitted values ***\nres1 &lt;- get_regression_points(lm1)  \n\n# Plotting residuals vs fitted values\n(g1 &lt;- ggplot(res1, aes(x = y1_hat, y = residual)) + \n  geom_point() + \n  theme_bw() + \n  geom_smooth(method = \"lm\", se = F) +   # Helps check for any trend - want a flat line here\n  labs(x = \"fitted value\", y = \"residual\", title = \"Linear\"))"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-independence",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-independence",
+    "title": "STAT 141",
+    "section": "Assessing conditions: Independence",
+    "text": "Assessing conditions: Independence\n\nIndependence: The observations should be independent of one another\n\n\n\n\n\n\n\n\n\n\nIf observations are not independent, inference about the population may be misleading.\nThink about independence between observations (rows in the data frame), not necessarily between variables (columns in the data frame).\nWe usually assess independence qualitatively: Are observations inherently connected?"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-normality-of-residuals",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-normality-of-residuals",
+    "title": "STAT 141",
+    "section": "Assessing conditions: Normality (of residuals)",
+    "text": "Assessing conditions: Normality (of residuals)\n\nNormality: The distribution of residuals should be bell-shaped, unimodal, symmetric, and centered at 0 at every “slice” of the explanatory variable"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-normality-of-residuals-1",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-normality-of-residuals-1",
+    "title": "STAT 141",
+    "section": "Assessing conditions: Normality (of residuals)",
+    "text": "Assessing conditions: Normality (of residuals)\n\nNormality: The distribution of residuals should be bell-shaped, unimodal, symmetric, and centered at 0 at every “slice” of the explanatory variable\n\n\n\n\n\n\n\n\n\nIf residuals are non-Normal…\n\nSome predictions can be very inaccurate\nInference about the population may be misleading"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-equal-variability-of-residuals",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-equal-variability-of-residuals",
+    "title": "STAT 141",
+    "section": "Assessing conditions: Equal variability (of residuals)",
+    "text": "Assessing conditions: Equal variability (of residuals)\nEqual Variability: Variance of residuals should be approximately constant across the data\n\n\n\n\n\n\n\n\n\n\n\n\n\nResidual plots are also very useful for this\nIf equal variability isn’t met:\n\nInference about the population may be misleading\n(Potential) outliers in high-variability range are more influential"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#another-example-high-leverage-points",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#another-example-high-leverage-points",
+    "title": "STAT 141",
+    "section": "Another example: high leverage points",
+    "text": "Another example: high leverage points\nRemember the outlier example:\n\n\n\n\n\n\n\n\n\n\nWhat do diagnostics look like when we fit the teal model?"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#diagnosing-the-model",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#diagnosing-the-model",
+    "title": "STAT 141",
+    "section": "Diagnosing the model",
+    "text": "Diagnosing the model\n\n\n\n\n\n\n\n\n\n\nIn this case, can already see the outlier in the residual vs fitted plot."
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#what-to-do-with-high-leverage-points",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#what-to-do-with-high-leverage-points",
+    "title": "STAT 141",
+    "section": "What to do with high leverage points?",
+    "text": "What to do with high leverage points?\n\nDepends on context\nIt may be reasonable to remove them and refit the model\n\nIf we believe the data is the result of an error\nIf we are most focused on prediction for non-outliers, or if our population of interest does not include the outlier\n\nBut we shouldn’t remove outliers just because we don’t like the results that they produce\n\nEspecially if our goal is descriptive or explanatory, and the outlier represents a valid data point"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#recall-our-hitters-simple-linear-regression-model",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#recall-our-hitters-simple-linear-regression-model",
+    "title": "STAT 141",
+    "section": "Recall our hitters simple linear regression model",
+    "text": "Recall our hitters simple linear regression model\n\nmod &lt;- lm(Salary ~ HmRun, data = hitters)\n\n\n\n\n\n\n\n\n\n\n\nLet’s check if this meets the LINE assumptions\n\n\nQ: First, what does this graph tell us about Linearity?"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#residual-vs.-fitted-plot",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#residual-vs.-fitted-plot",
+    "title": "STAT 141",
+    "section": "Residual vs. fitted plot:",
+    "text": "Residual vs. fitted plot:\nRemember to use get_regression_points(mod) (not get_regression_TABLE) to get residuals and fitted values from a model.\n\n\n\nmod &lt;- lm(Salary ~ HmRun, data = hitters)\nres &lt;- get_regression_points(mod)\n\nggplot(res, aes(x = Salary_hat, y = residual)) + \n  geom_point(alpha = 0.5) + \n  geom_smooth(method = \"lm\", se = FALSE, color = \"deeppink2\") + \n  labs(x = \"fitted value\", y = \"residual\")\n\n\n\n\n\n\n\n\n\n   \n\nLinearity: ✅\n\n(geom_smooth() helps check this again)\n\nIndependence: ❓\nEqual Variability: ⚠️"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#checking-normality-residual-histogram",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#checking-normality-residual-histogram",
+    "title": "STAT 141",
+    "section": "Checking normality: residual histogram",
+    "text": "Checking normality: residual histogram\nRemember to use get_regression_points(mod) (not get_regression_TABLE) to get residuals and fitted values from a model.\n\n\nmod &lt;- lm(Salary ~ HmRun, data = hitters)\nres &lt;- get_regression_points(mod)\n\nggplot(res, aes(x = residual)) + \n  geom_histogram(bins = 30, color = \"white\") + \n  labs(x = \"Residual\")\n\n\n\n\n\n\n\n\n\n\nNormality: 🤔\n\nNot horrible but not great\nWe’ll look at a Q-Q plot to further assess!"
+  },
+  {
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#checking-normality-q-q-plot",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#checking-normality-q-q-plot",
+    "title": "STAT 141",
+    "section": "Checking normality: Q-Q plot",
+    "text": "Checking normality: Q-Q plot\n\nmod &lt;- lm(Salary ~ HmRun, data = hitters)\nres &lt;- get_regression_points(mod)\n\nggplot(res, aes(sample = residual)) + \n  geom_qq() +\n  geom_qq_line()\n\n\n\n\n\n\n\n\n\nNormality: 🚨"
   }
 ]

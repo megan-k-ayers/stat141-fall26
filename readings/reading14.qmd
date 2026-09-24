@@ -1,7 +1,7 @@
 ---
 date: 9/28/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -12,5 +12,5 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
--   MD 5.2
+-   MD 5.2 (focus on concepts in 5.2.2 and 5.2.3, but 5.2.1 has info on the data they are working with)
 

@@ -10,11 +10,11 @@ execute:
 
 In this lab, you will
 
--   Practice identifying different sampling strategies
 -   Conduct exploratory data analysis (EDA) techniques in R
 -   Build linear regression models with one dependent variable
 -   Interpret the estimated coefficients of linear regression models
 -   Use linear regression models to make new predictions
+-   Practice identifying different sampling strategies
 
 ### Add any collaborators here!
 
@@ -84,7 +84,7 @@ near_reed <- near_reed %>%
 ```
 
 
-**a.** Generate a scatterplot with `Crown_Width` as the explanatory variable and `Tree_Height` as the response. Be sure to include an informative title and axis labels to your plot using `labs()`. [Code only for this question]
+**a.** Generate a scatterplot with `Crown_Width` as the explanatory variable and `Tree_Height` as the response. [Code only for this question]
 
 *******************************************************************************
 

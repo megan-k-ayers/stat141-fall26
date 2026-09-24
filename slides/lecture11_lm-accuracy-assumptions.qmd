@@ -1,7 +1,7 @@
 ---
 pagetitle: "Linear Models II: Accuracy and Assumptions"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -60,9 +60,7 @@ library(moderndive)
 
 ::: {.fragment .nonincremental}
 
--   Fill out the [Week 4 Survey](https://tinyurl.com/stat141-4wk-survey) before EOD plz!!
-
-![https://tinyurl.com/stat141-4wk-survey](img/4wk-survey-qr.png){width=30%}
+-   I *highly* recommend doing the reading before Monday's class!
 
 :::
 
@@ -74,6 +72,7 @@ library(moderndive)
 -   Discuss model assumptions for linear regression
 -   Assess accuracy of linear regression models
 -   Discuss "extrapolation"
+-   If time - week 4 feedback
 
 ------------------------------------------------------------------------
 
@@ -154,8 +153,7 @@ $$
 We'll use linear regression for 2 tasks (mostly the first):
 
 -   **Explaining** relationships between variables in a data set so that we can **infer** relationships in the population
-    -   Ex. We observe that a sample of Reed students who sleep more have higher test scores
-    -   Based on this positive relationship in the sample, we might infer that sleep is associated with higher test scores for similar students **in general**
+    -   Ex. We observe that a sample of Reed students who sleep more have higher test scores, infer about the population **in general**
     -   We focus most on **coefficients**
 -   **Predicting** values of the response variable based on values of the explanatory variable
     -   Ex. Using data from 1960-2015, we predict the atmosphere will contain 410 ppm CO2 in 2025
@@ -353,7 +351,7 @@ predict(mod, newdata = new_cases)
     -   Called **extrapolation**
 
 
--   We could give our model a value of $x_\text{HmRun} = 20.5$, and we'd get out a numerical prediction for `Salary`. How is this different from the previous examples?
+<!-- -   We could give our model a value of $x_\text{HmRun} = 20.5$, and we'd get out a numerical prediction for `Salary`. How is this different from the previous examples? -->
 
 ------------------------------------------------------------------------
 
@@ -688,9 +686,10 @@ If residuals are non-Normal...
 
 :::
 
+
 ------------------------------------------------------------------------
 
-### Assessing conditions: Normality (of residuals) (Code Example)
+### Assessing conditions: Normality (of residuals) (QQ-Plot)
 
 **Normality:** The distribution of residuals should be "Normal"
 
@@ -813,16 +812,6 @@ ggplot(teal_mod) +
     - Especially if our goal is **descriptive** or **explanatory**, and the outlier represents a valid data point
 
 
-::: {.fragment}
-
-```{r}
-dat_no_outlier <- dat %>%
-  filter(x < 15)
-
-pink_mod <- lm(y ~ x, dat_no_outlier)
-```
-
-:::
 
 
 ------------------------------------------------------------------------
@@ -1023,11 +1012,11 @@ get_regression_summaries(mod)$r_squared
 - The coefficient of determination, $R^2$, gives a measure of how well a regression line fits our data
 
 - Key functions:
-    - `lm()` to fit models
-    - `get_regression_table()` to calculate coefficients
-    - `get_regression_points()` to work with residuals/fitted values
-    - `get_regression_summaries` to calculate $R^2$
-    - `predict()` to make predictions for new $x$ values using a fitted model
+    - `lm()` to fit a model
+    - `get_regression_table()` to calculate coefficients from a model
+    - `get_regression_points()` to grab residuals/fitted values from a model
+    - `get_regression_summaries` to calculate $R^2$ from a model
+    - `predict()` to make predictions for new $x$ values from a model
 
 
 ### Next Time
@@ -1035,3 +1024,109 @@ get_regression_summaries(mod)$r_squared
 - Regression with one categorical variable
 
 :::
+
+------------------------------------------------------------------------
+
+### 4 week feedback - pace
+
+```{r echo=F}
+x <- read.csv("data/Week4-feedback.csv")
+names(x) <- c("pace", "workload", "labs", "hw", "quiz", "megan-OH", "ca-OH")
+ggplot(x, aes(x = pace, fill = pace)) + geom_bar() + guides(fill = "none") +
+  scale_fill_manual(values = c("#00BA38", "#F8766D", "#619CFF")) +
+  theme(axis.text = element_text(size=14))
+```
+
+------------------------------------------------------------------------
+
+### 4 week feedback (workload)
+
+```{r echo=F}
+x$workload <- factor(x$workload, levels = c("Not quite enough work",
+                                            "Just the right amount of work",
+                                            "A little too much work",
+                                            "Way too much work"))
+ggplot(x, aes(x = workload, fill = workload)) + geom_bar() + guides(fill = "none") +
+  scale_fill_manual(values = c("#BD7FF8", "#00BA38",  "#619CFF", "#F8766D")) +
+  theme(axis.text = element_text(size=14))
+```
+
+------------------------------------------------------------------------
+
+### 4 week feedback (labs and HW)
+
+::::: columns
+
+::: column
+
+```{r echo=F}
+x$labs <- factor(x$labs, levels = c("Very helpful", "Somewhat helpful",
+                                        "Neutral", "Somewhat unhelpful"))
+ggplot(x, aes(x = labs, fill = labs)) + geom_bar() + guides(fill = "none") +
+  scale_fill_manual(values = c("#00BA38","#BD7FF8",   "#619CFF", "#F8766D")) +
+  theme(axis.text = element_text(size=14))
+```
+
+:::
+
+::: column
+
+```{r echo=F}
+x$hw <- factor(x$hw, levels = c("Very helpful", "Somewhat helpful",
+                                        "Neutral", "Very unhelpful"))
+ggplot(x, aes(x = hw, fill = hw)) + geom_bar() + guides(fill = "none") +
+  scale_fill_manual(values = c("#00BA38","#BD7FF8",   "#619CFF", "#F8766D")) +
+  theme(axis.text = element_text(size=14))
+```
+
+:::
+
+:::::
+
+
+------------------------------------------------------------------------
+
+### 4 week feedback (quiz)
+
+```{r echo=F}
+x$quiz <- factor(x$quiz, levels = c("Somewhat easy", "Neutral",
+                                        "Somewhat challenging", "Very challenging"))
+ggplot(x, aes(x = quiz, fill = quiz)) + geom_bar() + guides(fill = "none") +
+  scale_fill_manual(values = c("#00BA38","#BD7FF8",   "#619CFF", "#F8766D")) +
+  theme(axis.text = element_text(size=14))
+```
+
+------------------------------------------------------------------------
+
+### 4 week feedback (OH)
+
+::::: columns
+
+::: column
+
+```{r echo=F}
+x$`megan-OH` <- factor(x$`megan-OH`, levels = c("Very helpful", "Somewhat helpful",
+                                        "Neutral", "Haven't attended"))
+ggplot(x, aes(x = `megan-OH`, fill = `megan-OH`)) + geom_bar() + guides(fill = "none") +
+  scale_fill_manual(values = c("#00BA38","#BD7FF8", "gray40",  "#619CFF")) +
+  theme(axis.text = element_text(size=14))
+```
+
+:::
+
+::: column
+
+```{r echo=F}
+x$`ca-OH` <- factor(x$`ca-OH`, levels = c("Very helpful", "Somewhat helpful",
+                                        "Neutral", "Haven't attended",
+                                        "Somewhat unhelpful"))
+ggplot(x, aes(x = `ca-OH`, fill = `ca-OH`)) + geom_bar() + guides(fill = "none") +
+  scale_fill_manual(values = c("#00BA38","#BD7FF8", "gray40",  "#619CFF", "#F8766D")) +
+  theme(axis.text = element_text(size=14))
+```
+
+:::
+
+:::::
+
+

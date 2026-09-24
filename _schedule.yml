@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 9/25/26
+  draft-after: 10/2/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -165,18 +165,20 @@ scheduled-docs:
           display-date: Thursday, Sept 24
           date: 9/24/26
           docs:
-            # - type: Download Lab 4
-            #   href: lab/lab04.zip
-            # - type: Download HW 4
-            #   href: hw/hw04.zip
+            - type: Download Lab 4
+              href: lab/lab04.zip
+            - type: Download HW 4
+              href: hw/hw04.zip
         - topic: "Linear Models II: Accuracy and Assumptions"
           display-date: Friday, Sept 25
           date: 9/25/26
           docs:
             - type: Reading
               href: readings/reading13.qmd
-            # - type: Slides
-            #   href: slides/lecture11_lm-accuracy-assumptions.qmd
+            - type: Slides
+              href: slides/lecture11_lm-accuracy-assumptions.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture11_lm-accuracy-assumptions_handout.pdf
       resources:
             - 'Submit assignment 3 (due Thurs 9/24 at 9am)'
             - 'Take Quiz 2 during lab'
@@ -190,32 +192,32 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading14.qmd
-            - type: Slides
-              href: slides/lecture12_lm-categorical.qmd
+            # - type: Slides
+            #   href: slides/lecture12_lm-categorical.qmd
         - topic: "Linear Models IV: Multiple Regression"
           display-date: Wednesday, Sept 30
           date: 9/30/26
           docs:
             - type: Reading
               href: readings/reading15.qmd
-            - type: Slides
-              href: slides/lecture13_lm-multiple-regression.qmd
+            # - type: Slides
+            #   href: slides/lecture13_lm-multiple-regression.qmd
         - topic: "Lab: Linear Regression | Quiz 3"
           display-date: Thursday, Oct 1
           date: 10/01/26
-          docs:
-              - type: Download Lab 5
-                href: lab/lab05.zip
-              - type: Download HW 5
-                href: hw/hw05.zip
+          # docs:
+          #     - type: Download Lab 5
+          #       href: lab/lab05.zip
+          #     - type: Download HW 5
+          #       href: hw/hw05.zip
         - topic: "Linear Models V: Many Variables!"
           display-date: Friday, Oct 2
           date: 10/02/26
           docs:
             - type: Reading
               href: readings/reading16.qmd
-            - type: Slides
-              href: slides/lecture14_lm-many-variables.qmd
+            # - type: Slides
+            #   href: slides/lecture14_lm-many-variables.qmd
       resources:
             - 'Submit assignment 4 (due Thurs 10/01 at 9am)'
             - 'Take Quiz 3 during lab'
