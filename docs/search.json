@@ -2034,14 +2034,14 @@
     "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-linearity-1",
     "title": "STAT 141",
     "section": "Assessing conditions: Linearity",
-    "text": "Assessing conditions: Linearity\n\n\n\n\n\n\n\n\n\n\nResidual plots can also be useful for checking linearity\nThese plot model residuals against the fitted values\nWe don’t want to see any trends here"
+    "text": "Assessing conditions: Linearity\n\n\n\n\n\n\n\n\n\n\nResidual plots can also be useful for checking linearity\nThese plot model residuals against the fitted values\n\nUse get_regression_points() to grab residuals from your model and data (next slide)\n\nWe don’t want to see any trends here"
   },
   {
-    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-linearity-code-example",
-    "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-linearity-code-example",
+    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-residual-plot-code",
+    "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-residual-plot-code",
     "title": "STAT 141",
-    "section": "Assessing conditions: Linearity (Code Example)",
-    "text": "Assessing conditions: Linearity (Code Example)\n\nlibrary(moderndive)\n\n# Creating the model\nlm1 &lt;- lm(data = my_df, y1 ~ x)\n\n# *** Pulling out model inputs, residuals, and fitted values ***\nres1 &lt;- get_regression_points(lm1)  \n\n# Plotting residuals vs fitted values\n(g1 &lt;- ggplot(res1, aes(x = y1_hat, y = residual)) + \n  geom_point() + \n  theme_bw() + \n  geom_smooth(method = \"lm\", se = F) +   # Helps check for any trend - want a flat line here\n  labs(x = \"fitted value\", y = \"residual\", title = \"Linear\"))"
+    "section": "Assessing conditions: Residual Plot Code",
+    "text": "Assessing conditions: Residual Plot Code\n\nlibrary(moderndive)\n\n# Creating the model\nlm1 &lt;- lm(data = my_df, y1 ~ x)\n\n# *** Pulling out model inputs, residuals, and fitted values ***\nres1 &lt;- get_regression_points(lm1)  \n\n# Plotting residuals vs fitted values\n(g1 &lt;- ggplot(res1, aes(x = y1_hat, y = residual)) + \n  geom_point() + \n  theme_bw() + \n  geom_smooth(method = \"lm\", se = F) +   # Helps check for any trend - want a flat line here\n  labs(x = \"fitted value\", y = \"residual\", title = \"Linear\"))"
   },
   {
     "objectID": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-independence",
@@ -2069,28 +2069,7 @@
     "href": "slides/lecture11_lm-accuracy-assumptions.html#assessing-conditions-equal-variability-of-residuals",
     "title": "STAT 141",
     "section": "Assessing conditions: Equal variability (of residuals)",
-    "text": "Assessing conditions: Equal variability (of residuals)\nEqual Variability: Variance of residuals should be approximately constant across the data\n\n\n\n\n\n\n\n\n\n\n\n\n\nResidual plots are also very useful for this\nIf equal variability isn’t met:\n\nInference about the population may be misleading\n(Potential) outliers in high-variability range are more influential"
-  },
-  {
-    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#another-example-high-leverage-points",
-    "href": "slides/lecture11_lm-accuracy-assumptions.html#another-example-high-leverage-points",
-    "title": "STAT 141",
-    "section": "Another example: high leverage points",
-    "text": "Another example: high leverage points\nRemember the outlier example:\n\n\n\n\n\n\n\n\n\n\nWhat do diagnostics look like when we fit the teal model?"
-  },
-  {
-    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#diagnosing-the-model",
-    "href": "slides/lecture11_lm-accuracy-assumptions.html#diagnosing-the-model",
-    "title": "STAT 141",
-    "section": "Diagnosing the model",
-    "text": "Diagnosing the model\n\n\n\n\n\n\n\n\n\n\nIn this case, can already see the outlier in the residual vs fitted plot."
-  },
-  {
-    "objectID": "slides/lecture11_lm-accuracy-assumptions.html#what-to-do-with-high-leverage-points",
-    "href": "slides/lecture11_lm-accuracy-assumptions.html#what-to-do-with-high-leverage-points",
-    "title": "STAT 141",
-    "section": "What to do with high leverage points?",
-    "text": "What to do with high leverage points?\n\nDepends on context\nIt may be reasonable to remove them and refit the model\n\nIf we believe the data is the result of an error\nIf we are most focused on prediction for non-outliers, or if our population of interest does not include the outlier\n\nBut we shouldn’t remove outliers just because we don’t like the results that they produce\n\nEspecially if our goal is descriptive or explanatory, and the outlier represents a valid data point"
+    "text": "Assessing conditions: Equal variability (of residuals)\nEqual Variability: Variance of residuals should be approximately constant across the data\n\n\n\n\n\n\n\n\n\n\n\n\n\nResidual plots are also very useful for this\nIf equal variability isn’t met:\n\nInference about the population may be misleading\n(Potential) outliers in high-variability range are more influential\n\nGo back to the Assessing conditions: Residual Plot Code slide to review the code for residual plots"
   },
   {
     "objectID": "slides/lecture11_lm-accuracy-assumptions.html#recall-our-hitters-simple-linear-regression-model",

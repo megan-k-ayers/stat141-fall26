@@ -13,6 +13,9 @@ format:
     auto-stretch: false
     callout-appearance: simple
     pdf-max-pages-per-slide: 2
+    html-math-method:
+      method: mathjax
+      url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
     menu: 
       side: right
       numbers: true
@@ -169,6 +172,7 @@ Recall our modeling goal: **predict MLB player salary in 1986/1987 by using the 
 
 ```{r}
 #| output-location: column
+#| code-line-numbers: "10-11"
 library(ISLR)
 data(Hitters)
 hitters <- Hitters %>% filter(!is.na(Salary), !is.na(HmRun))
@@ -295,11 +299,22 @@ get_regression_table(mod)
 
 ------------------------------------------------------------------------
 
-### Coefficient Interpretation
+### Coefficient Interpretation: In Context
 
 \begin{align*}
   \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
    &= 330.59 + 17.67 \times x_\text{HmRun}
+\end{align*}
+
+-   **Intercept:** We [[expect/predict]]{.underline} a player's **Salary** to be \$330,000 [on average]{.underline} when they've hit 0 **home runs**.
+-   **Slope**: For **each additional home run** (or one-unit increase in **HmRun**) that a player hits, we [[expect/predict]]{.underline} their **Salary** to increase by \$17,670 [on average]{.underline}.
+
+------------------------------------------------------------------------
+
+### Coefficient Interpretation: In General
+
+\begin{align*}
+  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x
 \end{align*}
 
 We need to be precise and careful when interpreting estimated coefficients! 
@@ -318,19 +333,6 @@ We need to be precise and careful when interpreting estimated coefficients!
 
 :::
 
-------------------------------------------------------------------------
-
-### Coefficient Interpretation: In Context
-
-\begin{align*}
-  \widehat{y} &= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
-   &= 330.59 + 17.67 \times x_\text{HmRun}
-\end{align*}
-
--   **Intercept:** We [[expect/predict]]{.underline} a player's **Salary** to be \$330,000 [on average]{.underline} when they've hit 0 **home runs**.
--   **Slope**: For **each additional home run** (or one-unit increase in **HmRun**) that a player hits, we [[expect/predict]]{.underline} their **Salary** to increase by \$17,670 [on average]{.underline}.
-
-
 
 ------------------------------------------------------------------------
 
@@ -343,12 +345,38 @@ predict(mod, newdata = new_cases)
 
 <br>
 
+::::: columns
+
+::: column
+
 -   We didn't have any players in our sample with 32 home runs. Can we still make this prediction?
     -   Called **interpolation**
 
 
 -   We didn't have any players in our sample with 60 home runs. Can we still make this prediction?
     -   Called **extrapolation**
+    
+::: 
+
+::: column
+
+```{r echo=FALSE}
+library(ISLR)
+data(Hitters)
+hitters <- Hitters %>% filter(!is.na(Salary), !is.na(HmRun))
+
+ggplot(data = hitters, 
+       mapping = aes(x = HmRun,
+                     y = Salary)) +
+  geom_point(alpha = 0.6, size = 4, 
+             color = "dodgerblue") +
+  geom_smooth(method = "lm", se = FALSE,
+              color = "magenta3")
+```
+
+:::
+
+:::::
 
 
 <!-- -   We could give our model a value of $x_\text{HmRun} = 20.5$, and we'd get out a numerical prediction for `Salary`. How is this different from the previous examples? -->
@@ -401,9 +429,7 @@ get_regression_table(mod)
 \end{align*}
 
 
-:::{.fragment}
-What assumptions have we made?
-:::
+**What assumptions have we made?**
 
 ------------------------------------------------------------------------
 
@@ -504,20 +530,24 @@ lm2 <- lm(data = my_df, y2 ~ x)
 res1 <- get_regression_points(lm1)
 res2 <- get_regression_points(lm2)
 
-g1 <- ggplot(res1, aes(x = y1_hat, y = residual))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+labs(x = "fitted value", y = "residual", title = "Linear")
-g2 <- ggplot(res2, aes(x = y2_hat, y = residual))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+labs(x = "fitted value", y = "residual", title = "Non-Linear")
+g1 <- ggplot(res1, aes(x = y1_hat, y = residual))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+labs(x = "fitted value", y = "residual", title = "Linear") +
+  theme(axis.title = element_text(size=14))
+g2 <- ggplot(res2, aes(x = y2_hat, y = residual))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+labs(x = "fitted value", y = "residual", title = "Non-Linear") +
+  theme(axis.title = element_text(size=14))
 grid.arrange(g1,g2, ncol = 2)
 ```
 
 -   **Residual plots** can also be useful for checking linearity
 -   These plot model **residuals** against the **fitted values**
+    - Use `get_regression_points()` to grab residuals from your model and data (next slide)
 -   We don't want to see any trends here 
 
 --------------------------------------------------------------------
 
-## Assessing conditions: Linearity (Code Example)
+## Assessing conditions: Residual Plot Code
     
 ```{r fig.height = 4}
+#| code-line-numbers: "7,10"
 library(moderndive)
 
 # Creating the model
@@ -745,10 +775,12 @@ res1 <- get_regression_points(lm1)
 res2 <- get_regression_points(lm2)
 
 g1 <- ggplot(res1, aes(x = x, y = residual))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+
-  labs(x = "x", y = "residual", title = "Equal Variability")+scale_y_continuous(limits = c(-2,2))
+  labs(x = "x", y = "residual", title = "Equal Variability")+scale_y_continuous(limits = c(-2,2)) +
+  theme(axis.title = element_text(size=16))
 
 g2 <- ggplot(res2, aes(x = x, y = residual))+geom_point()+theme_bw()+geom_smooth(method = "lm", se = F)+
-  labs(x = "x", y = "residual", title = "Non-Equal Variability")+scale_y_continuous(limits = c(-2,2))
+  labs(x = "x", y = "residual", title = "Non-Equal Variability")+scale_y_continuous(limits = c(-2,2)) +
+  theme(axis.title = element_text(size=16))
 
 
 grid.arrange(g1,g2, ncol = 1)
@@ -760,56 +792,57 @@ grid.arrange(g1,g2, ncol = 1)
 -   If equal variability isn't met:
     -   Inference about the population may be misleading
     -   (Potential) outliers in high-variability range are more influential
+- Go back to the **Assessing conditions: Residual Plot Code** slide to review the code for residual plots
 
 :::
 :::::
 
-----------------------------------------------------------------------
+<!-- ---------------------------------------------------------------------- -->
 
-## Another example: high leverage points
+<!-- ## Another example: high leverage points -->
 
-Remember the outlier example:
+<!-- Remember the outlier example: -->
 
-```{r}
-#| echo: false
-set.seed(13681)
-x <- c(runif(50, 0, 10))
-y1 <- c(3 + 1*x + rnorm(50, 0))
-dat1 <- data_frame(x = c(x, 20), y = c(y1, 20))
-x2 <- c(x, 20)
-y2 <- c(y1, 5)
-dat <- data_frame(x = x2, y = y2)
-ggplot(dat, aes(x, y)) + geom_point() +
-  stat_smooth(method = "lm", se = FALSE, color = "turquoise4", linewidth = 2) +
- stat_smooth(method = "lm", se = FALSE, data = dat[-51,], color = "deeppink3", linewidth = 2)
-```
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- set.seed(13681) -->
+<!-- x <- c(runif(50, 0, 10)) -->
+<!-- y1 <- c(3 + 1*x + rnorm(50, 0)) -->
+<!-- dat1 <- data_frame(x = c(x, 20), y = c(y1, 20)) -->
+<!-- x2 <- c(x, 20) -->
+<!-- y2 <- c(y1, 5) -->
+<!-- dat <- data_frame(x = x2, y = y2) -->
+<!-- ggplot(dat, aes(x, y)) + geom_point() + -->
+<!--   stat_smooth(method = "lm", se = FALSE, color = "turquoise4", linewidth = 2) + -->
+<!--  stat_smooth(method = "lm", se = FALSE, data = dat[-51,], color = "deeppink3", linewidth = 2) -->
+<!-- ``` -->
 
-:::{.fragment}
-What do diagnostics look like when we fit the teal model?
-:::
+<!-- :::{.fragment} -->
+<!-- What do diagnostics look like when we fit the teal model? -->
+<!-- ::: -->
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Diagnosing the model
+<!-- ## Diagnosing the model -->
 
-```{r echo = FALSE, fig.height = 7, fig.width=14}
-teal_mod <- lm(y ~ x, dat)
-ggplot(teal_mod) +
-  gglm::stat_fitted_resid()
-```
+<!-- ```{r echo = FALSE, fig.height = 7, fig.width=14} -->
+<!-- teal_mod <- lm(y ~ x, dat) -->
+<!-- ggplot(teal_mod) + -->
+<!--   gglm::stat_fitted_resid() -->
+<!-- ``` -->
 
--   In this case, can already see the outlier in the residual vs fitted plot.
+<!-- -   In this case, can already see the outlier in the residual vs fitted plot. -->
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## What to do with high leverage points?
+<!-- ## What to do with high leverage points? -->
 
--   Depends on **context**
--   It may be reasonable to remove them and refit the model
-    -   If we believe the data is the result of an error
-    -   If we are most focused on **prediction** for non-outliers, or if our population of interest does not include the outlier
--   But we shouldn't remove outliers just because we don't like the results that they produce
-    - Especially if our goal is **descriptive** or **explanatory**, and the outlier represents a valid data point
+<!-- -   Depends on **context** -->
+<!-- -   It may be reasonable to remove them and refit the model -->
+<!--     -   If we believe the data is the result of an error -->
+<!--     -   If we are most focused on **prediction** for non-outliers, or if our population of interest does not include the outlier -->
+<!-- -   But we shouldn't remove outliers just because we don't like the results that they produce -->
+<!--     - Especially if our goal is **descriptive** or **explanatory**, and the outlier represents a valid data point -->
 
 
 

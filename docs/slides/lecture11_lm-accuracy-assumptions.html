@@ -313,7 +313,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <p>Recall our modeling goal: <strong>predict MLB player salary in 1986/1987 by using the HmRun variable</strong>.</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ISLR)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers="10-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(ISLR)</span>
 <span id="cb1-2"><a></a><span class="fu">data</span>(Hitters)</span>
 <span id="cb1-3"><a></a>hitters <span class="ot">&lt;-</span> Hitters <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Salary), <span class="sc">!</span><span class="fu">is.na</span>(HmRun))</span>
 <span id="cb1-4"><a></a></span>
@@ -423,10 +423,21 @@ y = \beta_0 + \beta_1 x + \epsilon
 </section>
 <section class="slide level2">
 
-<h3 id="coefficient-interpretation">Coefficient Interpretation</h3>
+<h3 id="coefficient-interpretation-in-context">Coefficient Interpretation: In Context</h3>
 <p><span class="math display">\[\begin{align*}
   \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
    &amp;= 330.59 + 17.67 \times x_\text{HmRun}
+\end{align*}\]</span></p>
+<ul>
+<li class="fragment"><strong>Intercept:</strong> We <u>[expect/predict]</u> a player’s <strong>Salary</strong> to be $330,000 <u>on average</u> when they’ve hit 0 <strong>home runs</strong>.</li>
+<li class="fragment"><strong>Slope</strong>: For <strong>each additional home run</strong> (or one-unit increase in <strong>HmRun</strong>) that a player hits, we <u>[expect/predict]</u> their <strong>Salary</strong> to increase by $17,670 <u>on average</u>.</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="coefficient-interpretation-in-general">Coefficient Interpretation: In General</h3>
+<p><span class="math display">\[\begin{align*}
+  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x
 \end{align*}\]</span></p>
 <p>We need to be precise and careful when interpreting estimated coefficients!</p>
 <ul>
@@ -444,18 +455,6 @@ y = \beta_0 + \beta_1 x + \epsilon
 </section>
 <section class="slide level2">
 
-<h3 id="coefficient-interpretation-in-context">Coefficient Interpretation: In Context</h3>
-<p><span class="math display">\[\begin{align*}
-  \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
-   &amp;= 330.59 + 17.67 \times x_\text{HmRun}
-\end{align*}\]</span></p>
-<ul>
-<li class="fragment"><strong>Intercept:</strong> We <u>[expect/predict]</u> a player’s <strong>Salary</strong> to be $330,000 <u>on average</u> when they’ve hit 0 <strong>home runs</strong>.</li>
-<li class="fragment"><strong>Slope</strong>: For <strong>each additional home run</strong> (or one-unit increase in <strong>HmRun</strong>) that a player hits, we <u>[expect/predict]</u> their <strong>Salary</strong> to increase by $17,670 <u>on average</u>.</li>
-</ul>
-</section>
-<section class="slide level2">
-
 <h3 id="prediction-interpolation-and-extrapolation">Prediction, Interpolation, and Extrapolation</h3>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>new_cases <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">HmRun =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">32</span>, <span class="dv">60</span>))  <span class="co"># Must have same explanatory variable name as mod!</span></span>
@@ -466,6 +465,8 @@ y = \beta_0 + \beta_1 x + \epsilon
 </div>
 </div>
 <p><br></p>
+<div class="columns">
+<div class="column">
 <ul>
 <li class="fragment">We didn’t have any players in our sample with 32 home runs. Can we still make this prediction?
 <ul>
@@ -476,6 +477,17 @@ y = \beta_0 + \beta_1 x + \epsilon
 <li class="fragment">Called <strong>extrapolation</strong></li>
 </ul></li>
 </ul>
+</div><div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
 <!-- -   We could give our model a value of $x_\text{HmRun} = 20.5$, and we'd get out a numerical prediction for `Salary`. How is this different from the previous examples? -->
 </section>
 <section class="slide level2">
@@ -495,7 +507,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -519,9 +531,7 @@ y = \beta_0 + \beta_1 x + \epsilon
   \widehat{y} &amp;= \widehat{\beta_0} + \widehat{\beta_1} \times x_\text{HmRun} \\
    &amp;= 330.59 + 17.67 \times x_\text{HmRun}
 \end{align*}\]</span></p>
-<div class="fragment">
-<p>What assumptions have we made?</p>
-</div>
+<p><strong>What assumptions have we made?</strong></p>
 </section>
 <section id="linear-regression-assumptions" class="slide level2 smaller">
 <h2>Linear Regression Assumptions</h2>
@@ -589,7 +599,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -610,21 +620,24 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 <ul>
 <li class="fragment"><strong>Residual plots</strong> can also be useful for checking linearity</li>
-<li class="fragment">These plot model <strong>residuals</strong> against the <strong>fitted values</strong></li>
+<li class="fragment">These plot model <strong>residuals</strong> against the <strong>fitted values</strong>
+<ul>
+<li class="fragment">Use <code>get_regression_points()</code> to grab residuals from your model and data (next slide)</li>
+</ul></li>
 <li class="fragment">We don’t want to see any trends here</li>
 </ul>
 </section>
-<section id="assessing-conditions-linearity-code-example" class="slide level2">
-<h2>Assessing conditions: Linearity (Code Example)</h2>
+<section id="assessing-conditions-residual-plot-code" class="slide level2">
+<h2>Assessing conditions: Residual Plot Code</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(moderndive)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-code-line-numbers="7,10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">library</span>(moderndive)</span>
 <span id="cb8-2"><a></a></span>
 <span id="cb8-3"><a></a><span class="co"># Creating the model</span></span>
 <span id="cb8-4"><a></a>lm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> my_df, y1 <span class="sc">~</span> x)</span>
@@ -641,7 +654,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -655,7 +668,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -675,7 +688,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
 </figure>
 </div>
 </div>
@@ -690,7 +703,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -723,7 +736,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -744,7 +757,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -757,54 +770,44 @@ y = \beta_0 + \beta_1 x + \epsilon
 <li class="fragment">Inference about the population may be misleading</li>
 <li class="fragment">(Potential) outliers in high-variability range are more influential</li>
 </ul></li>
+<li class="fragment">Go back to the <strong>Assessing conditions: Residual Plot Code</strong> slide to review the code for residual plots</li>
 </ul>
 </div></div>
-</section>
-<section id="another-example-high-leverage-points" class="slide level2">
-<h2>Another example: high leverage points</h2>
-<p>Remember the outlier example:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>What do diagnostics look like when we fit the teal model?</p>
-</div>
-</section>
-<section id="diagnosing-the-model" class="slide level2">
-<h2>Diagnosing the model</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="1344"></p>
-</figure>
-</div>
-</div>
-</div>
-<ul>
-<li class="fragment">In this case, can already see the outlier in the residual vs fitted plot.</li>
-</ul>
-</section>
-<section id="what-to-do-with-high-leverage-points" class="slide level2">
-<h2>What to do with high leverage points?</h2>
-<ul>
-<li class="fragment">Depends on <strong>context</strong></li>
-<li class="fragment">It may be reasonable to remove them and refit the model
-<ul>
-<li class="fragment">If we believe the data is the result of an error</li>
-<li class="fragment">If we are most focused on <strong>prediction</strong> for non-outliers, or if our population of interest does not include the outlier</li>
-</ul></li>
-<li class="fragment">But we shouldn’t remove outliers just because we don’t like the results that they produce
-<ul>
-<li class="fragment">Especially if our goal is <strong>descriptive</strong> or <strong>explanatory</strong>, and the outlier represents a valid data point</li>
-</ul></li>
-</ul>
+<!-- ---------------------------------------------------------------------- -->
+<!-- ## Another example: high leverage points -->
+<!-- Remember the outlier example: -->
+<!-- ```{r} -->
+<!-- #| echo: false -->
+<!-- set.seed(13681) -->
+<!-- x <- c(runif(50, 0, 10)) -->
+<!-- y1 <- c(3 + 1*x + rnorm(50, 0)) -->
+<!-- dat1 <- data_frame(x = c(x, 20), y = c(y1, 20)) -->
+<!-- x2 <- c(x, 20) -->
+<!-- y2 <- c(y1, 5) -->
+<!-- dat <- data_frame(x = x2, y = y2) -->
+<!-- ggplot(dat, aes(x, y)) + geom_point() + -->
+<!--   stat_smooth(method = "lm", se = FALSE, color = "turquoise4", linewidth = 2) + -->
+<!--  stat_smooth(method = "lm", se = FALSE, data = dat[-51,], color = "deeppink3", linewidth = 2) -->
+<!-- ``` -->
+<!-- :::{.fragment} -->
+<!-- What do diagnostics look like when we fit the teal model? -->
+<!-- ::: -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Diagnosing the model -->
+<!-- ```{r echo = FALSE, fig.height = 7, fig.width=14} -->
+<!-- teal_mod <- lm(y ~ x, dat) -->
+<!-- ggplot(teal_mod) + -->
+<!--   gglm::stat_fitted_resid() -->
+<!-- ``` -->
+<!-- -   In this case, can already see the outlier in the residual vs fitted plot. -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## What to do with high leverage points? -->
+<!-- -   Depends on **context** -->
+<!-- -   It may be reasonable to remove them and refit the model -->
+<!--     -   If we believe the data is the result of an error -->
+<!--     -   If we are most focused on **prediction** for non-outliers, or if our population of interest does not include the outlier -->
+<!-- -   But we shouldn't remove outliers just because we don't like the results that they produce -->
+<!--     - Especially if our goal is **descriptive** or **explanatory**, and the outlier represents a valid data point -->
 </section>
 <section id="recall-our-hitters-simple-linear-regression-model" class="slide level2">
 <h2>Recall our <code>hitters</code> simple linear regression model</h2>
@@ -815,7 +818,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -843,7 +846,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -876,7 +879,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -901,7 +904,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -944,7 +947,7 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -958,7 +961,7 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -1007,7 +1010,7 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1020,7 +1023,7 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1035,7 +1038,7 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1045,7 +1048,7 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-29-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1059,7 +1062,7 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-30-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-29-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1074,7 +1077,7 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-31-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-30-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1084,7 +1087,7 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-32-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture11_lm-accuracy-assumptions_files/figure-revealjs/unnamed-chunk-31-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1285,7 +1288,7 @@ R^2 = \frac{ \overbrace{s_y^2 - s_{e}^2}^{\textrm{Variation in Y explained by X}
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
