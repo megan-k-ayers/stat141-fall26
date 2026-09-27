@@ -306,7 +306,7 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_1c1b0bc4" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_0c11c597" minutes="3" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
@@ -385,6 +385,7 @@ y = \beta_0 + \beta_1x_\text{(arrived late)} + \epsilon
 <section class="slide level2">
 
 <h3 id="linear-models-with-a-categorical-explanatory-variable-with-2-levels">Linear Models with a Categorical Explanatory Variable with 2 Levels</h3>
+<div style="font-size:0.9em;">
 <div class="columns">
 <div class="column" style="width:75%;">
 <ul>
@@ -447,9 +448,13 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 \]</span></p>
 </div>
 <ul>
-<li class="fragment">We often refer to categorical variables in linear models as <strong>factors</strong></li>
-<li class="fragment"><strong>Think of <span class="math inline">\(x\)</span> like a switch</strong>: our prediction changes depending on whether it’s turned on (<span class="math inline">\(x = 1\)</span> when <span class="math inline">\(w = \text{level B}\)</span>) or turned off (<span class="math inline">\(x = 0\)</span> when <span class="math inline">\(w = \text{level A}\)</span>)</li>
+<li class="fragment"><strong>Think of <span class="math inline">\(x\)</span> like a switch</strong>:
+<ul>
+<li class="fragment">When it’s turned off with <span class="math inline">\(x = 0\)</span>: <span class="math inline">\(\;\;\; y = (\beta_0) + \epsilon\)</span></li>
+<li class="fragment">When it’s turned on with <span class="math inline">\(x = 1\)</span>: <span class="math inline">\(\;\;\; y = (\beta_0 + \beta_1) + \epsilon\)</span></li>
+</ul></li>
 </ul>
+</div>
 </section>
 <section class="slide level2">
 
@@ -694,11 +699,7 @@ $ winpercent       &lt;dbl&gt; 66.97173, 67.60294, 32.26109, 46.11650, 52.34146,
 \begin{align}
 y &amp;= \beta_0 + \beta_1 x + \epsilon
 \end{align}
-\]</span></p>
-<p>When <span class="math inline">\(x = 0\)</span>:</p>
-<p><br><br></p>
-<p>When <span class="math inline">\(x = 1\)</span>:</p>
-<p><br><br></p>
+\]</span> <br></p>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(winpercent <span class="sc">~</span> chocolate, <span class="at">data =</span> candy)</span>
@@ -712,6 +713,13 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 2 chocolate     18.8      2.50      7.52       0     13.8     23.7</code></pre>
 </div>
 </div>
+</div>
+<div class="fragment">
+<p><strong>Q</strong>: When <span class="math inline">\(x = 0\)</span>, what is <span class="math inline">\(\widehat{y}\)</span>?</p>
+</div>
+<p><br><br></p>
+<div class="fragment">
+<p><strong>Q</strong>: When <span class="math inline">\(x = 1\)</span>, what is <span class="math inline">\(\widehat{y}\)</span>?</p>
 </div>
 </section>
 <section class="slide level2">
@@ -917,8 +925,8 @@ y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsi
 <li class="fragment"><strong>Categorical explanatory variables are tricky!!</strong> Revisit these examples, more practice with HW 5 Exercise 1</li>
 </ul>
 </section>
-<section id="activity-changing-reference-level" class="slide level2">
-<h2>Activity: Changing Reference Level</h2>
+<section id="bonus-activity-changing-reference-level" class="slide level2">
+<h2>Bonus Activity: Changing Reference Level</h2>
 <p>We can change the <strong>reference level</strong> if we want.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>penguins<span class="sc">$</span>species <span class="ot">&lt;-</span> <span class="fu">relevel</span>(penguins<span class="sc">$</span>species, <span class="at">ref =</span> <span class="st">"Chinstrap"</span>)</span>
@@ -943,46 +951,28 @@ y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsi
 <li class="fragment"><strong>Q3:</strong> How is the interpretation of <span class="math inline">\(\widehat{\beta}_0\)</span> different now?</li>
 <li class="fragment"><strong>Q4:</strong> How should we interpret the other two coefficients?</li>
 </ul>
-</section>
-<section id="activity-changing-reference-level-answers" class="slide level2 smaller">
-<h2>Activity: Changing Reference Level (Answers)</h2>
-<ul>
-<li><strong>Q1:</strong> Write down the equation for this fitted model.</li>
-</ul>
-<p><span class="math display">\[
-\widehat{Y} = 48.8 - 10.0 x_{species:Adelie} - 1.3 x_{species:Gentoo}
-\]</span></p>
-<ul>
-<li><strong>Q2:</strong> Draw a few rows of the data frame with the variables used by the model.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
-# Groups:   species [3]
-  bill_length_mm species   x_adelie x_gentoo
-           &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt;    &lt;dbl&gt;
-1           42.5 Chinstrap        0        0
-2           50.8 Chinstrap        0        0
-3           37.9 Adelie           1        0
-4           36.9 Adelie           1        0
-5           46.3 Gentoo           0        1
-6           45.5 Gentoo           0        1</code></pre>
-</div>
-</div>
-<p><br></p>
-<ul>
-<li><strong>Q3:</strong> How is the interpretation of <span class="math inline">\(\widehat{\beta}_0\)</span> different now?
-<ul>
-<li><span class="math inline">\(\beta_0\)</span> (<span class="math inline">\(\widehat{\beta}_0\)</span>) now represents (estimates) the population mean bill length for Chinstrap penguins, not Adelie penguins</li>
-</ul></li>
-</ul>
-<p><br></p>
-<ul>
-<li><strong>Q4:</strong> How should we interpret the other two coefficients?
-<ul>
-<li>They now represent the predicted change in bill lengths for Adelie and Gentoo penguins on average, relative to the predicted bill length for Chinstrap penguins.</li>
-</ul></li>
-</ul>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Bonus Activity: Changing Reference Level (Answers) {.smaller} -->
+<!-- ::: nonincremental -->
+<!-- - **Q1:** Write down the equation for this fitted model. -->
+<!-- $$ -->
+<!-- \widehat{Y} = 48.8 - 10.0 x_{species:Adelie} - 1.3 x_{species:Gentoo} -->
+<!-- $$ -->
+<!-- - **Q2:** Draw a few rows of the data frame with the variables used by the model. -->
+<!-- ```{r echo = FALSE} -->
+<!-- penguins <- penguins %>% -->
+<!--   mutate(x_adelie = case_when(species == "Adelie" ~ 1, TRUE ~ 0), -->
+<!--          x_gentoo = case_when(species == "Gentoo" ~ 1, TRUE ~ 0)) %>% -->
+<!--   na.omit() %>% -->
+<!--   group_by(species) %>% -->
+<!--   sample_n(2) -->
+<!-- head(penguins[, c("bill_length_mm", "species", "x_adelie", "x_gentoo")]) -->
+<!-- ``` -->
+<!-- - **Q3:** How is the interpretation of $\widehat{\beta}_0$ different now? -->
+<!--     - $\beta_0$ ($\widehat{\beta}_0$) now represents (estimates) the population mean bill length for Chinstrap penguins, not Adelie penguins -->
+<!-- - **Q4:** How should we interpret the other two coefficients? -->
+<!--     - They now represent the predicted change in bill lengths for Adelie and Gentoo penguins on average, relative to the predicted bill length for Chinstrap penguins. -->
+<!-- ::: -->
 
 
 </section></section>

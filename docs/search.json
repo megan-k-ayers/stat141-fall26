@@ -84,6 +84,55 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture12_lm-categorical.html#new-example-palmer-penguins",
+    "href": "slides/lecture12_lm-categorical.html#new-example-palmer-penguins",
+    "title": "STAT 141",
+    "section": "New example: Palmer Penguins",
+    "text": "New example: Palmer Penguins\n\nlibrary(palmerpenguins)"
+  },
+  {
+    "objectID": "slides/lecture12_lm-categorical.html#take-a-look-at-the-data",
+    "href": "slides/lecture12_lm-categorical.html#take-a-look-at-the-data",
+    "title": "STAT 141",
+    "section": "Take a look at the data",
+    "text": "Take a look at the data\n\nglimpse(penguins)\n\nRows: 344\nColumns: 8\n$ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…\n$ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…\n$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …\n$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …\n$ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…\n$ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …\n$ sex               &lt;fct&gt; male, female, female, NA, female, male, female, male…\n$ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…\n\n\nWe’d like to predict a penguin’s bill length based on their species.\nResponse variable?\nExplanatory variable?"
+  },
+  {
+    "objectID": "slides/lecture12_lm-categorical.html#exploratory-data-analysis-8",
+    "href": "slides/lecture12_lm-categorical.html#exploratory-data-analysis-8",
+    "title": "STAT 141",
+    "section": "Exploratory data analysis",
+    "text": "Exploratory data analysis\n\n\n\npenguins %&gt;%\n  group_by(species) %&gt;%\n  summarize(\n    avg_bill_length = mean(bill_length_mm,\n                           na.rm = TRUE)\n    )\n\n# A tibble: 3 × 2\n  species   avg_bill_length\n  &lt;fct&gt;               &lt;dbl&gt;\n1 Adelie               38.8\n2 Chinstrap            48.8\n3 Gentoo               47.5\n\n\n\n\nggplot(penguins, \n       aes(x = species,\n           y = bill_length_mm, \n           fill = species)) +\n  geom_boxplot() +\n  scale_fill_manual(values = c(\"steelblue\",\n                               \"goldenrod\", \n                               \"plum3\")) +\n  guides(fill = \"none\") +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\nHow do we handle more than 2 groups???"
+  },
+  {
+    "objectID": "slides/lecture12_lm-categorical.html#fit-the-model-in-r",
+    "href": "slides/lecture12_lm-categorical.html#fit-the-model-in-r",
+    "title": "STAT 141",
+    "section": "Fit the model in R",
+    "text": "Fit the model in R\n\n\\[\ny = \\beta_0 + \\beta_1 x_{species:Chinstrap} + \\beta_2 x_{species:Gentoo} + \\epsilon\n\\]\n\n\nR automatically makes species indicators for us and chooses a reference level.\n\npenguin_mod &lt;- lm(bill_length_mm ~ species, penguins)\nget_regression_table(penguin_mod)\n\n# A tibble: 3 × 7\n  term               estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept             38.8      0.241     161.        0    38.3     39.3 \n2 species: Chinstrap    10.0      0.432      23.2       0     9.19    10.9 \n3 species: Gentoo        8.71     0.36       24.2       0     8.01     9.42\n\n\n\n\nQ: What is the equation for the fitted model?\n\n\n\\[\\begin{aligned}\n\\widehat{y} &= \\widehat{\\beta}_0 + \\widehat{\\beta}_1 \\cdot x_{species:Chinstrap} + \\widehat{\\beta}_2 \\cdot x_{species:Gentoo} \\\\\n&= 38.8 + 10.0 \\cdot x_{species:Chinstrap} + 8.71 \\cdot x_{species:Gentoo}\n\\end{aligned}\\]"
+  },
+  {
+    "objectID": "slides/lecture12_lm-categorical.html#remember-to-diagnose-your-models",
+    "href": "slides/lecture12_lm-categorical.html#remember-to-diagnose-your-models",
+    "title": "STAT 141",
+    "section": "Remember to diagnose your models!",
+    "text": "Remember to diagnose your models!\n\n\nlibrary(moderndive)\nres &lt;- get_regression_points(penguin_mod)\nggplot(res, aes(x = bill_length_mm_hat, y = residual)) +\n  geom_point()"
+  },
+  {
+    "objectID": "slides/lecture12_lm-categorical.html#remember-to-diagnose-your-models-1",
+    "href": "slides/lecture12_lm-categorical.html#remember-to-diagnose-your-models-1",
+    "title": "STAT 141",
+    "section": "Remember to diagnose your models!",
+    "text": "Remember to diagnose your models!\n\n\n\nggplot(res, aes(x = residual)) +\n  geom_histogram()\n\n\n\n\n\n\n\n\n\n\nggplot(res, aes(sample = residual)) +\n  geom_qq() +\n  geom_qq_line()"
+  },
+  {
+    "objectID": "slides/lecture12_lm-categorical.html#bonus-activity-changing-reference-level",
+    "href": "slides/lecture12_lm-categorical.html#bonus-activity-changing-reference-level",
+    "title": "STAT 141",
+    "section": "Bonus Activity: Changing Reference Level",
+    "text": "Bonus Activity: Changing Reference Level\nWe can change the reference level if we want.\n\npenguins$species &lt;- relevel(penguins$species, ref = \"Chinstrap\")\npenguin_mod &lt;- lm(bill_length_mm ~ species, penguins)\nget_regression_table(penguin_mod)\n\n# A tibble: 3 × 7\n  term            estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept          48.8      0.359    136.     0        48.1    49.5  \n2 species: Adelie   -10.0      0.432    -23.2    0       -10.9    -9.19 \n3 species: Gentoo    -1.33     0.447     -2.97   0.003    -2.21   -0.449\n\n\n \n\nGet in groups of ~5 and find a spot on one of the boards.\n\n\nQ1: Write down the equation for this fitted model.\nQ2: Draw a few rows of the data frame with the variables used by the model.\nQ3: How is the interpretation of \\(\\widehat{\\beta}_0\\) different now?\nQ4: How should we interpret the other two coefficients?"
+  },
+  {
     "objectID": "slides/lecture10_lm-intro.html#typical-analysis-goals",
     "href": "slides/lecture10_lm-intro.html#typical-analysis-goals",
     "title": "STAT 141",

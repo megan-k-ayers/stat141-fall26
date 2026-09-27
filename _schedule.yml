@@ -192,8 +192,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading14.qmd
-            # - type: Slides
-            #   href: slides/lecture12_lm-categorical.qmd
+            - type: Slides
+              href: slides/lecture12_lm-categorical.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture12_lm-categorical_handout.pdf
         - topic: "Linear Models IV: Multiple Regression"
           display-date: Wednesday, Sept 30
           date: 9/30/26
