@@ -38,7 +38,7 @@ library(pdxTrees)
 # Exercises
 
 
-## Exercise 1: Factors (Categorical Predictors)
+## Exercise 1: Categorical Predictors
 
 We will again work with the `pdxTrees` data package. Run the following code chunk to obtain a data frame of the four parks closest to Reed, subsetted to only include trees of the `Genus` Pseudotsuga, Acer, Quercus, or Cornus.  There are some additional modifications to clean up the data. The chunk also shows how many trees of each `Genus` are in the `near_reed` dataset.
 
@@ -187,26 +187,8 @@ A university's endowment refers to the financial assets invested by a university
 
 Let's investigate the association between college access and endowment assets by building a model for college access using endowment assets. 
 
-**a.** We'll explore both the net tuition price variable and the endowment assets variable individually using `R`. What kind of graphs and summary statistics would be useful for doing this?  [Text only for this question]
 
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-**b.**  Use `R` to implement the graphs and summary statistics you discuss in part (a) to explore the distribution of each of these variables. **Describe the distribution of each variable in the context of the data, referencing both your numerical and graphical summaries.** [Text and code for this question]
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-
-**c.** Construct a plot showing the bivariate relationship between net tuition price and endowment assets. Be sure to map the response variable to the $y$-axis and the explanatory variable to the $x$-axis. [Code only for this question]
+**a.** Construct a plot showing the bivariate relationship between net tuition price and endowment assets. Be sure to map the response variable to the $y$-axis and the explanatory variable to the $x$-axis. [Code only for this question]
 
 *******************************************************************************
 
@@ -216,7 +198,7 @@ Let's investigate the association between college access and endowment assets by
 
 
 
-**d.** Based on the plot, **does there seem to be a relationship between college access and endowment assets? Does a line seem like a reasonable summary for the relationship between these variables?** Explain your reasoning. [Text only for this question]
+**b.** Based on the plot, **does there seem to be a relationship between college access and endowment assets? Does a line seem like a reasonable summary for the relationship between these variables?** Explain your reasoning. [Text only for this question]
 
 *******************************************************************************
 
@@ -225,7 +207,7 @@ Let's investigate the association between college access and endowment assets by
 *******************************************************************************
 
 
-**e.** **Add a variable to the `colleges` dataset that contains the log-transformed version of `fy2016_endowment_pc` and name it `log_endow_pc`.** That is, if `fy2016_endowment_pc` equals \$1000, then the log-transformed version equals $\log(1000) = \ln(1000) = 6.908$. Statisticians tend to refer to natural log as just "log". The function in R to compute the (natural) log is `log()`. [Code only for this question]
+**c.** **Add a variable to the `colleges` dataset that contains the log-transformed version of `fy2016_endowment_pc` and name it `log_endow_pc`.** That is, if `fy2016_endowment_pc` equals \$1000, then the log-transformed version equals $\log(1000) = \ln(1000) = 6.908$. Statisticians tend to refer to natural log as just "log". The function in R to compute the (natural) log is `log()`. [Code only for this question]
 
 *******************************************************************************
 
@@ -234,17 +216,7 @@ Let's investigate the association between college access and endowment assets by
 *******************************************************************************
 
 
-**f.** Recreate the plot from part (c), but use the log-transformed version of `fy2016_endowment_pc` rather than the original variable. [Code only for this question]
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-
-**g.** Based on the plot in part (f), **does a line seem like a reasonable summary of the relationship between net tuition price and log-transformed endowment assets? If so, calculate the correlation coefficient and interpret the sign and magnitude.** [Code and text for this question]
+**d.** Recreate the plot from part (a), but use the log-transformed version of `fy2016_endowment_pc` rather than the original variable. [Code only for this question]
 
 *******************************************************************************
 
@@ -254,7 +226,7 @@ Let's investigate the association between college access and endowment assets by
 
 
 
-**h.** Construct a simple linear regression model for net tuition price using the log-transformed endowment assets variable. **Print out the model coefficients table.** [Code only for this question]
+**e.** Based on the plot in part (d), **does a line seem like a reasonable summary of the relationship between net tuition price and log-transformed endowment assets? If so, calculate the correlation coefficient and interpret the sign and magnitude.** [Code and text for this question]
 
 *******************************************************************************
 
@@ -264,7 +236,17 @@ Let's investigate the association between college access and endowment assets by
 
 
 
-**i.** Check the model diagnostics for the model from part (h), and **comment on them.** [Code and text for this question]
+**f.** Construct a simple linear regression model for net tuition price using the log-transformed endowment assets variable. **Print out the model coefficients table.** [Code only for this question]
+
+*******************************************************************************
+
+
+
+*******************************************************************************
+
+
+
+**g.** Check the model diagnostics for the model from part (f), and **comment on them.** [Code and text for this question]
 
 *******************************************************************************
 
@@ -287,7 +269,7 @@ In this problem, we will continue working with the same data set from Exercise 2
 *******************************************************************************
 
 
-**b.** Construct a plot showing the association between net tuition price and log-transformed endowment assets; color the points based on whether a school is in the Ivy Plus. (1) Describe what you see, then (2), using data wrangling functions, assess how the average net tuition price for these students at Ivy Plus schools compares to other schools.** [Code and text for this question]
+**b.** Construct a plot showing the association between net tuition price and log-transformed endowment assets; color the points based on whether a school is in the Ivy Plus. Describe what you see. [Code and text for this question]
 
 *******************************************************************************
 
@@ -316,7 +298,7 @@ In this problem, we will continue working with the same data set from Exercise 2
 
 
 
-**e.** In part (b), you used data wrangling functions to estimate the difference in average net tuition price for low- to middle-income students at schools in the Ivy Plus versus schools not in the Ivy Plus. **Explain the reasoning behind why this difference is not equal to the coefficient for the Ivy Plus predictor variable in the model from part (c).** [Text only for this question]
+**e.** Construct another multiple linear regression model for the net tuition price using log-transformed endowment assets and whether a school is categorized as Ivy Plus, this time *assuming varying slopes in the model.* [Code only for this question]
 
 *******************************************************************************
 
@@ -326,7 +308,7 @@ In this problem, we will continue working with the same data set from Exercise 2
 
 
 
-**f.** Construct a multiple linear regression model for the net tuition price using log-transformed endowment assets and whether a school is categorized as Ivy Plus. *Assume varying slopes in this model.* [Code only for this question]
+**f.** Based on the model from 3(e), **write out the formula for the regression line for just Ivy Plus schools and the formula for the regression line for just non-Ivy Plus schools**. Using these formulas, state **what is the estimated slope for schools in the Ivy Plus and what is the estimated slope for non-Ivy Plus schools.** [Text only for this question]
 
 *******************************************************************************
 
@@ -336,17 +318,7 @@ In this problem, we will continue working with the same data set from Exercise 2
 
 
 
-**g.** Based on the model from 3(f), **write out the formula for the regression line for just Ivy Plus schools and the formula for the regression line for just non-Ivy Plus schools**. Using these formulas, state **what is the estimated slope for schools in the Ivy Plus and what is the estimated slope for non-Ivy Plus schools.** [Text only for this question]
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-
-**h.** Produce a plot that illustrates the linear model fit in part (f) and analyzed in (g). Based on this plot and your analysis, is there evidence suggesting that making a donation to a school's endowment increases access for low- and middle-income students to the same extent at Ivy Plus schools as non-Ivy Plus schools? **Explain your reasoning.**  [Code and text for this question]
+**g.** Produce a plot that illustrates the linear model fit in part (e) and analyzed in (f). Based on this plot and your analysis, is there evidence suggesting that making a donation to a school's endowment increases access for low- and middle-income students to the same extent at Ivy Plus schools as non-Ivy Plus schools? **Explain your reasoning.**  [Code and text for this question]
 
 (*Hint: geom_smooth() may be useful here.*)
 
@@ -380,7 +352,8 @@ get_regression_summaries(big_model)
 
 ```
 
-**a.** Write out the equation for this fitted model. [Only text/math for this question.]
+
+**a.** Based on the information provided from the chunk above, discuss whether you think this is a "good" model. Consider in particular our goals of having a model that is both parsimonious and accurate. [Text and code for this question]
 
 ********************************************************************
 
@@ -390,7 +363,7 @@ get_regression_summaries(big_model)
 
 
 
-**b.** Based on the information provided from the chunk at the beginning of the exercise, discuss whether you think this is a "good" model. Consider in particular our goals of having a model that is both parsimonious and accurate. [Text and code for this question]
+**b.** If we were to compare this model to others with many more variables, should we use $R^2$ or adjusted $R^2$? [Text only for this question]
 
 ********************************************************************
 
@@ -400,17 +373,7 @@ get_regression_summaries(big_model)
 
 
 
-**c.** If we were to compare this model to others with many more variables, should we use $R^2$ or adjusted $R^2$? [Text only for this question]
-
-********************************************************************
-
-
-
-********************************************************************
-
-
-
-**d.** What is the difference in how we should interpret the coefficients on `DBH:NativeYes` versus `DBH`? [Text only for this question]
+**c.** What is the difference in how we should interpret the coefficients on `DBH:NativeYes` versus `DBH`? [Text only for this question]
 
 ********************************************************************
 

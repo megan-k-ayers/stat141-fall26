@@ -50,13 +50,11 @@ SalaryGender <- SalaryGender %>%
 
 The data includes three variables:
 
-1. Gender: Coded as a binary "Female" or "Male". It is not clear whether this truly reflects the gender identity of participants, or something different like biological sex. (We might assume that no participants with other gender identities were included, which limits our ability to generalize to the population at large.)
-2. Age: Age of participant, in years.
-3. Salary: Annual salary in thousands of US dollars.
+1. **Gender**: Coded as a binary "Female" or "Male". It is not clear whether this truly reflects the gender identity of participants, or something different like biological sex. (We might assume that no participants with other gender identities were included, which limits our ability to generalize to the population at large.)
+2. **Age**: Age of participant, in years.
+3. **Salary**: Annual salary in thousands of US dollars.
 
-
-
-**a.** The chunk below creates exploratory visualizations of each variable: `Salary`, `Age`, and `Gender`. **Why is it important to perform this step before building a linear regression model? Based on the visualizations, give an insight about each variable.** [Text only for this question]
+The distributions of these three variables are visualized below individually.
 
 ```{r}
 g1 <- ggplot(data = SalaryGender, aes(x = Salary)) + geom_histogram(bins = 20) +
@@ -68,65 +66,41 @@ g3 <- ggplot(data = SalaryGender, aes(x = Gender)) + geom_bar() +
 gridExtra::grid.arrange(g1, g2, g3, nrow = 2)
 ```
 
-*******************************************************************************
 
 
-
-*******************************************************************************
-
-
-
-**b.** The chunk below investigates the bivariate relationship between `Salary` and `Gender.` **What trends do you observe, and how are they relevant to building our linear model?** [Text only for this question]
+**a.** The chunk below investigates (1) the bivariate relationship between `Salary` and `Gender,`  (2) the bivariate relationship between `Salary` and `Age`, and (3) the bivariate relationship between `Age` and `Gender`.  For **each of the three graphs**, explain in 1-2 sentences **what trends you observe, and how they are relevant to building our linear model.** Keep in mind that our overall goal is to understand the relationship between salary and gender. [Text only for this question]
 
 ```{r}
-ggplot(data = SalaryGender, aes(x = Gender, y = Salary)) + geom_boxplot() +
-  theme_bw() + labs(title = "Side-by-Side Boxplots of Salary by Gender")
+ggplot(data = SalaryGender, aes(x = Gender, y = Salary)) + 
+  geom_boxplot() + theme_bw() + 
+  labs(title = "Side-by-Side Boxplots of Salary by Gender")
+
+ggplot(SalaryGender, aes(x = Age, y = Salary)) + 
+  geom_point() + geom_smooth(method = "lm", se = F) + theme_bw() +
+  labs(title = "Scatterplot of Salary by Age")
+
+ggplot(data = SalaryGender, aes(x = Gender, y = Age)) + 
+  geom_boxplot() + theme_bw() + 
+  labs(title = "Side-by-Side Boxplots of Age by Gender")
+
 ```
 
 *******************************************************************************
 
+(1)
+
+
+(2)
+
+
+(3)
 
 
 *******************************************************************************
 
 
 
-**c.** Assess the scatterplot produced by the chunk below. **Describe what the graph is showing.** [Text only for this question]
-
-```{r}
-ggplot(SalaryGender, aes(x = Age, y = Salary)) + geom_point() +
-  geom_smooth(method = "lm", se = F) + theme_bw()
-```
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-
-**d.** Calculate the correlation coefficient between `Salary` and `Age`, and **comment on the strength of the relationship**. [Code and text for this question]
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-
-**e.** Now create a plot to investigate the bivariate relationship between `Age` and `Gender`. **Describe what your graph shows. Explain how insights from this graph and the graph from part (d) are relevant to building our linear model.** Keep in mind that our overall goal is to understand the relationship between salary and gender. [Code and text for this question]
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-
-**f.** In a new chunk below, create a scatterplot of salary vs age, colored by gender. Add gender-specific trend lines by adding `+ geom_parallel_slopes(se = FALSE)`. **Comment on any trends observed.** [Code and text for this question]
+**b.** In a new chunk below, create a scatterplot of salary vs age, colored by gender. Add gender-specific trend lines by adding `+ geom_parallel_slopes(se = FALSE)`. **Comment on any trends observed.** [Code and text for this question]
 
 *******************************************************************************
 
@@ -140,13 +114,28 @@ ggplot(SalaryGender, aes(x = Age, y = Salary)) + geom_point() +
 
 In this exercise, you will use a regression model to investigate whether age explains the gap in salary between males and females in post-secondary education. (Note: Even *if* age explained the gap, **there is still a gap!** This would be an indication of structural differences for men and women in the US.)
 
-**a.** The chunk below creates a *multiple linear regression model* using the `SalaryGender` data frame. Using the summary table, write the equation for the fitted model. Interpret each coefficient, and explain how their values validate your exploratory findings from Exercise 1. [Only text needed for this question]
+**a.** In the chunk below, create a *multiple linear regression model* that predicts `Salary` using both `Gender` and `Age`, with fixed slopes. Display the model's regression summary table. Using the summary table, **(1)** write the equation for the fitted model, and **(2)** interpret each coefficient, explaining how their values validate your exploratory findings from Exercise 1. [Code and text needed for this question]
+
+*******************************************************************************
 
 ```{r}
-lm_salary_gender <- lm(Salary ~ Age + Gender, data = SalaryGender)
-get_regression_table(lm_salary_gender)
+# Create your model and get its regression table here
+
 ```
 
+
+(1)
+
+
+(2)
+
+
+*******************************************************************************
+
+
+
+**b.** Using your regression equation from above, calculate, in `R`, the model's prediction for the salary of a female teacher who is 30 years old. **Based on the exploratory visualizations in Exercise 1, is this an example of extrapolation?** [Code and text for this question]
+
 *******************************************************************************
 
 
@@ -155,17 +144,7 @@ get_regression_table(lm_salary_gender)
 
 
 
-**b.** Using your regression equation from part (a) of this exercise, calculate the model's prediction for the salary of a female teacher who is 30 years old. **Based on the exploratory visualizations in Exercise 1, is this an example of extrapolation?** [Code and text for this question]
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-
-## Exercise 3: Assess Salary Regression Models
+## Exercise 3: Considering Other Models
 
 The model created for the previous exercise is just one example of a model that we could fit using the data set. The chunk below creates two more models: `m1`, which predicts `Salary` using only `Gender`, and `m2`, which predicts `Salary` using only `Age`.
 
@@ -176,48 +155,7 @@ m3 <- lm(Salary ~ Age + Gender, data = SalaryGender)
 ```
 
 
-**a.** Which of the three models helps us best answer our original research question? **Consider both $R^2$ and the types of relationships each model captures in your argument.** Recall that you can find the $R^2$ of a model by using `get_regression_summaries()`. [Code and text for this question]
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-**b.** To further investigate these models, let's work more closely with their predictions (aka fitted values) and residuals. Use `get_regression_points()` three separate times to grab a data frame with these sets of values from each of the models `m1`, `m2`, and `m3`. Assign these data frames (the output of `get_regression_points()` for each model) the names `m1_pts`, `m2_pts`, and `m3_pts`. [Code only for this question]
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-**c.** Investigating when linear regression model assumptions hold is important to consider when selecting the best model(s) from a collection of possible models. **Remove eval=FALSE** at the top of the chunk below once you've finished 3(a), and run the chunk to assess the set of graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?** [Text only for this question]
-
-```{r eval=FALSE}
-# These next two commands are not usually needed, but here they help us compare
-# the three different models directly within the a shard data frame (and 
-# then the same ggplot).
-res <- bind_rows(m1_pts %>% mutate(model = "Salary ~ Gender") %>%
-                   select(Salary, Salary_hat, residual, model),
-                 m2_pts %>% mutate(model = "Salary ~ Age") %>%
-                   select(Salary, Salary_hat, residual, model),
-                 m3_pts %>% mutate(model = "Salary ~ Age + Gender") %>%
-                   select(Salary, Salary_hat, residual, model))
-res$model <- factor(res$model, levels = c("Salary ~ Gender",
-                                          "Salary ~ Age",
-                                          "Salary ~ Age + Gender"))
-
-ggplot(res, aes(x = Salary_hat, y = residual)) +
-  geom_hline(aes(yintercept = 0), lty = 2, color = "gray") +
-  geom_point() +
-  facet_wrap(~model) +  # This gets us one plot per model - usually we don't include it
-  labs(title = "Residuals vs Fitted Values") +
-  theme_classic()
-
-```
+**a.** Which of these three models helps us best answer our original research question? **Consider both $R^2$ and the types of relationships each model captures in your argument.** Recall that you can find the $R^2$ of a model by using `get_regression_summaries()`. [Code and text for this question]
 
 *******************************************************************************
 
@@ -227,18 +165,35 @@ ggplot(res, aes(x = Salary_hat, y = residual)) +
 
 
 
-**d.** When you've finished 3(c), **remove eval=FALSE** at the top of the chunk below and assess the next set of diagnostic graphs shown. **Which LINE assumption(s) do these graphs relate to, and which model(s) satisfy it/them?** [Text only for this question]
-
-```{r eval=FALSE}
-ggplot(res, aes(x = residual)) +
-  geom_histogram(bins = 20, color = "white") +
-  facet_wrap(~model) +  # This gets us one plot per model - usually we don't include it
-  labs(title = "Residual Histograms") +
-  theme_classic()
-```
+**b.** Building on our model from 2(b) (aka model `m3`), create one more multiple linear regression model that predicts `Salary` using `Age` and `Gender`, this time allowing for *varying slopes*. How did the coefficient estimates change? [Code and text for this question]
 
 *******************************************************************************
 
 
 
+
 *******************************************************************************
+
+
+
+**c.** Create a `ggplot` graph that visualizes the varying slopes model that you just build in part 3(b). (*Hint: compare examples of `geom_parallel_slopes()` and `geom_smooth()` in the slides.*)
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
+
+**d. (BONUS!)** To further investigate each of these 4 models, explore their diagnostic plots. Based on the data context and the graphs produced in the chunk below, does any model meet all LINE assumptions? [Text only for this question]
+
+*******************************************************************************
+
+
+
+
+*******************************************************************************
+
+
