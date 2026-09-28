@@ -133,6 +133,13 @@
     "text": "Bonus Activity: Changing Reference Level\nWe can change the reference level if we want.\n\npenguins$species &lt;- relevel(penguins$species, ref = \"Chinstrap\")\npenguin_mod &lt;- lm(bill_length_mm ~ species, penguins)\nget_regression_table(penguin_mod)\n\n# A tibble: 3 × 7\n  term            estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept          48.8      0.359    136.     0        48.1    49.5  \n2 species: Adelie   -10.0      0.432    -23.2    0       -10.9    -9.19 \n3 species: Gentoo    -1.33     0.447     -2.97   0.003    -2.21   -0.449\n\n\n \n\nGet in groups of ~5 and find a spot on one of the boards.\n\n\nQ1: Write down the equation for this fitted model.\nQ2: Draw a few rows of the data frame with the variables used by the model.\nQ3: How is the interpretation of \\(\\widehat{\\beta}_0\\) different now?\nQ4: How should we interpret the other two coefficients?"
   },
   {
+    "objectID": "slides/lecture12_lm-categorical.html#bonus-activity-changing-reference-level-answers",
+    "href": "slides/lecture12_lm-categorical.html#bonus-activity-changing-reference-level-answers",
+    "title": "STAT 141",
+    "section": "Bonus Activity: Changing Reference Level (Answers)",
+    "text": "Bonus Activity: Changing Reference Level (Answers)\n\nQ1: Write down the equation for this fitted model.\n\n\\[\n\\widehat{Y} = 48.8 - 10.0 x_{species:Adelie} - 1.3 x_{species:Gentoo}\n\\]\n\nQ2: Draw a few rows of the data frame with the variables used by the model.\n\n\n\n# A tibble: 6 × 4\n# Groups:   species [3]\n  bill_length_mm species   x_adelie x_gentoo\n           &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt;    &lt;dbl&gt;\n1           49.8 Chinstrap        0        0\n2           52   Chinstrap        0        0\n3           38.6 Adelie           1        0\n4           43.1 Adelie           1        0\n5           48.5 Gentoo           0        1\n6           42.7 Gentoo           0        1\n\n\n\nQ3: How is the interpretation of \\(\\widehat{\\beta}_0\\) different now?\n\n\\(\\beta_0\\) (\\(\\widehat{\\beta}_0\\)) now represents (estimates) the population mean bill length for Chinstrap penguins, not Adelie penguins\n\nQ4: How should we interpret the other two coefficients?\n\nThey now represent the predicted change in bill lengths for Adelie and Gentoo penguins on average, relative to the predicted bill length for Chinstrap penguins."
+  },
+  {
     "objectID": "slides/lecture10_lm-intro.html#typical-analysis-goals",
     "href": "slides/lecture10_lm-intro.html#typical-analysis-goals",
     "title": "STAT 141",
@@ -2147,5 +2154,75 @@
     "title": "STAT 141",
     "section": "Checking normality: Q-Q plot",
     "text": "Checking normality: Q-Q plot\n\nmod &lt;- lm(Salary ~ HmRun, data = hitters)\nres &lt;- get_regression_points(mod)\n\nggplot(res, aes(sample = residual)) + \n  geom_qq() +\n  geom_qq_line()\n\n\n\n\n\n\n\n\n\nNormality: 🚨"
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#example",
+    "href": "slides/lecture13_lm-multiple-regression.html#example",
+    "title": "STAT 141",
+    "section": "Example",
+    "text": "Example\n\n\nMeadowfoam is a plant that grows in the Pacific Northwest and is harvested for its seed oil. In a randomized experiment, researchers at Oregon State University looked at how two light-related factors influenced the number of flowers per meadowfoam plant, the primary measure of productivity for this plant. The two light measures were light intensity (in mmol/ \\(m^2\\) /sec) and the timing of onset of the light (early or late in terms of photo periodic floral induction).\n\n\n\n\n\n\n\n\nResponse variable?\n\n\nExplanatory variables?\n\n\nModel Form?"
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#returning-to-our-mlr-model---equal-slopes",
+    "href": "slides/lecture13_lm-multiple-regression.html#returning-to-our-mlr-model---equal-slopes",
+    "title": "STAT 141",
+    "section": "Returning to our MLR model - equal slopes",
+    "text": "Returning to our MLR model - equal slopes\n\n\nggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +\n  geom_point(size = 2) + \n  geom_parallel_slopes(se = FALSE) + \n  scale_color_manual(values = c(\"steelblue\",\n                               \"goldenrod\", \n                               \"plum3\")) +\n  theme_bw() \n\n\n\n\n\n\n\n\n\nAre equal slopes a reasonable assumption here?"
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#different-slopes-model-ggplot-example",
+    "href": "slides/lecture13_lm-multiple-regression.html#different-slopes-model-ggplot-example",
+    "title": "STAT 141",
+    "section": "Different Slopes Model (ggplot example)",
+    "text": "Different Slopes Model (ggplot example)\n\n\nggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +\n  geom_point(size = 2) + \n  geom_smooth(method = \"lm\", se = FALSE) + \n  scale_color_manual(values = c(\"steelblue\",\n                               \"goldenrod\", \n                               \"plum3\")) +\n  theme_bw() \n\n\n\n\n\n\n\n\n\n\nEqual slopes models force the relationship between quantitative predictors and the response variable to be the same for each group in the model.\nIn contrast, different slopes models allow for different relationships between quantitative predictors and the response variable for each group in the model.\nHow can we allow our model to have different slopes?"
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#contrasting-model-forms",
+    "href": "slides/lecture13_lm-multiple-regression.html#contrasting-model-forms",
+    "title": "STAT 141",
+    "section": "Contrasting model forms",
+    "text": "Contrasting model forms\nRecall the equal slopes model:\n\\[\ny = \\beta_0 + \\beta_1 \\cdot x_{\\textrm{Bill Depth}} + \\beta_2 \\cdot  x_{\\textrm{Species:Chinstrap}} + \\beta_3 \\cdot x_{\\textrm{Species:Gentoo}} + \\epsilon\n\\]\n\n\nHow can we allow the slopes to vary?\n\n\n\\[\ny = \\beta_0 + \\beta_1 \\cdot x_{\\textrm{Bill Depth}} + \\beta_2 \\cdot  x_{\\textrm{Species:Chinstrap}} + \\beta_3 \\cdot x_{\\textrm{Species:Gentoo}} + \\\\\n\\beta_4 \\cdot x_{\\textrm{Bill Depth}} \\cdot x_{\\textrm{Species:Chinstrap}} + \\beta_5 \\cdot x_{\\textrm{Bill Depth}} \\cdot x_{\\textrm{Species:Gentoo}} + \\epsilon\n\\]\n\n\nCoefficient interpretation?\n\nThose involving \\(x_{\\textrm{Bill Depth}}\\) are particularly tricky"
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#different-slopes-model-in-r",
+    "href": "slides/lecture13_lm-multiple-regression.html#different-slopes-model-in-r",
+    "title": "STAT 141",
+    "section": "Different Slopes Model in R",
+    "text": "Different Slopes Model in R\n\nsame_slope &lt;- lm(bill_length_mm ~ bill_depth_mm + species, penguins)\n\ndiff_slope &lt;- lm(bill_length_mm ~ bill_depth_mm * species, penguins)\n\n\n\n\nget_regression_table(same_slope)\n\n# A tibble: 4 × 7\n  term               estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept             13.2      2.25       5.88       0     8.80    17.6 \n2 bill_depth_mm          1.39     0.122     11.4        0     1.15     1.63\n3 species: Chinstrap     9.94     0.368     27.0        0     9.22    10.7 \n4 species: Gentoo       13.4      0.512     26.2        0    12.4     14.4 \n\n\n\n\n\n\nget_regression_table(diff_slope)\n\n# A tibble: 6 × 7\n  term                    estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept                 23.1       3.02       7.65   0       17.1      29.0 \n2 bill_depth_mm              0.857     0.164      5.22   0        0.534     1.18\n3 species: Chinstrap        -9.64      5.72      -1.69   0.093  -20.9       1.60\n4 species: Gentoo           -5.84      4.54      -1.29   0.199  -14.8       3.08\n5 bill_depth_mm:speciesC…    1.06      0.31       3.44   0.001    0.455     1.68\n6 bill_depth_mm:speciesG…    1.16      0.279      4.17   0        0.615     1.71"
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#detour-handling-curved-relationships",
+    "href": "slides/lecture13_lm-multiple-regression.html#detour-handling-curved-relationships",
+    "title": "STAT 141",
+    "section": "Detour: handling curved relationships",
+    "text": "Detour: handling curved relationships\nNew data context: movie ratings\n\nlibrary(tidyverse)\nmovies &lt;- read_csv(\"https://www.lock5stat.com/datasets2e/HollywoodMovies.csv\")\n\n# Restrict our attention to dramas, horrors, and actions\nmovies2 &lt;- movies %&gt;%\n  filter(Genre %in% c(\"Drama\", \"Horror\", \"Action\")) %&gt;%\n  drop_na(Genre, AudienceScore, RottenTomatoes)\nglimpse(movies2)\n\nRows: 313\nColumns: 16\n$ Movie            &lt;chr&gt; \"Spider-Man 3\", \"Transformers\", \"Pirates of the Carib…\n$ LeadStudio       &lt;chr&gt; \"Sony\", \"Paramount\", \"Disney\", \"Warner Bros\", \"Warner…\n$ RottenTomatoes   &lt;dbl&gt; 61, 57, 45, 60, 20, 79, 35, 28, 41, 71, 95, 42, 18, 2…\n$ AudienceScore    &lt;dbl&gt; 54, 89, 74, 90, 68, 86, 55, 56, 81, 52, 84, 55, 70, 6…\n$ Story            &lt;chr&gt; \"Metamorphosis\", \"Monster Force\", \"Rescue\", \"Sacrific…\n$ Genre            &lt;chr&gt; \"Action\", \"Action\", \"Action\", \"Action\", \"Action\", \"Ac…\n$ TheatersOpenWeek &lt;dbl&gt; 4252, 4011, 4362, 3103, 3778, 3408, 3959, 3619, 2911,…\n$ OpeningWeekend   &lt;dbl&gt; 151.1, 70.5, 114.7, 70.9, 49.1, 33.4, 58.0, 45.3, 19.…\n$ BOAvgOpenWeekend &lt;dbl&gt; 35540, 17577, 26302, 22844, 12996, 9791, 14663, 12541…\n$ DomesticGross    &lt;dbl&gt; 336.53, 319.25, 309.42, 210.61, 140.13, 134.53, 131.9…\n$ ForeignGross     &lt;dbl&gt; 554.34, 390.46, 654.00, 245.45, 117.90, 249.00, 157.1…\n$ WorldGross       &lt;dbl&gt; 890.87, 709.71, 963.42, 456.07, 258.02, 383.53, 289.0…\n$ Budget           &lt;dbl&gt; 258.0, 150.0, 300.0, 65.0, 140.0, 110.0, 130.0, 110.0…\n$ Profitability    &lt;dbl&gt; 345.30, 473.14, 321.14, 701.64, 184.30, 348.66, 222.3…\n$ OpenProfit       &lt;dbl&gt; 58.57, 47.00, 38.23, 109.08, 35.07, 30.36, 44.62, 41.…\n$ Year             &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,…\n\n\n\nResponse variable: RottenTomatoes\nExplanatory variables: AudienceScore"
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#adding-a-curve-to-your-scatterplot",
+    "href": "slides/lecture13_lm-multiple-regression.html#adding-a-curve-to-your-scatterplot",
+    "title": "STAT 141",
+    "section": "Adding a Curve to your Scatterplot",
+    "text": "Adding a Curve to your Scatterplot\n\n\nggplot(data = movies2,\n       mapping = aes(x = AudienceScore,\n                     y = RottenTomatoes,\n                     color = Genre)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE, \n              formula = y ~ poly(x, degree = 2))"
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#adding-a-curve-to-your-scatterplot-1",
+    "href": "slides/lecture13_lm-multiple-regression.html#adding-a-curve-to-your-scatterplot-1",
+    "title": "STAT 141",
+    "section": "Adding a Curve to your Scatterplot",
+    "text": "Adding a Curve to your Scatterplot\n\n\n# Filtering to only Dramas\ndramas &lt;- movies2 %&gt;% filter(Genre == \"Drama\")\n\nggplot(data = dramas,\n       mapping = aes(x = AudienceScore,\n                     y = RottenTomatoes)) +\n  geom_point(color = \"#55B84F\") +\n  geom_smooth(method = \"lm\", se = FALSE,\n              color = \"#55B84F\",\n              formula = y ~ poly(x, degree = 2)) +\n  ggtitle(\"Dramas Only\")"
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#fitting-a-model-with-a-transformed-variable",
+    "href": "slides/lecture13_lm-multiple-regression.html#fitting-a-model-with-a-transformed-variable",
+    "title": "STAT 141",
+    "section": "Fitting a Model with a Transformed Variable",
+    "text": "Fitting a Model with a Transformed Variable\n\ndramas &lt;- movies2 %&gt;% filter(Genre == \"Drama\")\nmod2 &lt;- lm(RottenTomatoes ~ poly(AudienceScore, degree = 2, raw = TRUE),\n           data = dramas)\nget_regression_table(mod2)\n\n# A tibble: 3 × 7\n  term                    estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept                 98.8      21.3        4.64   0       56.6    141.   \n2 poly(AudienceScore, de…   -2.51      0.722     -3.48   0.001   -3.94    -1.08 \n3 poly(AudienceScore, de…    0.027     0.006      4.58   0        0.015    0.038\n\n\n\n\nWe’ll practice a very common transformation in HW 5 - the log transformation\nQ: Why is it still called a linear regression if the model also handles curved relationships?\nTransformations are super powerful: we can now use linear models even if the untransformed variables have non-linear relationships."
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#model-building-guidance",
+    "href": "slides/lecture13_lm-multiple-regression.html#model-building-guidance",
+    "title": "STAT 141",
+    "section": "Model Building Guidance",
+    "text": "Model Building Guidance\nWhat degree of polynomial should I include in my model?\n\n\n\n\nGuiding Principle: Capture the general trend, not the noise.\n\\[\n\\begin{align}\ny &= f(x) + \\epsilon \\\\\ny &= \\mbox{TREND} + \\mbox{NOISE}\n\\end{align}\n\\]"
   }
 ]

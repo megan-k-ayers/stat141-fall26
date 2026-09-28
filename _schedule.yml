@@ -202,8 +202,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading15.qmd
-            # - type: Slides
-            #   href: slides/lecture13_lm-multiple-regression.qmd
+            - type: Slides
+              href: slides/lecture13_lm-multiple-regression.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture13_lm-multiple-regression_handout.pdf
         - topic: "Lab: Linear Regression | Quiz 3"
           display-date: Thursday, Oct 1
           date: 10/01/26

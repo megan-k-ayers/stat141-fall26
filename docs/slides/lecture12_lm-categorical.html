@@ -306,7 +306,7 @@ y &amp;= \beta_0 + \beta_1 x + \epsilon
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_0c11c597" minutes="3" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_5b6b3db6" minutes="3" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
@@ -907,7 +907,7 @@ y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsi
 </section>
 <section class="slide level2">
 
-<h3 id="multiple-linear-regression-a-peak-into-next-week">Multiple Linear Regression: A peak into next week</h3>
+<h3 id="multiple-linear-regression-a-peak-ahead">Multiple Linear Regression: A peak ahead</h3>
 <p>Recall our penguin model</p>
 <p><span class="math display">\[
 y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsilon
@@ -918,7 +918,7 @@ y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsi
 <ul>
 <li class="fragment">We <strong>recoded</strong> the species predictor into two binary predictors</li>
 <li class="fragment">We are actually doing <strong>multiple</strong> linear regression now</li>
-<li class="fragment"><strong>Next week</strong>: We’ll formalize and extend multiple linear regression</li>
+<li class="fragment"><strong>Later this week</strong>: We’ll formalize and extend multiple linear regression</li>
 </ul>
 <p><br></p>
 <ul>
@@ -951,28 +951,42 @@ y = \beta_0 + \beta_1 x_{species:Chinstrap} + \beta_2 x_{species:Gentoo} + \epsi
 <li class="fragment"><strong>Q3:</strong> How is the interpretation of <span class="math inline">\(\widehat{\beta}_0\)</span> different now?</li>
 <li class="fragment"><strong>Q4:</strong> How should we interpret the other two coefficients?</li>
 </ul>
-<!-- ------------------------------------------------------------------------ -->
-<!-- ## Bonus Activity: Changing Reference Level (Answers) {.smaller} -->
-<!-- ::: nonincremental -->
-<!-- - **Q1:** Write down the equation for this fitted model. -->
-<!-- $$ -->
-<!-- \widehat{Y} = 48.8 - 10.0 x_{species:Adelie} - 1.3 x_{species:Gentoo} -->
-<!-- $$ -->
-<!-- - **Q2:** Draw a few rows of the data frame with the variables used by the model. -->
-<!-- ```{r echo = FALSE} -->
-<!-- penguins <- penguins %>% -->
-<!--   mutate(x_adelie = case_when(species == "Adelie" ~ 1, TRUE ~ 0), -->
-<!--          x_gentoo = case_when(species == "Gentoo" ~ 1, TRUE ~ 0)) %>% -->
-<!--   na.omit() %>% -->
-<!--   group_by(species) %>% -->
-<!--   sample_n(2) -->
-<!-- head(penguins[, c("bill_length_mm", "species", "x_adelie", "x_gentoo")]) -->
-<!-- ``` -->
-<!-- - **Q3:** How is the interpretation of $\widehat{\beta}_0$ different now? -->
-<!--     - $\beta_0$ ($\widehat{\beta}_0$) now represents (estimates) the population mean bill length for Chinstrap penguins, not Adelie penguins -->
-<!-- - **Q4:** How should we interpret the other two coefficients? -->
-<!--     - They now represent the predicted change in bill lengths for Adelie and Gentoo penguins on average, relative to the predicted bill length for Chinstrap penguins. -->
-<!-- ::: -->
+</section>
+<section id="bonus-activity-changing-reference-level-answers" class="slide level2 smaller">
+<h2>Bonus Activity: Changing Reference Level (Answers)</h2>
+<ul>
+<li><strong>Q1:</strong> Write down the equation for this fitted model.</li>
+</ul>
+<p><span class="math display">\[
+\widehat{Y} = 48.8 - 10.0 x_{species:Adelie} - 1.3 x_{species:Gentoo}
+\]</span></p>
+<ul>
+<li><strong>Q2:</strong> Draw a few rows of the data frame with the variables used by the model.</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 4
+# Groups:   species [3]
+  bill_length_mm species   x_adelie x_gentoo
+           &lt;dbl&gt; &lt;fct&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+1           49.8 Chinstrap        0        0
+2           52   Chinstrap        0        0
+3           38.6 Adelie           1        0
+4           43.1 Adelie           1        0
+5           48.5 Gentoo           0        1
+6           42.7 Gentoo           0        1</code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Q3:</strong> How is the interpretation of <span class="math inline">\(\widehat{\beta}_0\)</span> different now?
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> (<span class="math inline">\(\widehat{\beta}_0\)</span>) now represents (estimates) the population mean bill length for Chinstrap penguins, not Adelie penguins</li>
+</ul></li>
+<li><strong>Q4:</strong> How should we interpret the other two coefficients?
+<ul>
+<li>They now represent the predicted change in bill lengths for Adelie and Gentoo penguins on average, relative to the predicted bill length for Chinstrap penguins.</li>
+</ul></li>
+</ul>
 
 
 </section></section>

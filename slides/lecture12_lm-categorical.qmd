@@ -632,7 +632,7 @@ ggplot(res, aes(sample = residual)) +
 ------------------------------------------------------------------------
 
 
-### Multiple Linear Regression: A peak into next week
+### Multiple Linear Regression: A peak ahead
 
 Recall our penguin model
 
@@ -646,7 +646,7 @@ Even though we are using one predictor (species), we now have $\beta_0,~ \beta_1
 
 -   We **recoded** the species predictor into two binary predictors
 -   We are actually doing **multiple** linear regression now
--   **Next week**: We'll formalize and extend multiple linear regression
+-   **Later this week**: We'll formalize and extend multiple linear regression
 
 <br>
 
@@ -677,38 +677,38 @@ Get in groups of ~5 and find a spot on one of the boards.
 - **Q4:** How should we interpret the other two coefficients?
 
 
-<!-- ------------------------------------------------------------------------ -->
+------------------------------------------------------------------------
 
-<!-- ## Bonus Activity: Changing Reference Level (Answers) {.smaller} -->
+## Bonus Activity: Changing Reference Level (Answers) {.smaller}
 
-<!-- ::: nonincremental -->
+::: nonincremental
 
-<!-- - **Q1:** Write down the equation for this fitted model. -->
+- **Q1:** Write down the equation for this fitted model.
 
-<!-- $$ -->
-<!-- \widehat{Y} = 48.8 - 10.0 x_{species:Adelie} - 1.3 x_{species:Gentoo} -->
-<!-- $$ -->
+$$
+\widehat{Y} = 48.8 - 10.0 x_{species:Adelie} - 1.3 x_{species:Gentoo}
+$$
 
-<!-- - **Q2:** Draw a few rows of the data frame with the variables used by the model. -->
+- **Q2:** Draw a few rows of the data frame with the variables used by the model.
 
-<!-- ```{r echo = FALSE} -->
-<!-- penguins <- penguins %>% -->
-<!--   mutate(x_adelie = case_when(species == "Adelie" ~ 1, TRUE ~ 0), -->
-<!--          x_gentoo = case_when(species == "Gentoo" ~ 1, TRUE ~ 0)) %>% -->
-<!--   na.omit() %>% -->
-<!--   group_by(species) %>% -->
-<!--   sample_n(2) -->
-<!-- head(penguins[, c("bill_length_mm", "species", "x_adelie", "x_gentoo")]) -->
+```{r echo = FALSE}
+penguins <- penguins %>%
+  mutate(x_adelie = case_when(species == "Adelie" ~ 1, TRUE ~ 0),
+         x_gentoo = case_when(species == "Gentoo" ~ 1, TRUE ~ 0)) %>%
+  na.omit() %>%
+  group_by(species) %>%
+  sample_n(2)
+head(penguins[, c("bill_length_mm", "species", "x_adelie", "x_gentoo")])
 
-<!-- ``` -->
-
-
-<!-- - **Q3:** How is the interpretation of $\widehat{\beta}_0$ different now? -->
-<!--     - $\beta_0$ ($\widehat{\beta}_0$) now represents (estimates) the population mean bill length for Chinstrap penguins, not Adelie penguins -->
+```
 
 
-<!-- - **Q4:** How should we interpret the other two coefficients? -->
-<!--     - They now represent the predicted change in bill lengths for Adelie and Gentoo penguins on average, relative to the predicted bill length for Chinstrap penguins. -->
+- **Q3:** How is the interpretation of $\widehat{\beta}_0$ different now?
+    - $\beta_0$ ($\widehat{\beta}_0$) now represents (estimates) the population mean bill length for Chinstrap penguins, not Adelie penguins
 
-<!-- ::: -->
+
+- **Q4:** How should we interpret the other two coefficients?
+    - They now represent the predicted change in bill lengths for Adelie and Gentoo penguins on average, relative to the predicted bill length for Chinstrap penguins.
+
+:::
 

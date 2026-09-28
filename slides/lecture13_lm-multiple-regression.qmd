@@ -1,7 +1,7 @@
 ---
 pagetitle: "Linear Models IV: Multiple Regression"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -360,6 +360,95 @@ ggplot(penguins, aes(x = bill_depth_mm,
 
 ------------------------------------------------------------------------
 
+<!-- ### Side note: plotting equal vs varying slopes -->
+
+<!-- ```{r} -->
+<!-- #| output-location: column -->
+<!-- #| code-line-numbers: "5" -->
+
+<!-- ggplot(penguins, aes(x = bill_depth_mm, -->
+<!--                      y = bill_length_mm, -->
+<!--                      color = species)) + -->
+<!--   geom_point(size = 2) +  -->
+<!--   geom_parallel_slopes(se = FALSE) +  -->
+<!--   scale_color_manual(values = c("steelblue", -->
+<!--                                "goldenrod",  -->
+<!--                                "plum3")) + -->
+<!--   theme_bw() + -->
+<!--   theme(legend.position = "bottom") -->
+<!-- ``` -->
+
+
+<!-- ::: {.nonincremental style="font-size: 0.9em;"} -->
+
+<!-- -   `geom_parallel_slopes()`: assumes equal slopes (within `color` groups) -->
+
+<!-- ::: -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Side note: plotting equal vs varying slopes -->
+
+<!-- ```{r} -->
+<!-- #| output-location: column -->
+<!-- #| code-line-numbers: "5" -->
+
+<!-- ggplot(penguins, aes(x = bill_depth_mm, -->
+<!--                      y = bill_length_mm, -->
+<!--                      color = species)) + -->
+<!--   geom_point(size = 2) +  -->
+<!--   geom_smooth(method = "lm", se = FALSE) +  -->
+<!--   scale_color_manual(values = c("steelblue", -->
+<!--                                "goldenrod",  -->
+<!--                                "plum3")) + -->
+<!--   theme_bw() + -->
+<!--   theme(legend.position = "bottom") -->
+<!-- ``` -->
+
+
+<!-- ::: {.nonincremental style="font-size: 0.9em;"} -->
+
+<!-- -   `geom_parallel_slopes()`: assumes equal slopes (within `color` groups) -->
+<!-- -   `geom_smooth(method = "lm")`: assumes varying slopes (within `color` groups) -->
+
+<!-- ::: -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ### Side note: plotting equal vs varying slopes -->
+
+<!-- ```{r} -->
+<!-- #| output-location: column -->
+<!-- #| code-line-numbers: "5-9" -->
+
+<!-- ggplot(penguins, aes(x = bill_depth_mm, -->
+<!--                      y = bill_length_mm, -->
+<!--                      color = species)) + -->
+<!--   geom_point(size = 2) +  -->
+<!--   geom_smooth(inherit.aes = FALSE,  -->
+<!--               mapping = aes(x = bill_depth_mm, -->
+<!--                             y = bill_length_mm), -->
+<!--               method = "lm", se = FALSE, -->
+<!--               color = "red") +  -->
+<!--   geom_parallel_slopes(se = FALSE) +  -->
+<!--   scale_color_manual(values = c("steelblue", -->
+<!--                                "goldenrod",  -->
+<!--                                "plum3")) + -->
+<!--   theme_bw() + -->
+<!--   theme(legend.position = "bottom") -->
+<!-- ``` -->
+
+
+<!-- ::: {.nonincremental style="font-size: 0.9em;"} -->
+
+<!-- -   `geom_parallel_slopes()`: assumes equal slopes (within `color` groups) -->
+<!-- -   `geom_smooth(method = "lm")`: assumes varying slopes (within `color` groups) -->
+<!-- -   We can overwrite `aes()` within `geom_smooth()` to get the overall regression line (ignoring color groups) -->
+
+<!-- ::: -->
+
+<!-- ------------------------------------------------------------------------ -->
+
 ### Three candidate models
 
 :::: {.columns}
@@ -403,6 +492,8 @@ get_regression_table(both_mod) %>%
 
 :::
 
+<br>
+
 -   **Coefficient interpretations**?
 
 ```{r}
@@ -429,12 +520,13 @@ $$
 
 :::
 
-::: {style="font-size: 0.9em;"}
+::: {style="font-size: 0.8em;"}
 
 -   **Slope Coefficient on Quantitative Variable:** The *expected/predicted* change in response variable, *on average*, per 1 unit increase in the explanatory variable, *holding all other variables constant*.
     -   Example: We expect a 1.394mm increase in bill length for every 1mm increase in bill depth, on average, after holding species constant.
 
 -   Interpretation on factors from **Categorical Variables** still applies: the *expect/predicted* change in response variable, *on average*, when going from the reference level to the factor's level, *holding all other variables constant*.
+    - Example: We expect bill length to be 9.94mm larger on average for Chinstrap penguins compared to Adelie penguins, holding bill depth constant.
 
 :::
 
@@ -459,11 +551,12 @@ $$
 
 ------------------------------------------------------------------------
 
-## Returning to our MLR model
+## Returning to our MLR model - equal slopes
 
 
 ```{r}
 #| output-location: column
+#| code-line-numbers: "3"
 
 ggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +
   geom_point(size = 2) + 
@@ -483,6 +576,7 @@ ggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +
 
 ```{r}
 #| output-location: column
+#| code-line-numbers: "3"
 
 ggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +
   geom_point(size = 2) + 
@@ -527,7 +621,7 @@ $$
 :::
 
 -   **Coefficient interpretation?**
-    - $\beta_1 \cdot x_{\textrm{Bill Depth}}$ is particularly tricky
+    - Those involving $x_{\textrm{Bill Depth}}$ are particularly tricky
 
 
 ------------------------------------------------------------------------
@@ -539,6 +633,8 @@ same_slope <- lm(bill_length_mm ~ bill_depth_mm + species, penguins)
 
 diff_slope <- lm(bill_length_mm ~ bill_depth_mm * species, penguins)
 ```
+
+<br>
 
 :::{.fragment}
 
@@ -611,6 +707,7 @@ ggplot(data = movies2,
 
 ```{r}
 #| output-location: column
+#| code-line-numbers: "7"
 ggplot(data = movies2,
        mapping = aes(x = AudienceScore,
                      y = RottenTomatoes,
@@ -627,15 +724,19 @@ ggplot(data = movies2,
 
 ```{r}
 #| output-location: column
-ggplot(data = movies2 %>% filter(Genre == "Drama"),
+#| code-line-numbers: "2,8-10"
+
+# Filtering to only Dramas
+dramas <- movies2 %>% filter(Genre == "Drama")
+
+ggplot(data = dramas,
        mapping = aes(x = AudienceScore,
                      y = RottenTomatoes)) +
   geom_point(color = "#55B84F") +
-  geom_smooth(method = "lm", se = FALSE, color = "#55B84F",
+  geom_smooth(method = "lm", se = FALSE,
+              color = "#55B84F",
               formula = y ~ poly(x, degree = 2)) +
-  ggtitle("Dramas Only") +
-  theme(plot.title = element_text(size = 18),
-        axis.title = element_text(size = 16))
+  ggtitle("Dramas Only")
 ```
 
 ------------------------------------------------------------------------
@@ -645,14 +746,19 @@ ggplot(data = movies2 %>% filter(Genre == "Drama"),
 
 ```{r}
 #| output-location: column
-ggplot(data = movies2 %>% filter(Genre == "Drama"),
-       mapping = aes(x = AudienceScore^2,
+#| code-line-numbers: "2-3,6,9-10"
+
+# Adding a column for AudienceScore^2
+dramas <- dramas %>%
+  mutate(AudienceScoreSq = AudienceScore^2)
+
+ggplot(data = dramas,
+       mapping = aes(x = AudienceScoreSq,
                      y = RottenTomatoes)) +
   geom_point(color = "#55B84F") +
-  geom_smooth(method = "lm", se = FALSE, color = "#55B84F") +
-  ggtitle("Dramas Only") +
-  theme(plot.title = element_text(size = 18),
-        axis.title = element_text(size = 16))
+  geom_smooth(method = "lm", se = FALSE,
+              color = "#55B84F") +
+  ggtitle("Dramas Only")
 ```
 
 - Notice that the relationship between `AudienceScore`$^2$ and `RottenTomatoes` is approximately linear.
