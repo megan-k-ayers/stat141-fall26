@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 10/2/26
+  draft-after: 10/9/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -209,11 +209,11 @@ scheduled-docs:
         - topic: "Lab: Linear Regression | Quiz 3"
           display-date: Thursday, Oct 1
           date: 10/01/26
-          # docs:
-          #     - type: Download Lab 5
-          #       href: lab/lab05.zip
-          #     - type: Download HW 5
-          #       href: hw/hw05.zip
+          docs:
+              - type: Download Lab 5
+                href: lab/lab05.zip
+              - type: Download HW 5
+                href: hw/hw05.zip
         - topic: "Linear Models V: Many Variables!"
           display-date: Friday, Oct 2
           date: 10/02/26
@@ -237,30 +237,30 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading17.qmd
-            - type: Slides
-              href: slides/lecture15_lm-case-study.qmd
+            # - type: Slides
+            #   href: slides/lecture15_lm-case-study.qmd
         - topic: "Sampling Distributions I: Introduction"
           display-date: Wednesday, Oct 7
           date: 10/07/26
           docs:
             - type: Reading
               href: readings/reading18.qmd
-            - type: Slides
-              href: slides/lecture16_sampling-dist-intro.qmd
+            # - type: Slides
+            #   href: slides/lecture16_sampling-dist-intro.qmd
         - topic: "Lab: Metacognition | Quiz 4 (online - Megan away for workshop)"
           display-date: Thursday, Oct 8
           date: 10/08/26
           docs:
-            - type: Download Metacognition assignment
-              href: hw/metacog.zip
+            # - type: Download Metacognition assignment
+            #   href: hw/metacog.zip
         - topic: "Sampling Distributions II: Properties"
           display-date: Friday, Oct 9
           date: 10/09/26
           docs:
             - type: Reading
-              href: readings/reading20.qmd
-            - type: Slides
-              href: slides/lecture17_sampling-dist-properties.qmd
+              href: readings/reading19.qmd
+            # - type: Slides
+            #   href: slides/lecture17_sampling-dist-properties.qmd
       resources:
             - 'Submit assignment 5 (due Thurs 10/08 at 9am)'
             - 'Take Quiz 4 online (but at regular lab time)'

@@ -1,7 +1,7 @@
 ---
 date: 10/05/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -10,7 +10,5 @@ execute:
 
 ## Reading 
 
-Before coming to lecture today, please read the following material: 
-
--   MD 7.1, 7.2
+No new reading for today!! Take the time to review any parts of last week's lecture slides on linear models that you feel most uncertain about.
 

@@ -34,7 +34,7 @@ library(moderndive)
 
 ## Exercise 1: Exploratory Data Analysis for Regression
 
-We will study data on teacher salaries for the rest of this homework assignment. Our data is a sample of 100 post-secondary (i.e., college) teachers is collected from the 2010 American Community Survey Public Use Microdata Sample, as found in the `Lock5Data` R package. We are interested in exploring differences in salary based on gender (i.e., gender-based salary discrimination) among college teachers.
+We will study data on teacher salaries for this lab assignment. Our data is a sample of 100 post-secondary (i.e., college) teachers is collected from the 2010 American Community Survey Public Use Microdata Sample, as found in the `Lock5Data` R package. We are interested in exploring differences in salary based on gender (i.e., gender-based salary discrimination) among college teachers.
 
 For this exercise, we will focus on the role of exploratory data analysis for linear regression models.
 

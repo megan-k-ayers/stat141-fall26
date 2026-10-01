@@ -1,7 +1,7 @@
 ---
 date: 10/07/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -12,7 +12,7 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
--   MD 7.3, 7.4
+-  MD 7.1, 7.2
 
-*Note: We have not formally covered some of the concepts mentioned in these sections in lecture, including random variables, but soon will.*
+
 
