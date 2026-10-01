@@ -1,7 +1,7 @@
 ---
 pagetitle: "Linear Models V: More Variables"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -32,6 +32,8 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
                       fig.retina = 3, fig.align = 'center')
 library(knitr)
 library(tidyverse)
+library(palmerpenguins)
+library(moderndive)
 ```
 
 ::::: columns
@@ -57,34 +59,37 @@ library(tidyverse)
 ## Goals for Today
 
 -   Some logistics - Megan will be away for a few days coming up
--   See week 4 feedback results
+-   Handling varying slopes
+-   Transformations
 -   Regression with many variables
 -   Adjusted $R^2$ and model selection
 -   Multicollinearity
--   Application of Multiple Linear Regression
+-   (Ambitious) Application of Multiple Linear Regression
 
 
 ------------------------------------------------------------------------
+
+::: {style="font-size:0.9em;"}
+
+### Office hour change next week
+- Megan's Wednesday office hours will be on **Tuesday** next week 10/6
+- Double check Moodle! 
+
 
 ### Logistics for Thurs Oct 8 
 
 - Quiz 4 will be taken online on Gradescope at your lab section's start time
 - It will be timed like usual, but you can take it anywhere (you still need to complete it individually)
-
-<br>
-
-- For the rest of the time that we're usually in lab, you'll work on a metacognition assignment
-- No new homework will be assigned
+- There will be a short metacognition homework assignment, but no lab assignment
 - There won't be a quiz on Oct 15
 
 
 ### Friday Oct 9 and Monday Oct 12
 
-- Lenny will give lectures
+- Lenny will lecture on these days
+- No office hours with Megan these days
 
-------------------------------------------------------------------------
-
-## Week 4 Feedback
+:::
 
 ------------------------------------------------------------------------
 
@@ -105,7 +110,7 @@ Linear regression is a flexible class of models that allow for:
 
 -   **Multiple** explanatory variables.
 
--   Transformed explanatory variables.
+-   Transformed explanatory variables (we'll see this today).
 
 -   BUT the **response variable is quantitative**.
 :::
@@ -116,74 +121,143 @@ Linear regression is a flexible class of models that allow for:
 
 ![](img/penguins.png){fig-align="center"}
 
+------------------------------------------------------------------------
+
+## Contrasting model forms
+
+Recall the equal slopes model:
+
+$$
+y = \beta_0 + \beta_1 \cdot x_{\text{Bill Depth}} + \beta_2 \cdot  x_{\text{Species:Chinstrap}} + \beta_3 \cdot x_{\text{Species:Gentoo}} + \epsilon
+$$
+
+<br>
+
+:::{.fragment}
+
+How can we allow the slopes to vary? 
+
+:::
+
+::: {.fragment}
+
+$$
+y = \beta_0 + \beta_1 \cdot x_{\textrm{Bill Depth}} + \beta_2 \cdot  x_{\text{Species:Chinstrap}} + \beta_3 \cdot x_{\text{Species:Gentoo}} + \\
+\beta_4 \cdot x_{\text{Bill Depth}} \cdot x_{\text{Species:Chinstrap}} + \beta_5 \cdot x_{\text{Bill Depth}} \cdot x_{\text{Species:Gentoo}} + \epsilon 
+$$
+
+:::
+
+-   **Coefficient interpretation?**
+    - Those involving $x_{\textrm{Bill Depth}}$ are particularly tricky
+    - Ex. $\beta_4$: When bill depth increases by 1mm for a *Chinstrap* penguin, we expect bill length to change by $\beta_4$ *more/less than it would change* for an *Adelie* penguin.
+
 
 ------------------------------------------------------------------------
 
-### Recap: Regression with the penguins so far
-
-::::: columns
-
-::: {.column width=50%}
-
-::: fragment
-**One Quantitative Variable**
+## Different Slopes Model in R
 
 ```{r}
-library(palmerpenguins)
-library(moderndive)
-mod <- lm(bill_length_mm ~ bill_depth_mm,
-          data = penguins)
-get_regression_table(mod) %>% select(term, estimate)
+same_slope <- lm(bill_length_mm ~ bill_depth_mm + species, penguins)
+
+diff_slope <- lm(bill_length_mm ~ bill_depth_mm * species, penguins)
+```
+
+<br>
+
+:::{.fragment}
+
+```{r}
+get_regression_table(same_slope)
 ```
 
 :::
 
 <br>
 
-::: fragment
-**One Categorical Variable**
+:::{.fragment}
 
 ```{r}
-mod <- lm(bill_length_mm ~ species,
-          data = penguins)
-get_regression_table(mod) %>% select(term, estimate)
-```
-
-:::
-:::
-
-
-::: {.column width=50%}
-
-::: fragment
-**Equal Slopes Model**
-
-```{r}
-mod <- lm(bill_length_mm ~ species + bill_depth_mm,
-          data = penguins)
-get_regression_table(mod) %>% select(term, estimate)
+get_regression_table(diff_slope)
 ```
 
 :::
 
 
-::: fragment
-**Different Slopes Model**
+<!-- ------------------------------------------------------------------------ -->
 
-```{r}
-mod <- lm(bill_length_mm ~ species*bill_depth_mm,
-          data = penguins)
-get_regression_table(mod) %>% select(term, estimate)
-```
+<!-- ### Recap: Regression with the penguins so far -->
 
-:::
-:::
-:::::
+<!-- ::: {style="font-size:0.9em;"} -->
 
+<!-- ::::: columns -->
+
+<!-- ::: {.column width=50%} -->
+
+<!-- ::: fragment -->
+<!-- **One Quantitative Variable** -->
+
+<!-- ```{r} -->
+<!-- library(palmerpenguins) -->
+<!-- library(moderndive) -->
+<!-- mod <- lm(bill_length_mm ~ bill_depth_mm, -->
+<!--           data = penguins) -->
+<!-- get_regression_table(mod) %>% select(term, estimate) -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+<!-- <br> -->
+
+<!-- ::: fragment -->
+<!-- **One Categorical Variable** -->
+
+<!-- ```{r} -->
+<!-- mod <- lm(bill_length_mm ~ species, -->
+<!--           data = penguins) -->
+<!-- get_regression_table(mod) %>% select(term, estimate) -->
+<!-- ``` -->
+
+<!-- ::: -->
+<!-- ::: -->
+
+
+<!-- ::: {.column width=50%} -->
+
+<!-- ::: fragment -->
+<!-- **Equal Slopes Model** -->
+
+<!-- ```{r} -->
+<!-- mod <- lm(bill_length_mm ~ species + bill_depth_mm, -->
+<!--           data = penguins) -->
+<!-- get_regression_table(mod) %>% select(term, estimate) -->
+<!-- ``` -->
+
+<!-- ::: -->
+
+
+<!-- ::: fragment -->
+<!-- **Different Slopes Model** -->
+
+<!-- ```{r} -->
+<!-- mod <- lm(bill_length_mm ~ species*bill_depth_mm, -->
+<!--           data = penguins) -->
+<!-- get_regression_table(mod) %>% select(term, estimate) -->
+<!-- ``` -->
+
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::::: -->
+
+<!-- ::: -->
+
+<!-- ------------------------------------------------------------------------ -->
+
+# Regression with multiple quantitative predictors
 
 ------------------------------------------------------------------------
 
-### This time: Regression with multiple quantitative predictors
+### Regression with multiple quantitative predictors
 
 
 :::: {.columns}
@@ -220,7 +294,7 @@ $$
 
 ------------------------------------------------------------------------
 
-### This time: Regression with multiple quantitative predictors
+### Regression with multiple quantitative predictors
 
 In R:
 
@@ -228,6 +302,8 @@ In R:
 mod <- lm(bill_length_mm ~ bill_depth_mm + body_mass_g, penguins)
 get_regression_table(mod)
 ```
+
+------------------------------------------------------------------------
 
 ## Visualizing the best fit plane
 
@@ -239,6 +315,8 @@ plot3d(x = penguins$bill_depth_mm, y = penguins$body_mass_g,
        z = penguins$bill_length_mm, type = "s", col = "goldenrod", size = 1)
 planes3d(a = coef(mod)[2], b = coef(mod)[3], c=-1, d = coef(mod)[1], alpha = .5)
 ```
+
+------------------------------------------------------------------------
 
 ## Least Squares and Prediction
 
@@ -254,6 +332,203 @@ predict(mod, pred_dat)
 ```
 
 :::
+
+------------------------------------------------------------------------
+
+## Least Squares and Interpretation (Generally)
+
+```{r}
+mod <- lm(bill_length_mm ~ bill_depth_mm + body_mass_g, penguins)
+get_regression_table(mod)
+```
+
+-   **Intercept Coefficient:** The *expected/predicted* value of the response, *on average*, when all explanatory variables are *set to 0*.
+
+- **Slope Coefficient on Quantitative Variable:** The *expected/predicted* change in response variable, *on average*, per 1 unit increase in the explanatory variable, *holding all other variables constant*.
+
+::: {.fragment .nonincremental}
+
+If we also had a categorical variable in our model...
+
+-   Interpretation on factors from **Categorical Variables**: the *expect/predicted* change in response variable, *on average*, when going from the reference level to the factor's level, *holding all other variables constant*.
+
+:::
+
+------------------------------------------------------------------------
+
+## Detour: handling curved relationships
+
+New data context: movie ratings 
+
+```{r}
+library(tidyverse)
+movies <- read_csv("https://www.lock5stat.com/datasets2e/HollywoodMovies.csv")
+
+# Restrict our attention to dramas, horrors, and actions
+movies2 <- movies %>%
+  filter(Genre %in% c("Drama", "Horror", "Action")) %>%
+  drop_na(Genre, AudienceScore, RottenTomatoes)
+glimpse(movies2)
+```
+
+::: {style="font-size: 0.8em;"}
+
+**Response variable:** `RottenTomatoes`
+
+**Explanatory variables:** `AudienceScore`
+
+:::
+
+------------------------------------------------------------------------
+
+### Exploring the Data
+
+```{r}
+#| output-location: column
+
+ggplot(data = movies2,
+       mapping = aes(x = AudienceScore,
+                     y = RottenTomatoes,
+                     color = Genre)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) 
+```
+
+::: nonincremental
+-   **Q:** What do the trends suggest, would it make sense to include varying slopes in the model?
+:::
+
+-   **Q:** Does anyone spot a curved relationship for one of the genres?
+
+------------------------------------------------------------------------
+
+## Adding a Curve to your Scatterplot
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "7"
+ggplot(data = movies2,
+       mapping = aes(x = AudienceScore,
+                     y = RottenTomatoes,
+                     color = Genre)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, 
+              formula = y ~ poly(x, degree = 2))
+```
+
+
+------------------------------------------------------------------------
+
+## Adding a Curve to your Scatterplot
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "2,8-10"
+
+# Filtering to only Dramas
+dramas <- movies2 %>% filter(Genre == "Drama")
+
+ggplot(data = dramas,
+       mapping = aes(x = AudienceScore,
+                     y = RottenTomatoes)) +
+  geom_point(color = "#55B84F") +
+  geom_smooth(method = "lm", se = FALSE,
+              color = "#55B84F",
+              formula = y ~ poly(x, degree = 2)) +
+  ggtitle("Dramas Only")
+```
+
+------------------------------------------------------------------------
+
+### Using Transformations to Account for Non-Linear Relationships
+
+
+```{r}
+#| output-location: column
+#| code-line-numbers: "2-3,6,9-10"
+
+# Adding a column for AudienceScore^2
+dramas <- dramas %>%
+  mutate(AudienceScoreSq = AudienceScore^2)
+
+ggplot(data = dramas,
+       mapping = aes(x = AudienceScoreSq,
+                     y = RottenTomatoes)) +
+  geom_point(color = "#55B84F") +
+  geom_smooth(method = "lm", se = FALSE,
+              color = "#55B84F") +
+  ggtitle("Dramas Only")
+```
+
+- Notice that the relationship between `AudienceScore`$^2$ and `RottenTomatoes` is approximately linear.
+- `AudienceScore`$^2$ is a **transformation** of `AudienceScore`
+
+
+------------------------------------------------------------------------
+
+## Fitting a Model with a Transformed Variable
+
+```{r}
+
+dramas <- movies2 %>% filter(Genre == "Drama")
+mod2 <- lm(RottenTomatoes ~ poly(AudienceScore, degree = 2, raw = TRUE),
+           data = dramas)
+get_regression_table(mod2)
+
+```
+
+<br>
+
+- We'll practice a very common transformation in HW 5 - the **log transformation**
+- **Q**: Why is it still called a *linear* regression if the model also handles curved relationships?
+- Transformations are super powerful: we can now use linear models even if the *untransformed* variables have non-linear relationships.
+
+
+------------------------------------------------------------------------
+
+## Model Building Guidance
+
+What degree of polynomial should I include in my model?
+
+:::::: fragment
+::::: columns
+::: column
+<br>
+
+**Guiding Principle**: Capture the general trend, not the noise.
+
+$$
+\begin{align}
+y &= f(x) + \epsilon \\
+y &= \mbox{TREND} + \mbox{NOISE}
+\end{align}
+$$
+:::
+
+::: column
+
+```{r, echo = FALSE}
+ggplot(data = movies2 %>% filter(Genre == "Drama"),
+       mapping = aes(x = AudienceScore,
+                     y = RottenTomatoes)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 2), 
+              color = "purple") +
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 5), 
+              color = "orange") +
+  geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 18), 
+              color = "darkgreen") +
+  ggtitle("Dramas Only") +
+  theme(plot.title = element_text(size = 18),
+        axis.title = element_text(size = 16))
+```
+:::
+:::::
+::::::
+
+
+
 
 
 ------------------------------------------------------------------------
@@ -369,45 +644,6 @@ get_regression_table(mod_movies)
 
 ------------------------------------------------------------------------
 
-## Transformations: Model Building Guidance
-
-What degree of polynomial should I include in my model?
-
-:::::: fragment
-::::: columns
-::: column
-<br>
-
-**Guiding Principle**: Capture the general trend, not the noise.
-
-$$
-\begin{align}
-y &= f(x) + \epsilon \\
-y &= \mbox{TREND} + \mbox{NOISE}
-\end{align}
-$$
-:::
-
-::: column
-
-```{r, echo = FALSE}
-ggplot(movies2[movies2$Genre == "Drama", ], aes(x = AudienceScore, y = RottenTomatoes)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 2), 
-              color = "purple") +
-  geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 5), 
-              color = "orange") +
-  geom_smooth(method = "lm", se = FALSE, formula = y ~ poly(x, degree = 18), 
-              color = "darkgreen") +
-  ggtitle("Drama Movies")
-```
-:::
-:::::
-::::::
-
-------------------------------------------------------------------------
-
 ### Model Building Guidance
 
 Suppose I built 3 different models. **Which is best?**
@@ -485,6 +721,21 @@ get_regression_summaries(mod1) %>% select(r_squared, adj_r_squared)
 get_regression_summaries(mod2) %>% select(r_squared, adj_r_squared)
 get_regression_summaries(mod3) %>% select(r_squared, adj_r_squared)
 ```
+
+
+------------------------------------------------------------------------
+
+### Recap on Developing Linear Models
+
+-   Key components that we've learned about over the last 5 lectures:
+    -   Determining the **response** variable and the potential **explanatory** variable(s)
+    -   Writing out the **model form** and understanding what the coefficients represent **in context**
+    -   **Building** and **visualizing** linear regression models in `R`
+    -   **Validating** model assumptions with diagnostic plots
+    -   **Comparing** different potential models
+
+
+# Case Study
 
 ------------------------------------------------------------------------
 
@@ -617,15 +868,5 @@ get_regression_summaries(big_mod)[, c("r_squared", "adj_r_squared")]
 ```
 :::
 
-------------------------------------------------------------------------
-
-### Recap on Developing Linear Models
-
--   Key components that we've learned about over the last 5 lectures:
-    -   Determining the **response** variable and the potential **explanatory** variable(s)
-    -   Writing out the **model form** and understanding what the terms represent **in context**
-    -   **Building** and **visualizing** linear regression models in `R`
-    -   **Validating** model assumptions with diagnostic plots
-    -   **Comparing** different potential models
 
 

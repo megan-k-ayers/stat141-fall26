@@ -84,6 +84,125 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture14_lm-many-variables.html#goals-for-today",
+    "href": "slides/lecture14_lm-many-variables.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for Today",
+    "text": "Goals for Today\n\nSome logistics - Megan will be away for a few days coming up\nHandling varying slopes\nTransformations\nRegression with many variables\nAdjusted \\(R^2\\) and model selection\nMulticollinearity\n(Ambitious) Application of Multiple Linear Regression"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#contrasting-model-forms",
+    "href": "slides/lecture14_lm-many-variables.html#contrasting-model-forms",
+    "title": "STAT 141",
+    "section": "Contrasting model forms",
+    "text": "Contrasting model forms\nRecall the equal slopes model:\n\\[\ny = \\beta_0 + \\beta_1 \\cdot x_{\\text{Bill Depth}} + \\beta_2 \\cdot  x_{\\text{Species:Chinstrap}} + \\beta_3 \\cdot x_{\\text{Species:Gentoo}} + \\epsilon\n\\]\n\n\nHow can we allow the slopes to vary?\n\n\n\\[\ny = \\beta_0 + \\beta_1 \\cdot x_{\\textrm{Bill Depth}} + \\beta_2 \\cdot  x_{\\text{Species:Chinstrap}} + \\beta_3 \\cdot x_{\\text{Species:Gentoo}} + \\\\\n\\beta_4 \\cdot x_{\\text{Bill Depth}} \\cdot x_{\\text{Species:Chinstrap}} + \\beta_5 \\cdot x_{\\text{Bill Depth}} \\cdot x_{\\text{Species:Gentoo}} + \\epsilon\n\\]\n\n\nCoefficient interpretation?\n\nThose involving \\(x_{\\textrm{Bill Depth}}\\) are particularly tricky\nEx. \\(\\beta_4\\): When bill depth increases by 1mm for a Chinstrap penguin, we expect bill length to change by \\(\\beta_4\\) more/less than it would change for an Adelie penguin."
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#different-slopes-model-in-r",
+    "href": "slides/lecture14_lm-many-variables.html#different-slopes-model-in-r",
+    "title": "STAT 141",
+    "section": "Different Slopes Model in R",
+    "text": "Different Slopes Model in R\n\nsame_slope &lt;- lm(bill_length_mm ~ bill_depth_mm + species, penguins)\n\ndiff_slope &lt;- lm(bill_length_mm ~ bill_depth_mm * species, penguins)\n\n\n\n\nget_regression_table(same_slope)\n\n# A tibble: 4 × 7\n  term               estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept             13.2      2.25       5.88       0     8.80    17.6 \n2 bill_depth_mm          1.39     0.122     11.4        0     1.15     1.63\n3 species: Chinstrap     9.94     0.368     27.0        0     9.22    10.7 \n4 species: Gentoo       13.4      0.512     26.2        0    12.4     14.4 \n\n\n\n\n\n\nget_regression_table(diff_slope)\n\n# A tibble: 6 × 7\n  term                    estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept                 23.1       3.02       7.65   0       17.1      29.0 \n2 bill_depth_mm              0.857     0.164      5.22   0        0.534     1.18\n3 species: Chinstrap        -9.64      5.72      -1.69   0.093  -20.9       1.60\n4 species: Gentoo           -5.84      4.54      -1.29   0.199  -14.8       3.08\n5 bill_depth_mm:speciesC…    1.06      0.31       3.44   0.001    0.455     1.68\n6 bill_depth_mm:speciesG…    1.16      0.279      4.17   0        0.615     1.71"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#visualizing-the-best-fit-plane",
+    "href": "slides/lecture14_lm-many-variables.html#visualizing-the-best-fit-plane",
+    "title": "STAT 141",
+    "section": "Visualizing the best fit plane",
+    "text": "Visualizing the best fit plane\n\noptions(rgl.useNULL = TRUE)\noptions(rgl.printRglwidget = TRUE)\nlibrary(rgl)\nplot3d(x = penguins$bill_depth_mm, y = penguins$body_mass_g, \n       z = penguins$bill_length_mm, type = \"s\", col = \"goldenrod\", size = 1)\nplanes3d(a = coef(mod)[2], b = coef(mod)[3], c=-1, d = coef(mod)[1], alpha = .5)"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#least-squares-and-prediction",
+    "href": "slides/lecture14_lm-many-variables.html#least-squares-and-prediction",
+    "title": "STAT 141",
+    "section": "Least Squares and Prediction",
+    "text": "Least Squares and Prediction\n\nStill minimizing the sum of squared residuals (from the plane)\nStill predict like usual\n\n\n\npred_dat &lt;- data.frame(bill_depth_mm = c(16, 18),\n                       body_mass_g = c(4000, 5000))\npredict(mod, pred_dat)\n\n       1        2 \n42.87888 47.44527"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#least-squares-and-interpretation-generally",
+    "href": "slides/lecture14_lm-many-variables.html#least-squares-and-interpretation-generally",
+    "title": "STAT 141",
+    "section": "Least Squares and Interpretation (Generally)",
+    "text": "Least Squares and Interpretation (Generally)\n\nmod &lt;- lm(bill_length_mm ~ bill_depth_mm + body_mass_g, penguins)\nget_regression_table(mod)\n\n# A tibble: 3 × 7\n  term          estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept       23.3       3.27       7.14   0       16.9     29.7  \n2 bill_depth_mm    0.163     0.137      1.19   0.234   -0.106    0.432\n3 body_mass_g      0.004     0         12.6    0        0.004    0.005\n\n\n\nIntercept Coefficient: The expected/predicted value of the response, on average, when all explanatory variables are set to 0.\nSlope Coefficient on Quantitative Variable: The expected/predicted change in response variable, on average, per 1 unit increase in the explanatory variable, holding all other variables constant.\n\n\nIf we also had a categorical variable in our model…\n\nInterpretation on factors from Categorical Variables: the expect/predicted change in response variable, on average, when going from the reference level to the factor’s level, holding all other variables constant."
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#detour-handling-curved-relationships",
+    "href": "slides/lecture14_lm-many-variables.html#detour-handling-curved-relationships",
+    "title": "STAT 141",
+    "section": "Detour: handling curved relationships",
+    "text": "Detour: handling curved relationships\nNew data context: movie ratings\n\nlibrary(tidyverse)\nmovies &lt;- read_csv(\"https://www.lock5stat.com/datasets2e/HollywoodMovies.csv\")\n\n# Restrict our attention to dramas, horrors, and actions\nmovies2 &lt;- movies %&gt;%\n  filter(Genre %in% c(\"Drama\", \"Horror\", \"Action\")) %&gt;%\n  drop_na(Genre, AudienceScore, RottenTomatoes)\nglimpse(movies2)\n\nRows: 313\nColumns: 16\n$ Movie            &lt;chr&gt; \"Spider-Man 3\", \"Transformers\", \"Pirates of the Carib…\n$ LeadStudio       &lt;chr&gt; \"Sony\", \"Paramount\", \"Disney\", \"Warner Bros\", \"Warner…\n$ RottenTomatoes   &lt;dbl&gt; 61, 57, 45, 60, 20, 79, 35, 28, 41, 71, 95, 42, 18, 2…\n$ AudienceScore    &lt;dbl&gt; 54, 89, 74, 90, 68, 86, 55, 56, 81, 52, 84, 55, 70, 6…\n$ Story            &lt;chr&gt; \"Metamorphosis\", \"Monster Force\", \"Rescue\", \"Sacrific…\n$ Genre            &lt;chr&gt; \"Action\", \"Action\", \"Action\", \"Action\", \"Action\", \"Ac…\n$ TheatersOpenWeek &lt;dbl&gt; 4252, 4011, 4362, 3103, 3778, 3408, 3959, 3619, 2911,…\n$ OpeningWeekend   &lt;dbl&gt; 151.1, 70.5, 114.7, 70.9, 49.1, 33.4, 58.0, 45.3, 19.…\n$ BOAvgOpenWeekend &lt;dbl&gt; 35540, 17577, 26302, 22844, 12996, 9791, 14663, 12541…\n$ DomesticGross    &lt;dbl&gt; 336.53, 319.25, 309.42, 210.61, 140.13, 134.53, 131.9…\n$ ForeignGross     &lt;dbl&gt; 554.34, 390.46, 654.00, 245.45, 117.90, 249.00, 157.1…\n$ WorldGross       &lt;dbl&gt; 890.87, 709.71, 963.42, 456.07, 258.02, 383.53, 289.0…\n$ Budget           &lt;dbl&gt; 258.0, 150.0, 300.0, 65.0, 140.0, 110.0, 130.0, 110.0…\n$ Profitability    &lt;dbl&gt; 345.30, 473.14, 321.14, 701.64, 184.30, 348.66, 222.3…\n$ OpenProfit       &lt;dbl&gt; 58.57, 47.00, 38.23, 109.08, 35.07, 30.36, 44.62, 41.…\n$ Year             &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,…\n\n\n\nResponse variable: RottenTomatoes\nExplanatory variables: AudienceScore"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#adding-a-curve-to-your-scatterplot",
+    "href": "slides/lecture14_lm-many-variables.html#adding-a-curve-to-your-scatterplot",
+    "title": "STAT 141",
+    "section": "Adding a Curve to your Scatterplot",
+    "text": "Adding a Curve to your Scatterplot\n\n\nggplot(data = movies2,\n       mapping = aes(x = AudienceScore,\n                     y = RottenTomatoes,\n                     color = Genre)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE, \n              formula = y ~ poly(x, degree = 2))"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#adding-a-curve-to-your-scatterplot-1",
+    "href": "slides/lecture14_lm-many-variables.html#adding-a-curve-to-your-scatterplot-1",
+    "title": "STAT 141",
+    "section": "Adding a Curve to your Scatterplot",
+    "text": "Adding a Curve to your Scatterplot\n\n\n# Filtering to only Dramas\ndramas &lt;- movies2 %&gt;% filter(Genre == \"Drama\")\n\nggplot(data = dramas,\n       mapping = aes(x = AudienceScore,\n                     y = RottenTomatoes)) +\n  geom_point(color = \"#55B84F\") +\n  geom_smooth(method = \"lm\", se = FALSE,\n              color = \"#55B84F\",\n              formula = y ~ poly(x, degree = 2)) +\n  ggtitle(\"Dramas Only\")"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#fitting-a-model-with-a-transformed-variable",
+    "href": "slides/lecture14_lm-many-variables.html#fitting-a-model-with-a-transformed-variable",
+    "title": "STAT 141",
+    "section": "Fitting a Model with a Transformed Variable",
+    "text": "Fitting a Model with a Transformed Variable\n\ndramas &lt;- movies2 %&gt;% filter(Genre == \"Drama\")\nmod2 &lt;- lm(RottenTomatoes ~ poly(AudienceScore, degree = 2, raw = TRUE),\n           data = dramas)\nget_regression_table(mod2)\n\n# A tibble: 3 × 7\n  term                    estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept                 98.8      21.3        4.64   0       56.6    141.   \n2 poly(AudienceScore, de…   -2.51      0.722     -3.48   0.001   -3.94    -1.08 \n3 poly(AudienceScore, de…    0.027     0.006      4.58   0        0.015    0.038\n\n\n\n\nWe’ll practice a very common transformation in HW 5 - the log transformation\nQ: Why is it still called a linear regression if the model also handles curved relationships?\nTransformations are super powerful: we can now use linear models even if the untransformed variables have non-linear relationships."
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#model-building-guidance",
+    "href": "slides/lecture14_lm-many-variables.html#model-building-guidance",
+    "title": "STAT 141",
+    "section": "Model Building Guidance",
+    "text": "Model Building Guidance\nWhat degree of polynomial should I include in my model?\n\n\n\n\nGuiding Principle: Capture the general trend, not the noise.\n\\[\n\\begin{align}\ny &= f(x) + \\epsilon \\\\\ny &= \\mbox{TREND} + \\mbox{NOISE}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#model-building-guidance-1",
+    "href": "slides/lecture14_lm-many-variables.html#model-building-guidance-1",
+    "title": "STAT 141",
+    "section": "Model Building Guidance",
+    "text": "Model Building Guidance\nShould we always include an interaction term? How many variables should I include?\n\n\nGuiding Principle: Occam’s Razor for Modeling\n\n“All other things being equal, simpler models are to be preferred over complex ones.” – ModernDive\n\n\nGuiding Principle: Consider your modeling goals.\n\nThe equal slopes model allows us to control for the intensity of the light and then see the impact of being in the early or late timing groups on the number of flowers.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLater in the course will learn statistical procedures for determining whether or not a particular term should be included in the model."
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#case-study-home-prices-in-king-county-wa",
+    "href": "slides/lecture14_lm-many-variables.html#case-study-home-prices-in-king-county-wa",
+    "title": "STAT 141",
+    "section": "Case Study: Home Prices in King County, WA",
+    "text": "Case Study: Home Prices in King County, WA\n\nWe’ll consider : Sale price (response); and square footage, above-ground square footage, and number of bedrooms (potential explanatory variables). Check out the exploratory plots below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ: How would you describe the distribution of price?\nQ: What do you expect the relationship between price and bedrooms to be like?"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#exploration-multicollinearity",
+    "href": "slides/lecture14_lm-many-variables.html#exploration-multicollinearity",
+    "title": "STAT 141",
+    "section": "Exploration, Multicollinearity",
+    "text": "Exploration, Multicollinearity\n\n\n\n\n\n\n\n\n\n\nMulticollinearity: when explanatory variables are highly correlated with one another. Multicollinearity often results in coefficients that are distorted in erroneous ways! We want to avoid this (some correlation is okay!)\nQ: Which pair of explanatory variables suffers most from multicollinearity?"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#model-estimation",
+    "href": "slides/lecture14_lm-many-variables.html#model-estimation",
+    "title": "STAT 141",
+    "section": "Model Estimation",
+    "text": "Model Estimation\n\n\n# A tibble: 3 × 7\n  term        estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept    197.        19.4      10.1    0      159.     235.   \n2 sqft_living    0.177      0.01     18.4    0        0.158    0.196\n3 bedrooms     -21.6        7.27     -2.97   0.003  -35.9     -7.34 \n\n\n\nQ: What is the equation, including coefficient values, for the estimated model?\n\n\n\\[\n\\widehat{\\text{price}} = 197 + 0.177*\\text{sqrt_living} - 21.6*\\text{bedrooms}\n\\]\n\n\nQ: How should interpret the intercept coefficient in our model?\n\nWhen sqrt_living and bedrooms are both 0, we expect/predict price to be $197,000 on average.\n\nQ: The coefficient for Bedrooms? Does this match your expectation?\n\nWhen the number of bedrooms increases by 1, we expect/predict price to decrease by $21,600 on average, holding sqft_living constant."
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#line-assumptions",
+    "href": "slides/lecture14_lm-many-variables.html#line-assumptions",
+    "title": "STAT 141",
+    "section": "LINE Assumptions",
+    "text": "LINE Assumptions"
+  },
+  {
+    "objectID": "slides/lecture14_lm-many-variables.html#adjusted-r2",
+    "href": "slides/lecture14_lm-many-variables.html#adjusted-r2",
+    "title": "STAT 141",
+    "section": "Adjusted \\(R^2\\)",
+    "text": "Adjusted \\(R^2\\)\nWhat’s the adjusted \\(R^2\\) of our model?\n\nget_regression_summaries(mod)[, c(\"r_squared\", \"adj_r_squared\")]\n\n# A tibble: 1 × 2\n  r_squared adj_r_squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.314         0.313\n\n\n\nNot super close to 1. Compare to a simpler model:\n\n\n\nsmall_mod &lt;- lm(price ~ bedrooms, data = house)\nget_regression_summaries(small_mod)[, c(\"r_squared\", \"adj_r_squared\")]\n\n# A tibble: 1 × 2\n  r_squared adj_r_squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.082         0.081\n\n\n\n\nCompare to a much bigger model with additional variables:\n\nbig_mod &lt;- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_above + sqft_lot +\n                view + condition + yr_built, data = house)\nget_regression_summaries(big_mod)[, c(\"r_squared\", \"adj_r_squared\")]\n\n# A tibble: 1 × 2\n  r_squared adj_r_squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.434         0.429"
+  },
+  {
     "objectID": "slides/lecture12_lm-categorical.html#new-example-palmer-penguins",
     "href": "slides/lecture12_lm-categorical.html#new-example-palmer-penguins",
     "title": "STAT 141",
@@ -2156,11 +2275,25 @@
     "text": "Checking normality: Q-Q plot\n\nmod &lt;- lm(Salary ~ HmRun, data = hitters)\nres &lt;- get_regression_points(mod)\n\nggplot(res, aes(sample = residual)) + \n  geom_qq() +\n  geom_qq_line()\n\n\n\n\n\n\n\n\n\nNormality: 🚨"
   },
   {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#announcements",
+    "href": "slides/lecture13_lm-multiple-regression.html#announcements",
+    "title": "STAT 141",
+    "section": "Announcements",
+    "text": "Announcements\n\n\nCareer panel at Math/Stats colloquium tomorrow!\n\n\n\n\nMath/Stats/CS picnic-hike on 10/10!"
+  },
+  {
+    "objectID": "slides/lecture13_lm-multiple-regression.html#goals-for-today",
+    "href": "slides/lecture13_lm-multiple-regression.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for Today",
+    "text": "Goals for Today\n\nHandling categorical and quantitative explanatory variables at the same time.\nCompare parallel slopes and interaction models for multiple regression\nTransformations"
+  },
+  {
     "objectID": "slides/lecture13_lm-multiple-regression.html#example",
     "href": "slides/lecture13_lm-multiple-regression.html#example",
     "title": "STAT 141",
     "section": "Example",
-    "text": "Example\n\n\nMeadowfoam is a plant that grows in the Pacific Northwest and is harvested for its seed oil. In a randomized experiment, researchers at Oregon State University looked at how two light-related factors influenced the number of flowers per meadowfoam plant, the primary measure of productivity for this plant. The two light measures were light intensity (in mmol/ \\(m^2\\) /sec) and the timing of onset of the light (early or late in terms of photo periodic floral induction).\n\n\n\n\n\n\n\n\nResponse variable?\n\n\nExplanatory variables?\n\n\nModel Form?"
+    "text": "Example\n\n\nMeadowfoam is a plant that grows in the Pacific Northwest and is harvested for its seed oil.\nIn a randomized experiment, researchers at OSU looked at how two light-related factors influenced the number of flowers per meadowfoam plant (a plant productivity measure).\nThe two light measures were light intensity (in mmol/ \\(m^2\\) /sec) and the timing of onset of the light (early or late in the day).\n\n\n\n\n\n\n\n\nResponse variable?\n\n\nExplanatory variables?\n\n\nModel Form?"
   },
   {
     "objectID": "slides/lecture13_lm-multiple-regression.html#returning-to-our-mlr-model---equal-slopes",
@@ -2175,54 +2308,5 @@
     "title": "STAT 141",
     "section": "Different Slopes Model (ggplot example)",
     "text": "Different Slopes Model (ggplot example)\n\n\nggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +\n  geom_point(size = 2) + \n  geom_smooth(method = \"lm\", se = FALSE) + \n  scale_color_manual(values = c(\"steelblue\",\n                               \"goldenrod\", \n                               \"plum3\")) +\n  theme_bw() \n\n\n\n\n\n\n\n\n\n\nEqual slopes models force the relationship between quantitative predictors and the response variable to be the same for each group in the model.\nIn contrast, different slopes models allow for different relationships between quantitative predictors and the response variable for each group in the model.\nHow can we allow our model to have different slopes?"
-  },
-  {
-    "objectID": "slides/lecture13_lm-multiple-regression.html#contrasting-model-forms",
-    "href": "slides/lecture13_lm-multiple-regression.html#contrasting-model-forms",
-    "title": "STAT 141",
-    "section": "Contrasting model forms",
-    "text": "Contrasting model forms\nRecall the equal slopes model:\n\\[\ny = \\beta_0 + \\beta_1 \\cdot x_{\\textrm{Bill Depth}} + \\beta_2 \\cdot  x_{\\textrm{Species:Chinstrap}} + \\beta_3 \\cdot x_{\\textrm{Species:Gentoo}} + \\epsilon\n\\]\n\n\nHow can we allow the slopes to vary?\n\n\n\\[\ny = \\beta_0 + \\beta_1 \\cdot x_{\\textrm{Bill Depth}} + \\beta_2 \\cdot  x_{\\textrm{Species:Chinstrap}} + \\beta_3 \\cdot x_{\\textrm{Species:Gentoo}} + \\\\\n\\beta_4 \\cdot x_{\\textrm{Bill Depth}} \\cdot x_{\\textrm{Species:Chinstrap}} + \\beta_5 \\cdot x_{\\textrm{Bill Depth}} \\cdot x_{\\textrm{Species:Gentoo}} + \\epsilon\n\\]\n\n\nCoefficient interpretation?\n\nThose involving \\(x_{\\textrm{Bill Depth}}\\) are particularly tricky"
-  },
-  {
-    "objectID": "slides/lecture13_lm-multiple-regression.html#different-slopes-model-in-r",
-    "href": "slides/lecture13_lm-multiple-regression.html#different-slopes-model-in-r",
-    "title": "STAT 141",
-    "section": "Different Slopes Model in R",
-    "text": "Different Slopes Model in R\n\nsame_slope &lt;- lm(bill_length_mm ~ bill_depth_mm + species, penguins)\n\ndiff_slope &lt;- lm(bill_length_mm ~ bill_depth_mm * species, penguins)\n\n\n\n\nget_regression_table(same_slope)\n\n# A tibble: 4 × 7\n  term               estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept             13.2      2.25       5.88       0     8.80    17.6 \n2 bill_depth_mm          1.39     0.122     11.4        0     1.15     1.63\n3 species: Chinstrap     9.94     0.368     27.0        0     9.22    10.7 \n4 species: Gentoo       13.4      0.512     26.2        0    12.4     14.4 \n\n\n\n\n\n\nget_regression_table(diff_slope)\n\n# A tibble: 6 × 7\n  term                    estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept                 23.1       3.02       7.65   0       17.1      29.0 \n2 bill_depth_mm              0.857     0.164      5.22   0        0.534     1.18\n3 species: Chinstrap        -9.64      5.72      -1.69   0.093  -20.9       1.60\n4 species: Gentoo           -5.84      4.54      -1.29   0.199  -14.8       3.08\n5 bill_depth_mm:speciesC…    1.06      0.31       3.44   0.001    0.455     1.68\n6 bill_depth_mm:speciesG…    1.16      0.279      4.17   0        0.615     1.71"
-  },
-  {
-    "objectID": "slides/lecture13_lm-multiple-regression.html#detour-handling-curved-relationships",
-    "href": "slides/lecture13_lm-multiple-regression.html#detour-handling-curved-relationships",
-    "title": "STAT 141",
-    "section": "Detour: handling curved relationships",
-    "text": "Detour: handling curved relationships\nNew data context: movie ratings\n\nlibrary(tidyverse)\nmovies &lt;- read_csv(\"https://www.lock5stat.com/datasets2e/HollywoodMovies.csv\")\n\n# Restrict our attention to dramas, horrors, and actions\nmovies2 &lt;- movies %&gt;%\n  filter(Genre %in% c(\"Drama\", \"Horror\", \"Action\")) %&gt;%\n  drop_na(Genre, AudienceScore, RottenTomatoes)\nglimpse(movies2)\n\nRows: 313\nColumns: 16\n$ Movie            &lt;chr&gt; \"Spider-Man 3\", \"Transformers\", \"Pirates of the Carib…\n$ LeadStudio       &lt;chr&gt; \"Sony\", \"Paramount\", \"Disney\", \"Warner Bros\", \"Warner…\n$ RottenTomatoes   &lt;dbl&gt; 61, 57, 45, 60, 20, 79, 35, 28, 41, 71, 95, 42, 18, 2…\n$ AudienceScore    &lt;dbl&gt; 54, 89, 74, 90, 68, 86, 55, 56, 81, 52, 84, 55, 70, 6…\n$ Story            &lt;chr&gt; \"Metamorphosis\", \"Monster Force\", \"Rescue\", \"Sacrific…\n$ Genre            &lt;chr&gt; \"Action\", \"Action\", \"Action\", \"Action\", \"Action\", \"Ac…\n$ TheatersOpenWeek &lt;dbl&gt; 4252, 4011, 4362, 3103, 3778, 3408, 3959, 3619, 2911,…\n$ OpeningWeekend   &lt;dbl&gt; 151.1, 70.5, 114.7, 70.9, 49.1, 33.4, 58.0, 45.3, 19.…\n$ BOAvgOpenWeekend &lt;dbl&gt; 35540, 17577, 26302, 22844, 12996, 9791, 14663, 12541…\n$ DomesticGross    &lt;dbl&gt; 336.53, 319.25, 309.42, 210.61, 140.13, 134.53, 131.9…\n$ ForeignGross     &lt;dbl&gt; 554.34, 390.46, 654.00, 245.45, 117.90, 249.00, 157.1…\n$ WorldGross       &lt;dbl&gt; 890.87, 709.71, 963.42, 456.07, 258.02, 383.53, 289.0…\n$ Budget           &lt;dbl&gt; 258.0, 150.0, 300.0, 65.0, 140.0, 110.0, 130.0, 110.0…\n$ Profitability    &lt;dbl&gt; 345.30, 473.14, 321.14, 701.64, 184.30, 348.66, 222.3…\n$ OpenProfit       &lt;dbl&gt; 58.57, 47.00, 38.23, 109.08, 35.07, 30.36, 44.62, 41.…\n$ Year             &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007,…\n\n\n\nResponse variable: RottenTomatoes\nExplanatory variables: AudienceScore"
-  },
-  {
-    "objectID": "slides/lecture13_lm-multiple-regression.html#adding-a-curve-to-your-scatterplot",
-    "href": "slides/lecture13_lm-multiple-regression.html#adding-a-curve-to-your-scatterplot",
-    "title": "STAT 141",
-    "section": "Adding a Curve to your Scatterplot",
-    "text": "Adding a Curve to your Scatterplot\n\n\nggplot(data = movies2,\n       mapping = aes(x = AudienceScore,\n                     y = RottenTomatoes,\n                     color = Genre)) +\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE, \n              formula = y ~ poly(x, degree = 2))"
-  },
-  {
-    "objectID": "slides/lecture13_lm-multiple-regression.html#adding-a-curve-to-your-scatterplot-1",
-    "href": "slides/lecture13_lm-multiple-regression.html#adding-a-curve-to-your-scatterplot-1",
-    "title": "STAT 141",
-    "section": "Adding a Curve to your Scatterplot",
-    "text": "Adding a Curve to your Scatterplot\n\n\n# Filtering to only Dramas\ndramas &lt;- movies2 %&gt;% filter(Genre == \"Drama\")\n\nggplot(data = dramas,\n       mapping = aes(x = AudienceScore,\n                     y = RottenTomatoes)) +\n  geom_point(color = \"#55B84F\") +\n  geom_smooth(method = \"lm\", se = FALSE,\n              color = \"#55B84F\",\n              formula = y ~ poly(x, degree = 2)) +\n  ggtitle(\"Dramas Only\")"
-  },
-  {
-    "objectID": "slides/lecture13_lm-multiple-regression.html#fitting-a-model-with-a-transformed-variable",
-    "href": "slides/lecture13_lm-multiple-regression.html#fitting-a-model-with-a-transformed-variable",
-    "title": "STAT 141",
-    "section": "Fitting a Model with a Transformed Variable",
-    "text": "Fitting a Model with a Transformed Variable\n\ndramas &lt;- movies2 %&gt;% filter(Genre == \"Drama\")\nmod2 &lt;- lm(RottenTomatoes ~ poly(AudienceScore, degree = 2, raw = TRUE),\n           data = dramas)\nget_regression_table(mod2)\n\n# A tibble: 3 × 7\n  term                    estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept                 98.8      21.3        4.64   0       56.6    141.   \n2 poly(AudienceScore, de…   -2.51      0.722     -3.48   0.001   -3.94    -1.08 \n3 poly(AudienceScore, de…    0.027     0.006      4.58   0        0.015    0.038\n\n\n\n\nWe’ll practice a very common transformation in HW 5 - the log transformation\nQ: Why is it still called a linear regression if the model also handles curved relationships?\nTransformations are super powerful: we can now use linear models even if the untransformed variables have non-linear relationships."
-  },
-  {
-    "objectID": "slides/lecture13_lm-multiple-regression.html#model-building-guidance",
-    "href": "slides/lecture13_lm-multiple-regression.html#model-building-guidance",
-    "title": "STAT 141",
-    "section": "Model Building Guidance",
-    "text": "Model Building Guidance\nWhat degree of polynomial should I include in my model?\n\n\n\n\nGuiding Principle: Capture the general trend, not the noise.\n\\[\n\\begin{align}\ny &= f(x) + \\epsilon \\\\\ny &= \\mbox{TREND} + \\mbox{NOISE}\n\\end{align}\n\\]"
   }
 ]

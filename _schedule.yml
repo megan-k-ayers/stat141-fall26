@@ -220,8 +220,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading16.qmd
-            # - type: Slides
-            #   href: slides/lecture14_lm-many-variables.qmd
+            - type: Slides
+              href: slides/lecture14_lm-many-variables.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture14_lm-many-variables_handout.pdf
       resources:
             - 'Submit assignment 4 (due Thurs 10/01 at 9am)'
             - 'Take Quiz 3 during lab'
