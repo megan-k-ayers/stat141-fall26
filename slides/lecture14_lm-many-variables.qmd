@@ -78,8 +78,7 @@ library(moderndive)
 
 ### Logistics for Thurs Oct 8 
 
-- Quiz 4 will be taken online on Gradescope at your lab section's start time
-- It will be timed like usual, but you can take it anywhere (you still need to complete it individually)
+- Quiz 4 will be taken **in person per usual** in lab, can leave after
 - There will be a short metacognition homework assignment, but no lab assignment
 - There won't be a quiz on Oct 15
 

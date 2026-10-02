@@ -247,7 +247,7 @@ scheduled-docs:
               href: readings/reading18.qmd
             # - type: Slides
             #   href: slides/lecture16_sampling-dist-intro.qmd
-        - topic: "Lab: Metacognition | Quiz 4 (online - Megan away for workshop)"
+        - topic: "Lab: Metacognition | Quiz 4 (in person, but no lab)"
           display-date: Thursday, Oct 8
           date: 10/08/26
           docs:

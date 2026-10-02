@@ -51,7 +51,7 @@ SalaryGender <- SalaryGender %>%
 The data includes three variables:
 
 1. **Gender**: Coded as a binary "Female" or "Male". It is not clear whether this truly reflects the gender identity of participants, or something different like biological sex. (We might assume that no participants with other gender identities were included, which limits our ability to generalize to the population at large.)
-2. **Age**: Age of participant, in years.
+2. **Age**: Age of teacher, in years.
 3. **Salary**: Annual salary in thousands of US dollars.
 
 The distributions of these three variables are visualized below individually.
@@ -104,6 +104,12 @@ ggplot(data = SalaryGender, aes(x = Gender, y = Age)) +
 
 *******************************************************************************
 
+```{r}
+ggplot(data = SalaryGender, mapping = aes(x = Age, y = Salary, color = Gender)) +
+  geom_point() +
+  geom_parallel_slopes(se = FALSE)
+```
+
 
 
 *******************************************************************************
@@ -120,6 +126,9 @@ In this exercise, you will use a regression model to investigate whether age exp
 
 ```{r}
 # Create your model and get its regression table here
+
+mod <- lm(Salary ~ Age + Gender, SalaryGender)
+get_regression_table(mod)
 
 ```
 
