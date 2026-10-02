@@ -88,7 +88,7 @@
     "href": "slides/lecture14_lm-many-variables.html#goals-for-today",
     "title": "STAT 141",
     "section": "Goals for Today",
-    "text": "Goals for Today\n\nSome logistics - Megan will be away for a few days coming up\nHandling varying slopes\nTransformations\nRegression with many variables\nAdjusted \\(R^2\\) and model selection\nMulticollinearity\n(Ambitious) Application of Multiple Linear Regression"
+    "text": "Goals for Today\n\nSome logistics - Megan will be away for a few days coming up\nHandling varying slopes\nTransformations\nRegression with many variables\n\nAdjusted \\(R^2\\) and model selection\nMulticollinearity\n(Ambitious) Application of Multiple Linear Regression"
   },
   {
     "objectID": "slides/lecture14_lm-many-variables.html#contrasting-model-forms",
@@ -102,7 +102,7 @@
     "href": "slides/lecture14_lm-many-variables.html#different-slopes-model-in-r",
     "title": "STAT 141",
     "section": "Different Slopes Model in R",
-    "text": "Different Slopes Model in R\n\nsame_slope &lt;- lm(bill_length_mm ~ bill_depth_mm + species, penguins)\n\ndiff_slope &lt;- lm(bill_length_mm ~ bill_depth_mm * species, penguins)\n\n\n\n\nget_regression_table(same_slope)\n\n# A tibble: 4 × 7\n  term               estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept             13.2      2.25       5.88       0     8.80    17.6 \n2 bill_depth_mm          1.39     0.122     11.4        0     1.15     1.63\n3 species: Chinstrap     9.94     0.368     27.0        0     9.22    10.7 \n4 species: Gentoo       13.4      0.512     26.2        0    12.4     14.4 \n\n\n\n\n\n\nget_regression_table(diff_slope)\n\n# A tibble: 6 × 7\n  term                    estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept                 23.1       3.02       7.65   0       17.1      29.0 \n2 bill_depth_mm              0.857     0.164      5.22   0        0.534     1.18\n3 species: Chinstrap        -9.64      5.72      -1.69   0.093  -20.9       1.60\n4 species: Gentoo           -5.84      4.54      -1.29   0.199  -14.8       3.08\n5 bill_depth_mm:speciesC…    1.06      0.31       3.44   0.001    0.455     1.68\n6 bill_depth_mm:speciesG…    1.16      0.279      4.17   0        0.615     1.71"
+    "text": "Different Slopes Model in R\n\nsame_slope &lt;- lm(bill_length_mm ~ bill_depth_mm + species, penguins)\n\ndiff_slope &lt;- lm(bill_length_mm ~ bill_depth_mm * species, penguins)\n\n\n\n\nget_regression_table(same_slope) %&gt;% select(term, estimate)\n\n# A tibble: 4 × 2\n  term               estimate\n  &lt;chr&gt;                 &lt;dbl&gt;\n1 intercept             13.2 \n2 bill_depth_mm          1.39\n3 species: Chinstrap     9.94\n4 species: Gentoo       13.4 \n\n\n\n\n\n\nget_regression_table(diff_slope) %&gt;% select(term, estimate)\n\n\n\n                            term estimate\n1                      intercept   23.068\n2                  bill_depth_mm    0.857\n3             species: Chinstrap   -9.640\n4                species: Gentoo   -5.839\n5 bill_depth_mm:speciesChinstrap    1.065\n6    bill_depth_mm:speciesGentoo    1.164"
   },
   {
     "objectID": "slides/lecture14_lm-many-variables.html#visualizing-the-best-fit-plane",
@@ -144,14 +144,14 @@
     "href": "slides/lecture14_lm-many-variables.html#adding-a-curve-to-your-scatterplot-1",
     "title": "STAT 141",
     "section": "Adding a Curve to your Scatterplot",
-    "text": "Adding a Curve to your Scatterplot\n\n\n# Filtering to only Dramas\ndramas &lt;- movies2 %&gt;% filter(Genre == \"Drama\")\n\nggplot(data = dramas,\n       mapping = aes(x = AudienceScore,\n                     y = RottenTomatoes)) +\n  geom_point(color = \"#55B84F\") +\n  geom_smooth(method = \"lm\", se = FALSE,\n              color = \"#55B84F\",\n              formula = y ~ poly(x, degree = 2)) +\n  ggtitle(\"Dramas Only\")"
+    "text": "Adding a Curve to your Scatterplot\n\n\n# Filtering to only Dramas\ndramas &lt;- movies2 %&gt;% filter(Genre == \"Drama\")\n\nggplot(data = dramas,\n       mapping = aes(x = AudienceScore,\n                     y = RottenTomatoes)) +\n  geom_point(color = \"#55B84F\") +\n  geom_smooth(method = \"lm\", se = FALSE,\n              color = \"#55B84F\",\n              formula = y ~ poly(x, degree = 2)) +\n  ggtitle(\"Dramas Only\")\n\n\n\n\n\n\n\n\n\n\nLinearity is violated. What do we do?"
   },
   {
     "objectID": "slides/lecture14_lm-many-variables.html#fitting-a-model-with-a-transformed-variable",
     "href": "slides/lecture14_lm-many-variables.html#fitting-a-model-with-a-transformed-variable",
     "title": "STAT 141",
     "section": "Fitting a Model with a Transformed Variable",
-    "text": "Fitting a Model with a Transformed Variable\n\ndramas &lt;- movies2 %&gt;% filter(Genre == \"Drama\")\nmod2 &lt;- lm(RottenTomatoes ~ poly(AudienceScore, degree = 2, raw = TRUE),\n           data = dramas)\nget_regression_table(mod2)\n\n# A tibble: 3 × 7\n  term                    estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept                 98.8      21.3        4.64   0       56.6    141.   \n2 poly(AudienceScore, de…   -2.51      0.722     -3.48   0.001   -3.94    -1.08 \n3 poly(AudienceScore, de…    0.027     0.006      4.58   0        0.015    0.038\n\n\n\n\nWe’ll practice a very common transformation in HW 5 - the log transformation\nQ: Why is it still called a linear regression if the model also handles curved relationships?\nTransformations are super powerful: we can now use linear models even if the untransformed variables have non-linear relationships."
+    "text": "Fitting a Model with a Transformed Variable\n\ndramas &lt;- movies2 %&gt;% filter(Genre == \"Drama\")\nmod2 &lt;- lm(RottenTomatoes ~ poly(AudienceScore, degree = 2, raw = TRUE),\n           data = dramas)\nget_regression_table(mod2) %&gt;% select(term, estimate)\n\n# A tibble: 3 × 2\n  term                                         estimate\n  &lt;chr&gt;                                           &lt;dbl&gt;\n1 intercept                                      98.8  \n2 poly(AudienceScore, degree = 2, raw = TRUE)1   -2.51 \n3 poly(AudienceScore, degree = 2, raw = TRUE)2    0.027\n\n\n\n\nWe’ll practice a very common transformation in HW 5 - the log transformation\nQ: Why is it still called a linear regression if the model also handles curved relationships?\nTransformations are super powerful: we can now use linear models even if the untransformed variables have non-linear relationships."
   },
   {
     "objectID": "slides/lecture14_lm-many-variables.html#model-building-guidance",

@@ -62,9 +62,9 @@ library(moderndive)
 -   Handling varying slopes
 -   Transformations
 -   Regression with many variables
--   Adjusted $R^2$ and model selection
--   Multicollinearity
--   (Ambitious) Application of Multiple Linear Regression
+    -   Adjusted $R^2$ and model selection
+    -   Multicollinearity
+    -   (Ambitious) Application of Multiple Linear Regression
 
 
 ------------------------------------------------------------------------
@@ -167,7 +167,7 @@ diff_slope <- lm(bill_length_mm ~ bill_depth_mm * species, penguins)
 :::{.fragment}
 
 ```{r}
-get_regression_table(same_slope)
+get_regression_table(same_slope) %>% select(term, estimate)
 ```
 
 :::
@@ -176,8 +176,14 @@ get_regression_table(same_slope)
 
 :::{.fragment}
 
-```{r}
-get_regression_table(diff_slope)
+```{r eval = FALSE}
+get_regression_table(diff_slope) %>% select(term, estimate)
+```
+
+
+
+```{r echo = FALSE}
+as.data.frame(get_regression_table(diff_slope)  %>% select(term, estimate)) 
 ```
 
 :::
@@ -264,8 +270,10 @@ get_regression_table(diff_slope)
 ::: {.column width=50%}
 
 ```{r}
-ggplot(penguins, aes(x = body_mass_g, y = bill_length_mm)) +
-  geom_point()
+ggplot(penguins, aes(x = body_mass_g,
+                     y = bill_length_mm)) +
+  geom_point() +
+  theme(axis.title = element_text(size = 16))
 ```
 
 :::
@@ -273,8 +281,10 @@ ggplot(penguins, aes(x = body_mass_g, y = bill_length_mm)) +
 ::: {.column width=50%}
 
 ```{r}
-ggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm)) +
-  geom_point()
+ggplot(penguins, aes(x = bill_depth_mm,
+                     y = bill_length_mm)) +
+  geom_point() +
+  theme(axis.title = element_text(size = 16))
 ```
 
 :::
@@ -437,6 +447,12 @@ ggplot(data = dramas,
   ggtitle("Dramas Only")
 ```
 
+::: nonincremental
+
+- **L**inearity is violated. What do we do? 
+
+:::
+
 ------------------------------------------------------------------------
 
 ### Using Transformations to Account for Non-Linear Relationships
@@ -472,7 +488,7 @@ ggplot(data = dramas,
 dramas <- movies2 %>% filter(Genre == "Drama")
 mod2 <- lm(RottenTomatoes ~ poly(AudienceScore, degree = 2, raw = TRUE),
            data = dramas)
-get_regression_table(mod2)
+get_regression_table(mod2) %>% select(term, estimate)
 
 ```
 
