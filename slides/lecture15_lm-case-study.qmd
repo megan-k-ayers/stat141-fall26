@@ -402,24 +402,26 @@ countdown::countdown(5)
 
 ## Practice problem: Linear Regression (extra difficult `r emo::ji("weight")`)
 
-Still hanging with the penguins... Take a look at the following regression table:
+Still hanging with the penguins and predicting their `bill_length`... Take a look at the following regression table:
 
 <br>
 
 ```{r}
 our_mod <- lm(bill_len ~ sex*body_mass + flipper_len, penguins)
-get_regression_table(our_mod)
+get_regression_table(our_mod, digits = 5)
 ```
 
 <br>
 
-- **Q1**: How should we interpret `intercept`? 
+- **Q1**: What is the equation for the fitted model?
+
+- **Q2**: How should we interpret `intercept`? 
 
 
-- **Q2**: How should we interpret `body_mass`?
+- **Q3**: How should we interpret `body_mass`?
 
 
-- **Q3**: How should we interpret `flipper_len`?
+- **Q4**: How should we interpret `flipper_len`?
 
 
 ```{r echo=FALSE}
