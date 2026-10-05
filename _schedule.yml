@@ -237,8 +237,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading17.qmd
-            # - type: Slides
-            #   href: slides/lecture15_lm-case-study.qmd
+            - type: Slides
+              href: slides/lecture15_lm-case-study.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture15_lm-case-study_handout.pdf
         - topic: "Sampling Distributions I: Introduction"
           display-date: Wednesday, Oct 7
           date: 10/07/26

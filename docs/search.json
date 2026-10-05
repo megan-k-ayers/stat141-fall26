@@ -168,41 +168,6 @@
     "text": "Model Building Guidance\nShould we always include an interaction term? How many variables should I include?\n\n\nGuiding Principle: Occam’s Razor for Modeling\n\n“All other things being equal, simpler models are to be preferred over complex ones.” – ModernDive\n\n\nGuiding Principle: Consider your modeling goals.\n\nThe equal slopes model allows us to control for the intensity of the light and then see the impact of being in the early or late timing groups on the number of flowers.\n\n\n\n\n\n\n\n\n\n\n\n\n\nLater in the course will learn statistical procedures for determining whether or not a particular term should be included in the model."
   },
   {
-    "objectID": "slides/lecture14_lm-many-variables.html#case-study-home-prices-in-king-county-wa",
-    "href": "slides/lecture14_lm-many-variables.html#case-study-home-prices-in-king-county-wa",
-    "title": "STAT 141",
-    "section": "Case Study: Home Prices in King County, WA",
-    "text": "Case Study: Home Prices in King County, WA\n\nWe’ll consider : Sale price (response); and square footage, above-ground square footage, and number of bedrooms (potential explanatory variables). Check out the exploratory plots below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ: How would you describe the distribution of price?\nQ: What do you expect the relationship between price and bedrooms to be like?"
-  },
-  {
-    "objectID": "slides/lecture14_lm-many-variables.html#exploration-multicollinearity",
-    "href": "slides/lecture14_lm-many-variables.html#exploration-multicollinearity",
-    "title": "STAT 141",
-    "section": "Exploration, Multicollinearity",
-    "text": "Exploration, Multicollinearity\n\n\n\n\n\n\n\n\n\n\nMulticollinearity: when explanatory variables are highly correlated with one another. Multicollinearity often results in coefficients that are distorted in erroneous ways! We want to avoid this (some correlation is okay!)\nQ: Which pair of explanatory variables suffers most from multicollinearity?"
-  },
-  {
-    "objectID": "slides/lecture14_lm-many-variables.html#model-estimation",
-    "href": "slides/lecture14_lm-many-variables.html#model-estimation",
-    "title": "STAT 141",
-    "section": "Model Estimation",
-    "text": "Model Estimation\n\n\n# A tibble: 3 × 7\n  term        estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept    197.        19.4      10.1    0      159.     235.   \n2 sqft_living    0.177      0.01     18.4    0        0.158    0.196\n3 bedrooms     -21.6        7.27     -2.97   0.003  -35.9     -7.34 \n\n\n\nQ: What is the equation, including coefficient values, for the estimated model?\n\n\n\\[\n\\widehat{\\text{price}} = 197 + 0.177*\\text{sqrt_living} - 21.6*\\text{bedrooms}\n\\]\n\n\nQ: How should interpret the intercept coefficient in our model?\n\nWhen sqrt_living and bedrooms are both 0, we expect/predict price to be $197,000 on average.\n\nQ: The coefficient for Bedrooms? Does this match your expectation?\n\nWhen the number of bedrooms increases by 1, we expect/predict price to decrease by $21,600 on average, holding sqft_living constant."
-  },
-  {
-    "objectID": "slides/lecture14_lm-many-variables.html#line-assumptions",
-    "href": "slides/lecture14_lm-many-variables.html#line-assumptions",
-    "title": "STAT 141",
-    "section": "LINE Assumptions",
-    "text": "LINE Assumptions"
-  },
-  {
-    "objectID": "slides/lecture14_lm-many-variables.html#adjusted-r2",
-    "href": "slides/lecture14_lm-many-variables.html#adjusted-r2",
-    "title": "STAT 141",
-    "section": "Adjusted \\(R^2\\)",
-    "text": "Adjusted \\(R^2\\)\nWhat’s the adjusted \\(R^2\\) of our model?\n\nget_regression_summaries(mod)[, c(\"r_squared\", \"adj_r_squared\")]\n\n# A tibble: 1 × 2\n  r_squared adj_r_squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.314         0.313\n\n\n\nNot super close to 1. Compare to a simpler model:\n\n\n\nsmall_mod &lt;- lm(price ~ bedrooms, data = house)\nget_regression_summaries(small_mod)[, c(\"r_squared\", \"adj_r_squared\")]\n\n# A tibble: 1 × 2\n  r_squared adj_r_squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.082         0.081\n\n\n\n\nCompare to a much bigger model with additional variables:\n\nbig_mod &lt;- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_above + sqft_lot +\n                view + condition + yr_built, data = house)\nget_regression_summaries(big_mod)[, c(\"r_squared\", \"adj_r_squared\")]\n\n# A tibble: 1 × 2\n  r_squared adj_r_squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.434         0.429"
-  },
-  {
     "objectID": "slides/lecture12_lm-categorical.html#new-example-palmer-penguins",
     "href": "slides/lecture12_lm-categorical.html#new-example-palmer-penguins",
     "title": "STAT 141",
@@ -2350,5 +2315,96 @@
     "title": "STAT 141",
     "section": "Different Slopes Model (ggplot example)",
     "text": "Different Slopes Model (ggplot example)\n\n\nggplot(penguins, aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +\n  geom_point(size = 2) + \n  geom_smooth(method = \"lm\", se = FALSE) + \n  scale_color_manual(values = c(\"steelblue\",\n                               \"goldenrod\", \n                               \"plum3\")) +\n  theme_bw() \n\n\n\n\n\n\n\n\n\n\nEqual slopes models force the relationship between quantitative predictors and the response variable to be the same for each group in the model.\nIn contrast, different slopes models allow for different relationships between quantitative predictors and the response variable for each group in the model.\nHow can we allow our model to have different slopes?"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#announcements",
+    "href": "slides/lecture15_lm-case-study.html#announcements",
+    "title": "STAT 141",
+    "section": "Announcements",
+    "text": "Announcements\n\nFinal exam is officially scheduled\nExtra time for quiz 3 revisions (due 10/16)"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#goals-for-today",
+    "href": "slides/lecture15_lm-case-study.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for Today",
+    "text": "Goals for Today\n\nCase Study\nPractice problems (dplyr and linear models)"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#case-study-home-prices-in-king-county-wa",
+    "href": "slides/lecture15_lm-case-study.html#case-study-home-prices-in-king-county-wa",
+    "title": "STAT 141",
+    "section": "Case Study: Home Prices in King County, WA",
+    "text": "Case Study: Home Prices in King County, WA\nWhat’s the relationship between a home’s square footage and number of bedrooms on the home’s sale price?\n\n\nRows: 1,000\nColumns: 17\n$ price         &lt;dbl&gt; 241.25, 262.50, 765.00, 430.00, 215.00, 675.00, 885.00, …\n$ bedrooms      &lt;dbl&gt; 3, 4, 4, 2, 3, 2, 4, 3, 3, 3, 2, 3, 4, 4, 2, 3, 5, 3, 3,…\n$ bathrooms     &lt;dbl&gt; 1.75, 2.00, 1.00, 2.25, 2.00, 1.75, 2.50, 1.50, 1.50, 2.…\n$ sqft_living   &lt;dbl&gt; 1350, 1540, 2520, 1040, 1280, 2140, 2830, 1340, 1120, 16…\n$ sqft_lot      &lt;dbl&gt; 7588, 5110, 5500, 1516, 6994, 5000, 5000, 6000, 7000, 13…\n$ floors        &lt;dbl&gt; 1.0, 1.0, 1.5, 2.0, 1.0, 1.0, 2.0, 1.5, 1.0, 3.0, 1.0, 2…\n$ waterfront    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …\n$ view          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0,…\n$ condition     &lt;dbl&gt; 3, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 3,…\n$ grade         &lt;dbl&gt; 7, 7, 8, 8, 7, 7, 9, 9, 7, 9, 6, 9, 7, 8, 8, 7, 9, 6, 7,…\n$ sqft_above    &lt;dbl&gt; 1350, 1540, 1820, 1040, 1280, 1000, 2830, 1340, 1120, 13…\n$ sqft_basement &lt;dbl&gt; 0, 0, 700, 0, 0, 1140, 0, 0, 0, 320, 480, 0, 890, 0, 0, …\n$ yr_built      &lt;dbl&gt; 1993, 1957, 1912, 2008, 1991, 1930, 1995, 1927, 1955, 20…\n$ yr_renovated  &lt;dbl&gt; 0, 0, 0, 0, 0, 1991, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…\n$ zipcode       &lt;dbl&gt; 98010, 98118, 98144, 98122, 98038, 98112, 98105, 98105, …\n$ lat           &lt;dbl&gt; 47.3123, 47.5164, 47.5785, 47.6037, 47.3889, 47.6284, 47…\n$ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -122.2…\n\n\n\nWe’ll focus on four variables: Sale price (response); and square footage, above-ground square footage, and number of bedrooms (potential explanatory variables)."
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#univariate-exploration",
+    "href": "slides/lecture15_lm-case-study.html#univariate-exploration",
+    "title": "STAT 141",
+    "section": "Univariate Exploration",
+    "text": "Univariate Exploration\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ: How would you describe the distribution of price?\nQ: What do you expect the relationship between price and bedrooms to be like?"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#bivariate-exploration-multicollinearity",
+    "href": "slides/lecture15_lm-case-study.html#bivariate-exploration-multicollinearity",
+    "title": "STAT 141",
+    "section": "Bivariate Exploration, Multicollinearity",
+    "text": "Bivariate Exploration, Multicollinearity\n\n\n\n\n\n\n\n\n\n\nQ: Which explanatory variables would be appropriate to include in our model?\nQ: Do any pairs of explanatory variables suffer from multicollinearity?"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#model-estimation",
+    "href": "slides/lecture15_lm-case-study.html#model-estimation",
+    "title": "STAT 141",
+    "section": "Model Estimation",
+    "text": "Model Estimation\n\n\n# A tibble: 3 × 7\n  term        estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept    197.        19.4      10.1    0      159.     235.   \n2 sqft_living    0.177      0.01     18.4    0        0.158    0.196\n3 bedrooms     -21.6        7.27     -2.97   0.003  -35.9     -7.34 \n\n\n\nQ: What is the equation, including coefficient values, for the estimated model?\n\n\n\n\n\n\n\nQ: How should we interpret the intercept coefficient in our model?\n\n\n\nQ: How should we interpret the coefficient for Bedrooms? Does this match your expectation?"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#line-assumptions",
+    "href": "slides/lecture15_lm-case-study.html#line-assumptions",
+    "title": "STAT 141",
+    "section": "LINE Assumptions",
+    "text": "LINE Assumptions\n\n\n\n\n\n\n\n\n\n\nQ: Does it seem like this model meets the four LINE assumptions?"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#adjusted-r2",
+    "href": "slides/lecture15_lm-case-study.html#adjusted-r2",
+    "title": "STAT 141",
+    "section": "Adjusted \\(R^2\\)",
+    "text": "Adjusted \\(R^2\\)\n\nWhat’s the adjusted \\(R^2\\) of our model?\n\nget_regression_summaries(mod) %&gt;% select(\"r_squared\", \"adj_r_squared\")\n\n# A tibble: 1 × 2\n  r_squared adj_r_squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.314         0.313\n\n\n\nNot super close to 1. Compare to a simpler model:\n\n\n\nsmall_mod &lt;- lm(price ~ bedrooms, data = houses)\nget_regression_summaries(small_mod) %&gt;% select(\"r_squared\", \"adj_r_squared\")\n\n# A tibble: 1 × 2\n  r_squared adj_r_squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.082         0.081\n\n\n\n\nCompare to a much bigger model with additional variables:\n\nbig_mod &lt;- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_above + sqft_lot + view + condition + yr_built,\n              data = houses)\nget_regression_summaries(big_mod) %&gt;% select(\"r_squared\", \"adj_r_squared\")\n\n# A tibble: 1 × 2\n  r_squared adj_r_squared\n      &lt;dbl&gt;         &lt;dbl&gt;\n1     0.434         0.429\n\n\n\n\nQ: Why are \\(R^2\\) and adjusted \\(R^2\\) different?"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#practice-problem-data-wrangling-pseudo-code",
+    "href": "slides/lecture15_lm-case-study.html#practice-problem-data-wrangling-pseudo-code",
+    "title": "STAT 141",
+    "section": "Practice problem: Data Wrangling Pseudo-Code",
+    "text": "Practice problem: Data Wrangling Pseudo-Code\n\nLooking at pdxtrees again:\n\n\n\n# A tibble: 5 × 7\n  Genus         DBH Condition Tree_Height Crown_Width_NS Park             Native\n  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt; \n1 Quercus       3.3 Fair               16             14 Kenilworth Park  No    \n2 Pseudotsuga  43.1 Fair              148             61 Kenilworth Park  Yes   \n3 Thuja        14.1 Fair               42             21 Kenilworth Park  Yes   \n4 Acer         36.5 Good               80             68 Woodstock Park   No    \n5 Pinus        10.3 Fair               27             24 Sellwood Riverf… No    \n\n\n\n\nWrite pseudo-code to: Make a contingency table of whether trees in Woodstock Park are “big guys” or “little guys” (one variable) and whether they are native species or not (second variable). Trees are considered “big guys” when DBH &gt; 30 or Tree_Height &gt; 100 and “little guys” otherwise."
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#practice-problem-data-wrangling-explaining-code",
+    "href": "slides/lecture15_lm-case-study.html#practice-problem-data-wrangling-explaining-code",
+    "title": "STAT 141",
+    "section": "Practice problem: Data Wrangling Explaining Code",
+    "text": "Practice problem: Data Wrangling Explaining Code\nNow let’s turn to the penguins data.\n\n\npenguins %&gt;%\n  filter(!is.na(sex),\n         island %in% c(\"Biscoe\", \"Dream\")) %&gt;%\n  count(species, island, sex) %&gt;%\n  group_by(species, island) %&gt;%\n  mutate(prop = n / sum(n)) %&gt;%\n  arrange(species, island, sex)\n\n\n\nExplain what each line of code does in context, and sketch what the final data frame would look like. Reminder that there are 3 different species in penguins: Adelies, Gentoos, and Chinstraps. It might be helpful to sketch what the data frame looks like at each intermediate step!"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#practice-problem-more-linear-regression-skip",
+    "href": "slides/lecture15_lm-case-study.html#practice-problem-more-linear-regression-skip",
+    "title": "STAT 141",
+    "section": "Practice problem: More Linear Regression (skip?)",
+    "text": "Practice problem: More Linear Regression (skip?)\n\n\nIn HW 4, we explored the results of the Anchoring Effect Experiment conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the treatment, either 82 or 531) affected the student’s guess for the number of dog breeds in the world (the response variable).\nWe can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where treatment is treated as a categorical explanatory variable.\n\n\n\n\n# A tibble: 2 × 7\n  term           estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept          410.      188.      2.18   0.032     36.9     783.\n2 treatment: 531     407.      259.      1.57   0.12    -108.      922.\n\n\n\n\nQ1: Write the equation for the estimated regression line.\nQ2: How should we interpret the “intercept” and “treatment: High” terms, given the context of the experiment?"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#practice-problem-more-linear-regression",
+    "href": "slides/lecture15_lm-case-study.html#practice-problem-more-linear-regression",
+    "title": "STAT 141",
+    "section": "Practice problem: More Linear Regression",
+    "text": "Practice problem: More Linear Regression\n\nIn HW 4, we explored the results of the Anchoring Effect Experiment conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the treatment, either 82 or 531) affected the student’s guess for the number of dog breeds in the world (the response variable).\nWe can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where treatment is treated as a categorical explanatory variable.\n\n\n\n\n# A tibble: 2 × 7\n  term           estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept          410.      188.      2.18   0.032     36.9     783.\n2 treatment: 531     407.      259.      1.57   0.12    -108.      922.\n\n\n\n\nQ3: Suppose I had tested the effect of three different treatments: 82, 531, and 900, instead of just 82 and 531. What would be different about the regression model and the results table?\nQ4: Suppose treatment was actually a quantitative variable, with each student seeing a different number in \\([0, 200]\\). Suppose that then our regression model produced estimates \\(\\widehat{\\beta}_0 = 100\\) and \\(\\widehat{\\beta}_1 = 4\\). How should we interpret \\(\\widehat{\\beta}_0\\) and \\(\\widehat{\\beta}_1\\) now?"
+  },
+  {
+    "objectID": "slides/lecture15_lm-case-study.html#practice-problem-linear-regression-extra-difficult",
+    "href": "slides/lecture15_lm-case-study.html#practice-problem-linear-regression-extra-difficult",
+    "title": "STAT 141",
+    "section": "Practice problem: Linear Regression (extra difficult 🏋)",
+    "text": "Practice problem: Linear Regression (extra difficult 🏋)\nStill hanging with the penguins… Take a look at the following regression table:\n\n\n\n# A tibble: 5 × 7\n  term                estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;                  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept             -9.83      4.83     -2.04    0.043  -19.3     -0.326\n2 sex: male              5.89      2.60      2.27    0.024    0.779   11.0  \n3 body_mass              0         0.001    -0.182   0.856   -0.002    0.001\n4 flipper_len            0.266     0.033     7.93    0        0.2      0.332\n5 sex: male:body_mass   -0.001     0.001    -1.41    0.161   -0.002    0    \n\n\n\n\nQ1: How should we interpret intercept?\nQ2: How should we interpret body_mass?\nQ3: How should we interpret flipper_len?"
   }
 ]

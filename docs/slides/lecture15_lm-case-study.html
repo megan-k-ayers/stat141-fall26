@@ -210,16 +210,257 @@
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 6</span></p>
 </div></div>
 </section>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li class="fragment">Final exam is officially scheduled</li>
+<li class="fragment">Extra time for quiz 3 revisions (due 10/16)</li>
+</ul>
+</section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for Today</h2>
 <ul>
-<li class="fragment">Quick test run of Thursday’s online quiz</li>
-<li class="fragment">Any spillover content from last week</li>
-<li class="fragment">Practice problems</li>
+<li class="fragment">Case Study</li>
+<li class="fragment">Practice problems (<code>dplyr</code> and linear models)</li>
 </ul>
 </section>
-<section id="practice-problem-linear-regression" class="slide level2">
-<h2>Practice problem: Linear Regression</h2>
+<section>
+<section id="case-study" class="title-slide slide level1 center">
+<h1>Case Study</h1>
+
+</section>
+<section id="case-study-home-prices-in-king-county-wa" class="slide level2">
+<h2>Case Study: Home Prices in King County, WA</h2>
+<p><strong>What’s the relationship between a home’s square footage and number of bedrooms on the home’s sale price?</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,000
+Columns: 17
+$ price         &lt;dbl&gt; 241.25, 262.50, 765.00, 430.00, 215.00, 675.00, 885.00, …
+$ bedrooms      &lt;dbl&gt; 3, 4, 4, 2, 3, 2, 4, 3, 3, 3, 2, 3, 4, 4, 2, 3, 5, 3, 3,…
+$ bathrooms     &lt;dbl&gt; 1.75, 2.00, 1.00, 2.25, 2.00, 1.75, 2.50, 1.50, 1.50, 2.…
+$ sqft_living   &lt;dbl&gt; 1350, 1540, 2520, 1040, 1280, 2140, 2830, 1340, 1120, 16…
+$ sqft_lot      &lt;dbl&gt; 7588, 5110, 5500, 1516, 6994, 5000, 5000, 6000, 7000, 13…
+$ floors        &lt;dbl&gt; 1.0, 1.0, 1.5, 2.0, 1.0, 1.0, 2.0, 1.5, 1.0, 3.0, 1.0, 2…
+$ waterfront    &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …
+$ view          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0,…
+$ condition     &lt;dbl&gt; 3, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 3,…
+$ grade         &lt;dbl&gt; 7, 7, 8, 8, 7, 7, 9, 9, 7, 9, 6, 9, 7, 8, 8, 7, 9, 6, 7,…
+$ sqft_above    &lt;dbl&gt; 1350, 1540, 1820, 1040, 1280, 1000, 2830, 1340, 1120, 13…
+$ sqft_basement &lt;dbl&gt; 0, 0, 700, 0, 0, 1140, 0, 0, 0, 320, 480, 0, 890, 0, 0, …
+$ yr_built      &lt;dbl&gt; 1993, 1957, 1912, 2008, 1991, 1930, 1995, 1927, 1955, 20…
+$ yr_renovated  &lt;dbl&gt; 0, 0, 0, 0, 0, 1991, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ zipcode       &lt;dbl&gt; 98010, 98118, 98144, 98122, 98038, 98112, 98105, 98105, …
+$ lat           &lt;dbl&gt; 47.3123, 47.5164, 47.5785, 47.6037, 47.3889, 47.6284, 47…
+$ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -122.2…</code></pre>
+</div>
+</div>
+<p><br></p>
+<p>We’ll focus on <strong>four variables</strong>: Sale price (<em>response</em>); and square footage, above-ground square footage, and number of bedrooms (<em>potential explanatory variables</em>).</p>
+</section>
+<section id="univariate-exploration" class="slide level2">
+<h2>Univariate Exploration</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<div class="cell" data-layout-align="center" data-outwidth="100%">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture15_lm-case-study_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:35%;">
+<p><br><br></p>
+<ul>
+<li><p><strong>Q</strong>: How would you describe the distribution of <code>price</code>?</p></li>
+<li><p><strong>Q</strong>: What do you expect the relationship between <code>price</code> and <code>bedrooms</code> to be like?</p></li>
+</ul>
+</div></div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_070cdb9a" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="bivariate-exploration-multicollinearity" class="slide level2">
+<h2>Bivariate Exploration, Multicollinearity</h2>
+<div class="cell" data-layout-align="center" data-outwidth="100%">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture15_lm-case-study_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment"><p><strong>Q</strong>: Which explanatory variables would be appropriate to include in our model?</p></li>
+<li class="fragment"><p><strong>Q</strong>: Do any pairs of explanatory variables suffer from multicollinearity?</p></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_bb15c334" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="model-estimation" class="slide level2">
+<h2>Model Estimation</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 7
+  term        estimate std_error statistic p_value lower_ci upper_ci
+  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept    197.        19.4      10.1    0      159.     235.   
+2 sqft_living    0.177      0.01     18.4    0        0.158    0.196
+3 bedrooms     -21.6        7.27     -2.97   0.003  -35.9     -7.34 </code></pre>
+</div>
+</div>
+<ul>
+<li><strong>Q</strong>: What is the equation, including coefficient values, for the estimated model?</li>
+</ul>
+<!-- ::: fragment -->
+<!-- $$ -->
+<!-- \widehat{\text{price}} = 197 + 0.177*\text{sqrt_living} - 21.6*\text{bedrooms} -->
+<!-- $$ -->
+<!-- ::: -->
+<ul>
+<li><strong>Q</strong>: How should we interpret the <strong>intercept</strong> coefficient in our model?</li>
+</ul>
+<!-- - When `sqrt_living` and `bedrooms` are both 0, we expect/predict price to be $197,000 on average. -->
+<ul>
+<li><strong>Q</strong>: How should we interpret the coefficient for <strong>Bedrooms</strong>? Does this match your expectation?</li>
+</ul>
+<!-- - When the number of `bedrooms` increases by 1, we expect/predict price to **decrease** by $21,600 on average, **holding `sqft_living` constant**. -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_f546ec5c" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="line-assumptions" class="slide level2">
+<h2>LINE Assumptions</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture15_lm-case-study_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="1152"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Q</strong>: Does it seem like this model meets the four LINE assumptions?</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_579bfa4b" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="adjusted-r2" class="slide level2">
+<h2>Adjusted <span class="math inline">\(R^2\)</span></h2>
+<div style="font-size:0.85em;">
+<p>What’s the adjusted <span class="math inline">\(R^2\)</span> of our model?</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">get_regression_summaries</span>(mod) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">"r_squared"</span>, <span class="st">"adj_r_squared"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  r_squared adj_r_squared
+      &lt;dbl&gt;         &lt;dbl&gt;
+1     0.314         0.313</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Not super close to 1. Compare to a simpler model:</p>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>small_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> bedrooms, <span class="at">data =</span> houses)</span>
+<span id="cb5-2"><a></a><span class="fu">get_regression_summaries</span>(small_mod) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">"r_squared"</span>, <span class="st">"adj_r_squared"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  r_squared adj_r_squared
+      &lt;dbl&gt;         &lt;dbl&gt;
+1     0.082         0.081</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Compare to a much bigger model with additional variables:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>big_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(price <span class="sc">~</span> bedrooms <span class="sc">+</span> bathrooms <span class="sc">+</span> sqft_living <span class="sc">+</span> sqft_above <span class="sc">+</span> sqft_lot <span class="sc">+</span> view <span class="sc">+</span> condition <span class="sc">+</span> yr_built,</span>
+<span id="cb7-2"><a></a>              <span class="at">data =</span> houses)</span>
+<span id="cb7-3"><a></a><span class="fu">get_regression_summaries</span>(big_mod) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">"r_squared"</span>, <span class="st">"adj_r_squared"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  r_squared adj_r_squared
+      &lt;dbl&gt;         &lt;dbl&gt;
+1     0.434         0.429</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment"><strong>Q</strong>: Why are <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> different?</li>
+</ul>
+</div>
+</section>
+<section id="practice-problem-data-wrangling-pseudo-code" class="slide level2">
+<h2>Practice problem: Data Wrangling Pseudo-Code</h2>
+<!-- Note to self: Solutions are in lab_review_session.qmd from last semester. -->
+<p>Looking at <code>pdxtrees</code> again:</p>
+<div style="font-size:1.25em;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 7
+  Genus         DBH Condition Tree_Height Crown_Width_NS Park             Native
+  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt; 
+1 Quercus       3.3 Fair               16             14 Kenilworth Park  No    
+2 Pseudotsuga  43.1 Fair              148             61 Kenilworth Park  Yes   
+3 Thuja        14.1 Fair               42             21 Kenilworth Park  Yes   
+4 Acer         36.5 Good               80             68 Woodstock Park   No    
+5 Pinus        10.3 Fair               27             24 Sellwood Riverf… No    </code></pre>
+</div>
+</div>
+</div>
+<p><br><br></p>
+<p><strong>Write pseudo-code to</strong>: Make a contingency table of whether trees in Woodstock Park are “big guys” or “little guys” (one variable) and whether they are native species or not (second variable). Trees are considered “big guys” when DBH &gt; 30 or Tree_Height &gt; 100 and “little guys” otherwise.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_afd77390" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="practice-problem-data-wrangling-explaining-code" class="slide level2">
+<h2>Practice problem: Data Wrangling Explaining Code</h2>
+<p>Now let’s turn to the penguins data.</p>
+<div style="font-size:1.25em;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex),</span>
+<span id="cb10-3"><a></a>         island <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Biscoe"</span>, <span class="st">"Dream"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a></a>  <span class="fu">count</span>(species, island, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a></a>  <span class="fu">group_by</span>(species, island) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a></a>  <span class="fu">arrange</span>(species, island, sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p><br><br></p>
+<p><strong>Explain what each line of code does in context, and sketch what the final data frame would look like.</strong> Reminder that there are 3 different species in <code>penguins</code>: Adelies, Gentoos, and Chinstraps. It might be helpful to sketch what the data frame looks like at each intermediate step!</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_1e4d2125" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section></section>
+<section>
+<section id="vote-another-similar-linear-models-problem-or-more-difficult-linear-models-problem" class="title-slide slide level1 center">
+<h1>Vote: Another similar linear models problem, or more difficult linear models problem?</h1>
+
+</section>
+<section id="practice-problem-more-linear-regression-skip" class="slide level2">
+<h2>Practice problem: More Linear Regression (skip?)</h2>
 <!-- Note to self: Answers are in quiz folder from last semester. -->
 <div style="font-size: 0.7em;">
 <p>In HW 4, we explored the results of the <strong>Anchoring Effect Experiment</strong> conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the <code>treatment</code>, either <strong>82</strong> or <strong>531</strong>) affected the student’s guess for the number of dog breeds in the world (the response variable).</p>
@@ -242,12 +483,12 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_2488a12f" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e7481871" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
-<section id="practice-problem-linear-regression-1" class="slide level2">
-<h2>Practice problem: Linear Regression</h2>
+<section id="practice-problem-more-linear-regression" class="slide level2">
+<h2>Practice problem: More Linear Regression</h2>
 <div style="font-size: 0.7em;">
 <p>In HW 4, we explored the results of the <strong>Anchoring Effect Experiment</strong> conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the <code>treatment</code>, either <strong>82</strong> or <strong>531</strong>) affected the student’s guess for the number of dog breeds in the world (the response variable).</p>
 <p>We can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where <code>treatment</code> is treated as a <strong>categorical</strong> explanatory variable.</p>
@@ -269,51 +510,7 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_a9cb8dc5" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
-</div>
-</section>
-<section id="practice-problem-data-wrangling-pseudo-code" class="slide level2">
-<h2>Practice problem: Data Wrangling Pseudo-Code</h2>
-<!-- Note to self: Solutions are in lab_review_session.qmd from last semester. -->
-<p>Looking at <code>pdxtrees</code> again:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 7
-  Genus         DBH Condition Tree_Height Crown_Width_NS Park             Native
-  &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt;          &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt; 
-1 Quercus       3.3 Fair               16             14 Kenilworth Park  No    
-2 Pseudotsuga  43.1 Fair              148             61 Kenilworth Park  Yes   
-3 Thuja        14.1 Fair               42             21 Kenilworth Park  Yes   
-4 Acer         36.5 Good               80             68 Woodstock Park   No    
-5 Pinus        10.3 Fair               27             24 Sellwood Riverf… No    </code></pre>
-</div>
-</div>
-<p><br><br></p>
-<p><strong>Write pseudo-code to</strong>: Make a contingency table of whether trees in Woodstock Park are “big guys” or “little guys” by whether they are native species or not. Trees are considered “big guys” when DBH &gt; 30 or Tree_Height &gt; 100 and “little guys” otherwise.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_4959e36a" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
-</div>
-</section>
-<section id="practice-problem-data-wrangling-explaining-code" class="slide level2">
-<h2>Practice problem: Data Wrangling Explaining Code</h2>
-<p>Now let’s turn to the penguins data.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex),</span>
-<span id="cb4-3"><a></a>         island <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Biscoe"</span>, <span class="st">"Dream"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a></a>  <span class="fu">count</span>(species, island, sex) <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a></a>  <span class="fu">group_by</span>(species, island) <span class="sc">%&gt;%</span></span>
-<span id="cb4-6"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-7"><a></a>  <span class="fu">arrange</span>(species, island, sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><br><br></p>
-<p><strong>Explain what each line of code does in context, and sketch what the final data frame would look like.</strong> Reminder that there are 3 different species in <code>penguins</code>: Adelies, Gentoos, and Chinstraps. It might be helpful to sketch what the data frame looks like at each intermediate step!</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_f1705b81" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_70b5c801" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -322,8 +519,6 @@
 <p>Still hanging with the penguins… Take a look at the following regression table:</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>our_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_len <span class="sc">~</span> sex<span class="sc">*</span>body_mass <span class="sc">+</span> flipper_len, penguins)</span>
-<span id="cb5-2"><a></a><span class="fu">get_regression_table</span>(our_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 7
   term                estimate std_error statistic p_value lower_ci upper_ci
@@ -343,12 +538,12 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_62846ca2" minutes="8" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_fc6ae8a6" minutes="8" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

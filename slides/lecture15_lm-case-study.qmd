@@ -1,7 +1,7 @@
 ---
 pagetitle: "Linear Models VI: Case Study"
 editor: source
-draft: true
+draft: false
 format:
   revealjs:
     chalkboard: true
@@ -54,16 +54,283 @@ library(tidyverse)
 
 ------------------------------------------------------------------------
 
+## Announcements
+
+- Final exam is officially scheduled
+- Extra time for quiz 3 revisions (due 10/16)
+
+
 ## Goals for Today
 
-- Quick test run of Thursday's online quiz
-- Any spillover content from last week
-- Practice problems 
+- Case Study
+- Practice problems (`dplyr` and linear models)
+
+# Case Study
+
+------------------------------------------------------------------------
+
+## Case Study: Home Prices in King County, WA
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,warning = FALSE,message = FALSE,fig.align = 'center')
+library(tidyverse)
+library(moderndive)
+library(gridExtra)
+houses <- read_csv("data/house.csv")
+# houses <- houses %>% select(price,sqft_living,sqft_above,bedrooms)
+```
+
+**What's the relationship between a home's square footage and number of bedrooms on the home's sale price?**
+
+```{r}
+glimpse(houses)
+```
+<br>
+
+We'll focus on **four variables**: Sale price (*response*); and square footage, above-ground square footage, and number of bedrooms (*potential explanatory variables*).
+
+------------------------------------------------------------------------
+
+## Univariate Exploration
+
+::::: columns
+::: {.column width=65%}
+```{r outwidth="100%",fig.asp=0.65}
+grid.arrange(
+  ggplot(houses,aes(x=price))+geom_histogram(binwidth=25,color="white")+theme_bw(base_size=11)+
+    labs(x="Price (thousands of dollars)"),
+  ggplot(houses,aes(x=bedrooms))+geom_histogram(binwidth=1,color="white")+theme_bw(base_size=11)+
+    labs(x="Number of Bedrooms")+scale_x_continuous(breaks=1:10),
+  ggplot(houses,aes(x=sqft_living))+geom_histogram(binwidth=100,color="white")+theme_bw(base_size=11)+
+    labs(x="Total Square Footage"),
+  ggplot(houses,aes(x=sqft_above))+geom_histogram(binwidth=100,color="white")+theme_bw(base_size=11)+
+    labs(x="Above-Ground Square Footage"),
+  nrow=2)
+```
+
+:::
+
+::: {.column width=35% .nonincremental}
+<br><br>
+
+- **Q**: How would you describe the distribution of `price`?
+
+- **Q**: What do you expect the relationship between `price` and `bedrooms` to be like?
+:::
+:::::
+
+```{r}
+#| echo: false
+countdown::countdown(2)
+```
+
+------------------------------------------------------------------------
+
+## Bivariate Exploration, Multicollinearity
+
+```{r outwidth="100%", fig.width=12, fig.height = 6}
+grid.arrange(
+  ggplot(houses,aes(x=sqft_living,y=price))+geom_point(alpha=0.3)+theme_bw(base_size=10)+
+    labs(x="Sq. Footage",y="Price") +
+    theme(axis.text = element_text(size = 12),
+          axis.title = element_text(size=16)),
+  ggplot(houses,aes(x=sqft_above,y=price))+geom_point(alpha=0.3)+theme_bw(base_size=10)+
+    labs(x="Ab.-Ground Sq. Ft.",y="Price") +
+    theme(axis.text = element_text(size = 12),
+          axis.title = element_text(size=16)),
+  ggplot(houses,aes(x=bedrooms,y=price))+geom_point(alpha=0.3)+theme_bw(base_size=10)+
+    labs(x="Bedrooms",y="Price") +
+    theme(axis.text = element_text(size = 12),
+          axis.title = element_text(size=16)),
+  ggplot(houses,aes(x=sqft_living,y=sqft_above))+geom_point(alpha=0.3)+theme_bw(base_size=10)+
+    labs(x="Sq. Footage",y="Ab.-Ground Sq. Ft.") +
+    theme(axis.text = element_text(size = 12),
+          axis.title = element_text(size=16)),
+  ggplot(houses,aes(x=sqft_living,y=bedrooms))+geom_point(alpha=0.3)+theme_bw(base_size=10)+
+    labs(x="Sq. Footage",y="Bedrooms") +
+    theme(axis.text = element_text(size = 12),
+          axis.title = element_text(size=16)),
+  ggplot(houses,aes(x=sqft_above,y=bedrooms))+geom_point(alpha=0.3)+theme_bw(base_size=10)+
+    labs(x="Ab.-Ground Sq. Ft.",y="Bedrooms") +
+    theme(axis.text = element_text(size = 12),
+          axis.title = element_text(size=16)),
+  nrow=2, ncol = 3)
+```
+
+
+- **Q**: Which explanatory variables would be appropriate to include in our model? 
+
+- **Q**: Do any pairs of explanatory variables suffer from multicollinearity?
+
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
+
+------------------------------------------------------------------------
+
+## Model Estimation
+
+```{r}
+mod <- lm(price ~ sqft_living + bedrooms, data = houses)
+get_regression_table(mod)
+```
+
+::: nonincremental
+
+- **Q**: What is the equation, including coefficient values, for the estimated model?
+
+<!-- ::: fragment -->
+<!-- $$ -->
+<!-- \widehat{\text{price}} = 197 + 0.177*\text{sqrt_living} - 21.6*\text{bedrooms} -->
+<!-- $$ -->
+<!-- ::: -->
+
+- **Q**: How should we interpret the **intercept** coefficient in our model?
+
+<!-- - When `sqrt_living` and `bedrooms` are both 0, we expect/predict price to be $197,000 on average. -->
+
+- **Q**: How should we interpret the coefficient for **Bedrooms**? Does this match your expectation?
+
+<!-- - When the number of `bedrooms` increases by 1, we expect/predict price to **decrease** by $21,600 on average, **holding `sqft_living` constant**. -->
+
+:::
+     
+```{r}
+#| echo: false
+countdown::countdown(4)
+```
+
 
 
 ------------------------------------------------------------------------
 
-## Practice problem: Linear Regression
+## LINE Assumptions
+
+```{r echo=FALSE, fig.width=12, fig.height=6.5}
+res <- get_regression_points(mod)
+gg1 <- ggplot(res, aes(x = price_hat, y = residual)) +
+  geom_point() + geom_hline(aes(yintercept = 0), lty = 2, color = "gray50")
+gg2 <- ggplot(res, aes(x = residual)) + geom_histogram(color = "white")
+gg3 <- ggplot(res, aes(sample = residual)) + geom_qq() + geom_qq_line()
+
+gridExtra::grid.arrange(gg1, gg2, gg3, nrow = 2)
+
+```
+
+::: nonincremental
+
+- **Q**: Does it seem like this model meets the four LINE assumptions? 
+
+:::
+
+```{r}
+#| echo: false
+countdown::countdown(3)
+```
+
+------------------------------------------------------------------------
+
+## Adjusted $R^2$
+
+::: {style="font-size:0.85em;"}
+
+What's the adjusted $R^2$ of our model?
+
+```{r echo = TRUE}
+get_regression_summaries(mod) %>% select("r_squared", "adj_r_squared")
+```
+
+::: fragment
+Not super close to 1. Compare to a simpler model:
+:::
+
+::: fragment
+```{r echo = TRUE}
+small_mod <- lm(price ~ bedrooms, data = houses)
+get_regression_summaries(small_mod) %>% select("r_squared", "adj_r_squared")
+```
+:::
+
+::: fragment
+Compare to a much bigger model with additional variables:
+
+```{r echo = TRUE}
+big_mod <- lm(price ~ bedrooms + bathrooms + sqft_living + sqft_above + sqft_lot + view + condition + yr_built,
+              data = houses)
+get_regression_summaries(big_mod) %>% select("r_squared", "adj_r_squared")
+```
+:::
+
+- **Q**: Why are $R^2$ and adjusted $R^2$ different? 
+
+:::
+
+------------------------------------------------------------------------
+
+## Practice problem: Data Wrangling Pseudo-Code
+
+<!-- Note to self: Solutions are in lab_review_session.qmd from last semester. -->
+
+Looking at `pdxtrees` again:
+
+::: {style="font-size:1.25em;"}
+
+```{r echo=F, warning=F, message=F}
+library(pdxTrees)
+library(dplyr)
+library(ggplot2)
+near_Reed <- get_pdxTrees_parks(park = c("Woodstock Park", "Sellwood Riverfront Park", "Kenilworth Park"))
+near_Reed <- near_Reed[near_Reed$Genus %in% c("Acer", "Quercus", "Pinus", "Thuja", "Pseudotsuga"), ] 
+near_Reed <- near_Reed[, c("Genus", "DBH", "Condition", "Tree_Height", "Crown_Width_NS", "Park", "Native")]
+near_Reed[c(1, 2, 46, 166, 322), ]
+```
+
+:::
+
+<br><br>
+
+**Write pseudo-code to**: Make a contingency table of whether trees in Woodstock Park are "big guys" or "little guys" (one variable) and whether they are native species or not (second variable). Trees are considered "big guys" when DBH > 30 or Tree_Height > 100 and "little guys" otherwise.
+
+```{r echo=FALSE}
+countdown::countdown(5)
+```
+
+------------------------------------------------------------------------
+
+## Practice problem: Data Wrangling Explaining Code
+
+Now let's turn to the penguins data. 
+
+::: {style="font-size:1.25em;"}
+
+```{r, warning=F, message=F, echo=T, eval=F}
+penguins %>%
+  filter(!is.na(sex),
+         island %in% c("Biscoe", "Dream")) %>%
+  count(species, island, sex) %>%
+  group_by(species, island) %>%
+  mutate(prop = n / sum(n)) %>%
+  arrange(species, island, sex)
+```
+:::
+
+
+<br><br>
+
+**Explain what each line of code does in context, and sketch what the final data frame would look like.** Reminder that there are 3 different species in `penguins`: Adelies, Gentoos, and Chinstraps. It might be helpful to sketch what the data frame looks like at each intermediate step! 
+
+
+```{r echo=FALSE}
+countdown::countdown(7)
+```
+
+
+# Vote: Another similar linear models problem, or more difficult linear models problem?
+
+------------------------------------------------------------------------
+
+## Practice problem: More Linear Regression (skip?)
 
 <!-- Note to self: Answers are in quiz folder from last semester. -->
 
@@ -95,13 +362,13 @@ get_regression_table(lm(n_breeds ~ treatment, dogs))
 
 
 ```{r echo=FALSE}
-countdown::countdown(5)
+countdown::countdown(3)
 ```
 
 
 ------------------------------------------------------------------------
 
-## Practice problem: Linear Regression
+## Practice problem: More Linear Regression
 
 ::: {style="font-size: 0.7em;"}
 
@@ -130,59 +397,6 @@ get_regression_table(lm(n_breeds ~ treatment, dogs))
 ```{r echo=FALSE}
 countdown::countdown(5)
 ```
-
-------------------------------------------------------------------------
-
-## Practice problem: Data Wrangling Pseudo-Code
-
-<!-- Note to self: Solutions are in lab_review_session.qmd from last semester. -->
-
-Looking at `pdxtrees` again:
-
-```{r echo=F, warning=F, message=F}
-library(pdxTrees)
-library(dplyr)
-library(ggplot2)
-near_Reed <- get_pdxTrees_parks(park = c("Woodstock Park", "Sellwood Riverfront Park", "Kenilworth Park"))
-near_Reed <- near_Reed[near_Reed$Genus %in% c("Acer", "Quercus", "Pinus", "Thuja", "Pseudotsuga"), ] 
-near_Reed <- near_Reed[, c("Genus", "DBH", "Condition", "Tree_Height", "Crown_Width_NS", "Park", "Native")]
-near_Reed[c(1, 2, 46, 166, 322), ]
-```
-
-
-<br><br>
-
-**Write pseudo-code to**: Make a contingency table of whether trees in Woodstock Park are "big guys" or "little guys" by whether they are native species or not. Trees are considered "big guys" when DBH > 30 or Tree_Height > 100 and "little guys" otherwise.
-
-```{r echo=FALSE}
-countdown::countdown(5)
-```
-
-------------------------------------------------------------------------
-
-## Practice problem: Data Wrangling Explaining Code
-
-Now let's turn to the penguins data. 
-
-```{r, warning=F, message=F, eval=F}
-penguins %>%
-  filter(!is.na(sex),
-         island %in% c("Biscoe", "Dream")) %>%
-  count(species, island, sex) %>%
-  group_by(species, island) %>%
-  mutate(prop = n / sum(n)) %>%
-  arrange(species, island, sex)
-```
-
-<br><br>
-
-**Explain what each line of code does in context, and sketch what the final data frame would look like.** Reminder that there are 3 different species in `penguins`: Adelies, Gentoos, and Chinstraps. It might be helpful to sketch what the data frame looks like at each intermediate step! 
-
-
-```{r echo=FALSE}
-countdown::countdown(7)
-```
-
 
 ------------------------------------------------------------------------
 
