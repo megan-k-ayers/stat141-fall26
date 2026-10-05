@@ -110,12 +110,15 @@ grid.arrange(
 
 :::
 
-::: {.column width=35% .nonincremental}
-<br><br>
+::: {.column width=35%}
+<br>
 
 - **Q**: How would you describe the distribution of `price`?
+    - Right skewed, centered somewhere around $400K, most range from about \$200K-\$750K
 
 - **Q**: What do you expect the relationship between `price` and `bedrooms` to be like?
+    - Price probably increases as # bedrooms increases
+    
 :::
 :::::
 
@@ -128,7 +131,7 @@ countdown::countdown(2)
 
 ## Bivariate Exploration, Multicollinearity
 
-```{r outwidth="100%", fig.width=12, fig.height = 6}
+```{r outwidth="100%", fig.width=12, fig.height = 5}
 grid.arrange(
   ggplot(houses,aes(x=sqft_living,y=price))+geom_point(alpha=0.3)+theme_bw(base_size=10)+
     labs(x="Sq. Footage",y="Price") +
@@ -157,10 +160,15 @@ grid.arrange(
   nrow=2, ncol = 3)
 ```
 
+::: {style="font-size:0.9em;"}
 
 - **Q**: Which explanatory variables would be appropriate to include in our model? 
+    - All three seem to have a positive linear relationship
 
 - **Q**: Do any pairs of explanatory variables suffer from multicollinearity?
+    - Above ground sq. ft. and total sq. ft. We shouldn't include both!
+
+:::
 
 ```{r}
 #| echo: false
@@ -176,23 +184,22 @@ mod <- lm(price ~ sqft_living + bedrooms, data = houses)
 get_regression_table(mod)
 ```
 
-::: nonincremental
+::: {style="font-size:0.75em;"}
 
 - **Q**: What is the equation, including coefficient values, for the estimated model?
 
-<!-- ::: fragment -->
-<!-- $$ -->
-<!-- \widehat{\text{price}} = 197 + 0.177*\text{sqrt_living} - 21.6*\text{bedrooms} -->
-<!-- $$ -->
-<!-- ::: -->
+::: fragment
+$$
+\widehat{\text{price}} = 197 + 0.177*\text{sqrt_living} - 21.6*\text{bedrooms}
+$$
+:::
 
 - **Q**: How should we interpret the **intercept** coefficient in our model?
-
-<!-- - When `sqrt_living` and `bedrooms` are both 0, we expect/predict price to be $197,000 on average. -->
+    - When `sqrt_living` and `bedrooms` are both 0, we expect/predict price to be $197,000 on average.
 
 - **Q**: How should we interpret the coefficient for **Bedrooms**? Does this match your expectation?
-
-<!-- - When the number of `bedrooms` increases by 1, we expect/predict price to **decrease** by $21,600 on average, **holding `sqft_living` constant**. -->
+    - When the number of `bedrooms` increases by 1, we expect/predict price to **decrease** by $21,600 on average, **holding `sqft_living` constant**.
+    - The last phrase is key! We might expect price to generally increase as the number of bedrooms increases, but the coefficient represents a very specific quantity relating to all variables in the model.
 
 :::
      
@@ -207,7 +214,7 @@ countdown::countdown(4)
 
 ## LINE Assumptions
 
-```{r echo=FALSE, fig.width=12, fig.height=6.5}
+```{r echo=FALSE, fig.width=12, fig.height=5}
 res <- get_regression_points(mod)
 gg1 <- ggplot(res, aes(x = price_hat, y = residual)) +
   geom_point() + geom_hline(aes(yintercept = 0), lty = 2, color = "gray50")
@@ -218,10 +225,14 @@ gridExtra::grid.arrange(gg1, gg2, gg3, nrow = 2)
 
 ```
 
-::: nonincremental
+::: {style="font-size:0.75em;"}
 
 - **Q**: Does it seem like this model meets the four LINE assumptions? 
-
+    - **L**inearity: Possibly a small negative slope in the residual plot. Somewhat suspect.
+    - **I**ndependence: Could be issues if some houses are in the same neighborhood.
+    - **N**ormality: Slight right skew in histogram, imperfect qq-plot. Not terrible but not great.
+    - **E**qual variance: Residual plot looks fairly good and cloudlike.
+    
 :::
 
 ```{r}
@@ -233,7 +244,7 @@ countdown::countdown(3)
 
 ## Adjusted $R^2$
 
-::: {style="font-size:0.85em;"}
+::: {style="font-size:0.75em;"}
 
 What's the adjusted $R^2$ of our model?
 
@@ -262,9 +273,12 @@ get_regression_summaries(big_mod) %>% select("r_squared", "adj_r_squared")
 ```
 :::
 
-- **Q**: Why are $R^2$ and adjusted $R^2$ different? 
+- **Q**: Why are $R^2$ and adjusted $R^2$ different?
+    - Adjusted $R^2$ penalizes for having additional explanatory variables
 
 :::
+
+# Data Wrangling Practice!
 
 ------------------------------------------------------------------------
 
@@ -298,6 +312,31 @@ countdown::countdown(5)
 
 ------------------------------------------------------------------------
 
+## Practice problem: Data Wrangling Pseudo-Code (Solution)
+
+::: {.nonincremental style="font-size:0.9em;"}
+
+**Example pseudo-code to write as your response**:
+
+1. Use `mutate()` and `case_when()` to create a new variable that is "big guy" for rows with `DBH` > 30 **or** `Tree_Height` > 100, and "little guy" otherwise.
+2. Use `filter()` to only consider rows where `Park` == "Woodstock Park"
+3. Use `count(guy_type, Native)` to make the final contingency table. 
+    - A combo of `group_by` and `summarize(total = n())` would also work.
+
+**Actual code for reference, but not expected in your response**
+
+```{r echo=TRUE}
+near_Reed %>%
+  mutate(guy_type = case_when(DBH > 30 | Tree_Height > 100 ~ "big guy", 
+                              TRUE ~ "little guy")) %>%
+  filter(Park == "Woodstock Park") %>%
+  count(guy_type, Native)
+```
+
+:::
+
+------------------------------------------------------------------------
+
 ## Practice problem: Data Wrangling Explaining Code
 
 Now let's turn to the penguins data. 
@@ -326,7 +365,46 @@ countdown::countdown(7)
 ```
 
 
-# Vote: Another similar linear models problem, or more difficult linear models problem?
+------------------------------------------------------------------------
+
+## Practice problem: Data Wrangling Explaining Code
+
+Now let's turn to the penguins data. 
+
+::: {.nonincremental style="font-size:0.85em;"}
+
+```{r, warning=F, message=F, echo=T, eval=F}
+penguins %>%
+  filter(!is.na(sex),
+         island %in% c("Biscoe", "Dream")) %>%
+  count(species, island, sex) %>%
+  group_by(species, island) %>%
+  mutate(prop = n / sum(n)) %>%
+  arrange(species, island, sex)
+```
+
+
+1-3: Keep rows where `sex` is not missing and where penguins are either on the Dream or Biscoe `island.`
+
+4: Get counts of how many penguins are on each island, broken down by `sex` and `species`.
+
+5-6: For each `species` on each `island`, calculate the proportion of male and female penguins. 
+
+7: Sort the result by `species`, `island`, and then `sex`.
+
+```{r, warning=F, message=F, eval=T, echo=F}
+penguins %>%
+  filter(!is.na(sex),
+         island %in% c("Biscoe", "Dream")) %>%
+  count(species, island, sex) %>%
+  group_by(species, island) %>%
+  mutate(prop = n / sum(n)) %>%
+  arrange(species, island, sex)
+```
+
+:::
+
+# More Linear Models Practice!
 
 ------------------------------------------------------------------------
 
@@ -334,15 +412,11 @@ countdown::countdown(7)
 
 <!-- Note to self: Answers are in quiz folder from last semester. -->
 
-::: {style="font-size: 0.7em;"}
+::: {style="font-size: 0.75em;"}
 
 In HW 4, we explored the results of the **Anchoring Effect Experiment** conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the `treatment`, either **82** or **531**) affected the student's guess for the number of dog breeds in the world (the response variable).
 
 We can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where `treatment` is treated as a **categorical** explanatory variable.
-
-:::
-
-<br>
 
 ```{r echo = FALSE}
 library(moderndive)
@@ -351,15 +425,21 @@ dogs$treatment <- factor(dogs$treatment)
 get_regression_table(lm(n_breeds ~ treatment, dogs))
 ```
 
-<br>
-
 - **Q1**: Write the equation for the **estimated regression line**.
 
+::: fragment
 
+$$
+\widehat{y} = 452 + 349*x_{treatment:531}
+$$
 
+:::
 
-- **Q2**: How should we interpret the "intercept" and "`treatment: High`" terms, given the context of the experiment?
+- **Q2**: How should we interpret the "intercept" and "`treatment: 531`" terms, given the context of the experiment?
+    - *`intercept`: on average, the dog breeds guess for a student who got a paper with 82 is expected to be 452.*
+    - *`treatment: 531`: on average, the dog breeds guess for a student who got a paper with 531 is expected to be 349 larger than the average guess for students who got a paper with 82.*
 
+:::
 
 ```{r echo=FALSE}
 countdown::countdown(3)
@@ -370,15 +450,12 @@ countdown::countdown(3)
 
 ## Practice problem: More Linear Regression
 
-::: {style="font-size: 0.7em;"}
+::: {style="font-size: 0.75em;"}
 
 In HW 4, we explored the results of the **Anchoring Effect Experiment** conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the `treatment`, either **82** or **531**) affected the student's guess for the number of dog breeds in the world (the response variable).
 
 We can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where `treatment` is treated as a **categorical** explanatory variable.
 
-:::
-
-<br>
 
 ```{r echo = FALSE}
 library(moderndive)
@@ -387,43 +464,75 @@ dogs$treatment <- factor(dogs$treatment)
 get_regression_table(lm(n_breeds ~ treatment, dogs))
 ```
 
-<br>
-
-- **Q3**: Suppose I had tested the effect of three different treatments: `82`, `531`, and `900`, instead of just `82` and `531`. What would be different about the regression model and the results table?
+- **Q3**: Suppose I had tested the effect of three different treatments: `82`, `531`, and `900`, instead of just `82` and `531`. What would be different about the regression model and the results table (assuming `treatment` is still a categorical variable)?
+    - *Then we would add another term to the regression model: $+ \widehat{\beta}_2 \cdot x_{treatment:900}$. The regression summary table would show one more row for $\widehat{\beta}_2$.*
 
 
 - **Q4**: Suppose `treatment` was actually a **quantitative** variable, with each student seeing a different number in $[0, 200]$. Suppose that then our regression model produced estimates $\widehat{\beta}_0 = 100$ and $\widehat{\beta}_1 = 4$. How should we interpret $\widehat{\beta}_0$ and $\widehat{\beta}_1$ now?
+    - *$\widehat{\beta}_0$ would then be what we expect/predict a students' dog breed guess to be when they see the number 0.*
+    - *$\widehat{\beta}_1$ would be how much we expect/predict a students' dog breed guess to increase when the number they see on the slip of paper increases by 1.*
 
-```{r echo=FALSE}
-countdown::countdown(5)
-```
+:::
+
 
 ------------------------------------------------------------------------
 
 ## Practice problem: Linear Regression (extra difficult `r emo::ji("weight")`)
 
-Still hanging with the penguins and predicting their `bill_length`... Take a look at the following regression table:
+::: {style="font-size: 0.85em;"}
 
-<br>
+Still hanging with the penguins and predicting their `bill_length`... Take a look at the following regression table:
 
 ```{r}
 our_mod <- lm(bill_len ~ sex*body_mass + flipper_len, penguins)
 get_regression_table(our_mod, digits = 5)
 ```
 
-<br>
 
 - **Q1**: What is the equation for the fitted model?
 
-- **Q2**: How should we interpret `intercept`? 
+::: fragment
+
+$$
+\widehat{y} = -9.83 + 5.89\cdot x_{\text{male}} - 0.00013 \cdot x_{\text{body-mass}} + 0.266 \cdot x_{\text{flipper-len}}  - 0.00087 \cdot x_{\text{male}} \cdot x_{\text{body-mass}}
+$$
+
+:::
+
+- **Q2**: How should we interpret `intercept`?
+    - *For a [female]{.underline} penguin with body mass and flipper length of 0, we expect her bill length to be -9.83 mm on average.*
+    - Nonsensical extrapolation, but this is the literal interpretation of the intercept.
+
+
+:::
+
+```{r echo=FALSE}
+countdown::countdown(4)
+```
+
+------------------------------------------------------------------------
+
+## Practice problem: Linear Regression (extra difficult `r emo::ji("weight")`)
+
+::: {style="font-size: 0.85em;"}
+
+Still hanging with the penguins and predicting their `bill_length`... Take a look at the following regression table:
+
+```{r}
+our_mod <- lm(bill_len ~ sex*body_mass + flipper_len, penguins)
+get_regression_table(our_mod, digits = 5)
+```
 
 
 - **Q3**: How should we interpret `body_mass`?
+    - *For a [female]{.underline} penguin, when body mass increases by 1 gram we expect bill length to decrease by 0.00013mm on average, holding flipper length constant.*
 
 
 - **Q4**: How should we interpret `flipper_len`?
+    - *When flipper length increases by 1mm, we expect bill length to increase by 0.266mm on average, holding sex and body mass constant.*
 
+:::
 
 ```{r echo=FALSE}
-countdown::countdown(8)
+countdown::countdown(4)
 ```

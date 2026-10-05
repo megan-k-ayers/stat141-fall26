@@ -272,15 +272,21 @@ $ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -1
 </div>
 </div>
 </div><div class="column" style="width:35%;">
-<p><br><br></p>
+<p><br></p>
 <ul>
-<li><p><strong>Q</strong>: How would you describe the distribution of <code>price</code>?</p></li>
-<li><p><strong>Q</strong>: What do you expect the relationship between <code>price</code> and <code>bedrooms</code> to be like?</p></li>
+<li class="fragment"><strong>Q</strong>: How would you describe the distribution of <code>price</code>?
+<ul>
+<li class="fragment">Right skewed, centered somewhere around $400K, most range from about $200K-$750K</li>
+</ul></li>
+<li class="fragment"><strong>Q</strong>: What do you expect the relationship between <code>price</code> and <code>bedrooms</code> to be like?
+<ul>
+<li class="fragment">Price probably increases as # bedrooms increases</li>
+</ul></li>
 </ul>
 </div></div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_88b6d7c8" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_5dd4d48f" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -295,13 +301,21 @@ $ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -1
 </div>
 </div>
 </div>
+<div style="font-size:0.9em;">
 <ul>
-<li class="fragment"><p><strong>Q</strong>: Which explanatory variables would be appropriate to include in our model?</p></li>
-<li class="fragment"><p><strong>Q</strong>: Do any pairs of explanatory variables suffer from multicollinearity?</p></li>
+<li class="fragment"><strong>Q</strong>: Which explanatory variables would be appropriate to include in our model?
+<ul>
+<li class="fragment">All three seem to have a positive linear relationship</li>
+</ul></li>
+<li class="fragment"><strong>Q</strong>: Do any pairs of explanatory variables suffer from multicollinearity?
+<ul>
+<li class="fragment">Above ground sq. ft. and total sq. ft. We shouldn’t include both!</li>
+</ul></li>
 </ul>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_df2094a0" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a8a9be8a" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -317,25 +331,30 @@ $ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -1
 3 bedrooms     -21.6        7.27     -2.97   0.003  -35.9     -7.34 </code></pre>
 </div>
 </div>
+<div style="font-size:0.75em;">
 <ul>
-<li><strong>Q</strong>: What is the equation, including coefficient values, for the estimated model?</li>
+<li class="fragment"><strong>Q</strong>: What is the equation, including coefficient values, for the estimated model?</li>
 </ul>
-<!-- ::: fragment -->
-<!-- $$ -->
-<!-- \widehat{\text{price}} = 197 + 0.177*\text{sqrt_living} - 21.6*\text{bedrooms} -->
-<!-- $$ -->
-<!-- ::: -->
+<div class="fragment">
+<p><span class="math display">\[
+\widehat{\text{price}} = 197 + 0.177*\text{sqrt_living} - 21.6*\text{bedrooms}
+\]</span></p>
+</div>
 <ul>
-<li><strong>Q</strong>: How should we interpret the <strong>intercept</strong> coefficient in our model?</li>
-</ul>
-<!-- - When `sqrt_living` and `bedrooms` are both 0, we expect/predict price to be $197,000 on average. -->
+<li class="fragment"><strong>Q</strong>: How should we interpret the <strong>intercept</strong> coefficient in our model?
 <ul>
-<li><strong>Q</strong>: How should we interpret the coefficient for <strong>Bedrooms</strong>? Does this match your expectation?</li>
+<li class="fragment">When <code>sqrt_living</code> and <code>bedrooms</code> are both 0, we expect/predict price to be $197,000 on average.</li>
+</ul></li>
+<li class="fragment"><strong>Q</strong>: How should we interpret the coefficient for <strong>Bedrooms</strong>? Does this match your expectation?
+<ul>
+<li class="fragment">When the number of <code>bedrooms</code> increases by 1, we expect/predict price to <strong>decrease</strong> by $21,600 on average, <strong>holding <code>sqft_living</code> constant</strong>.</li>
+<li class="fragment">The last phrase is key! We might expect price to generally increase as the number of bedrooms increases, but the coefficient represents a very specific quantity relating to all variables in the model.</li>
+</ul></li>
 </ul>
-<!-- - When the number of `bedrooms` increases by 1, we expect/predict price to **decrease** by $21,600 on average, **holding `sqft_living` constant**. -->
+</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_45cbebfc" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_80d232a1" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -350,18 +369,26 @@ $ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -1
 </div>
 </div>
 </div>
+<div style="font-size:0.75em;">
 <ul>
-<li><strong>Q</strong>: Does it seem like this model meets the four LINE assumptions?</li>
+<li class="fragment"><strong>Q</strong>: Does it seem like this model meets the four LINE assumptions?
+<ul>
+<li class="fragment"><strong>L</strong>inearity: Possibly a small negative slope in the residual plot. Somewhat suspect.</li>
+<li class="fragment"><strong>I</strong>ndependence: Could be issues if some houses are in the same neighborhood.</li>
+<li class="fragment"><strong>N</strong>ormality: Slight right skew in histogram, imperfect qq-plot. Not terrible but not great.</li>
+<li class="fragment"><strong>E</strong>qual variance: Residual plot looks fairly good and cloudlike.</li>
+</ul></li>
 </ul>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_f44ef4c4" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e91026a8" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
 <section id="adjusted-r2" class="slide level2">
 <h2>Adjusted <span class="math inline">\(R^2\)</span></h2>
-<div style="font-size:0.85em;">
+<div style="font-size:0.75em;">
 <p>What’s the adjusted <span class="math inline">\(R^2\)</span> of our model?</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">get_regression_summaries</span>(mod) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="st">"r_squared"</span>, <span class="st">"adj_r_squared"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -402,9 +429,17 @@ $ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -1
 </div>
 </div>
 <ul>
-<li class="fragment"><strong>Q</strong>: Why are <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> different?</li>
+<li class="fragment"><strong>Q</strong>: Why are <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> different?
+<ul>
+<li class="fragment">Adjusted <span class="math inline">\(R^2\)</span> penalizes for having additional explanatory variables</li>
+</ul></li>
 </ul>
 </div>
+</section></section>
+<section>
+<section id="data-wrangling-practice" class="title-slide slide level1 center">
+<h1>Data Wrangling Practice!</h1>
+
 </section>
 <section id="practice-problem-data-wrangling-pseudo-code" class="slide level2">
 <h2>Practice problem: Data Wrangling Pseudo-Code</h2>
@@ -428,7 +463,38 @@ $ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -1
 <p><strong>Write pseudo-code to</strong>: Make a contingency table of whether trees in Woodstock Park are “big guys” or “little guys” (one variable) and whether they are native species or not (second variable). Trees are considered “big guys” when DBH &gt; 30 or Tree_Height &gt; 100 and “little guys” otherwise.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_f042e4c1" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_fe5207a7" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="practice-problem-data-wrangling-pseudo-code-solution" class="slide level2">
+<h2>Practice problem: Data Wrangling Pseudo-Code (Solution)</h2>
+<div style="font-size:0.9em;">
+<p><strong>Example pseudo-code to write as your response</strong>:</p>
+<ol type="1">
+<li>Use <code>mutate()</code> and <code>case_when()</code> to create a new variable that is “big guy” for rows with <code>DBH</code> &gt; 30 <strong>or</strong> <code>Tree_Height</code> &gt; 100, and “little guy” otherwise.</li>
+<li>Use <code>filter()</code> to only consider rows where <code>Park</code> == “Woodstock Park”</li>
+<li>Use <code>count(guy_type, Native)</code> to make the final contingency table.
+<ul>
+<li>A combo of <code>group_by</code> and <code>summarize(total = n())</code> would also work.</li>
+</ul></li>
+</ol>
+<p><strong>Actual code for reference, but not expected in your response</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>near_Reed <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">mutate</span>(<span class="at">guy_type =</span> <span class="fu">case_when</span>(DBH <span class="sc">&gt;</span> <span class="dv">30</span> <span class="sc">|</span> Tree_Height <span class="sc">&gt;</span> <span class="dv">100</span> <span class="sc">~</span> <span class="st">"big guy"</span>, </span>
+<span id="cb10-3"><a></a>                              <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"little guy"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a></a>  <span class="fu">filter</span>(Park <span class="sc">==</span> <span class="st">"Woodstock Park"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a></a>  <span class="fu">count</span>(guy_type, Native)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  guy_type   Native     n
+  &lt;chr&gt;      &lt;chr&gt;  &lt;int&gt;
+1 big guy    No        26
+2 big guy    Yes       67
+3 little guy No        16
+4 little guy Yes       29</code></pre>
+</div>
 </div>
 </div>
 </section>
@@ -437,36 +503,69 @@ $ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -1
 <p>Now let’s turn to the penguins data.</p>
 <div style="font-size:1.25em;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
-<span id="cb10-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex),</span>
-<span id="cb10-3"><a></a>         island <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Biscoe"</span>, <span class="st">"Dream"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a></a>  <span class="fu">count</span>(species, island, sex) <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a></a>  <span class="fu">group_by</span>(species, island) <span class="sc">%&gt;%</span></span>
-<span id="cb10-6"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-7"><a></a>  <span class="fu">arrange</span>(species, island, sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex),</span>
+<span id="cb12-3"><a></a>         island <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Biscoe"</span>, <span class="st">"Dream"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a></a>  <span class="fu">count</span>(species, island, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">group_by</span>(species, island) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a></a>  <span class="fu">arrange</span>(species, island, sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><br><br></p>
 <p><strong>Explain what each line of code does in context, and sketch what the final data frame would look like.</strong> Reminder that there are 3 different species in <code>penguins</code>: Adelies, Gentoos, and Chinstraps. It might be helpful to sketch what the data frame looks like at each intermediate step!</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_29e15cd1" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_6f8005f5" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="practice-problem-data-wrangling-explaining-code-1" class="slide level2">
+<h2>Practice problem: Data Wrangling Explaining Code</h2>
+<p>Now let’s turn to the penguins data.</p>
+<div style="font-size:0.85em;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>penguins <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sex),</span>
+<span id="cb13-3"><a></a>         island <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Biscoe"</span>, <span class="st">"Dream"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a></a>  <span class="fu">count</span>(species, island, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a></a>  <span class="fu">group_by</span>(species, island) <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a></a>  <span class="fu">mutate</span>(<span class="at">prop =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-7"><a></a>  <span class="fu">arrange</span>(species, island, sex)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>1-3: Keep rows where <code>sex</code> is not missing and where penguins are either on the Dream or Biscoe <code>island.</code></p>
+<p>4: Get counts of how many penguins are on each island, broken down by <code>sex</code> and <code>species</code>.</p>
+<p>5-6: For each <code>species</code> on each <code>island</code>, calculate the proportion of male and female penguins.</p>
+<p>7: Sort the result by <code>species</code>, <code>island</code>, and then <code>sex</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 5
+# Groups:   species, island [4]
+  species   island sex        n  prop
+  &lt;fct&gt;     &lt;fct&gt;  &lt;fct&gt;  &lt;int&gt; &lt;dbl&gt;
+1 Adelie    Biscoe female    22 0.5  
+2 Adelie    Biscoe male      22 0.5  
+3 Adelie    Dream  female    27 0.491
+4 Adelie    Dream  male      28 0.509
+5 Chinstrap Dream  female    34 0.5  
+6 Chinstrap Dream  male      34 0.5  
+7 Gentoo    Biscoe female    58 0.487
+8 Gentoo    Biscoe male      61 0.513</code></pre>
+</div>
 </div>
 </div>
 </section></section>
 <section>
-<section id="vote-another-similar-linear-models-problem-or-more-difficult-linear-models-problem" class="title-slide slide level1 center">
-<h1>Vote: Another similar linear models problem, or more difficult linear models problem?</h1>
+<section id="more-linear-models-practice" class="title-slide slide level1 center">
+<h1>More Linear Models Practice!</h1>
 
 </section>
 <section id="practice-problem-more-linear-regression-skip" class="slide level2">
 <h2>Practice problem: More Linear Regression (skip?)</h2>
 <!-- Note to self: Answers are in quiz folder from last semester. -->
-<div style="font-size: 0.7em;">
+<div style="font-size: 0.75em;">
 <p>In HW 4, we explored the results of the <strong>Anchoring Effect Experiment</strong> conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the <code>treatment</code>, either <strong>82</strong> or <strong>531</strong>) affected the student’s guess for the number of dog breeds in the world (the response variable).</p>
 <p>We can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where <code>treatment</code> is treated as a <strong>categorical</strong> explanatory variable.</p>
-</div>
-<p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 7
@@ -476,24 +575,33 @@ $ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -1
 2 treatment: 531     349.      200.      1.74   0.084    -47.1     746.</code></pre>
 </div>
 </div>
-<p><br></p>
 <ul>
-<li class="fragment"><p><strong>Q1</strong>: Write the equation for the <strong>estimated regression line</strong>.</p></li>
-<li class="fragment"><p><strong>Q2</strong>: How should we interpret the “intercept” and “<code>treatment: High</code>” terms, given the context of the experiment?</p></li>
+<li class="fragment"><strong>Q1</strong>: Write the equation for the <strong>estimated regression line</strong>.</li>
 </ul>
+<div class="fragment">
+<p><span class="math display">\[
+\widehat{y} = 452 + 349*x_{treatment:531}
+\]</span></p>
+</div>
+<ul>
+<li class="fragment"><strong>Q2</strong>: How should we interpret the “intercept” and “<code>treatment: 531</code>” terms, given the context of the experiment?
+<ul>
+<li class="fragment"><em><code>intercept</code>: on average, the dog breeds guess for a student who got a paper with 82 is expected to be 452.</em></li>
+<li class="fragment"><em><code>treatment: 531</code>: on average, the dog breeds guess for a student who got a paper with 531 is expected to be 349 larger than the average guess for students who got a paper with 82.</em></li>
+</ul></li>
+</ul>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_9063a96a" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_4e1af0f9" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
 <section id="practice-problem-more-linear-regression" class="slide level2">
 <h2>Practice problem: More Linear Regression</h2>
-<div style="font-size: 0.7em;">
+<div style="font-size: 0.75em;">
 <p>In HW 4, we explored the results of the <strong>Anchoring Effect Experiment</strong> conducted during Lab 2. Our hypothesis is that the number a student saw on the paper slip (the <code>treatment</code>, either <strong>82</strong> or <strong>531</strong>) affected the student’s guess for the number of dog breeds in the world (the response variable).</p>
 <p>We can assess the relationship between the guessed number of dog breeds and the number received on the paper slip by running a regression. Below is a summary of this regression, where <code>treatment</code> is treated as a <strong>categorical</strong> explanatory variable.</p>
-</div>
-<p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 7
@@ -503,21 +611,23 @@ $ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -1
 2 treatment: 531     349.      200.      1.74   0.084    -47.1     746.</code></pre>
 </div>
 </div>
-<p><br></p>
 <ul>
-<li class="fragment"><p><strong>Q3</strong>: Suppose I had tested the effect of three different treatments: <code>82</code>, <code>531</code>, and <code>900</code>, instead of just <code>82</code> and <code>531</code>. What would be different about the regression model and the results table?</p></li>
-<li class="fragment"><p><strong>Q4</strong>: Suppose <code>treatment</code> was actually a <strong>quantitative</strong> variable, with each student seeing a different number in <span class="math inline">\([0, 200]\)</span>. Suppose that then our regression model produced estimates <span class="math inline">\(\widehat{\beta}_0 = 100\)</span> and <span class="math inline">\(\widehat{\beta}_1 = 4\)</span>. How should we interpret <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> now?</p></li>
+<li class="fragment"><strong>Q3</strong>: Suppose I had tested the effect of three different treatments: <code>82</code>, <code>531</code>, and <code>900</code>, instead of just <code>82</code> and <code>531</code>. What would be different about the regression model and the results table (assuming <code>treatment</code> is still a categorical variable)?
+<ul>
+<li class="fragment"><em>Then we would add another term to the regression model: <span class="math inline">\(+ \widehat{\beta}_2 \cdot x_{treatment:900}\)</span>. The regression summary table would show one more row for <span class="math inline">\(\widehat{\beta}_2\)</span>.</em></li>
+</ul></li>
+<li class="fragment"><strong>Q4</strong>: Suppose <code>treatment</code> was actually a <strong>quantitative</strong> variable, with each student seeing a different number in <span class="math inline">\([0, 200]\)</span>. Suppose that then our regression model produced estimates <span class="math inline">\(\widehat{\beta}_0 = 100\)</span> and <span class="math inline">\(\widehat{\beta}_1 = 4\)</span>. How should we interpret <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> now?
+<ul>
+<li class="fragment"><em><span class="math inline">\(\widehat{\beta}_0\)</span> would then be what we expect/predict a students’ dog breed guess to be when they see the number 0.</em></li>
+<li class="fragment"><em><span class="math inline">\(\widehat{\beta}_1\)</span> would be how much we expect/predict a students’ dog breed guess to increase when the number they see on the slip of paper increases by 1.</em></li>
+</ul></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_14abf518" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
 </div>
 </section>
 <section id="practice-problem-linear-regression-extra-difficult" class="slide level2">
 <h2>Practice problem: Linear Regression (extra difficult 🏋)</h2>
+<div style="font-size: 0.85em;">
 <p>Still hanging with the penguins and predicting their <code>bill_length</code>… Take a look at the following regression table:</p>
-<p><br></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 7
@@ -530,16 +640,58 @@ $ long          &lt;dbl&gt; -122.023, -122.268, -122.292, -122.307, -122.048, -1
 5 sex: male:body_mass -0.00087   0.00062    -1.41   0.161   -0.00208  0.00035</code></pre>
 </div>
 </div>
-<p><br></p>
 <ul>
-<li class="fragment"><p><strong>Q1</strong>: What is the equation for the fitted model?</p></li>
-<li class="fragment"><p><strong>Q2</strong>: How should we interpret <code>intercept</code>?</p></li>
-<li class="fragment"><p><strong>Q3</strong>: How should we interpret <code>body_mass</code>?</p></li>
-<li class="fragment"><p><strong>Q4</strong>: How should we interpret <code>flipper_len</code>?</p></li>
+<li class="fragment"><strong>Q1</strong>: What is the equation for the fitted model?</li>
 </ul>
+<div class="fragment">
+<p><span class="math display">\[
+\widehat{y} = -9.83 + 5.89\cdot x_{\text{male}} - 0.00013 \cdot x_{\text{body-mass}} + 0.266 \cdot x_{\text{flipper-len}}  - 0.00087 \cdot x_{\text{male}} \cdot x_{\text{body-mass}}
+\]</span></p>
+</div>
+<ul>
+<li class="fragment"><strong>Q2</strong>: How should we interpret <code>intercept</code>?
+<ul>
+<li class="fragment"><em>For a <u>female</u> penguin with body mass and flipper length of 0, we expect her bill length to be -9.83 mm on average.</em></li>
+<li class="fragment">Nonsensical extrapolation, but this is the literal interpretation of the intercept.</li>
+</ul></li>
+</ul>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_ec0b6c7c" minutes="8" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_2e680a77" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</section>
+<section id="practice-problem-linear-regression-extra-difficult-1" class="slide level2">
+<h2>Practice problem: Linear Regression (extra difficult 🏋)</h2>
+<div style="font-size: 0.85em;">
+<p>Still hanging with the penguins and predicting their <code>bill_length</code>… Take a look at the following regression table:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 7
+  term                estimate std_error statistic p_value  lower_ci upper_ci
+  &lt;chr&gt;                  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept           -9.83      4.83       -2.03   0.0427 -19.3     -0.326  
+2 sex: male            5.89      2.60        2.27   0.0240   0.779   11.0    
+3 body_mass           -0.00013   0.00073    -0.182  0.856   -0.00157  0.0013 
+4 flipper_len          0.266     0.0335      7.93   0        0.200    0.332  
+5 sex: male:body_mass -0.00087   0.00062    -1.41   0.161   -0.00208  0.00035</code></pre>
+</div>
+</div>
+<ul>
+<li class="fragment"><strong>Q3</strong>: How should we interpret <code>body_mass</code>?
+<ul>
+<li class="fragment"><em>For a <u>female</u> penguin, when body mass increases by 1 gram we expect bill length to decrease by 0.00013mm on average, holding flipper length constant.</em></li>
+</ul></li>
+<li class="fragment"><strong>Q4</strong>: How should we interpret <code>flipper_len</code>?
+<ul>
+<li class="fragment"><em>When flipper length increases by 1mm, we expect bill length to increase by 0.266mm on average, holding sex and body mass constant.</em></li>
+</ul></li>
+</ul>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_a5804df2" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 
