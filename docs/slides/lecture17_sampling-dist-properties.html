@@ -250,7 +250,7 @@
 <p><span class="math display">\[{52 \choose 10} = 15,820,024,220 \ \text{Samples}\]</span></p>
 </div>
 <ul>
-<li class="fragment">We only took <span class="math inline">\(119\)</span> samples (combining both sections)…</li>
+<li class="fragment">We only took about <span class="math inline">\(100\)</span> samples (combining both sections)…</li>
 </ul>
 </section>
 <section id="sampling-distribution-creation-a-smaller-scale" class="slide level2">
@@ -298,7 +298,7 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_7f1ea31f" minutes="6" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_8f2d564f" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -503,7 +503,7 @@
 </div></div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_846231ef" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_bc68e5d7" minutes="2" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -511,8 +511,8 @@
 <h2>Sampling Distribution vs.&nbsp;Population Distribution</h2>
 <div style="font-size=0.75em;">
 <ul>
-<li class="fragment"><p><strong>Q:</strong> How do the centers compare?</p></li>
-<li class="fragment"><p><strong>Q:</strong> How does the spread compare?</p></li>
+<li><p><strong>Q:</strong> How do the centers compare?</p></li>
+<li><p><strong>Q:</strong> How does the spread compare?</p></li>
 </ul>
 </div>
 <p><br></p>
@@ -539,6 +539,40 @@
 </div>
 </div></div>
 </section>
+<section id="sampling-distribution-shape" class="slide level2">
+<h2>Sampling Distribution Shape</h2>
+<ul>
+<li><strong>Q:</strong> How do the shapes compare?</li>
+</ul>
+<p><br></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div style="font-size=0.75em;">
+<ul>
+<li class="fragment">For <u>most</u> sample statistics and <u>sufficiently large sample sizes</u> (<span class="math inline">\(n \geq 30\)</span> is a rule of thumb), <strong>the sampling distribution will be approximately bell-shaped</strong>, even if the population is not.</li>
+</ul>
+</div>
+</section>
 <section id="sampling-distribution-standard-error" class="slide level2">
 <h2>Sampling Distribution: Standard Error</h2>
 <div style="font-size:0.9em;">
@@ -562,86 +596,6 @@
 </ul>
 </div>
 </section>
-<section id="how-do-sampling-distributions-help-us" class="slide level2">
-<h2>How do Sampling Distributions Help Us?</h2>
-<div class="columns">
-<div class="column" style="font-size:0.8em;">
-<p>What we want to know:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="font-size:0.8em;">
-<p>What we have:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-<div class="columns" style="font-size:0.8em;">
-<div class="column">
-<p>What sampling distributions tell us about what we have:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column">
-<p><br></p>
-<ul>
-<li>If we had the sampling distribution, we’d have a good sense of how far off any single statistic could be from the parameter.</li>
-</ul>
-</div></div>
-</section>
-<section id="sampling-distribution-shape" class="slide level2">
-<h2>Sampling Distribution Shape</h2>
-<ul>
-<li class="fragment"><strong>Q:</strong> How do the shapes compare?</li>
-</ul>
-<p><br></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
-<div style="font-size=0.75em;">
-<ul>
-<li class="fragment"><p>For <u>most</u> sample statistics and <u>sufficiently large sample sizes</u> (<span class="math inline">\(n \geq 30\)</span> is a rule of thumb), <strong>the sampling distribution will be approximately bell-shaped</strong>, even if the population is not.</p></li>
-<li class="fragment"><p>But we were just talking about variability, not shape. Why is this useful?</p></li>
-</ul>
-</div>
-</section>
 <section id="characterizing-sampling-variability" class="slide level2 smaller">
 <h2>Characterizing Sampling Variability</h2>
 <p>Remember that the <strong>standard error</strong> (<span class="math inline">\(SE\)</span>) of a sample statistic measures variability between different samples.</p>
@@ -655,13 +609,13 @@
 </ul>
 <div class="fragment">
 <ul>
-<li>So <strong>95% of all sample statistics, <span class="math inline">\(\widehat p\)</span>, fall within 2 standard errors of <span class="math inline">\(p\)</span>!</strong></li>
+<li>So <strong>95% of all sample statistics, <span class="math inline">\(\bar{x}\)</span>, fall within 2 standard errors of <span class="math inline">\(\mu\)</span>!</strong></li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -674,7 +628,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -692,7 +646,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -704,18 +658,63 @@
 <section id="variability-and-sample-size-1" class="slide level2 smaller">
 <h2>Variability and Sample Size</h2>
 <ul>
-<li class="fragment">The sampling distributions for <span class="math inline">\(n = 10\)</span>, <span class="math inline">\(100\)</span>, and <span class="math inline">\(1000\)</span> are all approximately bell-shaped, and so 95% of sample means are within 2 standard errors of the population mean.</li>
+<li class="fragment">These sampling distributions for <span class="math inline">\(n = 10\)</span>, <span class="math inline">\(100\)</span>, and <span class="math inline">\(1000\)</span> are all approximately bell-shaped, and so 95% of sample means are within 2 standard errors of the population mean.</li>
 <li class="fragment">Highlighted in green are the intervals containing 95% of all sample means:</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="how-do-sampling-distributions-help-us" class="slide level2">
+<h2>How do Sampling Distributions Help Us?</h2>
+<div class="columns">
+<div class="column" style="font-size:0.8em;">
+<p>What we want to know:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="font-size:0.8em;">
+<p>What we have:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<div class="columns" style="font-size:0.8em;">
+<div class="column">
+<p>What sampling distributions tell us about what we have:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" width="864"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<p><br></p>
+<ul>
+<li>If we had <strong>just the standard error</strong> of the sampling distribution, we could get a sense of how far off any single statistic is likely to be from the parameter.</li>
+</ul>
+</div></div>
 </section>
 <section id="the-shape-of-the-sampling-distribution-word-of-warning" class="slide level2 smaller">
 <h2>The Shape of the Sampling Distribution: word of warning</h2>
@@ -741,7 +740,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" style="width:99.0%"></p>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -751,7 +750,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center" style="width:99.0%"></p>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -761,7 +760,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center" style="width:99.0%"></p>
+<p><img data-src="lecture17_sampling-dist-properties_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -772,26 +771,22 @@
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <p><strong>Key Features of a Sampling Distribution</strong></p>
-<div style="font-size:0.8em">
+<div style="font-size:0.85em">
 <ul>
 <li class="fragment"><p>Centered around the true population parameter.</p></li>
 <li class="fragment"><p>As the sample size increases, the <strong>standard error</strong> (<span class="math inline">\(SE\)</span>) of the statistic decreases.</p></li>
 <li class="fragment"><p>As the sample size increases, the shape of the sampling distribution becomes more bell-shaped and symmetric.</p></li>
 </ul>
-</div>
 <div class="fragment">
 <p><strong>Q</strong>: If I am estimating a parameter in a real example, why won’t I be able to construct the sampling distribution?</p>
 </div>
-<div style="font-size:0.8em">
 <ul>
 <li class="fragment"><strong>Big takeaway</strong>: We (often) don’t need to know the entire sampling distribution to assess uncertainty, <span class="math inline">\(\color{blue}{SE}\)</span> would be enough</li>
 <li class="fragment"><strong>Remaining problem?</strong> Okay, but <span class="math inline">\(\color{blue}{SE}\)</span> is still a population parameter!</li>
 <li class="fragment"><strong>Solution:</strong> We can <strong>estimate</strong> <span class="math inline">\(\color{blue}{SE}\)</span> using our sample data</li>
 </ul>
-</div>
 <div class="fragment">
 <p><strong>Next time</strong>:</p>
-<div style="font-size:0.8em">
 <ul>
 <li class="fragment">Using simulation to learn about the shape and <span class="math inline">\(SE\)</span> of the sampling distribution from a single sample</li>
 </ul>

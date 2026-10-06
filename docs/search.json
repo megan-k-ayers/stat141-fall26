@@ -84,6 +84,188 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture18_bootstrapping.html#sampling-variability",
+    "href": "slides/lecture18_bootstrapping.html#sampling-variability",
+    "title": "STAT 141",
+    "section": "Sampling Variability",
+    "text": "Sampling Variability\nHow confident should we be in the accuracy of our estimate of \\(\\widehat{p} = 0.46\\)?\n\nThere are about \\(9\\) million registered voters in Pennsylvania. Marist College surveyed only \\(1020\\) of them (\\(0.01\\%\\) of the population)\nWe should be skeptical that our estimate is exactly equal to true proportion.\nBut we should feel confident that our estimate is close to the true proportion.\n\n\nWhy?\n\n\nThe sampling distribution tells us how much variability to expect from sample to sample.\nUsing probability theory, we know standard error for the sampling distribution for the sample proportion with sample size \\(n\\) is \\(SE = \\sqrt{\\frac{p(1-p)}{n}}\\)\nWith \\(n = 1020\\) and \\(p = 0.4884\\), the standard error is \\(SE \\approx 0.016\\)."
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#sampling-variability-1",
+    "href": "slides/lecture18_bootstrapping.html#sampling-variability-1",
+    "title": "STAT 141",
+    "section": "Sampling Variability",
+    "text": "Sampling Variability\nSuppose the true proportion of support for Trump/Pence was actually \\(p = 0.49\\)\n\nReminder: In our sample, \\(\\widehat{p} = 0.46\\) (0.03 away from \\(p=0.49\\)).\n\n\nLet’s draw \\(5000\\) simulated samples of size 1020 to see how many have \\(\\widehat{p}\\) far from \\(p = 0.49\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn 95% of samples, the sample proportion \\(\\widehat{p}\\) is at most 0.03 away from the true proportion \\(p\\)!\n\nImplication: If 49% of voters support Trump/Pence, then \\(\\approx 95 \\%\\) of samples of size 1020 will show Trump/Pence’s support, \\(\\widehat{p}\\), to be \\(46\\% \\leq \\widehat{p} \\leq 52\\%\\)\nQ: How does this contextualize conclusions based on the poll’s sample statistic?"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#the-problem",
+    "href": "slides/lecture18_bootstrapping.html#the-problem",
+    "title": "STAT 141",
+    "section": "The Problem",
+    "text": "The Problem\n\nFor sampling distributions that are \\(\\approx\\) bell-shaped, 95% of sample statistics will be within 2 standard errors of the true parameter.\nThis helps us assess how close a sample statistic tends to be to the population parameter.\nBut in practice, we don’t know the sampling distribution!\n\nIn the polls example, we guessed what the true \\(p\\) was to get a sampling distribution.\nThis is helpful as a thought experiment, but what if our guess was way off?\nIn order to form the actual sampling distribution, we need to collect many, many samples.\nIn the real world, we usually only have one sample!\n\nThe fix?"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#bootstrapping-1",
+    "href": "slides/lecture18_bootstrapping.html#bootstrapping-1",
+    "title": "STAT 141",
+    "section": "Bootstrapping",
+    "text": "Bootstrapping\n\n\n\nThe term bootstrapping refers to the phrase “to pull oneself up by one’s bootstraps”\nOriginated in the 19th century as reference to a ludicrous or impossible feat\nBy mid 20th century, meaning had changed to suggest a success by one’s own efforts, without outside help (the “American Dream” myth)\nIts use in statistics (dating from 1979) alludes to both interpretations."
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#the-bootstrap-trick",
+    "href": "slides/lecture18_bootstrapping.html#the-bootstrap-trick",
+    "title": "STAT 141",
+    "section": "The Bootstrap Trick",
+    "text": "The Bootstrap Trick\n\nThe Impossible Task:\n\nHow can we learn about the sampling distribution, if we only have 1 sample?\n\nThe “Ludicrous” Solution obtained without outside help:\n\nDraw repeated samples from the original sample\nCompute the statistic of interest in each new sample, and plot the resulting distribution\n\nThe Main Idea:\n\nThe original sample approximates the population\nResampling from the sample approximates sampling many times from the population\nThe distribution of statistics from the resamples approximates the sampling distribution"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#theory",
+    "href": "slides/lecture18_bootstrapping.html#theory",
+    "title": "STAT 141",
+    "section": "Theory",
+    "text": "Theory\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe sample “represents” the population. Many copies of the sample still “represents” the population\n\n\n\n\nIdea: Copy the sample many times to create “a bootstrap population”, and then sample from this to get “bootstrap samples”\n\n\n\n\nSame result, save time: Just sample with replacement from the one original sample to get “bootstrap samples”"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#the-bootstrap-procedure",
+    "href": "slides/lecture18_bootstrapping.html#the-bootstrap-procedure",
+    "title": "STAT 141",
+    "section": "The Bootstrap Procedure",
+    "text": "The Bootstrap Procedure\nTo generate a Bootstrap Distribution given a sample of size \\(n\\) from the population,\n\nGenerate a bootstrap sample of size \\(n\\) by resampling with replacement from the original sample\nRepeat (1) a large number of times (with technology, at least 1000 times)\nFor each bootstrap sample, calculate the appropriate statistic (called the bootstrap statistic)\nThe collection of the bootstrap statistics form the Bootstrap distribution.\n\n\nQ: How does this general process of generating a bootstrap distribution differ from the process of generating the sampling distribution?\n\n\nWe sample from the original sample here; for sampling distributions, we sample from the population\nWe sample with replacement here; for sampling distributions, we sample without replacement"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#proof-of-concept",
+    "href": "slides/lecture18_bootstrapping.html#proof-of-concept",
+    "title": "STAT 141",
+    "section": "Proof of Concept",
+    "text": "Proof of Concept\n\nPopulation: Consider a very large deck of cards (5200 cards) with 400 of each card value.\nQuestion: What’s the mean value from the deck of cards?\nHow We’ll Answer:\n\nDraw a sample hand of \\(n=25\\) cards, and calculate the mean value.\nEstimate the sampling distribution (and therefore uncertainty) using the bootstrap distribution.\n\n\n\nSince we have the deck of cards, we can look at:\n\n\nThe population distribution\nThe sampling distribution for sample means\nThe single sample’s distribution\nThe bootstrap distribution for sample means"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-population",
+    "href": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-population",
+    "title": "STAT 141",
+    "section": "World’s Largest Deck of Cards: Population",
+    "text": "World’s Largest Deck of Cards: Population"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-sampling-distribution",
+    "href": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-sampling-distribution",
+    "title": "STAT 141",
+    "section": "World’s Largest Deck of Cards: Sampling Distribution",
+    "text": "World’s Largest Deck of Cards: Sampling Distribution"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-sample-distribution",
+    "href": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-sample-distribution",
+    "title": "STAT 141",
+    "section": "World’s Largest Deck of Cards: Sample Distribution",
+    "text": "World’s Largest Deck of Cards: Sample Distribution"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-bootstrap-samples",
+    "href": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-bootstrap-samples",
+    "title": "STAT 141",
+    "section": "World’s Largest Deck of Cards: Bootstrap Samples",
+    "text": "World’s Largest Deck of Cards: Bootstrap Samples"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-bootstrap-samples-1",
+    "href": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-bootstrap-samples-1",
+    "title": "STAT 141",
+    "section": "World’s Largest Deck of Cards: Bootstrap Samples",
+    "text": "World’s Largest Deck of Cards: Bootstrap Samples"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-bootstrap-samples-2",
+    "href": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-bootstrap-samples-2",
+    "title": "STAT 141",
+    "section": "World’s Largest Deck of Cards: Bootstrap Samples",
+    "text": "World’s Largest Deck of Cards: Bootstrap Samples"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-bootstrap-samples-3",
+    "href": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-bootstrap-samples-3",
+    "title": "STAT 141",
+    "section": "World’s Largest Deck of Cards: Bootstrap Samples",
+    "text": "World’s Largest Deck of Cards: Bootstrap Samples"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-recap",
+    "href": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-recap",
+    "title": "STAT 141",
+    "section": "World’s Largest Deck of Cards: Recap",
+    "text": "World’s Largest Deck of Cards: Recap\n\n\n\n\n\n\n\n\n\nQ: Compare the Sampling Distribution and the Bootstrap Distribution. How are they similar? How do they differ?"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards",
+    "href": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards",
+    "title": "STAT 141",
+    "section": "World’s Largest Deck of Cards",
+    "text": "World’s Largest Deck of Cards\nWe can compute some relevant statistics:\n\n\nPopulation:\n\n\n\n\n\nmean_value\nsd_value\n\n\n\n\n7\n3.742017\n\n\n\n\n\nSampling Distribution:\n\n\n\n\n\nmean_xbar\nsd_xbar\n\n\n\n\n7.01703\n0.7331422\n\n\n\n\n\n\nSample:\n\n\n\n\n\nmean_value\nsd_value\n\n\n\n\n6.52\n3.513308\n\n\n\n\n\nBootstrap Distribution:\n\n\n\n\n\nmean_xbar\nsd_xbar\n\n\n\n\n6.52426\n0.6902801\n\n\n\n\n\n\n\n\n\n\nSampling and Bootstrap have slightly different means, but have similar standard deviations!\n\nQ: Why are the means different?\nQ: Does it make sense that the standard deviations are similar? Why is this helpful?\n\n\n\n\nMean of Sampling is the true mean, while the Mean of Bootstrap is the sample mean\n\nThese differ because of sampling variability"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-1",
+    "href": "slides/lecture18_bootstrapping.html#worlds-largest-deck-of-cards-1",
+    "title": "STAT 141",
+    "section": "World’s Largest Deck of Cards",
+    "text": "World’s Largest Deck of Cards\nWe can compute some relevant statistics:\n\n\nPopulation:\n\n\n\n\n\nmean_value\nsd_value\n\n\n\n\n7\n3.742017\n\n\n\n\n\nSampling Distribution:\n\n\n\n\n\nmean_xbar\nsd_xbar\n\n\n\n\n7.01703\n0.7331422\n\n\n\n\n\n\nSample:\n\n\n\n\n\nmean_value\nsd_value\n\n\n\n\n6.52\n3.513308\n\n\n\n\n\nBootstrap Distribution:\n\n\n\n\n\nmean_xbar\nsd_xbar\n\n\n\n\n6.52426\n0.6902801\n\n\n\n\n\n\n\n\n\nSampling and Bootstrap have slightly different means, but have similar standard deviations!\n\nQ: Why are the means different?\nQ: Does it make sense that the standard deviations are similar? Why is this helpful?\n\n\n\nThe standard deviations are similar because here the sample is representative of the population, and we fix \\(n\\) for both distributions\n\nThis is great!! We have something very similar to \\(SE\\) using only our one sample!"
+  },
+  {
+    "objectID": "slides/lecture18_bootstrapping.html#recap",
+    "href": "slides/lecture18_bootstrapping.html#recap",
+    "title": "STAT 141",
+    "section": "Recap",
+    "text": "Recap\n\nSampling distributions are useful for understanding how close a statistic (ex. \\(\\widehat{p}\\) or \\(\\bar{x}\\)) might be to a parameter (ex. \\(p\\) or \\(\\mu\\))\n\nBut we rarely know the sampling distribution. We usually only have one sample!\n\nBootstrap samples allow us to approximate the sampling distribution.\n\nAlmost magically, we can use a single sample to generate many “bootstrap samples”\nBootstrap samples behave very much like regular samples\n\nBootstrap distributions look very similar to sampling distributions,\n\n…but without the work of taking many samples!\nThe center is shifted (around the statistic instead of the parameter), but, very importantly, similar shape and spread!\nThe standard deviation of the bootstrap distribution can help us estimate the standard error of the sampling distribution"
+  },
+  {
+    "objectID": "slides/lecture16_sampling-dist-intro.html#decks-of-cards",
+    "href": "slides/lecture16_sampling-dist-intro.html#decks-of-cards",
+    "title": "STAT 141",
+    "section": "Decks of cards",
+    "text": "Decks of cards\n\n\nIf we count:\n\nAces as 1\nJacks as 11\nQueens as 12\nKings as 13\n\nThe distribution of numbers in a deck of cards looks like:"
+  },
+  {
+    "objectID": "slides/lecture16_sampling-dist-intro.html#drawing-cards-population-sample-parameter-and-statistic",
+    "href": "slides/lecture16_sampling-dist-intro.html#drawing-cards-population-sample-parameter-and-statistic",
+    "title": "STAT 141",
+    "section": "Drawing cards: Population, Sample, Parameter, and Statistic",
+    "text": "Drawing cards: Population, Sample, Parameter, and Statistic\n\n\n\nToday, we’re going to be:\n\nRandomly drawing 10 cards from a deck of cards\nCalculating the average value of our 10 cards\n\n\n\n\nQ: What is the sample? What is the population?\nQ: What is the statistic? What is the parameter?"
+  },
+  {
+    "objectID": "slides/lecture16_sampling-dist-intro.html#discussion",
+    "href": "slides/lecture16_sampling-dist-intro.html#discussion",
+    "title": "STAT 141",
+    "section": "Discussion",
+    "text": "Discussion\n\n\n\nWhat is the true average card value in a deck of cards?\nHow does the distribution of sample means compare to the distribution of card values in a deck of cards?\nWhat is the relationship between the centers of the two distributions?\nWhich distribution appears to have more variability?\nHow do the shapes of the two distributions compare? Why do they differ?"
+  },
+  {
+    "objectID": "slides/lecture16_sampling-dist-intro.html#sampling-overview-1",
+    "href": "slides/lecture16_sampling-dist-intro.html#sampling-overview-1",
+    "title": "STAT 141",
+    "section": "Sampling Overview",
+    "text": "Sampling Overview\n\nThe distribution of a data set allows us to quantify the shape, center, and spread of the data.\nWhile a single observation in a data set may appear arbitrary… repeated trials often show that outcomes follow certain patterns."
+  },
+  {
+    "objectID": "slides/lecture16_sampling-dist-intro.html#sampling-overview-2",
+    "href": "slides/lecture16_sampling-dist-intro.html#sampling-overview-2",
+    "title": "STAT 141",
+    "section": "Sampling Overview",
+    "text": "Sampling Overview\n\nThe distribution of a data set allows us to quantify the shape, center, and spread of the data.\nWhile a single observation in a data set may appear arbitrary… repeated trials often show that outcomes follow certain patterns."
+  },
+  {
+    "objectID": "slides/lecture16_sampling-dist-intro.html#sampling-overview-3",
+    "href": "slides/lecture16_sampling-dist-intro.html#sampling-overview-3",
+    "title": "STAT 141",
+    "section": "Sampling Overview",
+    "text": "Sampling Overview\n\n\nWe know that a variable from a population has a distribution\n\ne.g., the distribution of card values in a deck of cards\n\n\n\n\n\n\n\n\n\n\n\n\n\nMoral of Today: Statistics (e.g., mean of variable in a sample) have distributions too!!\n\nHow? We only have ONE statistic – the statistic from the ONE sample we drew\nDistribution is over all the possible samples we could have drawn (we just see 1)\n\nImplication: Statistics themselves have a mean, standard deviation, 5-number summary\n\nThe mean tells us the statistic’s typical value in a randomly chosen sample.\nThe standard deviation tells us how the statistic fluctuates from sample to sample.\n\nVery Powerful: e.g., Can use this distribution to give plausible ranges for the parameter and a sense of uncertainty in a given statistic."
+  },
+  {
+    "objectID": "slides/lecture16_sampling-dist-intro.html#recap-sampling-distributions-and-statistical-inference",
+    "href": "slides/lecture16_sampling-dist-intro.html#recap-sampling-distributions-and-statistical-inference",
+    "title": "STAT 141",
+    "section": "Recap: Sampling Distributions and Statistical Inference",
+    "text": "Recap: Sampling Distributions and Statistical Inference\n\nGoal: Draw conclusions about the population based on the sample.\n\nWe’ve seen how to calculate a statistic from our sample\nBut different samples give different statistics: how do we know whether to trust the one we have?\n\n\n\n\nSampling distributions show how widely our statistic can range across samples\n\nThis helps us understand how much to trust any single statistic\nWe’ll spend a couple more days learning about sampling distributions, then will learn how to use them to make inferences!"
+  },
+  {
     "objectID": "slides/lecture14_lm-many-variables.html#goals-for-today",
     "href": "slides/lecture14_lm-many-variables.html#goals-for-today",
     "title": "STAT 141",
@@ -931,6 +1113,20 @@
     "text": "Demo: Finding the lab files, tour of RStudio, starting the lab"
   },
   {
+    "objectID": "readings/reading20.html",
+    "href": "readings/reading20.html",
+    "title": "Stat 141: Readings for October 12, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nReview MD 7.1-7.2, read 8.2, 8.2.1"
+  },
+  {
+    "objectID": "readings/reading20.html#reading",
+    "href": "readings/reading20.html#reading",
+    "title": "Stat 141: Readings for October 12, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nReview MD 7.1-7.2, read 8.2, 8.2.1"
+  },
+  {
     "objectID": "readings/reading18.html",
     "href": "readings/reading18.html",
     "title": "Stat 141: Readings for October 7, 2026",
@@ -1143,14 +1339,14 @@
   {
     "objectID": "readings/reading19.html",
     "href": "readings/reading19.html",
-    "title": "Stat 141: Readings for October 8, 2026",
+    "title": "Stat 141: Readings for October 9, 2026",
     "section": "",
     "text": "Before coming to lecture today, please review:\n\nThe Sampling Distribution slides from Wednesday"
   },
   {
     "objectID": "readings/reading19.html#reading",
     "href": "readings/reading19.html#reading",
-    "title": "Stat 141: Readings for October 8, 2026",
+    "title": "Stat 141: Readings for October 9, 2026",
     "section": "",
     "text": "Before coming to lecture today, please review:\n\nThe Sampling Distribution slides from Wednesday"
   },
@@ -2427,5 +2623,138 @@
     "title": "STAT 141",
     "section": "Practice problem: Linear Regression (extra difficult 🏋)",
     "text": "Practice problem: Linear Regression (extra difficult 🏋)\n\nStill hanging with the penguins and predicting their bill_length… Take a look at the following regression table:\n\n\n# A tibble: 5 × 7\n  term                estimate std_error statistic p_value  lower_ci upper_ci\n  &lt;chr&gt;                  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept           -9.83      4.83       -2.03   0.0427 -19.3     -0.326  \n2 sex: male            5.89      2.60        2.27   0.0240   0.779   11.0    \n3 body_mass           -0.00013   0.00073    -0.182  0.856   -0.00157  0.0013 \n4 flipper_len          0.266     0.0335      7.93   0        0.200    0.332  \n5 sex: male:body_mass -0.00087   0.00062    -1.41   0.161   -0.00208  0.00035\n\n\n\nQ3: How should we interpret body_mass?\n\nFor a female penguin, when body mass increases by 1 gram we expect bill length to decrease by 0.00013mm on average, holding flipper length constant.\n\nQ4: How should we interpret flipper_len?\n\nWhen flipper length increases by 1mm, we expect bill length to increase by 0.266mm on average, holding sex and body mass constant."
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#estimation-and-uncertainty",
+    "href": "slides/lecture17_sampling-dist-properties.html#estimation-and-uncertainty",
+    "title": "STAT 141",
+    "section": "Estimation and Uncertainty",
+    "text": "Estimation and Uncertainty\n\nWe are interested in the value of a parameter in a population, and use a statistic from a sample to estimate the parameter.\n\ne.g., want to know the proportion (\\(p\\)) of Reed students with October birthdays\nEstimate \\(p\\) by using the proportion in a sample, (\\(\\widehat{p}\\)), of \\(100\\) individuals.\n\n\n\n\nKey question: How accurate is \\(\\widehat{p}\\) as an estimate of \\(p\\)?\nSub-question: If we take many samples, how much will \\(\\widehat{p}\\) vary?\nThe distribution of all possible values of \\(\\widehat{p}\\) (for a fixed sample size) is called the Sampling Distribution of \\(\\widehat{p}\\)"
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-of-a-statistic",
+    "href": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-of-a-statistic",
+    "title": "STAT 141",
+    "section": "Sampling Distribution of a Statistic",
+    "text": "Sampling Distribution of a Statistic\nSteps to Construct a Sampling Distribution:\n\nDecide on a sample size, \\(n\\).\nDetermine all\\(^*\\) possible samples of size \\(n\\) from the population.\nCompute the sample statistic in each sample."
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#approximate-sampling-distribution-of-a-statistic",
+    "href": "slides/lecture17_sampling-dist-properties.html#approximate-sampling-distribution-of-a-statistic",
+    "title": "STAT 141",
+    "section": "Approximate Sampling Distribution of a Statistic",
+    "text": "Approximate Sampling Distribution of a Statistic\nSteps to Construct an Approximate Sampling Distribution:\n\nDecide on a sample size, \\(n\\).\nRandomly select a sample of size \\(n\\) (without replacement) from the population.\nCompute the sample statistic in that sample.\nPut the whole sample back in.\nRepeat Steps 2 - 4 many (1000+) times."
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#population-and-sampling-distributions-in-our-activity",
+    "href": "slides/lecture17_sampling-dist-properties.html#population-and-sampling-distributions-in-our-activity",
+    "title": "STAT 141",
+    "section": "Population and Sampling Distributions in Our Activity",
+    "text": "Population and Sampling Distributions in Our Activity\nLast Class: got a “snapshot” of the sampling distribution for the mean card value from a sample of 10 cards."
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-in-our-activity",
+    "href": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-in-our-activity",
+    "title": "STAT 141",
+    "section": "Sampling Distribution in Our Activity",
+    "text": "Sampling Distribution in Our Activity\n“Snapshot” of sampling distribution for mean card value from a sample of 10 cards:\n\n\n\n\n\n\n\n\n\nWhy just a “snapshot”?\n\nQ: How many elements are there in the sampling distribution?\n\n\n\\[{52 \\choose 10} = 15,820,024,220 \\ \\text{Samples}\\]\n\n\nWe only took about \\(100\\) samples (combining both sections)…"
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-creation-a-smaller-scale",
+    "href": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-creation-a-smaller-scale",
+    "title": "STAT 141",
+    "section": "Sampling Distribution Creation: a smaller scale",
+    "text": "Sampling Distribution Creation: a smaller scale\nConsider a population of 4 students, where the (true) population proportion of October birthdays is \\(p = \\frac{1}{4} = 0.25\\)\n\n\n\n\n\nname\nbday_month\n\n\n\n\nJoel\noctober\n\n\nMaria\njanuary\n\n\nArthur\napril\n\n\nKlaus\nseptember\n\n\n\n\n\n\n\nPractice: With a neighbor, write out the sampling distribution for \\(\\widehat{p}\\) (the sample proportion of those with October birthdays) with…\n\nAll possible samples of size 2\nAll possible samples of size 3\n\nAnd, what are the means of these two sampling distributions?"
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-creation-a-smaller-scale-1",
+    "href": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-creation-a-smaller-scale-1",
+    "title": "STAT 141",
+    "section": "Sampling Distribution Creation: a smaller scale",
+    "text": "Sampling Distribution Creation: a smaller scale\n\nSampling distribution for the sample proportion \\(\\widehat{p}\\) from a sample of 2:\n\n\n\n\n\n\n\n\nname\nbday_month\n\n\n\n\nJoel\noctober\n\n\nMaria\njanuary\n\n\nArthur\napril\n\n\nKlaus\nseptember\n\n\n\n\n\n\n\n\n\n\n\nsample\nphat\n\n\n\n\nJoel + Maria\n0.5\n\n\nJoel + Arthur\n0.5\n\n\nJoel + Klaus\n0.5\n\n\nMaria + Arthur\n0.0\n\n\nMaria + Klaus\n0.0\n\n\nArthur + Klaus\n0.0\n\n\n\n\n\n\n\nThere are \\({4 \\choose 2} = 6\\) elements in the sampling distribution\nMean=0.25, which is \\(p\\)!"
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-creation-a-smaller-scale-2",
+    "href": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-creation-a-smaller-scale-2",
+    "title": "STAT 141",
+    "section": "Sampling Distribution Creation: a smaller scale",
+    "text": "Sampling Distribution Creation: a smaller scale\n\nSampling distribution for the sample proportion \\(\\widehat{p}\\) from a sample of 3:\n\n\n\n\n\n\n\n\nname\nbday_month\n\n\n\n\nJoel\noctober\n\n\nMaria\njanuary\n\n\nArthur\napril\n\n\nKlaus\nseptember\n\n\n\n\n\n\n\n\n\n\n\nsample\nphat\n\n\n\n\nJoel + Maria + Arthur\n1/3\n\n\nJoel + Maria + Klaus\n1/3\n\n\nJoel + Arthur + Klaus\n1/3\n\n\nMaria + Arthur + Klaus\n0\n\n\n\n\n\n\n\nThere are \\({4 \\choose 3} = 4\\) elements in the sampling distribution\nMean=0.25, which is \\(p\\)! (again)\nNote: The means of the sampling distributions were all \\(p = \\frac{1}{4}\\) even though none of the sample proportions \\(\\widehat{p}\\) were equal to \\(\\frac{1}{4}\\)!"
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#pause-to-check-in-three-different-distributions",
+    "href": "slides/lecture17_sampling-dist-properties.html#pause-to-check-in-three-different-distributions",
+    "title": "STAT 141",
+    "section": "Pause to Check In: Three Different Distributions",
+    "text": "Pause to Check In: Three Different Distributions\n\n\nWhat we want to know:\n\n\n\n\n\n\n\n\n\n\nWhat we usually have:\n\n\n\n\n\n\n\n\n\n\n\n\nSampling distribution of the statistic:\n\n\n\n\n\n\n\n\n\n\n\nDiscuss with your neighbor: What makes these distributions related, but different? Think back to the context of the card sampling activity from Wednesday as an example."
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-vs.-population-distribution",
+    "href": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-vs.-population-distribution",
+    "title": "STAT 141",
+    "section": "Sampling Distribution vs. Population Distribution",
+    "text": "Sampling Distribution vs. Population Distribution\n\n\nQ: How do the centers compare?\nQ: How does the spread compare?"
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-shape",
+    "href": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-shape",
+    "title": "STAT 141",
+    "section": "Sampling Distribution Shape",
+    "text": "Sampling Distribution Shape\n\nQ: How do the shapes compare?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor most sample statistics and sufficiently large sample sizes (\\(n \\geq 30\\) is a rule of thumb), the sampling distribution will be approximately bell-shaped, even if the population is not."
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-standard-error",
+    "href": "slides/lecture17_sampling-dist-properties.html#sampling-distribution-standard-error",
+    "title": "STAT 141",
+    "section": "Sampling Distribution: Standard Error",
+    "text": "Sampling Distribution: Standard Error\n\n\nJust like any distribution, the sampling distribution of a statistic has a mean, standard deviation, median, IQR, etc.\n\nWe give its standard deviation a special name…\n… the Standard Error: standard deviation of a sampling distribution (i.e. of a statistic)\nDifferent from the standard deviation of observations in the sample or in the population!\n\nEx. When estimating a population proportion (\\(p\\)) with the sample proportion (\\(\\widehat{p}\\)) with sample size \\(n\\), theory shows that:\n\nThe sampling distribution for \\(\\widehat p\\) has mean \\(p\\)\nand has standard deviation (aka standard error) \\(SE = \\sqrt{\\frac{p (1-p)}{n}}\\)\n\nThis means if the population proportion \\(p = 0.20\\) and \\(n=100\\), then in the sampling distribution:\n\nmean(\\(\\widehat{p}\\)) = \\(p\\) = 0.20\n\\(SE = \\sqrt{\\frac{0.20(1 - 0.20)}{100}} = 0.04\\)"
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#characterizing-sampling-variability",
+    "href": "slides/lecture17_sampling-dist-properties.html#characterizing-sampling-variability",
+    "title": "STAT 141",
+    "section": "Characterizing Sampling Variability",
+    "text": "Characterizing Sampling Variability\nRemember that the standard error (\\(SE\\)) of a sample statistic measures variability between different samples.\n\nFor \\(\\approx\\) bell-shaped distributions, about 95% of observations fall within two standard errors of the population’s mean \\(\\mu\\).\nVery useful implication!\n\nThe sampling distribution for the sample average, \\(\\bar{x}\\) is \\(\\approx\\) bell-shaped\n… and is centered at the population mean, \\(\\mu\\).\n\n\n\n\nSo 95% of all sample statistics, \\(\\bar{x}\\), fall within 2 standard errors of \\(\\mu\\)!"
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#this-is-very-powerful",
+    "href": "slides/lecture17_sampling-dist-properties.html#this-is-very-powerful",
+    "title": "STAT 141",
+    "section": "This is very powerful!",
+    "text": "This is very powerful!\n\n\n\n\n\n\n\n\n\nEven though we just have one sample, if we know \\(SE\\), we know how far away from the parameter our statistic is likely to fall!\n\nThis allows us to give quantitative plausible ranges for the parameter\nWe only need \\(SE\\) to infer this, not the whole sampling distribution"
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#variability-and-sample-size",
+    "href": "slides/lecture17_sampling-dist-properties.html#variability-and-sample-size",
+    "title": "STAT 141",
+    "section": "Variability and Sample Size",
+    "text": "Variability and Sample Size\nVariability of the sampling distribution generally decreases as sample size increases\n\n\n\n\n\n\n\n\n\n\nImplication: Our statistic \\(\\bar{x}\\) is likely to be closer to parameter \\(\\mu\\) as sample size \\(n\\) increases."
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#variability-and-sample-size-1",
+    "href": "slides/lecture17_sampling-dist-properties.html#variability-and-sample-size-1",
+    "title": "STAT 141",
+    "section": "Variability and Sample Size",
+    "text": "Variability and Sample Size\n\nThese sampling distributions for \\(n = 10\\), \\(100\\), and \\(1000\\) are all approximately bell-shaped, and so 95% of sample means are within 2 standard errors of the population mean.\nHighlighted in green are the intervals containing 95% of all sample means:"
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#how-do-sampling-distributions-help-us",
+    "href": "slides/lecture17_sampling-dist-properties.html#how-do-sampling-distributions-help-us",
+    "title": "STAT 141",
+    "section": "How do Sampling Distributions Help Us?",
+    "text": "How do Sampling Distributions Help Us?\n\n\nWhat we want to know:\n\n\n\n\n\n\n\n\n\n\nWhat we have:\n\n\n\n\n\n\n\n\n\n\n\n\nWhat sampling distributions tell us about what we have:\n\n\n\n\n\n\n\n\n\n\n\n\nIf we had just the standard error of the sampling distribution, we could get a sense of how far off any single statistic is likely to be from the parameter."
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#the-shape-of-the-sampling-distribution-word-of-warning",
+    "href": "slides/lecture17_sampling-dist-properties.html#the-shape-of-the-sampling-distribution-word-of-warning",
+    "title": "STAT 141",
+    "section": "The Shape of the Sampling Distribution: word of warning",
+    "text": "The Shape of the Sampling Distribution: word of warning\nWhen \\(n \\geq 30\\), the sampling distribution is usually bell-shaped. But sometimes, you need a large sample size.\n\n\nExample: A funky population distribution."
+  },
+  {
+    "objectID": "slides/lecture17_sampling-dist-properties.html#recap",
+    "href": "slides/lecture17_sampling-dist-properties.html#recap",
+    "title": "STAT 141",
+    "section": "Recap",
+    "text": "Recap\nKey Features of a Sampling Distribution\n\n\nCentered around the true population parameter.\nAs the sample size increases, the standard error (\\(SE\\)) of the statistic decreases.\nAs the sample size increases, the shape of the sampling distribution becomes more bell-shaped and symmetric.\n\n\nQ: If I am estimating a parameter in a real example, why won’t I be able to construct the sampling distribution?\n\n\nBig takeaway: We (often) don’t need to know the entire sampling distribution to assess uncertainty, \\(\\color{blue}{SE}\\) would be enough\nRemaining problem? Okay, but \\(\\color{blue}{SE}\\) is still a population parameter!\nSolution: We can estimate \\(\\color{blue}{SE}\\) using our sample data\n\n\nNext time:\n\nUsing simulation to learn about the shape and \\(SE\\) of the sampling distribution from a single sample"
   }
 ]

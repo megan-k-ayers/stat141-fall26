@@ -1,7 +1,7 @@
 ---
 pagetitle: "Sampling Distributions I: Introduction"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -65,9 +65,9 @@ library(infer)
 library(tufte)
 ```
 
-### Announcements/Reminders
+### Reminder
 
-- 
+- Quiz 4 tomorrow during lab, but you can leave right after (no lab assignment)
 
 
 ------------------------------------------------------------------------
@@ -83,7 +83,7 @@ library(tufte)
 - Discuss random sampling: the heart of statistics!
 :::
 ::: {.column width=50%}
-![](img/DAW.jpeg){width="90%"}
+![](img/DAW_prev.jpeg){width="90%"}
 :::
 :::::
 
@@ -101,6 +101,7 @@ $$
     -   Based on the **population**
     -   Unknown then if don't have data on the whole population
     -   EX: $\beta_0$, $\beta_1$, $\ldots$, $\beta_p$
+    -   EX: $\mu$ (population mean) $p$ (population proportion)
 :::
 
 ::: {.column width=10%}
@@ -117,6 +118,7 @@ $$
     -   Known
     -   Usually estimate a population parameter
     -   EX: $\widehat{\beta}_0$, $\widehat{\beta}_1$, $\ldots$, $\widehat{\beta}_p$
+    -   EX: $\bar{x}$ (sample mean), $\widehat{p}$ (sample proportion)
 :::
 :::::
 
@@ -177,7 +179,7 @@ ggplot(data=data, aes(x = cards)) +
     breaks=c(1:13),
     labels = c("1\n(Ace)", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11\n(Jck)", "12\n(Qn)", "13\n(Kng)")
   ) + 
-  scale_y_continuous(limits=c(0, 5)) + 
+  scale_y_continuous(limits=c(0, 4.25)) + 
   labs(x = "Card Value", title = "A Deck of Cards")+theme_bw()
 ```
 
@@ -219,7 +221,7 @@ ggplot(data=data, aes(x = cards)) +
     breaks=c(1:13),
     labels = c("1\n(Ace)", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11\n(Jck)", "12\n(Qn)", "13\n(Kng)")
   ) + 
-  scale_y_continuous(limits=c(0, 5)) + 
+  scale_y_continuous(limits=c(0, 4.25)) + 
   labs(x = "Card Value", title = "A Deck of Cards")+theme_bw()
 ```
 
@@ -234,7 +236,7 @@ ggplot(data=data, aes(x = cards)) +
 ### Activity Instructions
 
 1. Thoroughly shuffle your group's deck of cards.
-2. Draw 10 cards from the deck \textbf{without replacement} to form a sample.
+2. Draw 10 cards from the deck **without replacement** to form a sample.
 3. Compute the average/mean value of your 10 cards
 4. Add the value of the average/mean as a dot on the chalkboard.
 5. Repeat steps 1 - 4 an additional **seven** times.
@@ -289,7 +291,7 @@ ggplot(data=data, aes(x = cards)) +
     breaks=c(1:13),
     labels = c("1\n(Ace)", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11\n(Jck)", "12\n(Qn)", "13\n(Kng)")
   ) + theme_bw()+
-  scale_y_continuous(limits=c(0, 5)) + 
+  scale_y_continuous(limits=c(0, 4.25)) + 
   labs(x = "Card Value", title = "A Deck of Cards")
 ```
 
@@ -354,7 +356,7 @@ ggplot(data=data, aes(x = cards)) +
     breaks=c(1:13),
     labels = c("1\n(Ace)", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11\n(Jck)", "12\n(Qn)", "13\n(Kng)")
   ) + 
-  scale_y_continuous(limits=c(0, 5)) + 
+  scale_y_continuous(limits=c(0, 4.25)) + 
   labs(x = "Card Value", title = "A Deck of Cards")
 ```
 :::

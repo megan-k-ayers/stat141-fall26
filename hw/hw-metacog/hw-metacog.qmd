@@ -20,13 +20,13 @@ Yes, it is very, very early to be thinking about our final exam! No need to stre
 
 Creating a study guide of any kind is an example of a metacognitive activity and is an excellent way to prepare for an exam. This kind of activity is usually much more effective than entirely rereading lecture material or the textbooks. You might be more familiar with study guides that summarize course content in a written, list-like format. Here, we'll focus on a type of study guide that centers practice problems and reflections about them.
 
-You will still submit this assignment to Gradescope, and it will only be assessed for completion (*as in: you wrote at least a sentence for each question, but it doesn't need to be paragraphs*). No feedback will be given. The more effort you put into study guide creation, the more you'll be helping your future self when they sit down to study for the exam in December!
+You will still submit this assignment to Gradescope, and it will only be assessed for completion (*as in: you wrote at least a sentence for each question, but it doesn't need to be paragraphs*). The more effort you put into study guide creation, the more you'll be helping your future self when they sit down to study for the exam in December!
 
 \newpage
 
 ### Exercise 1: Identify a gap
 
-What has been **the most** confusing concept or task that you've encountered in the course so far? It may be helpful to review the quizzes and course schedule up until now. Try to focus on a concept or task that is somewhat specific (ex. "interpreting categorical variables in linear models" vs just "linear models", or "using Bayes rule" vs just "probability").
+What has been a concept or task from the course so far that you feel least confident about? It may be helpful to review the quizzes and course schedule up until now. Try to focus on a concept or task that is somewhat specific (ex. "interpreting categorical variables in linear models" vs just "linear models", or "using Bayes rule" vs just "probability").
 
 ******************************************************************************
 
@@ -61,7 +61,7 @@ What has been **the most** confusing concept or task that you've encountered in 
 ### Exercise 3: Self-assessment
 
 
-**a.** Check your work against solutions, or discuss them with a course assistant (or Megan when she's back on 10/14), or ask a classmate if they can walk through the problem with you. How did the practice problem go? Did you find a place where you went wrong?
+**a.** Check your work against solutions, or discuss them with a course assistant, or ask a classmate if they can walk through the problem with you (or wait to discuss with Megan when she's back on 10/14). How did the practice problem go? Did you find a place where you went wrong?
 
 ******************************************************************************
 
@@ -71,7 +71,7 @@ What has been **the most** confusing concept or task that you've encountered in 
 
 
 
-**b.** Write down any questions or confusions you have after viewing or discussing the correct solutions to the problem.
+**b.** If applicable, write down any unresolved questions or confusions after viewing or discussing the correct solutions to the problem. These can be followed up on by further investigating the slides, or discussing the problem further in office hours with course assistants or Megan. If you feel confident about your work, great! Leave yourself a note about any key idea or any mistakes to avoid that you want your December self to remember.
 
 ******************************************************************************
 
@@ -80,14 +80,8 @@ What has been **the most** confusing concept or task that you've encountered in 
 ******************************************************************************
 
 
+### Closing note
 
-**c.** Find lecture slides that introduce the material related to this problem. See if you can answer your questions and resolve confusion from the previous part by reviewing them, and make any needed corrections to your attempted solution. If you have remaining questions or confusions, write them here, and I highly recommend visiting office hours and/or discussing the problem more with a classmate.
-
-******************************************************************************
-
-
-
-******************************************************************************
-
+When studying for the final exam in December, I highly recommend you come back to this assignment and reuse these questions for more topics. We'll be happy to work through this process with you in office hours at any time.
 
 

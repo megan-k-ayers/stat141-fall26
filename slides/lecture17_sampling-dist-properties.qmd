@@ -1,7 +1,7 @@
 ---
 pagetitle: "Sampling Distributions II: Properties"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -184,7 +184,7 @@ gg_sample <- ggplot(data = class_results, aes(x = x)) +
                                 "9", "10", "11\n(Jck)", "12\n(Qn)",
                                 "13\n(Kng)")) +
   scale_y_continuous(limits = c(0, 30)) +
-  labs(x = "Average Card Value", title = "Distribution of Card Value Sample Means (Megan recorded these after class)") +
+  labs(x = "Average Card Value", title = "Distribution of Card Value Sample Means") +
   geom_vline(xintercept = mean_class, color = "red") +
   annotate("text", label = paste("Mean=", round(mean_class, 2), sep = ""),
            x = 8.35, y = 27, color = "red") + theme_bw(base_size = 15)
@@ -214,7 +214,7 @@ Why just a "snapshot"?
   
 :::
   
-- We only took $119$ samples (combining both sections)...
+- We only took about $100$ samples (combining both sections)...
   
   
   
@@ -243,7 +243,7 @@ kable(pop)
 
 ```{r}
 #| echo: false
-countdown::countdown(6)
+countdown::countdown(5)
 ```
 
 ------------------------------------------------------------------------
@@ -360,7 +360,7 @@ xbarsumm<-xbar %>%
   summarize(mean = mean(X))
 xbar %>% 
   filter(replicate < 2) %>% 
-  ggplot( aes(x = X))+ geom_histogram(bins = 15, color = "white", fill = "gray75" ) + labs(title = "A sample of size n= 100", x = "Sample Observations")+
+  ggplot( aes(x = X))+ geom_histogram(bins = 15, color = "white", fill = "gray75" ) + labs(title = "A sample of size n= 100", x = "Sample Observations", y = "count")+
   geom_segment(data = xbarsumm, mapping =aes(y = 0 , 
                              yend = Inf,
                              xend = mean,
@@ -385,13 +385,13 @@ xbar %>%
   group_by(replicate) %>% 
   summarize(mean = mean(X)) %>% 
   ggplot( aes(x = mean))+ geom_histogram(binwidth = 0.025, color = "white", fill = "gray75" )+
-  annotate("text", x = .24, y = 3500, size=5,label = "Mean of All Sample\nStatistics", color = "dodgerblue")+ 
-    annotate("text", x = .8, y = 3500, size=5,label = "Our sample statistic", color = "magenta2")+ 
+  annotate("text", x = .20, y = 3500, size=5,label = "Mean of All Sample\nStatistics", color = "dodgerblue")+ 
+    annotate("text", x = .85, y = 3500, size=5,label = "Our sample statistic", color = "magenta2")+ 
   geom_vline(aes(xintercept = xbarsumm$mean), color = "magenta2", size = 1.5, linetype = 2) +
   xlim(c(0, 2)) +
   geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "dodgerblue", size = 1.5,linetype=2)+
-  labs(title = "Sampling Distribution, n = 100", x = "sample statistics") +
-  theme_bw()
+  labs(title = "Sampling Distribution, n = 100", x = "Sample Statistics") +
+  scale_x_continuous(limits=c(-.1,2.1))+theme_bw(base_size=15)
 ```
 
 :::
@@ -408,7 +408,7 @@ xbar %>%
 
 ```{r}
 #| echo: false
-countdown::countdown(2)
+countdown::countdown(2.5)
 ```
 
 
@@ -416,7 +416,7 @@ countdown::countdown(2)
 
 ## Sampling Distribution vs. Population Distribution
 
-::: {style="font-size=0.75em;"}
+::: {.nonincremental style="font-size=0.75em;"}
 
 - **Q:** How do the centers compare? 
 
@@ -450,12 +450,62 @@ xbar %>%
   xlim(c(0, 2)) +
   geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "dodgerblue", size = 1.5,linetype=2)+
   labs(title = "Sampling Distribution, n = 100", x = "sample statistics") +
-  theme_bw() +
+  scale_x_continuous(limits=c(-.1,2.1))+theme_bw(base_size=15) +
   theme(plot.title = element_text(size = 16))
 ```
 
 :::
 :::::
+
+
+------------------------------------------------------------------------
+
+## Sampling Distribution Shape
+
+::: nonincremental
+
+- **Q:** How do the shapes compare? 
+
+:::
+
+<br>
+
+::::: columns
+::: {.column width=50%}
+
+```{r echo= FALSE, out.width = "90%"}
+ggplot(data.frame(X), aes(x = X))+
+  geom_histogram(bins = 15, color = "white", fill = "gray75")+labs(title = "Population Distribution", x = "Observations")+geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "dodgerblue", size = 1.5,linetype=2)+
+  annotate("text",x = .8, y = 98, label = "Population parameter", size = 6, color = "dodgerblue")+
+  scale_x_continuous(limits=c(-.1,2.1))+theme_bw(base_size=15)
+```
+
+:::
+
+::: {.column width=50%}
+
+```{r echo= FALSE,  out.width = "90%"}
+xbar %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X)) %>% 
+  ggplot( aes(x = mean))+ geom_histogram(binwidth = 0.025, color = "white", fill = "gray75" )+
+  annotate("text", x = .24, y = 3500, size=5,label = "Mean of All Sample\nStatistics", color = "dodgerblue")+ 
+  xlim(c(0, 2)) +
+  geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "dodgerblue", size = 1.5,linetype=2)+
+  labs(title = "Sampling Distribution, n = 100", x = "sample statistics")+
+  theme_bw(base_size=15) +
+  theme(plot.title = element_text(size = 16))
+```
+
+:::
+:::::
+
+::: {style="font-size=0.75em;"}
+
+- For [most]{.underline} sample statistics and [sufficiently large sample sizes]{.underline} ($n \geq 30$ is a rule of thumb), **the sampling distribution will be approximately bell-shaped**, even if the population is not.
+
+:::
+
 
 
 ------------------------------------------------------------------------
@@ -479,6 +529,147 @@ xbar %>%
   
 :::
 
+------------------------------------------------------------------------
+
+## Characterizing Sampling Variability {.smaller}
+
+Remember that the **standard error** ($SE$) of a sample statistic measures variability between different samples.
+
+- For **$\approx$ bell-shaped distributions**, about 95\% of observations fall within **two standard errors** of the population's mean $\mu$. 
+
+- **Very useful implication!**
+  - The sampling distribution for the sample average, $\bar{x}$ is $\approx$ bell-shaped
+  - ... and is centered at the population mean, $\mu$.
+  
+::: {.fragment .nonincremental}
+
+  - So **95\% of all sample statistics, $\bar{x}$, fall within 2 standard errors of $\mu$!**
+
+
+```{r fig.height=2.5, out.width = "80%",fig.asp=0.35, echo = FALSE}
+set.seed(100)
+library(latex2exp)
+
+xbar_r<-xbar %>% 
+  group_by(replicate) %>% 
+  summarize(xbart = mean(X)) %>% 
+  summarize(mu = mean(xbart), s = sd(xbart))
+
+xbar %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X), sd = sd(X)) %>% 
+  ggplot( )+ 
+  geom_histogram(aes(x = mean), bins = 20, color = "white", fill = "steelblue" )+
+  geom_rect(data = data.frame(x1 = .5, y1 = 1), xmin = .495-.07, xmax = .495 + .07, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+
+  geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "red", size = 2)+
+  scale_x_continuous(breaks = c(.495-.07, 0.5, .495 + .07), labels = c(TeX("$\\mu$ - 2*SE"), TeX("$\\mu$"), TeX("$\\mu$ + 2*SE")))+
+  labs(title = "Sampling Distribution, n = 100", x = "sample means") +theme_bw()
+```
+
+:::
+
+------------------------------------------------------------------------
+
+## This is very powerful!
+
+```{r fig.height=2.5, out.width = "80%", echo = FALSE}
+xbar %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X), sd = sd(X)) %>% 
+  ggplot( )+ 
+  geom_histogram(aes(x = mean), bins = 20, color = "white", fill = "steelblue" )+
+  geom_rect(data = data.frame(x1 = .5, y1 = 1), xmin = .495-.07, xmax = .495 + .07, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+
+  geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "red", size = 2)+
+  scale_x_continuous(breaks = c(.495-.07, 0.5, .495 + .07), labels = c(TeX("$\\mu$ - 2*SE"), TeX("$\\mu$"), TeX("$\\mu$ + 2*SE")))+
+  labs(title = "Sampling Distribution, n = 100", x = "sample means") +theme_bw()
+```
+
+Even though we just have one sample, if we know $SE$, **we know how far away from the parameter our statistic is [likely]{.underline} to fall**!
+
+  - This allows us to give quantitative plausible ranges for the parameter
+  - We only need $SE$ to infer this, not the whole sampling distribution
+
+
+------------------------------------------------------------------------
+
+## Variability and Sample Size
+
+Variability of the sampling distribution generally decreases as sample size increases
+
+
+```{r, echo = FALSE, fig.height=6.25, fig.width = 10, warning = FALSE}
+set.seed(100)
+xbar10 <- data.frame(X) %>%
+  rep_sample_n(size = 10, reps = 10000, replace = TRUE ) %>%
+  mutate(size = 10, label = "Sampling Distribution, n = 10")
+xbar100 <- data.frame(X) %>%
+  rep_sample_n(size = 100, reps = 10000, replace = TRUE ) %>%
+  mutate(size = 100, label = "Sampling Distribution, n = 100")
+xbar1000 <- data.frame(X) %>%
+  rep_sample_n(size = 1000, reps = 10000, replace = TRUE ) %>%
+  mutate(size = 1000, label = "Sampling Distribution, n = 1000")
+
+xbar_all <- rbind(xbar10, xbar100, xbar1000)
+
+library(gridExtra)
+
+xbar_all <- xbar_all %>% 
+  group_by(replicate, size, label) %>% 
+  summarize(mean = mean(X))
+
+ggplot(xbar_all, aes(x = mean)) + 
+  geom_histogram(data = xbar_all %>% filter(size == 10),
+                 bins = 50, color = "white", fill = "steelblue", size = .25) +
+  geom_histogram(data = xbar_all %>% filter(size == 100),
+                 bins = 100, color = "white", fill = "steelblue", size = .25) +
+  geom_histogram(data = xbar_all %>% filter(size == 1000),
+                 bins = 200, color = "white", fill = "steelblue", size = .25) +
+  xlim(c(0, 1)) +
+  labs(x = "sample means") +
+  facet_wrap(~label, nrow = 3) +
+  theme_bw() + 
+  theme(strip.text = element_text(size = 14, face = "bold"))
+
+
+```
+
+- **Implication:** Our statistic $\bar{x}$ is likely to be closer to parameter $\mu$ as sample size $n$ increases.
+
+------------------------------------------------------------------------
+
+## Variability and Sample Size {.smaller}
+
+- These sampling distributions for $n = 10$, $100$, and $1000$ are all approximately bell-shaped, and so 95% of sample means are within 2 standard errors of the population mean.
+- Highlighted in green are the intervals containing 95% of all sample means:
+
+```{r, echo = FALSE, fig.height=6.5, fig.width = 10, warning = FALSE}
+
+g4<-xbar10 %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X)) %>% 
+  ggplot( )+ geom_histogram(aes(x = mean),bins = 50, color = "white", fill = "steelblue",size = .25 )+
+  xlim(c(0,1))+
+  geom_rect(data = data.frame(x1 = .5, y1 = 1),xmin = .495-.23, xmax = .495 + .23, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+theme_bw()+
+  labs(title = "Sampling Distribution, n = 10", x = "sample means") 
+
+g5<-xbar100 %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X)) %>% 
+  ggplot( )+ geom_histogram(aes(x = mean),bins = 100, color = "white", fill = "steelblue", size = .25 )+
+  xlim(c(0,1))+
+  geom_rect(data = data.frame(x1 = .5, y1 = 1),xmin = .495-.07, xmax = .495 + .07, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+theme_bw()+
+  labs(title = "Sampling Distribution, n = 100", x = "sample means") 
+
+g6<-xbar1000 %>% 
+  group_by(replicate) %>% 
+  summarize(mean = mean(X)) %>% 
+  ggplot()+ geom_histogram(  aes(x = mean),bins = 200, color = "white", fill = "steelblue", size = .1 )+
+  xlim(c(0,1))+
+  geom_rect(data = data.frame(x1 = .5, y1 = 1),xmin = .495-.022, xmax = .495 + .022, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+theme_bw()+
+  labs(title = "Sampling Distribution, n = 1000", x = "sample means") 
+
+grid.arrange(g4,g5,g6, ncol = 1)
+```
 
 ------------------------------------------------------------------------
 
@@ -538,11 +729,13 @@ xbar %>%
   group_by(replicate) %>% 
   summarize(mean = mean(X)) %>% 
   ggplot( aes(x = mean))+ geom_histogram(binwidth = 0.025, color = "white", fill = "gray75" )+
-  annotate("text", x = .24, y = 3500, size=5,label = "Mean of All Sample\nStatistics", color = "dodgerblue")+ 
+  annotate("text", x = .20, y = 3500, size=5,label = "Mean of All Sample\nStatistics", color = "dodgerblue")+ 
+    annotate("text", x = .85, y = 3500, size=5,label = "Our sample statistic", color = "magenta2")+ 
+  geom_vline(aes(xintercept = xbarsumm$mean), color = "magenta2", size = 1.5, linetype = 2) +
   xlim(c(0, 2)) +
   geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "dodgerblue", size = 1.5,linetype=2)+
-  labs(title = "Sampling Distribution, n = 100", x = "sample statistics") +
-  theme_bw()
+  labs(title = "Sampling Distribution, n = 100", x = "Sample Statistics") +
+  scale_x_continuous(limits=c(-.1,2.1))+theme_bw(base_size=15)
 ```
 
 :::
@@ -551,203 +744,13 @@ xbar %>%
 
 <br>
 
-- If we had the sampling distribution, we'd have a good sense of how far off any single statistic could be from the parameter.
+- If we had **just the standard error** of the sampling distribution, we could get a sense of how far off any single statistic is likely to be from the parameter.
 
 :::
 
 
 :::::
 
-
-------------------------------------------------------------------------
-
-## Sampling Distribution Shape
-
-
-- **Q:** How do the shapes compare? 
-
-
-<br>
-
-::::: columns
-::: {.column width=50%}
-
-```{r echo= FALSE, out.width = "90%"}
-ggplot(data.frame(X), aes(x = X))+
-  geom_histogram(bins = 15, color = "white", fill = "gray75")+labs(title = "Population Distribution", x = "Observations")+geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "dodgerblue", size = 1.5,linetype=2)+
-  annotate("text",x = .8, y = 98, label = "Population parameter", size = 6, color = "dodgerblue")+
-  scale_x_continuous(limits=c(-.1,2.1))+theme_bw(base_size=15)
-```
-
-:::
-
-::: {.column width=50%}
-
-```{r echo= FALSE,  out.width = "90%"}
-xbar %>% 
-  group_by(replicate) %>% 
-  summarize(mean = mean(X)) %>% 
-  ggplot( aes(x = mean))+ geom_histogram(binwidth = 0.025, color = "white", fill = "gray75" )+
-  annotate("text", x = .24, y = 3500, size=5,label = "Mean of All Sample\nStatistics", color = "dodgerblue")+ 
-  xlim(c(0, 2)) +
-  geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "dodgerblue", size = 1.5,linetype=2)+
-  labs(title = "Sampling Distribution, n = 100", x = "sample statistics") +
-  theme_bw()
-```
-
-:::
-:::::
-
-::: {style="font-size=0.75em;"}
-
-- For [most]{.underline} sample statistics and [sufficiently large sample sizes]{.underline} ($n \geq 30$ is a rule of thumb), **the sampling distribution will be approximately bell-shaped**, even if the population is not.
-
-- But we were just talking about variability, not shape. Why is this useful? 
-
-:::
-
-
-
-------------------------------------------------------------------------
-
-## Characterizing Sampling Variability {.smaller}
-
-Remember that the **standard error** ($SE$) of a sample statistic measures variability between different samples.
-
-- For **$\approx$ bell-shaped distributions**, about 95\% of observations fall within **two standard errors** of the population's mean $\mu$. 
-
-- **Very useful implication!**
-  - The sampling distribution for the sample average, $\bar{x}$ is $\approx$ bell-shaped
-  - ... and is centered at the population mean, $\mu$.
-  
-::: {.fragment .nonincremental}
-
-  - So **95\% of all sample statistics, $\widehat p$, fall within 2 standard errors of $p$!**
-
-
-```{r fig.height=2.5, out.width = "80%",fig.asp=0.35, echo = FALSE}
-set.seed(100)
-
-xbar_r<-xbar %>% 
-  group_by(replicate) %>% 
-  summarize(xbart = mean(X)) %>% 
-  summarize(mu = mean(xbart), s = sd(xbart))
-
-xbar %>% 
-  group_by(replicate) %>% 
-  summarize(mean = mean(X), sd = sd(X)) %>% 
-  ggplot( )+ 
-  geom_histogram(aes(x = mean), bins = 20, color = "white", fill = "steelblue" )+
-  geom_rect(data = data.frame(x1 = .5, y1 = 1), xmin = .495-.07, xmax = .495 + .07, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+
-  geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "red", size = 2)+
-  scale_x_continuous(breaks = c(.495-.07, 0.5, .495 + .07), labels = c(expression(p - 2*SE), expression(p), expression(p + 2*SE)))+
-  labs(title = "Sampling Distribution, n = 100", x = "sample means") +theme_bw()
-```
-
-:::
-
-------------------------------------------------------------------------
-
-## This is very powerful!
-
-```{r fig.height=2.5, out.width = "80%", echo = FALSE}
-xbar %>% 
-  group_by(replicate) %>% 
-  summarize(mean = mean(X), sd = sd(X)) %>% 
-  ggplot( )+ 
-  geom_histogram(aes(x = mean), bins = 20, color = "white", fill = "steelblue" )+
-  geom_rect(data = data.frame(x1 = .5, y1 = 1), xmin = .495-.07, xmax = .495 + .07, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+
-  geom_segment(x = 0.5, xend=0.5, y = 0, yend = Inf, color = "red", size = 2)+
-  scale_x_continuous(breaks = c(.495-.07, 0.5, .495 + .07), labels = c(expression(p - 2*SE), expression(p), expression(p + 2*SE)))+
-  labs(title = "Sampling Distribution, n = 100", x = "sample means") +theme_bw()
-```
-
-Even though we just have one sample, if we know $SE$, **we know how far away from the parameter our statistic is [likely]{.underline} to fall**!
-
-  - This allows us to give quantitative plausible ranges for the parameter
-  - We only need $SE$ to infer this, not the whole sampling distribution
-
-
-------------------------------------------------------------------------
-
-## Variability and Sample Size
-
-Variability of the sampling distribution generally decreases as sample size increases
-
-
-```{r, echo = FALSE, fig.height=6.25, fig.width = 10, warning = FALSE}
-set.seed(100)
-xbar10 <- data.frame(X) %>%
-  rep_sample_n(size = 10, reps = 10000, replace = TRUE ) %>%
-  mutate(size = 10, label = "Sampling Distribution, n = 10")
-xbar100 <- data.frame(X) %>%
-  rep_sample_n(size = 100, reps = 10000, replace = TRUE ) %>%
-  mutate(size = 100, label = "Sampling Distribution, n = 100")
-xbar1000 <- data.frame(X) %>%
-  rep_sample_n(size = 1000, reps = 10000, replace = TRUE ) %>%
-  mutate(size = 1000, label = "Sampling Distribution, n = 1000")
-
-xbar_all <- rbind(xbar10, xbar100, xbar1000)
-
-library(gridExtra)
-
-xbar_all <- xbar_all %>% 
-  group_by(replicate, size, label) %>% 
-  summarize(mean = mean(X))
-
-ggplot(xbar_all, aes(x = mean)) + 
-  geom_histogram(data = xbar_all %>% filter(size == 10),
-                 bins = 50, color = "white", fill = "steelblue", size = .25) +
-  geom_histogram(data = xbar_all %>% filter(size == 100),
-                 bins = 100, color = "white", fill = "steelblue", size = .25) +
-  geom_histogram(data = xbar_all %>% filter(size == 1000),
-                 bins = 200, color = "white", fill = "steelblue", size = .25) +
-  xlim(c(0, 1)) +
-  labs(x = "sample means") +
-  facet_wrap(~label, nrow = 3) +
-  theme_bw() + 
-  theme(strip.text = element_text(size = 14, face = "bold"))
-
-
-```
-
-- **Implication:** Our statistic $\bar{x}$ is likely to be closer to parameter $\mu$ as sample size $n$ increases.
-
-------------------------------------------------------------------------
-
-## Variability and Sample Size {.smaller}
-
-- The sampling distributions for $n = 10$, $100$, and $1000$ are all approximately bell-shaped, and so 95% of sample means are within 2 standard errors of the population mean.
-- Highlighted in green are the intervals containing 95% of all sample means:
-
-```{r, echo = FALSE, fig.height=6.5, fig.width = 10, warning = FALSE}
-
-g4<-xbar10 %>% 
-  group_by(replicate) %>% 
-  summarize(mean = mean(X)) %>% 
-  ggplot( )+ geom_histogram(aes(x = mean),bins = 50, color = "white", fill = "steelblue",size = .25 )+
-  xlim(c(0,1))+
-  geom_rect(data = data.frame(x1 = .5, y1 = 1),xmin = .495-.23, xmax = .495 + .23, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+theme_bw()+
-  labs(title = "Sampling Distribution, n = 10", x = "sample means") 
-
-g5<-xbar100 %>% 
-  group_by(replicate) %>% 
-  summarize(mean = mean(X)) %>% 
-  ggplot( )+ geom_histogram(aes(x = mean),bins = 100, color = "white", fill = "steelblue", size = .25 )+
-  xlim(c(0,1))+
-  geom_rect(data = data.frame(x1 = .5, y1 = 1),xmin = .495-.07, xmax = .495 + .07, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+theme_bw()+
-  labs(title = "Sampling Distribution, n = 100", x = "sample means") 
-
-g6<-xbar1000 %>% 
-  group_by(replicate) %>% 
-  summarize(mean = mean(X)) %>% 
-  ggplot()+ geom_histogram(  aes(x = mean),bins = 200, color = "white", fill = "steelblue", size = .1 )+
-  xlim(c(0,1))+
-  geom_rect(data = data.frame(x1 = .5, y1 = 1),xmin = .495-.022, xmax = .495 + .022, ymin=0, ymax=Inf, fill = "springgreen", alpha = 0.3)+theme_bw()+
-  labs(title = "Sampling Distribution, n = 1000", x = "sample means") 
-
-grid.arrange(g4,g5,g6, ncol = 1)
-```
 
 ------------------------------------------------------------------------
 
@@ -806,22 +809,22 @@ gp+theme_bw(base_size=15)
 ::::: columns
 ::: {.column width=30%}
 
-```{r out.width="99%",fig.asp=0.66, echo = FALSE}
-g7+theme_bw(base_size=15) + theme(plot.title = element_text(size = 30))
+```{r echo = FALSE, fig.height=7}
+g7+theme_bw(base_size=25)
 ```
 :::
 
 ::: {.column width=30%}
 
-```{r out.width="99%",fig.asp=0.66, echo = FALSE}
-g8+theme_bw(base_size=15) + theme(plot.title = element_text(size = 30))
+```{r echo = FALSE, fig.height=7}
+g8+theme_bw(base_size=25)
 ```
 
 :::
 ::: {.column width=30%}
 
-```{r out.width="99%",fig.asp=0.66, echo = FALSE}
-g9+theme_bw(base_size=15) + theme(plot.title = element_text(size = 30))
+```{r echo = FALSE, fig.height=7}
+g9+theme_bw(base_size=25)
 ```
 :::
 :::::
@@ -834,7 +837,7 @@ g9+theme_bw(base_size=15) + theme(plot.title = element_text(size = 30))
 
 **Key Features of a Sampling Distribution**
 
-::: {style="font-size:0.8em"}
+::: {style="font-size:0.85em"}
 
 -   Centered around the true population parameter.
 
@@ -842,28 +845,23 @@ g9+theme_bw(base_size=15) + theme(plot.title = element_text(size = 30))
 
 -   As the sample size increases, the shape of the sampling distribution becomes more bell-shaped and symmetric.
 
-:::
-
 ::: {.fragment}
 
 **Q**: If I am estimating a parameter in a real example, why won't I be able to construct the sampling distribution?
 
 :::
 
-::: {style="font-size:0.8em"}
 - **Big takeaway**: We (often) don't need to know the entire sampling distribution to assess uncertainty, $\color{blue}{SE}$ would be enough
 - **Remaining problem?** Okay, but $\color{blue}{SE}$ is still a population parameter!
 - **Solution:** We can **estimate** $\color{blue}{SE}$ using our sample data
 
-:::
-
 ::: fragment
 **Next time**:
 
-::: {style="font-size:0.8em"}
 - Using simulation to learn about the shape and $SE$ of the sampling distribution from a single sample
-:::
 
 :::
 
+
+:::
 

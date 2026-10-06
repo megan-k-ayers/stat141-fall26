@@ -1,7 +1,7 @@
 ---
 pagetitle: "Bootstrapping"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -249,7 +249,7 @@ sampling_dist %>% ggplot()+geom_histogram(aes(x = p_hat),bins = 30, color = "whi
 
 ::: {.nonincremental .fragment fragment-index=3}
 
-- Same result, save time: Just sample *with replacement* from the one original sample to get "bootstrap samples"
+- Same result, save time: **Just sample *with replacement* from the one original sample to get "bootstrap samples"**
 
 :::
 
@@ -694,7 +694,7 @@ my_boot_dist %>% ungroup() %>% summarize(mean_xbar = mean(x_bar), sd_xbar = sd(x
 :::
 
 ::: {.nonincremental}
-- The standard deviations are similar because the sample is representative of the population, and both distributions use samples of the same size
+- The standard deviations are similar because here the sample is representative of the population, and we fix $n$ for both distributions
     - **This is great!!** We have something very similar to $SE$ using only our one sample! 
     
 :::
@@ -706,7 +706,7 @@ my_boot_dist %>% ungroup() %>% summarize(mean_xbar = mean(x_bar), sd_xbar = sd(x
 
 ## Recap 
 
-- Sampling distributions are useful for understanding how close a statistic (ex. $\widehat{p}$) might be to a parameter (ex. $p$) 
+- Sampling distributions are useful for understanding how close a statistic (ex. $\widehat{p}$ or $\bar{x}$) might be to a parameter (ex. $p$ or $\mu$) 
   - But we rarely know the sampling distribution. We usually only have one sample!
   
 - Bootstrap samples allow us to **approximate the sampling distribution.**
@@ -716,5 +716,5 @@ my_boot_dist %>% ungroup() %>% summarize(mean_xbar = mean(x_bar), sd_xbar = sd(x
 - Bootstrap distributions look very similar to sampling distributions, 
   - ...but without the work of taking many samples!
   - The center is shifted (around the statistic instead of the parameter), but, very importantly, similar shape and **spread**! 
-  - The **standard deviation of the bootstrap distribution** can help us estimate the **standard error of the sampling distribution** (next week)
+  - The **standard deviation of the bootstrap distribution** can help us estimate the **standard error of the sampling distribution**
 
