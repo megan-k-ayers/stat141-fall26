@@ -13,6 +13,7 @@ format:
     auto-stretch: false
     callout-appearance: simple
     pdf-max-pages-per-slide: 2
+    pdf-separate-fragments: true
     menu: 
       side: right
       numbers: true

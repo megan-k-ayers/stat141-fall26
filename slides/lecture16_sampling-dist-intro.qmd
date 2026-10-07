@@ -65,10 +65,20 @@ library(infer)
 library(tufte)
 ```
 
+
+------------------------------------------------------------------------
+
+### Announcements
+
+- Brief presentation about sUms 
+
+::: fragment
+
 ### Reminder
 
 - Quiz 4 tomorrow during lab, but you can leave right after (no lab assignment)
 
+:::
 
 ------------------------------------------------------------------------
 
@@ -101,7 +111,7 @@ $$
     -   Based on the **population**
     -   Unknown then if don't have data on the whole population
     -   EX: $\beta_0$, $\beta_1$, $\ldots$, $\beta_p$
-    -   EX: $\mu$ (population mean) $p$ (population proportion)
+    -   EX: $\mu$ (population mean), $p$ (population proportion)
 :::
 
 ::: {.column width=10%}
@@ -238,7 +248,9 @@ ggplot(data=data, aes(x = cards)) +
 1. Thoroughly shuffle your group's deck of cards.
 2. Draw 10 cards from the deck **without replacement** to form a sample.
 3. Compute the average/mean value of your 10 cards
-4. Add the value of the average/mean as a dot on the chalkboard.
+4. On the chalkboard:
+    - Add your exact value of the average/mean to the list
+    - Add the *rounded* value of the average/mean as a dot on the graph
 5. Repeat steps 1 - 4 an additional **seven** times.
 
 \smallskip
