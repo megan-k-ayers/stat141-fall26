@@ -1,7 +1,7 @@
 ---
-date: 10/14/26
+date: 10/16/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -12,6 +12,6 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
--   Review OI 12.1-12.3
+-   IMS 12.1-12.3
 
 

@@ -1,7 +1,7 @@
 ---
-date: 10/12/26
+date: 10/14/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -10,8 +10,9 @@ execute:
 
 ## Reading 
 
-Before coming to lecture today, please read the following material: 
+Before coming to lecture today, please review any areas of the following lecture material and/or readings that you've felt uncertain about so far:
 
--    OI 12.1-12.3
+-    Slides on sampling distributions and bootstrapping (from 10/7, 10/9, 10/12)
+-    MD 7.1-7.2, 8.2, 8.2.1
 
 
