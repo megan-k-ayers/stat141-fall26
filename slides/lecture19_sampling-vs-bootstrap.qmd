@@ -1,7 +1,7 @@
 ---
 pagetitle: "Sampling and Bootstrap Distributions"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -58,6 +58,20 @@ library(tufte)
 :::
 :::::
 
+------------------------------------------------------------------------
+
+### Announcements/Reminders
+
+- Math/Stats colloquium tomorrow: Graduate school panel
+
+- No quiz tomorrow :) 
+
+- Quiz revisions:
+    - Due EOD this Friday for quiz 3
+    - Due 9am Thursday after fall break (Oct 29) for quiz 4
+    - Remember to include discussion of where your original solution went wrong
+
+- Any questions about metacognition assignment? 
 
 
 ------------------------------------------------------------------------
@@ -127,7 +141,9 @@ single_sample$cards
 
 - We have two Ace's (1's), a 4, 5, two 6's, two 9's, a 10, and a Jack (11). 
 
-- The sample mean is `r mean(single_sample$cards)`.
+- The sample mean is `r mean(single_sample$cards)`
+    - Can calculate manually in this case
+    - or could use `mean(single_sample$cards)`
 
 
 
@@ -359,7 +375,7 @@ gridExtra::grid.arrange(g_bootstrap,g_bootstrap,g_bootstrap,nrow=1)
 ```
 
 
-**Center:** Bootstrap is centered at the sample mean (6.2); all sampling distributions are centered at the population mean (7).
+**Center:** Bootstrap is centered at the sample mean (6.2); all sampling distributions are centered at the population mean (7). Again, this doesn't distinguish them.
 
 ------------------------------------------------------------------------
 
@@ -372,7 +388,7 @@ gridExtra::grid.arrange(g_bootstrap,g_bootstrap,g_bootstrap,nrow=1)
 
 
 
-**Spread:** The spread of the bootstrap distribution looks similar to the spread of the sampling distribution with $n=10$. 
+**Spread:** This does distinguish them! The spread of the bootstrap distribution looks similar to the spread of the sampling distribution with $n=10$. 
 
 
 
@@ -397,6 +413,8 @@ gridExtra::grid.arrange(g_bootstrap,g_bootstrap,g_bootstrap,nrow=1)
 
 ## Looking ahead
 
+::: {style="font-size:0.9em;"}
+
 - In lab tomorrow we'll get more practice actually working with the code from this worksheet
     - And no quiz tomorrow! 
 - We'll continue practicing this and comparing sampling and bootstrap distributions in Homework 6
@@ -404,6 +422,7 @@ gridExtra::grid.arrange(g_bootstrap,g_bootstrap,g_bootstrap,nrow=1)
     - **Why we're doing it:** 
         - Sampling distributions (and how we approximate them) are one of [the most fundamental concepts]{.underline} of this class. 
         - Everything we learn from now on (ex. confidence intervals, hypothesis testing) builds upon them.
-        - The more we lock in these concepts now, the more deeply we'll be able to engage later.
+        - You will need to use these same coding steps over and over as we build on sampling distributions and boostrapping.
+        - This worksheet + lecture slides + lab provide you with many coding examples of working with these distributions.
 
-
+:::

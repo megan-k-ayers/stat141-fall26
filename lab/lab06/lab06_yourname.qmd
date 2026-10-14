@@ -176,7 +176,8 @@ We are first going to use random sampling to **ESTIMATE** the true **population*
 ```{r}
 set.seed(42)  # Ensure we each get the same "random" sample
 n50_1rep <- trees %>%  # Use our population of trees
-  rep_sample_n(size = 50, reps = 1)  # Take one sample of size n = 50 from it
+  rep_sample_n(size = 50, reps = 1,  # Take one sample of size n = 50 from it
+               replace = FALSE)  # Sample without replacement
 ```
  
 Next, let's calculate the **sample proportion** $\hat{p}$ of good condition Western Redcedars in our sample of 50 trees. 
@@ -221,7 +222,8 @@ Instead of running the sampling code chunk for n = 50 over and over, we can "col
 ```{r}
 set.seed(42)
 n50_1000rep <- trees %>% 
-  rep_sample_n(size = 50, reps = 1000)
+  rep_sample_n(size = 50, reps = 1000,
+               replace = FALSE)
 ```
 
  
@@ -336,7 +338,13 @@ Note that these particular values are *estimates*, because even though we have a
 
 
 
-**c.** In a single new chunk below, copy and paste the relevant code above into one workflow that takes our "population" and produces (1) the histogram of the sampling distribution for samples with $n=50$ and (2) the mean and standard deviation of this sampling distribution. Use comments and make edits as needed to help to your future self remember how the code works. *This will serve as a helpful reference for your upcoming homework assignment!* [Code only for this question]
+```{r}
+# Removes everything from the environment except our "population".
+rm(list = setdiff(ls(), "trees"))
+```
+
+
+**c.** Make sure you run the chunk of code above to give yourself a clean slate. In a single new chunk below, copy and paste the relevant code given above into one workflow that takes our "population" `trees` and produces (1) the **histogram of the sampling distribution for samples with $n=50$** and (2) the **mean and standard deviation of this sampling distribution.** Use comments and make edits as needed to help to your future self remember how the code works. *This will serve as a helpful reference for your upcoming homework assignment!* [Code only for this question]
 
 *******************************************************************************
 
@@ -348,10 +356,13 @@ Note that these particular values are *estimates*, because even though we have a
 
 ## Exercise 5: Thinking ahead to implementing bootstrapping
 
-No response is required to these questions, but let's discuss them as a group during the last 5ish minutes of class, as we look ahead to the homework assignment.
-
 * What are the main features that differ between bootstrap distributions and sampling distributions?
 
-* What parts of our sampling distribution code above correspond to these features? 
+* What parts of your sampling distribution code above correspond to these features? 
 
 
+*******************************************************************************
+
+
+
+*******************************************************************************

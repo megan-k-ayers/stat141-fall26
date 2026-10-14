@@ -290,8 +290,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading21.qmd
-            # - type: Slides
-            #   href: slides/lecture19_sampling-vs-bootstrap.qmd
+            - type: Slides
+              href: slides/lecture19_sampling-vs-bootstrap.qmd
+            - type: Worksheet
+              href: in_class/sampling_vs_bootstrap/sampling_vs_bootstrap.pdf
         - topic: "Lab: Sampling & Bootstrap Distributions | No Quiz"
           display-date: Thursday, Oct 15
           date: 10/15/26
@@ -306,8 +308,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading22.qmd
-            # - type: Slides
-            #   href: slides/lecture20_ci-intro.qmd
+            - type: Slides
+              href: slides/lecture20_ci-intro.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture18_bootstrapping_handout.pdf
       resources:
             - 'Submit metacognition assignment (due at 9am 10/15)'
             - 'Start assignment 6 (assigned 10/15)'

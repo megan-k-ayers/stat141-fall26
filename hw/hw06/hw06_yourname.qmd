@@ -263,14 +263,14 @@ our_sample15 <- trees %>% # Take the population of trees
 
 **b**. How does the bootstrap distribution that you just created compare to: (1) the sampling distribution for $n=15$ from lab, (2) the sampling distribution for $n=50$ in Lab 6, and (3) the bootstrap distribution (for $n=50$)? Consider similarities/differences based on their shape, center, and spread. [Only text needed for this question, but you may use code to help visualize.]
 
-(*You may wish to visualize all four distributions together. Code to do so is prepared for you below, but it expects you to have saved your histograms and bootstrap statistic data frames with specific names. Each `geom_vline()` command is meant to show the mean of the sampling distribution statistics or bootstrap statistics.*)
+(*OPTIONAL: You may wish to visualize all four distributions together. Code to do so is prepared for you below, but it expects you to have saved your histograms and bootstrap statistic data frames with specific names. Uncomment and edit if you want to use it.*)
 
 *******************************************************************************
 
 ```{r}
-# grid.arrange(sampling_n15_histogram + ## Your histogram for sampling n=15
+# grid.arrange(sampling_n15_histogram + ## Your histogram for sampling n=15 - CHECK
 #                labs(title = "Sampling Distribution, n=15") +
-#                geom_vline(xintercept = mean(p_hat_n15_1000rep$p_hat),
+#                geom_vline(xintercept = mean(p_hat_n15_1000rep$p_hat), # CHECK
 #                           color = "red") +
 #                scale_x_continuous(limits = c(-0.1, 0.6)),
 #              
@@ -286,9 +286,9 @@ our_sample15 <- trees %>% # Take the population of trees
 #                           color = "red") +
 #                scale_x_continuous(limits = c(-0.1, 0.6)),
 #              
-#              bootstrap_n50_histogram + ## Your histogram from bootstrap n=50 - CHECK
+#              bootstrap_n50_histogram + ## Our histogram from bootstrap n=50
 #                labs(title = "Bootstrap Distribution, n=50") +
-#                geom_vline(xintercept = mean(p_hat_n50_1000boot_rep$p_hat), # CHECK
+#                geom_vline(xintercept = mean(p_hat_n50_1000boot_rep$p_hat),
 #                           color = "red") +
 #                scale_x_continuous(limits = c(-0.1, 0.6)),
 #              ncol = 2)

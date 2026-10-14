@@ -1,7 +1,7 @@
 ---
 pagetitle: "Confidence Intervals I: Introduction"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -111,6 +111,8 @@ library(tufte)
 
 ## Confidence Interval Estimates
 
+::: {style="font-size:0.8em;"}
+
 ::: fragment
 A **confidence interval estimate** for a parameter *[usually]{.underline}* takes the form
 $$
@@ -143,8 +145,14 @@ $$
 
 :::
 
+::: fragment
+
 **Q:** How should we choose our Margin of Error? (think *conceptually*)
+
+:::
+
  
+:::
  
 ------------------------------------------------------------------------
 
@@ -378,7 +386,7 @@ ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, co
 
 Imagine we...
 
-- draw a sample from our population with $p = 40$
+- draw a sample from our population (where $p = 40$)
 - calculate the sample statistic in that sample
 - construct a confidence interval for that sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
 
@@ -423,7 +431,7 @@ ggplot(x[51, ], aes(x = phat, y = sample)) +
 
 Imagine we...
 
-- draw 5 different samples from our population with $p = 40$
+- draw 5 different samples from our population (where $p = 40$)
 - calculate the sample statistic in each sample
 - construct a confidence interval for each sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
 
@@ -463,7 +471,7 @@ ggplot(x[c(10, 34, 51, 65, 80), ], aes(x = phat, y = sample)) +
 
 Imagine we...
 
-- draw 20 different samples from our population with $p = 40$
+- draw 20 different samples from our population (where $p = 40$)
 - calculate the sample statistic in each sample
 - construct a confidence interval for each sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
 
@@ -504,7 +512,7 @@ ggplot(x[c(10, 34, 51, 65, 80,
 
 Imagine we...
 
-- draw 100 different samples from our population with $p = 40$
+- draw 100 different samples from our population (where $p = 40$)
 - calculate the sample statistic in each sample
 - construct a confidence interval for each sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
 
@@ -621,33 +629,32 @@ ggplot(x, aes(y = phat, x = sample)) +
 countdown::countdown(3)
 ```
 
+<!-- ## Think-Pair-Share (Answer)  -->
+
+
+
+<!-- **Q:** What's the difference between these two interpretations of a 95\% confidence interval? -->
+
+<!--   - For 95\% of all samples, the interval we construct will actually contain the parameter. -->
+
+<!--   - For a given interval, there is a 95\% chance that the parameter will fall in the interval.  -->
+
+<!-- <br> -->
+
+<!-- ::: fragment -->
+
+<!-- **A:** -->
+
+<!-- ::: -->
+
+<!-- - The first one is accurate! 95\% confidence refers to the accuracy of the *process* -->
+
+<!-- - **The second one is wrong, an easy mistake to make!!** It confuses probability of the process with a deterministic outcome. Our sample statistic "moves" with sampling variability - the parameter does not. -->
+
+
+<!-- ------------------------------------------------------------------------ -->
+
 ------------------------------------------------------------------------
-
-## Think-Pair-Share (Answer) 
-
-
-
-**Q:** What's the difference between these two interpretations of a 95\% confidence interval?
-
-  - For 95\% of all samples, the interval we construct will actually contain the parameter.
-  
-  - For a given interval, there is a 95\% chance that the parameter will fall in the interval. 
-
-<br>
-
-::: fragment
-
-**A:**
-
-:::
-
-- The first one is accurate! 95\% confidence refers to the accuracy of the *process*
-
-- **The second one is wrong, an easy mistake to make!!** It confuses probability of the process with a deterministic outcome. Our sample statistic "moves" with sampling variability - the parameter does not.
-
-
-------------------------------------------------------------------------
-
 
 ## Interval Width and Sample Size ($n$)
   
@@ -665,8 +672,8 @@ $$
 - **Q:** What do we know about the SE as the sample size ($n$) increases?
 
 - **Q:** What does this imply about the interval's width  as the sample size ($n$) increases?
-    - The SE gets smaller as $n$ increases!
-    - Our interval becomes narrower as $n$ increases!
+    <!-- - The SE gets smaller as $n$ increases! -->
+    <!-- - Our interval becomes narrower as $n$ increases! -->
 
 
 ------------------------------------------------------------------------
@@ -699,6 +706,8 @@ $$
 
 ## Interval Width and Confidence Level
 
+::: nonincremental
+
 - **[Takeaway:]{.underline} The confidence level also determines the width of the interval!**
   
   - higher confidence (e.g., 95\%) means a *larger* margin of error (*wider* interval)
@@ -718,15 +727,15 @@ ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, co
   geom_segment(aes(x = .33 + 2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
   geom_segment(aes(x = .33-2*se, y = 200, xend = .33, yend = 200), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "dodgerblue", lwd = 1)+
   annotate(geom = "point", x = .33, y = 200, color = "dodgerblue", size = 2) +
-  annotate("text", x = .47, y = 200, label = " 95%", color = "dodgerblue") +
-  geom_segment(aes(x = .33 + 1.64*se, y = 400, xend = .33, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "goldenrod", lwd = 1)+
-  geom_segment(aes(x = .33-1.64*se, y = 400, xend = .33, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "goldenrod", lwd = 1)+
+  annotate("text", x = .475, y = 200, label = " 95%", color = "dodgerblue", size = 7) +
+  geom_segment(aes(x = .33 + 1.64*se, y = 400, xend = .33, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "goldenrod", lwd = 1.25)+
+  geom_segment(aes(x = .33-1.64*se, y = 400, xend = .33, yend = 400), arrow = arrow(length = unit(0.3, "cm"), ends = "first", type = "closed"), color = "goldenrod", lwd = 1.25)+
   annotate(geom = "point", x = .33, y = 400, color = "goldenrod", size = 2) +
-  annotate("text", x = .45, y = 400, label = " 90%", color = "goldenrod") +
+  annotate("text", x = .455, y = 400, label = " 90%", color = "goldenrod", size = 7) +
   theme_bw()
 ```
 
-
+:::
 
 ------------------------------------------------------------------------
 
@@ -768,7 +777,7 @@ sleep <- data.frame(Student=1:50, Hours = 9 - rgamma(50, 2, 1))
 ggplot(sleep, aes(x = Hours))+geom_histogram(binwidth = 0.25, color = "white")+
   labs(title = "Sample Distribution of Sleep at Reed College")+
   geom_vline(xintercept = mean(sleep$Hours), color = "red", size = 1.5)+
-  annotate("text", x = mean(sleep$Hours)-.15, y = 6.5, label = expression(bar(x)), color = "red", size = 10)
+  annotate("text", x = mean(sleep$Hours)-.15, y = 6.5, label = "xbar", color = "red", size = 10)
 ```
 
 ::: fragment
@@ -872,10 +881,12 @@ bootstrap_stats
 
 Graph the bootstrap distribution:
 
-```{r fig.height=2.5, fig.width = 6 , echo = F}
-ggplot(bootstrap_stats, aes(x = x_bar))+
-  geom_histogram(bins = 34, color = "white")+
-  labs(title = "Bootstrap Distribution for Average Sleep, n = 50", x = expression(bar(x)))
+```{r fig.height=2.5, fig.width = 6}
+#| output-location: column
+ggplot(bootstrap_stats, aes(x = x_bar)) +
+  geom_histogram(bins = 34, color = "white") +
+  labs(title = "Bootstrap Distribution for Average Sleep, n = 50",
+       x = "xbar")
 ```
 
 
@@ -902,7 +913,7 @@ sd(bootstrap_stats$x_bar)
 
 
 
-- Based on the bootstrap distribution, this statistic has [Standard Error=`r round(r0_se,3)`]{style="color:blue;"}.
+- Based on the bootstrap distribution, this statistic has [Standard Error = `r round(r0_se,3)`]{style="color:blue;"}.
 
 
 
@@ -946,7 +957,7 @@ bootstrap_stats <- bootstrap_samples %>%  # Calculating bootstrap statistics
 
 ggplot(bootstrap_stats, aes(x = x_bar))+  # Graph the bootstrap distribution
   geom_histogram(bins = 34, color = "white")+
-  labs(title = "Bootstrap Distribution for Average Sleep, n = 50", x = expression(bar(x)))
+  labs(title = "Bootstrap Distribution for Average Sleep, n = 50", x = "xbar")
 
 se_hat <- sd(bootstrap_stats$x_bar)  # Estimate the standard error
 xbar <- mean(sleep$Hours)  # This is our **statistic**, 7.046

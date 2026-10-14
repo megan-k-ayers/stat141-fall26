@@ -254,6 +254,7 @@
 </section>
 <section id="confidence-interval-estimates" class="slide level2">
 <h2>Confidence Interval Estimates</h2>
+<div style="font-size:0.8em;">
 <div class="fragment">
 <p>A <strong>confidence interval estimate</strong> for a parameter <em><u>usually</u></em> takes the form <span class="math display">\[
 \textrm{Statistic }\pm \textrm{ Margin of Error (ME)}
@@ -280,7 +281,10 @@
 \]</span></li>
 </ul>
 </div>
+<div class="fragment">
 <p><strong>Q:</strong> How should we choose our Margin of Error? (think <em>conceptually</em>)</p>
+</div>
+</div>
 </section>
 <section id="confidence-intervals-using-the-sampling-distribution" class="slide level2">
 <h2>Confidence Intervals using the Sampling Distribution</h2>
@@ -400,7 +404,7 @@
 <div class="column">
 <p>Imagine we…</p>
 <ul>
-<li>draw a sample from our population with <span class="math inline">\(p = 40\)</span></li>
+<li>draw a sample from our population (where <span class="math inline">\(p = 40\)</span>)</li>
 <li>calculate the sample statistic in that sample</li>
 <li>construct a confidence interval for that sample using <span class="math inline">\(\widehat{p} \pm 2\cdot \textrm{SE}\)</span></li>
 </ul>
@@ -422,7 +426,7 @@
 <div class="column">
 <p>Imagine we…</p>
 <ul>
-<li>draw 5 different samples from our population with <span class="math inline">\(p = 40\)</span></li>
+<li>draw 5 different samples from our population (where <span class="math inline">\(p = 40\)</span>)</li>
 <li>calculate the sample statistic in each sample</li>
 <li>construct a confidence interval for each sample using <span class="math inline">\(\widehat{p} \pm 2\cdot \textrm{SE}\)</span></li>
 </ul>
@@ -444,7 +448,7 @@
 <div class="column">
 <p>Imagine we…</p>
 <ul>
-<li>draw 20 different samples from our population with <span class="math inline">\(p = 40\)</span></li>
+<li>draw 20 different samples from our population (where <span class="math inline">\(p = 40\)</span>)</li>
 <li>calculate the sample statistic in each sample</li>
 <li>construct a confidence interval for each sample using <span class="math inline">\(\widehat{p} \pm 2\cdot \textrm{SE}\)</span></li>
 </ul>
@@ -466,7 +470,7 @@
 <div class="column">
 <p>Imagine we…</p>
 <ul>
-<li>draw 100 different samples from our population with <span class="math inline">\(p = 40\)</span></li>
+<li>draw 100 different samples from our population (where <span class="math inline">\(p = 40\)</span>)</li>
 <li>calculate the sample statistic in each sample</li>
 <li>construct a confidence interval for each sample using <span class="math inline">\(\widehat{p} \pm 2\cdot \textrm{SE}\)</span></li>
 </ul>
@@ -542,25 +546,20 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_733e317d" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_4baa07df" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
-</section>
-<section id="think-pair-share-answer" class="slide level2">
-<h2>Think-Pair-Share (Answer)</h2>
-<p><strong>Q:</strong> What’s the difference between these two interpretations of a 95% confidence interval?</p>
-<ul>
-<li class="fragment"><p>For 95% of all samples, the interval we construct will actually contain the parameter.</p></li>
-<li class="fragment"><p>For a given interval, there is a 95% chance that the parameter will fall in the interval.</p></li>
-</ul>
-<p><br></p>
-<div class="fragment">
-<p><strong>A:</strong></p>
-</div>
-<ul>
-<li class="fragment"><p>The first one is accurate! 95% confidence refers to the accuracy of the <em>process</em></p></li>
-<li class="fragment"><p><strong>The second one is wrong, an easy mistake to make!!</strong> It confuses probability of the process with a deterministic outcome. Our sample statistic “moves” with sampling variability - the parameter does not.</p></li>
-</ul>
+<!-- ## Think-Pair-Share (Answer)  -->
+<!-- **Q:** What's the difference between these two interpretations of a 95\% confidence interval? -->
+<!--   - For 95\% of all samples, the interval we construct will actually contain the parameter. -->
+<!--   - For a given interval, there is a 95\% chance that the parameter will fall in the interval.  -->
+<!-- <br> -->
+<!-- ::: fragment -->
+<!-- **A:** -->
+<!-- ::: -->
+<!-- - The first one is accurate! 95\% confidence refers to the accuracy of the *process* -->
+<!-- - **The second one is wrong, an easy mistake to make!!** It confuses probability of the process with a deterministic outcome. Our sample statistic "moves" with sampling variability - the parameter does not. -->
+<!-- ------------------------------------------------------------------------ -->
 </section>
 <section id="interval-width-and-sample-size-n" class="slide level2">
 <h2>Interval Width and Sample Size (<span class="math inline">\(n\)</span>)</h2>
@@ -571,11 +570,7 @@
 <li class="fragment"><p>This interval’s <strong>width is determined by the Standard Error (SE).</strong></p></li>
 <li class="fragment"><p><strong>Reminder:</strong> The SE is the standard deviation of the sampling distribution.</p></li>
 <li class="fragment"><p><strong>Q:</strong> What do we know about the SE as the sample size (<span class="math inline">\(n\)</span>) increases?</p></li>
-<li class="fragment"><p><strong>Q:</strong> What does this imply about the interval’s width as the sample size (<span class="math inline">\(n\)</span>) increases?</p>
-<ul>
-<li class="fragment">The SE gets smaller as <span class="math inline">\(n\)</span> increases!</li>
-<li class="fragment">Our interval becomes narrower as <span class="math inline">\(n\)</span> increases!</li>
-</ul></li>
+<li class="fragment"><p><strong>Q:</strong> What does this imply about the interval’s width as the sample size (<span class="math inline">\(n\)</span>) increases? <!-- - The SE gets smaller as $n$ increases! --> <!-- - Our interval becomes narrower as $n$ increases! --></p></li>
 </ul>
 </section>
 <section id="interval-width-and-confidence-level" class="slide level2">
@@ -600,10 +595,10 @@
 <section id="interval-width-and-confidence-level-1" class="slide level2">
 <h2>Interval Width and Confidence Level</h2>
 <ul>
-<li class="fragment"><p><strong><u>Takeaway:</u> The confidence level also determines the width of the interval!</strong></p>
+<li><p><strong><u>Takeaway:</u> The confidence level also determines the width of the interval!</strong></p>
 <ul>
-<li class="fragment"><p>higher confidence (e.g., 95%) means a <em>larger</em> margin of error (<em>wider</em> interval)</p></li>
-<li class="fragment"><p>lower confidence (e.g., 90%) means a <em>smaller</em> margin of error (<em>narrower</em> interval)</p></li>
+<li><p>higher confidence (e.g., 95%) means a <em>larger</em> margin of error (<em>wider</em> interval)</p></li>
+<li><p>lower confidence (e.g., 90%) means a <em>smaller</em> margin of error (<em>narrower</em> interval)</p></li>
 </ul></li>
 </ul>
 <div class="cell" data-layout-align="center">
@@ -759,7 +754,13 @@
 <section id="bootstrap-average-sleep-2" class="slide level2">
 <h2>Bootstrap Average Sleep</h2>
 <p>Graph the bootstrap distribution:</p>
-<div class="cell" data-layout-align="center">
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(bootstrap_stats, <span class="fu">aes</span>(<span class="at">x =</span> x_bar)) <span class="sc">+</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">34</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bootstrap Distribution for Average Sleep, n = 50"</span>,</span>
+<span id="cb10-4"><a></a>       <span class="at">x =</span> <span class="st">"xbar"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -767,21 +768,21 @@
 </figure>
 </div>
 </div>
-</div>
+</div></div>
 <ul>
 <li class="fragment">Use the bootstrap distribution to <strong>estimate</strong> the standard error:</li>
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>bootstrap_stats <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">SE =</span> <span class="fu">sd</span>(x_bar))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>bootstrap_stats <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">SE =</span> <span class="fu">sd</span>(x_bar))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
      SE
   &lt;dbl&gt;
 1 0.165</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="co"># or equivalently</span></span>
-<span id="cb12-2"><a></a><span class="fu">sd</span>(bootstrap_stats<span class="sc">$</span>x_bar)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># or equivalently</span></span>
+<span id="cb13-2"><a></a><span class="fu">sd</span>(bootstrap_stats<span class="sc">$</span>x_bar)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.164749</code></pre>
 </div>
@@ -792,15 +793,15 @@
 <h2>Confidence Interval for Average Sleep</h2>
 <ul>
 <li class="fragment"><p>Our sample average sleep was <strong><span class="math inline">\(\bar x = 7.046\)</span>.</strong></p></li>
-<li class="fragment"><p>Based on the bootstrap distribution, this statistic has <span style="color:blue;">Standard Error=0.165</span>.</p></li>
+<li class="fragment"><p>Based on the bootstrap distribution, this statistic has <span style="color:blue;">Standard Error = 0.165</span>.</p></li>
 <li class="fragment"><p>Our 95% confidence interval for the true average hours of sleep for Reed students is: <span class="math display">\[
 {7.046} \pm 2 \cdot \color{blue}{0.165}
 \]</span></p></li>
 </ul>
 <div class="fragment center">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>se_hat <span class="ot">&lt;-</span> <span class="fu">sd</span>(bootstrap_stats<span class="sc">$</span>x_bar)</span>
-<span id="cb14-2"><a></a><span class="fu">c</span>(<span class="fl">7.046</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> se_hat, <span class="fl">7.046</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> se_hat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>se_hat <span class="ot">&lt;-</span> <span class="fu">sd</span>(bootstrap_stats<span class="sc">$</span>x_bar)</span>
+<span id="cb15-2"><a></a><span class="fu">c</span>(<span class="fl">7.046</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> se_hat, <span class="fl">7.046</span> <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> se_hat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.716502 7.375498</code></pre>
 </div>
@@ -817,23 +818,23 @@
 </div>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">set.seed</span>(<span class="dv">121</span>)</span>
-<span id="cb16-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data-path.csv"</span>)  <span class="co"># Read in the data</span></span>
-<span id="cb16-3"><a></a></span>
-<span id="cb16-4"><a></a>bootstrap_samples <span class="ot">&lt;-</span> sleep <span class="sc">%&gt;%</span>   <span class="co"># Creating our 10,000 bootstrap samples</span></span>
-<span id="cb16-5"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
-<span id="cb16-6"><a></a></span>
-<span id="cb16-7"><a></a>bootstrap_stats <span class="ot">&lt;-</span> bootstrap_samples <span class="sc">%&gt;%</span>  <span class="co"># Calculating bootstrap statistics</span></span>
-<span id="cb16-8"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span>                 <span class="co"># from each sample.</span></span>
-<span id="cb16-9"><a></a>  <span class="fu">summarize</span>(<span class="at">x_bar =</span> <span class="fu">mean</span>(Hours))</span>
-<span id="cb16-10"><a></a></span>
-<span id="cb16-11"><a></a><span class="fu">ggplot</span>(bootstrap_stats, <span class="fu">aes</span>(<span class="at">x =</span> x_bar))<span class="sc">+</span>  <span class="co"># Graph the bootstrap distribution</span></span>
-<span id="cb16-12"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">34</span>, <span class="at">color =</span> <span class="st">"white"</span>)<span class="sc">+</span></span>
-<span id="cb16-13"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bootstrap Distribution for Average Sleep, n = 50"</span>, <span class="at">x =</span> <span class="fu">expression</span>(<span class="fu">bar</span>(x)))</span>
-<span id="cb16-14"><a></a></span>
-<span id="cb16-15"><a></a>se_hat <span class="ot">&lt;-</span> <span class="fu">sd</span>(bootstrap_stats<span class="sc">$</span>x_bar)  <span class="co"># Estimate the standard error</span></span>
-<span id="cb16-16"><a></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>Hours)  <span class="co"># This is our **statistic**, 7.046</span></span>
-<span id="cb16-17"><a></a><span class="fu">c</span>(xbar <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> se_hat, xbar <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> se_hat)  <span class="co"># Calculate confidence interval</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">set.seed</span>(<span class="dv">121</span>)</span>
+<span id="cb17-2"><a></a>sleep <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data-path.csv"</span>)  <span class="co"># Read in the data</span></span>
+<span id="cb17-3"><a></a></span>
+<span id="cb17-4"><a></a>bootstrap_samples <span class="ot">&lt;-</span> sleep <span class="sc">%&gt;%</span>   <span class="co"># Creating our 10,000 bootstrap samples</span></span>
+<span id="cb17-5"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">10000</span>)</span>
+<span id="cb17-6"><a></a></span>
+<span id="cb17-7"><a></a>bootstrap_stats <span class="ot">&lt;-</span> bootstrap_samples <span class="sc">%&gt;%</span>  <span class="co"># Calculating bootstrap statistics</span></span>
+<span id="cb17-8"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span>                 <span class="co"># from each sample.</span></span>
+<span id="cb17-9"><a></a>  <span class="fu">summarize</span>(<span class="at">x_bar =</span> <span class="fu">mean</span>(Hours))</span>
+<span id="cb17-10"><a></a></span>
+<span id="cb17-11"><a></a><span class="fu">ggplot</span>(bootstrap_stats, <span class="fu">aes</span>(<span class="at">x =</span> x_bar))<span class="sc">+</span>  <span class="co"># Graph the bootstrap distribution</span></span>
+<span id="cb17-12"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">34</span>, <span class="at">color =</span> <span class="st">"white"</span>)<span class="sc">+</span></span>
+<span id="cb17-13"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bootstrap Distribution for Average Sleep, n = 50"</span>, <span class="at">x =</span> <span class="st">"xbar"</span>)</span>
+<span id="cb17-14"><a></a></span>
+<span id="cb17-15"><a></a>se_hat <span class="ot">&lt;-</span> <span class="fu">sd</span>(bootstrap_stats<span class="sc">$</span>x_bar)  <span class="co"># Estimate the standard error</span></span>
+<span id="cb17-16"><a></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>Hours)  <span class="co"># This is our **statistic**, 7.046</span></span>
+<span id="cb17-17"><a></a><span class="fu">c</span>(xbar <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> se_hat, xbar <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> se_hat)  <span class="co"># Calculate confidence interval</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="next-time" class="slide level2">

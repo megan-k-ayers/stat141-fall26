@@ -84,6 +84,195 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture20_ci-intro.html#point-estimates",
+    "href": "slides/lecture20_ci-intro.html#point-estimates",
+    "title": "STAT 141",
+    "section": "Point Estimates",
+    "text": "Point Estimates\n\nTo estimate a population parameter, we can use a sample statistic.\n\nEx: You’re hosting a pizza party for 200 people, and need to know what proportion \\(p\\) of vegetarian pizza to order.\nIdea: Ask a (random) sample of attendees about their pizza preference and use the proportion \\(\\widehat{p}\\) in the sample as an estimate for the total proportion \\(p\\).\n\nYour sample statistic, \\(\\widehat{p}\\), is a good guess for the population parameter.\n\nTerminology: We sometimes call our sample statistic a point estimate."
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#point-estimates-vs.-interval-estimates",
+    "href": "slides/lecture20_ci-intro.html#point-estimates-vs.-interval-estimates",
+    "title": "STAT 141",
+    "section": "Point Estimates vs. Interval Estimates",
+    "text": "Point Estimates vs. Interval Estimates\n\nA sample statistic is a good guess for the population parameter, but not the whole story\n\nQ: After polling pizza party attendees, you find \\(\\widehat{p} = 0.33\\). What factor(s) determine your (un)certainty in this estimate?\n\nIt may be preferable to estimate the proportion using a range of values, with smaller intervals corresponding to precision.\n\nWith just \\(n = 9\\) people, you might give a range of \\(0.03\\) to \\(0.63\\) for \\(p\\).\nBut with \\(n = 48\\), you might instead give the range \\(0.20\\) to \\(0.46\\).\n\nWe call these ranges interval estimates."
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#confidence-interval-estimates",
+    "href": "slides/lecture20_ci-intro.html#confidence-interval-estimates",
+    "title": "STAT 141",
+    "section": "Confidence Interval Estimates",
+    "text": "Confidence Interval Estimates\n\n\nA confidence interval estimate for a parameter usually takes the form \\[\n\\textrm{Statistic }\\pm \\textrm{ Margin of Error (ME)}\n\\]\n\n\nThe confidence interval gives a range of plausible values for the parameter.\n\n\n\ne.g., when sampling pizza preferences with \\(n=48\\), we estimate \\(p\\) using the interval\n\n\\[\n   0.20 \\textrm{ to } 0.46  \\qquad \\textrm{ or } \\qquad \\underbrace{0.33}_{\\text{Statistic ($\\widehat{p}$)}} \\pm \\ \\ \\ \\underbrace{0.13}_{\\text{ME}}\n\\]\n\n\nThe Margin of Error determines the width of the interval (\\(2*\\text{Margin of Error}\\))\n\n\n\ne.g., in our pizza interval, the width is: \\[\n   0.46 - 0.20 = 0.26 = 2 * \\underbrace{0.13}_{\\text{ME}}\n\\]\n\n\n\nQ: How should we choose our Margin of Error? (think conceptually)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#confidence-intervals-using-the-sampling-distribution",
+    "href": "slides/lecture20_ci-intro.html#confidence-intervals-using-the-sampling-distribution",
+    "title": "STAT 141",
+    "section": "Confidence Intervals using the Sampling Distribution",
+    "text": "Confidence Intervals using the Sampling Distribution\n\nGoal: Figure out a reasonable Margin of Error\nIn our example, suppose \\(p = 0.25\\) (i.e., 25% of all party attendees prefer vegetarian)\nFor approximately bell-shaped sampling distributions, 95% of all sample statistics are within 2 SE of the parameter.\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis also means that for 95% of all samples, the parameter will be within a distance of 2 SE of the sample statistic (every sample in the gray region)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#confidence-intervals-1",
+    "href": "slides/lecture20_ci-intro.html#confidence-intervals-1",
+    "title": "STAT 141",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nIdea: Build an interval centered at the sample statistic, with a margin of error of \\(2\\cdot SE\\):\n\\[\n\\widehat{p} \\pm 2\\cdot \\textrm{SE}\n\\]\n\nIntervals constructed this way will contain the parameter \\(p\\) in 95% of samples!\n\n\n\n\n\n\n\n\n\n\n\n\nThe interval for our sample was \\(0.33 \\pm 0.125\\), which does contain the parameter \\(p\\)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#confidence-intervals-2",
+    "href": "slides/lecture20_ci-intro.html#confidence-intervals-2",
+    "title": "STAT 141",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nIdea: Build an interval centered at the sample statistic, with a margin of error of \\(2\\cdot SE\\):\n\\[\n\\widehat{p} \\pm 2\\cdot \\textrm{SE}\n\\]\n\nIntervals constructed this way will contain the parameter \\(p\\) in 95% of samples!\n\n\n\n\n\n\n\n\n\n\n\nSamples with \\(\\widehat{p}\\) in the gray region have intervals that also contain the parameter \\(p\\)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#confidence-intervals-3",
+    "href": "slides/lecture20_ci-intro.html#confidence-intervals-3",
+    "title": "STAT 141",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nIdea: Build an interval centered at the sample statistic, with a margin of error of \\(2\\cdot SE\\):\n\\[\n\\widehat{p} \\pm 2\\cdot \\textrm{SE}\n\\]\n\nIntervals constructed this way will contain the parameter \\(p\\) in 95% of samples!\n\n\n\n\n\n\n\n\n\n\n\nSamples with \\(\\widehat{p}\\) outside the gray region have intervals that don’t contain \\(p\\)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#confidence-intervals-4",
+    "href": "slides/lecture20_ci-intro.html#confidence-intervals-4",
+    "title": "STAT 141",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\nIdea: Build an interval centered at the sample statistic, with a margin of error of \\(2\\cdot SE\\):\n\\[\n\\widehat{p} \\pm 2\\cdot \\textrm{SE}\n\\]\n\nIntervals constructed this way will contain the parameter \\(p\\) in 95% of samples!\n\n\n\n\n\n\n\n\n\n\n\nBut 95% of all samples will have intervals that do contain \\(p\\)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#another-way-to-visualize-this",
+    "href": "slides/lecture20_ci-intro.html#another-way-to-visualize-this",
+    "title": "STAT 141",
+    "section": "Another way to visualize this",
+    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw a sample from our population (where \\(p = 40\\))\ncalculate the sample statistic in that sample\nconstruct a confidence interval for that sample using \\(\\widehat{p} \\pm 2\\cdot \\textrm{SE}\\)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-1",
+    "href": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-1",
+    "title": "STAT 141",
+    "section": "Another way to visualize this",
+    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw 5 different samples from our population (where \\(p = 40\\))\ncalculate the sample statistic in each sample\nconstruct a confidence interval for each sample using \\(\\widehat{p} \\pm 2\\cdot \\textrm{SE}\\)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-2",
+    "href": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-2",
+    "title": "STAT 141",
+    "section": "Another way to visualize this",
+    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw 20 different samples from our population (where \\(p = 40\\))\ncalculate the sample statistic in each sample\nconstruct a confidence interval for each sample using \\(\\widehat{p} \\pm 2\\cdot \\textrm{SE}\\)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-3",
+    "href": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-3",
+    "title": "STAT 141",
+    "section": "Another way to visualize this",
+    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw 100 different samples from our population (where \\(p = 40\\))\ncalculate the sample statistic in each sample\nconstruct a confidence interval for each sample using \\(\\widehat{p} \\pm 2\\cdot \\textrm{SE}\\)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#confidence-levels",
+    "href": "slides/lecture20_ci-intro.html#confidence-levels",
+    "title": "STAT 141",
+    "section": "Confidence levels",
+    "text": "Confidence levels\n\nOn the previous slide, 95% of confidence intervals across all samples would contain the true parameter, \\(p\\).\nThus, we call each interval estimate a 95% confidence interval.\nHere, 95% is our confidence level: The success rate for our estimation technique.\n\ne.g., The pizza interval \\(0.33 \\pm 0.13\\) has confidence level of 95%\n\nThe confidence level corresponds to the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter."
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#confidence-levels-1",
+    "href": "slides/lecture20_ci-intro.html#confidence-levels-1",
+    "title": "STAT 141",
+    "section": "Confidence levels",
+    "text": "Confidence levels\n\nConfidence Level: the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter.\nFor example, were we to:\n\nRepeatedly draw samples from the population, and\nCreate 95% confidence intervals in each sample…\n95% of those confidence intervals would contain the true parameter"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#recap-confidence-intervals",
+    "href": "slides/lecture20_ci-intro.html#recap-confidence-intervals",
+    "title": "STAT 141",
+    "section": "Recap: Confidence Intervals",
+    "text": "Recap: Confidence Intervals\n\nConfidence intervals consist of 1. an interval estimate and 2. a confidence level.\nIn our pizza party sample, we estimated the true proportion of vegetarian pizza-eaters was between \\(0.20\\) and \\(0.46\\), with \\(95\\%\\) confidence.\nWhat does “95% confidence” mean?\n\nIt’s the success rate of the process\nFor 95% of all samples, the interval we construct will actually contain the parameter.\n\nWorth emphasizing: it’s the success rate of The Process, NOT the specific interval you calculated in your sample.\n\nThe parameter is either in your interval, or it’s not – there’s no success rate there!"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#think-pair-share",
+    "href": "slides/lecture20_ci-intro.html#think-pair-share",
+    "title": "STAT 141",
+    "section": "Think-Pair-Share",
+    "text": "Think-Pair-Share\nQ: What’s the difference between these two interpretations of a 95% confidence interval?\n\nFor 95% of all samples, the interval we construct will actually contain the parameter.\nFor a given interval, there is a 95% chance that the parameter will fall in the interval."
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#interval-width-and-sample-size-n",
+    "href": "slides/lecture20_ci-intro.html#interval-width-and-sample-size-n",
+    "title": "STAT 141",
+    "section": "Interval Width and Sample Size (\\(n\\))",
+    "text": "Interval Width and Sample Size (\\(n\\))\nIdea: Build a 95% confidence interval centered at the sample statistic, with a margin of error of \\(2\\cdot SE\\): \\[\n\\widehat{p} \\pm \\underbrace{2\\cdot \\textrm{SE}}_{\\text{Margin of Error}}\n\\]\n\nThis interval’s width is determined by the Standard Error (SE).\nReminder: The SE is the standard deviation of the sampling distribution.\nQ: What do we know about the SE as the sample size (\\(n\\)) increases?\nQ: What does this imply about the interval’s width as the sample size (\\(n\\)) increases?"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#interval-width-and-confidence-level",
+    "href": "slides/lecture20_ci-intro.html#interval-width-and-confidence-level",
+    "title": "STAT 141",
+    "section": "Interval Width and Confidence Level",
+    "text": "Interval Width and Confidence Level\n\nIdea: Build an 95% confidence interval centered at the sample statistic, with a margin of error of \\(2\\cdot SE\\): \\[\n\\widehat{p} \\pm \\underbrace{2\\cdot \\textrm{SE}}_{\\text{Margin of Error}}\n\\]\n\nChose \\(\\text{Margin of Error} = 2*SE\\) because 95% of sample statistics fall within \\(2*SE\\) of the parameter (in sampling distribution).\nFun Fact: 90% of sample statistics fall within \\(1.64*SE\\) of the parameter.\n\nQ: What would happen if we did the following interval? \\[\n\\widehat{p} \\pm 1.64*\\textrm{SE}\n\\]\nWe would get a 90% confidence interval!\nThis interval is narrower, but has a lower “success” rate! For 90% of all samples, the interval will contain the parameter."
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#interval-width-and-confidence-level-1",
+    "href": "slides/lecture20_ci-intro.html#interval-width-and-confidence-level-1",
+    "title": "STAT 141",
+    "section": "Interval Width and Confidence Level",
+    "text": "Interval Width and Confidence Level\n\nTakeaway: The confidence level also determines the width of the interval!\n\nhigher confidence (e.g., 95%) means a larger margin of error (wider interval)\nlower confidence (e.g., 90%) means a smaller margin of error (narrower interval)"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#problems-with-confidence-intervals",
+    "href": "slides/lecture20_ci-intro.html#problems-with-confidence-intervals",
+    "title": "STAT 141",
+    "section": "Problems(?) with Confidence Intervals",
+    "text": "Problems(?) with Confidence Intervals\nLet’s say we’re working with 95% confidence intervals\n\nProblem 1: We only have 1 sample, and we don’t know if it belongs to the 95% of “good” samples, or the 5% of “bad” ones\n\nConsolation: If I go through life constructing 95% confidence intervals, I will be right about 95% of the time\nThat’s not bad!\n\n\n\n\nProblem 2: To make a confidence interval, we need the sampling distribution in order to compute the standard error. But in practice, we (often) don’t have direct access to this.\n\nSolution: approximate the sampling distribution via bootstrapping!"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#sleep-for-reed-students",
+    "href": "slides/lecture20_ci-intro.html#sleep-for-reed-students",
+    "title": "STAT 141",
+    "section": "Sleep for Reed Students",
+    "text": "Sleep for Reed Students\nSuppose we wish to estimate how many hours Reed students sleep, on average with a sample of 50 students, who we surveys on hours of sleep.\n\n\n\n\n\n\n\n\n\n\n\n\n\nhead(sleep, 4)\n\n  Student    Hours\n1       1 7.476953\n2       2 7.717175\n3       3 8.281295\n4       4 7.117568\n\nsleep %&gt;% summarize(MeanSleep = round(mean(Hours), 3))\n\n  MeanSleep\n1     7.046\n\n\n\n\n\nIs the true average hours of sleep at Reed is 7.046?\n\nSurely not! This is just one sample of size 50\n\nLet’s create a confidence interval for the true average hours\n\nWe can use the bootstrap distribution to estimate the SE needed for the interval"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#bootstrap-average-sleep",
+    "href": "slides/lecture20_ci-intro.html#bootstrap-average-sleep",
+    "title": "STAT 141",
+    "section": "Bootstrap Average Sleep",
+    "text": "Bootstrap Average Sleep\n\n\nCreate the bootstrap samples:\n\nQ: What is each argument of rep_sample_n() doing?\nEach bootstrap sample consists of 50 observations sampled with replacement from the original sample (size = 50)\nWe have a total of 10,000 bootstrap samples (reps = 10000)\n\n\n\nbootstrap_samples &lt;- sleep %&gt;% \n  rep_sample_n(size = 50, replace = TRUE, \n               reps = 10000)\nbootstrap_samples\n\n\n\n# A tibble: 500,000 × 3\n# Groups:   replicate [10,000]\n   replicate Student Hours\n       &lt;int&gt;   &lt;int&gt; &lt;dbl&gt;\n 1         1      28  4.40\n 2         1      12  6.45\n 3         1       7  7.71\n 4         1       4  7.12\n 5         1       9  7.12\n 6         1       1  7.48\n 7         1      27  7.26\n 8         1      39  6.38\n 9         1      37  3.74\n10         1      44  7.98\n# ℹ 499,990 more rows"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#bootstrap-average-sleep-1",
+    "href": "slides/lecture20_ci-intro.html#bootstrap-average-sleep-1",
+    "title": "STAT 141",
+    "section": "Bootstrap Average Sleep",
+    "text": "Bootstrap Average Sleep\nCompute bootstrap statistics: (Mean of each bootstrap sample)\n\n\n\nbootstrap_stats &lt;- bootstrap_samples %&gt;% \n  group_by(replicate) %&gt;% \n  summarize(x_bar = mean(Hours))\n\n\nbootstrap_stats\n\n# A tibble: 10,000 × 2\n   replicate x_bar\n       &lt;int&gt; &lt;dbl&gt;\n 1         1  7.05\n 2         2  6.97\n 3         3  6.94\n 4         4  7.31\n 5         5  7.36\n 6         6  7.11\n 7         7  6.93\n 8         8  7.10\n 9         9  7.06\n10        10  6.76\n# ℹ 9,990 more rows\n\n\n\n\nWe now have 10,000 sample means based on the bootstrap samples, and can assess their variability"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#bootstrap-average-sleep-2",
+    "href": "slides/lecture20_ci-intro.html#bootstrap-average-sleep-2",
+    "title": "STAT 141",
+    "section": "Bootstrap Average Sleep",
+    "text": "Bootstrap Average Sleep\nGraph the bootstrap distribution:\n\n\nggplot(bootstrap_stats, aes(x = x_bar)) +\n  geom_histogram(bins = 34, color = \"white\") +\n  labs(title = \"Bootstrap Distribution for Average Sleep, n = 50\",\n       x = \"xbar\")\n\n\n\n\n\n\n\n\n\n\nUse the bootstrap distribution to estimate the standard error:\n\n\n\nbootstrap_stats %&gt;% summarize(SE = sd(x_bar))\n\n# A tibble: 1 × 1\n     SE\n  &lt;dbl&gt;\n1 0.165\n\n# or equivalently\nsd(bootstrap_stats$x_bar)\n\n[1] 0.164749"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#confidence-interval-for-average-sleep",
+    "href": "slides/lecture20_ci-intro.html#confidence-interval-for-average-sleep",
+    "title": "STAT 141",
+    "section": "Confidence Interval for Average Sleep",
+    "text": "Confidence Interval for Average Sleep\n\nOur sample average sleep was \\(\\bar x = 7.046\\).\nBased on the bootstrap distribution, this statistic has Standard Error = 0.165.\nOur 95% confidence interval for the true average hours of sleep for Reed students is: \\[\n{7.046} \\pm 2 \\cdot \\color{blue}{0.165}\n\\]\n\n\n\nse_hat &lt;- sd(bootstrap_stats$x_bar)\nc(7.046 - 2 * se_hat, 7.046 + 2 * se_hat)\n\n[1] 6.716502 7.375498\n\n\n\n\nOur best guess for average nightly sleep is that it’s between 6.716 and 7.376. This method has a success rate of \\(95\\%\\)."
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#bootstrap-confidence-intervals-complete-code-example",
+    "href": "slides/lecture20_ci-intro.html#bootstrap-confidence-intervals-complete-code-example",
+    "title": "STAT 141",
+    "section": "Bootstrap Confidence Intervals: Complete Code Example",
+    "text": "Bootstrap Confidence Intervals: Complete Code Example\n\nWe are given the data frame sleep. Our statistic of interest is the average hours of sleep per night in the sample contained in this data frame (recorded individually as Hours). We can use the bootstrap method to calculate confidence intervals for the parameter, the average hours of sleep per night in the population:\n\n\n\nset.seed(121)\nsleep &lt;- read.csv(\"data-path.csv\")  # Read in the data\n\nbootstrap_samples &lt;- sleep %&gt;%   # Creating our 10,000 bootstrap samples\n  rep_sample_n(size = 50, replace = TRUE, reps = 10000)\n\nbootstrap_stats &lt;- bootstrap_samples %&gt;%  # Calculating bootstrap statistics\n  group_by(replicate) %&gt;%                 # from each sample.\n  summarize(x_bar = mean(Hours))\n\nggplot(bootstrap_stats, aes(x = x_bar))+  # Graph the bootstrap distribution\n  geom_histogram(bins = 34, color = \"white\")+\n  labs(title = \"Bootstrap Distribution for Average Sleep, n = 50\", x = \"xbar\")\n\nse_hat &lt;- sd(bootstrap_stats$x_bar)  # Estimate the standard error\nxbar &lt;- mean(sleep$Hours)  # This is our **statistic**, 7.046\nc(xbar - 2 * se_hat, xbar + 2 * se_hat)  # Calculate confidence interval"
+  },
+  {
+    "objectID": "slides/lecture20_ci-intro.html#next-time",
+    "href": "slides/lecture20_ci-intro.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time:",
+    "text": "Next time:\n\nMore on changing confidence levels\nWhat to do with distributions that aren’t bell-shaped (percentile method)\nConfidence interval misconceptions"
+  },
+  {
     "objectID": "slides/lecture18_bootstrapping.html#sampling-variability",
     "href": "slides/lecture18_bootstrapping.html#sampling-variability",
     "title": "STAT 141",
@@ -2784,5 +2973,110 @@
     "title": "STAT 141",
     "section": "Recap",
     "text": "Recap\nKey Features of a Sampling Distribution\n\n\nCentered around the true population parameter.\nAs the sample size increases, the standard error (\\(SE\\)) of the statistic decreases.\nAs the sample size increases, the shape of the sampling distribution becomes more bell-shaped and symmetric.\n\n\nQ: If I am estimating a parameter in a real example, why won’t I be able to construct the sampling distribution?\n\n\nBig takeaway: We (often) don’t need to know the entire sampling distribution to assess uncertainty, \\(\\color{blue}{SE}\\) would be enough\nRemaining problem? Okay, but \\(\\color{blue}{SE}\\) is still a population parameter!\nSolution: We can estimate \\(\\color{blue}{SE}\\) using our sample data\n\n\nNext time:\n\nUsing simulation to learn about the shape and \\(SE\\) of the sampling distribution from a single sample"
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#instructions",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#instructions",
+    "title": "STAT 141",
+    "section": "Instructions",
+    "text": "Instructions\n\nIn small groups, carefully complete the worksheet\n\n\n\nWe’ll come together to discuss with 10-15 minutes remaining"
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-1",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-1",
+    "title": "STAT 141",
+    "section": "Question 1",
+    "text": "Question 1\n\ndeck &lt;- data.frame(cards = rep(1:13, each = 4))\n\n\n\n\n\n\n\n\n\n\nQ1: In Figure 1, why is the height of each bar 4? Describe this distribution (center, spread, shape).\n\nThere are four cards of each value in a deck.\nThe distribution has a “flat” shape, centered at 7 (mean = 7 and median = 7).\nThe distribution has a “large” spread. Standard Deviation: 3.78"
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-2",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-2",
+    "title": "STAT 141",
+    "section": "Question 2",
+    "text": "Question 2\n\nset.seed(1) # ensures we all get the same \"random\" sample\nsingle_sample &lt;- deck %&gt;% rep_sample_n(size = 10, replace = FALSE, reps = 1)\nsingle_sample$cards\n\n [1]  1 10  1  9  6 11  4  5  9  6\n\n\n\nQ2: Based on the code, which cards are in our sample? Use the cards to calculate our sample statistic (the sample mean) based on this sample.\n\nWe have two Ace’s (1’s), a 4, 5, two 6’s, two 9’s, a 10, and a Jack (11).\nThe sample mean is 6.2\n\nCan calculate manually in this case\nor could use mean(single_sample$cards)"
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-3",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-3",
+    "title": "STAT 141",
+    "section": "Question 3",
+    "text": "Question 3\n\n\n\ndeck %&gt;% \n  rep_sample_n(size = 10, \n               replace = FALSE, reps = 50000) %&gt;%\n  group_by(replicate) %&gt;% \n  summarize(x_bar = mean(cards)) %&gt;%\n  ggplot(aes(x = x_bar)) + \n  geom_histogram(binwidth = 0.2) + theme_bw() +\n  labs(x = \"Mean Card Value from Many Samples\",\n       title = \"Fig. 2: Sampling Distribution\")\n\n\n\n\n\n\n\n\n\nQ3: Based on the code above, how many cards are in each sample? How many different samples did we take to create the sampling distribution in Figure 2?\n\n\nThere are 10 cards in each sample, since size = 10.\nWe took 50,000 different samples, since reps = 50000."
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-4",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-4",
+    "title": "STAT 141",
+    "section": "Question 4",
+    "text": "Question 4\n\nQ4: Figure 3 (below) displays sampling distributions for samples of size n=10, n=20, and n=40. How are they similar and how are they different? Why do larger samples have sampling distributions with less variability?\n\n\n\n\n\n\n\n\n\n\n\nBell-shaped and centered at the true mean, 7.\nThey differ in their spread: \\(n=10\\) distribution has the largest standard error; the \\(n=40\\) distribution has the smallest standard error."
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-4-1",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-4-1",
+    "title": "STAT 141",
+    "section": "Question 4",
+    "text": "Question 4\n\nQ4: Figure 3 (below) displays sampling distributions for samples of size n=10, n=20, and n=40. How are they similar and how are they different? Why do larger samples have sampling distributions with less variability?\n\n\n\n\n\n\n\n\n\n\n\nWhy? If our sample size (\\(n\\)) is larger, we have more data and our sample should be “more representative” of the population.\ni.e., more data means a better glimpse at the true population, and better guesses about the population mean!"
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#questions-5-and-6",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#questions-5-and-6",
+    "title": "STAT 141",
+    "section": "Questions 5 and 6",
+    "text": "Questions 5 and 6\n\nbootstrap_sample &lt;- single_sample %&gt;% rep_sample_n(size = 10, replace = TRUE, reps = 1)\nbootstrap_sample$cards\n\n [1] 11  6  9  1  5  6  1  1  9  9\n\n\nQ5: In the code above, what are we sampling from (the population, or the single sample)? Are we sampling with replacement? What’s our sample size?\n\nWe’re sampling from the single sample (single_sample).\nWe’re sampling with replacement (replace = TRUE).\nOur sample size is still 10 (size = 10)\n\nQ6: How would your answers to Q5 be different if we were talking about sampling for a sampling distribution?\n\nWe sample from the population.\nWe sample without replacement.\nOur sample size is still 10!"
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-7",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-7",
+    "title": "STAT 141",
+    "section": "Question 7",
+    "text": "Question 7\n\n\n\nsingle_sample %&gt;% ungroup() %&gt;% select(cards) %&gt;%\n  rep_sample_n(size = 10, replace = TRUE, reps = 20000) %&gt;%\n  group_by(replicate) %&gt;% \n  summarize(x_bar = mean(cards)) %&gt;%\n  ggplot(aes(x = x_bar)) + geom_histogram(binwidth = 0.1) +\n  labs(x = \"Mean Card Value Based on Samples of Size 10\",\n       title = \"Fig. 4: Bootstrap Distribution\") + \n  theme_bw() +\n  scale_x_continuous(breaks = 1:13, limits = c(1, 13))\n\n\n\n\n\n\n\n\n\nQ7: Based on the code above, how many bootstrap samples are we taking to create the bootstrap distribution?\n\n\n20,000 bootstrap samples because reps=20000."
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-8",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-8",
+    "title": "STAT 141",
+    "section": "Question 8",
+    "text": "Question 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nQ8: Which sampling distribution looks most like the bootstrap distribution in Figure 4? How specifically is it similar or different? Consider the shape, center, and spread of each distibution."
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-8-1",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-8-1",
+    "title": "STAT 141",
+    "section": "Question 8",
+    "text": "Question 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe \\(n=10\\) sampling distribution!"
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-8-2",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-8-2",
+    "title": "STAT 141",
+    "section": "Question 8",
+    "text": "Question 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShape: All distributions look bell-shaped, so this doesn’t distinguish them at all."
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-8-3",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-8-3",
+    "title": "STAT 141",
+    "section": "Question 8",
+    "text": "Question 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCenter: Bootstrap is centered at the sample mean (6.2); all sampling distributions are centered at the population mean (7). Again, this doesn’t distinguish them."
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-8-4",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-8-4",
+    "title": "STAT 141",
+    "section": "Question 8",
+    "text": "Question 8\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSpread: This does distinguish them! The spread of the bootstrap distribution looks similar to the spread of the sampling distribution with \\(n=10\\)."
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#question-9",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#question-9",
+    "title": "STAT 141",
+    "section": "Question 9",
+    "text": "Question 9\nQ9: Thinking more generally, compare and contrast sampling distributions and bootstrap distributions.\n\nSampling distributions and bootstrap distributions both help us conceptualize the distribution of a statistic, for the purpose of understanding plausible values for a parameter.\nSampling distributions and bootstrap distributions should have similar spread (e.g., a similar standard deviation).\nTheir means should also be similar, although a sampling distribution is centered at the true parameter, while a bootstrap distribution is centered at the sample mean.\nSampling distributions are usually not possible to obtain (we can only take one sample from the population). Bootstrap distributions approximate a sampling distribution, and are super easy to obtain (especially with code)."
+  },
+  {
+    "objectID": "slides/lecture19_sampling-vs-bootstrap.html#looking-ahead",
+    "href": "slides/lecture19_sampling-vs-bootstrap.html#looking-ahead",
+    "title": "STAT 141",
+    "section": "Looking ahead",
+    "text": "Looking ahead\n\n\nIn lab tomorrow we’ll get more practice actually working with the code from this worksheet\n\nAnd no quiz tomorrow!\n\nWe’ll continue practicing this and comparing sampling and bootstrap distributions in Homework 6\n\nNote: This may feel repetitive at times!\nWhy we’re doing it:\n\nSampling distributions (and how we approximate them) are one of the most fundamental concepts of this class.\nEverything we learn from now on (ex. confidence intervals, hypothesis testing) builds upon them.\nYou will need to use these same coding steps over and over as we build on sampling distributions and boostrapping.\nThis worksheet + lecture slides + lab provide you with many coding examples of working with these distributions."
   }
 ]
