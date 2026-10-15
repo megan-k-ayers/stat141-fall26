@@ -298,10 +298,10 @@ scheduled-docs:
           display-date: Thursday, Oct 15
           date: 10/15/26
           docs:
-              # - type: Download Lab 6
-              #   href: lab/lab06.zip
-              # - type: Download HW 6
-              #   href: hw/hw06.zip
+              - type: Download Lab 6
+                href: lab/lab06.zip
+              - type: Download HW 6
+                href: hw/hw06.zip
         - topic: "Confidence Intervals I: Introduction" 
           display-date: Friday, Oct 16
           date: 10/16/26
