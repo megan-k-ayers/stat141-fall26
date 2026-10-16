@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 10/16/26
+  draft-after: 10/30/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -330,33 +330,33 @@ scheduled-docs:
           date: 10/26/26
           docs:
             - type: Reading
-              href: readings/reading24.qmd
-            - type: Slides
-              href: slides/lecture21_ci-misconceptions.qmd
+              href: readings/reading23.qmd
+            # - type: Slides
+            #   href: slides/lecture21_ci-misconceptions.qmd
         - topic: "Hypothesis Testing I: Introduction"
           display-date: Wednesday, Oct 28
           date: 10/28/26
           docs:
             - type: Reading
-              href: readings/reading25.qmd
-            - type: Slides
-              href: slides/lecture22_hyp-test-intro.qmd
+              href: readings/reading24.qmd
+            # - type: Slides
+            #   href: slides/lecture22_hyp-test-intro.qmd
         - topic: "Lab: Bootstrapping & Confidence Intervals | Quiz 5"
           display-date: Thursday, Oct 29
           date: 10/29/26
           docs:
-              - type: Download Lab 7
-                href: lab/lab07.zip
-              - type: Download HW 7
-                href: hw/hw07.zip
+              # - type: Download Lab 7
+              #   href: lab/lab07.zip
+              # - type: Download HW 7
+              #   href: hw/hw07.zip
         - topic: "Hypothesis Testing II: More Practice, 1 vs 2 Sided"
           display-date: Friday, Oct 30
           date: 10/30/26
           docs:
             - type: Reading
-              href: readings/reading26.qmd
-            - type: Slides
-              href: slides/lecture23_hyp-test-null-dist.qmd
+              href: readings/reading25.qmd
+            # - type: Slides
+            #   href: slides/lecture23_hyp-test-null-dist.qmd
       resources:
             - 'Submit assignment 6 (due Thurs 10/29 at 9am)'
             - 'Take Quiz 5 during lab'

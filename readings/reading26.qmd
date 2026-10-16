@@ -12,6 +12,8 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
+-    MD 9.5.2, 9.5.3, 9.7.2
+
 -    Review 9.5.2 and 9.5.3, and read 9.7.3 including skimming the linked articles
 
 

@@ -1,7 +1,7 @@
 ---
-date: 10/16/26
+date: 10/26/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -12,6 +12,4 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
--   MD 9.0-9.3. *Note that this section uses some coding methods that we will not cover - focus on the concepts rather than the code for this reading.*
-
-
+-   Review IMS 12.1-12.3

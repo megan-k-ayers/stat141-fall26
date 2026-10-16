@@ -1,7 +1,7 @@
 ---
-date: 10/26/26
+date: 10/28/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -12,6 +12,6 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
--    Review MD 9.1-9.3, and read MD 9.4.3, 9.5.1 (*Note that this section uses some coding methods that we will not cover from the `infer` package - focus on the concepts rather than the code for this reading.*)
+-   MD 9.0-9.3. *Note that this section uses some coding methods that we will not cover - focus on the concepts rather than the code for this reading.*
 
 
