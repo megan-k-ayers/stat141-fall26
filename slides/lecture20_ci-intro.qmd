@@ -386,9 +386,9 @@ ggplot()+geom_histogram(data = dd, aes(x  = p_hat), binwidth = 1/sample_size, co
 
 Imagine we...
 
-- draw a sample from our population (where $p = 40$)
+- draw a sample from our population (where the population average is $40$)
 - calculate the sample statistic in that sample
-- construct a confidence interval for that sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
+- construct a confidence interval for that sample using $\bar{x} \pm 2\cdot \textrm{SE}$
 
 :::
 
@@ -431,9 +431,9 @@ ggplot(x[51, ], aes(x = phat, y = sample)) +
 
 Imagine we...
 
-- draw 5 different samples from our population (where $p = 40$)
+- draw 5 different samples from our population (where the population average is $40$)
 - calculate the sample statistic in each sample
-- construct a confidence interval for each sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
+- construct a confidence interval for each sample using $\bar{x} \pm 2\cdot \textrm{SE}$
 
 :::
 
@@ -471,9 +471,9 @@ ggplot(x[c(10, 34, 51, 65, 80), ], aes(x = phat, y = sample)) +
 
 Imagine we...
 
-- draw 20 different samples from our population (where $p = 40$)
+- draw 20 different samples from our population (where the population average is $40$)
 - calculate the sample statistic in each sample
-- construct a confidence interval for each sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
+- construct a confidence interval for each sample using $\bar{x} \pm 2\cdot \textrm{SE}$
 
 :::
 
@@ -512,9 +512,9 @@ ggplot(x[c(10, 34, 51, 65, 80,
 
 Imagine we...
 
-- draw 100 different samples from our population (where $p = 40$)
+- draw 100 different samples from our population (where the population average is $40$)
 - calculate the sample statistic in each sample
-- construct a confidence interval for each sample using $\widehat{p} \pm 2\cdot \textrm{SE}$
+- construct a confidence interval for each sample using $\bar{x} \pm 2\cdot \textrm{SE}$
 
 :::
 
@@ -541,22 +541,60 @@ ggplot(x, aes(x = phat, y = sample)) +
 :::
 :::::
 
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ## Confidence levels -->
+
+<!-- - On the previous slide, 95\% of confidence intervals *across all samples* would contain the true parameter, $p$. -->
+
+<!-- - Thus, we call each interval estimate a **95\% confidence interval**. -->
+
+
+<!-- - Here, 95\% is our **confidence level**: The success rate for our estimation technique. -->
+<!--   - e.g., The pizza interval $0.33 \pm 0.13$ has confidence level of 95\% -->
+
+
+<!-- - The confidence level corresponds to **the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter**. -->
+
+
+<!-- ::: fragment -->
+
+<!-- ```{r out.width = "70%", fig.height=2.5, echo=FALSE} -->
+<!-- ggplot(x, aes(y = phat, x = sample)) + -->
+<!--   geom_point(aes(color = covers)) + -->
+<!--   geom_segment(aes(y = upper, yend = lower, x = sample, xend = sample, color = covers)) + -->
+<!--   geom_hline(aes(yintercept = p), lty = 2, lwd = 0.5) + -->
+<!--   scale_color_manual(values = c("TRUE" = "gray30", "FALSE" = "magenta3"), -->
+<!--                      guide = "none") + -->
+<!--   ylab("Sample Statistic") + xlab("") + -->
+<!--   ylim(c(27, 53)) + xlim(c(0, 100)) + -->
+<!--   theme_minimal() + -->
+<!--   theme(axis.text.x = element_blank(), -->
+<!--         axis.ticks.x = element_blank()) + -->
+<!--   labs(title = "100 different samples and their confidence intervals", -->
+<!--        subtitle = "Confidence interval coverage: 94/100 = 94%") -->
+<!-- ``` -->
+
+<!-- ::: -->
+
 ------------------------------------------------------------------------
 
 ## Confidence levels
 
-- On the previous slide, 95\% of confidence intervals *across all samples* would contain the true parameter, $p$.
+::: {style="font-size:0.9em;"}
 
-- Thus, we call each interval estimate a **95\% confidence interval**.
-  
-
-- Here, 95\% is our **confidence level**: The success rate for our estimation technique.
-  - e.g., The pizza interval $0.33 \pm 0.13$ has confidence level of 95\%
-  
-
-- The confidence level corresponds to **the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter**.
+- **[Confidence Level:]{.underline}** the percentage of [*samples*]{.underline} that would yield a corresponding confidence interval containing the true value of the parameter (ex. 95%).
 
 
+- For example, were we to:
+    - Repeatedly draw samples from the population, and
+    - Create 95\% confidence intervals in each sample...
+    - 95\% of those confidence intervals would contain the true parameter
+    - Thus, we call each interval estimate a **95\% confidence interval**.
+        - e.g., The pizza interval $0.33 \pm 0.13$ has confidence level of 95\%
+        
+:::
+    
 ::: fragment
 
 ```{r out.width = "70%", fig.height=2.5, echo=FALSE}
@@ -576,18 +614,6 @@ ggplot(x, aes(y = phat, x = sample)) +
 ```
 
 :::
-
-------------------------------------------------------------------------
-
-## Confidence levels
-
-- **[Confidence Level:]{.underline}** the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter.
-
-
-- For example, were we to:
-    - Repeatedly draw samples from the population, and
-    - Create 95\% confidence intervals in each sample...
-    - 95\% of those confidence intervals would contain the true parameter
 
 
 
@@ -613,7 +639,7 @@ ggplot(x, aes(y = phat, x = sample)) +
 ------------------------------------------------------------------------
 
 
-## Think-Pair-Share
+## Discuss with Neighbors
 
 
 
@@ -626,7 +652,7 @@ ggplot(x, aes(y = phat, x = sample)) +
   
 ```{r}
 #| echo: false
-countdown::countdown(3)
+countdown::countdown(2)
 ```
 
 <!-- ## Think-Pair-Share (Answer)  -->
@@ -637,7 +663,7 @@ countdown::countdown(3)
 
 <!--   - For 95\% of all samples, the interval we construct will actually contain the parameter. -->
 
-<!--   - For a given interval, there is a 95\% chance that the parameter will fall in the interval.  -->
+<!--   - For a given interval, there is a 95\% chance that the parameter will fall in the interval. -->
 
 <!-- <br> -->
 
@@ -688,7 +714,7 @@ $$
 \widehat{p} \pm \underbrace{2\cdot \textrm{SE}}_{\text{Margin of Error}}
 $$
 
-- Chose $\text{Margin of Error} = 2*SE$ because 95\% of sample statistics fall within $2*SE$ of the parameter (in sampling distribution).
+- Chose $\text{Margin of Error} = 2*SE$ because 95\% of sample statistics fall within $2*SE$ of the parameter (in bell-shaped sampling distribution).
 
 
 - **Fun Fact:** 9[0]{.underline}\% of sample statistics fall within $1.64*SE$ of the parameter.
@@ -772,12 +798,13 @@ Suppose we wish to estimate **how many hours Reed students sleep, on average** w
 
 ```{r echo = FALSE, fig.height = 4}
 library(gridExtra)
+library(latex2exp)
 set.seed(10)
 sleep <- data.frame(Student=1:50, Hours = 9 - rgamma(50, 2, 1))
 ggplot(sleep, aes(x = Hours))+geom_histogram(binwidth = 0.25, color = "white")+
   labs(title = "Sample Distribution of Sleep at Reed College")+
   geom_vline(xintercept = mean(sleep$Hours), color = "red", size = 1.5)+
-  annotate("text", x = mean(sleep$Hours)-.15, y = 6.5, label = "xbar", color = "red", size = 10)
+  annotate("text", x = mean(sleep$Hours)-.15, y = 6.5, label = TeX("$\\bar{x}$"), color = "red", size = 10)
 ```
 
 ::: fragment
@@ -967,7 +994,7 @@ c(xbar - 2 * se_hat, xbar + 2 * se_hat)  # Calculate confidence interval
 
 ------------------------------------------------------------------------
 
-## Next time: 
+## After fall break: 
 
 - More on changing confidence levels
 
@@ -976,4 +1003,5 @@ c(xbar - 2 * se_hat, xbar + 2 * se_hat)  # Calculate confidence interval
 - Confidence interval misconceptions
 
 
+# Have a great fall break! 
 

@@ -404,9 +404,9 @@
 <div class="column">
 <p>Imagine we…</p>
 <ul>
-<li>draw a sample from our population (where <span class="math inline">\(p = 40\)</span>)</li>
+<li>draw a sample from our population (where the population average is <span class="math inline">\(40\)</span>)</li>
 <li>calculate the sample statistic in that sample</li>
-<li>construct a confidence interval for that sample using <span class="math inline">\(\widehat{p} \pm 2\cdot \textrm{SE}\)</span></li>
+<li>construct a confidence interval for that sample using <span class="math inline">\(\bar{x} \pm 2\cdot \textrm{SE}\)</span></li>
 </ul>
 </div><div class="column">
 <div class="cell" data-layout-align="center">
@@ -426,9 +426,9 @@
 <div class="column">
 <p>Imagine we…</p>
 <ul>
-<li>draw 5 different samples from our population (where <span class="math inline">\(p = 40\)</span>)</li>
+<li>draw 5 different samples from our population (where the population average is <span class="math inline">\(40\)</span>)</li>
 <li>calculate the sample statistic in each sample</li>
-<li>construct a confidence interval for each sample using <span class="math inline">\(\widehat{p} \pm 2\cdot \textrm{SE}\)</span></li>
+<li>construct a confidence interval for each sample using <span class="math inline">\(\bar{x} \pm 2\cdot \textrm{SE}\)</span></li>
 </ul>
 </div><div class="column">
 <div class="cell" data-layout-align="center">
@@ -448,9 +448,9 @@
 <div class="column">
 <p>Imagine we…</p>
 <ul>
-<li>draw 20 different samples from our population (where <span class="math inline">\(p = 40\)</span>)</li>
+<li>draw 20 different samples from our population (where the population average is <span class="math inline">\(40\)</span>)</li>
 <li>calculate the sample statistic in each sample</li>
-<li>construct a confidence interval for each sample using <span class="math inline">\(\widehat{p} \pm 2\cdot \textrm{SE}\)</span></li>
+<li>construct a confidence interval for each sample using <span class="math inline">\(\bar{x} \pm 2\cdot \textrm{SE}\)</span></li>
 </ul>
 </div><div class="column">
 <div class="cell" data-layout-align="center">
@@ -470,9 +470,9 @@
 <div class="column">
 <p>Imagine we…</p>
 <ul>
-<li>draw 100 different samples from our population (where <span class="math inline">\(p = 40\)</span>)</li>
+<li>draw 100 different samples from our population (where the population average is <span class="math inline">\(40\)</span>)</li>
 <li>calculate the sample statistic in each sample</li>
-<li>construct a confidence interval for each sample using <span class="math inline">\(\widehat{p} \pm 2\cdot \textrm{SE}\)</span></li>
+<li>construct a confidence interval for each sample using <span class="math inline">\(\bar{x} \pm 2\cdot \textrm{SE}\)</span></li>
 </ul>
 </div><div class="column">
 <div class="cell" data-layout-align="center">
@@ -485,18 +485,48 @@
 </div>
 </div>
 </div></div>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Confidence levels -->
+<!-- - On the previous slide, 95\% of confidence intervals *across all samples* would contain the true parameter, $p$. -->
+<!-- - Thus, we call each interval estimate a **95\% confidence interval**. -->
+<!-- - Here, 95\% is our **confidence level**: The success rate for our estimation technique. -->
+<!--   - e.g., The pizza interval $0.33 \pm 0.13$ has confidence level of 95\% -->
+<!-- - The confidence level corresponds to **the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter**. -->
+<!-- ::: fragment -->
+<!-- ```{r out.width = "70%", fig.height=2.5, echo=FALSE} -->
+<!-- ggplot(x, aes(y = phat, x = sample)) + -->
+<!--   geom_point(aes(color = covers)) + -->
+<!--   geom_segment(aes(y = upper, yend = lower, x = sample, xend = sample, color = covers)) + -->
+<!--   geom_hline(aes(yintercept = p), lty = 2, lwd = 0.5) + -->
+<!--   scale_color_manual(values = c("TRUE" = "gray30", "FALSE" = "magenta3"), -->
+<!--                      guide = "none") + -->
+<!--   ylab("Sample Statistic") + xlab("") + -->
+<!--   ylim(c(27, 53)) + xlim(c(0, 100)) + -->
+<!--   theme_minimal() + -->
+<!--   theme(axis.text.x = element_blank(), -->
+<!--         axis.ticks.x = element_blank()) + -->
+<!--   labs(title = "100 different samples and their confidence intervals", -->
+<!--        subtitle = "Confidence interval coverage: 94/100 = 94%") -->
+<!-- ``` -->
+<!-- ::: -->
 </section>
 <section id="confidence-levels" class="slide level2">
 <h2>Confidence levels</h2>
+<div style="font-size:0.9em;">
 <ul>
-<li class="fragment"><p>On the previous slide, 95% of confidence intervals <em>across all samples</em> would contain the true parameter, <span class="math inline">\(p\)</span>.</p></li>
-<li class="fragment"><p>Thus, we call each interval estimate a <strong>95% confidence interval</strong>.</p></li>
-<li class="fragment"><p>Here, 95% is our <strong>confidence level</strong>: The success rate for our estimation technique.</p>
+<li class="fragment"><p><strong><u>Confidence Level:</u></strong> the percentage of <u><em>samples</em></u> that would yield a corresponding confidence interval containing the true value of the parameter (ex. 95%).</p></li>
+<li class="fragment"><p>For example, were we to:</p>
+<ul>
+<li class="fragment">Repeatedly draw samples from the population, and</li>
+<li class="fragment">Create 95% confidence intervals in each sample…</li>
+<li class="fragment">95% of those confidence intervals would contain the true parameter</li>
+<li class="fragment">Thus, we call each interval estimate a <strong>95% confidence interval</strong>.
 <ul>
 <li class="fragment">e.g., The pizza interval <span class="math inline">\(0.33 \pm 0.13\)</span> has confidence level of 95%</li>
 </ul></li>
-<li class="fragment"><p>The confidence level corresponds to <strong>the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter</strong>.</p></li>
+</ul></li>
 </ul>
+</div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -508,18 +538,6 @@
 </div>
 </div>
 </div>
-</section>
-<section id="confidence-levels-1" class="slide level2">
-<h2>Confidence levels</h2>
-<ul>
-<li class="fragment"><p><strong><u>Confidence Level:</u></strong> the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter.</p></li>
-<li class="fragment"><p>For example, were we to:</p>
-<ul>
-<li class="fragment">Repeatedly draw samples from the population, and</li>
-<li class="fragment">Create 95% confidence intervals in each sample…</li>
-<li class="fragment">95% of those confidence intervals would contain the true parameter</li>
-</ul></li>
-</ul>
 </section>
 <section id="recap-confidence-intervals" class="slide level2">
 <h2>Recap: Confidence Intervals</h2>
@@ -537,8 +555,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="think-pair-share" class="slide level2">
-<h2>Think-Pair-Share</h2>
+<section id="discuss-with-neighbors" class="slide level2">
+<h2>Discuss with Neighbors</h2>
 <p><strong>Q:</strong> What’s the difference between these two interpretations of a 95% confidence interval?</p>
 <ul>
 <li class="fragment"><p>For 95% of all samples, the interval we construct will actually contain the parameter.</p></li>
@@ -546,13 +564,13 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_4baa07df" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a37b8ff9" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 <!-- ## Think-Pair-Share (Answer)  -->
 <!-- **Q:** What's the difference between these two interpretations of a 95\% confidence interval? -->
 <!--   - For 95\% of all samples, the interval we construct will actually contain the parameter. -->
-<!--   - For a given interval, there is a 95\% chance that the parameter will fall in the interval.  -->
+<!--   - For a given interval, there is a 95\% chance that the parameter will fall in the interval. -->
 <!-- <br> -->
 <!-- ::: fragment -->
 <!-- **A:** -->
@@ -580,7 +598,7 @@
 \widehat{p} \pm \underbrace{2\cdot \textrm{SE}}_{\text{Margin of Error}}
 \]</span></p>
 <ul>
-<li class="fragment"><p>Chose <span class="math inline">\(\text{Margin of Error} = 2*SE\)</span> because 95% of sample statistics fall within <span class="math inline">\(2*SE\)</span> of the parameter (in sampling distribution).</p></li>
+<li class="fragment"><p>Chose <span class="math inline">\(\text{Margin of Error} = 2*SE\)</span> because 95% of sample statistics fall within <span class="math inline">\(2*SE\)</span> of the parameter (in bell-shaped sampling distribution).</p></li>
 <li class="fragment"><p><strong>Fun Fact:</strong> 9<u>0</u>% of sample statistics fall within <span class="math inline">\(1.64*SE\)</span> of the parameter.</p>
 <ul>
 <li class="fragment"><strong>Q</strong>: What would happen if we did the following interval? <span class="math display">\[
@@ -837,17 +855,20 @@
 <span id="cb17-17"><a></a><span class="fu">c</span>(xbar <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> se_hat, xbar <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> se_hat)  <span class="co"># Calculate confidence interval</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="next-time" class="slide level2">
-<h2>Next time:</h2>
+<section id="after-fall-break" class="slide level2">
+<h2>After fall break:</h2>
 <ul>
 <li class="fragment"><p>More on changing confidence levels</p></li>
 <li class="fragment"><p>What to do with distributions that aren’t bell-shaped (percentile method)</p></li>
 <li class="fragment"><p>Confidence interval misconceptions</p></li>
 </ul>
-
-
-
 </section></section>
+<section id="have-a-great-fall-break" class="title-slide slide level1 center">
+<h1>Have a great fall break!</h1>
+
+
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

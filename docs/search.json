@@ -144,42 +144,35 @@
     "href": "slides/lecture20_ci-intro.html#another-way-to-visualize-this",
     "title": "STAT 141",
     "section": "Another way to visualize this",
-    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw a sample from our population (where \\(p = 40\\))\ncalculate the sample statistic in that sample\nconstruct a confidence interval for that sample using \\(\\widehat{p} \\pm 2\\cdot \\textrm{SE}\\)"
+    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw a sample from our population (where the population average is \\(40\\))\ncalculate the sample statistic in that sample\nconstruct a confidence interval for that sample using \\(\\bar{x} \\pm 2\\cdot \\textrm{SE}\\)"
   },
   {
     "objectID": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-1",
     "href": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-1",
     "title": "STAT 141",
     "section": "Another way to visualize this",
-    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw 5 different samples from our population (where \\(p = 40\\))\ncalculate the sample statistic in each sample\nconstruct a confidence interval for each sample using \\(\\widehat{p} \\pm 2\\cdot \\textrm{SE}\\)"
+    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw 5 different samples from our population (where the population average is \\(40\\))\ncalculate the sample statistic in each sample\nconstruct a confidence interval for each sample using \\(\\bar{x} \\pm 2\\cdot \\textrm{SE}\\)"
   },
   {
     "objectID": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-2",
     "href": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-2",
     "title": "STAT 141",
     "section": "Another way to visualize this",
-    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw 20 different samples from our population (where \\(p = 40\\))\ncalculate the sample statistic in each sample\nconstruct a confidence interval for each sample using \\(\\widehat{p} \\pm 2\\cdot \\textrm{SE}\\)"
+    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw 20 different samples from our population (where the population average is \\(40\\))\ncalculate the sample statistic in each sample\nconstruct a confidence interval for each sample using \\(\\bar{x} \\pm 2\\cdot \\textrm{SE}\\)"
   },
   {
     "objectID": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-3",
     "href": "slides/lecture20_ci-intro.html#another-way-to-visualize-this-3",
     "title": "STAT 141",
     "section": "Another way to visualize this",
-    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw 100 different samples from our population (where \\(p = 40\\))\ncalculate the sample statistic in each sample\nconstruct a confidence interval for each sample using \\(\\widehat{p} \\pm 2\\cdot \\textrm{SE}\\)"
+    "text": "Another way to visualize this\n\n\nImagine we…\n\ndraw 100 different samples from our population (where the population average is \\(40\\))\ncalculate the sample statistic in each sample\nconstruct a confidence interval for each sample using \\(\\bar{x} \\pm 2\\cdot \\textrm{SE}\\)"
   },
   {
     "objectID": "slides/lecture20_ci-intro.html#confidence-levels",
     "href": "slides/lecture20_ci-intro.html#confidence-levels",
     "title": "STAT 141",
     "section": "Confidence levels",
-    "text": "Confidence levels\n\nOn the previous slide, 95% of confidence intervals across all samples would contain the true parameter, \\(p\\).\nThus, we call each interval estimate a 95% confidence interval.\nHere, 95% is our confidence level: The success rate for our estimation technique.\n\ne.g., The pizza interval \\(0.33 \\pm 0.13\\) has confidence level of 95%\n\nThe confidence level corresponds to the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter."
-  },
-  {
-    "objectID": "slides/lecture20_ci-intro.html#confidence-levels-1",
-    "href": "slides/lecture20_ci-intro.html#confidence-levels-1",
-    "title": "STAT 141",
-    "section": "Confidence levels",
-    "text": "Confidence levels\n\nConfidence Level: the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter.\nFor example, were we to:\n\nRepeatedly draw samples from the population, and\nCreate 95% confidence intervals in each sample…\n95% of those confidence intervals would contain the true parameter"
+    "text": "Confidence levels\n\n\nConfidence Level: the percentage of samples that would yield a corresponding confidence interval containing the true value of the parameter (ex. 95%).\nFor example, were we to:\n\nRepeatedly draw samples from the population, and\nCreate 95% confidence intervals in each sample…\n95% of those confidence intervals would contain the true parameter\nThus, we call each interval estimate a 95% confidence interval.\n\ne.g., The pizza interval \\(0.33 \\pm 0.13\\) has confidence level of 95%"
   },
   {
     "objectID": "slides/lecture20_ci-intro.html#recap-confidence-intervals",
@@ -189,11 +182,11 @@
     "text": "Recap: Confidence Intervals\n\nConfidence intervals consist of 1. an interval estimate and 2. a confidence level.\nIn our pizza party sample, we estimated the true proportion of vegetarian pizza-eaters was between \\(0.20\\) and \\(0.46\\), with \\(95\\%\\) confidence.\nWhat does “95% confidence” mean?\n\nIt’s the success rate of the process\nFor 95% of all samples, the interval we construct will actually contain the parameter.\n\nWorth emphasizing: it’s the success rate of The Process, NOT the specific interval you calculated in your sample.\n\nThe parameter is either in your interval, or it’s not – there’s no success rate there!"
   },
   {
-    "objectID": "slides/lecture20_ci-intro.html#think-pair-share",
-    "href": "slides/lecture20_ci-intro.html#think-pair-share",
+    "objectID": "slides/lecture20_ci-intro.html#discuss-with-neighbors",
+    "href": "slides/lecture20_ci-intro.html#discuss-with-neighbors",
     "title": "STAT 141",
-    "section": "Think-Pair-Share",
-    "text": "Think-Pair-Share\nQ: What’s the difference between these two interpretations of a 95% confidence interval?\n\nFor 95% of all samples, the interval we construct will actually contain the parameter.\nFor a given interval, there is a 95% chance that the parameter will fall in the interval."
+    "section": "Discuss with Neighbors",
+    "text": "Discuss with Neighbors\nQ: What’s the difference between these two interpretations of a 95% confidence interval?\n\nFor 95% of all samples, the interval we construct will actually contain the parameter.\nFor a given interval, there is a 95% chance that the parameter will fall in the interval."
   },
   {
     "objectID": "slides/lecture20_ci-intro.html#interval-width-and-sample-size-n",
@@ -207,7 +200,7 @@
     "href": "slides/lecture20_ci-intro.html#interval-width-and-confidence-level",
     "title": "STAT 141",
     "section": "Interval Width and Confidence Level",
-    "text": "Interval Width and Confidence Level\n\nIdea: Build an 95% confidence interval centered at the sample statistic, with a margin of error of \\(2\\cdot SE\\): \\[\n\\widehat{p} \\pm \\underbrace{2\\cdot \\textrm{SE}}_{\\text{Margin of Error}}\n\\]\n\nChose \\(\\text{Margin of Error} = 2*SE\\) because 95% of sample statistics fall within \\(2*SE\\) of the parameter (in sampling distribution).\nFun Fact: 90% of sample statistics fall within \\(1.64*SE\\) of the parameter.\n\nQ: What would happen if we did the following interval? \\[\n\\widehat{p} \\pm 1.64*\\textrm{SE}\n\\]\nWe would get a 90% confidence interval!\nThis interval is narrower, but has a lower “success” rate! For 90% of all samples, the interval will contain the parameter."
+    "text": "Interval Width and Confidence Level\n\nIdea: Build an 95% confidence interval centered at the sample statistic, with a margin of error of \\(2\\cdot SE\\): \\[\n\\widehat{p} \\pm \\underbrace{2\\cdot \\textrm{SE}}_{\\text{Margin of Error}}\n\\]\n\nChose \\(\\text{Margin of Error} = 2*SE\\) because 95% of sample statistics fall within \\(2*SE\\) of the parameter (in bell-shaped sampling distribution).\nFun Fact: 90% of sample statistics fall within \\(1.64*SE\\) of the parameter.\n\nQ: What would happen if we did the following interval? \\[\n\\widehat{p} \\pm 1.64*\\textrm{SE}\n\\]\nWe would get a 90% confidence interval!\nThis interval is narrower, but has a lower “success” rate! For 90% of all samples, the interval will contain the parameter."
   },
   {
     "objectID": "slides/lecture20_ci-intro.html#interval-width-and-confidence-level-1",
@@ -266,11 +259,11 @@
     "text": "Bootstrap Confidence Intervals: Complete Code Example\n\nWe are given the data frame sleep. Our statistic of interest is the average hours of sleep per night in the sample contained in this data frame (recorded individually as Hours). We can use the bootstrap method to calculate confidence intervals for the parameter, the average hours of sleep per night in the population:\n\n\n\nset.seed(121)\nsleep &lt;- read.csv(\"data-path.csv\")  # Read in the data\n\nbootstrap_samples &lt;- sleep %&gt;%   # Creating our 10,000 bootstrap samples\n  rep_sample_n(size = 50, replace = TRUE, reps = 10000)\n\nbootstrap_stats &lt;- bootstrap_samples %&gt;%  # Calculating bootstrap statistics\n  group_by(replicate) %&gt;%                 # from each sample.\n  summarize(x_bar = mean(Hours))\n\nggplot(bootstrap_stats, aes(x = x_bar))+  # Graph the bootstrap distribution\n  geom_histogram(bins = 34, color = \"white\")+\n  labs(title = \"Bootstrap Distribution for Average Sleep, n = 50\", x = \"xbar\")\n\nse_hat &lt;- sd(bootstrap_stats$x_bar)  # Estimate the standard error\nxbar &lt;- mean(sleep$Hours)  # This is our **statistic**, 7.046\nc(xbar - 2 * se_hat, xbar + 2 * se_hat)  # Calculate confidence interval"
   },
   {
-    "objectID": "slides/lecture20_ci-intro.html#next-time",
-    "href": "slides/lecture20_ci-intro.html#next-time",
+    "objectID": "slides/lecture20_ci-intro.html#after-fall-break",
+    "href": "slides/lecture20_ci-intro.html#after-fall-break",
     "title": "STAT 141",
-    "section": "Next time:",
-    "text": "Next time:\n\nMore on changing confidence levels\nWhat to do with distributions that aren’t bell-shaped (percentile method)\nConfidence interval misconceptions"
+    "section": "After fall break:",
+    "text": "After fall break:\n\nMore on changing confidence levels\nWhat to do with distributions that aren’t bell-shaped (percentile method)\nConfidence interval misconceptions"
   },
   {
     "objectID": "slides/lecture18_bootstrapping.html#sampling-variability",
