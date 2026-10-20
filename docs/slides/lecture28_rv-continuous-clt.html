@@ -200,32 +200,22 @@
 <section class="slide level2">
 
 <div class="columns">
-<div class="column center" style="width:35%;">
+<div class="column center" style="width:55%;">
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
-</div><div class="column center" style="width:65%;">
+</div><div class="column center" style="width:45%;">
+<div style="font-size:0.75em;">
 <p><br></p>
 <p><span class="custom-title">Random Variables III: Continuous Distributions &amp; CLT</span></p>
 <p><br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Wednesday, Week 11</span></p>
+</div>
 </div></div>
-</section>
-<section id="hw-announcement" class="slide level2">
-<h2>HW Announcement</h2>
-<ul>
-<li class="fragment">HW 8 is posted
-<ul>
-<li class="fragment">It is due in <strong>2 weeks</strong>, on <strong>Friday April 17th 11:59pm</strong>.</li>
-<li class="fragment">After today we will have covered all relevant lecture material</li>
-<li class="fragment">In the next lab we’ll practice related R functions more</li>
-<li class="fragment">My suggestion: start on non-R problems now, save <strong>2c-f, 4, 5d-e</strong> for after the next lab</li>
-</ul></li>
-</ul>
 </section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for Today</h2>
 <ul>
-<li class="fragment">Answers from last class activity</li>
+<li class="fragment">Review: Binomial distribution activity</li>
 <li class="fragment">Discuss continuous random variables</li>
 <li class="fragment">Introduce the normal distribution</li>
 <li class="fragment">Discuss the <strong>Central Limit Theorem</strong>!</li>
@@ -237,40 +227,30 @@
 <ol type="1">
 <li class="fragment"><p>Assume your belief is true. Let <span class="math inline">\(X\)</span> be the number of survey respondents who think the city should install more bike lanes. Does <span class="math inline">\(X\)</span> follow a Binomial distribution? If so, what are <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>?</p></li>
 <li class="fragment"><p>Calculate the expected value and standard deviation of <span class="math inline">\(X\)</span> (still assuming your belief is true)</p></li>
-<li class="fragment"><p>Suppose you conducted the survey and found 30 respondents wanted more bike lanes. What’s the probability that <span class="math inline">\(X\geq 30\)</span>? (use R!)</p></li>
+<li class="fragment"><p>Suppose you conducted the survey and found 30 respondents wanted more bike lanes. In <code>R</code>, how would we calculate the probability that <span class="math inline">\(X\geq 30\)</span>? (If you have your computer - test it!)</p></li>
 <li class="fragment"><p>Draw the connection between the probability you calculated and a hypothesis test.</p></li>
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_11d346f7" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_99e560da" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
-</section>
-<section id="activity-survey-of-portlanders-answers" class="slide level2 smaller">
-<h2>Activity: Survey of Portlanders (Answers)</h2>
-<p>Suppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief.</p>
-<ol type="1">
-<li class="fragment">Assume your belief is true. Let <span class="math inline">\(X\)</span> be the number of survey respondents who think the city should install more bike lanes. Does <span class="math inline">\(X\)</span> follow a Binomial distribution? If so, what are <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>?
-<ul>
-<li class="fragment"><strong><span class="math inline">\(X\)</span> follows a Binomial(<span class="math inline">\(n=50,p=0.4\)</span>) distribution.</strong></li>
-</ul></li>
-<li class="fragment">Calculate the expected value and standard deviation of <span class="math inline">\(X\)</span> (assuming your belief)</li>
-</ol>
-<div class="fragment">
-<p><strong><span class="math display">\[E[X] = (50)(.4) = 20\]</span></strong> <strong><span class="math display">\[SD[X] = \sqrt{(50)(.4)(1-.4)} = 3.46\]</span></strong></p>
-</div>
-<ol start="3" type="1">
-<li class="fragment">Suppose you conducted the survey and found 30 respondents wanted more bike lanes. What’s the probability that <span class="math inline">\(X\geq 30\)</span>? (use R!)
-<ul>
-<li class="fragment"><strong><span class="math inline">\(P[X\geq30] = 1 - \texttt{pbinom}(29,~ 50,~ 0.4) = 0.0033\)</span></strong></li>
-</ul></li>
-<li class="fragment">Draw the connection between the probability you calculated and a hypothesis test.
-<ul>
-<li class="fragment"><strong>We are testing <span class="math inline">\(H_0: p=0.4\)</span> vs.&nbsp;<span class="math inline">\(H_a: p&gt;0.4\)</span></strong></li>
-<li class="fragment"><strong>Test statistic: <span class="math inline">\(\hat{p}=30/50\)</span></strong></li>
-<li class="fragment"><strong>p-value = 0.0033</strong></li>
-</ul></li>
-</ol>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Activity: Survey of Portlanders (Answers) {.smaller} -->
+<!-- Suppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief. -->
+<!-- 1. Assume your belief is true. Let $X$ be the number of survey respondents who think the city should install more bike lanes. Does $X$ follow a Binomial distribution? If so, what are $n$ and $p$? -->
+<!--     - **$X$ follows a Binomial($n=50,p=0.4$) distribution.** -->
+<!-- 2. Calculate the expected value and standard deviation of $X$ (assuming your belief) -->
+<!-- ::: fragment -->
+<!-- **$$E[X] = (50)(.4) = 20$$** -->
+<!-- **$$SD[X] = \sqrt{(50)(.4)(1-.4)} = 3.46$$** -->
+<!-- ::: -->
+<!-- 3. Suppose you conducted the survey and found 30 respondents wanted more bike lanes. What's the probability that $X\geq 30$? (use R!) -->
+<!--     - **$P[X\geq30] = 1 - \texttt{pbinom}(29,~ 50,~ 0.4) = 0.0033$** -->
+<!-- 4. Draw the connection between the probability you calculated and a hypothesis test. -->
+<!--     - **We are testing $H_0: p=0.4$ vs. $H_a: p>0.4$** -->
+<!--     - **Test statistic: $\hat{p}=30/50$** -->
+<!--     - **p-value = 0.0033** -->
 </section>
 <section>
 <section id="continuous-random-variables" class="title-slide slide level1 center">
@@ -697,30 +677,21 @@ P(X \leq x) = P\left(Z \leq \frac{x-\mu}{\sigma}\right)
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_2e30e849" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a5504996" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
-</section>
-<section id="practice-with-standard-normals-1" class="slide level2">
-<h2>Practice with Standard Normals</h2>
-<p><strong>More Generally:</strong> If <span class="math inline">\(X\sim\text{Normal}(\mu,\sigma)\)</span> and <span class="math inline">\(Z\sim\text{Normal}(0,1)\)</span>, then</p>
-<p><span class="math display">\[
-P(X \leq x) = P\left(Z \leq \frac{x-\mu}{\sigma}\right)
-\]</span></p>
-<p><br></p>
-<p><strong>Practice:</strong> For each of the following, rewrite <span class="math inline">\(P(X \leq x)\)</span> as <span class="math inline">\(P(Z \leq z)\)</span> for some <span class="math inline">\(z\)</span>.</p>
-<ol type="1">
-<li class="fragment"><span class="math inline">\(P(X \leq 10)\)</span> where <span class="math inline">\(X\sim\text{Normal}(\mu=5,\sigma=5)\)</span></li>
-</ol>
-<ul>
-<li class="fragment"><span class="math inline">\(\frac{10 - \mu}{\sigma} = \frac{10 - 5}{5} = 1 = z\)</span>, so <span class="math inline">\(\color{red}{P(X \leq 10) = P(Z \leq 1)}\)</span></li>
-</ul>
-<ol start="2" type="1">
-<li class="fragment"><span class="math inline">\(P(X \leq 15)\)</span> where <span class="math inline">\(X\sim\text{Normal}(\mu=20,\sigma=10)\)</span></li>
-</ol>
-<ul>
-<li class="fragment"><span class="math inline">\(\frac{15 - \mu}{\sigma} = \frac{15 - 20}{10} = -0.5 = z\)</span>, so <span class="math inline">\(\color{red}{P(X \leq 15) = P(Z \leq -0.5)}\)</span></li>
-</ul>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Practice with Standard Normals -->
+<!-- **More Generally:** If $X\sim\text{Normal}(\mu,\sigma)$ and $Z\sim\text{Normal}(0,1)$, then -->
+<!-- $$ -->
+<!-- P(X \leq x) = P\left(Z \leq \frac{x-\mu}{\sigma}\right) -->
+<!-- $$ -->
+<!-- <br> -->
+<!-- **Practice:** For each of the following, rewrite $P(X \leq x)$ as $P(Z \leq z)$ for some $z$. -->
+<!-- 1) $P(X \leq 10)$ where $X\sim\text{Normal}(\mu=5,\sigma=5)$ -->
+<!-- - $\frac{10 - \mu}{\sigma} = \frac{10 - 5}{5} = 1 = z$, so $\color{red}{P(X \leq 10) = P(Z \leq 1)}$ -->
+<!-- 2) $P(X \leq 15)$ where $X\sim\text{Normal}(\mu=20,\sigma=10)$ -->
+<!-- - $\frac{15 - \mu}{\sigma} = \frac{15 - 20}{10} = -0.5 = z$, so $\color{red}{P(X \leq 15) = P(Z \leq -0.5)}$ -->
 <!-- # It is time to recast some of the sample statistics we have been exploring as random variables! -->
 <!-- ------------------------------------------------------------------------ -->
 <!-- ### Sample Statistics as Random Variables -->
@@ -864,6 +835,8 @@ P(X \leq x) = P\left(Z \leq \frac{x-\mu}{\sigma}\right)
 <section id="sampling-distributions-are-approximately-normal" class="slide level2">
 <h2>Sampling Distributions are Approximately Normal</h2>
 <p>The <strong>sampling distribution</strong> for <em>each</em> planet appeared approximately Normal with <span class="math inline">\(n=50\)</span>, regardless of the shape of the population distribution.</p>
+<div class="columns">
+<div class="column">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -873,6 +846,7 @@ P(X \leq x) = P\left(Z \leq \frac{x-\mu}{\sigma}\right)
 </div>
 </div>
 </div>
+</div><div class="column">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -882,6 +856,7 @@ P(X \leq x) = P\left(Z \leq \frac{x-\mu}{\sigma}\right)
 </div>
 </div>
 </div>
+</div></div>
 </section>
 <section id="sampling-distributions-are-approximately-normal-1" class="slide level2">
 <h2>Sampling Distributions are Approximately Normal</h2>
@@ -934,25 +909,22 @@ P(X \leq x) = P\left(Z \leq \frac{x-\mu}{\sigma}\right)
 </ol>
 <p><br></p>
 <ol start="2" type="1">
-<li class="fragment">For nearly any population distribution, the sample mean is approximately Normal</li>
+<li class="fragment">For nearly any population distribution, the sample mean is approximately Normal (when <span class="math inline">\(n\)</span> is large enough)</li>
 </ol>
 <p><br></p>
 <ol start="3" type="1">
 <li class="fragment">The CLT gives a formula to calculate the mean and variance of a sample mean.
 <ul>
 <li class="fragment">We can estimate these using our data</li>
-<li class="fragment">We can quickly approximate what the sampling distribution looks like!</li>
+<li class="fragment">We can then quickly approximate what the sampling distribution looks like</li>
 </ul></li>
 </ol>
 </section>
-<section id="next-week" class="slide level2">
-<h2>Next week:</h2>
+<section id="next-time" class="slide level2">
+<h2>Next time:</h2>
 <ul>
 <li class="fragment">We’ll use the approximate distribution of the sample statistic (given by the CLT) to construct confidence intervals and to conduct hypothesis tests!</li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>

@@ -44,13 +44,14 @@ library(tufte)
 ```
 
 ::::: columns
-::: {.column .center width="50%"}
+::: {.column .center width="60%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="50%"}
+::: {.column .center width="40%"}
 <br>
 
+::: {style="font-size:0.9em;"}
 [Random Variables I: Introduction]{.custom-title}
 
 <br> <br> 
@@ -58,15 +59,11 @@ library(tufte)
 [Megan Ayers]{.custom-subtitle}
 
 [Stat 141 \| Fall 2026 <br> Friday, Week 10]{.custom-subtitle}
+
+:::
 :::
 :::::
 
-
-------------------------------------------------------------------------
-
-## Announcements
-
--   Midterm revision deadline extended to **Friday April 3rd, at the beginning of lecture**.
 
 ------------------------------------------------------------------------
 
@@ -177,6 +174,8 @@ $$
 
 ## The Distribution of a Random Variable
 
+::: {style="font-size:0.9em;"}
+
 ::: {.fragment}
 **Random** variables have distributions, which tell us...
 
@@ -206,10 +205,13 @@ Suppose instead that I have a purse filled with the following 100 bills:
 ::: {.fragment}
 Playing this casino game is very similar to drawing a random bill from the purse!
 :::
+:::
 
 ------------------------------------------------------------------------
 
 ## Visualizing Discrete Distributions
+
+::: {style="font-size:0.9em;"}
 
 We often use bar charts to visualize the distribution of discrete random variables.
 
@@ -224,13 +226,18 @@ dd <- data.frame(t, p)
 ggplot(dd, aes(x = t, y = p)) +
   geom_col() +
   scale_x_continuous(breaks = t) +
-  labs(x = "X", y = "Probability", title = "Distribution for number of 1's in 6 rolls")
+  labs(x = "X", y = "Probability",
+       title = "Distribution for number of 1's in 6 rolls") +
+  theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10))
 ```
 
 :::
 
 - Heights of bars are **probabilities**
 - This is analogous to rescaling a histogram to have heights = proportions insted of counts
+
+:::
 
 
 # Expected Value and Variance
@@ -290,29 +297,29 @@ countdown::countdown(2)
 ```
 
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Practice (Answers)
+<!-- ## Practice (Answers) -->
 
-$$
-E[X] = x_1 P(X = x_1) + x_2 P(X = x_2) + \dots x_n P(X = x_n) = \sum_{i =1}^n x_i P(X = x_i)
-$$
+<!-- $$ -->
+<!-- E[X] = x_1 P(X = x_1) + x_2 P(X = x_2) + \dots x_n P(X = x_n) = \sum_{i =1}^n x_i P(X = x_i) -->
+<!-- $$ -->
 
-Suppose we have a data set consisting of 10 values: $\{1,1,2,2,2,2,3,4,5,5\}$.
+<!-- Suppose we have a data set consisting of 10 values: $\{1,1,2,2,2,2,3,4,5,5\}$. -->
 
-::: {.nonincremental}
-- Let $X$ be a value chosen from this data set randomly.
-- What is the expected value of $X$?
-:::
+<!-- ::: {.nonincremental} -->
+<!-- - Let $X$ be a value chosen from this data set randomly. -->
+<!-- - What is the expected value of $X$? -->
+<!-- ::: -->
 
 
-$$
-\begin{align}
-E[X] =& 1 P(X = 1) + 2 P(X = 2) + 3 P(X =3) + 4 P(X = 4) + 5 P(X = 5) \\
-=& 1 \frac{2}{10} + 2 \frac{4}{10} + 3 \frac{1}{10} + 4 \frac{1}{10} + 5 \frac{2}{10} \\
-=& \frac{27}{10}
-\end{align}
-$$
+<!-- $$ -->
+<!-- \begin{align} -->
+<!-- E[X] =& 1 P(X = 1) + 2 P(X = 2) + 3 P(X =3) + 4 P(X = 4) + 5 P(X = 5) \\ -->
+<!-- =& 1 \frac{2}{10} + 2 \frac{4}{10} + 3 \frac{1}{10} + 4 \frac{1}{10} + 5 \frac{2}{10} \\ -->
+<!-- =& \frac{27}{10} -->
+<!-- \end{align} -->
+<!-- $$ -->
 
 
 ------------------------------------------------------------------------
@@ -324,7 +331,7 @@ Previously, we said that by the **Law of Large numbers** (LLN), the proportion o
 ::: {.fragment}
 This is a generalization:
 
-::: {.callout-note icon=false .nonincremental}
+::: {.callout-note icon=false .nonincremental style="font-size:1.25em;"}
 ## Theorem: The Law of Large Numbers
 Let $X$ be a random variable.
 
@@ -372,6 +379,8 @@ We can see that the **expected value** is $3.5$
 
 ## Variance and Standard Deviation
 
+::: {style="font-size:0.95em;"}
+
 The **variance** of a discrete random variable $X$ with mean $E(X) = \mu$ is
 $$
 \begin{align}
@@ -398,6 +407,8 @@ We often use:
 - $\sigma$ to denote the standard deviation
 :::
 
+:::
+
 ------------------------------------------------------------------------
 
 ## Variance and Standard Deviation
@@ -416,14 +427,14 @@ Suppose we have a data set consisting of 5 values: $\{1,1,3,5, 5\}$. Let $X$ be 
 :::
 
 
-::: {.fragment}
-$$
-\begin{align}
-\mathrm{Var}(X) =& (1 - 3)^2 P(X = 1) + (3 - 3)^2 P(X = 3) + (5 - 3)^2 P(X =5) \\
-=& (-2)^2 \frac{2}{5} + (0)^2 \frac{1}{5} + 2^2 \frac{2}{5} = \frac{16}{5}
-\end{align}
-$$
-:::
+<!-- ::: {.fragment} -->
+<!-- $$ -->
+<!-- \begin{align} -->
+<!-- \mathrm{Var}(X) =& (1 - 3)^2 P(X = 1) + (3 - 3)^2 P(X = 3) + (5 - 3)^2 P(X =5) \\ -->
+<!-- =& (-2)^2 \frac{2}{5} + (0)^2 \frac{1}{5} + 2^2 \frac{2}{5} = \frac{16}{5} -->
+<!-- \end{align} -->
+<!-- $$ -->
+<!-- ::: -->
 
 ```{r}
 #| echo: false
@@ -596,64 +607,75 @@ $$
 That's a lot simpler!
 :::
 
-# Activity
+------------------------------------------------------------------------
 
+## Recap: Properties of Random Variables
 
-## What about 23 coin tosses?
+The **expected value** (or mean) of a discrete random variable $X$ is
+$$
+E[X] = \mu = x_1 P(X = x_1) + x_2 P(X = x_2) + \dots x_n P(X = x_n) = \sum_{i =1}^n x_i P(X = x_i)
+$$
+where $x_1, \dots, x_n$ are *all the values X could potentially take*.
 
-Let $Z$ be the number of heads in $23$ independent coin tosses.
+The **variance** of a discrete random variable $X$ with mean $E(X) = \mu$ is
+$$
+\mathrm{Var}(X) = \sigma^2 = \sum_{i =1}^n (x_i-\mu)^2 P(X = x_i)
+$$
 
-**Q:** What is $E(Z)$?
-
-**Q:** What is $\mathrm{Var}(Z)$?
-
-**Q:** Suppose $W$ represents the number of heads in **$n$** independent coin tosses. What is $E(W)$ and $\mathrm{Var}(W)$?
-
-```{r}
-#| echo: false
-countdown::countdown(5)
-```
-
+We also define the **standard deviation** of a random variable $X$ to be
+$$
+\textrm{SD}(X) = \sqrt{\mathrm{Var}(X)}
+$$
 
 ------------------------------------------------------------------------
 
-## Activity: Answers
+## Recap: Theorems for Discrete Random Variables
 
-Let $Z$ be the number of heads in $23$ independent coin tosses.
+::::: columns
 
-::: {.fragment}
-**Q:** What is $E(Z)$?
-:::
+::: column
 
-::: {.fragment}
-::: {.nonincremental}
-- Let $X_1$ = Heads on 1st toss, $\dots$  , $X_{23}$ = Heads on $23$rd toss:
+::: {.callout-note icon=false}
+## Theorem: Expectation of Sum
+Let $X$ and $Y$ be random variables. Then
 $$
-  E(Z) = E(X_1) + \dots + E(X_{23}) = 0.5+\dots+0.5 = 23(0.5)
-$$
-:::
-:::
-
-::: {.fragment}
-**Q:** What is $\mathrm{Var}(Z)$?
-:::
-
-::: {.fragment}
-$$
-  \mathrm{Var}(Z) = \mathrm{Var}(X_1) + \dots + \mathrm{Var}(X_{23}) = 0.25+\dots+0.25 = 23(0.25)
+E(X + Y) = E(X) + E(Y)
 $$
 :::
 
-::: {.fragment}
-**Q:** Suppose $W$ represents the number of heads in $n$ independent coin tosses. What is $E(W)$ and $\mathrm{Var}(W)$?
+::: {.callout-note icon=false}
+## Theorem: Scalar Multiplication with Expectation
+Let $X$ be a random variable, and let $c$ be a number. Then
+$$
+E(cX) = cE(X) 
+$$
 :::
 
-::: {.fragment}
-::: {.nonincremental}
--   $E(W) = nE(X_1) = (n)(0.5)$
--   $\mathrm{Var}(W) = n\mathrm{Var}(X_1) = (n)(0.25)$
 :::
+
+::: column
+
+::: {.callout-note icon=false}
+## Theorem: Variance of Sum
+Let $X$ and $Y$ be random variables. Additionally, let $X$ and $Y$ be \*\*\*[*independent*]{.underline}\*\*\*. Then
+$$
+\mathrm{Var}(X + Y) = \mathrm{Var}(X) + \mathrm{Var}(Y)
+$$
 :::
+
+
+::: {.callout-note icon=false}
+## Theorem: Scalar Multiplication with Variance
+Let $X$ be a random variable, and let $c$ be a number. Then
+$$
+\mathrm{Var}(cX) = c^2\mathrm{Var}(X) 
+$$
+:::
+
+:::
+
+:::::
+
 
 ------------------------------------------------------------------------
 

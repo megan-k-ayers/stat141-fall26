@@ -44,11 +44,14 @@ library(tufte)
 ```
 
 ::::: columns
-::: {.column .center width="40%"}
+::: {.column .center width="60%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="60%"}
+::: {.column .center width="40%"}
+
+::: {style="font-size:0.8em;"}
+
 <br>
 
 [Random Variables II: Discrete Distributions]{.custom-title}
@@ -58,6 +61,9 @@ library(tufte)
 [Megan Ayers]{.custom-subtitle}
 
 [Stat 141 \| Fall 2026 <br> Monday, Week 11]{.custom-subtitle}
+
+:::
+
 :::
 :::::
 
@@ -66,7 +72,7 @@ library(tufte)
 
 ## Goals for Today
 
-- Continue our discussion of expected value and variance
+- Brief review of expected value and variance
 - Introduce the **Bernoulli distribution**
 - Introduce the **Binomial distribution**
 
@@ -143,6 +149,7 @@ $$
 :::
 
 ::::
+
 
 ------------------------------------------------------------------------
 
@@ -475,8 +482,73 @@ $$
 $$
 
 
-# What about the sum of many Bernoulli random variables?
+# Activity: Many Bernoulli random variables
 
+
+## What about 23 coin tosses?
+
+We can model one fair coin toss as a $\text{Bernoulli}(0.5)$. How should we think about tossing the coin many (ex. 23) times? 
+
+Let $Z$ count the number of heads in $23$ independent coin tosses.
+
+<br>
+
+**Q:** Let $Z_i$ represent the $i$th coin toss. Can we write $Z$ in terms of the $Z_i$s? 
+
+**Q:** What is $E(Z)$?
+
+**Q:** What is $\mathrm{Var}(Z)$?
+
+**Q:** Suppose $X$ represents the number of heads in **$n$** independent coin tosses. What is $E(X)$ and $\mathrm{Var}(X)$?
+
+```{r}
+#| echo: false
+countdown::countdown(5)
+```
+
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- ## Activity: Answers -->
+
+<!-- Let $Z$ be the number of heads in $23$ independent coin tosses. -->
+
+<!-- ::: {.fragment} -->
+<!-- **Q:** What is $E(Z)$? -->
+<!-- ::: -->
+
+<!-- ::: {.fragment} -->
+<!-- ::: {.nonincremental} -->
+<!-- - Let $X_1$ = Heads on 1st toss, $\dots$  , $X_{23}$ = Heads on $23$rd toss: -->
+<!-- $$ -->
+<!--   E(Z) = E(X_1) + \dots + E(X_{23}) = 0.5+\dots+0.5 = 23(0.5) -->
+<!-- $$ -->
+<!-- ::: -->
+<!-- ::: -->
+
+<!-- ::: {.fragment} -->
+<!-- **Q:** What is $\mathrm{Var}(Z)$? -->
+<!-- ::: -->
+
+<!-- ::: {.fragment} -->
+<!-- $$ -->
+<!--   \mathrm{Var}(Z) = \mathrm{Var}(X_1) + \dots + \mathrm{Var}(X_{23}) = 0.25+\dots+0.25 = 23(0.25) -->
+<!-- $$ -->
+<!-- ::: -->
+
+<!-- ::: {.fragment} -->
+<!-- **Q:** Suppose $W$ represents the number of heads in $n$ independent coin tosses. What is $E(W)$ and $\mathrm{Var}(W)$? -->
+<!-- ::: -->
+
+<!-- ::: {.fragment} -->
+<!-- ::: {.nonincremental} -->
+<!-- -   $E(W) = nE(X_1) = (n)(0.5)$ -->
+<!-- -   $\mathrm{Var}(W) = n\mathrm{Var}(X_1) = (n)(0.25)$ -->
+<!-- ::: -->
+<!-- ::: -->
+
+
+------------------------------------------------------------------------
 
 ## $n$ "weighted coin tosses": Expected Value and Variance
 
@@ -485,14 +557,9 @@ Let $X$ be the number of successes in $n$ **independent** Bernoulli($p$) random 
 **Q:** What are $E(X)$ and $\mathrm{Var}(X)$?
 
 ::: {.fragment}
-*Hint:* We know, from the Bernoulli distribution, that if $X_1$ is the number of heads in a *single* weighted coin flip with success probability $p$,
+We know, from the Bernoulli distribution, that if $X_1$ is the number of heads in a *single* weighted coin flip with success probability $p$,
 $$E(X_1)=p \quad \text{ and } \quad \text{Var}(X_1)= p (1 - p)$$
 :::
-
-```{r}
-#| echo: false
-countdown::countdown(2)
-```
 
 
 
@@ -503,7 +570,7 @@ countdown::countdown(2)
 Let $X$ be the number of heads in $n$ **independent** Bernoulli($p$) random variables.
 
 
-**Answer:** Let $X_1$ = Heads in 1st toss, $\dots$  , $X_n$ = Heads in $n$th toss:
+Let $X_1$ = Heads in 1st toss, $\dots$  , $X_n$ = Heads in $n$th toss:
 $$
   X = X_1 + \dots + X_n = \sum_{i=1}^n X_i
 $$
@@ -517,14 +584,16 @@ $$
 \end{align}
 $$
 
-# What about the distribution of $n$ weighted coin tosses?
+# What about the [distribution]{.underline} of $n$ weighted coin tosses?
 
 ::: {.fragment}
 We'll start with the unweighted case, i.e., $p = 0.5$
 :::
 
 
-## $n$ coin toss probabilities? {.smaller}
+## $n$ coin toss probabilities?
+
+::: {style="font-size:0.85em;"}
 
 We've calculated Expectation and Variance for the number of heads in $n$ coin tosses.
 
@@ -569,6 +638,8 @@ P(X=3) &= \frac{1}{8} \quad&\quad P(X=2) &= \frac{3}{8}\\
 $$
 :::
 
+:::
+
 ------------------------------------------------------------------------
 
 ## 3 coin tosses probabilities
@@ -598,7 +669,9 @@ For example, we found that in $n=3$ coin tosses,
 
 ------------------------------------------------------------------------
 
-## Generalization 1 {.smaller}
+## Generalization 1
+
+::: {style="font-size:0.85em;"}
 
 First: **What if $n$ and $k$ are bigger?**
 
@@ -624,10 +697,13 @@ $$
 $$
 :::
 
+:::
 
 ------------------------------------------------------------------------
 
-## Generalization 1 {.smaller}
+## Generalization 1
+
+::: {style="font-size:0.85em;"}
 
 ::: nonincremental
 First: **What if $n$ and $k$ are bigger?**
@@ -646,6 +722,8 @@ So in our example of 2 heads in 3 flips:
 
 ::: fragment
 $$\text{# of ways to choose 2 things out of 3 things} = {3\choose2} = \frac{3!}{2! \cdot 1!} = \frac{3 \cdot 2}{2} = 3$$
+:::
+
 :::
 
 
@@ -737,6 +815,8 @@ dbinom(x = 10, size = 15, prob = 0.7)
 
 ## Calculating Binomial Probabilities: `pbinom()`
 
+::: {style="font-size:0.9em;"}
+
 We can also calculate $P(X \leq k)$ with `pbinom()`
 
 ::: {.fragment .nonincremental}
@@ -769,65 +849,38 @@ Can also calculate $P(X > k)$ by doing `1 - pbinom()`:
 
 <br>
 
-- `pbinom()` takes in an observable value of a Binomial random variable, and returns the probability of observing it **or something smaller**.
+- Third bullet: why q = 1? `pbinom()` takes in an observable value of a Binomial random variable, and returns the probability of observing **that value OR something smaller**.
+
+:::
+
 
 ------------------------------------------------------------------------
 
-## Activity: Survey of Portlanders
+## Recap
 
-Suppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief.
+::: {.nonincremental style="font-size:0.8em;"}
 
-1. Assume your belief is true. Let $X$ be the number of survey respondents who think the city should install more bike lanes. Does $X$ follow a Binomial distribution? If so, what are $n$ and $p$?
+**If $X \sim$ Bernoulli $(p)$** (ex. one coin flip), then:
 
-2. Calculate the expected value and standard deviation of $X$ (still assuming your belief is true)
+- $\mathbb{E}[X] = p$ and $Var(X) = p(1 - p)$
+- The distribution of $X$ is:
 
-3. Suppose you conducted the survey and found 30 respondents wanted more bike lanes. What's the probability that $X\geq 30$? (use R!)
+| $x$    | 0       | 1   |
+|--------|---------|-----|
+| $p(x)$ | 1 - $p$ | $p$ |
 
-4. Draw the connection between the probability you calculated and a hypothesis test.
+<br>
 
-```{r}
-#| echo: false
-countdown::countdown(8)
-```
+**If $X \sim \text{Binomial}(n,~p)$** (i.e. $X$ represents the number of successes in $n$ independent Bernoulli trials with probability of success $p$), then:
 
+- $\mathbb{E}[X] = np$ and $Var(X) = np(1-p)$
+- The distribution of $X$ is:
 
-<!-- ------------------------------------------------------------------------ -->
+$$P[X=k] = {n \choose k}p^k(1-p)^{n-k}$$
 
-<!-- ## Activity: Survey of Portlanders (Answers) {.smaller} -->
+- We can calculate Binomial probabilities using `dbinom()` and `pbinom()`.
 
-<!-- Suppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief. -->
-
-<!-- ::: {.fragment .nonincremental} -->
-<!-- 1. Assume your belief is true. Let $X$ be the number of survey respondents who think the city should install more bike lanes. Does $X$ follow a Binomial distribution? If so, what are $n$ and $p$? -->
-
-<!--     - $X$ follows a Binomial($n=50,p=0.4$) distribution. -->
-
-<!-- ::: -->
-
-<!-- ::: {.fragment .nonincremental} -->
-<!-- 2. Calculate the expected value and standard deviation of $X$ (assuming your belief) -->
-
-
-<!--     - $E[X] = (50)(.4) = 20$ -->
-<!--     - $SD[X] = \sqrt{(50)(.4)(1-.4)} = 3.46$ -->
-
-<!-- ::: -->
-
-<!-- ::: {.fragment .nonincremental} -->
-<!-- 3. Suppose you conducted the survey and found 30 respondents wanted more bike lanes. What's the probability that $X\geq 30$? (use R!) -->
-
-<!--     - $P[X\geq30] = 1 - \texttt{pbinom}(29,~ 50,~ 0.4) = 0.0033$ -->
-
-<!-- ::: -->
-
-<!-- ::: {.fragment .nonincremental} -->
-<!-- 4. Draw the connection between the probability you calculated and a hypothesis test. -->
-
-<!--     - We are testing $H_0: p=0.4$ vs. $H_a: p>0.4$ -->
-<!--     - Test statistic: $\hat{p}=30/50$ -->
-<!--     - p-value = 0.0033 -->
-
-<!-- ::: -->
+:::
 
 ------------------------------------------------------------------------
 
@@ -835,13 +888,9 @@ countdown::countdown(8)
 
 ::: nonincremental
 
+- Another binomial random variable activity
 - Continuous random variables
 - The Central Limit Theorem! 
 
 :::
-
-
-------------------------------------------------------------------------
-
-
 

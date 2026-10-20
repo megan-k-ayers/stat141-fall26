@@ -229,8 +229,6 @@ rats <- data.frame(empathy = c(rep("Yes", 23), rep("No", 7)))
 
 *******************************************************************************
 
-*Note to CAs: If students are stuck, direct them back to their Lab 7 and ask them to explain their work there. They can use almost exactly the same code from part (a) here, they just need to substitute in the right data frame, sample size, reps, labels.*
-
 ```{r}
 set.seed(12)
 

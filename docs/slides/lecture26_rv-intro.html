@@ -134,21 +134,17 @@
 <section class="slide level2">
 
 <div class="columns">
-<div class="column center" style="width:50%;">
+<div class="column center" style="width:60%;">
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
-</div><div class="column center" style="width:50%;">
+</div><div class="column center" style="width:40%;">
 <p><br></p>
+<div style="font-size:0.9em;">
 <p><span class="custom-title">Random Variables I: Introduction</span></p>
 <p><br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Friday, Week 10</span></p>
+</div>
 </div></div>
-</section>
-<section id="announcements" class="slide level2">
-<h2>Announcements</h2>
-<ul>
-<li class="fragment">Midterm revision deadline extended to <strong>Friday April 3rd, at the beginning of lecture</strong>.</li>
-</ul>
 </section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
@@ -250,6 +246,7 @@
 </section>
 <section id="the-distribution-of-a-random-variable" class="slide level2">
 <h2>The Distribution of a Random Variable</h2>
+<div style="font-size:0.9em;">
 <div class="fragment">
 <p><strong>Random</strong> variables have distributions, which tell us…</p>
 <ul>
@@ -307,9 +304,11 @@
 <div class="fragment">
 <p>Playing this casino game is very similar to drawing a random bill from the purse!</p>
 </div>
+</div>
 </section>
 <section id="visualizing-discrete-distributions" class="slide level2">
 <h2>Visualizing Discrete Distributions</h2>
+<div style="font-size:0.9em;">
 <p>We often use bar charts to visualize the distribution of discrete random variables.</p>
 <div class="fragment">
 <ul>
@@ -329,6 +328,7 @@
 <li class="fragment">Heights of bars are <strong>probabilities</strong></li>
 <li class="fragment">This is analogous to rescaling a histogram to have heights = proportions insted of counts</li>
 </ul>
+</div>
 </section></section>
 <section>
 <section id="expected-value-and-variance" class="title-slide slide level1 center">
@@ -379,33 +379,33 @@ E[X] = x_1 P(X = x_1) + x_2 P(X = x_2) + \dots x_n P(X = x_n) = \sum_{i =1}^n x_
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_ad1804c1" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_eb60aaeb" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
-</section>
-<section id="practice-answers" class="slide level2">
-<h2>Practice (Answers)</h2>
-<p><span class="math display">\[
-E[X] = x_1 P(X = x_1) + x_2 P(X = x_2) + \dots x_n P(X = x_n) = \sum_{i =1}^n x_i P(X = x_i)
-\]</span></p>
-<p>Suppose we have a data set consisting of 10 values: <span class="math inline">\(\{1,1,2,2,2,2,3,4,5,5\}\)</span>.</p>
-<ul>
-<li>Let <span class="math inline">\(X\)</span> be a value chosen from this data set randomly.</li>
-<li>What is the expected value of <span class="math inline">\(X\)</span>?</li>
-</ul>
-<p><span class="math display">\[
-\begin{align}
-E[X] =&amp; 1 P(X = 1) + 2 P(X = 2) + 3 P(X =3) + 4 P(X = 4) + 5 P(X = 5) \\
-=&amp; 1 \frac{2}{10} + 2 \frac{4}{10} + 3 \frac{1}{10} + 4 \frac{1}{10} + 5 \frac{2}{10} \\
-=&amp; \frac{27}{10}
-\end{align}
-\]</span></p>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Practice (Answers) -->
+<!-- $$ -->
+<!-- E[X] = x_1 P(X = x_1) + x_2 P(X = x_2) + \dots x_n P(X = x_n) = \sum_{i =1}^n x_i P(X = x_i) -->
+<!-- $$ -->
+<!-- Suppose we have a data set consisting of 10 values: $\{1,1,2,2,2,2,3,4,5,5\}$. -->
+<!-- ::: {.nonincremental} -->
+<!-- - Let $X$ be a value chosen from this data set randomly. -->
+<!-- - What is the expected value of $X$? -->
+<!-- ::: -->
+<!-- $$ -->
+<!-- \begin{align} -->
+<!-- E[X] =& 1 P(X = 1) + 2 P(X = 2) + 3 P(X =3) + 4 P(X = 4) + 5 P(X = 5) \\ -->
+<!-- =& 1 \frac{2}{10} + 2 \frac{4}{10} + 3 \frac{1}{10} + 4 \frac{1}{10} + 5 \frac{2}{10} \\ -->
+<!-- =& \frac{27}{10} -->
+<!-- \end{align} -->
+<!-- $$ -->
 </section>
 <section id="the-law-of-large-numbers-again" class="slide level2">
 <h2>The Law of Large Numbers, again</h2>
 <p>Previously, we said that by the <strong>Law of Large numbers</strong> (LLN), the proportion of times an outcome occurs in a long sequence of trials is close to the probability for that outcome.</p>
 <div class="fragment">
 <p>This is a generalization:</p>
+<div style="font-size:1.25em;">
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
@@ -418,6 +418,7 @@ E[X] =&amp; 1 P(X = 1) + 2 P(X = 2) + 3 P(X =3) + 4 P(X = 4) + 5 P(X = 5) \\
 <li><p>Let <span class="math inline">\(\bar{x}_n\)</span> denote the mean of our <span class="math inline">\(n\)</span> observations of <span class="math inline">\(X\)</span>.</p></li>
 <li><p>Then, as <span class="math inline">\(n\)</span> becomes large, <span class="math inline">\(\bar{x}_n\)</span> will approach the expected value <span class="math inline">\(E[X]\)</span> of the random variable <span class="math inline">\(X\)</span>.</p></li>
 </ol>
+</div>
 </div>
 </div>
 </div>
@@ -446,6 +447,7 @@ E[X] =&amp; 1 P(X = 1) + 2 P(X = 2) + 3 P(X =3) + 4 P(X = 4) + 5 P(X = 5) \\
 </section>
 <section id="variance-and-standard-deviation" class="slide level2">
 <h2>Variance and Standard Deviation</h2>
+<div style="font-size:0.95em;">
 <p>The <strong>variance</strong> of a discrete random variable <span class="math inline">\(X\)</span> with mean <span class="math inline">\(E(X) = \mu\)</span> is <span class="math display">\[
 \begin{align}
 \mathrm{Var}(X) =&amp; (x_1 - \mu)^2 P(X = x_1) + (x_2- \mu)^2 P(X = x_2) + \dots  + (x_n-\mu)^2 P(X = x_n)  \\
@@ -467,6 +469,7 @@ E[X] =&amp; 1 P(X = 1) + 2 P(X = 2) + 3 P(X =3) + 4 P(X = 4) + 5 P(X = 5) \\
 <li class="fragment"><span class="math inline">\(\sigma\)</span> to denote the standard deviation</li>
 </ul>
 </div>
+</div>
 </section>
 <section id="variance-and-standard-deviation-1" class="slide level2">
 <h2>Variance and Standard Deviation</h2>
@@ -480,17 +483,17 @@ E[X] =&amp; 1 P(X = 1) + 2 P(X = 2) + 3 P(X =3) + 4 P(X = 4) + 5 P(X = 5) \\
 <ul>
 <li>Note that <span class="math inline">\(E(X) = \mu = 3\)</span></li>
 </ul>
-<div class="fragment">
-<p><span class="math display">\[
-\begin{align}
-\mathrm{Var}(X) =&amp; (1 - 3)^2 P(X = 1) + (3 - 3)^2 P(X = 3) + (5 - 3)^2 P(X =5) \\
-=&amp; (-2)^2 \frac{2}{5} + (0)^2 \frac{1}{5} + 2^2 \frac{2}{5} = \frac{16}{5}
-\end{align}
-\]</span></p>
-</div>
+<!-- ::: {.fragment} -->
+<!-- $$ -->
+<!-- \begin{align} -->
+<!-- \mathrm{Var}(X) =& (1 - 3)^2 P(X = 1) + (3 - 3)^2 P(X = 3) + (5 - 3)^2 P(X =5) \\ -->
+<!-- =& (-2)^2 \frac{2}{5} + (0)^2 \frac{1}{5} + 2^2 \frac{2}{5} = \frac{16}{5} -->
+<!-- \end{align} -->
+<!-- $$ -->
+<!-- ::: -->
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_eb593759" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_92d00923" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -647,54 +650,73 @@ Var[Y] = Var[X_1] + Var[X_2] = 0.25+ 0.25 = 0.5
 <div class="fragment">
 <p>That’s a lot simpler!</p>
 </div>
-</section></section>
-<section>
-<section id="activity" class="title-slide slide level1 center">
-<h1>Activity</h1>
-
 </section>
-<section id="what-about-23-coin-tosses" class="slide level2">
-<h2>What about 23 coin tosses?</h2>
-<p>Let <span class="math inline">\(Z\)</span> be the number of heads in <span class="math inline">\(23\)</span> independent coin tosses.</p>
-<p><strong>Q:</strong> What is <span class="math inline">\(E(Z)\)</span>?</p>
-<p><strong>Q:</strong> What is <span class="math inline">\(\mathrm{Var}(Z)\)</span>?</p>
-<p><strong>Q:</strong> Suppose <span class="math inline">\(W\)</span> represents the number of heads in <strong><span class="math inline">\(n\)</span></strong> independent coin tosses. What is <span class="math inline">\(E(W)\)</span> and <span class="math inline">\(\mathrm{Var}(W)\)</span>?</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_480bc6f8" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
-</div>
+<section id="recap-properties-of-random-variables" class="slide level2">
+<h2>Recap: Properties of Random Variables</h2>
+<p>The <strong>expected value</strong> (or mean) of a discrete random variable <span class="math inline">\(X\)</span> is <span class="math display">\[
+E[X] = \mu = x_1 P(X = x_1) + x_2 P(X = x_2) + \dots x_n P(X = x_n) = \sum_{i =1}^n x_i P(X = x_i)
+\]</span> where <span class="math inline">\(x_1, \dots, x_n\)</span> are <em>all the values X could potentially take</em>.</p>
+<p>The <strong>variance</strong> of a discrete random variable <span class="math inline">\(X\)</span> with mean <span class="math inline">\(E(X) = \mu\)</span> is <span class="math display">\[
+\mathrm{Var}(X) = \sigma^2 = \sum_{i =1}^n (x_i-\mu)^2 P(X = x_i)
+\]</span></p>
+<p>We also define the <strong>standard deviation</strong> of a random variable <span class="math inline">\(X\)</span> to be <span class="math display">\[
+\textrm{SD}(X) = \sqrt{\mathrm{Var}(X)}
+\]</span></p>
 </section>
-<section id="activity-answers" class="slide level2">
-<h2>Activity: Answers</h2>
-<p>Let <span class="math inline">\(Z\)</span> be the number of heads in <span class="math inline">\(23\)</span> independent coin tosses.</p>
-<div class="fragment">
-<p><strong>Q:</strong> What is <span class="math inline">\(E(Z)\)</span>?</p>
+<section id="recap-theorems-for-discrete-random-variables" class="slide level2">
+<h2>Recap: Theorems for Discrete Random Variables</h2>
+<div class="columns">
+<div class="column">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Expectation of Sum</strong></p>
 </div>
-<div class="fragment">
-<ul>
-<li>Let <span class="math inline">\(X_1\)</span> = Heads on 1st toss, <span class="math inline">\(\dots\)</span> , <span class="math inline">\(X_{23}\)</span> = Heads on <span class="math inline">\(23\)</span>rd toss: <span class="math display">\[
-E(Z) = E(X_1) + \dots + E(X_{23}) = 0.5+\dots+0.5 = 23(0.5)
-\]</span></li>
-</ul>
-</div>
-<div class="fragment">
-<p><strong>Q:</strong> What is <span class="math inline">\(\mathrm{Var}(Z)\)</span>?</p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[
-  \mathrm{Var}(Z) = \mathrm{Var}(X_1) + \dots + \mathrm{Var}(X_{23}) = 0.25+\dots+0.25 = 23(0.25)
+<div class="callout-content">
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables. Then <span class="math display">\[
+E(X + Y) = E(X) + E(Y)
 \]</span></p>
 </div>
-<div class="fragment">
-<p><strong>Q:</strong> Suppose <span class="math inline">\(W\)</span> represents the number of heads in <span class="math inline">\(n\)</span> independent coin tosses. What is <span class="math inline">\(E(W)\)</span> and <span class="math inline">\(\mathrm{Var}(W)\)</span>?</p>
 </div>
-<div class="fragment">
-<ul>
-<li><span class="math inline">\(E(W) = nE(X_1) = (n)(0.5)\)</span></li>
-<li><span class="math inline">\(\mathrm{Var}(W) = n\mathrm{Var}(X_1) = (n)(0.25)\)</span></li>
-</ul>
 </div>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Scalar Multiplication with Expectation</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(X\)</span> be a random variable, and let <span class="math inline">\(c\)</span> be a number. Then <span class="math display">\[
+E(cX) = cE(X)
+\]</span></p>
+</div>
+</div>
+</div>
+</div><div class="column">
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Variance of Sum</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be random variables. Additionally, let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be ***<u><em>independent</em></u>***. Then <span class="math display">\[
+\mathrm{Var}(X + Y) = \mathrm{Var}(X) + \mathrm{Var}(Y)
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-note no-icon callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Theorem: Scalar Multiplication with Variance</strong></p>
+</div>
+<div class="callout-content">
+<p>Let <span class="math inline">\(X\)</span> be a random variable, and let <span class="math inline">\(c\)</span> be a number. Then <span class="math display">\[
+\mathrm{Var}(cX) = c^2\mathrm{Var}(X)
+\]</span></p>
+</div>
+</div>
+</div>
+</div></div>
 </section>
 <section id="next-time" class="slide level2">
 <h2>Next time:</h2>

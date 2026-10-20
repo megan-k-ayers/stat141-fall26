@@ -44,12 +44,14 @@ library(tufte)
 ```
 
 ::::: columns
-::: {.column .center width="50%"}
+::: {.column .center width="60%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="50%"}
+::: {.column .center width="40%"}
 <br>
+
+::: {style="font-size:0.9em;"}
 
 [Theory Based Inference I]{.custom-title}
 
@@ -58,6 +60,9 @@ library(tufte)
 [Megan Ayers]{.custom-subtitle}
 
 [Stat 141 \| Fall 2026 <br> Friday, Week 11]{.custom-subtitle}
+
+:::
+
 :::
 :::::
 
@@ -76,11 +81,6 @@ theme_set(theme_bw())
 
 ------------------------------------------------------------------------
 
-## Announcements
-
-- CA Office hours cancelled today (Megan's are still 2-3:30)
-
-------------------------------------------------------------------------
 
 ## Goals for today
 
@@ -118,7 +118,9 @@ theme_set(theme_bw())
 
 ------------------------------------------------------------------------
 
-## Confidence Intervals {.smaller}
+## Confidence Intervals
+
+::: {style="font-size:0.8em;"}
 
 ::: nonincremental
 **Confidence Intervals:** plausible ranges of values for a parameter
@@ -160,18 +162,20 @@ ggplot(bs, aes(x=phat))+geom_histogram(binwidth=0.025)+theme_minimal(base_size=1
   + Sample $n$ observations [with replacement]{.underline} from the [sample]{.underline}
     
   + For each "bootstrap sample", calculate/plot the statistic
+  
+  + **90% confidence interval:** Middle 90% is $(0.275, \ 0.525)$
 
 :::
 
 :::::
 
-
-- **90% confidence interval:** Middle 90% is $(0.275, \ 0.525)$
-
+:::
 
 ------------------------------------------------------------------------
 
-## Hypothesis Testing {.smaller}
+## Hypothesis Testing
+
+::: {style="font-size:0.85em;"}
 
 ::: nonincremental
 **Hypothesis Tests:** formal procedure for testing claims about a parameter
@@ -216,15 +220,17 @@ ggplot(sampling, aes(x=phat))+
     
   + For each "sample", calculate/plot the statistic
   
+  + **P-Value:** Area under curve to the left of $\widehat{p}$ is $0.07$
+
+  + **Compare to Significance Level:** Using $\alpha = 0.05$, we would *fail to reject* $H_0$.
+  
 :::
 
 :::::
 :::
 
 
-- **P-Value:** Area under curve to the left of $\widehat{p}$ is $0.07$
-
-- **Compare to Significance Level:** Using $\alpha = 0.05$, we would *fail to reject* $H_0$.
+:::
 
 ------------------------------------------------------------------------
 
@@ -241,18 +247,20 @@ ggplot(sampling, aes(x=phat))+
 
 - We've had to use simulation in `R` to find these "distributions of statistics"
 
-  + In small samples, the code works and runs relatively quickly.
-  
-  + In larger samples, or with complicated statistics, this can be more computationally costly.
+  <!-- + In small samples, the code works and runs relatively quickly. -->
+
+  <!-- + In larger samples, or with complicated statistics, this can be more computationally costly. -->
 
 
 <br>
 
-- **Could we do this work more efficiently? What did people use before computers?**
+- **Could we utilize probability theory to do this work more efficiently? What did people use before computers?**
 
 ------------------------------------------------------------------------
 
 ## Theory-Based Inference
+
+::: {style="font-size:0.9em;"}
 
 - Could we do this work more efficiently? **Yes! Use the Central Limit Theorem (CLT)!**
 
@@ -295,6 +303,7 @@ ggplot(theory, aes(x=x,y=density))+
 :::::
 :::
 
+:::
 
   
 # Inference for a Single Proportion
@@ -318,6 +327,8 @@ $$\bar{x} \sim Normal\Big(\mu, \frac{\sigma}{\sqrt{n}}\Big)$$
 ------------------------------------------------------------------------
 
 ## Sample Proportion as a Sample Mean
+
+::: {style="font-size:0.9em;"}
 
 - [Reminder]{.underline}: Let **$X\sim \text{Binomial}(n,p)$** distribution
     - $X$ is number of "successes" in **$n$ independent trials**, each trial has **probability of success, $p$**
@@ -357,6 +368,8 @@ $$
 :::
 
 :::::
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -564,6 +577,8 @@ ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+
 
 ## Confidence Intervals: Process Check 
 
+::: {style="font-size:0.9em;"}
+
 When making (percentile) confidence intervals using **computational** methods, we:
 
 1) Specify our population, and parameter
@@ -588,14 +603,14 @@ When making (percentile) confidence intervals using **computational** methods, w
 - "Theory-based Way": Use CLT, which gives a "theoretical" sampling distribution of
 $$\widehat{p} \sim \text{Normal}(\widehat{p},\sqrt{\widehat{p}(1-\widehat{p})/n})$$
 
-```{r}
-#| echo: false
-countdown::countdown(1.5)
-```
+:::
+
 
 ------------------------------------------------------------------------
 
 ## Hypothesis Testing (again) 
+
+::: {style="font-size:0.9em;"}
 
 ::: {.nonincremental}
 **Ex:** Are *less than* 50% of Reedies vegetarians?
@@ -640,9 +655,13 @@ ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+
 
 :::::
 
+:::
+
 ------------------------------------------------------------------------
 
-## Hypothesis Testing (again) 
+## Hypothesis Testing (again)
+
+::: {style="font-size:0.9em;"}
 
 ::: {.nonincremental}
 **Ex:** Are *less than* 50% of Reedies vegetarians?
@@ -695,9 +714,13 @@ ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+
 
 :::::
 
+:::
+
 ------------------------------------------------------------------------
 
-## Hypothesis Tests: Process Check {.smaller}
+## Hypothesis Tests: Process Check
+
+::: {style="font-size:0.9em;"}
 
 When conducting hypothesis tests, we:
 
@@ -722,45 +745,7 @@ $$
 
 - **Only #4 is different!** (again, the distribution we use comes from theory instead of simulation)
 
-```{r}
-#| echo: false
-countdown::countdown(1.5)
-```
-
-------------------------------------------------------------------------
-
-## Recap: Theory-Based Inference
-
-$$\textbf{CLT-Based Sampling Distribution:} \ \ \  \widehat{p} \sim \text{Normal}\Big(\ p, \ \sqrt{\frac{p(1-p)}{n}}\ \Big)$$
-
-- The general steps we take are the [same]{.underline} as before, but we **now use the CLT instead of simulation to find sampling distributions**.
-
-::::: columns
-::: {.column width=45% .fragment}
-
-$$\textbf{Confidence Intervals}$$
-$$\text{Sampling Distribution of } p$$
-$$(\text{Plug in statistic, }\color{red}{\widehat{p}})$$
-
-$$\text{Normal}\Bigg(\color{red}{\widehat{p}}, \ \sqrt{\frac{\color{red}{\widehat{p}}(1-\color{red}{\widehat{p}})}{n}} \ \Bigg)$$
-
 :::
-
-::: {.column width=10%}
-
-:::
-
-::: {.column width=45% .fragment}
-
-$$\textbf{Hypothesis Testing}$$
-$$\text{Null Distribution}$$
-$$(\text{Plug in null value, }\color{red}{p_0})$$
-
-$$\text{Normal}\Bigg(\color{red}{p_0}, \ \sqrt{\frac{\color{red}{p_0}(1-\color{red}{p_0})}{n}} \ \Bigg)$$
-
-:::
-
-:::::
 
 # Activity
 
@@ -768,70 +753,73 @@ $$\text{Normal}\Bigg(\color{red}{p_0}, \ \sqrt{\frac{\color{red}{p_0}(1-\color{r
 
 ## Activity
 
+::: {style="font-size:0.9em;"}
+
 ::::: columns
 
-::: {.column width=45%}
+::: {.column width=48%}
 In a SRS of 60 Reedies, 45 have watched the *Lord of the Rings* trilogy. Create a **80% confidence interval** for the true proportion of Reedies who have watched *LOTR* using theory-based inference.
 
 <br>
 
-  1. Carefully go through each step of the inference procedure.
+  1. Identify the population, sample, parameter, statistic.
   
   2. Sketch and write down the assumed [sampling distribution]{.underline} of the statistic 
   
-  3. Calculate confidence interval (use R)
+  3. Write `R` code that would calculate the confidence interval
   
-  4. Interpret your confidence interval in context.
+  4. Suppose you get [0.68, 0.82]. Interpret this confidence interval in context.
+
+
+```{r}
+#| echo: false
+countdown::countdown(5)
+```
 
 :::  
 
-::: {.column width=10%}
+::: {.column width=4%}
 
 :::
 
-::: {.column width=45%}
+::: {.column .fragment width=48%}
 In a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a **hypothesis test** using theory-based inference.
 
 <br>
 
-  1. Carefully go through each step of the inference procedure.
+  1. Identify the population, sample, parameter, statistic, and **hypotheses**.
   
   2. Sketch and write down the [null distribution]{.underline}
   
-  3. Calculate p-value (use R)
+  3. Write `R` code that would calculate the p-value.
   
-  4. Use your p-value to make a conclusion with $\alpha=0.10$
+  4. Suppose your p-value is 0.23. Use this p-value to make a conclusion with $\alpha=0.10$.
+  
+
+```{r}
+#| echo: false
+countdown::countdown(5)
+```
   
 :::  
 
 :::::
 
-```{r}
-#| echo: false
-countdown::countdown(10)
-```
-  
-<!-- ------------------------------------------------------------------------   -->
+:::
+
+<!-- ------------------------------------------------------------------------ -->
 
 <!-- ## Answers (Confidence Intervals) {.smaller} -->
 
-<!-- ::::: columns -->
-
-<!-- ::: {.column width=100%} -->
-
-<!-- - **Collect Data:** In a sample of 60 students, 45 watched *LOTR* -->
-<!-- - **Point Estimate:** We estimate $\widehat{p} = 45/60 = 0.75$ -->
-<!-- - **Get Sampling Distribution:** -->
-
-<!-- ::: -->
-
-<!-- ::::: -->
-
-
+<!-- In a SRS of 60 Reedies, 45 have watched the *Lord of the Rings* trilogy. Create a **80% confidence interval** for the true proportion of Reedies who have watched *LOTR* using theory-based inference. -->
 
 <!-- ::::: columns -->
 
 <!-- ::: {.column width=50%} -->
+
+<!-- - **Collect Data:** In a sample of 60 students, 45 watched *LOTR* -->
+<!-- - **Point Estimate:** We estimate $\widehat{p} = 45/60 = 0.75$ -->
+<!-- - **Get Sampling Distribution:** -->
 
 <!-- ::: fragment -->
 <!-- $$\text{Normal}(0.75,\ \sqrt{0.75(1-0.75)/60})$$ -->
@@ -876,19 +864,15 @@ countdown::countdown(10)
 
 <!-- ------------------------------------------------------------------------ -->
 
-<!-- ## Answers (Hypothesis Testing) -->
+<!-- ## Answers (Hypothesis Testing) {.smaller} -->
 
-<!-- ::::: columns -->
-
-<!-- ::: {.column width=100%} -->
-<!-- - **State Hypotheses:** $H_0: p=0.6$; $H_a: p>0.6$  -->
-<!-- ::: -->
-
-<!-- ::::: -->
+<!-- In a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a **hypothesis test** using theory-based inference. -->
 
 <!-- ::::: columns -->
 
 <!-- ::: {.column width=48% .fragment .nonincremental} -->
+
+<!-- - **State Hypotheses:** $H_0: p=0.6$; $H_a: p>0.6$ -->
 
 <!-- - **Null Distribution:** -->
 
@@ -911,7 +895,7 @@ countdown::countdown(10)
 <!-- ::: {.column width=50%} -->
 
 <!-- - **Collect Data:** $\widehat{p}=20/30=0.667$ -->
-<!-- - **Calculate P-Value:** Area under null distribution curve to the right of $\widehat{p}$  -->
+<!-- - **Calculate P-Value:** Area under null distribution curve to the right of $\widehat{p}$ -->
 
 <!-- ::: fragment -->
 
@@ -930,4 +914,37 @@ countdown::countdown(10)
 
 
 
+------------------------------------------------------------------------
 
+## Recap: Theory-Based Inference
+
+$$\textbf{CLT-Based Sampling Distribution:} \ \ \  \widehat{p} \sim \text{Normal}\Big(\ p, \ \sqrt{\frac{p(1-p)}{n}}\ \Big)$$
+
+- The general steps we take are the [same]{.underline} as before, but we **now use the CLT instead of simulation to find sampling distributions**.
+
+::::: columns
+::: {.column width=45% .fragment}
+
+$$\textbf{Confidence Intervals}$$
+$$\text{Sampling Distribution of } p$$
+$$(\text{Plug in statistic, }\color{red}{\widehat{p}})$$
+
+$$\text{Normal}\Bigg(\color{red}{\widehat{p}}, \ \sqrt{\frac{\color{red}{\widehat{p}}(1-\color{red}{\widehat{p}})}{n}} \ \Bigg)$$
+
+:::
+
+::: {.column width=10%}
+
+:::
+
+::: {.column width=45% .fragment}
+
+$$\textbf{Hypothesis Testing}$$
+$$\text{Null Distribution}$$
+$$(\text{Plug in null value, }\color{red}{p_0})$$
+
+$$\text{Normal}\Bigg(\color{red}{p_0}, \ \sqrt{\frac{\color{red}{p_0}(1-\color{red}{p_0})}{n}} \ \Bigg)$$
+
+:::
+
+:::::

@@ -200,20 +200,22 @@
 <section class="slide level2">
 
 <div class="columns">
-<div class="column center" style="width:40%;">
+<div class="column center" style="width:60%;">
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
-</div><div class="column center" style="width:60%;">
+</div><div class="column center" style="width:40%;">
+<div style="font-size:0.8em;">
 <p><br></p>
 <p><span class="custom-title">Random Variables II: Discrete Distributions</span></p>
 <p><br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 11</span></p>
+</div>
 </div></div>
 </section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for Today</h2>
 <ul>
-<li class="fragment">Continue our discussion of expected value and variance</li>
+<li class="fragment">Brief review of expected value and variance</li>
 <li class="fragment">Introduce the <strong>Bernoulli distribution</strong></li>
 <li class="fragment">Introduce the <strong>Binomial distribution</strong></li>
 </ul>
@@ -488,7 +490,7 @@ X=   \left\{
 <p><strong>Question</strong>: What’s the expected value of a Bernoulli(<span class="math inline">\(p\)</span>) random variable?</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_09eb5a71" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_dd634b4a" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 <!-- $$ -->
@@ -577,7 +579,7 @@ X=   \left\{
 <p><strong>Question</strong>: What’s the standard deviation of a Bernoulli(<span class="math inline">\(p\)</span>) random variable?</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_9fc9981b" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a48bbf8a" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 <!-- $$ -->
@@ -631,27 +633,68 @@ X=   \left\{
 \]</span></p>
 </section></section>
 <section>
-<section id="what-about-the-sum-of-many-bernoulli-random-variables" class="title-slide slide level1 center">
-<h1>What about the sum of many Bernoulli random variables?</h1>
+<section id="activity-many-bernoulli-random-variables" class="title-slide slide level1 center">
+<h1>Activity: Many Bernoulli random variables</h1>
 
+</section>
+<section id="what-about-23-coin-tosses" class="slide level2">
+<h2>What about 23 coin tosses?</h2>
+<p>We can model one fair coin toss as a <span class="math inline">\(\text{Bernoulli}(0.5)\)</span>. How should we think about tossing the coin many (ex. 23) times?</p>
+<p>Let <span class="math inline">\(Z\)</span> count the number of heads in <span class="math inline">\(23\)</span> independent coin tosses.</p>
+<p><br></p>
+<p><strong>Q:</strong> Let <span class="math inline">\(Z_i\)</span> represent the <span class="math inline">\(i\)</span>th coin toss. Can we write <span class="math inline">\(Z\)</span> in terms of the <span class="math inline">\(Z_i\)</span>s?</p>
+<p><strong>Q:</strong> What is <span class="math inline">\(E(Z)\)</span>?</p>
+<p><strong>Q:</strong> What is <span class="math inline">\(\mathrm{Var}(Z)\)</span>?</p>
+<p><strong>Q:</strong> Suppose <span class="math inline">\(X\)</span> represents the number of heads in <strong><span class="math inline">\(n\)</span></strong> independent coin tosses. What is <span class="math inline">\(E(X)\)</span> and <span class="math inline">\(\mathrm{Var}(X)\)</span>?</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_b56e39e5" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## Activity: Answers -->
+<!-- Let $Z$ be the number of heads in $23$ independent coin tosses. -->
+<!-- ::: {.fragment} -->
+<!-- **Q:** What is $E(Z)$? -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- ::: {.nonincremental} -->
+<!-- - Let $X_1$ = Heads on 1st toss, $\dots$  , $X_{23}$ = Heads on $23$rd toss: -->
+<!-- $$ -->
+<!--   E(Z) = E(X_1) + \dots + E(X_{23}) = 0.5+\dots+0.5 = 23(0.5) -->
+<!-- $$ -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- **Q:** What is $\mathrm{Var}(Z)$? -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- $$ -->
+<!--   \mathrm{Var}(Z) = \mathrm{Var}(X_1) + \dots + \mathrm{Var}(X_{23}) = 0.25+\dots+0.25 = 23(0.25) -->
+<!-- $$ -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- **Q:** Suppose $W$ represents the number of heads in $n$ independent coin tosses. What is $E(W)$ and $\mathrm{Var}(W)$? -->
+<!-- ::: -->
+<!-- ::: {.fragment} -->
+<!-- ::: {.nonincremental} -->
+<!-- -   $E(W) = nE(X_1) = (n)(0.5)$ -->
+<!-- -   $\mathrm{Var}(W) = n\mathrm{Var}(X_1) = (n)(0.25)$ -->
+<!-- ::: -->
+<!-- ::: -->
 </section>
 <section id="n-weighted-coin-tosses-expected-value-and-variance" class="slide level2">
 <h2><span class="math inline">\(n\)</span> “weighted coin tosses”: Expected Value and Variance</h2>
 <p>Let <span class="math inline">\(X\)</span> be the number of successes in <span class="math inline">\(n\)</span> <strong>independent</strong> Bernoulli(<span class="math inline">\(p\)</span>) random variables.</p>
 <p><strong>Q:</strong> What are <span class="math inline">\(E(X)\)</span> and <span class="math inline">\(\mathrm{Var}(X)\)</span>?</p>
 <div class="fragment">
-<p><em>Hint:</em> We know, from the Bernoulli distribution, that if <span class="math inline">\(X_1\)</span> is the number of heads in a <em>single</em> weighted coin flip with success probability <span class="math inline">\(p\)</span>, <span class="math display">\[E(X_1)=p \quad \text{ and } \quad \text{Var}(X_1)= p (1 - p)\]</span></p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_3c3380de" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
+<p>We know, from the Bernoulli distribution, that if <span class="math inline">\(X_1\)</span> is the number of heads in a <em>single</em> weighted coin flip with success probability <span class="math inline">\(p\)</span>, <span class="math display">\[E(X_1)=p \quad \text{ and } \quad \text{Var}(X_1)= p (1 - p)\]</span></p>
 </div>
 </section>
 <section id="n-weighted-coin-tosses-expected-value-and-variance-1" class="slide level2">
 <h2><span class="math inline">\(n\)</span> “weighted coin tosses”: Expected Value and Variance</h2>
 <p>Let <span class="math inline">\(X\)</span> be the number of heads in <span class="math inline">\(n\)</span> <strong>independent</strong> Bernoulli(<span class="math inline">\(p\)</span>) random variables.</p>
-<p><strong>Answer:</strong> Let <span class="math inline">\(X_1\)</span> = Heads in 1st toss, <span class="math inline">\(\dots\)</span> , <span class="math inline">\(X_n\)</span> = Heads in <span class="math inline">\(n\)</span>th toss: <span class="math display">\[
+<p>Let <span class="math inline">\(X_1\)</span> = Heads in 1st toss, <span class="math inline">\(\dots\)</span> , <span class="math inline">\(X_n\)</span> = Heads in <span class="math inline">\(n\)</span>th toss: <span class="math display">\[
   X = X_1 + \dots + X_n = \sum_{i=1}^n X_i
 \]</span></p>
 <p><span class="math display">\[
@@ -663,13 +706,14 @@ X=   \left\{
 </section></section>
 <section>
 <section id="what-about-the-distribution-of-n-weighted-coin-tosses" class="title-slide slide level1 center">
-<h1>What about the distribution of <span class="math inline">\(n\)</span> weighted coin tosses?</h1>
+<h1>What about the <u>distribution</u> of <span class="math inline">\(n\)</span> weighted coin tosses?</h1>
 <div class="fragment">
 <p>We’ll start with the unweighted case, i.e., <span class="math inline">\(p = 0.5\)</span></p>
 </div>
 </section>
-<section id="n-coin-toss-probabilities" class="slide level2 smaller">
+<section id="n-coin-toss-probabilities" class="slide level2">
 <h2><span class="math inline">\(n\)</span> coin toss probabilities?</h2>
+<div style="font-size:0.85em;">
 <p>We’ve calculated Expectation and Variance for the number of heads in <span class="math inline">\(n\)</span> coin tosses.</p>
 <div class="fragment">
 <ul>
@@ -705,6 +749,7 @@ P(X=3) &amp;= \frac{1}{8} \quad&amp;\quad P(X=2) &amp;= \frac{3}{8}\\
 \end{align}
 \]</span></p>
 </div>
+</div>
 </section>
 <section id="coin-tosses-probabilities" class="slide level2">
 <h2>3 coin tosses probabilities</h2>
@@ -727,8 +772,9 @@ P(X=3) &amp;= \frac{1}{8} \quad&amp;\quad P(X=2) &amp;= \frac{3}{8}\\
 </ul>
 </div>
 </section>
-<section id="generalization-1" class="slide level2 smaller">
+<section id="generalization-1" class="slide level2">
 <h2>Generalization 1</h2>
+<div style="font-size:0.85em;">
 <p>First: <strong>What if <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> are bigger?</strong></p>
 <ul>
 <li class="fragment">In this case, it’s hard to individually count all the different flip sequences</li>
@@ -749,9 +795,11 @@ P(X=3) &amp;= \frac{1}{8} \quad&amp;\quad P(X=2) &amp;= \frac{3}{8}\\
 \end{align}
 \]</span></p>
 </div>
+</div>
 </section>
-<section id="generalization-1-1" class="slide level2 smaller">
+<section id="generalization-1-1" class="slide level2">
 <h2>Generalization 1</h2>
+<div style="font-size:0.85em;">
 <p>First: <strong>What if <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> are bigger?</strong></p>
 <ul>
 <li><p>In this case, it’s hard to individually count all the different flip sequences</p></li>
@@ -761,6 +809,7 @@ P(X=3) &amp;= \frac{1}{8} \quad&amp;\quad P(X=2) &amp;= \frac{3}{8}\\
 <p>So in our example of 2 heads in 3 flips:</p>
 <div class="fragment">
 <p><span class="math display">\[\text{# of ways to choose 2 things out of 3 things} = {3\choose2} = \frac{3!}{2! \cdot 1!} = \frac{3 \cdot 2}{2} = 3\]</span></p>
+</div>
 </div>
 </section>
 <section id="generalization-2" class="slide level2">
@@ -847,6 +896,7 @@ P(X=3) &amp;= \frac{1}{8} \quad&amp;\quad P(X=2) &amp;= \frac{3}{8}\\
 </section>
 <section id="calculating-binomial-probabilities-pbinom" class="slide level2">
 <h2>Calculating Binomial Probabilities: <code>pbinom()</code></h2>
+<div style="font-size:0.9em;">
 <p>We can also calculate <span class="math inline">\(P(X \leq k)\)</span> with <code>pbinom()</code></p>
 <div class="fragment">
 <ul>
@@ -886,55 +936,53 @@ P(X=3) &amp;= \frac{1}{8} \quad&amp;\quad P(X=2) &amp;= \frac{3}{8}\\
 </div>
 <p><br></p>
 <ul>
-<li class="fragment"><code>pbinom()</code> takes in an observable value of a Binomial random variable, and returns the probability of observing it <strong>or something smaller</strong>.</li>
+<li class="fragment">Third bullet: why q = 1? <code>pbinom()</code> takes in an observable value of a Binomial random variable, and returns the probability of observing <strong>that value OR something smaller</strong>.</li>
 </ul>
+</div>
 </section>
-<section id="activity-survey-of-portlanders" class="slide level2">
-<h2>Activity: Survey of Portlanders</h2>
-<p>Suppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief.</p>
-<ol type="1">
-<li class="fragment"><p>Assume your belief is true. Let <span class="math inline">\(X\)</span> be the number of survey respondents who think the city should install more bike lanes. Does <span class="math inline">\(X\)</span> follow a Binomial distribution? If so, what are <span class="math inline">\(n\)</span> and <span class="math inline">\(p\)</span>?</p></li>
-<li class="fragment"><p>Calculate the expected value and standard deviation of <span class="math inline">\(X\)</span> (still assuming your belief is true)</p></li>
-<li class="fragment"><p>Suppose you conducted the survey and found 30 respondents wanted more bike lanes. What’s the probability that <span class="math inline">\(X\geq 30\)</span>? (use R!)</p></li>
-<li class="fragment"><p>Draw the connection between the probability you calculated and a hypothesis test.</p></li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_2ff7e969" minutes="8" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<div style="font-size:0.8em;">
+<p><strong>If <span class="math inline">\(X \sim\)</span> Bernoulli <span class="math inline">\((p)\)</span></strong> (ex. one coin flip), then:</p>
+<ul>
+<li><span class="math inline">\(\mathbb{E}[X] = p\)</span> and <span class="math inline">\(Var(X) = p(1 - p)\)</span></li>
+<li>The distribution of <span class="math inline">\(X\)</span> is:</li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x\)</span></th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(p(x)\)</span></td>
+<td>1 - <span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(p\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><strong>If <span class="math inline">\(X \sim \text{Binomial}(n,~p)\)</span></strong> (i.e.&nbsp;<span class="math inline">\(X\)</span> represents the number of successes in <span class="math inline">\(n\)</span> independent Bernoulli trials with probability of success <span class="math inline">\(p\)</span>), then:</p>
+<ul>
+<li><span class="math inline">\(\mathbb{E}[X] = np\)</span> and <span class="math inline">\(Var(X) = np(1-p)\)</span></li>
+<li>The distribution of <span class="math inline">\(X\)</span> is:</li>
+</ul>
+<p><span class="math display">\[P[X=k] = {n \choose k}p^k(1-p)^{n-k}\]</span></p>
+<ul>
+<li>We can calculate Binomial probabilities using <code>dbinom()</code> and <code>pbinom()</code>.</li>
+</ul>
 </div>
-</div>
-<!-- ------------------------------------------------------------------------ -->
-<!-- ## Activity: Survey of Portlanders (Answers) {.smaller} -->
-<!-- Suppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief. -->
-<!-- ::: {.fragment .nonincremental} -->
-<!-- 1. Assume your belief is true. Let $X$ be the number of survey respondents who think the city should install more bike lanes. Does $X$ follow a Binomial distribution? If so, what are $n$ and $p$? -->
-<!--     - $X$ follows a Binomial($n=50,p=0.4$) distribution. -->
-<!-- ::: -->
-<!-- ::: {.fragment .nonincremental} -->
-<!-- 2. Calculate the expected value and standard deviation of $X$ (assuming your belief) -->
-<!--     - $E[X] = (50)(.4) = 20$ -->
-<!--     - $SD[X] = \sqrt{(50)(.4)(1-.4)} = 3.46$ -->
-<!-- ::: -->
-<!-- ::: {.fragment .nonincremental} -->
-<!-- 3. Suppose you conducted the survey and found 30 respondents wanted more bike lanes. What's the probability that $X\geq 30$? (use R!) -->
-<!--     - $P[X\geq30] = 1 - \texttt{pbinom}(29,~ 50,~ 0.4) = 0.0033$ -->
-<!-- ::: -->
-<!-- ::: {.fragment .nonincremental} -->
-<!-- 4. Draw the connection between the probability you calculated and a hypothesis test. -->
-<!--     - We are testing $H_0: p=0.4$ vs. $H_a: p>0.4$ -->
-<!--     - Test statistic: $\hat{p}=30/50$ -->
-<!--     - p-value = 0.0033 -->
-<!-- ::: -->
 </section>
 <section id="next-time" class="slide level2">
 <h2>Next time</h2>
 <ul>
+<li>Another binomial random variable activity</li>
 <li>Continuous random variables</li>
 <li>The Central Limit Theorem!</li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>

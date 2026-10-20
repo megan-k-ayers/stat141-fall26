@@ -43,12 +43,12 @@ set.seed(1)
 
 For each of the situations described in parts (a) - (c), do the following:
 
-  (i) Describe the null and alternative hypotheses (in words)
+  (i) Describe the null and alternative hypotheses (in words [and then]{.underline} using parameters)
   (ii) Describe the effects of a Type I and Type II error in context
   (iii) Indicate whether it makes more sense to use a larger significance level (such as $\alpha = 0.10$) or a smaller significance level (such as $\alpha = 0.01$), and briefly explain your reasoning.
 
 
-**a.** A new drug with potentially dangerous side effects is tested to see if it is better than the drug currently in use. If it is found to be effective, it will be prescribed to millions of people.
+**a.** A new drug with potentially dangerous side effects is tested to see if it is better than the drug currently in use. If it is found to be effective, it will be prescribed to millions of people. Assume that drug efficacy is measured as a quantitative variable.
 
 *******************************************************************************
 
@@ -58,7 +58,7 @@ For each of the situations described in parts (a) - (c), do the following:
 
 
 
-**b.** Two slightly different versions of a statistics exercise are given to a 10am and 11am section of Stat 141, and the proportions of students in each class who get the question correct are recorded. We wish to determine whether one question was more difficult than the other.
+**b.** Two slightly different versions of a statistics exercise are given to a 10am and 11am section of Stat 141, and the proportions of students in each class who get the question correct are recorded. We wish to determine whether one question was more difficult than the other, using the proportion of correct answers as our response. 
 
 *******************************************************************************
 
@@ -68,7 +68,7 @@ For each of the situations described in parts (a) - (c), do the following:
 
 
 
-**c.** You test whether taking a vitamin supplement reduces the duration of symptoms of the common cold. There are no (known) harmful side effects of the supplement.
+**c.** You test whether taking a vitamin supplement reduces the duration of symptoms of the common cold, compared to not taking a supplement. There are no (known) harmful side effects of the supplement. Assume that duration of symptoms is recorded as a quantitative response variable. 
 
 *******************************************************************************
 

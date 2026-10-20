@@ -134,21 +134,17 @@
 <section class="slide level2">
 
 <div class="columns">
-<div class="column center" style="width:50%;">
+<div class="column center" style="width:60%;">
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
-</div><div class="column center" style="width:50%;">
+</div><div class="column center" style="width:40%;">
 <p><br></p>
+<div style="font-size:0.9em;">
 <p><span class="custom-title">Theory Based Inference I</span></p>
 <p><br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Friday, Week 11</span></p>
+</div>
 </div></div>
-</section>
-<section id="announcements" class="slide level2">
-<h2>Announcements</h2>
-<ul>
-<li class="fragment">CA Office hours cancelled today (Megan’s are still 2-3:30)</li>
-</ul>
 </section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
@@ -182,8 +178,9 @@
 <li class="fragment"><p>Let’s review each…</p></li>
 </ul>
 </section>
-<section id="confidence-intervals" class="slide level2 smaller">
+<section id="confidence-intervals" class="slide level2">
 <h2>Confidence Intervals</h2>
+<div style="font-size:0.8em;">
 <p><strong>Confidence Intervals:</strong> plausible ranges of values for a parameter</p>
 <p><strong>Ex:</strong> What proportion of Reedies are vegetarians?</p>
 <ul>
@@ -211,14 +208,14 @@
 <li class="fragment"><p><strong>Bootstrap distribution:</strong> Approximation of sampling distribution</p></li>
 <li class="fragment"><p>Sample <span class="math inline">\(n\)</span> observations <u>with replacement</u> from the <u>sample</u></p></li>
 <li class="fragment"><p>For each “bootstrap sample”, calculate/plot the statistic</p></li>
+<li class="fragment"><p><strong>90% confidence interval:</strong> Middle 90% is <span class="math inline">\((0.275, \ 0.525)\)</span></p></li>
 </ul>
 </div></div>
-<ul>
-<li class="fragment"><strong>90% confidence interval:</strong> Middle 90% is <span class="math inline">\((0.275, \ 0.525)\)</span></li>
-</ul>
+</div>
 </section>
-<section id="hypothesis-testing" class="slide level2 smaller">
+<section id="hypothesis-testing" class="slide level2">
 <h2>Hypothesis Testing</h2>
+<div style="font-size:0.85em;">
 <p><strong>Hypothesis Tests:</strong> formal procedure for testing claims about a parameter</p>
 <p><strong>Ex:</strong> Are <em>less than</em> 50% of Reedies vegetarians?</p>
 <ul>
@@ -246,13 +243,12 @@
 <li class="fragment"><p><strong>Null distribution:</strong> Sampling distribution <u>assuming <span class="math inline">\(H_0\)</span></u></p></li>
 <li class="fragment"><p>Many times, sample <span class="math inline">\(n\)</span> observations from <u>population assumed under <span class="math inline">\(H_0\)</span></u></p></li>
 <li class="fragment"><p>For each “sample”, calculate/plot the statistic</p></li>
-</ul>
-</div></div>
-</div>
-<ul>
 <li class="fragment"><p><strong>P-Value:</strong> Area under curve to the left of <span class="math inline">\(\widehat{p}\)</span> is <span class="math inline">\(0.07\)</span></p></li>
 <li class="fragment"><p><strong>Compare to Significance Level:</strong> Using <span class="math inline">\(\alpha = 0.05\)</span>, we would <em>fail to reject</em> <span class="math inline">\(H_0\)</span>.</p></li>
 </ul>
+</div></div>
+</div>
+</div>
 </section>
 <section id="whats-similar" class="slide level2">
 <h2>What’s Similar?</h2>
@@ -266,18 +262,17 @@
 <p><br></p>
 <ul>
 <li class="fragment"><p>We’ve had to use simulation in <code>R</code> to find these “distributions of statistics”</p>
-<ul>
-<li class="fragment"><p>In small samples, the code works and runs relatively quickly.</p></li>
-<li class="fragment"><p>In larger samples, or with complicated statistics, this can be more computationally costly.</p></li>
-</ul></li>
+<!-- + In small samples, the code works and runs relatively quickly. -->
+<!-- + In larger samples, or with complicated statistics, this can be more computationally costly. --></li>
 </ul>
 <p><br></p>
 <ul>
-<li class="fragment"><strong>Could we do this work more efficiently? What did people use before computers?</strong></li>
+<li class="fragment"><strong>Could we utilize probability theory to do this work more efficiently? What did people use before computers?</strong></li>
 </ul>
 </section>
 <section id="theory-based-inference" class="slide level2">
 <h2>Theory-Based Inference</h2>
+<div style="font-size:0.9em;">
 <ul>
 <li class="fragment"><p>Could we do this work more efficiently? <strong>Yes! Use the Central Limit Theorem (CLT)!</strong></p></li>
 <li class="fragment"><p>Last lecture, we found:</p>
@@ -313,6 +308,7 @@
 </div>
 </div></div>
 </div>
+</div>
 </section></section>
 <section>
 <section id="inference-for-a-single-proportion" class="title-slide slide level1 center">
@@ -336,6 +332,7 @@
 </section>
 <section id="sample-proportion-as-a-sample-mean" class="slide level2">
 <h2>Sample Proportion as a Sample Mean</h2>
+<div style="font-size:0.9em;">
 <ul>
 <li class="fragment"><u>Reminder</u>: Let <strong><span class="math inline">\(X\sim \text{Binomial}(n,p)\)</span></strong> distribution
 <ul>
@@ -370,6 +367,7 @@
 \]</span></li>
 </ul>
 </div></div>
+</div>
 </section>
 <section id="proportions-and-the-clt" class="slide level2">
 <h2>Proportions and the CLT</h2>
@@ -512,6 +510,7 @@
 </section>
 <section id="confidence-intervals-process-check" class="slide level2">
 <h2>Confidence Intervals: Process Check</h2>
+<div style="font-size:0.9em;">
 <p>When making (percentile) confidence intervals using <strong>computational</strong> methods, we:</p>
 <ol type="1">
 <li class="fragment"><p>Specify our population, and parameter</p></li>
@@ -528,14 +527,11 @@
 <li class="fragment"><p>“Old Way”: Collect bootstrap samples</p></li>
 <li class="fragment"><p>“Theory-based Way”: Use CLT, which gives a “theoretical” sampling distribution of <span class="math display">\[\widehat{p} \sim \text{Normal}(\widehat{p},\sqrt{\widehat{p}(1-\widehat{p})/n})\]</span></p></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_f815773c" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
 </div>
 </section>
 <section id="hypothesis-testing-again" class="slide level2">
 <h2>Hypothesis Testing (again)</h2>
+<div style="font-size:0.9em;">
 <p><strong>Ex:</strong> Are <em>less than</em> 50% of Reedies vegetarians?</p>
 <ul>
 <li><p><strong>Parameter:</strong> <span class="math inline">\(p\)</span> = Proportion of Reedies who are vegetarians</p></li>
@@ -558,15 +554,17 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture29_tbi-intro_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+<p><img data-src="lecture29_tbi-intro_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
+</div>
 </section>
 <section id="hypothesis-testing-again-1" class="slide level2">
 <h2>Hypothesis Testing (again)</h2>
+<div style="font-size:0.9em;">
 <p><strong>Ex:</strong> Are <em>less than</em> 50% of Reedies vegetarians?</p>
 <ul>
 <li><p><strong>Parameter:</strong> <span class="math inline">\(p\)</span> = Proportion of Reedies who are vegetarians</p></li>
@@ -591,15 +589,17 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture29_tbi-intro_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+<p><img data-src="lecture29_tbi-intro_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 </div></div>
+</div>
 </section>
-<section id="hypothesis-tests-process-check" class="slide level2 smaller">
+<section id="hypothesis-tests-process-check" class="slide level2">
 <h2>Hypothesis Tests: Process Check</h2>
+<div style="font-size:0.9em;">
 <p>When conducting hypothesis tests, we:</p>
 <ol type="1">
 <li class="fragment"><p>Specify our population, and parameter</p></li>
@@ -616,28 +616,7 @@ H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p &lt; p_0 \ \ \tex
 <li class="fragment"><p><strong>Q:</strong> Which steps in the above are the <strong>same</strong> in both the “old” way of doing hypothesis tests, and this new “theory-based” way? Which steps are <strong>different</strong>?</p></li>
 <li class="fragment"><p><strong>Only #4 is different!</strong> (again, the distribution we use comes from theory instead of simulation)</p></li>
 </ul>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_2ce29177" minutes="1" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
-</div>
-</section>
-<section id="recap-theory-based-inference" class="slide level2">
-<h2>Recap: Theory-Based Inference</h2>
-<p><span class="math display">\[\textbf{CLT-Based Sampling Distribution:} \ \ \  \widehat{p} \sim \text{Normal}\Big(\ p, \ \sqrt{\frac{p(1-p)}{n}}\ \Big)\]</span></p>
-<ul>
-<li class="fragment">The general steps we take are the <u>same</u> as before, but we <strong>now use the CLT instead of simulation to find sampling distributions</strong>.</li>
-</ul>
-<div class="columns">
-<div class="column fragment" style="width:45%;">
-<p><span class="math display">\[\textbf{Confidence Intervals}\]</span> <span class="math display">\[\text{Sampling Distribution of } p\]</span> <span class="math display">\[(\text{Plug in statistic, }\color{red}{\widehat{p}})\]</span></p>
-<p><span class="math display">\[\text{Normal}\Bigg(\color{red}{\widehat{p}}, \ \sqrt{\frac{\color{red}{\widehat{p}}(1-\color{red}{\widehat{p}})}{n}} \ \Bigg)\]</span></p>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column fragment" style="width:45%;">
-<p><span class="math display">\[\textbf{Hypothesis Testing}\]</span> <span class="math display">\[\text{Null Distribution}\]</span> <span class="math display">\[(\text{Plug in null value, }\color{red}{p_0})\]</span></p>
-<p><span class="math display">\[\text{Normal}\Bigg(\color{red}{p_0}, \ \sqrt{\frac{\color{red}{p_0}(1-\color{red}{p_0})}{n}} \ \Bigg)\]</span></p>
-</div></div>
 </section></section>
 <section>
 <section id="activity" class="title-slide slide level1 center">
@@ -646,44 +625,48 @@ H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p &lt; p_0 \ \ \tex
 </section>
 <section id="activity-1" class="slide level2">
 <h2>Activity</h2>
+<div style="font-size:0.9em;">
 <div class="columns">
-<div class="column" style="width:45%;">
+<div class="column" style="width:48%;">
 <p>In a SRS of 60 Reedies, 45 have watched the <em>Lord of the Rings</em> trilogy. Create a <strong>80% confidence interval</strong> for the true proportion of Reedies who have watched <em>LOTR</em> using theory-based inference.</p>
 <p><br></p>
 <ol type="1">
-<li class="fragment"><p>Carefully go through each step of the inference procedure.</p></li>
+<li class="fragment"><p>Identify the population, sample, parameter, statistic.</p></li>
 <li class="fragment"><p>Sketch and write down the assumed <u>sampling distribution</u> of the statistic</p></li>
-<li class="fragment"><p>Calculate confidence interval (use R)</p></li>
-<li class="fragment"><p>Interpret your confidence interval in context.</p></li>
+<li class="fragment"><p>Write <code>R</code> code that would calculate the confidence interval</p></li>
+<li class="fragment"><p>Suppose you get [0.68, 0.82]. Interpret this confidence interval in context.</p></li>
 </ol>
-</div><div class="column" style="width:10%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_b606802e" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
+</div><div class="column" style="width:4%;">
 
-</div><div class="column" style="width:45%;">
+</div><div class="column fragment" style="width:48%;">
 <p>In a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a <strong>hypothesis test</strong> using theory-based inference.</p>
 <p><br></p>
 <ol type="1">
-<li class="fragment"><p>Carefully go through each step of the inference procedure.</p></li>
+<li class="fragment"><p>Identify the population, sample, parameter, statistic, and <strong>hypotheses</strong>.</p></li>
 <li class="fragment"><p>Sketch and write down the <u>null distribution</u></p></li>
-<li class="fragment"><p>Calculate p-value (use R)</p></li>
-<li class="fragment"><p>Use your p-value to make a conclusion with <span class="math inline">\(\alpha=0.10\)</span></p></li>
+<li class="fragment"><p>Write <code>R</code> code that would calculate the p-value.</p></li>
+<li class="fragment"><p>Suppose your p-value is 0.23. Use this p-value to make a conclusion with <span class="math inline">\(\alpha=0.10\)</span>.</p></li>
 </ol>
-</div></div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_6e1b3317" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a5bafb08" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
-<!-- ------------------------------------------------------------------------   -->
+</div></div>
+</div>
+<!-- ------------------------------------------------------------------------ -->
 <!-- ## Answers (Confidence Intervals) {.smaller} -->
+<!-- In a SRS of 60 Reedies, 45 have watched the *Lord of the Rings* trilogy. Create a **80% confidence interval** for the true proportion of Reedies who have watched *LOTR* using theory-based inference. -->
 <!-- ::::: columns -->
-<!-- ::: {.column width=100%} -->
+<!-- ::: {.column width=50%} -->
 <!-- - **Collect Data:** In a sample of 60 students, 45 watched *LOTR* -->
 <!-- - **Point Estimate:** We estimate $\widehat{p} = 45/60 = 0.75$ -->
 <!-- - **Get Sampling Distribution:** -->
-<!-- ::: -->
-<!-- ::::: -->
-<!-- ::::: columns -->
-<!-- ::: {.column width=50%} -->
 <!-- ::: fragment -->
 <!-- $$\text{Normal}(0.75,\ \sqrt{0.75(1-0.75)/60})$$ -->
 <!-- ```{r echo=FALSE,out.width="100%",fig.asp=0.65} -->
@@ -711,14 +694,11 @@ H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p &lt; p_0 \ \ \tex
 <!-- ::: -->
 <!-- ::::: -->
 <!-- ------------------------------------------------------------------------ -->
-<!-- ## Answers (Hypothesis Testing) -->
-<!-- ::::: columns -->
-<!-- ::: {.column width=100%} -->
-<!-- - **State Hypotheses:** $H_0: p=0.6$; $H_a: p>0.6$  -->
-<!-- ::: -->
-<!-- ::::: -->
+<!-- ## Answers (Hypothesis Testing) {.smaller} -->
+<!-- In a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a **hypothesis test** using theory-based inference. -->
 <!-- ::::: columns -->
 <!-- ::: {.column width=48% .fragment .nonincremental} -->
+<!-- - **State Hypotheses:** $H_0: p=0.6$; $H_a: p>0.6$ -->
 <!-- - **Null Distribution:** -->
 <!-- $$\text{Normal}(0.6,\sqrt{0.6(1-0.6)/30})$$ -->
 <!-- ```{r echo=FALSE,out.width="100%",fig.asp=0.65} -->
@@ -735,7 +715,7 @@ H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p &lt; p_0 \ \ \tex
 <!-- ::: -->
 <!-- ::: {.column width=50%} -->
 <!-- - **Collect Data:** $\widehat{p}=20/30=0.667$ -->
-<!-- - **Calculate P-Value:** Area under null distribution curve to the right of $\widehat{p}$  -->
+<!-- - **Calculate P-Value:** Area under null distribution curve to the right of $\widehat{p}$ -->
 <!-- ::: fragment -->
 <!-- ``` {r echo=T} -->
 <!-- 1 - pnorm(20/30, 0.6, sqrt(0.6*(1 - 0.6) / 30)) -->
@@ -744,6 +724,23 @@ H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p &lt; p_0 \ \ \tex
 <!-- - **Conclusion:** Because 0.228 > 0.10, we fail to reject $H_0$ that 60% of birds in the Reed canyon are crows. -->
 <!-- ::: -->
 <!-- ::::: -->
+</section>
+<section id="recap-theory-based-inference" class="slide level2">
+<h2>Recap: Theory-Based Inference</h2>
+<p><span class="math display">\[\textbf{CLT-Based Sampling Distribution:} \ \ \  \widehat{p} \sim \text{Normal}\Big(\ p, \ \sqrt{\frac{p(1-p)}{n}}\ \Big)\]</span></p>
+<ul>
+<li class="fragment">The general steps we take are the <u>same</u> as before, but we <strong>now use the CLT instead of simulation to find sampling distributions</strong>.</li>
+</ul>
+<div class="columns">
+<div class="column fragment" style="width:45%;">
+<p><span class="math display">\[\textbf{Confidence Intervals}\]</span> <span class="math display">\[\text{Sampling Distribution of } p\]</span> <span class="math display">\[(\text{Plug in statistic, }\color{red}{\widehat{p}})\]</span></p>
+<p><span class="math display">\[\text{Normal}\Bigg(\color{red}{\widehat{p}}, \ \sqrt{\frac{\color{red}{\widehat{p}}(1-\color{red}{\widehat{p}})}{n}} \ \Bigg)\]</span></p>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column fragment" style="width:45%;">
+<p><span class="math display">\[\textbf{Hypothesis Testing}\]</span> <span class="math display">\[\text{Null Distribution}\]</span> <span class="math display">\[(\text{Plug in null value, }\color{red}{p_0})\]</span></p>
+<p><span class="math display">\[\text{Normal}\Bigg(\color{red}{p_0}, \ \sqrt{\frac{\color{red}{p_0}(1-\color{red}{p_0})}{n}} \ \Bigg)\]</span></p>
+</div></div>
 
 
 </section></section>
