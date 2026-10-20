@@ -134,22 +134,15 @@
 <section class="slide level2">
 
 <div class="columns">
-<div class="column center" style="width:50%;">
+<div class="column center" style="width:55%;">
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
-</div><div class="column center" style="width:50%;">
+</div><div class="column center" style="width:45%;">
 <p><br></p>
 <p><span class="custom-title">Theory Based Inference III</span></p>
 <p><br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Wednesday, Week 12</span></p>
 </div></div>
-</section>
-<section id="reminder" class="slide level2">
-<h2>Reminder</h2>
-<ul>
-<li class="fragment"><p>HW 8 is not due until <u>next Friday, April 17, 11:59pm</u></p></li>
-<li class="fragment"><p>Monday office hour adjustments for next week</p></li>
-</ul>
 </section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
@@ -158,67 +151,48 @@
 <li class="fragment"><p>Discuss Inference for One Mean via the <span class="math inline">\(t\)</span> distribution</p></li>
 </ul>
 </section>
-<section id="review-inference-on-a-proportion" class="slide level2 smaller">
-<h2>Review: Inference on a Proportion</h2>
+<section>
+<section id="z-scores" class="title-slide slide level1 center">
+<h1>Z-Scores</h1>
+
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
 <ul>
-<li class="fragment"><p><strong>Ex:</strong> To understand proportion of Reedies who are vegetarians, we survey <span class="math inline">\(40\)</span> students. 16 of the students are vegetarians.</p>
+<li class="fragment"><strong>Ex:</strong> To understand proportion of Reedies who are vegetarians, we survey <span class="math inline">\(40\)</span> students. 16 of the students are vegetarians.
 <ul>
 <li class="fragment"><strong>Population:</strong> All Reedies</li>
 <li class="fragment"><strong>Parameter:</strong> <span class="math inline">\(p\)</span> = Proportion of <em>all</em> Reedies who are vegetarians</li>
 <li class="fragment"><strong>Sample:</strong> <span class="math inline">\(n=40\)</span> Reedies we surveyed</li>
 <li class="fragment"><strong>Statistic:</strong> <span class="math inline">\(\hat{p} = 16/40 = 0.40\)</span></li>
 </ul></li>
-<li class="fragment"><p>We were able to rewrite <span class="math inline">\(\hat{p}\)</span> as a sample mean, so by CLT with “large enough” <span class="math inline">\(n\)</span>, <span class="math display">\[\hat p \sim \text{Normal}\Bigg(\ \text{Mean} = p, \ \text{SE} = \sqrt{\frac{p(1-p)}{n}}\ \Bigg)\]</span> <u>“Large Enough”</u>: 10 or more “successes”, <em>and</em> 10 or more “failures”</p></li>
-<li class="fragment"><p>Suppose we want to do a hypothesis test: <span class="math display">\[H_0: p = 0.5 \ \ \ \ \ \text{vs.} \ \ \ \ \  H_a: p&lt;0.5\]</span></p></li>
+<li class="fragment">Suppose we want to do a hypothesis test: <span class="math display">\[H_0: p = 0.5 \ \ \ \ \ \text{vs.} \ \ \ \ \  H_a: p&lt;0.5\]</span></li>
+<li class="fragment">Under this null hypothesis, our CLT for <span class="math inline">\(\hat{p}\)</span> gives us: <span class="math display">\[\hat{p}\sim \text{Normal}\Big(\text{Mean} = \color{red}{0.5}, \text{SE}=\sqrt{\frac{\color{red}{0.5}(1-\color{red}{0.5})}{40}}\Big)\]</span> ————————————————————————</li>
 </ul>
-</section>
-<section id="inference-on-a-proportion-hypothesis-test" class="slide level2 smaller">
-<h2>Inference on a Proportion: Hypothesis Test</h2>
-<p><span class="math display">\[H_0: p = 0.5 \ \ \ \ \ \text{vs.} \ \ \ \ \  H_a: p&lt;0.5\]</span></p>
-<div class="fragment">
-<p><strong>Null Distribution:</strong> We know: <span class="math display">\[\hat p \sim \text{Normal}\Big(\ \text{Mean} = p, \ \text{SE} = \sqrt{\frac{p(1-p)}{n}}\ \Big)\]</span></p>
-</div>
-<div class="fragment">
-<p>For Null Distribution, we plug in <span class="math inline">\(p=0.5\)</span> (i.e., the “null value”) <span class="math display">\[\hat{p}\sim \text{Normal}\Big(\text{Mean} = \color{red}{0.5}, \text{SE}=\sqrt{\frac{\color{red}{0.5}(1-\color{red}{0.5})}{40}}\Big)\]</span></p>
-</div>
-<div class="fragment">
-<p><strong>P-Value:</strong> <span class="math inline">\(P(\hat{p} \leq 0.4) = 0.07\)</span></p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture31_tbi-means_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section>
-<section id="z-scores" class="title-slide slide level1 center">
-<h1>Z-Scores</h1>
-
 </section>
 <section id="z-scores-standardization" class="slide level2">
 <h2>Z-Scores: Standardization</h2>
+<div style="font-size:0.85em;">
+<div style="font-size:1.25em;">
 <div class="callout callout-note no-icon callout-titled callout-style-simple">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Theorem: Standardization</strong></p>
+<p><strong>Theorem: Standardization (from 11/11 slides)</strong></p>
 </div>
 <div class="callout-content">
 <p>Suppose <span class="math inline">\(X\sim\text{Normal}(\mu,\sigma)\)</span>. Then, <span class="math inline">\(Z = \frac{X - \mu}{\sigma}\)</span> is a <strong>Standard Normal</strong> random variable (with mean 0 and standard deviation 1).</p>
 </div>
 </div>
 </div>
+</div>
 <div class="fragment">
-<p>Apply standardization to <span class="math inline">\(\hat{p}\)</span>:</p>
+<p>We can apply standardization to <span class="math inline">\(\hat{p}\)</span> under the null distribution:</p>
 <p><span class="math display">\[
 \hat{p} \sim \text{Normal}\big(0.5,\sqrt{0.5(1-0.5)/40}\big) \quad  \rightarrow \quad \frac{\hat{p}-0.5}{\sqrt{0.5(1-0.5)/40}} \sim \underbrace{\text{Normal}\big(0,1\big)}_{Z}
 \]</span></p>
 </div>
 <div class="fragment">
-<p>In our sample, <span class="math inline">\(\hat{p} = 0.40\)</span>:</p>
+<p>We can write our p-value as a probability about <span class="math inline">\(Z\)</span></p>
 <p><span class="math display">\[
 \begin{aligned}
 \text{p-value} &amp;= P\big[\hat{p} &lt; 0.4 | H_0 \text{ is true} \big]  \\
@@ -230,6 +204,7 @@
 <ul>
 <li class="fragment">Recall that <span class="math inline">\(-1.26\)</span> is called the <strong>Z-Score</strong>.</li>
 </ul>
+</div>
 </section>
 <section id="visualizing-z-scores" class="slide level2">
 <h2>Visualizing Z-Scores</h2>
@@ -240,7 +215,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture31_tbi-means_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="lecture31_tbi-means_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -252,12 +227,15 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture31_tbi-means_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="lecture31_tbi-means_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><strong>“Z-Score” P-Value:</strong> <span class="math inline">\(P( Z \leq -1.26)\)</span></p>
+<ul>
+<li class="fragment">“0.4 is <strong>1.26</strong> standard deviations below the mean of the null distribution”</li>
+</ul>
 </div></div>
 </section>
 <section id="z-scores-why" class="slide level2">
@@ -277,12 +255,31 @@
 </ul></li>
 </ul>
 </section>
-<section id="confidence-intervals-critical-values" class="slide level2 smaller">
+<section id="confidence-intervals-critical-values" class="slide level2">
 <h2>Confidence Intervals: Critical Values</h2>
+<div style="font-size:0.85em;">
 <p><strong>Sampling Distribution:</strong> For a sample proportion, we know, <span class="math display">\[\hat p \sim \text{Normal}\Big(\ \text{Mean} = p, \ \mathrm{SE} = \sqrt{\frac{p(1-p)}{n}}\ \Big)\]</span> For Sampling Distribution, we plug in <strong><span class="math inline">\(\hat{p}=0.40\)</span></strong> for <span class="math inline">\(p\)</span> (i.e., the statistic) <span class="math display">\[\hat{p} \sim \text{Normal}\Big(\text{Mean} = \color{red}{0.40},\ \mathrm{SE}  = \sqrt{\frac{\color{red}{0.40}(1-\color{red}{0.40})}{40}}\Big)\]</span></p>
-<p><strong>Calculate 90% Confidence Interval:</strong></p>
+<p><strong>Calculate 90% Confidence Interval - Percentile Method:</strong></p>
 <div class="columns">
 <div class="column fragment" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture31_tbi-means_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<section id="confidence-intervals-critical-values-1" class="slide level2">
+<h2>Confidence Intervals: Critical Values</h2>
+<div style="font-size:0.9em;">
+<div class="columns">
+<div class="column fragment" style="width:50%;">
+<p><strong>Calculate 90% Confidence Interval - Percentile Method:</strong></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -293,18 +290,20 @@
 </div>
 </div>
 </div><div class="column fragment" style="width:50%;">
+<p><strong>This is equivalent to the SE approach using a critical value!</strong></p>
 <p><span class="math display">\[
 \begin{aligned}
 (&amp;0.273, \ 0.527) \\
 &amp;= 0.4 \pm 0.127  \\
 &amp;= 0.4 \pm \frac{0.127}{\sqrt{\frac{0.4*0.6}{40}}}\sqrt{\frac{0.4*0.6}{40}}  \\
-&amp;= \underbrace{0.4}_{\hat{p}} \pm \underbrace{1.639}_{z*}\times\underbrace{\sqrt{\frac{0.4*0.6}{40}}}_{\text{SE}}
+&amp;= \underbrace{0.4}_{\hat{p}} \pm \underbrace{1.64}_{z*}\times\underbrace{\sqrt{\frac{0.4*0.6}{40}}}_{\text{SE}}
 \end{aligned}
 \]</span></p>
 </div></div>
 <ul>
-<li class="fragment"><strong><span class="math inline">\(z^*\)</span> is the standardized distance from the center of our sampling distribution to the 0.95 (or 0.05) quantile.</strong></li>
+<li class="fragment"><strong><span class="math inline">\(z^*\)</span> is the # of standard errors from the center of our sampling distribution to the 0.95 (or 0.05) quantile.</strong></li>
 </ul>
+</div>
 </section>
 <section id="confidence-intervals-using-critical-values" class="slide level2">
 <h2>Confidence Intervals using Critical Values</h2>
@@ -312,14 +311,14 @@
 \textbf{Sampling Distribution:} \ \ \ \ \ \hat{p} \sim \text{Normal}\Big(\text{Mean} = 0.4,\ \mathrm{SE} = \sqrt{\frac{0.4(0.6)}{40}}\Big)
 \]</span></p>
 <p><span class="math display">\[
-\textbf{90% Confidence Interval:} \ \ \ \ \ \underbrace{0.4}_{\hat{p}} \pm \underbrace{1.639}_{z*}\times\underbrace{\sqrt{\frac{0.4*0.6}{40}}}_{\text{SE}}
+\textbf{90% Confidence Interval:} \ \ \ \ \ \underbrace{0.4}_{\hat{p}} \pm \underbrace{1.64}_{z*}\times\underbrace{\sqrt{\frac{0.4*0.6}{40}}}_{\text{SE}}
 \]</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
 <li class="fragment"><p>This is a <strong>standard-error method confidence interval!</strong></p></li>
 <li class="fragment"><p>But now for 90% confidence instead of the usual 95% (where <span class="math inline">\(z^{*} = 2\)</span>).</p></li>
-<li class="fragment"><p>Why do we use <span class="math inline">\(z^{*} = 1.639\)</span>? <strong>It gives the middle 90% in a Standard Normal!</strong></p></li>
+<li class="fragment"><p>Why do we use <span class="math inline">\(z^{*} = 1.64\)</span>? <strong>It gives the middle 90% in a Standard Normal!</strong></p></li>
 </ul>
 </div><div class="column fragment" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -383,10 +382,13 @@
 <h2>Distribution of Sample Means</h2>
 <p>When interested in inference on a <strong>population mean</strong> <span class="math inline">\(\mu\)</span>, we often use a <strong>sample mean</strong> <span class="math inline">\(\bar{x}\)</span>.</p>
 <p>By the CLT, the distribution of <span class="math inline">\(\bar{x}\)</span> is, <span class="math display">\[ \color{red}{\bar{x} \approx \text{Normal}\Big(\mathrm{Mean} = \mu, \ \ \mathrm{SE} =\frac{\sigma}{\sqrt{n}}\Big) }\]</span> where</p>
+<div class="columns">
+<div class="column">
 <ul>
 <li><p><span class="math inline">\(n\)</span> is the sample size</p></li>
 <li><p><span class="math inline">\(\sigma\)</span> is the <u>population</u> standard deviation</p></li>
 </ul>
+</div><div class="column">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -396,9 +398,11 @@
 </div>
 </div>
 </div>
+</div></div>
 </section>
-<section id="example" class="slide level2">
+<section id="example-1" class="slide level2">
 <h2>Example</h2>
+<div style="font-size:0.9em;">
 <p><strong>Ex:</strong> We’re interested in average weight of cheese blocks at a Tillamook factory.</p>
 <ul>
 <li><p><strong>Population:</strong> Cheese blocks at a Tillamook factory</p></li>
@@ -427,59 +431,42 @@
 </div></div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_d7bcfbdb" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_8b41197c" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
 </div>
 </div>
 </section>
-<section id="example-1" class="slide level2">
+<section id="example-2" class="slide level2">
 <h2>Example</h2>
+<div style="font-size:0.9em;">
 <p><span class="math display">\[
 \begin{align*}
 \bar{x} \approx \text{Normal}\big(\text{Mean} = \mu,\quad \text{SE}=\frac{\sigma}{\sqrt{n}} \big)
 \end{align*}
 \]</span></p>
-<div class="columns">
-<div class="column" style="width:50%;">
 <div class="fragment">
 <ol type="1">
-<li>For <em>confidence intervals</em>, what will we “plug in” for <span class="math inline">\(\mu\)</span>?</li>
+<li>For <em>confidence intervals</em>, what will we “plug in” for <span class="math inline">\(\mu\)</span>? <strong><span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\bar{x}\)</span> (the statistic)</strong></li>
 </ol>
 </div>
-<ul>
-<li class="fragment"><strong><span class="math inline">\(\bar{x}\)</span></strong> (the statistic)</li>
-</ul>
 <div class="fragment">
 <ol start="2" type="1">
-<li>For <em>hypothesis tests</em>, what will we “plug in” for <span class="math inline">\(\mu\)</span>?</li>
+<li>For <em>hypothesis tests</em>, what will we “plug in” for <span class="math inline">\(\mu\)</span>? <strong><span class="math inline">\(\rightarrow\)</span> The “null-value” (e.g., <span class="math inline">\(\mu_0\)</span>) that we assume in <span class="math inline">\(H_0: \mu = \mu_0\)</span></strong>,</li>
 </ol>
 </div>
-<div class="fragment">
-<ul>
-<li>The <strong>“null-value” (e.g., <span class="math inline">\(\mu_0\)</span>)</strong> that we assume in <span class="math inline">\(H_0\)</span>,</li>
-</ul>
-<p><span class="math display">\[
-H_0: \mu = \mu_0
-\]</span></p>
-</div>
-</div><div class="column" style="width:50%;">
 <div class="fragment">
 <ol start="3" type="1">
-<li>What should we “plug in” for <span class="math inline">\(\sigma\)</span>?</li>
+<li>What should we “plug in” for <span class="math inline">\(\sigma\)</span>? <strong><span class="math inline">\(\rightarrow\)</span> the sample standard deviation, <span class="math inline">\(s\)</span></strong></li>
 </ol>
-</div>
-<div class="fragment">
-<ul>
-<li>Let’s estimate <span class="math inline">\(\sigma\)</span> using the <strong>sample standard deviation</strong>, <span class="math inline">\(\color{red}s\)</span></li>
-</ul>
 <p><span class="math display">\[
-\color{red}{s=\sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}}
+s=\sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}
 \]</span></p>
 </div>
 <ul>
 <li class="fragment"><p>Notice that we had to use <span class="math inline">\(\bar{x}\)</span> to estimate <span class="math inline">\(\sigma\)</span>…</p></li>
 <li class="fragment"><p>It turns out, with all this “estimating”, our distribution is <strong>not Normal</strong> anymore…</p></li>
 </ul>
-</div></div>
+</div>
 </section>
 <section id="the-t-distribution" class="slide level2">
 <h2>The <span class="math inline">\(t\)</span>-distribution</h2>
@@ -527,6 +514,7 @@ H_0: \mu = \mu_0
 </section>
 <section id="degrees-of-freedom" class="slide level2">
 <h2>Degrees of Freedom</h2>
+<div style="font-size:0.95em;">
 <ul>
 <li class="fragment"><p>The <span class="math inline">\(t\)</span>-distribution is actually a <strong>family of distributions</strong>, defined by the parameter <strong>Degrees of Freedom (<span class="math inline">\(df\)</span>)</strong></p></li>
 <li class="fragment"><p>The degrees of freedom <span class="math inline">\(df\)</span> determines the <strong>heaviness of tails</strong> <span class="math display">\[
@@ -552,9 +540,11 @@ H_0: \mu = \mu_0
 <li class="fragment"><p>For <span class="math inline">\(df \geq 30\)</span>, the <span class="math inline">\(t\)</span> distribution is <em>nearly</em> indistinguishable from a Normal</p></li>
 </ul>
 </div></div>
+</div>
 </section>
 <section id="distribution-of-sample-means-using-t-distribution" class="slide level2">
 <h2>Distribution of Sample Means using <span class="math inline">\(t\)</span>-distribution</h2>
+<div style="font-size:0.85em;">
 <ul>
 <li class="fragment"><strong>Reminder:</strong> <span class="math inline">\(\bar{x}\)</span> follows a <span class="math inline">\(t\)</span>-distribution <u>“after standardizing”</u>
 <ul>
@@ -576,6 +566,10 @@ H_0: \mu = \mu_0
 \color{red}{\frac{\bar{x}-\mu}{s/\sqrt{n}}} \sim t\big(\text{df}= n-1\big)
 \]</span></p>
 <p>&nbsp; &nbsp; &nbsp; where <u><span class="math inline">\(s\)</span> is the sample standard deviation.</u></p>
+</div>
+<ul>
+<li class="fragment">In <code>R</code>, we’ll use <code>pt(q, df)</code> and <code>qt(p, df)</code> to compute probabilities and quantiles of <span class="math inline">\(t\)</span> distributions (more next lecture)</li>
+</ul>
 </div>
 </section>
 <section id="distribution-of-sample-means-using-t-distribution-1" class="slide level2">
@@ -643,7 +637,7 @@ H_0: \mu = \mu_0
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_64bff222" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a919f0ef" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -683,19 +677,19 @@ H_0: \mu = \mu_0
 </section>
 <section id="implications-sample-size" class="slide level2">
 <h2>Implications: Sample Size</h2>
-<div class="fragment">
-<p><u>Hypothesis Tests</u>: the “Z-Score Way” of calculating P-Values, but <strong>use <span class="math inline">\(t\)</span>-distribution (with <span class="math inline">\(df=n-1\)</span>) for probabilities</strong> (instead of standard normal)</p>
-</div>
-<div class="fragment">
-<p><u>Confidence Intervals</u>: the Standard-Error Method, but <strong>use <span class="math inline">\(t\)</span>-distribution (with <span class="math inline">\(df=n-1\)</span>) for critical values</strong> (instead of standard normal)</p>
-</div>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:50%;">
 <p><u>Reminder</u>: In a <span class="math inline">\(t\)</span>-distribution,</p>
 <ul>
-<li><p>Lower degrees of freedom (<span class="math inline">\(df\)</span>) <span class="math inline">\(\implies\)</span> heavier tails</p></li>
-<li><p>Get closer to the Normal distribution as degrees of freedom increases</p></li>
+<li class="fragment"><p>Lower degrees of freedom (<span class="math inline">\(df\)</span>) <span class="math inline">\(\implies\)</span> heavier tails</p></li>
+<li class="fragment"><p>Get closer to the Normal distribution as degrees of freedom increases</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><strong>Q</strong>: What does this imply about using the <span class="math inline">\(t\)</span>-distribution versus the standard normal distribution as <span class="math inline">\(n\)</span> increases?
+<ul>
+<li class="fragment"><strong>The difference becomes negligible!</strong></li>
+<li class="fragment">They would give about the same P-Values and Confidence Intervals when <span class="math inline">\(n\)</span> is large.</li>
+</ul></li>
 </ul>
 </div><div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
@@ -708,43 +702,10 @@ H_0: \mu = \mu_0
 </div>
 </div>
 </div></div>
-</div>
-<div class="fragment">
-<p><strong>Discuss with Neighbor(s):</strong> What does this imply about using the <span class="math inline">\(t\)</span>-distribution versus the standard normal distribution as <span class="math inline">\(n\)</span> increases? Does this make sense <em>intuitively</em>?</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_dd020109" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
-</div>
-</section>
-<section id="implications-sample-size-1" class="slide level2">
-<h2>Implications: Sample Size</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li class="fragment">What does this imply about using the <span class="math inline">\(t\)</span>-distribution versus the standard normal distribution as <span class="math inline">\(n\)</span> increases?
-<ul>
-<li class="fragment"><strong>The difference becomes negligible!</strong></li>
-<li class="fragment">They would give about the same P-Values and Confidence Intervals when <span class="math inline">\(n\)</span> is large.</li>
-</ul></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture31_tbi-means_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
 <ul>
 <li class="fragment">Does this make sense <em>intuitively</em>?
 <ul>
-<li class="fragment"><strong>When our sample is large, we expect <span class="math inline">\(s\)</span> to be a good estimate of <span class="math inline">\(\sigma\)</span>!</strong></li>
-<li class="fragment">While we have to estimate an extra parameter <span class="math inline">\(\sigma\)</span>, our estimate <span class="math inline">\(s\)</span> is so good that it’s essentially like we’re using the true value of <span class="math inline">\(\sigma\)</span>.</li>
+<li class="fragment"><strong>When our sample is large, we expect <span class="math inline">\(s\)</span> to be a close estimate of <span class="math inline">\(\sigma\)</span></strong></li>
 </ul></li>
 </ul>
 </section>
@@ -754,9 +715,6 @@ H_0: \mu = \mu_0
 <li class="fragment">Theory-based inference for difference-in-means</li>
 <li class="fragment">Activity</li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>

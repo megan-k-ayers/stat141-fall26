@@ -44,20 +44,26 @@ library(tufte)
 ```
 
 ::::: columns
-::: {.column .center width="50%"}
+::: {.column .center width="55%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="50%"}
+::: {.column .center width="45%"}
+
+::: {style="font-size:0.9em;"}
+
 <br>
 
 [Theory Based Inference II]{.custom-title}
 
-<br> <br> 
+<br> <br> <br>
 
 [Megan Ayers]{.custom-subtitle}
 
 [Stat 141 \| Fall 2026 <br> Monday, Week 12]{.custom-subtitle}
+
+:::
+
 :::
 :::::
 
@@ -66,7 +72,7 @@ library(tufte)
 
 ## Goals for today
 
-- Discuss activity from last lecture
+- Stats courses for next semester
 
 - Consider inference for a **difference in two proportions**
 
@@ -74,6 +80,58 @@ library(tufte)
 
 
 ------------------------------------------------------------------------
+
+## Stats Courses Next Semester
+
+::::: columns
+
+::: column
+
+[SPRING 2027]{.underline}
+
+::: {.fragment .nonincremental}
+- **STAT 243: Statistical Learning** (Megan)
+    - (prereqs: STAT 141)
+
+:::
+
+::: {.fragment .nonincremental}
+- STAT 392: Mathematical Statistics (Lenny)
+    - (prereqs: STAT 141, STAT 291)
+    
+:::    
+
+::: {.fragment .nonincremental}
+- STAT 394: Causal Inference (Megan)
+    - (prereqs: STAT 141, STAT 291)
+
+:::
+
+:::
+
+::: column
+
+<br><br>
+
+::: fragment
+
+**New Statistics minor!!** This requires: 
+
+- STAT 141
+- STAT 243
+- CSCI 121 or 122 or 221
+- One additional 200+ level STAT course
+- One 300+ level STAT course
+
+:::
+
+:::
+
+:::::
+
+
+------------------------------------------------------------------------
+
 
 ## Recap: Theory-Based Inference for One Proportion
 
@@ -157,30 +215,30 @@ countdown::countdown(2)
 
 ------------------------------------------------------------------------
   
-## Example: Comparing Drug A to Drug B {.smaller}
+## Example: Comparing Drug A to Drug B
+
+::: {style="font-size:0.9em;"}
 
 - **Population(s):** Overall, sampling from adults who have heart disease 
     - Population 1: More specifically, adults with heart disease when they receive drug A
     - Population 2: More specifically, adults with heart disease when they receive drug B
     
-<br>
   
 - **Parameter:** The [parameter]{.underline} is: **$p_1 - p_2$ = Difference in recovery rates [for all adults with heart disease]{.underline}**, where
     - $p_1$=Proportion who would recover with Drug A
     - $p_2$=Proportion who would recover with Drug B
 
-<br>
 
 - **Sample(s):** Of the $n$ total that we sampled,
     - [Sample 1]{.underline}: $n_1$ people we gave Drug A
     - [Sample 2]{.underline}: $n - n_1$ people we gave Drug B
 
-<br>
 
 - **Statistic:** the [statistic]{.underline} is: **$\widehat{p}_1 - \widehat{p}_2$ = Difference in recovery rates [between our samples]{.underline}**, where
     - $\widehat{p}_1$=Proportion who recovered in the Drug A group (Sample 1)
     - $\widehat{p}_2$=Proportion who recovered in the Drug B group (Sample 2)
 
+:::
 
 ------------------------------------------------------------------------
 
@@ -381,7 +439,7 @@ $$
 
   - [Mean:]{.underline} Difference in the means of the two distributions
 
-  - [SD:]{.underline} A "combination" of the SDs of the two distributions (that is larger)
+  - [SD:]{.underline} A "combination" of the SDs of the two distributions
 
 ------------------------------------------------------------------------
 
@@ -397,7 +455,7 @@ $$
 $$
 
 
-Since $\widehat{p}_1$ and $\widehat{p}_2$ are independent,
+If $\widehat{p}_1$ and $\widehat{p}_2$ are independent,
 
 ::: fragment
 
@@ -439,7 +497,9 @@ $$\widehat{p}_1 - \widehat{p}_2 \approx \text{Normal}\Bigg(\mu = p_1-p_2, \sigma
 
 ------------------------------------------------------------------------
 
-## Confidence Intervals: Drug Comparison {.smaller}
+## Confidence Intervals: Drug Comparison 
+
+::: {style="font-size:0.85em;"}
 
 **Ex:** What is the difference in recovery rates for Drug A and Drug B? 
 
@@ -486,26 +546,32 @@ $$\text{Normal}\Bigg(p_1-p_2,\sqrt{\frac{p_1(1-p_1)}{n_1}+ \frac{p_2(1-p_2)}{n_2
 
 :::
 
-<br>
-
-
-::: fragment
-**Q:** We don't know true $p_1, p_2$... how do we get rid of them?
-
-:::
 
 :::
 
 ::: {.column width=50%}
 
+::: fragment
+
+<br><br><br>
+
+**Q:** We don't know true $p_1, p_2$... how do we get rid of them?
+
+- **Plug-in $\widehat{p}_1, \ \widehat{p}_2$** for $p_1, p_2$!
+
+:::
+
 :::
 
 :::::
 
+:::
 
 ------------------------------------------------------------------------
 
-## Confidence Intervals: Drug Comparison {.smaller}
+## Confidence Intervals: Drug Comparison
+
+::: {style="font-size:0.85em;"}
 
 **Ex:** What is the difference in recovery rates for Drug A and Drug B? 
 
@@ -550,12 +616,9 @@ $$\text{Normal}\Bigg(p_1-p_2,\sqrt{\frac{p_1(1-p_1)}{n_1}+ \frac{p_2(1-p_2)}{n_2
 
 **Sampling Distribution:**
 
-**Q:** We don't know true $p_1, p_2$... how do we get rid of them?
+- Theory-based sampling distribution of $\widehat{p}_1-\widehat{p}_2$:
 
-
-- **Plug-in $\widehat{p}_1, \ \widehat{p}_2$** for $p_1, p_2$!
-
-$$\textbf{Normal} \left( \color{red}{\widehat{p}_1}-\color{red}{\widehat{p}_2},\sqrt{\frac{\color{red}{\widehat{p}_1}(1-\color{red}{\widehat{p}_1})}{n_1}+ \frac{\color{red}{\widehat{p}_2}(1-\color{red}{\widehat{p}_2})}{n_2}} \right)$$
+$$\text{Normal} \left( \color{red}{\widehat{p}_1}-\color{red}{\widehat{p}_2},\sqrt{\frac{\color{red}{\widehat{p}_1}(1-\color{red}{\widehat{p}_1})}{n_1}+ \frac{\color{red}{\widehat{p}_2}(1-\color{red}{\widehat{p}_2})}{n_2}} \right)$$
 
 :::
 
@@ -580,6 +643,8 @@ ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)[1]-hat(p)[2]))+
 :::
 
 :::::
+
+:::
 
 
 ------------------------------------------------------------------------
@@ -647,7 +712,9 @@ $$
 
 ------------------------------------------------------------------------
 
-## Hypothesis Testing: Drug Comparison {.smaller}
+## Hypothesis Testing: Drug Comparison
+
+::: {style="font-size:0.8em;"}
 
 **Ex:** Is Drug A more effective than Drug B?
 
@@ -669,10 +736,11 @@ $$\widehat{p}_1 - \widehat{p}_2 \approx \text{Normal}\Bigg(\mu = p_1-p_2, \sigma
 
 - **Q:** How we use $H_0$ to get rid of unknown $p_1$ and $p_2$?
     - If $H_0$ is true, then $p_1 - p_2 = 0$
-    - Under $H_0$, there is no *expected* difference between groups: Thus, we can plug in a **pooled proportion**,
-$$\text{Pooled Proportion} = \color{red}{\widehat{p}_{\text{pool}} = \frac{\#\text{Successes}_1 + \#\text{Successes}_2}{n_1 + n_2}}$$
-for $p_1$ and $p_2$.
+    - Under $H_0$, there is no *expected* difference between groups, so our best guess for $p_1 = p_2$ is the **pooled proportion**,
+    $$\text{Pooled Proportion} = \color{red}{\widehat{p}_{\text{pool}} = \frac{\#\text{Successes}_1 + \#\text{Successes}_2}{n_1 + n_2}}.$$
 
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -803,6 +871,4 @@ $$ \hspace{-0.30in} \text{Normal}\Bigg( \color{red}{d_0}, \sqrt{\frac{\color{red
 - Theory-based inference with means
 
 :::
-
-------------------------------------------------------------------------
 

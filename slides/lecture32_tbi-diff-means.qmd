@@ -44,11 +44,11 @@ library(tufte)
 ```
 
 ::::: columns
-::: {.column .center width="50%"}
+::: {.column .center width="55%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="50%"}
+::: {.column .center width="45%"}
 <br>
 
 [Theory Based Inference IV]{.custom-title}
@@ -74,12 +74,6 @@ library(gridExtra)
 theme_set(theme_bw())
 ```
 
-
-------------------------------------------------------------------------
-
-## Brief announcement
-
-- Summary tables for theory-based inference methods now posted on the course website
 
 ------------------------------------------------------------------------
 
@@ -234,7 +228,7 @@ $$
 
   - [Mean:]{.underline} Difference in the means of the two distributions
 
-  - [SD:]{.underline} A "combination" of the SDs of the two distributions (that is larger)
+  - [SD:]{.underline} A "combination" of the SDs of the two distributions
 
 
 ------------------------------------------------------------------------
@@ -331,7 +325,7 @@ $$
   \frac{(\bar{x}_1 - \bar{x}_2) - \delta_0}{\sqrt{ \frac{s^2_1}{n_1} + \frac{s_2^2}{n_2}}}
 $$ 
 
-- The P-Value is the probability we get the above or anything more extreme *in the direction of* $H_a$ **according to a $t$-distribution with $\text{df}=\min\{n_1 -1, n_2 -1\}$**.
+- The P-Value is the probability we get the z-score or anything more extreme *in the direction of* $H_a$ **according to a $t$-distribution with $\text{df}=\min\{n_1 -1, n_2 -1\}$**.
     - Often, $\delta_0 = 0$ (i.e., $H_0: \mu_1 - \mu_2 =0$)
 
 
@@ -435,15 +429,19 @@ $$\frac{(36.1-32.3)-(0)}{\sqrt{\frac{5^2}{50}+\frac{10^2}{55}}} = 2.497$$
 
 ::::: columns
 
-::: {.column width=40%}
+::: {.column width=40% .nonincremental}
+
+::: {.fragment fragment-index="1"}
 
 - Null Distribution: $t(\text{df}=49)$
 
 - Standardized Statistic: $2.497$
 
-- Two-sided hypothesis test
+:::
 
-::: fragment
+::: {.fragment fragment-index="2"}
+
+- Two-sided hypothesis test
 
 ```{r echo=T}
 2*(1 - pt(2.497, 49))
@@ -451,9 +449,20 @@ $$\frac{(36.1-32.3)-(0)}{\sqrt{\frac{5^2}{50}+\frac{10^2}{55}}} = 2.497$$
 
 :::
 
+::: {.fragment fragment-index="3"}
+
+- Side note: suppose we defined our difference the other way:
+
+```{r echo=T}
+my_stat <- -2.497
+2*(1 - pt(abs(my_stat), 49))
+```
+
 :::
 
-::: {.column width=60% .fragment}
+:::
+
+::: {.column width=60% .fragment fragment-index="2"}
 
 ```{r echo=F, fig.height=5, warning = F}
 dt5<-function(x){dt(x , df = 49)}
@@ -493,7 +502,9 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) + theme_bw(base_size=14)+
 
 ------------------------------------------------------------------------
 
-## Steps {.smaller}
+## Steps
+
+::: {style="font-size:0.75em;"}
 
 Especially when relying on standardization (i.e., Z Scores), [the theory-based inference procedures we've studied follow the same general steps]{.underline}.
 
@@ -553,6 +564,8 @@ ii. the appropriate $t$-distribution (for means).
 :::
 
 :::::
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -670,4 +683,3 @@ countdown::countdown(12)
 
 - Start inference for regression!
 
-------------------------------------------------------------------------

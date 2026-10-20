@@ -134,23 +134,68 @@
 <section class="slide level2">
 
 <div class="columns">
-<div class="column center" style="width:50%;">
+<div class="column center" style="width:55%;">
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
-</div><div class="column center" style="width:50%;">
+</div><div class="column center" style="width:45%;">
+<div style="font-size:0.9em;">
 <p><br></p>
 <p><span class="custom-title">Theory Based Inference II</span></p>
-<p><br> <br></p>
+<p><br> <br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 12</span></p>
+</div>
 </div></div>
 </section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
 <ul>
-<li class="fragment"><p>Discuss activity from last lecture</p></li>
+<li class="fragment"><p>Stats courses for next semester</p></li>
 <li class="fragment"><p>Consider inference for a <strong>difference in two proportions</strong></p></li>
 <li class="fragment"><p>Practice on clinical trials data</p></li>
 </ul>
+</section>
+<section id="stats-courses-next-semester" class="slide level2">
+<h2>Stats Courses Next Semester</h2>
+<div class="columns">
+<div class="column">
+<p><u>SPRING 2027</u></p>
+<div class="fragment">
+<ul>
+<li><strong>STAT 243: Statistical Learning</strong> (Megan)
+<ul>
+<li>(prereqs: STAT 141)</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>STAT 392: Mathematical Statistics (Lenny)
+<ul>
+<li>(prereqs: STAT 141, STAT 291)</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>STAT 394: Causal Inference (Megan)
+<ul>
+<li>(prereqs: STAT 141, STAT 291)</li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column">
+<p><br><br></p>
+<div class="fragment">
+<p><strong>New Statistics minor!!</strong> This requires:</p>
+<ul>
+<li class="fragment">STAT 141</li>
+<li class="fragment">STAT 243</li>
+<li class="fragment">CSCI 121 or 122 or 221</li>
+<li class="fragment">One additional 200+ level STAT course</li>
+<li class="fragment">One 300+ level STAT course</li>
+</ul>
+</div>
+</div></div>
 </section>
 <section id="recap-theory-based-inference-for-one-proportion" class="slide level2">
 <h2>Recap: Theory-Based Inference for One Proportion</h2>
@@ -239,43 +284,36 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_011c9a98" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_fa0f89ed" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
-<section id="example-comparing-drug-a-to-drug-b-1" class="slide level2 smaller">
+<section id="example-comparing-drug-a-to-drug-b-1" class="slide level2">
 <h2>Example: Comparing Drug A to Drug B</h2>
+<div style="font-size:0.9em;">
 <ul>
 <li class="fragment"><strong>Population(s):</strong> Overall, sampling from adults who have heart disease
 <ul>
 <li class="fragment">Population 1: More specifically, adults with heart disease when they receive drug A</li>
 <li class="fragment">Population 2: More specifically, adults with heart disease when they receive drug B</li>
 </ul></li>
-</ul>
-<p><br></p>
-<ul>
 <li class="fragment"><strong>Parameter:</strong> The <u>parameter</u> is: <strong><span class="math inline">\(p_1 - p_2\)</span> = Difference in recovery rates <u>for all adults with heart disease</u></strong>, where
 <ul>
 <li class="fragment"><span class="math inline">\(p_1\)</span>=Proportion who would recover with Drug A</li>
 <li class="fragment"><span class="math inline">\(p_2\)</span>=Proportion who would recover with Drug B</li>
 </ul></li>
-</ul>
-<p><br></p>
-<ul>
 <li class="fragment"><strong>Sample(s):</strong> Of the <span class="math inline">\(n\)</span> total that we sampled,
 <ul>
 <li class="fragment"><u>Sample 1</u>: <span class="math inline">\(n_1\)</span> people we gave Drug A</li>
 <li class="fragment"><u>Sample 2</u>: <span class="math inline">\(n - n_1\)</span> people we gave Drug B</li>
 </ul></li>
-</ul>
-<p><br></p>
-<ul>
 <li class="fragment"><strong>Statistic:</strong> the <u>statistic</u> is: <strong><span class="math inline">\(\widehat{p}_1 - \widehat{p}_2\)</span> = Difference in recovery rates <u>between our samples</u></strong>, where
 <ul>
 <li class="fragment"><span class="math inline">\(\widehat{p}_1\)</span>=Proportion who recovered in the Drug A group (Sample 1)</li>
 <li class="fragment"><span class="math inline">\(\widehat{p}_2\)</span>=Proportion who recovered in the Drug B group (Sample 2)</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="sampling-distribution-of-widehatp_1---widehatp_2" class="slide level2">
 <h2>Sampling Distribution of <span class="math inline">\(\widehat{p}_1 - \widehat{p}_2\)</span></h2>
@@ -341,7 +379,7 @@
 </div></div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_10cbb218" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_56535aaa" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -417,7 +455,7 @@
 \]</span></p>
 <ul>
 <li class="fragment"><p><u>Mean:</u> Difference in the means of the two distributions</p></li>
-<li class="fragment"><p><u>SD:</u> A “combination” of the SDs of the two distributions (that is larger)</p></li>
+<li class="fragment"><p><u>SD:</u> A “combination” of the SDs of the two distributions</p></li>
 </ul>
 </section>
 <section id="sampling-distribution-of-widehatp_1---widehatp_2-1" class="slide level2">
@@ -429,7 +467,7 @@
     \widehat{p}_2 &amp;\sim \text{Normal} \biggr( \mu = \color{red}{p_2}, \sigma = \color{red}{\sqrt{\frac{p_2(1-p_2)}{n_2}}} \biggr)
   \end{align*}
 \]</span></p>
-<p>Since <span class="math inline">\(\widehat{p}_1\)</span> and <span class="math inline">\(\widehat{p}_2\)</span> are independent,</p>
+<p>If <span class="math inline">\(\widehat{p}_1\)</span> and <span class="math inline">\(\widehat{p}_2\)</span> are independent,</p>
 <div class="fragment">
 <p><span class="math display">\[\boxed{\widehat{p}_1 - \widehat{p}_2 \sim \text{Normal}\Bigg(\ \mu = \color{red}{p_1-p_2}, \ \sigma = \color{red}{\sqrt{\frac{p_1(1-p_1)}{n_1}+ \frac{p_2(1-p_2)}{n_2}} }\ \Bigg)}\]</span></p>
 </div>
@@ -461,8 +499,9 @@
 <h1>Confidence Intervals and Hypothesis Tests</h1>
 
 </section>
-<section id="confidence-intervals-drug-comparison" class="slide level2 smaller">
+<section id="confidence-intervals-drug-comparison" class="slide level2">
 <h2>Confidence Intervals: Drug Comparison</h2>
+<div style="font-size:0.85em;">
 <p><strong>Ex:</strong> What is the difference in recovery rates for Drug A and Drug B?</p>
 <ul>
 <li class="fragment">Let’s find a 95% confidence interval for <span class="math inline">\(p_1 - p_2\)</span></li>
@@ -491,16 +530,20 @@
 </ul>
 <p><span class="math display">\[\text{Normal}\Bigg(p_1-p_2,\sqrt{\frac{p_1(1-p_1)}{n_1}+ \frac{p_2(1-p_2)}{n_2}} \Bigg)\]</span></p>
 </div>
-<p><br></p>
-<div class="fragment">
-<p><strong>Q:</strong> We don’t know true <span class="math inline">\(p_1, p_2\)</span>… how do we get rid of them?</p>
-</div>
 </div><div class="column" style="width:50%;">
-
+<div class="fragment">
+<p><br><br><br></p>
+<p><strong>Q:</strong> We don’t know true <span class="math inline">\(p_1, p_2\)</span>… how do we get rid of them?</p>
+<ul>
+<li class="fragment"><strong>Plug-in <span class="math inline">\(\widehat{p}_1, \ \widehat{p}_2\)</span></strong> for <span class="math inline">\(p_1, p_2\)</span>!</li>
+</ul>
+</div>
 </div></div>
+</div>
 </section>
-<section id="confidence-intervals-drug-comparison-1" class="slide level2 smaller">
+<section id="confidence-intervals-drug-comparison-1" class="slide level2">
 <h2>Confidence Intervals: Drug Comparison</h2>
+<div style="font-size:0.85em;">
 <p><strong>Ex:</strong> What is the difference in recovery rates for Drug A and Drug B?</p>
 <ul>
 <li>Let’s find a 95% confidence interval for <span class="math inline">\(p_1 - p_2\)</span></li>
@@ -523,11 +566,10 @@
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><strong>Sampling Distribution:</strong></p>
-<p><strong>Q:</strong> We don’t know true <span class="math inline">\(p_1, p_2\)</span>… how do we get rid of them?</p>
 <ul>
-<li><strong>Plug-in <span class="math inline">\(\widehat{p}_1, \ \widehat{p}_2\)</span></strong> for <span class="math inline">\(p_1, p_2\)</span>!</li>
+<li>Theory-based sampling distribution of <span class="math inline">\(\widehat{p}_1-\widehat{p}_2\)</span>:</li>
 </ul>
-<p><span class="math display">\[\textbf{Normal} \left( \color{red}{\widehat{p}_1}-\color{red}{\widehat{p}_2},\sqrt{\frac{\color{red}{\widehat{p}_1}(1-\color{red}{\widehat{p}_1})}{n_1}+ \frac{\color{red}{\widehat{p}_2}(1-\color{red}{\widehat{p}_2})}{n_2}} \right)\]</span></p>
+<p><span class="math display">\[\text{Normal} \left( \color{red}{\widehat{p}_1}-\color{red}{\widehat{p}_2},\sqrt{\frac{\color{red}{\widehat{p}_1}(1-\color{red}{\widehat{p}_1})}{n_1}+ \frac{\color{red}{\widehat{p}_2}(1-\color{red}{\widehat{p}_2})}{n_2}} \right)\]</span></p>
 </div><div class="column fragment" style="width:50%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -539,6 +581,7 @@
 </div>
 </div>
 </div></div>
+</div>
 </section>
 <section id="confidence-intervals-drug-comparison-2" class="slide level2">
 <h2>Confidence Intervals: Drug Comparison</h2>
@@ -581,8 +624,9 @@ H_a: p_1 &gt; p_2 &amp;\implies p_1 - p_2 &gt; 0
 \]</span></p>
 </div>
 </section>
-<section id="hypothesis-testing-drug-comparison-1" class="slide level2 smaller">
+<section id="hypothesis-testing-drug-comparison-1" class="slide level2">
 <h2>Hypothesis Testing: Drug Comparison</h2>
+<div style="font-size:0.8em;">
 <p><strong>Ex:</strong> Is Drug A more effective than Drug B?</p>
 <p><strong>Hypotheses:</strong></p>
 <p><span class="math display">\[
@@ -598,9 +642,10 @@ H_a: p_1 &gt; p_2 &amp;\implies p_1 - p_2 &gt; 0
 <li class="fragment"><strong>Q:</strong> How we use <span class="math inline">\(H_0\)</span> to get rid of unknown <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span>?
 <ul>
 <li class="fragment">If <span class="math inline">\(H_0\)</span> is true, then <span class="math inline">\(p_1 - p_2 = 0\)</span></li>
-<li class="fragment">Under <span class="math inline">\(H_0\)</span>, there is no <em>expected</em> difference between groups: Thus, we can plug in a <strong>pooled proportion</strong>, <span class="math display">\[\text{Pooled Proportion} = \color{red}{\widehat{p}_{\text{pool}} = \frac{\#\text{Successes}_1 + \#\text{Successes}_2}{n_1 + n_2}}\]</span> for <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span>.</li>
+<li class="fragment">Under <span class="math inline">\(H_0\)</span>, there is no <em>expected</em> difference between groups, so our best guess for <span class="math inline">\(p_1 = p_2\)</span> is the <strong>pooled proportion</strong>, <span class="math display">\[\text{Pooled Proportion} = \color{red}{\widehat{p}_{\text{pool}} = \frac{\#\text{Successes}_1 + \#\text{Successes}_2}{n_1 + n_2}}.\]</span></li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="hypothesis-testing-drug-comparison-2" class="slide level2">
 <h2>Hypothesis Testing: Drug Comparison</h2>
@@ -673,9 +718,6 @@ H_a: p_1 &gt; p_2 &amp;\implies p_1 - p_2 &gt; 0
 <ul>
 <li>Theory-based inference with means</li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>

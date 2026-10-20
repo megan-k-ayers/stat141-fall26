@@ -45,11 +45,11 @@ library(gridExtra)
 ```
 
 ::::: columns
-::: {.column .center width="50%"}
+::: {.column .center width="55%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="50%"}
+::: {.column .center width="45%"}
 <br>
 
 [Theory Based Inference III]{.custom-title}
@@ -65,23 +65,19 @@ library(gridExtra)
 
 ------------------------------------------------------------------------
 
-## Reminder
-
-- HW 8 is not due until [next Friday, April 17, 11:59pm]{.underline}
-
-- Monday office hour adjustments for next week
-
-------------------------------------------------------------------------
-
 ## Goals for today
 
 - Formalize and investigate Z-Scores
 
 - Discuss Inference for One Mean via the $t$ distribution
 
+
+# Z-Scores
+
+
 ------------------------------------------------------------------------
 
-## Review: Inference on a Proportion {.smaller}
+## Example
 
 
 - **Ex:** To understand proportion of Reedies who are vegetarians, we survey $40$ students. 16 of the students are vegetarians.
@@ -90,70 +86,24 @@ library(gridExtra)
     - **Sample:** $n=40$ Reedies we surveyed
     - **Statistic:** $\hat{p} = 16/40 = 0.40$
 
-- We were able to rewrite $\hat{p}$ as a sample mean, so by CLT with "large enough" $n$,
-$$\hat p \sim \text{Normal}\Bigg(\ \text{Mean} = p, \ \text{SE} = \sqrt{\frac{p(1-p)}{n}}\ \Bigg)$$
-["Large Enough"]{.underline}: 10 or more "successes", *and* 10 or more "failures"
-
 - Suppose we want to do a hypothesis test:
 $$H_0: p = 0.5 \ \ \ \ \ \text{vs.} \ \ \ \ \  H_a: p<0.5$$
-
-
-------------------------------------------------------------------------
-
-## Inference on a Proportion: Hypothesis Test {.smaller}
-
-$$H_0: p = 0.5 \ \ \ \ \ \text{vs.} \ \ \ \ \  H_a: p<0.5$$
-
-::: fragment
-
-**Null Distribution:** We know:
-$$\hat p \sim \text{Normal}\Big(\ \text{Mean} = p, \ \text{SE} = \sqrt{\frac{p(1-p)}{n}}\ \Big)$$ 
-
-:::
-
-::: fragment
-
-For Null Distribution, we plug in $p=0.5$ (i.e., the "null value")
+- Under this null hypothesis, our CLT for $\hat{p}$ gives us:
 $$\hat{p}\sim \text{Normal}\Big(\text{Mean} = \color{red}{0.5}, \text{SE}=\sqrt{\frac{\color{red}{0.5}(1-\color{red}{0.5})}{40}}\Big)$$ 
-
-:::
-
-
-::: fragment
-
-**P-Value:** $P(\hat{p} \leq 0.4) = 0.07$
-```{r echo=FALSE,fig.height=3.25}
-theory <- data.frame(x=seq(0.2,0.8,length=10000),
-                     density=dnorm(seq(0.2,0.8,length=10000),mean=0.5,sd=sqrt(.5*.5/40)))
-ggplot(theory, aes(x=x,y=density))+labs(x=element_blank())+
-  stat_function(fun = function(x){dnorm(x,.5,sqrt(.5*.5/40))},
-                xlim = c(.2,  0.4), geom = "area", fill = "steelblue") +
-  annotate(geom = "text", label = "p-value=\n0.07", x = .3, y = 2,color="black",size=7) +
-  geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+
-  labs(title="Theory-Based Null Distribution")+
-  scale_x_continuous(breaks=seq(.3,.7,by=0.1)) +
-  xlab("p_hat")
-```
-
-:::
-
-
-
-# Z-Scores
-
-
 ------------------------------------------------------------------------
 
 ## Z-Scores: Standardization
 
-::: {.callout-note icon=false .nonincremental}
-## Theorem: Standardization
+::: {style="font-size:0.85em;"}
+
+::: {.callout-note icon=false .nonincremental style="font-size:1.25em;"}
+## Theorem: Standardization (from 11/11 slides)
 Suppose $X\sim\text{Normal}(\mu,\sigma)$. Then, $Z = \frac{X - \mu}{\sigma}$ is a **Standard Normal** random variable (with mean 0 and standard deviation 1).
 :::
 
 ::: fragment
 
-Apply standardization to $\hat{p}$:
+We can apply standardization to $\hat{p}$ under the null distribution:
 
 $$
 \hat{p} \sim \text{Normal}\big(0.5,\sqrt{0.5(1-0.5)/40}\big) \quad  \rightarrow \quad \frac{\hat{p}-0.5}{\sqrt{0.5(1-0.5)/40}} \sim \underbrace{\text{Normal}\big(0,1\big)}_{Z}
@@ -162,7 +112,7 @@ $$
 
 ::: fragment
 
-In our sample, $\hat{p} = 0.40$:
+We can write our p-value as a probability about $Z$
 
 $$
 \begin{aligned}
@@ -176,6 +126,7 @@ $$
 
 - Recall that $-1.26$ is called the **Z-Score**.
 
+:::
 
 ------------------------------------------------------------------------
 
@@ -194,8 +145,8 @@ ggplot(theory1, aes(x=x,y=density))+labs(x=element_blank())+
   stat_function(fun = function(x){dnorm(x,.5,sqrt(.5*.5/40))},
                 xlim = c(.2,  0.4), geom = "area", fill = "steelblue") +
   geom_vline(aes(xintercept = 0.4), lty = 2, color = "maroon3", lwd = 1) +
-  annotate(geom = "text", label = "test stat =\n0.40", x = .365, y = 4, color="maroon3",size=5) +
-  annotate(geom = "text", label = "p-value=\n0.07", x = .3, y = 1,color="steelblue",size=5) +
+  annotate(geom = "text", label = "test stat =\n0.40", x = .335, y = 4, color="maroon3",size=8) +
+  annotate(geom = "text", label = "p-value=\n0.07", x = .3, y = 1,color="steelblue",size=8) +
   geom_line()+theme_bw(base_size=12)+theme(panel.grid=element_blank())+
   labs(title=expression("Norm("~0.5~","~sqrt(0.5(1-0.5)/40)~")"))+
   scale_x_continuous(breaks=seq(.3,.7,by=0.1)) +
@@ -218,8 +169,8 @@ theory2 <- data.frame(x=seq(-3.8,3.8,length=10000),
 ggplot(theory2, aes(x=x,y=density))+labs(x=element_blank())+
   stat_function(fun = function(x){dnorm(x,0,1)},
                 xlim = c(-3.8,  -1.26), geom = "area", fill = "steelblue") +
-  annotate(geom = "text", label = "p-value=\n0.07", x = -3, y = 0.1,color="steelblue",size=5) +
-    annotate(geom = "text", label = "z-score =\n-1.26", x = -1.75, y = 0.3, color="maroon3",size=5) +
+  annotate(geom = "text", label = "p-value=\n0.07", x = -3, y = 0.1,color="steelblue",size=8) +
+    annotate(geom = "text", label = "z-score =\n-1.26", x = -2.1, y = 0.3, color="maroon3",size=8) +
   geom_vline(aes(xintercept = -1.26), lty = 2, color = "maroon3", lwd = 1) +
   geom_line()+theme_bw(base_size=12)+theme(panel.grid=element_blank())+
   labs(title=expression("Norm("~0~","~1~")"))+
@@ -230,6 +181,8 @@ ggplot(theory2, aes(x=x,y=density))+labs(x=element_blank())+
 ```
 
 **"Z-Score" P-Value:** $P( Z \leq -1.26)$ 
+
+- "0.4 is **1.26** standard deviations below the mean of the null distribution"
 
 :::
 
@@ -257,7 +210,9 @@ ggplot(theory2, aes(x=x,y=density))+labs(x=element_blank())+
 
 ------------------------------------------------------------------------
 
-## Confidence Intervals: Critical Values {.smaller}
+## Confidence Intervals: Critical Values
+
+::: {style="font-size:0.85em;"}
 
 **Sampling Distribution:**
 For a sample proportion, we know,
@@ -266,7 +221,7 @@ For Sampling Distribution, we plug in **$\hat{p}=0.40$** for $p$ (i.e., the stat
 $$\hat{p} \sim \text{Normal}\Big(\text{Mean} = \color{red}{0.40},\ \mathrm{SE}  = \sqrt{\frac{\color{red}{0.40}(1-\color{red}{0.40})}{40}}\Big)$$ 
 
 
-**Calculate 90% Confidence Interval:**
+**Calculate 90% Confidence Interval - Percentile Method:**
 
 
 ::::: columns
@@ -278,7 +233,37 @@ theory <- data.frame(x=seq(0.1,0.7,length=10000),
 ggplot(theory, aes(x=x,y=density))+labs(x=element_blank())+
   stat_function(fun = function(x){dnorm(x,.4,sqrt(.4*(1-0.4)/40))},
                 xlim = c(0.273,  0.527), geom = "area", fill = "steelblue") +
-  annotate(geom = "text", label = "Middle 90%", x = .4, y = 2.5,color="white",size=5) +
+  annotate(geom = "text", label = "Middle 90%", x = .4, y = 2.5,color="white",size=8) +
+  geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+
+  labs(title=expression("Normal("~0.4~","~sqrt("(.4)(0.6)/40")~" )"))+
+  scale_x_continuous(breaks=c(.273,.4,.527))
+```
+
+:::
+
+
+:::::
+
+:::
+
+------------------------------------------------------------------------
+
+## Confidence Intervals: Critical Values
+
+::: {style="font-size:0.9em;"}
+
+::::: columns
+::: {.column width=50% .fragment}
+
+**Calculate 90% Confidence Interval - Percentile Method:**
+
+```{r echo=FALSE,fig.height=4.5}
+theory <- data.frame(x=seq(0.1,0.7,length=10000),
+                     density=dnorm(seq(0.1,0.7,length=10000),mean=0.4,sd=sqrt(.4*(1-0.4)/40)))
+ggplot(theory, aes(x=x,y=density))+labs(x=element_blank())+
+  stat_function(fun = function(x){dnorm(x,.4,sqrt(.4*(1-0.4)/40))},
+                xlim = c(0.273,  0.527), geom = "area", fill = "steelblue") +
+  annotate(geom = "text", label = "Middle 90%", x = .4, y = 2.5,color="white",size=8) +
   geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+
   labs(title=expression("Normal("~0.4~","~sqrt("(.4)(0.6)/40")~" )"))+
   scale_x_continuous(breaks=c(.273,.4,.527))
@@ -289,12 +274,14 @@ ggplot(theory, aes(x=x,y=density))+labs(x=element_blank())+
 
 ::: {.column width=50% .fragment}
 
+**This is equivalent to the SE approach using a critical value!**
+
 $$
 \begin{aligned}
 (&0.273, \ 0.527) \\
 &= 0.4 \pm 0.127  \\
 &= 0.4 \pm \frac{0.127}{\sqrt{\frac{0.4*0.6}{40}}}\sqrt{\frac{0.4*0.6}{40}}  \\
-&= \underbrace{0.4}_{\hat{p}} \pm \underbrace{1.639}_{z*}\times\underbrace{\sqrt{\frac{0.4*0.6}{40}}}_{\text{SE}}
+&= \underbrace{0.4}_{\hat{p}} \pm \underbrace{1.64}_{z*}\times\underbrace{\sqrt{\frac{0.4*0.6}{40}}}_{\text{SE}}
 \end{aligned}
 $$
 
@@ -304,8 +291,11 @@ $$
 
 :::::
 
-- **$z^*$ is the standardized distance from the center of our sampling distribution to the 0.95 (or 0.05) quantile.**
 
+
+- **$z^*$ is the \# of standard errors from the center of our sampling distribution to the 0.95 (or 0.05) quantile.**
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -317,7 +307,7 @@ $$
 $$
 
 $$
-\textbf{90% Confidence Interval:} \ \ \ \ \ \underbrace{0.4}_{\hat{p}} \pm \underbrace{1.639}_{z*}\times\underbrace{\sqrt{\frac{0.4*0.6}{40}}}_{\text{SE}}
+\textbf{90% Confidence Interval:} \ \ \ \ \ \underbrace{0.4}_{\hat{p}} \pm \underbrace{1.64}_{z*}\times\underbrace{\sqrt{\frac{0.4*0.6}{40}}}_{\text{SE}}
 $$
 
 ::::: columns
@@ -328,7 +318,7 @@ $$
 
 - But now for 90% confidence instead of the usual 95% (where $z^{*} = 2$).
 
-- Why do we use $z^{*} = 1.639$?  **It gives the middle 90% in a Standard Normal!**
+- Why do we use $z^{*} = 1.64$?  **It gives the middle 90% in a Standard Normal!**
 
 :::
 
@@ -339,11 +329,11 @@ theory <- data.frame(x=seq(-3,3,length=10000),
                      density=dnorm(seq(-3,3,length=10000),mean=0,sd=1))
 ggplot(theory, aes(x=x,y=density))+labs(x=element_blank())+
   stat_function(fun = function(x){dnorm(x,0, 1)},
-                xlim = c(-1.639,  1.639), geom = "area", fill = "steelblue") +
+                xlim = c(-1.64,  1.64), geom = "area", fill = "steelblue") +
   annotate(geom = "text", label = "Middle 90%", x = 0, y = 0.2,color="white",size=5) +
   geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+
   labs(title=expression(" Standard Normal: N(0,1)"))+
-  scale_x_continuous(breaks=c(-1.639,0,1.639))
+  scale_x_continuous(breaks=c(-1.64,0,1.64))
 ```
 
 
@@ -423,6 +413,10 @@ By the CLT, the distribution of $\bar{x}$ is,
 $$ \color{red}{\bar{x} \approx \text{Normal}\Big(\mathrm{Mean} = \mu, \ \ \mathrm{SE} =\frac{\sigma}{\sqrt{n}}\Big) }$$
 where
 
+::::: columns
+
+::: column
+
 ::: nonincremental 
 
 - $n$ is the sample size
@@ -431,7 +425,11 @@ where
   
 :::
 
-```{r echo=F, fig.height=3.25}
+:::
+
+::: column
+
+```{r echo=F, fig.height=5.5}
 ggplot(data.frame(x = c(-3, 3)), aes(x)) +
   stat_function(fun = dnorm) + 
   stat_function(fun = dnorm, 
@@ -439,15 +437,22 @@ ggplot(data.frame(x = c(-3, 3)), aes(x)) +
                 geom = "area", fill = "steelblue") +
   labs(title = "Distribution of Sample Means", x = "Sample Mean",y="Density")+
   scale_x_continuous(breaks =  c(-1, 0, 1) , 
-                     labels =   c(expression(mu - sigma/sqrt(n)), 
-                                  expression(mu), expression(mu + sigma/sqrt(n))))+
-  theme_bw(base_size=15)
+                     labels = c(expression(mu - sigma/sqrt(n)), 
+                                expression(mu),
+                                expression(mu + sigma/sqrt(n)))) +
+  theme_bw(base_size=25)
 ```
+
+:::
+
+:::::
 
 
 ------------------------------------------------------------------------
 
 ## Example
+
+::: {style="font-size:0.9em;"}
 
 ::: nonincremental
 
@@ -503,9 +508,13 @@ where $\sigma$ is the standard deviation of the cheese block weights *in the pop
 countdown::countdown(2)
 ```
 
+:::
+
 ------------------------------------------------------------------------
 
 ## Example
+
+::: {style="font-size:0.9em;"}
 
 $$
 \begin{align*}
@@ -513,64 +522,37 @@ $$
 \end{align*}
 $$
 
-::::: columns
-
-::: {.column width=50%}
-
-
 ::: {.fragment .nonincremental}
 
-1. For *confidence intervals*, what will we "plug in" for $\mu$?
+1. For *confidence intervals*, what will we "plug in" for $\mu$? **$\rightarrow$ $\bar{x}$ (the statistic)**
 
 :::
-
- - **$\bar{x}$** (the statistic)
     
   
 ::: {.fragment .nonincremental}
 
-2. For *hypothesis tests*, what will we "plug in" for $\mu$?
+2. For *hypothesis tests*, what will we "plug in" for $\mu$?  **$\rightarrow$ The "null-value" (e.g., $\mu_0$) that we assume in $H_0: \mu = \mu_0$**,
 
 :::
 
+
+
 ::: {.fragment .nonincremental}
 
-- The **"null-value" (e.g., $\mu_0$)** that we assume in $H_0$,
+3. What should we "plug in" for $\sigma$? **$\rightarrow$ the sample standard deviation, $s$**
   
 $$
-H_0: \mu = \mu_0
+s=\sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}
 $$
 
 :::
 
-:::
-
-::: {.column width=50%}
-
-::: {.fragment .nonincremental}
-
-3. What should we "plug in" for $\sigma$?
-
-:::
-
-::: {.fragment .nonincremental}
-
-- Let's estimate $\sigma$ using the **sample standard deviation**, $\color{red}s$
-  
-$$
-\color{red}{s=\sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}}
-$$
-
-:::
 
 - Notice that we had to use $\bar{x}$ to estimate $\sigma$...
 
 - It turns out, with all this "estimating", our distribution is **not Normal** anymore...
 
 :::
-
-:::::
-
 
 ------------------------------------------------------------------------
 
@@ -652,6 +634,8 @@ ggplot(data.frame(x = c(-3, 3)), aes(x)) +
 
 ## Degrees of Freedom
 
+::: {style="font-size:0.95em;"}
+
 - The $t$-distribution is actually a **family of distributions**, defined by the parameter **Degrees of Freedom ($df$)**
 
 
@@ -702,9 +686,13 @@ ggplot(data.frame(x = c(-3, 3)), aes(x)) +theme_bw(base_size=14)+
 
 :::::
 
+:::
+
 ------------------------------------------------------------------------
 
 ## Distribution of Sample Means using $t$-distribution
+
+::: {style="font-size:0.85em;"}
 
 - **Reminder:** $\bar{x}$ follows a $t$-distribution ["after standardizing"]{.underline}
     - i.e., $\bar{x}$ follows a $t$-distribution **after turning it into a "$Z$-Score"!**
@@ -727,6 +715,10 @@ $$
 $$
 
 &nbsp; &nbsp; &nbsp; where [$s$ is the sample standard deviation.]{.underline}
+
+:::
+
+- In `R`, we'll use `pt(q, df)` and `qt(p, df)` to compute probabilities and quantiles of $t$ distributions (more next lecture)
 
 :::
 
@@ -879,28 +871,9 @@ ggplot(data.frame(x = c(-3, 3)), aes(x)) +
 :::::
 
 
-
 ------------------------------------------------------------------------
 
 ## Implications: Sample Size
-
-::: fragment
-
-[Hypothesis Tests]{.underline}: the "Z-Score Way" of calculating P-Values, but **use $t$-distribution (with $df=n-1$) for probabilities** (instead of standard normal)
-
-:::
-
-::: fragment
-
-[Confidence Intervals]{.underline}: the Standard-Error Method, but **use $t$-distribution (with $df=n-1$) for critical values** (instead of standard normal)
-
-:::
-
-::: {.fragment .nonincremental}
-
-::::: columns
-
-::: {.column width=50%}
 
 [Reminder]{.underline}: In a $t$-distribution,
 
@@ -908,54 +881,10 @@ ggplot(data.frame(x = c(-3, 3)), aes(x)) +
 
 - Get closer to the Normal distribution as degrees of freedom increases
 
-:::
-
-::: {.column width=50%}
-
-```{r echo=F, warning = F}
-dt1<-function(x){dt(x , df = 1)}
-dt10<-function(x){dt(x , df = 10)}
-dt20<-function(x){dt(x , df = 20)}
-
-ggplot(data.frame(x = c(-3, 3)), aes(x)) +theme_bw(base_size=14)+
-  stat_function(fun = dnorm, aes(color = "Normal"), size = .75, linetype = "dashed") + 
-  stat_function(fun = dt1, aes(color = "df = 1") , size = .75) +  
-  stat_function(fun = dt10,aes(color = "df = 10") , size = .75, ) + 
-  labs(title = "Effect of Degrees of Freedom", x = "T" )+theme_bw(base_size=18)+
-    scale_color_manual(name = "Distribution",
-                        breaks = c("Normal", "df = 10", "df = 5", "df = 1"),
-                        values = c("Normal" = "black", 
-                                   "df = 10" = "tomato1", 
-                                   "df = 5" = "seagreen3",
-                                   "df = 1" = "steelblue" ) )
-  
-```
-
-:::
-
-:::::
-
-:::
-
-::: fragment
-
-**Discuss with Neighbor(s):** What does this imply about using the $t$-distribution versus the standard normal distribution as $n$ increases? Does this make sense *intuitively*?
-
-:::
-
-```{r}
-#| echo: false
-countdown::countdown(2)
-```
-
-------------------------------------------------------------------------
-
-## Implications: Sample Size
-
 ::::: columns
 
 ::: {.column width=50%}
-- What does this imply about using the $t$-distribution versus the standard normal distribution as $n$ increases?
+- **Q**: What does this imply about using the $t$-distribution versus the standard normal distribution as $n$ increases?
     - **The difference becomes negligible!**
     - They would give about the same P-Values and Confidence Intervals when $n$ is large.
 :::
@@ -986,18 +915,13 @@ ggplot(data.frame(x = c(-3, 3)), aes(x)) +theme_bw(base_size=14)+
 :::::
   
 - Does this make sense *intuitively*?
-    - **When our sample is large, we expect $s$ to be a good estimate of $\sigma$!**
-    - While we have to estimate an extra parameter $\sigma$, our estimate $s$ is so good that it's essentially like we're using the true value of $\sigma$.
+    - **When our sample is large, we expect $s$ to be a close estimate of $\sigma$**
   
-
 ------------------------------------------------------------------------
 
 ## Next time
 
 - Theory-based inference for difference-in-means
 - Activity
-
-
-------------------------------------------------------------------------
 
 

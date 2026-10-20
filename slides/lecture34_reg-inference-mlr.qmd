@@ -97,8 +97,6 @@ theses<-read_csv("data/theses.csv") %>%
 
 ## Goals for today
 
-- Stats courses advertisement for next year
-
 - Pick up from last lecture: inference for regression with bootstrap
 
 - Review multiple linear regression (MLR)
@@ -108,87 +106,6 @@ theses<-read_csv("data/theses.csv") %>%
 
 ------------------------------------------------------------------------
 
-## Stats Courses Next Year
-
-::::: columns
-
-::: column
-
-[FALL 2026]{.underline}:
-
-::: {.fragment .nonincremental}
-
-- **STAT 241: Data Science** (Grayson)
-    - (prereqs: STAT 141)
-    
-:::
-
-::: {.fragment .nonincremental}
-
-- **STAT 243: Statistical Learning** (Grayson)
-    - (prereqs: STAT 141)
-
-:::
-
-::: {.fragment .nonincremental}
-
-- STAT 291: Probability (Alex)
-    - (prereqs: Math 112 & 113)
-
-:::
-
-:::
-
-::: column
-
-[SPRING 2027]{.underline}
-
-::: {.fragment .nonincremental}
-- **STAT 243: Statistical Learning** (Megan)
-    - (prereqs: STAT 141)
-
-:::
-
-::: {.fragment .nonincremental}
-- STAT 392: Mathematical Statistics (Lenny)
-    - (prereqs: STAT 141, STAT 291)
-    
-:::    
-
-::: {.fragment .nonincremental}
-- STAT 394: Causal Inference (Megan)
-    - (prereqs: STAT 141, STAT 291)
-
-:::
-
-:::
-
-:::::
-
-::: fragment
-
-**New Statistics minor!!** This requires: 
-
-:::
-
-::::: columns
-
-::: column
-
-- STAT 141
-- STAT 243
-- CSCI 121 or 122 or 221
-
-:::
-
-::: column
-
-- One additional 200+ level STAT course
-- One 300+ level STAT course
-
-:::
-
-:::::
 
 
 

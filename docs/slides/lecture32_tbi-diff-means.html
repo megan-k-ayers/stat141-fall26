@@ -200,21 +200,15 @@
 <section class="slide level2">
 
 <div class="columns">
-<div class="column center" style="width:50%;">
+<div class="column center" style="width:55%;">
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
-</div><div class="column center" style="width:50%;">
+</div><div class="column center" style="width:45%;">
 <p><br></p>
 <p><span class="custom-title">Theory Based Inference IV</span></p>
 <p><br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Friday, Week 12</span></p>
 </div></div>
-</section>
-<section id="brief-announcement" class="slide level2">
-<h2>Brief announcement</h2>
-<ul>
-<li class="fragment">Summary tables for theory-based inference methods now posted on the course website</li>
-</ul>
 </section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
@@ -339,7 +333,7 @@
 \]</span></p>
 <ul>
 <li class="fragment"><p><u>Mean:</u> Difference in the means of the two distributions</p></li>
-<li class="fragment"><p><u>SD:</u> A “combination” of the SDs of the two distributions (that is larger)</p></li>
+<li class="fragment"><p><u>SD:</u> A “combination” of the SDs of the two distributions</p></li>
 </ul>
 </section>
 <section id="distribution-of-a-difference-in-means-2" class="slide level2">
@@ -413,7 +407,7 @@ H_0: \mu_1 - \mu_2 = \delta_0
   \frac{(\bar{x}_1 - \bar{x}_2) - \delta_0}{\sqrt{ \frac{s^2_1}{n_1} + \frac{s_2^2}{n_2}}}
 \]</span></p>
 <ul>
-<li class="fragment">The P-Value is the probability we get the above or anything more extreme <em>in the direction of</em> <span class="math inline">\(H_a\)</span> <strong>according to a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(\text{df}=\min\{n_1 -1, n_2 -1\}\)</span></strong>.
+<li class="fragment">The P-Value is the probability we get the z-score or anything more extreme <em>in the direction of</em> <span class="math inline">\(H_a\)</span> <strong>according to a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(\text{df}=\min\{n_1 -1, n_2 -1\}\)</span></strong>.
 <ul>
 <li class="fragment">Often, <span class="math inline">\(\delta_0 = 0\)</span> (i.e., <span class="math inline">\(H_0: \mu_1 - \mu_2 =0\)</span>)</li>
 </ul></li>
@@ -485,12 +479,16 @@ H_0: \mu_1 - \mu_2 = \delta_0
 <p><strong>Calculate p-value</strong>:</p>
 <div class="columns">
 <div class="column" style="width:40%;">
+<div class="fragment" data-fragment-index="1">
 <ul>
-<li class="fragment"><p>Null Distribution: <span class="math inline">\(t(\text{df}=49)\)</span></p></li>
-<li class="fragment"><p>Standardized Statistic: <span class="math inline">\(2.497\)</span></p></li>
-<li class="fragment"><p>Two-sided hypothesis test</p></li>
+<li><p>Null Distribution: <span class="math inline">\(t(\text{df}=49)\)</span></p></li>
+<li><p>Standardized Statistic: <span class="math inline">\(2.497\)</span></p></li>
 </ul>
-<div class="fragment">
+</div>
+<div class="fragment" data-fragment-index="2">
+<ul>
+<li>Two-sided hypothesis test</li>
+</ul>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fl">2.497</span>, <span class="dv">49</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -498,12 +496,24 @@ H_0: \mu_1 - \mu_2 = \delta_0
 </div>
 </div>
 </div>
-</div><div class="column fragment" style="width:60%;">
+<div class="fragment" data-fragment-index="3">
+<ul>
+<li>Side note: suppose we defined our difference the other way:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>my_stat <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">2.497</span></span>
+<span id="cb5-2"><a></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="fu">abs</span>(my_stat), <span class="dv">49</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.01593462</code></pre>
+</div>
+</div>
+</div>
+</div><div class="column fragment" data-fragment-index="2" style="width:60%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture32_tbi-diff-means_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture32_tbi-diff-means_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -518,8 +528,9 @@ H_0: \mu_1 - \mu_2 = \delta_0
 <h1>Recap: Theory-Based Inference</h1>
 
 </section>
-<section id="steps" class="slide level2 smaller">
+<section id="steps" class="slide level2">
 <h2>Steps</h2>
+<div style="font-size:0.75em;">
 <p>Especially when relying on standardization (i.e., Z Scores), <u>the theory-based inference procedures we’ve studied follow the same general steps</u>.</p>
 <div class="fragment">
 <p><strong>1. Determine what parameter are we estimating</strong></p>
@@ -559,6 +570,7 @@ H_0: \mu_1 - \mu_2 = \delta_0
 <li>the appropriate <span class="math inline">\(t\)</span>-distribution (for means).</li>
 </ol>
 </div></div>
+</div>
 </section>
 <section id="activity-average-home-price-between-seattle-and-portland" class="slide level2">
 <h2>Activity: Average Home Price between Seattle and Portland</h2>
@@ -590,7 +602,7 @@ H_0: \mu_1 - \mu_2 = \delta_0
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_70259b15" minutes="12" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_8c7e0ce3" minutes="12" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 <!-- ------------------------------------------------------------------------ -->
@@ -633,9 +645,6 @@ H_0: \mu_1 - \mu_2 = \delta_0
 <ul>
 <li class="fragment">Start inference for regression!</li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>
