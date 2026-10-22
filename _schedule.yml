@@ -331,8 +331,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading23.qmd
-            # - type: Slides
-            #   href: slides/lecture21_ci-misconceptions.qmd
+            - type: Slides
+              href: slides/lecture21_ci-misconceptions.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture21_ci-misconceptions_handout.pdf
         - topic: "Hypothesis Testing I: Introduction"
           display-date: Wednesday, Oct 28
           date: 10/28/26

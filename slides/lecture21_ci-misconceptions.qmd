@@ -1,7 +1,7 @@
 ---
 pagetitle: "Confidence Intervals II: Misconceptions & Changing Levels"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -116,17 +116,19 @@ library(tufte)
 
 
 
-2. Suppose we created confidence intervals based on **distinct** samples of size $n=10$ and $n=100$. How might they differ?
+2. Suppose we created two confidence intervals based on two  **distinct** samples: one of size $n=10$ and another of size $n=100$. How might they differ?
 
 ```{r}
 #| echo: false
-countdown::countdown(1)
+countdown::countdown(2)
 ```
 
 
 ------------------------------------------------------------------------
 
-## Confidence Intervals {.smaller}
+## Confidence Intervals
+
+::: {style="font-size:0.75em;"}
 
 ::: {.fragment .nonincremental}
 - A **confidence interval** gives a range of plausible values for a parameter. It usually takes the form:
@@ -143,8 +145,7 @@ $$
 
 <br>
 
-- Every confidence interval has a **confidence level:**
-    - the percentage of samples that would yield a corresponding confidence interval that contains the true value of the parameter.
+- Every confidence interval has a **confidence level:** the percentage of samples that would yield a confidence interval containing the true parameter value.
 
 <br>
 
@@ -153,6 +154,7 @@ $$
     - Create 95\% confidence intervals in each sample
     - 95\% of those confidence intervals would contain the true parameter
 
+:::
 
 ------------------------------------------------------------------------
 
@@ -233,7 +235,7 @@ $$
 
 
 
-# Bootstrapping Confidence Intervals
+# Review: Bootstrapping Confidence Intervals
 
 
 ------------------------------------------------------------------------
@@ -358,81 +360,83 @@ $$
 countdown::countdown(3)
 ```
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-## Bootstrap Reproduction Rate {.small}
-
-
-We can use our sample to create a 95% confidence interval. 
-
-::: {.fragment .nonincremental}
-1. Create the bootstrap samples:
-
-```{r echo = T, eval = T}
-set.seed(121)
-bootstrap_samples <- covid %>% rep_sample_n(size = 50, replace = TRUE, reps = 5000)
-```
-:::
+<!-- ## Bootstrap Reproduction Rate {.small} -->
 
 
-::: {.fragment .nonincremental}
-2. Compute bootstrap statistics within each bootstrap sample:
+<!-- We can use our sample to create a 95% confidence interval.  -->
 
-```{r echo = T}
-bootstrap_stats <- bootstrap_samples %>% group_by(replicate) %>% summarize(x_bar = mean(infected))
-```
+<!-- ::: {.fragment .nonincremental} -->
+<!-- 1. Create the bootstrap samples: -->
 
-:::
+<!-- ```{r echo = T, eval = T} -->
+<!-- set.seed(121) -->
+<!-- bootstrap_samples <- covid %>% rep_sample_n(size = 50, replace = TRUE, reps = 5000) -->
+<!-- ``` -->
+<!-- ::: -->
 
 
-::: {.fragment .nonincremental}
+<!-- ::: {.fragment .nonincremental} -->
+<!-- 2. Compute bootstrap statistics within each bootstrap sample: -->
 
-::::: columns
+<!-- ```{r echo = T} -->
+<!-- bootstrap_stats <- bootstrap_samples %>% group_by(replicate) %>% summarize(x_bar = mean(infected)) -->
+<!-- ``` -->
 
-::: {.column width=30%}
+<!-- ::: -->
 
-3. Graph the bootstrap distribution to check shape:
 
-:::
+<!-- ::: {.fragment .nonincremental} -->
 
-::: {.column width=40%}
-```{r fig.height=3, fig.width = 8, echo = F}
-ggplot(bootstrap_stats, aes(x = x_bar))+
-  geom_histogram(bins = 34, color = "white")+
-  labs(title = "Bootstrap Distribution, n = 50", x = expression(bar(x)))+theme_bw(base_size=14)
-```
+<!-- ::::: columns -->
 
-:::
+<!-- ::: {.column width=30%} -->
 
-::: {.column width=30%}
+<!-- 3. Graph the bootstrap distribution to check shape: -->
 
-:::
+<!-- ::: -->
 
-:::::
-:::
+<!-- ::: {.column width=40%} -->
+<!-- ```{r fig.height=3, fig.width = 8, echo = F} -->
+<!-- ggplot(bootstrap_stats, aes(x = x_bar))+ -->
+<!--   geom_histogram(bins = 34, color = "white")+ -->
+<!--   labs(title = "Bootstrap Distribution, n = 50", x = expression(bar(x)))+theme_bw(base_size=14) -->
+<!-- ``` -->
 
-::::: columns
+<!-- ::: -->
 
-::: {.column width=50% .fragment .nonincremental}
-4. Estimate the standard error
+<!-- ::: {.column width=30%} -->
 
-```{r echo = T}
-bootstrap_stats %>% summarize(SE = sd(x_bar))
-```
+<!-- ::: -->
 
-:::
+<!-- ::::: -->
+<!-- ::: -->
 
-::: {.column width=50% .fragment .nonincremental}
+<!-- ::::: columns -->
 
-5. Because the bootstrap distribution is bell-shaped, we use $2 \times$ the estimated SE as our **margin of error** to create a 95% confidence interval
+<!-- ::: {.column width=50% .fragment .nonincremental} -->
+<!-- 4. Estimate the standard error -->
 
-$$
-\bar x \pm 2 \cdot SE \implies 2.06 \pm 2 \cdot 0.181
-$$
+<!-- ```{r echo = T} -->
+<!-- bootstrap_stats %>% summarize(SE = sd(x_bar)) -->
+<!-- ``` -->
 
-:::
-:::::
+<!-- ::: -->
 
+<!-- ::: {.column width=50% .fragment .nonincremental} -->
+
+<!-- 5. Because the bootstrap distribution is bell-shaped, we use $2 \times$ the estimated SE as our **margin of error** to create a 95% confidence interval -->
+
+<!-- $$ -->
+<!-- \bar x \pm 2 \cdot SE \implies 2.06 \pm 2 \cdot 0.181 -->
+<!-- $$ -->
+
+<!-- ::: -->
+<!-- ::::: -->
+
+
+# Generalized Confidence Intervals
 
 ------------------------------------------------------------------------
 
@@ -443,10 +447,6 @@ $$
     - Or suppose we want interval estimates for **sampling distributions that are NOT bell-shaped**
 
 
-- We can make these modifications again using the bootstrap approximation to the sampling distribution and make:
-
-
-
 ::: {.fragment .callout-note icon=false}
 
 ## General Confidence Intervals
@@ -454,6 +454,8 @@ $$
 The $C\%$ confidence interval for a parameter is an interval estimate that is computed from sample data by a method that captures the parameter for $C\%$ of all samples.
 
 :::
+
+- We can achieve this using by again using the bootstrap approximation to the sampling distribution
 
 
 ------------------------------------------------------------------------
@@ -565,25 +567,26 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
 
 <br>
 
-1\. $\color{darkred}{\text{Statistic} \pm 2*\text{SE}}$
-    - $\mathrm{Statistic} \ (\bar{x}) = 2.06$
-    - $\mathrm{SE} = 0.18$
-    - $95\% \ \mathrm{CI} = 1.70 \ \text{to} \ 2.42$
-    
+::::: columns
 
-<br>
+::: {.column width=40%}
+
+1\. $\color{darkred}{\text{Statistic} \pm 2*\text{SE}}$
+
+- $\mathrm{Statistic} \ (\bar{x}) = 2.06$
+- $\mathrm{SE} = 0.18$
+- $95\% \ \mathrm{CI} = 1.70 \ \text{to} \ 2.42$
+    
+:::
+
+::: {.column width=60%}
 
 ::: {.fragment .nonincremental}
 
 2\. $\color{darkred}{\text{Percentile Method}}$
 
-<br>
 
-::::: {.columns}
-
-::: {.column width="50%"}
-
-```{r fig.height=4, fig.width = 5, echo = F}
+```{r fig.height=4, fig.width = 8, echo = F}
 
 ggplot(bootstrap_stats, aes(x = x_bar))+
   geom_histogram(bins = 34, color = "white")+
@@ -599,19 +602,15 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
   annotate("text", x = 2.05, y = 100, label = "95%", color = "white", size = 5)
 ```
 
-:::
-
-::: {.column width="50%"}
-
 ```{r, echo=T}
 quantile(bootstrap_stats$x_bar, c(0.025, 0.975))
 ```
 
 :::
 
-:::::
-
 :::
+
+:::::
 
 
 ------------------------------------------------------------------------
@@ -627,10 +626,7 @@ quantile(bootstrap_stats$x_bar, c(0.025, 0.975))
 - **Ex:** For $C\% = 95\%$ (i.e., a 95\% Confidence Interval), we want
     - 95\% in the middle
     - $\frac{(100-C)}{2}\% = \frac{(100-95)}{2}\% = {2.5\%}$ **on either end**
-
-
-
-- Report the **0.025 quantile** (or 2.5th percentile) and the **0.975 quantile** (or 97.5th percentile)!
+    - Report the **0.025 quantile** (or 2.5th percentile) and the **0.975 quantile** (or 97.5th percentile)!
 
 
 
@@ -642,9 +638,9 @@ quantile(bootstrap_stats$x_bar, c(0.025, 0.975))
     - Find the .05 and .95 quantiles in the bootstrap distribution.
     - 90% of bootstrap sample statistics will be between these values
 
+::: fragment
 
-
-```{r fig.height=3, fig.width = 7, echo = F}
+```{r fig.height=3, fig.width = 10, echo = F}
 
 proportion <-  c(.05,0.95)
 quantiles <- quantile(bootstrap_stats$x_bar, proportion)
@@ -661,13 +657,14 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
   scale_color_manual(values = c("#b30000", "#e34a33"))+
   scale_x_continuous(breaks = ticks, labels = labels)+
   annotate("rect", xmin = -Inf, xmax =quantiles[1], ymin = 0, ymax = Inf, fill = "salmon", alpha = .3)+
-  annotate("text", x = 1.5, y = 250, label = "5%", color = "darkred", size = 3)+
+  annotate("text", x = 1.5, y = 250, label = "5%", color = "darkred", size = 5)+
   annotate("rect", xmin = Inf, xmax =quantiles[2], ymin = 0, ymax = Inf, fill = "salmon", alpha = .3)+
-  annotate("text", x = 2.5, y = 250, label = "5%", color = "darkred", size = 3)+
+  annotate("text", x = 2.5, y = 250, label = "5%", color = "darkred", size = 5)+
   annotate("rect",xmin = quantiles[1], xmax = quantiles[2], ymin = 0, ymax = Inf, fill = "dodgerblue", alpha = .3)+
   annotate("text", x = 2.05, y = 100, label = "90%", color = "white", size = 5)
 ```
 
+:::
 
 - We can use the `quantile` function in R to calculate the .05 and .95 quantiles
 
@@ -689,7 +686,7 @@ quantile(bootstrap_stats$x_bar, c(.05, .95))
 
 :::
 
-```{r fig.height=3, fig.width = 7, echo = F}
+```{r fig.height=3, fig.width = 10, echo = F}
 
 proportion <-  c(.05,0.95)
 quantiles <- quantile(bootstrap_stats$x_bar, proportion)
@@ -706,9 +703,9 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
   scale_color_manual(values = c("#b30000", "#e34a33"))+
   scale_x_continuous(breaks = ticks, labels = labels)+
   annotate("rect", xmin = -Inf, xmax =quantiles[1], ymin = 0, ymax = Inf, fill = "salmon", alpha = .3)+
-  annotate("text", x = 1.5, y = 250, label = "5%", color = "darkred", size = 3)+
+  annotate("text", x = 1.5, y = 250, label = "5%", color = "darkred", size = 5)+
   annotate("rect", xmin = Inf, xmax =quantiles[2], ymin = 0, ymax = Inf, fill = "salmon", alpha = .3)+
-  annotate("text", x = 2.5, y = 250, label = "5%", color = "darkred", size = 3)+
+  annotate("text", x = 2.5, y = 250, label = "5%", color = "darkred", size = 5)+
   annotate("rect",xmin = quantiles[1], xmax = quantiles[2], ymin = 0, ymax = Inf, fill = "dodgerblue", alpha = .3)+
   annotate("text", x = 2.05, y = 100, label = "90%", color = "white", size = 5)
 ```
@@ -738,15 +735,15 @@ quantile(bootstrap_stats$x_bar, c(.05, .95))
 3) 2\% Confidence Interval *(You would never do this! This is just for fun (: )*
 
 
-::: fragment
-**Answers:**
+<!-- ::: fragment -->
+<!-- **Answers:** -->
 
-1) 0.10 and 0.90 quantiles
+<!-- 1) 0.10 and 0.90 quantiles -->
 
-2) 0.005 and 0.995 quantiles
+<!-- 2) 0.005 and 0.995 quantiles -->
 
-3) 0.49 and 0.51 quantiles
-:::
+<!-- 3) 0.49 and 0.51 quantiles -->
+<!-- ::: -->
 
 ```{r}
 #| echo: false
@@ -811,7 +808,7 @@ Suppose we wish to estimate the number of hours a Reed student sleeps on a typic
 
 ::: fragment
 
-```{r fig.height=3, echo = FALSE}
+```{r fig.height=3.5, fig.width=15, echo = FALSE}
 library(gridExtra)
 set.seed(10)
 pop <- data.frame(x = 9 - rgamma(1000, 2, 2))
@@ -839,7 +836,7 @@ Suppose we wish to estimate the number of hours a Reed student sleeps on a typic
 1. A 95% confidence interval **does not** contain 95% of observations in the population.
 :::
 
-```{r fig.height=3, echo = FALSE}
+```{r fig.height=3.5, fig.width=15, echo = FALSE}
 library(gridExtra)
 p3<- p1+geom_rect(data = data.frame(x=8,y=0), xmin = 7.9, xmax = 8.3, ymin = 0, ymax = Inf, fill = "dodgerblue", alpha = .3,inherit.aes = F)
 p4 <- p2+geom_rect(data = data.frame(x=8,y=0), xmin = 7.9, xmax = 8.3, ymin = 0, ymax = Inf, fill = "dodgerblue", alpha = .3,inherit.aes = F)
@@ -860,7 +857,7 @@ grid.arrange(p3,p4, ncol =2)
 
 
 
-```{r  fig.height=3, echo=FALSE}
+```{r fig.height=5, fig.width=15, echo = FALSE}
 set.seed(10)
 my_sample <- pop %>% rep_sample_n(size = 30,reps = 1000) %>% group_by(replicate) %>% summarize(x_bar = mean(x))
 
@@ -883,7 +880,7 @@ grid.arrange(p5,p6, ncol =2)
 2. A 95% confidence interval **does not** mean that 95% of all sample means fall within the given range.
 :::
 
-```{r fig.height=3,  echo=FALSE}
+```{r fig.height=5, fig.width=15, echo = FALSE}
 
 L<-quantile(my_boot2$x_bar, .025)[[1]]
 U<-quantile(my_boot2$x_bar, .975)[[1]]
@@ -908,7 +905,7 @@ grid.arrange(p7,p8, ncol =2)
 2. A 95% confidence interval **does not** mean that 95% of all sample means fall within the given range.
 
 
-```{r fig.height=3,  echo=FALSE}
+```{r fig.height=5, fig.width=15, echo = FALSE}
 
 L<-quantile(my_boot2$x_bar, .025)[[1]]
 U<-quantile(my_boot2$x_bar, .975)[[1]]

@@ -10,7 +10,9 @@ execute:
 
 In this lab, you will
 
-  1. Construct confidence intervals using the SE and percentile method
+  1. Construct confidence intervals using the SE method
+  2. Construct confidence intervals using the percentile method
+  3. Practice interpreting confidence intervals
 
 
 ### Add any collaborators here!
@@ -49,9 +51,9 @@ For the purposes of this lab, we'll assume that a simple random sample of $n=500
 
 
 
-## Exercise 1: Code for Simulation-Based Confidence Intervals
+## Exercise 1: Bootstrap Distribution
 
-**a.** The code below creates a data frame `sample_ev` with $n=500$ sample responses in the `ev_charging` column. 59% of this sample say "Yes", they support "Spending federal money to increase the number of electric vehicle charging stations in the U.S." **Using `sample_ev`, create a bootstrap distribution with 5000 replicates called `boot_ev`, and plot it.**
+The code below creates a data frame `sample_ev` with $n=500$ sample responses in the `ev_charging` column. 59% of this sample say "Yes", they support "Spending federal money to increase the number of electric vehicle charging stations in the U.S." **Using `sample_ev`, create a bootstrap distribution with 5000 replicates called `boot_ev`, and plot it.**
 
 [Only code is needed for this question. *It may be helpful to adapt your code from Homework 6 to get started. Be careful to adjust column names, sample sizes, etc.]
 
@@ -71,7 +73,9 @@ sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500))
 
 
 
-**b.** Using the bootstrap distribution that you created above, calculate a 95% confidence interval for the proportion of US Adults who favor increasing the number of electric vehicle charging stations in the U.S. using the **percentile method.** [Only code is needed for this question.]
+## Exercise 2: Confidence Intervals with the Percentile and SE Methods
+
+**a.** Using the bootstrap distribution that you created above, calculate a 95% confidence interval for the proportion of US Adults who favor increasing the number of electric vehicle charging stations in the U.S. using the **percentile method.** [Only code is needed for this question.]
 
 *******************************************************************************
 
@@ -82,7 +86,7 @@ sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500))
 
 
 
-**c.** Use the same sample and the same bootstrap distribution from part (a) -- `sample_ev` and `boot_ev` -- to find a 95% confidence interval, now using the **standard error method**.
+**b.** Use the same sample and the same bootstrap distribution from part (a) -- `sample_ev` and `boot_ev` -- to find a 95% confidence interval, now using the **standard error method**.
 
 [Code only for this question.]
 
@@ -94,7 +98,7 @@ sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500))
 
 
 
-**d.** Will the whole class get exactly the same confidence intervals as you did for either parts (b) or (c)? [Only text for this question.]
+**c.** Will the whole class get exactly the same confidence intervals as you did for either parts (a) or (b)? [Only text for this question.]
 
 *******************************************************************************
 
@@ -104,7 +108,7 @@ sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500))
 
 
 
-**e**. In 1-2 sentences, compare the intervals produced by the methods in parts (b) and (c) and explain whether we should expect them to coincide.
+**d**. In 1-2 sentences, compare the intervals produced by the methods in parts (b) and (c) and explain whether we should expect them to coincide.
 
 [Text only for this question.]
 
@@ -116,7 +120,9 @@ sample_ev <- data.frame(ev_charging = c(rep("Yes", .59*500), rep("No", .41*500))
 
 
 
-**f**. Interpret one of your confidence intervals carefully, in the context of the data.
+## Exercise 3: Interpreting Confidence Intervals
+
+Interpret one of your confidence intervals carefully, in the context of the data.
 
 [Text only for this question.]
 

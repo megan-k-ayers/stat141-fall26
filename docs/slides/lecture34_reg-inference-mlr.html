@@ -210,14 +210,6 @@
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Wednesday, Week 13</span></p>
 </div></div>
 </section>
-<section id="announcementsreminders" class="slide level2">
-<h2>Announcements/Reminders</h2>
-<ul>
-<li class="fragment"><p>HW 9 posted (final homework assignment!)</p></li>
-<li class="fragment"><p>Extra day on Lab 9: Due <strong>Wednesday</strong> 4/22</p></li>
-<li class="fragment"><p><strong>Reminder</strong>: You can submit missing assignments to me via email at any point for partial credit!</p></li>
-</ul>
-</section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
 <ul>
@@ -225,9 +217,6 @@
 <li class="fragment"><p>Review multiple linear regression (MLR)</p></li>
 <li class="fragment"><p>Discuss model selection</p></li>
 </ul>
-</section>
-<section class="slide level2">
-
 </section>
 <section id="picking-up-from-last-lecture-bootstrap-for-regression-inference" class="title-slide slide level1 center">
 <h1>Picking up from last lecture: bootstrap for regression inference</h1>
@@ -273,6 +262,7 @@
 </section>
 <section id="review-multiple-regression-model" class="slide level2">
 <h2>Review: Multiple Regression Model</h2>
+<div style="font-size:0.9em">
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>mod_YearDivision <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year <span class="sc">+</span> division, <span class="at">data =</span> theses)</span>
 <span id="cb3-2"><a></a><span class="fu">get_regression_table</span>(mod_YearDivision)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -289,10 +279,13 @@
 </div>
 </div>
 <p><br></p>
+<div class="fragment">
 <p>We assume in the <strong><u>population</u></strong>, the response <span class="math inline">\(y\)</span> is a linear function of the explanatory variables <span class="math inline">\(x_1,\dots,x_k\)</span>:</p>
 <p><span class="math display">\[
 y  = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + \epsilon
 \]</span></p>
+</div>
+<div class="fragment">
 <p>But we estimate the model from the <strong><u>sample</u></strong> data that we actually have:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -300,6 +293,8 @@ y  = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + \epsilon
 &amp;= 626 -0.284 \cdot \text{Year} + 33.2 \cdot \text{HSS} + 22.7 \cdot \text{LL} - 4.99 \cdot \text{MNS} + 21.1 \cdot \text{PRPL}
 \end{aligned}
 \]</span></p>
+</div>
+</div>
 </section>
 <section id="review-interpretation" class="slide level2">
 <h2>Review: Interpretation</h2>
@@ -340,6 +335,7 @@ y  = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + \epsilon
 </section>
 <section id="code-for-checking-conditions" class="slide level2">
 <h2>Code for Checking Conditions</h2>
+<div style="font-size:0.9em">
 <div class="columns">
 <div class="column">
 <p><strong>Residual plot</strong>: Residuals vs fitted values</p>
@@ -387,6 +383,7 @@ y  = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + \epsilon
 </div>
 </div>
 </div></div>
+</div>
 </section>
 <section id="inference-procedures" class="slide level2">
 <h2>Inference Procedures</h2>
@@ -614,7 +611,7 @@ Model 2: bill_length_mm ~ body_mass_g * species
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_b632c797" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_689c1c2d" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -638,9 +635,12 @@ Model 2: bill_length_mm ~ body_mass_g * species
 <li class="fragment">Special case when we have 1 categorical predictor (ANOVA)</li>
 </ul></li>
 </ul>
-
-
 </section></section>
+<section id="have-a-great-thanksgiving-break" class="title-slide slide level1 center">
+<h1>Have a great Thanksgiving break!</h1>
+
+
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

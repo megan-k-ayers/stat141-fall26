@@ -44,11 +44,11 @@ library(tufte)
 ```
 
 ::::: columns
-::: {.column .center width="50%"}
+::: {.column .center width="55%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="50%"}
+::: {.column .center width="45%"}
 <br>
 
 [Inference for Regression I]{.custom-title}
@@ -79,118 +79,12 @@ theme_set(theme_bw())
 
 ## Goals for today
 
-- Announcement: 
-    - Math Dept. Colloquium tomorrow: advising week workshop
-
-- Answers from last lecture's activity
-
 - Discuss theoretical inference for simple linear regression (SLR)
 
 - Discuss inference with bootstrap for linear models
 
 
-------------------------------------------------------------------------
-
-## Activity: Average Home Price between Seattle and Portland
-
-::: nonincremental
-
-Suppose you're interested in comparing average home price between Seattle and Portland
-
-- You randomly sample $n_1=50$ Seattle homes, and find $\bar{x}_1=0.95M$, $s_1=0.15M$.
-- You randomly sample $n_2=35$ Portland homes, and find $\bar{x}_2=0.70M$, $s_2=0.35M$.
-
-:::
-
-<br>
-
-
-**With Neighbor(s):** Choose a question below and work through it on the board.
-
-::::: columns
-
-::: {.column width=50% .nonincremental}
-
-**Confidence Intervals**
-
-- Find a 80% confidence interval for the difference in average home price.
-
-- Are we 80% confident there's actually a difference?
-
-:::
-
-::: {.column width=50% .nonincremental}
-
-**Hypothesis Testing**
-
-- You've **heard** there's no difference between Seattle and Portland!
-
-- Test your claim using a hypothesis test (with a significance level of $\alpha = 0.01$).
-
-:::
-
-:::::
-
-
-------------------------------------------------------------------------
-
-## Answer Key: Confidence Intervals
-
-::: fragment
-
-With *independent* samples of size $n_1>30$, $n_2>30$, we can use the t-distribution approximation method.
-
-```{r echo=T}
-qt(0.90, df= min(50-1,35-1))
-sqrt(0.15^2/50 + 0.35^2/35)
-```
-
-:::
-
-::: fragment
-
-$$
-\begin{align*}
-(\bar{x}_1-\bar{x}_2) \pm t^*\times \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} &= (.95-.70) \pm 1.307 \times 0.06285\\
-& = (0.1679, \ 0.3321)
-\end{align*}
-$$
-
-:::
-
-::: fragment
-
-Thus, at the 80% confidence level, we think there is a difference in average home price between Seattle and Portland.
-
-:::
-
-------------------------------------------------------------------------
-
-## Answer Key: Hypothesis Testing
-
-1. Hypotheses: $H_0: \mu_1 -\mu_2 = 0 \quad H_a: \mu_1-\mu_2 \neq 0$
-
-2. Assess Conditions (on previous slide)
-
-3. Compute test statistic under $H_0$
-$$t = \frac{(\bar{x}_1 - \bar{x}_{2})-(\mu_1-\mu_{2})}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}} = \frac{(.95-.70)-(0)}{\sqrt{\frac{0.15^2}{50} + \frac{0.35^2}{35} }} = 3.978 $$
-
-
-::: {.fragment .nonincremental}
-4. Calculate p-value
-
-```{r echo=T}
-2*(1-pt(3.978,df=min(50-1,35-1)))
-```
-
-:::
-
-5. Conclude: We reject the null hypothesis (at the $\alpha = 0.01$ level), in favor of the hypothesis that Portland and Seattle have different average home prices.
-
-
-
-
-# Simple Linear Regression
+# Review of Simple Linear Regression
 
 
 ------------------------------------------------------------------------
@@ -316,7 +210,9 @@ $$
 
 ## Example for Today: Reed Theses
 
-- Several years ago, some Math 141 students collected data on several hundred senior theses from thesis tower.
+::: {style="font-size:0.9em;"}
+
+- Several years ago, some Stat 141 students collected data on several hundred senior theses from thesis tower.
 
 ::: {.fragment .nonincremental}
 
@@ -335,10 +231,13 @@ theses_samp %>%
 
 - But this is just a sample of data. What can we say about the underlying *population* slope?
 
+:::
 
 ------------------------------------------------------------------------
 
 ## Inference for Regression
+
+::: {style="font-size:0.9em;"}
 
 We assume that *in the population*, there is the following relationship between Page Count ($y$) and Year ($x$)
 
@@ -396,11 +295,13 @@ $$
 
 :::::
 
+:::
+
 ------------------------------------------------------------------------
 
 ## Roadmap for Inference
 
-- Regression is a potent tool for assessing relationships between variables.
+- Regression is a potential tool for assessing relationships between variables.
     - We have four "LINE" conditions for regression 
     - We would like to conduct inference on parameters $\beta_0$ and/or $\beta_1$
   
@@ -427,7 +328,9 @@ Today, we will:
 
 ------------------------------------------------------------------------
 
-## Hypothesis Tests for Slope {.smaller}
+## Hypothesis Tests for Slope
+
+::: {style="font-size:0.8em;"}
 
 ::::: columns
 
@@ -459,40 +362,33 @@ $$H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0$$
 :::
 
   - Approximately normally distributed
-  - Has mean $\beta_1$
-  
-::: {.fragment .nonincremental}
-  - Has a standard error of: 
+  - Has mean $\beta_1$, and a standard error of: 
+
+::: fragment
   
 $$
 \color{red}{SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 + \beta_1 x_i) )^2}{\sum_{i=1}^n (x_i - \bar x)^2}}}
 $$
-(Don't memorize this!)
+(Don't memorize this equation!)
+
+:::
 
 :::
 
 ------------------------------------------------------------------------
 
-## Hypothesis Tests for Slope {.smaller}
+## Hypothesis Tests for Slope
+
+::: {style="font-size:0.85em;"}
 
 $$H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0$$
 
-**Under the LINE conditions**, $\widehat{\beta}_1$ is:
-
-::: nonincremental
-
-  - Approximately normally distributed 
-  
-  - has mean $\beta_1$
-  
-  - Has a standard error of: 
-  
-:::
+**Under the LINE conditions**:
 
 $$
-SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 + \beta_1 x_i) )^2}{\sum_{i=1}^n (x_i - \bar x)^2}}
-$$
-
+\widehat{\beta}_1 \underbrace{\sim}_{approx.} Normal \left( \beta_1, \; SE (\widehat{\beta}) \; \right) = Normal \left( \beta_1, \; \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 + \beta_1 x_i) )^2}{\sum_{i=1}^n (x_i - \bar x)^2}} \; \right)
+$$ 
+  
 
 - In practice, **we estimate $\beta_0, \beta_1$ in the formula using $\widehat{\beta}_0, \widehat{\beta}_1$**, giving $\widehat{SE} (\widehat{\beta}_1)$
   
@@ -506,11 +402,11 @@ $$
 
 :::
 
-- The $t$-statistic follows a [$t$-distribution with $n-2$ degrees of freedom.]{.underline}
+- The $t$-statistic follows a [$t$-distribution with **n-2** degrees of freedom.]{.underline}
   
 - We can use the `pt()` function to calculate the corresponding p-value
 
-
+:::
 
 ------------------------------------------------------------------------
 
@@ -547,7 +443,7 @@ get_regression_table(theses_mod)
 
 - `std_error` --- theory-based standard error (0.198) 
 
-- `statistic` --- $t$-statistic (-3.057)
+- `statistic` --- $t$-statistic (-3.06)
 
 - `p_value` --- p-value (0.003) of observing our $t$-statistic or something more extreme in the t-distribution with $df=n-2$ for the [*two-sided test*]{.underline},
 $$H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0$$
@@ -597,7 +493,9 @@ get_regression_table(theses_mod, conf.level = 0.80) # Note change
 
 ------------------------------------------------------------------------
 
-## LINE Conditions {.smaller}
+## LINE Conditions
+
+::: {style="font-size:0.9em;"}
 
 To do **theory-based** inference for regression, we require the LINE conditions we talked about way back in week 4!
 
@@ -634,6 +532,8 @@ To do **theory-based** inference for regression, we require the LINE conditions 
 ::: {.fragment .nonincremental}
 
 These make up the [LINE Conditions]{.underline} (**L**inearity, **I**ndependence, **N**ormality, **E**qual Variability)
+
+:::
 
 :::
 
@@ -744,6 +644,9 @@ When **Normality** and **Equal Variance** do [not]{.underline} hold, we can use 
 
 ## Bootstrapping Slopes
 
+
+::: {style="font-size:0.85em;"}
+
 To approximate variability in the slope statistic $\widehat{\beta}_1$, we create a bootstrap sample by resampling data rows [with replacement]{.underline}, and then calculating **a new linear model, with a new slope**
 
 
@@ -782,15 +685,15 @@ ggplot(samp1, aes(x = year, y = n_pages))+geom_point(alpha = .35, size = 2)+geom
 ```
 
 
+:::
+
+:::::
 
 - Dashed red line: regression line for original sample
 
 - Darker points: observations included in bootstrap sample more than once
 
 :::
-
-:::::
-
 
 ------------------------------------------------------------------------
 
@@ -817,7 +720,7 @@ theses_samp %>%
 ```
 
 
-```{r eval = F, echo = F, cache=T}
+```{r eval = T, echo = F, cache=T}
 set.seed(11)
 boot_slope <- theses_samp %>% 
   select(n_pages, year) %>%
@@ -827,8 +730,6 @@ boot_slope <- theses_samp %>%
 boot_slope <- boot_slope %>%
   group_by(replicate) %>%
   summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
-
-head(boot_slope)
 ```
 
 
@@ -860,21 +761,6 @@ theses_samp %>%
 ```
 
 
-```{r eval = F, echo = F, cache=T}
-set.seed(11)
-boot_slope <- theses_samp %>% 
-  select(n_pages, year) %>%
-  rep_sample_n(nrow(theses_samp),
-               replace = TRUE, reps = 1000)
-
-boot_slope <- boot_slope %>%
-  group_by(replicate) %>%
-  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
-
-head(boot_slope)
-```
-
-
 ------------------------------------------------------------------------
 
 ## Bootstrap Distribution of Slopes
@@ -902,21 +788,6 @@ theses_samp %>%
 ```
 
 
-```{r eval = F, echo = F, cache=T}
-set.seed(11)
-boot_slope <- theses_samp %>% 
-  select(n_pages, year) %>%
-  rep_sample_n(nrow(theses_samp),
-               replace = TRUE, reps = 1000)
-
-boot_slope <- boot_slope %>%
-  group_by(replicate) %>%
-  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
-
-head(boot_slope)
-```
-
-
 ------------------------------------------------------------------------
 
 ## Bootstrap Distribution of Slopes
@@ -931,6 +802,9 @@ Across each bootstrap sample, we calculate a single number inside `summarize()`:
 
 <br>
 
+::::: columns
+
+::: {.column width=70%}
 
 ```{r eval = F, echo = T}
 #| code-line-numbers: "7"
@@ -943,21 +817,17 @@ theses_samp %>%
   summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
 ```
 
+:::
+
+::: {.column width=30%}
 
 ```{r eval = T, echo = F, cache=T}
-set.seed(11)
-boot_slope <- theses_samp %>% 
-  select(n_pages, year) %>%
-  rep_sample_n(nrow(theses_samp),
-               replace = TRUE, reps = 1000)
-
-boot_slope <- boot_slope %>%
-  group_by(replicate) %>%
-  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
-
 head(boot_slope)
 ```
 
+:::
+
+:::::
 
 - **Note**: `get_regression_table` rounds values to 3 digits by default (can change `digits`) 
 
@@ -1181,7 +1051,5 @@ p_value
 ## Next time
 
 - Inference for multiple regression
-
-------------------------------------------------------------------------
 
 

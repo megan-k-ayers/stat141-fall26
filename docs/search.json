@@ -3113,5 +3113,180 @@
     "title": "STAT 141",
     "section": "Looking ahead",
     "text": "Looking ahead\n\n\nIn lab tomorrow we’ll get more practice actually working with the code from this worksheet\n\nAnd no quiz tomorrow!\n\nWe’ll continue practicing this and comparing sampling and bootstrap distributions in Homework 6\n\nNote: This may feel repetitive at times!\nWhy we’re doing it:\n\nSampling distributions (and how we approximate them) are one of the most fundamental concepts of this class.\nEverything we learn from now on (ex. confidence intervals, hypothesis testing) builds upon them.\nYou will need to use these same coding steps over and over as we build on sampling distributions and boostrapping.\nThis worksheet + lecture slides + lab provide you with many coding examples of working with these distributions."
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#goals-for-today",
+    "href": "slides/lecture21_ci-misconceptions.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\nReview the concept of a 95% confidence interval\nDiscuss (one way) of creating confidence intervals with different confidence levels.\nInterpret confidence intervals and discuss common misconceptions"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#setting",
+    "href": "slides/lecture21_ci-misconceptions.html#setting",
+    "title": "STAT 141",
+    "section": "Setting",
+    "text": "Setting\n\nThere is some population we’re interested in studying.\n\ne.g., Reed College students\n\nThere is a population parameter we want to know\n\ne.g., average nightly hours of sleep (\\(\\mu\\))\n\nWe draw a sample from the population with sample size \\(n\\)\n\ne.g., We survey \\(n=50\\) Reed students\n\nWe provide a point estimate of the parameter with a statistic\n\ne.g., average hours of sleep in our sample (\\(\\bar{x}=8.02 \\ \\text{hours}\\))\n\nWe construct an interval estimate centered at our statistic\n\ne.g., \\(8.02 \\pm 0.16 \\ \\text{hours}\\)"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#warm-up",
+    "href": "slides/lecture21_ci-misconceptions.html#warm-up",
+    "title": "STAT 141",
+    "section": "Warm-Up",
+    "text": "Warm-Up\n\nWhat are the differences between a sampling distribution and a bootstrap distribution?\nSuppose we created two confidence intervals based on two distinct samples: one of size \\(n=10\\) and another of size \\(n=100\\). How might they differ?"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#confidence-intervals",
+    "href": "slides/lecture21_ci-misconceptions.html#confidence-intervals",
+    "title": "STAT 141",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\n\n\nA confidence interval gives a range of plausible values for a parameter. It usually takes the form:\n\n\\[\n\\textrm{Statistic }\\pm \\textrm{ Margin of Error (ME)}\n\\]\n\n\nThe Margin of Error (ME) is partially determined by our sample size:\n\nBigger samples yield smaller ME and interval (more data \\(\\implies\\) more certainty)\nSmaller samples yield wider ME and interval (less data \\(\\implies\\) less certainty)\n\n\n\n\nEvery confidence interval has a confidence level: the percentage of samples that would yield a confidence interval containing the true parameter value.\n\n\n\nFor example, were we to:\n\nRepeatedly draw samples from the population\nCreate 95% confidence intervals in each sample\n95% of those confidence intervals would contain the true parameter"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#sampling-distributions-can-determine-the-margin-of-error",
+    "href": "slides/lecture21_ci-misconceptions.html#sampling-distributions-can-determine-the-margin-of-error",
+    "title": "STAT 141",
+    "section": "Sampling Distributions can determine the Margin of Error",
+    "text": "Sampling Distributions can determine the Margin of Error\n\nReminders:\n\nSampling distribution is often bell-shaped, with the mean equal to the parameter\nIn bell-shaped (normal) distributions, 95% of observations lie in the range:\n\n\n\n\\[\n\\text{Mean} \\pm 2*\\text{Standard Error}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#sampling-distributions-can-determine-the-margin-of-error-1",
+    "href": "slides/lecture21_ci-misconceptions.html#sampling-distributions-can-determine-the-margin-of-error-1",
+    "title": "STAT 141",
+    "section": "Sampling Distributions can determine the Margin of Error",
+    "text": "Sampling Distributions can determine the Margin of Error\n\n\n\n\n\n\n\n\n\nImplication: in the sampling distribution, 95% of sample statistics lie in the range: \\[\n\\text{Parameter} \\pm 2*\\text{Standard Error}\n\\] where the Standard Error is the standard deviation of the sampling distribution\n\nSo, 95% of sample statistics are within \\(2*\\mathrm{SE}\\) from the parameter!\nThus, 95% confidence intervals usually take the form:\n\n\n\\[\n\\textrm{Statistic }\\pm 2*\\textrm{Standard Error (SE)}\n\\]\n\n\nWe typically estimate the SE (i) with the bootstrap, or (ii) with a formula (we’ll see this in a few weeks)"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#example-reproduction-rate-for-covid-19",
+    "href": "slides/lecture21_ci-misconceptions.html#example-reproduction-rate-for-covid-19",
+    "title": "STAT 141",
+    "section": "Example: Reproduction Rate for Covid-19",
+    "text": "Example: Reproduction Rate for Covid-19\nResearchers are interested in the COVID-19 reproduction rate (the average number of individuals each infected person further infects). They sample 50 infected individuals and perform contract tracing.\n\n\n\n\n  infected  n\n1        0  5\n2        1 13\n3        2 14\n4        3 12\n5        4  5\n6        6  1\n\n\n  mean_infected\n1          2.06\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoal: Create an interval of plausible values for the reproduction rate.\nQ: What is the population? What is the parameter?\nQ: What is the sample? What is the statistic?"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#bootstrap-reproduction-rate",
+    "href": "slides/lecture21_ci-misconceptions.html#bootstrap-reproduction-rate",
+    "title": "STAT 141",
+    "section": "Bootstrap Reproduction Rate",
+    "text": "Bootstrap Reproduction Rate\nWe can use our sample to create a 95% confidence interval. What is each step doing, and why?\n\n\nStep 1:\n\n\nset.seed(121)\nbootstrap_samples &lt;- covid %&gt;% rep_sample_n(size = 50, replace = TRUE, reps = 5000)\n\n\n\n\nStep 2:\n\n\nbootstrap_stats &lt;- bootstrap_samples %&gt;% group_by(replicate) %&gt;% summarize(x_bar = mean(infected))\n\n\n\n\n\n\nStep 3:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStep 4:\n\n\nbootstrap_stats %&gt;% summarize(SE = sd(x_bar))\n\n# A tibble: 1 × 1\n     SE\n  &lt;dbl&gt;\n1 0.181\n\n\n\n\nStep 5:\n\n\\[\n\\bar x \\pm 2 \\cdot SE \\implies 2.06 \\pm 2 \\cdot 0.181\n\\]"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#generalized-confidence-intervals-1",
+    "href": "slides/lecture21_ci-misconceptions.html#generalized-confidence-intervals-1",
+    "title": "STAT 141",
+    "section": "Generalized Confidence Intervals",
+    "text": "Generalized Confidence Intervals\n\nIn the previous example, we used our knowledge that for approximately bell-shaped sampling distributions, 95% of sample statistics are within 2 SE of the population parameter\n\nSuppose we instead want a different success rate for our estimation method\nOr suppose we want interval estimates for sampling distributions that are NOT bell-shaped\n\n\n\n\n\n\nGeneral Confidence Intervals\n\n\nThe \\(C\\%\\) confidence interval for a parameter is an interval estimate that is computed from sample data by a method that captures the parameter for \\(C\\%\\) of all samples.\n\n\n\n\n\nWe can achieve this using by again using the bootstrap approximation to the sampling distribution"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#review-percentiles-and-quantiles",
+    "href": "slides/lecture21_ci-misconceptions.html#review-percentiles-and-quantiles",
+    "title": "STAT 141",
+    "section": "Review: Percentiles and Quantiles",
+    "text": "Review: Percentiles and Quantiles\n\nFor a number \\(k\\) between \\(0\\) and \\(100\\), the \\(k\\)th percentile of a distribution is the value so that \\(k\\%\\) of the data is less than or equal to that value.\n\nThe median is the 50th percentile of a distribution\n1st/3rd quartiles (Q1/Q3) are the 25th and 75th percentiles, respectively.\n\n\n\n\n\n\n\n\n\n\n\n\nFor a number \\(p\\) between \\(0\\) and \\(1\\), the \\(p\\) quantile of a distribution is the value so that a proportion \\(p\\) of the data is less than or equal to that value.\n\nThe median is the \\(0.5\\) quantile of a distribution\n1st/3rd quartiles (Q1/Q3) are the \\(0.25\\) and \\(0.75\\) quantiles, respectively."
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#quantiles-and-percentiles",
+    "href": "slides/lecture21_ci-misconceptions.html#quantiles-and-percentiles",
+    "title": "STAT 141",
+    "section": "Quantiles and Percentiles",
+    "text": "Quantiles and Percentiles\nBy definition, 2.5% of the data is less than the .025 quantile, and 2.5% of the data is greater than the .975 quantile\n\n\n\n\n\n\n\n\n\n\nThis means that 95% of the data is between the .025 and the .975 quantiles."
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#quantiles-and-percentiles-1",
+    "href": "slides/lecture21_ci-misconceptions.html#quantiles-and-percentiles-1",
+    "title": "STAT 141",
+    "section": "Quantiles and Percentiles",
+    "text": "Quantiles and Percentiles\nBy definition, 2.5% of the data is less than the .025 quantile, and 2.5% of the data is greater than the .975 quantile\n\n\n\n\n\n\n\n\n\n\nThis means that 95% of the data is between the .025 and the .975 quantiles.\n\n\nFor sampling distributions that are bell-shaped, the .025 quantile is about \\(2\\cdot SE\\) below the mean, and the .975 quantile is about \\(2\\cdot SE\\) above the mean\nSo using the .025 and .975 quantiles is roughly equivalent to forming a 95% CI as: \\(\\text{Statistic} \\pm 2*\\text{SE}\\)!"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#confidence-interval-2-ways",
+    "href": "slides/lecture21_ci-misconceptions.html#confidence-interval-2-ways",
+    "title": "STAT 141",
+    "section": "95% Confidence Interval: 2 ways",
+    "text": "95% Confidence Interval: 2 ways\n\n\n\n1. \\(\\color{darkred}{\\text{Statistic} \\pm 2*\\text{SE}}\\)\n\n\\(\\mathrm{Statistic} \\ (\\bar{x}) = 2.06\\)\n\\(\\mathrm{SE} = 0.18\\)\n\\(95\\% \\ \\mathrm{CI} = 1.70 \\ \\text{to} \\ 2.42\\)\n\n\n\n2. \\(\\color{darkred}{\\text{Percentile Method}}\\)\n\n\n\n\n\n\n\n\n\n\nquantile(bootstrap_stats$x_bar, c(0.025, 0.975))\n\n 2.5% 97.5% \n 1.72  2.40"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#percentile-method-for-confidence-intervals",
+    "href": "slides/lecture21_ci-misconceptions.html#percentile-method-for-confidence-intervals",
+    "title": "STAT 141",
+    "section": "Percentile Method for Confidence Intervals",
+    "text": "Percentile Method for Confidence Intervals\n\nPercentile Method: For a \\(C\\%\\) Confidence Interval, report the quantiles of the bootstrap distribution such that:\n\n\\(C\\%\\) lies in the middle\n\\(\\frac{(100-C)}{2}\\%\\) lies on either end (i.e., “the rest” is evenly distributed on the ends)\n\n\n\n\nEx: For \\(C\\% = 95\\%\\) (i.e., a 95% Confidence Interval), we want\n\n95% in the middle\n\\(\\frac{(100-C)}{2}\\% = \\frac{(100-95)}{2}\\% = {2.5\\%}\\) on either end\nReport the 0.025 quantile (or 2.5th percentile) and the 0.975 quantile (or 97.5th percentile)!"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#the-percentile-method-example",
+    "href": "slides/lecture21_ci-misconceptions.html#the-percentile-method-example",
+    "title": "STAT 141",
+    "section": "The Percentile Method: Example",
+    "text": "The Percentile Method: Example\n\nSuppose we want to construct a 90% confidence interval for the reproduction rate\n\nFind the .05 and .95 quantiles in the bootstrap distribution.\n90% of bootstrap sample statistics will be between these values\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe can use the quantile function in R to calculate the .05 and .95 quantiles\n\n\n\nquantile(bootstrap_stats$x_bar, c(.05, .95))\n\n  5%  95% \n1.76 2.36"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#the-percentile-method-example-1",
+    "href": "slides/lecture21_ci-misconceptions.html#the-percentile-method-example-1",
+    "title": "STAT 141",
+    "section": "The Percentile Method: Example",
+    "text": "The Percentile Method: Example\n\nSuppose we want to construct a 90% confidence interval for the reproduction rate\n\nFind the .05 and .95 quantiles in the bootstrap distribution.\n90% of bootstrap sample statistics will be between these values\n\n\n\n\n\n\n\n\n\n\n\n\nOur 90% confidence interval is therefore 1.76 to 2.36\n\n\nquantile(bootstrap_stats$x_bar, c(.05, .95))\n\n  5%  95% \n1.76 2.36"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#percentile-method-practice",
+    "href": "slides/lecture21_ci-misconceptions.html#percentile-method-practice",
+    "title": "STAT 141",
+    "section": "Percentile Method: Practice",
+    "text": "Percentile Method: Practice\nWith neighbor(s), name the quantiles of the bootstrap distribution you would need for:\n\n80% Confidence Interval\n99% Confidence Interval\n2% Confidence Interval (You would never do this! This is just for fun (: )"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#width-of-confidence-intervals",
+    "href": "slides/lecture21_ci-misconceptions.html#width-of-confidence-intervals",
+    "title": "STAT 141",
+    "section": "Width of Confidence Intervals",
+    "text": "Width of Confidence Intervals\nTwo factors determine the width of a confidence interval:\n\nSample Size\n\nThe Standard Error of the sampling distribution decreases as sample size increases.\nSmaller sample size \\(\\implies\\) larger interval\nLarger sample size \\(\\implies\\) smaller interval\n\nConfidence Level\n\nDecreasing the confidence level brings the relevant quantiles closer to the middle, decreasing the width of the interval.\nHigher confidence level \\(\\implies\\) larger interval\nLower confidence level \\(\\implies\\) smaller interval"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#width-of-confidence-intervals-1",
+    "href": "slides/lecture21_ci-misconceptions.html#width-of-confidence-intervals-1",
+    "title": "STAT 141",
+    "section": "Width of Confidence Intervals",
+    "text": "Width of Confidence Intervals\nConfidence Intervals get smaller with:\n\na larger sample size\na lower confidence level\n\n\nNote: These reasons for getting smaller are competing in terms of certainty!\n\n\nWith a larger sample size, the interval gets smaller because we’re more certain the statistic is close to the parameter.\nWith a lower confidence level, we become less certain the interval will contain the true parameter.\n\n\nReminder: While a lower confidence level gives you a smaller interval, there is a cost! (i.e., lower success rate)"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#misunderstanding-1",
+    "href": "slides/lecture21_ci-misconceptions.html#misunderstanding-1",
+    "title": "STAT 141",
+    "section": "Misunderstanding 1",
+    "text": "Misunderstanding 1\nSuppose we wish to estimate the number of hours a Reed student sleeps on a typical night. We obtain the following 95% confidence interval: \\((7.86, 8.34)\\)\n\nA 95% confidence interval does not contain 95% of observations in the population."
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#misunderstanding-1-1",
+    "href": "slides/lecture21_ci-misconceptions.html#misunderstanding-1-1",
+    "title": "STAT 141",
+    "section": "Misunderstanding 1",
+    "text": "Misunderstanding 1\nSuppose we wish to estimate the number of hours a Reed student sleeps on a typical night. We obtain the following 95% confidence interval: \\((7.86, 8.34)\\)\n\nA 95% confidence interval does not contain 95% of observations in the population.\n\n\n\n\n\n\n\n\n\n\n\nSaying that 95% of all Reed students sleep between 7.86 and 8.34 hours should just feel wrong. That’s a pretty narrow interval!"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#misunderstanding-2",
+    "href": "slides/lecture21_ci-misconceptions.html#misunderstanding-2",
+    "title": "STAT 141",
+    "section": "Misunderstanding 2",
+    "text": "Misunderstanding 2\n\nA 95% confidence interval does not mean that 95% of all sample means fall within the given range."
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#misunderstanding-2-1",
+    "href": "slides/lecture21_ci-misconceptions.html#misunderstanding-2-1",
+    "title": "STAT 141",
+    "section": "Misunderstanding 2",
+    "text": "Misunderstanding 2\n\nA 95% confidence interval does not mean that 95% of all sample means fall within the given range.\n\n\n\n\n\n\n\n\n\n\n\nQ: Why do the sampling distribution and bootstrap distribution look different?"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#misunderstanding-2-2",
+    "href": "slides/lecture21_ci-misconceptions.html#misunderstanding-2-2",
+    "title": "STAT 141",
+    "section": "Misunderstanding 2",
+    "text": "Misunderstanding 2\n\nA 95% confidence interval does not mean that 95% of all sample means fall within the given range.\n\n\n\n\n\n\n\n\n\n\n\nQ: Why do the sampling distribution and bootstrap distribution look different?"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#misunderstanding-3",
+    "href": "slides/lecture21_ci-misconceptions.html#misunderstanding-3",
+    "title": "STAT 141",
+    "section": "Misunderstanding 3",
+    "text": "Misunderstanding 3\n\nGiven a 95% confidence interval, Do Not Say: “There is a 95% chance that the true parameter falls within my interval.”\n\n\nOnce we take a sample and calculate a confidence interval, there’s no more randomness!\n\nThe interval either does or doesn’t contain the (unknown) parameter.\n\nThis is may seem like arguing over semantics – but it’s an important distinction!\n\n\nInstead, say either:\n\n“If we were to take many samples and calculate a 95% confidence interval for each, then 95% of them would contain the true parameter”\n“We are 95% confident that the true parameter is in our confidence interval”"
   }
 ]

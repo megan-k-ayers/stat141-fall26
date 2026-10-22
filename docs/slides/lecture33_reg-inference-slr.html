@@ -198,9 +198,9 @@
 <section class="slide level2">
 
 <div class="columns">
-<div class="column center" style="width:50%;">
+<div class="column center" style="width:55%;">
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
-</div><div class="column center" style="width:50%;">
+</div><div class="column center" style="width:45%;">
 <p><br></p>
 <p><span class="custom-title">Inference for Regression I</span></p>
 <p><br> <br></p>
@@ -211,94 +211,16 @@
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
 <ul>
-<li class="fragment"><p>Announcement:</p>
-<ul>
-<li class="fragment">Math Dept. Colloquium tomorrow: advising week workshop</li>
-</ul></li>
-<li class="fragment"><p>Answers from last lecture’s activity</p></li>
 <li class="fragment"><p>Discuss theoretical inference for simple linear regression (SLR)</p></li>
 <li class="fragment"><p>Discuss inference with bootstrap for linear models</p></li>
 </ul>
 </section>
-<section id="activity-average-home-price-between-seattle-and-portland" class="slide level2">
-<h2>Activity: Average Home Price between Seattle and Portland</h2>
-<p>Suppose you’re interested in comparing average home price between Seattle and Portland</p>
-<ul>
-<li>You randomly sample <span class="math inline">\(n_1=50\)</span> Seattle homes, and find <span class="math inline">\(\bar{x}_1=0.95M\)</span>, <span class="math inline">\(s_1=0.15M\)</span>.</li>
-<li>You randomly sample <span class="math inline">\(n_2=35\)</span> Portland homes, and find <span class="math inline">\(\bar{x}_2=0.70M\)</span>, <span class="math inline">\(s_2=0.35M\)</span>.</li>
-</ul>
-<p><br></p>
-<p><strong>With Neighbor(s):</strong> Choose a question below and work through it on the board.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Confidence Intervals</strong></p>
-<ul>
-<li><p>Find a 80% confidence interval for the difference in average home price.</p></li>
-<li><p>Are we 80% confident there’s actually a difference?</p></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Hypothesis Testing</strong></p>
-<ul>
-<li><p>You’ve <strong>heard</strong> there’s no difference between Seattle and Portland!</p></li>
-<li><p>Test your claim using a hypothesis test (with a significance level of <span class="math inline">\(\alpha = 0.01\)</span>).</p></li>
-</ul>
-</div></div>
-</section>
-<section id="answer-key-confidence-intervals" class="slide level2">
-<h2>Answer Key: Confidence Intervals</h2>
-<div class="fragment">
-<p>With <em>independent</em> samples of size <span class="math inline">\(n_1&gt;30\)</span>, <span class="math inline">\(n_2&gt;30\)</span>, we can use the t-distribution approximation method.</p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">qt</span>(<span class="fl">0.90</span>, <span class="at">df=</span> <span class="fu">min</span>(<span class="dv">50-1</span>,<span class="dv">35-1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.306952</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">sqrt</span>(<span class="fl">0.15</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">50</span> <span class="sc">+</span> <span class="fl">0.35</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">35</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.06284903</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p><span class="math display">\[
-\begin{align*}
-(\bar{x}_1-\bar{x}_2) \pm t^*\times \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} &amp;= (.95-.70) \pm 1.307 \times 0.06285\\
-&amp; = (0.1679, \ 0.3321)
-\end{align*}
-\]</span></p>
-</div>
-<div class="fragment">
-<p>Thus, at the 80% confidence level, we think there is a difference in average home price between Seattle and Portland.</p>
-</div>
-</section>
-<section id="answer-key-hypothesis-testing" class="slide level2">
-<h2>Answer Key: Hypothesis Testing</h2>
-<ol type="1">
-<li class="fragment"><p>Hypotheses: <span class="math inline">\(H_0: \mu_1 -\mu_2 = 0 \quad H_a: \mu_1-\mu_2 \neq 0\)</span></p></li>
-<li class="fragment"><p>Assess Conditions (on previous slide)</p></li>
-<li class="fragment"><p>Compute test statistic under <span class="math inline">\(H_0\)</span> <span class="math display">\[t = \frac{(\bar{x}_1 - \bar{x}_{2})-(\mu_1-\mu_{2})}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}} = \frac{(.95-.70)-(0)}{\sqrt{\frac{0.15^2}{50} + \frac{0.35^2}{35} }} = 3.978 \]</span></p></li>
-</ol>
-<div class="fragment">
-<ol start="4" type="1">
-<li>Calculate p-value</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pt</span>(<span class="fl">3.978</span>,<span class="at">df=</span><span class="fu">min</span>(<span class="dv">50-1</span>,<span class="dv">35-1</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0003448846</code></pre>
-</div>
-</div>
-</div>
-<ol start="5" type="1">
-<li class="fragment">Conclude: We reject the null hypothesis (at the <span class="math inline">\(\alpha = 0.01\)</span> level), in favor of the hypothesis that Portland and Seattle have different average home prices.</li>
-</ol>
-</section>
 <section>
-<section id="simple-linear-regression" class="title-slide slide level1 center">
-<h1>Simple Linear Regression</h1>
+<section id="review-of-simple-linear-regression" class="title-slide slide level1 center">
+<h1>Review of Simple Linear Regression</h1>
 
 </section>
-<section id="review-of-simple-linear-regression" class="slide level2">
+<section id="review-of-simple-linear-regression-1" class="slide level2">
 <h2>Review of Simple Linear Regression</h2>
 <p>We’ve used linear models to analyze the relationship between two quantitative variables</p>
 <p><span class="math display">\[
@@ -323,7 +245,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <li>To fit a linear model in R, we use the <code>lm()</code> function</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>my_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> my_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>my_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> my_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -331,7 +253,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <li>To view coefficients of the model, we use <code>get_regression_table()</code></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">get_regression_table</span>(my_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">get_regression_table</span>(my_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 7
   term      estimate std_error statistic p_value lower_ci upper_ci
@@ -346,7 +268,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <li>Correlation can be computed using <code>cor()</code>:</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">cor</span>(my_data<span class="sc">$</span>x, my_data<span class="sc">$</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">cor</span>(my_data<span class="sc">$</span>x, my_data<span class="sc">$</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.295056</code></pre>
 </div>
@@ -385,8 +307,9 @@ y = \beta_0 + \beta_1 x + \epsilon
 </section>
 <section id="example-for-today-reed-theses" class="slide level2">
 <h2>Example for Today: Reed Theses</h2>
+<div style="font-size:0.9em;">
 <ul>
-<li class="fragment">Several years ago, some Math 141 students collected data on several hundred senior theses from thesis tower.</li>
+<li class="fragment">Several years ago, some Stat 141 students collected data on several hundred senior theses from thesis tower.</li>
 </ul>
 <div class="fragment">
 <ul>
@@ -396,7 +319,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
@@ -405,9 +328,11 @@ y = \beta_0 + \beta_1 x + \epsilon
 <ul>
 <li class="fragment">But this is just a sample of data. What can we say about the underlying <em>population</em> slope?</li>
 </ul>
+</div>
 </section>
 <section id="inference-for-regression" class="slide level2">
 <h2>Inference for Regression</h2>
+<div style="font-size:0.9em;">
 <p>We assume that <em>in the population</em>, there is the following relationship between Page Count (<span class="math inline">\(y\)</span>) and Year (<span class="math inline">\(x\)</span>)</p>
 <p><span class="math display">\[
 \underbrace{\text{Page Count}}_{y} = \beta_0 + \beta_1 \underbrace{\text{Year}}_{x} + \underbrace{\epsilon}_{\text{error}}
@@ -437,11 +362,12 @@ y = \beta_0 + \beta_1 x + \epsilon
 \]</span></p>
 </div>
 </div></div>
+</div>
 </section>
 <section id="roadmap-for-inference" class="slide level2">
 <h2>Roadmap for Inference</h2>
 <ul>
-<li class="fragment">Regression is a potent tool for assessing relationships between variables.
+<li class="fragment">Regression is a potential tool for assessing relationships between variables.
 <ul>
 <li class="fragment">We have four “LINE” conditions for regression</li>
 <li class="fragment">We would like to conduct inference on parameters <span class="math inline">\(\beta_0\)</span> and/or <span class="math inline">\(\beta_1\)</span></li>
@@ -469,8 +395,9 @@ y = \beta_0 + \beta_1 x + \epsilon
 <h1>Theory-Based Inference for Simple Linear Regression</h1>
 
 </section>
-<section id="hypothesis-tests-for-slope" class="slide level2 smaller">
+<section id="hypothesis-tests-for-slope" class="slide level2">
 <h2>Hypothesis Tests for Slope</h2>
+<div style="font-size:0.8em;">
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><span class="math display">\[\text{Population Model:   } y = \beta_0 + \beta_1 x + \epsilon\]</span></p>
@@ -489,28 +416,22 @@ y = \beta_0 + \beta_1 x + \epsilon
 </div>
 <ul>
 <li class="fragment">Approximately normally distributed</li>
-<li class="fragment">Has mean <span class="math inline">\(\beta_1\)</span></li>
+<li class="fragment">Has mean <span class="math inline">\(\beta_1\)</span>, and a standard error of:</li>
 </ul>
 <div class="fragment">
-<ul>
-<li>Has a standard error of:</li>
-</ul>
 <p><span class="math display">\[
 \color{red}{SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 + \beta_1 x_i) )^2}{\sum_{i=1}^n (x_i - \bar x)^2}}}
-\]</span> (Don’t memorize this!)</p>
+\]</span> (Don’t memorize this equation!)</p>
+</div>
 </div>
 </section>
-<section id="hypothesis-tests-for-slope-1" class="slide level2 smaller">
+<section id="hypothesis-tests-for-slope-1" class="slide level2">
 <h2>Hypothesis Tests for Slope</h2>
+<div style="font-size:0.85em;">
 <p><span class="math display">\[H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0\]</span></p>
-<p><strong>Under the LINE conditions</strong>, <span class="math inline">\(\widehat{\beta}_1\)</span> is:</p>
-<ul>
-<li><p>Approximately normally distributed</p></li>
-<li><p>has mean <span class="math inline">\(\beta_1\)</span></p></li>
-<li><p>Has a standard error of:</p></li>
-</ul>
+<p><strong>Under the LINE conditions</strong>:</p>
 <p><span class="math display">\[
-SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 + \beta_1 x_i) )^2}{\sum_{i=1}^n (x_i - \bar x)^2}}
+\widehat{\beta}_1 \underbrace{\sim}_{approx.} Normal \left( \beta_1, \; SE (\widehat{\beta}) \; \right) = Normal \left( \beta_1, \; \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 + \beta_1 x_i) )^2}{\sum_{i=1}^n (x_i - \bar x)^2}} \; \right)
 \]</span></p>
 <ul>
 <li class="fragment"><p>In practice, <strong>we estimate <span class="math inline">\(\beta_0, \beta_1\)</span> in the formula using <span class="math inline">\(\widehat{\beta}_0, \widehat{\beta}_1\)</span></strong>, giving <span class="math inline">\(\widehat{SE} (\widehat{\beta}_1)\)</span></p></li>
@@ -522,9 +443,10 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 \]</span></p>
 </div>
 <ul>
-<li class="fragment"><p>The <span class="math inline">\(t\)</span>-statistic follows a <u><span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n-2\)</span> degrees of freedom.</u></p></li>
+<li class="fragment"><p>The <span class="math inline">\(t\)</span>-statistic follows a <u><span class="math inline">\(t\)</span>-distribution with <strong>n-2</strong> degrees of freedom.</u></p></li>
 <li class="fragment"><p>We can use the <code>pt()</code> function to calculate the corresponding p-value</p></li>
 </ul>
+</div>
 </section>
 <section id="confidence-intervals-for-slope" class="slide level2">
 <h2>Confidence Intervals for Slope</h2>
@@ -544,8 +466,8 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <section id="hypothesis-tests-and-confidence-intervals-through-lm" class="slide level2">
 <h2>Hypothesis Tests and Confidence Intervals through <code>lm()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>thesis_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year, <span class="at">data =</span> theses_samp)</span>
-<span id="cb12-2"><a></a><span class="fu">get_regression_table</span>(theses_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>thesis_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year, <span class="at">data =</span> theses_samp)</span>
+<span id="cb6-2"><a></a><span class="fu">get_regression_table</span>(theses_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 7
   term      estimate std_error statistic p_value lower_ci upper_ci
@@ -558,15 +480,15 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <p><strong>Hypothesis Test</strong></p>
 <ul>
 <li class="fragment"><p><code>std_error</code> — theory-based standard error (0.198)</p></li>
-<li class="fragment"><p><code>statistic</code> — <span class="math inline">\(t\)</span>-statistic (-3.057)</p></li>
+<li class="fragment"><p><code>statistic</code> — <span class="math inline">\(t\)</span>-statistic (-3.06)</p></li>
 <li class="fragment"><p><code>p_value</code> — p-value (0.003) of observing our <span class="math inline">\(t\)</span>-statistic or something more extreme in the t-distribution with <span class="math inline">\(df=n-2\)</span> for the <u><em>two-sided test</em></u>, <span class="math display">\[H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0\]</span></p></li>
 </ul>
 </section>
 <section id="hypothesis-tests-and-confidence-intervals-through-lm-1" class="slide level2">
 <h2>Hypothesis Tests and Confidence Intervals through <code>lm()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>thesis_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year, <span class="at">data =</span> theses_samp)</span>
-<span id="cb14-2"><a></a><span class="fu">get_regression_table</span>(theses_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>thesis_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year, <span class="at">data =</span> theses_samp)</span>
+<span id="cb8-2"><a></a><span class="fu">get_regression_table</span>(theses_mod)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 7
   term      estimate std_error statistic p_value lower_ci upper_ci
@@ -590,8 +512,8 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <section id="hypothesis-tests-and-confidence-intervals-through-lm-2" class="slide level2">
 <h2>Hypothesis Tests and Confidence Intervals through <code>lm()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>thesis_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year, <span class="at">data =</span> theses_samp)</span>
-<span id="cb16-2"><a></a><span class="fu">get_regression_table</span>(theses_mod, <span class="at">conf.level =</span> <span class="fl">0.80</span>) <span class="co"># Note change</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>thesis_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year, <span class="at">data =</span> theses_samp)</span>
+<span id="cb10-2"><a></a><span class="fu">get_regression_table</span>(theses_mod, <span class="at">conf.level =</span> <span class="fl">0.80</span>) <span class="co"># Note change</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 7
   term      estimate std_error statistic p_value lower_ci upper_ci
@@ -612,8 +534,9 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <h1>Conditions for Theory-Based Inference</h1>
 
 </section>
-<section id="line-conditions" class="slide level2 smaller">
+<section id="line-conditions" class="slide level2">
 <h2>LINE Conditions</h2>
+<div style="font-size:0.9em;">
 <p>To do <strong>theory-based</strong> inference for regression, we require the LINE conditions we talked about way back in week 4!</p>
 <div class="fragment">
 <ol type="1">
@@ -651,6 +574,7 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <div class="fragment">
 <p>These make up the <u>LINE Conditions</u> (<strong>L</strong>inearity, <strong>I</strong>ndependence, <strong>N</strong>ormality, <strong>E</strong>qual Variability)</p>
 </div>
+</div>
 </section>
 <section id="linearity" class="slide level2">
 <h2>1) Linearity</h2>
@@ -662,7 +586,7 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
@@ -686,7 +610,7 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
@@ -703,7 +627,7 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
@@ -742,15 +666,16 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 </section>
 <section id="bootstrapping-slopes" class="slide level2">
 <h2>Bootstrapping Slopes</h2>
+<div style="font-size:0.85em;">
 <p>To approximate variability in the slope statistic <span class="math inline">\(\widehat{\beta}_1\)</span>, we create a bootstrap sample by resampling data rows <u>with replacement</u>, and then calculating <strong>a new linear model, with a new slope</strong></p>
 <div class="columns">
 <div class="column fragment" style="width:40%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
-<span id="cb18-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
-<span id="cb18-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
+<span id="cb12-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb12-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -771,16 +696,17 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<ul>
-<li><p>Dashed red line: regression line for original sample</p></li>
-<li><p>Darker points: observations included in bootstrap sample more than once</p></li>
-</ul>
 </div></div>
+<ul>
+<li class="fragment"><p>Dashed red line: regression line for original sample</p></li>
+<li class="fragment"><p>Darker points: observations included in bootstrap sample more than once</p></li>
+</ul>
+</div>
 </section>
 <section id="bootstrap-distribution-of-slopes" class="slide level2">
 <h2>Bootstrap Distribution of Slopes</h2>
@@ -789,13 +715,13 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <p>Let’s step carefully through this code - we’re combining <code>lm()</code>, <code>get_regression_table()</code>, and our <code>dplyr</code> data wrangling functions.</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
-<span id="cb20-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
-<span id="cb20-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-6"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
-<span id="cb20-7"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
+<span id="cb14-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb14-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="bootstrap-distribution-of-slopes-1" class="slide level2">
@@ -805,13 +731,13 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <p>We draw 1000 different bootstrap samples of size <code>nrow(theses_samp)</code> (our sample size)</p>
 <p><br> <br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-code-line-numbers="1-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
-<span id="cb21-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
-<span id="cb21-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
-<span id="cb21-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-6"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
-<span id="cb21-7"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-code-line-numbers="1-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
+<span id="cb15-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb15-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="bootstrap-distribution-of-slopes-2" class="slide level2">
@@ -821,13 +747,13 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <p>Then we group by <code>replicate</code>: we want R to do the next calculation within every bootstrap sample</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
-<span id="cb22-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
-<span id="cb22-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
-<span id="cb22-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-6"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
-<span id="cb22-7"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
+<span id="cb16-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb16-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb16-6"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="bootstrap-distribution-of-slopes-3" class="slide level2">
@@ -836,15 +762,18 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <p><br></p>
 <p>Across each bootstrap sample, we calculate a single number inside <code>summarize()</code>: the <strong>slope</strong> estimate (second <code>estimate</code>) from the regression table from <code>lm(n_pages ~ year)</code></p>
 <p><br></p>
+<div class="columns">
+<div class="column" style="width:70%;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
-<span id="cb23-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
-<span id="cb23-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb23-6"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
-<span id="cb23-7"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
+<span id="cb17-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb17-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb17-7"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</div><div class="column" style="width:30%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
@@ -858,6 +787,7 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 6         6 -0.472</code></pre>
 </div>
 </div>
+</div></div>
 <ul>
 <li class="fragment"><strong>Note</strong>: <code>get_regression_table</code> rounds values to 3 digits by default (can change <code>digits</code>)</li>
 </ul>
@@ -869,13 +799,13 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <p>Plotting the bootstrap distribution</p>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>boot_slope <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> slope)) <span class="sc">+</span></span>
-<span id="cb25-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb25-3"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>boot_slope <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> slope)) <span class="sc">+</span></span>
+<span id="cb19-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
@@ -887,18 +817,18 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <div class="fragment">
 <p>We can make the same plot and add the implied 95% confidence interval:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boot_slope<span class="sc">$</span>slope, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
-<span id="cb26-2"><a></a></span>
-<span id="cb26-3"><a></a>boot_slope <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> slope)) <span class="sc">+</span></span>
-<span id="cb26-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb26-5"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> ci, <span class="at">color =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
-<span id="cb26-6"><a></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> ci[<span class="dv">1</span>], <span class="at">xmax =</span> ci[<span class="dv">2</span>], <span class="at">ymin =</span> <span class="dv">0</span>,</span>
-<span id="cb26-7"><a></a>           <span class="at">ymax =</span> <span class="cn">Inf</span>, <span class="at">fill =</span> <span class="st">"dodgerblue"</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
-<span id="cb26-8"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boot_slope<span class="sc">$</span>slope, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb20-2"><a></a></span>
+<span id="cb20-3"><a></a>boot_slope <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> slope)) <span class="sc">+</span></span>
+<span id="cb20-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> ci, <span class="at">color =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
+<span id="cb20-6"><a></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> ci[<span class="dv">1</span>], <span class="at">xmax =</span> ci[<span class="dv">2</span>], <span class="at">ymin =</span> <span class="dv">0</span>,</span>
+<span id="cb20-7"><a></a>           <span class="at">ymax =</span> <span class="cn">Inf</span>, <span class="at">fill =</span> <span class="st">"dodgerblue"</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb20-8"><a></a>  <span class="fu">theme_bw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+<p><img data-src="lecture33_reg-inference-slr_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
@@ -911,13 +841,13 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <p>Gathering bootstrap samples…</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>boot_slope <span class="ot">&lt;-</span> theses_samp <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
-<span id="cb27-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
-<span id="cb27-4"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
-<span id="cb27-6"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span>
-<span id="cb27-7"><a></a><span class="fu">head</span>(boot_slope)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>boot_slope <span class="ot">&lt;-</span> theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb21-4"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span>
+<span id="cb21-7"><a></a><span class="fu">head</span>(boot_slope)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
@@ -936,9 +866,9 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 <div class="column fragment" style="width:40%;">
 <p><strong>Percentile confidence interval</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>q_ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boot_slope<span class="sc">$</span>slope,</span>
-<span id="cb29-2"><a></a>                 <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
-<span id="cb29-3"><a></a>q_ci</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>q_ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boot_slope<span class="sc">$</span>slope,</span>
+<span id="cb23-2"><a></a>                 <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb23-3"><a></a>q_ci</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    2.5%    97.5% 
 -1.17215 -0.22095 </code></pre>
@@ -947,10 +877,10 @@ SE(\widehat{\beta}_1) = \sqrt{\frac{1}{n-2} \frac{\sum_{i =1}^n (y_i - (\beta_0 
 </div><div class="column fragment" style="width:60%;">
 <p><strong>Standard error confidence interval</strong> (-0.61 is the original slope)…</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>tstar <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="fu">nrow</span>(theses_samp) <span class="sc">-</span> <span class="dv">2</span>)</span>
-<span id="cb31-2"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_slope<span class="sc">$</span>slope)</span>
-<span id="cb31-3"><a></a>se_ci <span class="ot">&lt;-</span> <span class="fu">c</span>(b1 <span class="sc">-</span> tstar<span class="sc">*</span>se, b1 <span class="sc">+</span> tstar<span class="sc">*</span>se)</span>
-<span id="cb31-4"><a></a>se_ci</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>tstar <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="fu">nrow</span>(theses_samp) <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb25-2"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_slope<span class="sc">$</span>slope)</span>
+<span id="cb25-3"><a></a>se_ci <span class="ot">&lt;-</span> <span class="fu">c</span>(b1 <span class="sc">-</span> tstar<span class="sc">*</span>se, b1 <span class="sc">+</span> tstar<span class="sc">*</span>se)</span>
+<span id="cb25-4"><a></a>se_ci</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      year       year 
 -1.0936881 -0.1263119 </code></pre>
@@ -990,12 +920,12 @@ H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\be
 <li>Gather bootstrap samples…</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a></a>boot_slope <span class="ot">&lt;-</span> theses_samp <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
-<span id="cb33-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
-<span id="cb33-4"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb33-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
-<span id="cb33-6"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>boot_slope <span class="ot">&lt;-</span> theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb27-4"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb27-6"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="fragment">
@@ -1003,8 +933,8 @@ H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\be
 <li>Calculate the bootstrapped SE…</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>bootstrap_se <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_slope<span class="sc">$</span>slope)</span>
-<span id="cb34-2"><a></a>bootstrap_se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>bootstrap_se <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_slope<span class="sc">$</span>slope)</span>
+<span id="cb28-2"><a></a>bootstrap_se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.243737</code></pre>
 </div>
@@ -1018,8 +948,8 @@ H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\be
 <li>Calculate z-score under the null (<span class="math inline">\(\widehat{\beta}_1=-0.61\)</span> is the original slope)…</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>z <span class="ot">&lt;-</span> (b1 <span class="sc">-</span> <span class="dv">0</span>) <span class="sc">/</span> bootstrap_se</span>
-<span id="cb36-2"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>z <span class="ot">&lt;-</span> (b1 <span class="sc">-</span> <span class="dv">0</span>) <span class="sc">/</span> bootstrap_se</span>
+<span id="cb30-2"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     year 
 -2.502698 </code></pre>
@@ -1031,8 +961,8 @@ H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\be
 <li>Calculate the p-value (2-sided test)…</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(z)</span>
-<span id="cb38-2"><a></a>p_value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(z)</span>
+<span id="cb32-2"><a></a>p_value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      year 
 0.01232507 </code></pre>
@@ -1049,9 +979,6 @@ H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\be
 <ul>
 <li class="fragment">Inference for multiple regression</li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>

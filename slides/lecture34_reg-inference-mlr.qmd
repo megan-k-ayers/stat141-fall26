@@ -84,17 +84,6 @@ theses<-read_csv("data/theses.csv") %>%
 
 ------------------------------------------------------------------------
 
-## Announcements/Reminders
-
-- HW 9 posted (final homework assignment!)
-
-- Extra day on Lab 9: Due **Wednesday** 4/22
-
-- **Reminder**: You can submit missing assignments to me via email at any point for partial credit! 
-
-
-------------------------------------------------------------------------
-
 ## Goals for today
 
 - Pick up from last lecture: inference for regression with bootstrap
@@ -104,13 +93,7 @@ theses<-read_csv("data/theses.csv") %>%
 - Discuss model selection
 
 
-------------------------------------------------------------------------
-
-
-
-
 # Picking up from last lecture: bootstrap for regression inference
-
 
 
 
@@ -144,6 +127,8 @@ get_regression_table(mod_YearDivision)
 
 ## Review: Multiple Regression Model
 
+::: {style="font-size:0.9em"}
+
 ```{r echo=T}
 mod_YearDivision <- lm(n_pages ~ year + division, data = theses)
 get_regression_table(mod_YearDivision)
@@ -151,12 +136,17 @@ get_regression_table(mod_YearDivision)
 
 <br>
 
+::: fragment
+
 We assume in the **[population]{.underline}**, the response $y$ is a linear function of the explanatory variables $x_1,\dots,x_k$:
 
 $$
 y  = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + \epsilon
 $$
 
+:::
+
+::: fragment
 
 But we estimate the model from the **[sample]{.underline}** data that we actually have:
 
@@ -166,6 +156,10 @@ $$
 &= 626 -0.284 \cdot \text{Year} + 33.2 \cdot \text{HSS} + 22.7 \cdot \text{LL} - 4.99 \cdot \text{MNS} + 21.1 \cdot \text{PRPL}
 \end{aligned}
 $$
+
+:::
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -224,6 +218,8 @@ We want linear regression models to satisfy 4 conditions:
 
 ## Code for Checking Conditions
 
+::: {style="font-size:0.9em"}
+
 ::::: columns
 
 ::: column
@@ -264,6 +260,7 @@ mod_YearDivision %>%
 
 :::::
 
+:::
 
 ------------------------------------------------------------------------
 
@@ -501,4 +498,5 @@ countdown::countdown(5)
    - Special case when we have 1 categorical predictor (ANOVA)
 
 
+# Have a great Thanksgiving break! 
 
