@@ -67,6 +67,15 @@ library(tufte)
 
 ------------------------------------------------------------------------
 
+## Reminders/Announcements
+
+- sUms colloquium today 
+- Course assistants would love to see more of you in office hours! 
+- I'll be a few minutes late to office hours today
+
+
+------------------------------------------------------------------------
+
 ## Goals for today
 
 - Review the concept of a 95\% confidence interval
@@ -242,23 +251,27 @@ $$
 
 ## Example: Reproduction Rate for Covid-19
 
-Researchers are interested in the COVID-19 **reproduction rate** (the average number of individuals each infected person further infects). They sample 50 infected individuals and perform contract tracing.
+Researchers are interested in the COVID-19 **reproduction rate** (the average number of individuals each infected person further infects). They sample 50 infected individuals and perform contact tracing.
 
 
 ::::: {.columns .fragment}
 
-::: {.column width=30%}
+::: {.column width=45%}
 
 ```{r echo=FALSE}
-infected<-rep( 0:6, c(5,13,14,12,5,0,1))
-covid<-data.frame(infected)
+infected <- rep( 0:6, c(5,13,14,12,5,0,1))
+covid <- data.frame(infected)
+```
+
+
+```{r echo=TRUE}
 covid %>% count(infected)
 covid %>% summarize(mean_infected = mean(infected))
 ```
 
 :::
 
-::: {.column width=70%}
+::: {.column width=55%}
 
 ```{r fig.width=8, fig.height=3.5, echo=FALSE}
 ggplot(covid, aes(x = infected))+geom_histogram(bins = 7, color = "white")+scale_x_continuous(breaks = 0:6)+labs(title = "Distribution of Sample",y="Count")+
@@ -436,6 +449,22 @@ countdown::countdown(3)
 <!-- ::::: -->
 
 
+------------------------------------------------------------------------
+
+## Example: Reproduction Rate for Covid-19
+
+Our 95\% confidence interval for the reproduction rate is:
+
+$$
+\bar x \pm 2 \cdot SE \implies 2.06 \pm 2 \cdot 0.181
+$$
+$$
+= [1.698, 2.422].
+$$
+
+
+
+
 # Generalized Confidence Intervals
 
 ------------------------------------------------------------------------
@@ -464,7 +493,7 @@ The $C\%$ confidence interval for a parameter is an interval estimate that is co
 
 ::: {.nonincremental}
 
-- For a number $k$ between $0$ and $100$, the $k$th **percentile** of a distribution is the value so that $k\%$ of the data is less than or equal to that value.
+- For a number $k$ between $0$ and $100$, the $k$th **percentile** of a distribution is the value so that $k\%$ of the data is [less than or equal to that value]{.underline}.
     - The median is the 50th percentile of a distribution
     - 1st/3rd quartiles (Q1/Q3) are the 25th and 75th percentiles, respectively.
     
@@ -576,6 +605,14 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
 - $\mathrm{Statistic} \ (\bar{x}) = 2.06$
 - $\mathrm{SE} = 0.18$
 - $95\% \ \mathrm{CI} = 1.70 \ \text{to} \ 2.42$
+
+<br>
+
+::: {style="font-size:0.8em;"}
+
+- **Requires a bell-shaped sampling distribution**
+
+:::
     
 :::
 
@@ -606,6 +643,12 @@ ggplot(bootstrap_stats, aes(x = x_bar))+
 quantile(bootstrap_stats$x_bar, c(0.025, 0.975))
 ```
 
+::: {style="font-size:0.8em;"}
+
+- **Sampling distribution does not need to be bell-shaped**
+
+:::
+
 :::
 
 :::
@@ -626,7 +669,7 @@ quantile(bootstrap_stats$x_bar, c(0.025, 0.975))
 - **Ex:** For $C\% = 95\%$ (i.e., a 95\% Confidence Interval), we want
     - 95\% in the middle
     - $\frac{(100-C)}{2}\% = \frac{(100-95)}{2}\% = {2.5\%}$ **on either end**
-    - Report the **0.025 quantile** (or 2.5th percentile) and the **0.975 quantile** (or 97.5th percentile)!
+    - Report the **0.025 quantile** (or 2.5th percentile) and the **0.975 quantile** (or 97.5th percentile) as our confidence intervals
 
 
 
@@ -788,7 +831,7 @@ Confidence Intervals get smaller with:
 - With a lower confidence level, we become *less* certain the interval will contain the true parameter.
 
 ::: fragment
-**Reminder:** While a lower confidence level gives you a smaller interval, there is a cost! (i.e., lower success rate)
+> **Reminder:** While a lower confidence level gives you a smaller interval, there is a cost! (i.e., lower success rate)
 :::
 
 
@@ -804,7 +847,7 @@ Suppose we wish to estimate the number of hours a Reed student sleeps on a typic
 
 
 
-1. A 95% confidence interval **does not** contain 95% of observations in the population.
+1. A 95% confidence interval **does not** contain 95% of observations in the *population.*
 
 ::: fragment
 
@@ -833,7 +876,7 @@ grid.arrange(p1,p2, ncol =2)
 ::: nonincremental
 Suppose we wish to estimate the number of hours a Reed student sleeps on a typical night. We obtain the following 95% confidence interval: $(7.86, 8.34)$
 
-1. A 95% confidence interval **does not** contain 95% of observations in the population.
+1. A 95% confidence interval **does not** contain 95% of observations in the *population.*
 :::
 
 ```{r fig.height=3.5, fig.width=15, echo = FALSE}

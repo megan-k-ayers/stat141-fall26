@@ -3115,6 +3115,13 @@
     "text": "Looking ahead\n\n\nIn lab tomorrow we’ll get more practice actually working with the code from this worksheet\n\nAnd no quiz tomorrow!\n\nWe’ll continue practicing this and comparing sampling and bootstrap distributions in Homework 6\n\nNote: This may feel repetitive at times!\nWhy we’re doing it:\n\nSampling distributions (and how we approximate them) are one of the most fundamental concepts of this class.\nEverything we learn from now on (ex. confidence intervals, hypothesis testing) builds upon them.\nYou will need to use these same coding steps over and over as we build on sampling distributions and boostrapping.\nThis worksheet + lecture slides + lab provide you with many coding examples of working with these distributions."
   },
   {
+    "objectID": "slides/lecture21_ci-misconceptions.html#remindersannouncements",
+    "href": "slides/lecture21_ci-misconceptions.html#remindersannouncements",
+    "title": "STAT 141",
+    "section": "Reminders/Announcements",
+    "text": "Reminders/Announcements\n\nsUms colloquium today\nCourse assistants would love to see more of you in office hours!\nI’ll be a few minutes late to office hours today"
+  },
+  {
     "objectID": "slides/lecture21_ci-misconceptions.html#goals-for-today",
     "href": "slides/lecture21_ci-misconceptions.html#goals-for-today",
     "title": "STAT 141",
@@ -3161,7 +3168,7 @@
     "href": "slides/lecture21_ci-misconceptions.html#example-reproduction-rate-for-covid-19",
     "title": "STAT 141",
     "section": "Example: Reproduction Rate for Covid-19",
-    "text": "Example: Reproduction Rate for Covid-19\nResearchers are interested in the COVID-19 reproduction rate (the average number of individuals each infected person further infects). They sample 50 infected individuals and perform contract tracing.\n\n\n\n\n  infected  n\n1        0  5\n2        1 13\n3        2 14\n4        3 12\n5        4  5\n6        6  1\n\n\n  mean_infected\n1          2.06\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoal: Create an interval of plausible values for the reproduction rate.\nQ: What is the population? What is the parameter?\nQ: What is the sample? What is the statistic?"
+    "text": "Example: Reproduction Rate for Covid-19\nResearchers are interested in the COVID-19 reproduction rate (the average number of individuals each infected person further infects). They sample 50 infected individuals and perform contact tracing.\n\n\n\ncovid %&gt;% count(infected)\n\n  infected  n\n1        0  5\n2        1 13\n3        2 14\n4        3 12\n5        4  5\n6        6  1\n\ncovid %&gt;% summarize(mean_infected = mean(infected))\n\n  mean_infected\n1          2.06\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGoal: Create an interval of plausible values for the reproduction rate.\nQ: What is the population? What is the parameter?\nQ: What is the sample? What is the statistic?"
   },
   {
     "objectID": "slides/lecture21_ci-misconceptions.html#bootstrap-reproduction-rate",
@@ -3169,6 +3176,13 @@
     "title": "STAT 141",
     "section": "Bootstrap Reproduction Rate",
     "text": "Bootstrap Reproduction Rate\nWe can use our sample to create a 95% confidence interval. What is each step doing, and why?\n\n\nStep 1:\n\n\nset.seed(121)\nbootstrap_samples &lt;- covid %&gt;% rep_sample_n(size = 50, replace = TRUE, reps = 5000)\n\n\n\n\nStep 2:\n\n\nbootstrap_stats &lt;- bootstrap_samples %&gt;% group_by(replicate) %&gt;% summarize(x_bar = mean(infected))\n\n\n\n\n\n\nStep 3:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nStep 4:\n\n\nbootstrap_stats %&gt;% summarize(SE = sd(x_bar))\n\n# A tibble: 1 × 1\n     SE\n  &lt;dbl&gt;\n1 0.181\n\n\n\n\nStep 5:\n\n\\[\n\\bar x \\pm 2 \\cdot SE \\implies 2.06 \\pm 2 \\cdot 0.181\n\\]"
+  },
+  {
+    "objectID": "slides/lecture21_ci-misconceptions.html#example-reproduction-rate-for-covid-19-1",
+    "href": "slides/lecture21_ci-misconceptions.html#example-reproduction-rate-for-covid-19-1",
+    "title": "STAT 141",
+    "section": "Example: Reproduction Rate for Covid-19",
+    "text": "Example: Reproduction Rate for Covid-19\nOur 95% confidence interval for the reproduction rate is:\n\\[\n\\bar x \\pm 2 \\cdot SE \\implies 2.06 \\pm 2 \\cdot 0.181\n\\] \\[\n= [1.698, 2.422].\n\\]"
   },
   {
     "objectID": "slides/lecture21_ci-misconceptions.html#generalized-confidence-intervals-1",
@@ -3203,14 +3217,14 @@
     "href": "slides/lecture21_ci-misconceptions.html#confidence-interval-2-ways",
     "title": "STAT 141",
     "section": "95% Confidence Interval: 2 ways",
-    "text": "95% Confidence Interval: 2 ways\n\n\n\n1. \\(\\color{darkred}{\\text{Statistic} \\pm 2*\\text{SE}}\\)\n\n\\(\\mathrm{Statistic} \\ (\\bar{x}) = 2.06\\)\n\\(\\mathrm{SE} = 0.18\\)\n\\(95\\% \\ \\mathrm{CI} = 1.70 \\ \\text{to} \\ 2.42\\)\n\n\n\n2. \\(\\color{darkred}{\\text{Percentile Method}}\\)\n\n\n\n\n\n\n\n\n\n\nquantile(bootstrap_stats$x_bar, c(0.025, 0.975))\n\n 2.5% 97.5% \n 1.72  2.40"
+    "text": "95% Confidence Interval: 2 ways\n\n\n\n1. \\(\\color{darkred}{\\text{Statistic} \\pm 2*\\text{SE}}\\)\n\n\\(\\mathrm{Statistic} \\ (\\bar{x}) = 2.06\\)\n\\(\\mathrm{SE} = 0.18\\)\n\\(95\\% \\ \\mathrm{CI} = 1.70 \\ \\text{to} \\ 2.42\\)\n\n\n\n\nRequires a bell-shaped sampling distribution\n\n\n\n\n2. \\(\\color{darkred}{\\text{Percentile Method}}\\)\n\n\n\n\n\n\n\n\n\n\nquantile(bootstrap_stats$x_bar, c(0.025, 0.975))\n\n 2.5% 97.5% \n 1.72  2.40 \n\n\n\n\nSampling distribution does not need to be bell-shaped"
   },
   {
     "objectID": "slides/lecture21_ci-misconceptions.html#percentile-method-for-confidence-intervals",
     "href": "slides/lecture21_ci-misconceptions.html#percentile-method-for-confidence-intervals",
     "title": "STAT 141",
     "section": "Percentile Method for Confidence Intervals",
-    "text": "Percentile Method for Confidence Intervals\n\nPercentile Method: For a \\(C\\%\\) Confidence Interval, report the quantiles of the bootstrap distribution such that:\n\n\\(C\\%\\) lies in the middle\n\\(\\frac{(100-C)}{2}\\%\\) lies on either end (i.e., “the rest” is evenly distributed on the ends)\n\n\n\n\nEx: For \\(C\\% = 95\\%\\) (i.e., a 95% Confidence Interval), we want\n\n95% in the middle\n\\(\\frac{(100-C)}{2}\\% = \\frac{(100-95)}{2}\\% = {2.5\\%}\\) on either end\nReport the 0.025 quantile (or 2.5th percentile) and the 0.975 quantile (or 97.5th percentile)!"
+    "text": "Percentile Method for Confidence Intervals\n\nPercentile Method: For a \\(C\\%\\) Confidence Interval, report the quantiles of the bootstrap distribution such that:\n\n\\(C\\%\\) lies in the middle\n\\(\\frac{(100-C)}{2}\\%\\) lies on either end (i.e., “the rest” is evenly distributed on the ends)\n\n\n\n\nEx: For \\(C\\% = 95\\%\\) (i.e., a 95% Confidence Interval), we want\n\n95% in the middle\n\\(\\frac{(100-C)}{2}\\% = \\frac{(100-95)}{2}\\% = {2.5\\%}\\) on either end\nReport the 0.025 quantile (or 2.5th percentile) and the 0.975 quantile (or 97.5th percentile) as our confidence intervals"
   },
   {
     "objectID": "slides/lecture21_ci-misconceptions.html#the-percentile-method-example",
@@ -3245,7 +3259,7 @@
     "href": "slides/lecture21_ci-misconceptions.html#width-of-confidence-intervals-1",
     "title": "STAT 141",
     "section": "Width of Confidence Intervals",
-    "text": "Width of Confidence Intervals\nConfidence Intervals get smaller with:\n\na larger sample size\na lower confidence level\n\n\nNote: These reasons for getting smaller are competing in terms of certainty!\n\n\nWith a larger sample size, the interval gets smaller because we’re more certain the statistic is close to the parameter.\nWith a lower confidence level, we become less certain the interval will contain the true parameter.\n\n\nReminder: While a lower confidence level gives you a smaller interval, there is a cost! (i.e., lower success rate)"
+    "text": "Width of Confidence Intervals\nConfidence Intervals get smaller with:\n\na larger sample size\na lower confidence level\n\n\nNote: These reasons for getting smaller are competing in terms of certainty!\n\n\nWith a larger sample size, the interval gets smaller because we’re more certain the statistic is close to the parameter.\nWith a lower confidence level, we become less certain the interval will contain the true parameter.\n\n\n\nReminder: While a lower confidence level gives you a smaller interval, there is a cost! (i.e., lower success rate)"
   },
   {
     "objectID": "slides/lecture21_ci-misconceptions.html#misunderstanding-1",
