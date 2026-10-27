@@ -1,7 +1,7 @@
 ---
 pagetitle: "Hypothesis Testing I: Introduction"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -95,8 +95,7 @@ Joy Milne, a retired nurse, claimed to have the ability to smell whether someone
 
 - Imagine we are researchers who want to test Joy's claim.
 
-
-- We collect a bunch of tee shirts, some worn by individuals who are diagnosed with Parkinson's, others worn by individuals who aren't.
+- We collect a bunch of tee shirts, half worn by individuals who are diagnosed with Parkinson's, half worn by individuals who aren't.
 
 - We present Joy with tee shirts one at a time, and ask her to identify which group the wearer is in.
 
@@ -104,8 +103,8 @@ Joy Milne, a retired nurse, claimed to have the ability to smell whether someone
 ::: {.fragment .nonincremental}
 - **Discuss with Neighbor(s):**
     - **Q:** If Joy is guessing at random, what's the probability that she guesses correctly for **one** shirt?
-    - **Q:** How many out of 10 shirts would you expect her to guess correctly?
-    - **Q:** Which is the probability of guessing correctly 10 times in a row?
+    - **Q:** How many out of 10 randomly selected shirts would you expect her to guess correctly?
+    - **Q:** What is the probability of guessing correctly 10 times in a row?
     
         <!-- - $\frac{1}{5}$ or a 50\% chance -->
         <!-- - 5 times out of 10 -->
@@ -115,7 +114,7 @@ Joy Milne, a retired nurse, claimed to have the ability to smell whether someone
 
 ```{r}
 #| echo: false
-countdown::countdown(3)
+countdown::countdown(2)
 ```
 
 ------------------------------------------------------------------------
@@ -178,7 +177,11 @@ $$
 
 **Discuss with Neighbor(s):** If the "p-value", 
 
-$$ \text{P-value} = \text{Probability of what happened in reality assuming the hypothesis is true} $$
+::: {style="font-size:0.7em;"}
+
+$$ \text{P-value} = \text{Probability of what happened in reality (or something more extreme), assuming the hypothesis is true} $$
+
+:::
 
 is [small]{.underline}, **why does it make sense to reject the hypothesis?**
 
@@ -209,7 +212,7 @@ Hypothesis Testing is a scientific experiment, and follows the general scientifi
 
 1. Present research question and identify **hypotheses**
     - **Null** Hypothesis (e.g., Joy is guessing diagnoses randomly)
-    - **Alternative** Hypothesis (e.g., Joy can smell Parkinson's)
+    - **Alternative** Hypothesis (e.g., Joy is not guessing randomly)
     - We'll express these hypotheses mathematically, *in terms of parameters*
 
 
@@ -233,13 +236,15 @@ Hypothesis Testing is a scientific experiment, and follows the general scientifi
 
 ------------------------------------------------------------------------
 
-## 1) Identifying Hypotheses: Informal vs. Formal Hypotheses {.smaller}
+## 1) Identifying Hypotheses: Informal vs. Formal Hypotheses
+
+::: {style="font-size:0.85em;"}
 
 - Before the tee shirt experiment, we may have several (informal) hypotheses:
   1) Joy is guessing at random 
   2) Joy can smell Parkinson's disease
   3) Joy is psychic
-  4) Joy is able to do better than guessing at random
+  4) A researcher is somehow cheating to help Joy identify the shirts correctly
   
 
 - But in order to compare these, it would be helpful to consider a set of hypotheses that:
@@ -258,7 +263,9 @@ $$
 
 :::
 
-- The first informal hypothesis is represented by Hypothesis 1. The others are represented by Hypothesis 2, summarized in the last informal hypothesis.
+- The first informal hypothesis is represented by the Null Hypothesis. The other three are captured in Hypothesis 3.
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -270,7 +277,12 @@ $$
   
 - The **alternative hypothesis ($H_a$)** is contrary to the null hypothesis. It is often the theory we would like to prove.
    - $H_a$: Joy can do better than random guessing, or $p>1/2$.
-  
+
+        
+------------------------------------------------------------------------
+
+## 1) Identifying Hypotheses
+
 - The Null and Alternative hypotheses are most often statements about the particular value of a population parameter
     - $H_0$ and $H_a$ are **[never]{.underline}** statements about particular values of **sample statistics**. They are **hypotheses** and should be able to be expressed before any observation of data.
         - **Incorrect** $H_0$: The proportion of correct guesses in $10$ guesses is $\widehat{p}=1/2$.
@@ -331,15 +343,13 @@ $$
   
 - We can approximate the Null Distribution using simulation or theory.
 
-- **Q**: How does the Null Distribution differ from the sampling distributions we considered for confidence intervals?
-
 
 ------------------------------------------------------------------------
 
 ## 2)  Describe the Null Distribution: A Model of Tee Shirt Guessing
 
 
-We can use R to simulate **one experiment** of 10 guesses by...
+We can use R to simulate **one experiment** of 10 random guesses by...
 
 
 ::::: columns
@@ -378,7 +388,7 @@ one_trial
 :::::
 
 ::: fragment
-Our one experiment us a $\widehat{p} = 6/10 = 0.6$
+This one experiment gives us a $\widehat{p} = 6/10 = 0.6$
 :::
 
 ------------------------------------------------------------------------
@@ -419,6 +429,12 @@ null_stats
 :::
 
 :::::
+
+::: fragment
+
+> **Q**: How does the Null Distribution differ from the sampling distributions we considered for confidence intervals?
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -526,8 +542,8 @@ null_stats %>% ggplot(aes(x = p_hat))+geom_histogram(breaks = 0:11/10 -1/20, col
   
 - More formally,
     - The **p-value** is the probability of observing a sample/test statistic (e.g., $\widehat{p}$) [at least as favorable]{.underline} to the alternative hypothesis as the current statistic, if the null hypothesis ($H_0$) were true. 
-        - e.g., I had $\widehat{p} = 1$, so we want the probability of **$\widehat{p} = 1$ given $H_0$**
-        - e.g., If I had $\widehat{p} = 0.5$, we'd want the probability of **$\widehat{p} \geq 0.5$ given $H_0$**
+        - e.g., Joy had $\widehat{p} = 1$, so we want the probability of **$\widehat{p} = 1$ given $H_0$**
+        - e.g., If Joy had $\widehat{p} = 0.5$, we'd want the probability of **$\widehat{p} \geq 0.5$ given $H_0$**
 
 
 
@@ -660,7 +676,7 @@ countdown::countdown(2)
 
 ### Motivating Example: Can some diseases be detected by smell? 
 
-This [true story](https://www.npr.org/sections/health-shots/2020/03/23/820274501/her-incredible-sense-of-smell-is-helping-scientists-find-new-ways-to-diagnose-di) is amazing, I don't want to leave you hanging! The answer is: **yes!** Joy really can smell Parkinson's disease. 
+This [true story](https://www.npr.org/sections/health-shots/2020/03/23/820274501/her-incredible-sense-of-smell-is-helping-scientists-find-new-ways-to-diagnose-di) is amazing! I've simplified things here, but I don't want to leave you hanging. The answer is: **yes!** Joy really can smell Parkinson's disease. 
 
 <br>
 
@@ -750,14 +766,14 @@ guesses <- data.frame(correct = c(0, 0, 0, 0, 0,
 
 ::: {.fragment .nonincremental}
 
-- (2b) Sample from this data frame *with replacement* many times, and calculate the **null statistic** (here, the sample proportion) in each sample
+- (2b) Sample from this data frame (here, *with replacement*) many times, and calculate the **null statistic** (here, the sample proportion) in each sample
     - This simulates what the **sampling distribution** would look like under the **null hypothesis**
 
-```{r echo = T, eval = F}
+```{r echo = T, eval = T}
 set.seed(111)
 null_stats <- guesses %>% 
   rep_sample_n(size = 10, replace = T,  # Creating 2000 samples
-               reps = 2000) %>% 
+               reps = 5000) %>% 
   group_by(replicate) %>%  # For each sample...
   summarize(n_correct = sum(correct)) %>%  # Calculate null statistics
   mutate(stat = n_correct/10)
@@ -774,29 +790,30 @@ null_stats <- guesses %>%
 
 - (2c) Visualize the null distribution, check that the center makes sense.
 
-```{r echo = T, eval = F}
-null_stats %>% ggplot(aes(x = stat)) +
-  geom_histogram(bins = 10, color = "white")
+```{r echo = T, fig.height = 2.5, fig.width = 3}
+#| output-location: column
+null_stats %>%
+  ggplot(aes(x = stat)) +
+  geom_histogram(bins = 11,
+                 color = "white")
 ```
 
 
 :::
 
-<br>
 
 ::: {.fragment .nonincremental}
 - \(3\) Here, we were given the value of the test statistic: $\hat{p} = 10/10 = 1$.
    
 :::
-   
-<br>
+
 
 ::: {.fragment .nonincremental}
    
 - \(4\) Calculate your p-value.
-   - In other examples, you may need to calculate `test_stat` from a data frame in the step above.
+   - In other examples, you may need to calculate `test_stat` from a data frame with the sample.
 
-```{r eval = F}
+```{r}
 test_stat <- 1
 mean(null_stats$stat >= test_stat) 
 ```

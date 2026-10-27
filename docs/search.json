@@ -84,6 +84,181 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture22_hyp-test-intro.html#the-guesses",
+    "href": "slides/lecture22_hyp-test-intro.html#the-guesses",
+    "title": "STAT 141",
+    "section": "The guesses…",
+    "text": "The guesses…\n\nLet’s say we do this, and Joy guesses 10 correctly in a row.\n\nSuppose a colleague says, “She just got lucky!”\nCan we prove they are wrong? Any ideas?\n\n\n\n\nOne way of doing it:\n\nAssume for a second that she really was guessing at random.\nIf that’s the case, then there’s a \\(&lt;0.001\\%\\) chance of guessing 10 in a row correctly!\nTherefore, it seems more likely she isn’t guessing randomly. The data we observed seems incompatible with our hypothesis.\n\n\n\n\nWe just (informally) did a Hypothesis Test\n\nFramework for deciding whether or not “due to chance” is a plausible explanation\nIf the event (data, sample) that we observe is extremely unlikely, “due to chance” is not a plausible explanation."
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#hypothesis-tests-and-p-values-informally",
+    "href": "slides/lecture22_hyp-test-intro.html#hypothesis-tests-and-p-values-informally",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests and “P-Values”, Informally",
+    "text": "Hypothesis Tests and “P-Values”, Informally\n\nSay we want to disprove a hypothesis:\n\ne.g., “Joy was guessing randomly, she can’t smell Parkinson’s disease”\n\nWe are going to calculate something called a P-value:\n\nAssuming the hypothesis was true…\n\n\n\n\\[\n\\text{P-value} = \\text{Probability of what happened in reality (or something more extreme)}\n\\]\n\n\ne.g., Assuming Joy was guessing randomly…\n\n\n\\[\n\\text{P-value} = \\text{Probability guessing correctly 10 times in a row}\n\\]\n\n\nThen we’ll reject the hypothesis if the p-value is small"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#why-reject-with-small-p-values",
+    "href": "slides/lecture22_hyp-test-intro.html#why-reject-with-small-p-values",
+    "title": "STAT 141",
+    "section": "Why reject with “small” p-values?",
+    "text": "Why reject with “small” p-values?\nDiscuss with Neighbor(s): If the “p-value”,\n\n\\[ \\text{P-value} = \\text{Probability of what happened in reality (or something more extreme), assuming the hypothesis is true} \\]\n\nis small, why does it make sense to reject the hypothesis?\n\n\nIn life, we tend to believe things that happen are pretty “typical” or “likely”… or else they wouldn’t happen!\nWith a small p-value, the hypothesis holding means “You’re special! You observed something really rare!”\n\nWe usually don’t get that lucky :( So we may conclude that our hypothesis was wrong.\n\nWith a large p-value, the hypothesis holding means “Your observation meets expectations.”\n\nIn this case, we don’t have much reason to doubt our hypothesis."
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#framework-for-hypothesis-testing",
+    "href": "slides/lecture22_hyp-test-intro.html#framework-for-hypothesis-testing",
+    "title": "STAT 141",
+    "section": "Framework for Hypothesis Testing",
+    "text": "Framework for Hypothesis Testing\nHypothesis Testing is a scientific experiment, and follows the general scientific method.\n\nPresent research question and identify hypotheses\n\nNull Hypothesis (e.g., Joy is guessing diagnoses randomly)\nAlternative Hypothesis (e.g., Joy is not guessing randomly)\nWe’ll express these hypotheses mathematically, in terms of parameters\n\nDescribe Null distribution\n\nWhat should we expect to happen if the null hypothesis is true?\n\nObtain data, calculate relevant Test Statistic\n\nTest Statistic = sample statistic based on our data\n\nCalculate the P-value\n\nP-value = probability of observing the Test Statistic assuming the Null Hypothesis\n\nUse the P-value to make a conclusion on the research question"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#identifying-hypotheses-informal-vs.-formal-hypotheses",
+    "href": "slides/lecture22_hyp-test-intro.html#identifying-hypotheses-informal-vs.-formal-hypotheses",
+    "title": "STAT 141",
+    "section": "1) Identifying Hypotheses: Informal vs. Formal Hypotheses",
+    "text": "1) Identifying Hypotheses: Informal vs. Formal Hypotheses\n\n\nBefore the tee shirt experiment, we may have several (informal) hypotheses:\n\nJoy is guessing at random\nJoy can smell Parkinson’s disease\nJoy is psychic\nA researcher is somehow cheating to help Joy identify the shirts correctly\n\nBut in order to compare these, it would be helpful to consider a set of hypotheses that:\n\nAre mutually exclusive\nMake specific statements about a parameter\nDo not discuss the specific outcome of the experiment\n\nFormal Hypotheses: Let \\(p\\) denote the true probability that a guess is correct.\n\n\n\\[\n\\textbf{Null Hypothesis:} \\quad p = 1/2 \\qquad \\qquad \\textbf{Alternative Hypothesis:} \\quad p &gt; 1/2\n\\]\n\n\nThe first informal hypothesis is represented by the Null Hypothesis. The other three are captured in Hypothesis 3."
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#identifying-hypotheses",
+    "href": "slides/lecture22_hyp-test-intro.html#identifying-hypotheses",
+    "title": "STAT 141",
+    "section": "1) Identifying Hypotheses",
+    "text": "1) Identifying Hypotheses\n\nThe null hypothesis (\\(H_0\\)) is the claim we are testing. It often represents a skeptical perspective or that there is no relationship among several variables.\n\n\\(H_0\\): The chance of guessing correctly is 1/2, or \\(p=1/2\\).\nThe null value = value of the population parameter under the Null Hypothesis (e.g., \\(1/2\\))\n\nThe alternative hypothesis (\\(H_a\\)) is contrary to the null hypothesis. It is often the theory we would like to prove.\n\n\\(H_a\\): Joy can do better than random guessing, or \\(p&gt;1/2\\)."
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#identifying-hypotheses-1",
+    "href": "slides/lecture22_hyp-test-intro.html#identifying-hypotheses-1",
+    "title": "STAT 141",
+    "section": "1) Identifying Hypotheses",
+    "text": "1) Identifying Hypotheses\n\nThe Null and Alternative hypotheses are most often statements about the particular value of a population parameter\n\n\\(H_0\\) and \\(H_a\\) are never statements about particular values of sample statistics. They are hypotheses and should be able to be expressed before any observation of data.\n\nIncorrect \\(H_0\\): The proportion of correct guesses in \\(10\\) guesses is \\(\\widehat{p}=1/2\\).\nIncorrect \\(H_a\\): The proportion of correct guesses in \\(10\\) guesses is \\(\\widehat{p} &gt; 1/2\\)."
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#identifying-hypotheses-determining-the-null-hypothesis",
+    "href": "slides/lecture22_hyp-test-intro.html#identifying-hypotheses-determining-the-null-hypothesis",
+    "title": "STAT 141",
+    "section": "1) Identifying Hypotheses: Determining the Null Hypothesis",
+    "text": "1) Identifying Hypotheses: Determining the Null Hypothesis\n\nThe Null and Alternative Hypothesis statements are not interchangeable:\n\nNull hypothesis is (usually) a statement of equality for a parameter (e.g., \\(p = 1/2\\))\nAlternative hypothesis is a statement of inequality for a parameter (e.g., \\(p &gt; 1/2\\))\n\nThe null hypothesis should represent the status quo belief about the parameter.\n\nWould be assumed if no study were conducted, and would be maintained if the study is inconclusive.\n\n\n\n\nThe alternative hypothesis often represents the claim for which we seek evidence.\n\nIt is the only statement we will be able to provide evidence for after our test.\ne.g., in a criminal trial, we assume innocence (\\(H_0\\)) first. If evidence is compelling (“beyond a reasonable doubt”), then we reject in favor of a guilty verdict (\\(H_a\\)).\n\nNote: Rejecting the Null doesn’t mean it’s untrue, that’s just our conclusion based on the data we have"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#framework-for-hypothesis-testing-1",
+    "href": "slides/lecture22_hyp-test-intro.html#framework-for-hypothesis-testing-1",
+    "title": "STAT 141",
+    "section": "Framework for Hypothesis Testing",
+    "text": "Framework for Hypothesis Testing\n\nPresent research question and identify hypotheses\nDescribe “Null” distribution - What should we expect to happen due to randomness if the null hypothesis is true?\nObtain data, calculate relevant “Test Statistic”\nCalculate the “P-value”\n\nP-value = likelihood of observing the Test Statistic or something more extreme assuming the Null Hypothesis\n\nUse the P-value to make a conclusion on the research question"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#describe-the-null-distribution-likelihood-of-observing-sample-statistic",
+    "href": "slides/lecture22_hyp-test-intro.html#describe-the-null-distribution-likelihood-of-observing-sample-statistic",
+    "title": "STAT 141",
+    "section": "2) Describe the Null Distribution: Likelihood of Observing Sample Statistic",
+    "text": "2) Describe the Null Distribution: Likelihood of Observing Sample Statistic\n\nTo compare Null and Alternate Hypotheses, we need to quantify how likely it is to observe a particular sample statistic, if the null hypothesis were true.\n\nIf Joy guesses at random, how many correct guesses do you expect?\nWhat is the greatest number of correct guesses you would plausibly expect to see?\nHow likely is is that she would get 7 or more correct guesses, if she’s guessing at random?\n\nTo answer questions like these, we need to know the distribution of the statistic of interest, if the null hypothesis were true.\nThis distribution is called the Null Distribution and is the theoretical sampling distribution for the statistic if the null hypothesis were true.\nWe can approximate the Null Distribution using simulation or theory."
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#describe-the-null-distribution-a-model-of-tee-shirt-guessing",
+    "href": "slides/lecture22_hyp-test-intro.html#describe-the-null-distribution-a-model-of-tee-shirt-guessing",
+    "title": "STAT 141",
+    "section": "2) Describe the Null Distribution: A Model of Tee Shirt Guessing",
+    "text": "2) Describe the Null Distribution: A Model of Tee Shirt Guessing\nWe can use R to simulate one experiment of 10 random guesses by…\n\n\n\nCreating a data frame consisting of correct and incorrect guesses\n\n\nguesses &lt;- data.frame(\n  correct = c(0, 0, 0, 0, 0, 1, 1, 1, 1, 1))\nguesses\n\n   correct\n1        0\n2        0\n3        0\n4        0\n5        0\n6        1\n7        1\n8        1\n9        1\n10       1\n\n\n\n\nSampling from this data frame with replacement 10 times\n\n\nguesses %&gt;% \n  rep_sample_n(size = 10, replace = T)\n\n\n\n   replicate correct\n1          1       0\n2          1       0\n3          1       0\n4          1       1\n5          1       0\n6          1       1\n7          1       1\n8          1       1\n9          1       1\n10         1       1\n\n\n\n\nThis one experiment gives us a \\(\\widehat{p} = 6/10 = 0.6\\)"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#describe-the-null-distribution-a-model-of-tee-shirt-guessing-1",
+    "href": "slides/lecture22_hyp-test-intro.html#describe-the-null-distribution-a-model-of-tee-shirt-guessing-1",
+    "title": "STAT 141",
+    "section": "2) Describe the Null Distribution: A Model of Tee Shirt Guessing",
+    "text": "2) Describe the Null Distribution: A Model of Tee Shirt Guessing\nWe can use R to simulate 2000 experiments of 10 guesses by putting in reps = 2000 (reps = 1 is the default).\n\n\n\nguesses %&gt;% \n  rep_sample_n(size = 10, \n               replace = T, \n               reps = 2000) %&gt;% \n  group_by(replicate) %&gt;%\n  summarize(n_correct = sum(correct)) %&gt;% \n  mutate(p_hat = n_correct/10)\n\n\n\n\n# A tibble: 2,000 × 3\n   replicate n_correct p_hat\n       &lt;int&gt;     &lt;dbl&gt; &lt;dbl&gt;\n 1         1         4   0.4\n 2         2         5   0.5\n 3         3         4   0.4\n 4         4         4   0.4\n 5         5         8   0.8\n 6         6         4   0.4\n 7         7         5   0.5\n 8         8         4   0.4\n 9         9         4   0.4\n10        10         4   0.4\n# ℹ 1,990 more rows\n\n\n\n\n\nQ: How does the Null Distribution differ from the sampling distributions we considered for confidence intervals?"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#describe-the-null-distribution-visualizing",
+    "href": "slides/lecture22_hyp-test-intro.html#describe-the-null-distribution-visualizing",
+    "title": "STAT 141",
+    "section": "2) Describe the Null Distribution: Visualizing",
+    "text": "2) Describe the Null Distribution: Visualizing\n\nWe can use a histogram to visualize the Null Distribution of the sample proportion \\(\\widehat{p}\\)\n\n\n\nnull_stats %&gt;% ggplot(aes(x = p_hat))+geom_histogram(bins = 11, color = \"white\")\n\n\n\n\n\n\n\n\n\n\n\nQ: How often would we have observed \\(\\widehat{p} = 1.0\\)?"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#describe-the-null-distribution-visualizing-1",
+    "href": "slides/lecture22_hyp-test-intro.html#describe-the-null-distribution-visualizing-1",
+    "title": "STAT 141",
+    "section": "2) Describe the Null Distribution: Visualizing",
+    "text": "2) Describe the Null Distribution: Visualizing\n\nWe can use a histogram to visualize the Null Distribution of the sample proportion \\(\\widehat{p}\\)\n\n\nnull_stats %&gt;% ggplot(aes(x = p_hat))+geom_histogram(bins = 11, color = \"white\")\n\n\n\n\n\n\n\n\n\n\n\nQ: How often would we have observed \\(\\widehat{p} = 1.0\\)?"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#framework-for-hypothesis-testing-2",
+    "href": "slides/lecture22_hyp-test-intro.html#framework-for-hypothesis-testing-2",
+    "title": "STAT 141",
+    "section": "Framework for Hypothesis Testing",
+    "text": "Framework for Hypothesis Testing\n\nPresent research question and identify hypotheses\nDescribe “Null” distribution\nObtain data, calculate relevant “Test Statistic”\n\nTest Statistic = sample statistic based on our data\n\nCalculate the “P-value”\n\nP-value = likelihood of observing the Test Statistic or something more extreme assuming the Null Hypothesis\n\nUse the P-value to make a conclusion on the research question"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#calculate-the-test-statistic",
+    "href": "slides/lecture22_hyp-test-intro.html#calculate-the-test-statistic",
+    "title": "STAT 141",
+    "section": "3) Calculate the Test Statistic",
+    "text": "3) Calculate the Test Statistic\n\nWe’ve already done this with Joy’s guesses:\n\nWe found that \\(\\widehat{p} = 1\\) (she guessed right for 10 out of 10 tee shirts)\n\nIn the context of hypothesis tests, we typically call the sample statistic (e.g., \\(\\widehat{p}\\)) the Test Statistic\n\nThis is the statistic that we actually observed in our data set\nIn comparison, we call the hypothetical statistics in our null distribution null statistics"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#framework-for-hypothesis-testing-3",
+    "href": "slides/lecture22_hyp-test-intro.html#framework-for-hypothesis-testing-3",
+    "title": "STAT 141",
+    "section": "Framework for Hypothesis Testing",
+    "text": "Framework for Hypothesis Testing\n\nPresent research question and identify hypotheses\nDescribe “Null” distribution\nObtain data, calculate relevant “Test Statistic”\nCalculate the “P-value”\n\n\nP-value = likelihood of observing the Test Statistic or something more extreme assuming the Null Hypothesis\n\n\nUse the P-value to make a conclusion on the research question"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#calculate-the-p-value",
+    "href": "slides/lecture22_hyp-test-intro.html#calculate-the-p-value",
+    "title": "STAT 141",
+    "section": "4) Calculate the P-Value",
+    "text": "4) Calculate the P-Value\n\nReminder: Informally,\n\nP-value = Probability of what happened in reality (or something more extreme) assuming the hypothesis is true\n\nMore formally,\n\nThe p-value is the probability of observing a sample/test statistic (e.g., \\(\\widehat{p}\\)) at least as favorable to the alternative hypothesis as the current statistic, if the null hypothesis (\\(H_0\\)) were true.\n\ne.g., Joy had \\(\\widehat{p} = 1\\), so we want the probability of \\(\\widehat{p} = 1\\) given \\(H_0\\)\ne.g., If Joy had \\(\\widehat{p} = 0.5\\), we’d want the probability of \\(\\widehat{p} \\geq 0.5\\) given \\(H_0\\)\n\n\nThe p-value quantifies the strength of evidence against the Null Hypothesis.\n\nSmaller p-values represent stronger evidence against \\(H_0\\).\n\\(\\text{P-value} \\approx 0\\) means test statistic was unlikely to arise by chance, if the null hypothesis were true.\nIf the p-value is “sufficiently small”, we’ll reject \\(H_0\\)."
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#calculate-the-p-value-1",
+    "href": "slides/lecture22_hyp-test-intro.html#calculate-the-p-value-1",
+    "title": "STAT 141",
+    "section": "4) Calculate the P-Value",
+    "text": "4) Calculate the P-Value\n\nMethod 1: Approximate the null distribution using simulation.\n\nThen, calculate the proportion of simulated statistics at least as extreme as the test statistic.\n\n\n\n\nFor \\(\\widehat{p}=1\\), we get a p-value of:\n\n\n\n\n\n\n\n\n\n\nmean(null_stats$p_hat &gt;= 1) \n\n[1] 0.001\n\n\n\nFor \\(\\widehat{p}=0.5\\), we get a p-value of:\n\n\n\n\n\n\n\n\n\n\nmean(null_stats$p_hat &gt;= 0.5) \n\n[1] 0.641"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#calculate-the-p-value-2",
+    "href": "slides/lecture22_hyp-test-intro.html#calculate-the-p-value-2",
+    "title": "STAT 141",
+    "section": "4) Calculate the P-Value",
+    "text": "4) Calculate the P-Value\n\nMethod 2: We use theory-based tools to create the theoretical null distribution.\n\nThen use the model to calculate the theoretical probability of observing a sample statistic as extreme as the test statistic.\nIn the case where Joy gets all 10 guesses right, we have already calculated the p-value as:\n\n\n\n\\[\\text{P-value} = (1/2)^{10} \\approx 0.00098 \\]"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#framework-for-hypothesis-testing-4",
+    "href": "slides/lecture22_hyp-test-intro.html#framework-for-hypothesis-testing-4",
+    "title": "STAT 141",
+    "section": "Framework for Hypothesis Testing",
+    "text": "Framework for Hypothesis Testing\n\nPresent research question and identify hypotheses\nDescribe “Null” distribution\nObtain data, calculate relevant “Test Statistic”\nCalculate the “P-value”\n\n\nP-value = likelihood of observing the Test Statistic or something more extreme assuming the Null Hypothesis\n\n\nUse the P-value to make a conclusion on the research question"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#making-a-conclusion-using-the-p-value",
+    "href": "slides/lecture22_hyp-test-intro.html#making-a-conclusion-using-the-p-value",
+    "title": "STAT 141",
+    "section": "5) Making a conclusion using the P-value",
+    "text": "5) Making a conclusion using the P-value\n\\[\n\\textbf{Null Hypothesis:} \\quad p = 1/2 \\qquad \\qquad \\textbf{Alternative Hypothesis:} \\quad p &gt; 1/2\n\\]\nDiscuss with Neighbor(s):\n\nWhen \\(\\widehat{p} = 1\\) (Joy guesses all 10 tee shirts correctly), we found P-value \\(&lt; 0.001\\). Do we reject the Null Hypothesis under this framework? Why?\nHypothetically, a \\(\\widehat{p} = 0.8\\) gives P-value \\(\\approx 0.055\\). Do we reject the Null now? Why or why not?\n\n\nAnswers:\n\n\nYes, we’re rejecting the Null\nMaybe? But we wouldn’t feel as good about it!\n\n\nHow small a p-value is small enough to reject the Null?\n\nIt really depends on your setting… (and we’ll discuss more later)\n… but people like to reject under 0.05 (this should NOT always be the rule!)"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#recap-framework-for-hypothesis-testing",
+    "href": "slides/lecture22_hyp-test-intro.html#recap-framework-for-hypothesis-testing",
+    "title": "STAT 141",
+    "section": "Recap: Framework for Hypothesis Testing",
+    "text": "Recap: Framework for Hypothesis Testing\nHypothesis Testing is a scientific experiment, and follows the general scientific method.\n\nPresent research question and identify hypotheses\n\nNull Hypothesis (e.g., Joy was guessing randomly)\nAlternative Hypothesis (e.g., Joy can smell Parkinson’s disease)\nWe’ll express these hypotheses mathematically, in terms of parameters\n\nDescribe Null distribution\n\nWhat should we expect to happen if the null hypothesis is true?\nWe’ll mainly use simulation to do this, for now\n\nObtain data, calculate relevant Test Statistic\n\nTest Statistic = sample statistic based on our data\n\nCalculate the P-value\n\nP-value = probability of observing the Test Statistic assuming the Null Hypothesis\n\nUse the P-value to make a conclusion on the research question"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#null-distribution-to-p-value-full-code-example",
+    "href": "slides/lecture22_hyp-test-intro.html#null-distribution-to-p-value-full-code-example",
+    "title": "STAT 141",
+    "section": "2) - 4) Null Distribution to P-Value: Full code example",
+    "text": "2) - 4) Null Distribution to P-Value: Full code example\n\n\n\n\n(2a) Create a data frame reflecting the null hypothesis (here \\(H_0: p=0.5\\))\n\nMultiple equivalent ways to do this\nThe important thing is that it encodes the assumed null parameter\n\n\n\nguesses &lt;- data.frame(correct = c(0, 0, 0, 0, 0,\n                                  1, 1, 1, 1, 1))\n\n\n\n\n\n(2b) Sample from this data frame (here, with replacement) many times, and calculate the null statistic (here, the sample proportion) in each sample\n\nThis simulates what the sampling distribution would look like under the null hypothesis\n\n\n\nset.seed(111)\nnull_stats &lt;- guesses %&gt;% \n  rep_sample_n(size = 10, replace = T,  # Creating 2000 samples\n               reps = 5000) %&gt;% \n  group_by(replicate) %&gt;%  # For each sample...\n  summarize(n_correct = sum(correct)) %&gt;%  # Calculate null statistics\n  mutate(stat = n_correct/10)\n\n\n\n\n\n(2c) Visualize the null distribution, check that the center makes sense.\n\n\n\nnull_stats %&gt;%\n  ggplot(aes(x = stat)) +\n  geom_histogram(bins = 11,\n                 color = \"white\")\n\n\n\n\n\n\n\n\n\n\n\n\n(3) Here, we were given the value of the test statistic: \\(\\hat{p} = 10/10 = 1\\).\n\n\n\n\n(4) Calculate your p-value.\n\nIn other examples, you may need to calculate test_stat from a data frame with the sample.\n\n\n\ntest_stat &lt;- 1\nmean(null_stats$stat &gt;= test_stat) \n\n[1] 6e-04"
+  },
+  {
+    "objectID": "slides/lecture22_hyp-test-intro.html#next-time",
+    "href": "slides/lecture22_hyp-test-intro.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time",
+    "text": "Next time\n\nMore hypothesis testing!\n\nPractice framing research questions in the hypothesis testing framework\n\nParticularly, generating null distributions\n\n1-sided vs 2-sided tests"
+  },
+  {
     "objectID": "slides/lecture20_ci-intro.html#point-estimates",
     "href": "slides/lecture20_ci-intro.html#point-estimates",
     "title": "STAT 141",
