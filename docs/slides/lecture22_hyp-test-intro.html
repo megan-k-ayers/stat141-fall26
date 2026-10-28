@@ -254,7 +254,7 @@
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_0f26bcea" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_eacf6f72" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -335,7 +335,7 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_269d2a59" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_a541665d" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section></section>
@@ -394,7 +394,7 @@
 \]</span></p>
 </div>
 <ul>
-<li class="fragment">The first informal hypothesis is represented by the Null Hypothesis. The other three are captured in Hypothesis 3.</li>
+<li class="fragment">The first informal hypothesis is represented by the Null Hypothesis. The other three are captured in the Alternative Hypothesis.</li>
 </ul>
 </div>
 </section>
@@ -565,7 +565,7 @@
 </div></div>
 <div class="fragment">
 <blockquote>
-<p><strong>Q</strong>: How does the Null Distribution differ from the sampling distributions we considered for confidence intervals?</p>
+<p><strong>Q</strong>: Does this code look familiar?</p>
 </blockquote>
 </div>
 </section>
@@ -576,7 +576,7 @@
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>null_stats <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> p_hat))<span class="sc">+</span><span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">11</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>null_stats <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> p_hat)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">11</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -598,7 +598,7 @@
 <li>We can use a histogram to visualize the Null Distribution of the sample proportion <span class="math inline">\(\widehat{p}\)</span></li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>null_stats <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> p_hat))<span class="sc">+</span><span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">11</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>null_stats <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> p_hat)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">11</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -663,7 +663,7 @@
 <ul>
 <li class="fragment"><strong>Reminder:</strong> Informally,
 <ul>
-<li class="fragment">P-value = Probability of what happened in reality (or something more extreme) assuming the hypothesis is true</li>
+<li class="fragment">P-value = Probability of what happened in reality (or something more extreme) assuming the null hypothesis is true</li>
 </ul></li>
 <li class="fragment">More formally,
 <ul>
@@ -780,7 +780,7 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_e09e3e8b" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_292da61c" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -889,7 +889,7 @@
 </div>
 <div class="fragment">
 <ul>
-<li>(3) Here, we were given the value of the test statistic: <span class="math inline">\(\hat{p} = 10/10 = 1\)</span>.</li>
+<li>(3) Here, we were given the value of the test statistic: <span class="math inline">\(\widehat{p} = 10/10 = 1\)</span>.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -901,7 +901,7 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>test_stat <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb16-2"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>stat <span class="sc">&gt;=</span> test_stat) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-2"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>stat <span class="sc">&gt;=</span> test_stat)  <span class="do">## p-value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6e-04</code></pre>
 </div>
