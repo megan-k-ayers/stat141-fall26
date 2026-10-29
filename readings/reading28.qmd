@@ -1,7 +1,7 @@
 ---
-date: 11/04/26
+date: 11/06/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -12,6 +12,6 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
--    OI Section 4.3.1
+-    OI Section 3.4
 
 

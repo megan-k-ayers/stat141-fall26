@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 10/30/26
+  draft-after: 11/06/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -359,8 +359,8 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading25.qmd
-            # - type: Slides
-            #   href: slides/lecture23_hyp-test-null-dist.qmd
+            - type: Slides
+              href: slides/lecture23_hyp-test-null-dist.qmd
       resources:
             - 'Submit assignment 6 (due Thurs 10/29 at 9am)'
             - 'Take Quiz 5 during lab'
@@ -373,33 +373,33 @@ scheduled-docs:
           date: 11/02/26
           docs:
             - type: Reading
-              href: readings/reading27.qmd
-            - type: Slides
-              href: slides/lecture24_hyp-test-errors.qmd
+              href: readings/reading26.qmd
+            # - type: Slides
+            #   href: slides/lecture24_hyp-test-errors.qmd
         - topic: "P-Value Pitfalls"
           display-date: Wednesday, Nov 4
           date: 11/04/26
           docs:
             - type: Reading
-              href: readings/reading28.qmd
-            - type: Slides
-              href: slides/lecture25_pvalue-pitfalls.qmd
+              href: readings/reading27.qmd
+            # - type: Slides
+            #   href: slides/lecture25_pvalue-pitfalls.qmd
         - topic: "Lab: Hypothesis Testing | Quiz 6"
           display-date: Thursday, Nov 5
           date: 11/5/26
           docs:
-              - type: Download Lab 8
-                href: lab/lab08.zip
-              - type: Download HW 8
-                href: hw/hw08.zip
+              # - type: Download Lab 8
+              #   href: lab/lab08.zip
+              # - type: Download HW 8
+              #   href: hw/hw08.zip
         - topic: "Random Variables I: Introduction"
           display-date: Friday, Nov 6
           date: 11/06/26
           docs:
             - type: Reading
-              href: readings/reading29.qmd
-            - type: Slides
-              href: slides/lecture26_rv-intro.qmd
+              href: readings/reading28.qmd
+            # - type: Slides
+            #   href: slides/lecture26_rv-intro.qmd
       resources:
             - 'Submit assignment 7 (due Thurs 11/5 at 9am)'
             - 'Take Quiz 6 during lab'

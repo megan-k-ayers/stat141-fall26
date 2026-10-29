@@ -298,7 +298,7 @@
 <p><strong>5.</strong> How would we use the P-value to make a conclusion on the research question?</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_03c4ed5f" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_51c7415a" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
@@ -603,7 +603,7 @@
 </ul></li>
 </ul>
 <div class="columns">
-<div class="column" style="width:75%;">
+<div class="column" style="width:65%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -613,11 +613,13 @@
 </div>
 </div>
 </div>
-</div><div class="column" style="width:25%;">
+</div><div class="column" style="width:35%;">
+<div style="font-size:1.25em;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&gt;=</span> <span class="fl">0.85</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">sum</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&gt;=</span> <span class="fl">0.85</span>) <span class="sc">/</span> <span class="dv">10000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0351</code></pre>
+</div>
 </div>
 </div>
 </div></div>
@@ -630,7 +632,7 @@
 </ul></li>
 </ul>
 <div class="columns">
-<div class="column" style="width:75%;">
+<div class="column" style="width:65%;">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -640,11 +642,13 @@
 </div>
 </div>
 </div>
-</div><div class="column" style="width:25%;">
+</div><div class="column" style="width:35%;">
+<div style="font-size:1.25em;">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&lt;=</span> <span class="fl">0.85</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">sum</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&lt;=</span> <span class="fl">0.85</span>) <span class="sc">/</span> <span class="dv">10000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9649</code></pre>
+</div>
 </div>
 </div>
 </div></div>
@@ -665,7 +669,7 @@
 </ul>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">mean</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&gt;=</span> <span class="fl">0.85</span>) <span class="sc">+</span> <span class="fu">mean</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&lt;=</span> <span class="fl">0.15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>(<span class="fu">sum</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&gt;=</span> <span class="fl">0.85</span>) <span class="sc">+</span> <span class="fu">sum</span>(null_stats<span class="sc">$</span>p_hat <span class="sc">&lt;=</span> <span class="fl">0.15</span>)) <span class="sc">/</span> <span class="dv">10000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0732</code></pre>
 </div>
@@ -720,28 +724,40 @@
 </ol></li>
 </ul></li>
 </ul>
-</div><div class="column fragment" style="width:50%;">
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">head</span>(df, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>      pain   grimace
+1 9.391984 12.538458
+2 7.001035  8.759391
+3 9.793066 15.637338</code></pre>
+</div>
+</div></div>
+</div>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
-<span id="cb13-2"><a></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">pain =</span> <span class="fu">runif</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">10</span>),</span>
-<span id="cb13-3"><a></a>                 <span class="at">grimace =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">2</span>))</span>
-<span id="cb13-4"><a></a>null_stats <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">select</span>(grimace) <span class="sc">%&gt;%</span></span>
-<span id="cb13-5"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb13-6"><a></a>               <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-7"><a></a>  <span class="fu">add_column</span>(<span class="at">pain =</span> <span class="fu">rep</span>(df<span class="sc">$</span>pain, <span class="at">times =</span> <span class="dv">5000</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb13-8"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
-<span id="cb13-9"><a></a>  <span class="fu">summarize</span>(<span class="at">stat =</span> <span class="fu">cor</span>(grimace, pain))</span>
-<span id="cb13-10"><a></a>                </span>
-<span id="cb13-11"><a></a><span class="fu">ggplot</span>(null_stats, <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span> </span>
-<span id="cb13-12"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">fill =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
-<span id="cb13-13"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">0</span>), <span class="at">lty =</span> <span class="dv">2</span>,</span>
-<span id="cb13-14"><a></a>             <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb13-15"><a></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb15-2"><a></a>null_stats <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a></a>  <span class="fu">select</span>(grimace) <span class="sc">%&gt;%</span>  <span class="co"># Grab just grimace</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">100</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb15-5"><a></a>               <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span>  <span class="co"># Sample from it</span></span>
+<span id="cb15-6"><a></a>  <span class="fu">add_column</span>(<span class="at">pain =</span> <span class="fu">rep</span>(df<span class="sc">$</span>pain,  <span class="co"># Copy in pain</span></span>
+<span id="cb15-7"><a></a>                        <span class="at">times =</span> <span class="dv">5000</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb15-9"><a></a>  <span class="fu">summarize</span>(<span class="at">stat =</span> <span class="fu">cor</span>(grimace, pain))</span>
+<span id="cb15-10"><a></a>                </span>
+<span id="cb15-11"><a></a><span class="fu">ggplot</span>(null_stats, <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span> </span>
+<span id="cb15-12"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">fill =</span> <span class="st">"gray60"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture23_hyp-test-null-dist_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture23_hyp-test-null-dist_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
+</div>
 </div>
 </div>
 </div>
@@ -773,27 +789,39 @@
 </ol></li>
 </ul></li>
 </ul>
-</div><div class="column fragment" style="width:50%;">
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">head</span>(df, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>  treatment score
+1     smile     6
+2   neutral     4
+3     smile     8</code></pre>
+</div>
+</div></div>
+</div>
+<div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
-<span id="cb14-2"><a></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">treatment =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"smile"</span>, <span class="st">"neutral"</span>), <span class="at">times =</span> <span class="dv">30</span>),</span>
-<span id="cb14-3"><a></a>                 <span class="at">score =</span> <span class="fu">round</span>(<span class="fu">runif</span>(<span class="dv">60</span>, <span class="dv">0</span>, <span class="dv">10</span>)))</span>
-<span id="cb14-4"><a></a>null_stats <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">select</span>(treatment) <span class="sc">%&gt;%</span></span>
-<span id="cb14-5"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">60</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>, <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-6"><a></a>  <span class="fu">add_column</span>(<span class="at">score =</span> <span class="fu">rep</span>(df<span class="sc">$</span>score, <span class="at">times =</span> <span class="dv">5000</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb14-7"><a></a>  <span class="fu">group_by</span>(replicate, treatment) <span class="sc">%&gt;%</span></span>
-<span id="cb14-8"><a></a>  <span class="fu">summarize</span>(<span class="at">ybar =</span> <span class="fu">mean</span>(score)) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-9"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> treatment, <span class="at">values_from =</span> ybar) <span class="sc">%&gt;%</span></span>
-<span id="cb14-10"><a></a>  <span class="fu">mutate</span>(<span class="at">stat =</span> smile <span class="sc">-</span> neutral)</span>
-<span id="cb14-11"><a></a><span class="fu">ggplot</span>(null_stats, <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span> </span>
-<span id="cb14-12"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">fill =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
-<span id="cb14-13"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">0</span>), <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb14-14"><a></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This is more advanced wrangling than we've seen! </span></span>
+<span id="cb18-2"><a></a><span class="fu">set.seed</span>(<span class="dv">111</span>)</span>
+<span id="cb18-3"><a></a>null_stats <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">select</span>(treatment) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">60</span>, <span class="at">replace =</span> <span class="cn">FALSE</span>, <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a></a>  <span class="fu">add_column</span>(<span class="at">score =</span> <span class="fu">rep</span>(df<span class="sc">$</span>score, <span class="at">times =</span> <span class="dv">5000</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb18-6"><a></a>  <span class="fu">group_by</span>(replicate, treatment) <span class="sc">%&gt;%</span></span>
+<span id="cb18-7"><a></a>  <span class="fu">summarize</span>(<span class="at">ybar =</span> <span class="fu">mean</span>(score)) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-8"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> treatment, <span class="at">values_from =</span> ybar) <span class="sc">%&gt;%</span></span>
+<span id="cb18-9"><a></a>  <span class="fu">mutate</span>(<span class="at">stat =</span> smile <span class="sc">-</span> neutral)</span>
+<span id="cb18-10"><a></a><span class="fu">ggplot</span>(null_stats, <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span> </span>
+<span id="cb18-11"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">fill =</span> <span class="st">"gray60"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture23_hyp-test-null-dist_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture23_hyp-test-null-dist_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
+</div>
 </div>
 </div>
 </div>

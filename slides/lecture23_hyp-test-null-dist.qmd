@@ -1,7 +1,7 @@
 ---
 pagetitle: "Hypothesis Testing II: More Examples, 1 vs 2 sided"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -481,7 +481,7 @@ knitr::include_graphics("img/galaxy_brain.jgp")
 
 ::::: columns
 
-::: {.column width=75%}
+::: {.column width=65%}
 
 ```{r echo = FALSE, fig.height=2.25}
 set.seed(10)
@@ -506,11 +506,15 @@ sim_data %>% ggplot(aes(x = x))+geom_histogram(bins = 20, color = "white")+
 
 :::
 
-::: {.column width=25%}
+::: {.column width=35%}
+
+::: {style="font-size:1.25em;"}
 
 ```{r}
-mean(null_stats$p_hat >= 0.85)
+sum(null_stats$p_hat >= 0.85) / 10000
 ```
+
+:::
 
 :::
 
@@ -525,7 +529,7 @@ mean(null_stats$p_hat >= 0.85)
      
 ::::: columns
 
-::: {.column width=75%}
+::: {.column width=65%}
      
 ```{r echo = FALSE, fig.height=2.25}
 sim_data %>% ggplot(aes(x = x))+geom_histogram(bins = 20, color = "white")+
@@ -538,11 +542,15 @@ sim_data %>% ggplot(aes(x = x))+geom_histogram(bins = 20, color = "white")+
 
 :::
 
-::: {.column width=25%}
+::: {.column width=35%}
+
+::: {style="font-size:1.25em;"}
 
 ```{r echo = T}
-mean(null_stats$p_hat <= 0.85)
+sum(null_stats$p_hat <= 0.85) / 10000
 ```
+
+:::
 
 :::
 
@@ -567,7 +575,7 @@ mean(null_stats$p_hat <= 0.85)
 ::: fragment
 
 ```{r echo = T}
-mean(null_stats$p_hat >= 0.85) + mean(null_stats$p_hat <= 0.15)
+(sum(null_stats$p_hat >= 0.85) + sum(null_stats$p_hat <= 0.15)) / 10000
 ```
 
 :::
@@ -578,10 +586,11 @@ sim_data %>% ggplot(aes(x = x))+geom_histogram(bins = 20, color = "white")+
   labs(title = "Null Distribution, two-tailed test", x = "Simulated Statistics", y = "count")+
   scale_x_continuous(labels = NULL)+scale_y_continuous(labels = NULL)+
   geom_vline(xintercept = x_bar, color = "red", size = 1.25)+
-  annotate("text", x = x_bar + .75, y = 500, color = "red", label = "test statistic")+
+  annotate("text", x = x_bar - .6, y = 1100, color = "red", label = "test statistic",
+           size = 6) +
   annotate("rect", xmin = x_bar, xmax = Inf, ymin = 0, ymax = Inf, fill = "red", alpha = .3)+
   geom_vline(xintercept = -x_bar, color = "blue", size = 1.25)+
-  annotate("text", x = -x_bar - 1, y = 500, color = "blue", label = "equally extreme \n simulated statistics")+
+  annotate("text", x = -x_bar - 1, y = 500, color = "blue", label = "equally extreme \n simulated statistics", size = 5)+
   annotate("rect", xmin = -Inf, xmax = -x_bar, ymin = 0, ymax = Inf, fill = "blue", alpha = .3)
 
 ```
@@ -635,25 +644,40 @@ Can you tell if a mouse is in pain by looking at its facial expression? A recent
     
 :::    
 
-::: {.column width=50% .fragment}
+::: {.column width=50%}
+
+::: fragment
+
+```{r echo=FALSE}
+df <- data.frame(pain = runif(100, 0, 10),
+                 grimace = rnorm(100, 10, 2))
+```
+
+```{r}
+#| output-location: column
+head(df, 3)
+```
+
+:::
+
+::: fragment
 
 ```{r, fig.height = 3.5}
 set.seed(111)
-df <- data.frame(pain = runif(100, 0, 10),
-                 grimace = rnorm(100, 10, 2))
-null_stats <- df %>% select(grimace) %>%
+null_stats <- df %>% 
+  select(grimace) %>%  # Grab just grimace
   rep_sample_n(size = 100, replace = FALSE,
-               reps = 5000) %>%
-  add_column(pain = rep(df$pain, times = 5000)) %>%
+               reps = 5000) %>%  # Sample from it
+  add_column(pain = rep(df$pain,  # Copy in pain
+                        times = 5000)) %>%
   group_by(replicate) %>%
   summarize(stat = cor(grimace, pain))
                 
 ggplot(null_stats, aes(x = stat)) + 
-  geom_histogram(color = "white", fill = "gray60") +
-  geom_vline(aes(xintercept = 0), lty = 2,
-             col = "black", lwd = 1) +
-  theme_classic()
+  geom_histogram(color = "white", fill = "gray60")
 ```
+
+:::
 
 :::
 
@@ -692,12 +716,27 @@ Can a simple smile have an effect on punishment assigned following an infraction
     
 :::    
 
-::: {.column width=50% .fragment}
+::: {.column width=50%}
 
-```{r, fig.height = 4}
-set.seed(111)
+```{r echo=FALSE}
 df <- data.frame(treatment = rep(c("smile", "neutral"), times = 30),
                  score = round(runif(60, 0, 10)))
+```
+
+::: fragment
+
+```{r}
+#| output-location: column
+head(df, 3)
+```
+
+:::
+
+::: fragment
+
+```{r, fig.height = 4}
+# NOTE: This is more advanced wrangling than we've seen! 
+set.seed(111)
 null_stats <- df %>% select(treatment) %>%
   rep_sample_n(size = 60, replace = FALSE, reps = 5000) %>%
   add_column(score = rep(df$score, times = 5000)) %>%
@@ -706,10 +745,10 @@ null_stats <- df %>% select(treatment) %>%
   pivot_wider(names_from = treatment, values_from = ybar) %>%
   mutate(stat = smile - neutral)
 ggplot(null_stats, aes(x = stat)) + 
-  geom_histogram(color = "white", fill = "gray60") +
-  geom_vline(aes(xintercept = 0), lty = 2, col = "black", lwd = 1) +
-  theme_classic()
+  geom_histogram(color = "white", fill = "gray60")
 ```
+
+:::
 
 :::
 

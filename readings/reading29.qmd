@@ -12,6 +12,7 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
+-    OI Section 4.3.1
 -    OI Section 4.1, IMS 13.1-13.3
 
 
