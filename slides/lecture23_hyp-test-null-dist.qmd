@@ -58,6 +58,12 @@ library(tufte)
 :::
 :::::
 
+------------------------------------------------------------------------
+
+## Announcements
+
+- **10am section**: Ending class a few minutes early for pigeonhole innovations (you're invited!)
+- Office hour changes next week - double check Moodle! 
 
 ------------------------------------------------------------------------
 
@@ -161,7 +167,7 @@ Out of **329 reported trials**, the "receivers" correctly identified the object 
 
 ```{r}
 #| echo: false
-countdown::countdown(4)
+countdown::countdown(5)
 ```
 
 :::
@@ -183,6 +189,20 @@ countdown::countdown(4)
 2. Describe "Null" distribution. How might we simulate it?
     - The distribution of $\widehat{p}$ (the proportion of correct guesses) we would see if participants guess at random each time.
 
+
+- **Bonus Q**: What's the lowest that $\widehat{p}$ could be under the null? The highest?
+    
+------------------------------------------------------------------------
+
+## Hypothesis Testing Steps: ESP
+
+::: nonincremental
+
+2. Describe "Null" distribution. **How might we simulate it?**
+    - The distribution of $\widehat{p}$ (the proportion of correct guesses) we would see if participants guess at random each time.
+    
+:::
+
 ::::: columns
 
 ::: {.column width=50% .fragment .nonincremental}
@@ -198,15 +218,17 @@ countdown::countdown(4)
 ::: {.column width=50%}
 
 ::: fragment
-```{r fig.height=4}
+```{r fig.height=3}
 #| code-line-numbers: "1"
 set.seed(123)
-guesses <- c(0, 0, 0, 1) # Like a 4-sided dice with sides 0, 0, 0, 1
-null_stats <- data.frame(correct = guesses) %>% 
+guesses <- data.frame(
+  correct = c(0, 0, 0, 1)  # Like a 4-sided dice 
+)                          # with sides 0, 0, 0, 1
+null_stats <- guesses %>% 
   rep_sample_n(size = 329, replace = TRUE,
                reps = 10000) %>%
   group_by(replicate) %>%
-  summarize(p_hat = mean(correct))
+  summarize(p_hat = sum(correct) / n())
 ggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = "white")
 ```
 :::
@@ -221,7 +243,7 @@ ggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = "white")
 
 ::: nonincremental
 
-2. Describe "Null" distribution. How might we simulate it?
+2. Describe "Null" distribution. **How might we simulate it?**
     - The distribution of $\widehat{p}$ (the proportion of correct guesses) we would see if participants guess at random each time.
     
 :::
@@ -240,15 +262,17 @@ ggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = "white")
 
 ::: {.column width=50%}
 
-```{r fig.height=4}
-#| code-line-numbers: "2"
+```{r fig.height=3}
+#| code-line-numbers: "2-4"
 set.seed(123)
-guesses <- c(0, 0, 0, 1) # Like a 4-sided dice with sides 0, 0, 0, 1
-null_stats <- data.frame(correct = guesses) %>% 
+guesses <- data.frame(
+  correct = c(0, 0, 0, 1)  # Like a 4-sided dice 
+)                          # with sides 0, 0, 0, 1
+null_stats <- guesses %>% 
   rep_sample_n(size = 329, replace = TRUE,
                reps = 10000) %>%
   group_by(replicate) %>%
-  summarize(p_hat = mean(correct))
+  summarize(p_hat = sum(correct) / n())
 ggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = "white")
 ```
 
@@ -262,7 +286,7 @@ ggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = "white")
 
 ::: nonincremental
 
-2. Describe "Null" distribution. How might we simulate it?
+2. Describe "Null" distribution. **How might we simulate it?**
     - The distribution of $\widehat{p}$ (the proportion of correct guesses) we would see if participants guess at random each time.
     
 :::
@@ -281,15 +305,17 @@ ggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = "white")
 
 ::: {.column width=50%}
 
-```{r fig.height=4}
-#| code-line-numbers: "3-5"
+```{r fig.height=3}
+#| code-line-numbers: "5-7"
 set.seed(123)
-guesses <- c(0, 0, 0, 1) # Like a 4-sided dice with sides 0, 0, 0, 1
-null_stats <- data.frame(correct = guesses) %>% 
+guesses <- data.frame(
+  correct = c(0, 0, 0, 1)  # Like a 4-sided dice 
+)                          # with sides 0, 0, 0, 1
+null_stats <- guesses %>% 
   rep_sample_n(size = 329, replace = TRUE,
                reps = 10000) %>%
   group_by(replicate) %>%
-  summarize(p_hat = mean(correct))
+  summarize(p_hat = sum(correct) / n())
 ggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = "white")
 ```
 
@@ -303,7 +329,7 @@ ggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = "white")
 
 ::: nonincremental
 
-2. Describe "Null" distribution. How might we simulate it?
+2. Describe "Null" distribution. **How might we simulate it?**
     - The distribution of $\widehat{p}$ (the proportion of correct guesses) we would see if participants guess at random each time.
     
 :::
@@ -322,15 +348,17 @@ ggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = "white")
 
 ::: {.column width=50%}
 
-```{r fig.height=4}
-#| code-line-numbers: "6-7"
+```{r fig.height=3}
+#| code-line-numbers: "8-9"
 set.seed(123)
-guesses <- c(0, 0, 0, 1) # Like a 4-sided dice with sides 0, 0, 0, 1
-null_stats <- data.frame(correct = guesses) %>% 
+guesses <- data.frame(
+  correct = c(0, 0, 0, 1)  # Like a 4-sided dice 
+)                          # with sides 0, 0, 0, 1
+null_stats <- guesses %>% 
   rep_sample_n(size = 329, replace = TRUE,
                reps = 10000) %>%
   group_by(replicate) %>%
-  summarize(p_hat = mean(correct))
+  summarize(p_hat = sum(correct) / n())
 ggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = "white")
 ```
 
@@ -568,7 +596,7 @@ sum(null_stats$p_hat <= 0.85) / 10000
 
 - Suppose we have **$H_a: p \neq 0.5$**
     - $\widehat{p}= 0.85$ is 0.35 *more* than $p = 0.5$, so we want to include $\mathrm{P}(\widehat{p} \geq 0.85)$
-    - $\widehat{p}= 0.15$ is 0.35 *less* than $p = 0.5$, so we'd [also]{.underline} want $\mathrm{P}(\widehat{p} \leq 0.15)$ (this would be more extreme in the other direction)
+    - $\widehat{p}= 0.15$ is 0.35 *less* than $p = 0.5$, so we'd [also]{.underline} want $\mathrm{P}(\widehat{p} \leq 0.15)$ (this would be more extreme in the other direction, ex. seeing 3/20 heads)
 
 - So our P-value would be the sum of those two things (both tails)!
 

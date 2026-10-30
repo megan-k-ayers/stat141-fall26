@@ -3521,6 +3521,13 @@
     "text": "Misunderstanding 3\n\nGiven a 95% confidence interval, Do Not Say: “There is a 95% chance that the true parameter falls within my interval.”\n\n\nOnce we take a sample and calculate a confidence interval, there’s no more randomness!\n\nThe interval either does or doesn’t contain the (unknown) parameter.\n\nThis is may seem like arguing over semantics – but it’s an important distinction!\n\n\nInstead, say either:\n\n“If we were to take many samples and calculate a 95% confidence interval for each, then 95% of them would contain the true parameter”\n“We are 95% confident that the true parameter is in our confidence interval”"
   },
   {
+    "objectID": "slides/lecture23_hyp-test-null-dist.html#announcements",
+    "href": "slides/lecture23_hyp-test-null-dist.html#announcements",
+    "title": "STAT 141",
+    "section": "Announcements",
+    "text": "Announcements\n\n10am section: Ending class a few minutes early for pigeonhole innovations (you’re invited!)\nOffice hour changes next week - double check Moodle!"
+  },
+  {
     "objectID": "slides/lecture23_hyp-test-null-dist.html#goals-for-today",
     "href": "slides/lecture23_hyp-test-null-dist.html#goals-for-today",
     "title": "STAT 141",
@@ -3560,32 +3567,39 @@
     "href": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-2",
     "title": "STAT 141",
     "section": "Hypothesis Testing Steps: ESP",
-    "text": "Hypothesis Testing Steps: ESP\n\nDescribe “Null” distribution. How might we simulate it?\n\nThe distribution of \\(\\widehat{p}\\) (the proportion of correct guesses) we would see if participants guess at random each time.\n\n\n\n\nSteps to simulate this:\n\nSample with replacement from a vector of 0’s and 1’s, where we have a 25% chance of sampling 1 each time\nCompute proportion of 1’s sampled\nRepeat 1 and 2 many times.\n\n\n\n\nset.seed(123)\nguesses &lt;- c(0, 0, 0, 1) # Like a 4-sided dice with sides 0, 0, 0, 1\nnull_stats &lt;- data.frame(correct = guesses) %&gt;% \n  rep_sample_n(size = 329, replace = TRUE,\n               reps = 10000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(p_hat = mean(correct))\nggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = \"white\")"
+    "text": "Hypothesis Testing Steps: ESP\n\nDescribe “Null” distribution. How might we simulate it?\n\nThe distribution of \\(\\widehat{p}\\) (the proportion of correct guesses) we would see if participants guess at random each time.\n\n\n\nBonus Q: What’s the lowest that \\(\\widehat{p}\\) could be under the null? The highest?"
   },
   {
     "objectID": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-3",
     "href": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-3",
     "title": "STAT 141",
     "section": "Hypothesis Testing Steps: ESP",
-    "text": "Hypothesis Testing Steps: ESP\n\nDescribe “Null” distribution. How might we simulate it?\n\nThe distribution of \\(\\widehat{p}\\) (the proportion of correct guesses) we would see if participants guess at random each time.\n\n\n\n\nSteps to simulate this:\n\nSample with replacement from a vector of 0’s and 1’s, where we have a 25% chance of sampling 1 each time\nCompute proportion of 1’s sampled\nRepeat 1 and 2 many times.\n\n\n\nset.seed(123)\nguesses &lt;- c(0, 0, 0, 1) # Like a 4-sided dice with sides 0, 0, 0, 1\nnull_stats &lt;- data.frame(correct = guesses) %&gt;% \n  rep_sample_n(size = 329, replace = TRUE,\n               reps = 10000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(p_hat = mean(correct))\nggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = \"white\")"
+    "text": "Hypothesis Testing Steps: ESP\n\nDescribe “Null” distribution. How might we simulate it?\n\nThe distribution of \\(\\widehat{p}\\) (the proportion of correct guesses) we would see if participants guess at random each time.\n\n\n\n\nSteps to simulate this:\n\nSample with replacement from a vector of 0’s and 1’s, where we have a 25% chance of sampling 1 each time\nCompute proportion of 1’s sampled\nRepeat 1 and 2 many times.\n\n\n\n\nset.seed(123)\nguesses &lt;- data.frame(\n  correct = c(0, 0, 0, 1)  # Like a 4-sided dice \n)                          # with sides 0, 0, 0, 1\nnull_stats &lt;- guesses %&gt;% \n  rep_sample_n(size = 329, replace = TRUE,\n               reps = 10000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(p_hat = sum(correct) / n())\nggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = \"white\")"
   },
   {
     "objectID": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-4",
     "href": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-4",
     "title": "STAT 141",
     "section": "Hypothesis Testing Steps: ESP",
-    "text": "Hypothesis Testing Steps: ESP\n\nDescribe “Null” distribution. How might we simulate it?\n\nThe distribution of \\(\\widehat{p}\\) (the proportion of correct guesses) we would see if participants guess at random each time.\n\n\n\n\nSteps to simulate this:\n\nSample with replacement from a vector of 0’s and 1’s, where we have a 25% chance of sampling 1 each time\nCompute proportion of 1’s sampled\nRepeat 1 and 2 many times.\n\n\n\nset.seed(123)\nguesses &lt;- c(0, 0, 0, 1) # Like a 4-sided dice with sides 0, 0, 0, 1\nnull_stats &lt;- data.frame(correct = guesses) %&gt;% \n  rep_sample_n(size = 329, replace = TRUE,\n               reps = 10000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(p_hat = mean(correct))\nggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = \"white\")"
+    "text": "Hypothesis Testing Steps: ESP\n\nDescribe “Null” distribution. How might we simulate it?\n\nThe distribution of \\(\\widehat{p}\\) (the proportion of correct guesses) we would see if participants guess at random each time.\n\n\n\n\nSteps to simulate this:\n\nSample with replacement from a vector of 0’s and 1’s, where we have a 25% chance of sampling 1 each time\nCompute proportion of 1’s sampled\nRepeat 1 and 2 many times.\n\n\n\nset.seed(123)\nguesses &lt;- data.frame(\n  correct = c(0, 0, 0, 1)  # Like a 4-sided dice \n)                          # with sides 0, 0, 0, 1\nnull_stats &lt;- guesses %&gt;% \n  rep_sample_n(size = 329, replace = TRUE,\n               reps = 10000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(p_hat = sum(correct) / n())\nggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = \"white\")"
   },
   {
     "objectID": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-5",
     "href": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-5",
     "title": "STAT 141",
     "section": "Hypothesis Testing Steps: ESP",
-    "text": "Hypothesis Testing Steps: ESP\n\nDescribe “Null” distribution. How might we simulate it?\n\nThe distribution of \\(\\widehat{p}\\) (the proportion of correct guesses) we would see if participants guess at random each time.\n\n\n\n\nSteps to simulate this:\n\nSample with replacement from a vector of 0’s and 1’s, where we have a 25% chance of sampling 1 each time\nCompute proportion of 1’s sampled\nRepeat 1 and 2 many times.\n\n\n\nset.seed(123)\nguesses &lt;- c(0, 0, 0, 1) # Like a 4-sided dice with sides 0, 0, 0, 1\nnull_stats &lt;- data.frame(correct = guesses) %&gt;% \n  rep_sample_n(size = 329, replace = TRUE,\n               reps = 10000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(p_hat = mean(correct))\nggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = \"white\")"
+    "text": "Hypothesis Testing Steps: ESP\n\nDescribe “Null” distribution. How might we simulate it?\n\nThe distribution of \\(\\widehat{p}\\) (the proportion of correct guesses) we would see if participants guess at random each time.\n\n\n\n\nSteps to simulate this:\n\nSample with replacement from a vector of 0’s and 1’s, where we have a 25% chance of sampling 1 each time\nCompute proportion of 1’s sampled\nRepeat 1 and 2 many times.\n\n\n\nset.seed(123)\nguesses &lt;- data.frame(\n  correct = c(0, 0, 0, 1)  # Like a 4-sided dice \n)                          # with sides 0, 0, 0, 1\nnull_stats &lt;- guesses %&gt;% \n  rep_sample_n(size = 329, replace = TRUE,\n               reps = 10000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(p_hat = sum(correct) / n())\nggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = \"white\")"
   },
   {
     "objectID": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-6",
     "href": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-6",
+    "title": "STAT 141",
+    "section": "Hypothesis Testing Steps: ESP",
+    "text": "Hypothesis Testing Steps: ESP\n\nDescribe “Null” distribution. How might we simulate it?\n\nThe distribution of \\(\\widehat{p}\\) (the proportion of correct guesses) we would see if participants guess at random each time.\n\n\n\n\nSteps to simulate this:\n\nSample with replacement from a vector of 0’s and 1’s, where we have a 25% chance of sampling 1 each time\nCompute proportion of 1’s sampled\nRepeat 1 and 2 many times.\n\n\n\nset.seed(123)\nguesses &lt;- data.frame(\n  correct = c(0, 0, 0, 1)  # Like a 4-sided dice \n)                          # with sides 0, 0, 0, 1\nnull_stats &lt;- guesses %&gt;% \n  rep_sample_n(size = 329, replace = TRUE,\n               reps = 10000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(p_hat = sum(correct) / n())\nggplot(null_stats, aes(x = p_hat)) + geom_histogram(color = \"white\")"
+  },
+  {
+    "objectID": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-7",
+    "href": "slides/lecture23_hyp-test-null-dist.html#hypothesis-testing-steps-esp-7",
     "title": "STAT 141",
     "section": "Hypothesis Testing Steps: ESP",
     "text": "Hypothesis Testing Steps: ESP\n\nWhat is our relevant “Test Statistic”?\n\n\\(\\widehat{p}\\) = 106 / 329 = 0.32\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHow can we calculate the “P-value”?\n\nCan use probability theory to find \\(P(\\text{Correct guesses} \\geq 106) = \\ldots ?\\)\nOr our simulated null distribution\n\n\n\n\nmean(null_stats$p_hat &gt;= 106/329) \n\n[1] 0.0013\n\n\n\n\n\nHow would we use the P-value to make a conclusion on the research question?\n\nIf the p-value is “small enough”, we reject the null hypothesis of random guessing."
@@ -3623,7 +3637,7 @@
     "href": "slides/lecture23_hyp-test-null-dist.html#vs-2-sided-tests-what-does-more-extreme-mean-1",
     "title": "STAT 141",
     "section": "1 vs 2 sided tests: what does “more extreme” mean?",
-    "text": "1 vs 2 sided tests: what does “more extreme” mean?\n\nSuppose our test statistic from 20 coin flips is \\(\\widehat{p}= 0.85\\).\n\n\nSuppose we have \\(H_a: p \\neq 0.5\\)\n\n\\(\\widehat{p}= 0.85\\) is 0.35 more than \\(p = 0.5\\), so we want to include \\(\\mathrm{P}(\\widehat{p} \\geq 0.85)\\)\n\\(\\widehat{p}= 0.15\\) is 0.35 less than \\(p = 0.5\\), so we’d also want \\(\\mathrm{P}(\\widehat{p} \\leq 0.15)\\) (this would be more extreme in the other direction)\n\nSo our P-value would be the sum of those two things (both tails)!\n\n\n\n(sum(null_stats$p_hat &gt;= 0.85) + sum(null_stats$p_hat &lt;= 0.15)) / 10000\n\n[1] 0.0732"
+    "text": "1 vs 2 sided tests: what does “more extreme” mean?\n\nSuppose our test statistic from 20 coin flips is \\(\\widehat{p}= 0.85\\).\n\n\nSuppose we have \\(H_a: p \\neq 0.5\\)\n\n\\(\\widehat{p}= 0.85\\) is 0.35 more than \\(p = 0.5\\), so we want to include \\(\\mathrm{P}(\\widehat{p} \\geq 0.85)\\)\n\\(\\widehat{p}= 0.15\\) is 0.35 less than \\(p = 0.5\\), so we’d also want \\(\\mathrm{P}(\\widehat{p} \\leq 0.15)\\) (this would be more extreme in the other direction, ex. seeing 3/20 heads)\n\nSo our P-value would be the sum of those two things (both tails)!\n\n\n\n(sum(null_stats$p_hat &gt;= 0.85) + sum(null_stats$p_hat &lt;= 0.15)) / 10000\n\n[1] 0.0732"
   },
   {
     "objectID": "slides/lecture23_hyp-test-null-dist.html#vs-2-sided-tests-what-does-more-extreme-mean-2",
