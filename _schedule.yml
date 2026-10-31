@@ -361,6 +361,8 @@ scheduled-docs:
               href: readings/reading25.qmd
             - type: Slides
               href: slides/lecture23_hyp-test-null-dist.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture23_hyp-test-null-dist_handout.pdf
       resources:
             - 'Submit assignment 6 (due Thurs 10/29 at 9am)'
             - 'Take Quiz 5 during lab'
@@ -374,8 +376,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading26.qmd
-            # - type: Slides
-            #   href: slides/lecture24_hyp-test-errors.qmd
+            - type: Slides
+              href: slides/lecture24_hyp-test-errors.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture24_hyp-test-errors_handout.pdf
         - topic: "P-Value Pitfalls"
           display-date: Wednesday, Nov 4
           date: 11/04/26

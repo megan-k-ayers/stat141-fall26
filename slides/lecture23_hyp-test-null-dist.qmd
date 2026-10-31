@@ -472,8 +472,8 @@ knitr::include_graphics("img/galaxy_brain.jgp")
 - **Q**: What is the null hypothesis? 
 
 - Possible alternative hypotheses:
-    - **$H_a: p \leq 0.5$**
-    - **$H_a: p \geq 0.5$**
+    - **$H_a: p < 0.5$**
+    - **$H_a: p > 0.5$**
     - **$H_a: p \neq 0.5$**
 
 - We've been thinking about the first two cases (1 sided tests). Let's see what changes if $H_a: p \neq 0.5$ (2 sided test).
@@ -483,7 +483,7 @@ knitr::include_graphics("img/galaxy_brain.jgp")
 ## Recall the hypothesis testing steps again: 
 
 1. Present research question and identify hypotheses ($H_0$ and $H_a$)
-    - **$H_a: p \leq 0.5$, or $p \geq 0.5$, or $p \neq 0.5$?**
+    - **$H_a: p < 0.5$, or $p > 0.5$, or $p \neq 0.5$?**
     - $H_0: p = 0.5$
 
 2. Describe "Null" distribution
@@ -633,8 +633,8 @@ Note the effect that our choice of $H_a$ had on our p-values!
 
 ::: nonincremental
   - Our test statistic was $\widehat{p}= 0.85$
-  - **$H_a: p \leq 0.5$**: P-value = 0.9649
-  - **$H_a: p \geq 0.5$**: P-value = 0.0351
+  - **$H_a: p < 0.5$**: P-value = 0.9649
+  - **$H_a: p > 0.5$**: P-value = 0.0351
   - **$H_a: p \neq 0.5$**: P-value = 0.0732
   
 :::

@@ -1,7 +1,7 @@
 ---
 pagetitle: "Hypothesis Testing III: Types of Errors, Power"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -264,7 +264,7 @@ ggplot(peng_null_stats, aes(x = stat)) +
 
 ------------------------------------------------------------------------
 
-## Two-Sided Hypothesis Test (Code)
+## Two-Sided Hypothesis Test (Null Distribution Code)
 
 ```{r eval = FALSE}
 
@@ -708,7 +708,7 @@ null_stats <- data.frame(correct = c(0, 1)) %>%
   summarize(stat = mean(correct))
 
 ggplot(data = null_stats, mapping = aes(x = stat)) +
-  geom_histogram(bins = 20, color = "white")
+  geom_histogram(bins = 14, color = "white")
 
 ```
 
@@ -760,7 +760,7 @@ mean(null_stats$stat >= 0.64)  # 32/50
 #| fig-height: 3.5
 #| code-line-numbers: "3"
 ggplot(data = null_stats, mapping = aes(x = stat)) +
-  geom_histogram(bins = 20, color = "white") +
+  geom_histogram(bins = 14, color = "white") +
   geom_vline(xintercept = 0.64, size = 2,
              color = "turquoise4")
 ```
@@ -779,6 +779,7 @@ ggplot(data = null_stats, mapping = aes(x = stat)) +
 ```{r}
 #| output-location: column
 #| code-line-numbers: "1-2"
+set.seed(123)
 alt_stats <- data.frame(correct = rep(c(0, 1),
                         times = c(3, 7))) %>% 
   rep_sample_n(size = 50, replace = TRUE,
@@ -787,7 +788,7 @@ alt_stats <- data.frame(correct = rep(c(0, 1),
   summarize(stat = mean(correct))
 
 ggplot(data = alt_stats, mapping = aes(x = stat)) +
-  geom_histogram(bins = 20, color = "white") +
+  geom_histogram(bins = 11, color = "white") +
   geom_vline(xintercept = 0.64,
              size = 2, color = "turquoise4")
 ```
@@ -828,4 +829,4 @@ alt_stats %>%
 -   $p$-value pitfalls
 :::
 
-------------------------------------------------------------------------
+

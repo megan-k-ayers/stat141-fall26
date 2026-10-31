@@ -364,8 +364,8 @@
 </div>
 </div>
 </section>
-<section id="two-sided-hypothesis-test-code" class="slide level2">
-<h2>Two-Sided Hypothesis Test (Code)</h2>
+<section id="two-sided-hypothesis-test-null-distribution-code" class="slide level2">
+<h2>Two-Sided Hypothesis Test (Null Distribution Code)</h2>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>test_stat <span class="ot">&lt;-</span> <span class="fl">204.5060</span> <span class="sc">-</span> <span class="fl">197.3636</span></span>
 <span id="cb8-2"><a></a></span>
@@ -661,7 +661,7 @@
 <span id="cb11-6"><a></a>  <span class="fu">summarize</span>(<span class="at">stat =</span> <span class="fu">mean</span>(correct))</span>
 <span id="cb11-7"><a></a></span>
 <span id="cb11-8"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> null_stats, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
-<span id="cb11-9"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-9"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">14</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -716,7 +716,7 @@
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> null_stats, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
-<span id="cb18-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb18-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">14</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
 <span id="cb18-3"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.64</span>, <span class="at">size =</span> <span class="dv">2</span>,</span>
 <span id="cb18-4"><a></a>             <span class="at">color =</span> <span class="st">"turquoise4"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
@@ -741,17 +741,18 @@
 </ol>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>alt_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">correct =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
-<span id="cb19-2"><a></a>                        <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb19-4"><a></a>               <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
-<span id="cb19-6"><a></a>  <span class="fu">summarize</span>(<span class="at">stat =</span> <span class="fu">mean</span>(correct))</span>
-<span id="cb19-7"><a></a></span>
-<span id="cb19-8"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> alt_stats, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
-<span id="cb19-9"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb19-10"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.64</span>,</span>
-<span id="cb19-11"><a></a>             <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"turquoise4"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers="1-2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb19-2"><a></a>alt_stats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">correct =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb19-3"><a></a>                        <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">7</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="at">size =</span> <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-5"><a></a>               <span class="at">reps =</span> <span class="dv">5000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-6"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb19-7"><a></a>  <span class="fu">summarize</span>(<span class="at">stat =</span> <span class="fu">mean</span>(correct))</span>
+<span id="cb19-8"><a></a></span>
+<span id="cb19-9"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> alt_stats, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> stat)) <span class="sc">+</span></span>
+<span id="cb19-10"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">11</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb19-11"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fl">0.64</span>,</span>
+<span id="cb19-12"><a></a>             <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">"turquoise4"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -775,7 +776,7 @@
 <pre><code># A tibble: 1 × 1
   power
   &lt;dbl&gt;
-1 0.849</code></pre>
+1 0.835</code></pre>
 </div>
 </div>
 </section>
@@ -797,9 +798,6 @@
 <ul>
 <li><span class="math inline">\(p\)</span>-value pitfalls</li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>

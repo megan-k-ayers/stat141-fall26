@@ -84,6 +84,62 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture24_hyp-test-errors.html#goals-for-today",
+    "href": "slides/lecture24_hyp-test-errors.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\nDiscuss decisions in a hypothesis test\n\nTypes of errors\n\nDiscuss and learn to compute the power of a hypothesis test"
+  },
+  {
+    "objectID": "slides/lecture24_hyp-test-errors.html#penguins-example",
+    "href": "slides/lecture24_hyp-test-errors.html#penguins-example",
+    "title": "STAT 141",
+    "section": "Penguins Example",
+    "text": "Penguins Example\nLet’s return to the penguins data and ask if flipper length varies, on average, by the sex of the penguin.\nResearch Question: Does flipper length differ by sex?\nResponse Variable:\n\nExplanatory Variable:\n\nStatistical Hypotheses:"
+  },
+  {
+    "objectID": "slides/lecture24_hyp-test-errors.html#exploratory-data-analysis",
+    "href": "slides/lecture24_hyp-test-errors.html#exploratory-data-analysis",
+    "title": "STAT 141",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\n\n\nlibrary(palmerpenguins)\n\npenguins &lt;- palmerpenguins::penguins\n\npenguins %&gt;%\n  drop_na(sex) %&gt;%\nggplot(mapping = aes(x = sex,\n                     y = flipper_length_mm)) +\n  geom_boxplot()"
+  },
+  {
+    "objectID": "slides/lecture24_hyp-test-errors.html#two-sided-hypothesis-test",
+    "href": "slides/lecture24_hyp-test-errors.html#two-sided-hypothesis-test",
+    "title": "STAT 141",
+    "section": "Two-Sided Hypothesis Test",
+    "text": "Two-Sided Hypothesis Test\n\nCompute observed test statistic:\n\n\npenguins %&gt;% drop_na(sex) %&gt;%\n  group_by(sex) %&gt;%\n  summarize(avg_length = mean(flipper_length_mm))\n\n\n# A tibble: 2 × 2\n  sex    avg_length\n  &lt;fct&gt;       &lt;dbl&gt;\n1 female       197.\n2 male         205.\n\n\n\\(\\rightarrow\\) Our test statistic is: 7.1424\n\nGenerate the null distribution by simulating many data sets where gender is shuffled (code on next slide for brevity), and visualize null sampling distribution compared to our test statistic:\n\n\nggplot(peng_null_stats, aes(x = stat)) +\n  geom_histogram(color = \"white\") +\n  geom_vline(xintercept = abs(test_stat),\n             color = \"deeppink\", size = 2) +\n  geom_vline(xintercept = -abs(test_stat),\n             color = \"deeppink\", size = 2)\n\n\n\n\n\n\n\n\n\nQ: Guesses for p-value?"
+  },
+  {
+    "objectID": "slides/lecture24_hyp-test-errors.html#two-sided-hypothesis-test-null-distribution-code",
+    "href": "slides/lecture24_hyp-test-errors.html#two-sided-hypothesis-test-null-distribution-code",
+    "title": "STAT 141",
+    "section": "Two-Sided Hypothesis Test (Null Distribution Code)",
+    "text": "Two-Sided Hypothesis Test (Null Distribution Code)\n\ntest_stat &lt;- 204.5060 - 197.3636\n\np_df &lt;- penguins %&gt;% drop_na(sex)\n\n# Generate null distribution \npeng_null_stats &lt;- p_df %&gt;% select(sex) %&gt;%\n  rep_sample_n(size = nrow(p_df), replace = FALSE,\n               reps = 5000) %&gt;%\n  add_column(flipper = rep(p_df$flipper_length_mm,\n                        times = 5000)) %&gt;%\n  group_by(replicate, sex) %&gt;%\n  summarize(ybar = mean(flipper)) %&gt;% \n  pivot_wider(names_from = sex, values_from = ybar) %&gt;%\n  mutate(stat = male - female) %&gt;%\n  select(replicate, stat)"
+  },
+  {
+    "objectID": "slides/lecture24_hyp-test-errors.html#two-sided-hypothesis-test-1",
+    "href": "slides/lecture24_hyp-test-errors.html#two-sided-hypothesis-test-1",
+    "title": "STAT 141",
+    "section": "Two-Sided Hypothesis Test",
+    "text": "Two-Sided Hypothesis Test\n\n\n\n\n\n\n\n\n\nCalculate the p-value for a two-sided test:\n\n\n# Compute p-value\n(p_val &lt;- mean(peng_null_stats$stat &gt; abs(test_stat)) +\n   mean(peng_null_stats$stat &lt; -abs(test_stat)))\n\n\n[1] 0\n\n\n\nInterpretation of \\(p\\)-value: If the mean flipper length does not differ by sex in the population, the probability of observing a difference in the sample means of at least 7.14 mm (in magnitude) is equal to 0.\nConclusion: These data represent evidence that flipper length does vary by sex."
+  },
+  {
+    "objectID": "slides/lecture24_hyp-test-errors.html#thoughts-on-power",
+    "href": "slides/lecture24_hyp-test-errors.html#thoughts-on-power",
+    "title": "STAT 141",
+    "section": "Thoughts on Power",
+    "text": "Thoughts on Power\n\nQ: We saw how \\(\\alpha\\), \\(n\\), and the effect size affected power. What aspects of the test do we actually have control over?\nQ: Why is it easier to set \\(\\alpha\\) than to set \\(\\beta\\) or power?\nAlthough it can be challenging, considering power before collecting data is very important!\nUnder-powered studies carry large risks\n\nGrants often require power analyses to justify funding\nType II errors can be dangerous depending on the setting"
+  },
+  {
+    "objectID": "slides/lecture24_hyp-test-errors.html#next-time",
+    "href": "slides/lecture24_hyp-test-errors.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time:",
+    "text": "Next time:\n\n\\(p\\)-value pitfalls"
+  },
+  {
     "objectID": "slides/lecture22_hyp-test-intro.html#the-guesses",
     "href": "slides/lecture22_hyp-test-intro.html#the-guesses",
     "title": "STAT 141",
@@ -3616,14 +3672,14 @@
     "href": "slides/lecture23_hyp-test-null-dist.html#switching-gears-1-vs-2-sided-tests",
     "title": "STAT 141",
     "section": "Switching gears: 1 vs 2 sided tests",
-    "text": "Switching gears: 1 vs 2 sided tests\n\nSay we’re flipping a coin 20 times, and (for some reason) we are worried that it’s not a “fair” coin\n\ni.e., The probability of heads is not 0.5\n\nLet \\(p=\\) probability of getting a heads with this coin\nQ: What is the null hypothesis?\nPossible alternative hypotheses:\n\n\\(H_a: p \\leq 0.5\\)\n\\(H_a: p \\geq 0.5\\)\n\\(H_a: p \\neq 0.5\\)\n\nWe’ve been thinking about the first two cases (1 sided tests). Let’s see what changes if \\(H_a: p \\neq 0.5\\) (2 sided test)."
+    "text": "Switching gears: 1 vs 2 sided tests\n\nSay we’re flipping a coin 20 times, and (for some reason) we are worried that it’s not a “fair” coin\n\ni.e., The probability of heads is not 0.5\n\nLet \\(p=\\) probability of getting a heads with this coin\nQ: What is the null hypothesis?\nPossible alternative hypotheses:\n\n\\(H_a: p &lt; 0.5\\)\n\\(H_a: p &gt; 0.5\\)\n\\(H_a: p \\neq 0.5\\)\n\nWe’ve been thinking about the first two cases (1 sided tests). Let’s see what changes if \\(H_a: p \\neq 0.5\\) (2 sided test)."
   },
   {
     "objectID": "slides/lecture23_hyp-test-null-dist.html#recall-the-hypothesis-testing-steps-again",
     "href": "slides/lecture23_hyp-test-null-dist.html#recall-the-hypothesis-testing-steps-again",
     "title": "STAT 141",
     "section": "Recall the hypothesis testing steps again:",
-    "text": "Recall the hypothesis testing steps again:\n\nPresent research question and identify hypotheses (\\(H_0\\) and \\(H_a\\))\n\n\\(H_a: p \\leq 0.5\\), or \\(p \\geq 0.5\\), or \\(p \\neq 0.5\\)?\n\\(H_0: p = 0.5\\)\n\nDescribe “Null” distribution\n\nThis is the same regardless of which \\(H_a\\) we use, depends only on \\(H_0\\)\n\nObtain data, calculate relevant “Test Statistic”\nCalculate the “P-value”\n\nP-value = likelihood of observing the Test Statistic or something more extreme assuming the Null Hypothesis\n\nUse the P-value to make a conclusion on the research question"
+    "text": "Recall the hypothesis testing steps again:\n\nPresent research question and identify hypotheses (\\(H_0\\) and \\(H_a\\))\n\n\\(H_a: p &lt; 0.5\\), or \\(p &gt; 0.5\\), or \\(p \\neq 0.5\\)?\n\\(H_0: p = 0.5\\)\n\nDescribe “Null” distribution\n\nThis is the same regardless of which \\(H_a\\) we use, depends only on \\(H_0\\)\n\nObtain data, calculate relevant “Test Statistic”\nCalculate the “P-value”\n\nP-value = likelihood of observing the Test Statistic or something more extreme assuming the Null Hypothesis\n\nUse the P-value to make a conclusion on the research question"
   },
   {
     "objectID": "slides/lecture23_hyp-test-null-dist.html#vs-2-sided-tests-what-does-more-extreme-mean",
@@ -3644,7 +3700,7 @@
     "href": "slides/lecture23_hyp-test-null-dist.html#vs-2-sided-tests-what-does-more-extreme-mean-2",
     "title": "STAT 141",
     "section": "1 vs 2 sided tests: what does “more extreme” mean?",
-    "text": "1 vs 2 sided tests: what does “more extreme” mean?\nNote the effect that our choice of \\(H_a\\) had on our p-values!\n\nOur test statistic was \\(\\widehat{p}= 0.85\\)\n\\(H_a: p \\leq 0.5\\): P-value = 0.9649\n\\(H_a: p \\geq 0.5\\): P-value = 0.0351\n\\(H_a: p \\neq 0.5\\): P-value = 0.0732"
+    "text": "1 vs 2 sided tests: what does “more extreme” mean?\nNote the effect that our choice of \\(H_a\\) had on our p-values!\n\nOur test statistic was \\(\\widehat{p}= 0.85\\)\n\\(H_a: p &lt; 0.5\\): P-value = 0.9649\n\\(H_a: p &gt; 0.5\\): P-value = 0.0351\n\\(H_a: p \\neq 0.5\\): P-value = 0.0732"
   },
   {
     "objectID": "slides/lecture23_hyp-test-null-dist.html#null-distribution-in-r-via-permutation",
