@@ -189,6 +189,8 @@
       margin-right: 0; 
     }
   </style>
+  <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
+  <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -207,6 +209,12 @@
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 10</span></p>
 </div></div>
+</section>
+<section id="reminder" class="slide level2">
+<h2>Reminder</h2>
+<ul>
+<li class="fragment">Office hour changes this week</li>
+</ul>
 </section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
@@ -288,6 +296,11 @@
 <p><strong>Q</strong>: How might we generate the null distribution for this scenario?</p>
 </div>
 </div></div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_9c48d513" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
 </section>
 <section id="penguins-example" class="slide level2">
 <h2>Penguins Example</h2>
@@ -316,7 +329,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -355,7 +368,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -390,7 +403,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -517,9 +530,9 @@
 <div class="fragment">
 <div class="columns">
 <div class="column">
-<p><span class="math inline">\(H_0\)</span>:</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p = 0.5\)</span></p>
 </div><div class="column">
-<p><span class="math inline">\(H_a\)</span>:</p>
+<p><span class="math inline">\(H_a\)</span>: <span class="math inline">\(p &gt; 0.5\)</span></p>
 </div></div>
 </div>
 <div class="fragment">
@@ -529,14 +542,14 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column">
 <ul>
-<li class="fragment"><p>When <span class="math inline">\(\alpha=0.05\)</span>, they need 9 or more correct for a small enough p-value to reject <span class="math inline">\(H_o\)</span>.</p></li>
+<li class="fragment"><p>When <span class="math inline">\(\alpha=0.05\)</span>, they need 9 or more correct for a small enough p-value to reject <span class="math inline">\(H_0\)</span>.</p></li>
 <li class="fragment"><p>When <span class="math inline">\(\alpha=0.05\)</span>, the power of this test is <strong>0.15</strong>.</p></li>
 </ul>
 <div class="columns">
@@ -570,7 +583,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -597,7 +610,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -628,7 +641,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -666,7 +679,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-17-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -723,7 +736,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -757,7 +770,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture24_hyp-test-errors_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -767,7 +780,7 @@
 
 <h3 id="computing-power-3">Computing Power</h3>
 <ol start="4" type="1">
-<li>Find the probability of the critical value or more extreme under the <strong>alternative distribution</strong>.</li>
+<li>Find the probability of observing the critical value or more extreme under the <strong>alternative distribution</strong>.</li>
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>alt_stats <span class="sc">%&gt;%</span></span>

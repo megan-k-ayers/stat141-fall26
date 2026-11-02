@@ -17,6 +17,7 @@ library(infer)
 
 
 In this lab assignment you will:
+
 - Review writing code for sampling distributions
 - Review the connection between sampling and null distributions
 - Practice performing a simulation-based hypothesis test
@@ -36,16 +37,14 @@ I collaborated with...
 
 Recall the exercise from Lab 7. A Gallup poll from 2022 stated that 59% percent of respondents favor "Spending federal money to increase the number of electric vehicle charging stations in the U.S."
 
-For the purposes of the lab, we assumed that a simple random sample of $n=500$ people was asked the question about increasing the number of electric vehicle charging stations in the U.S. Based on this sample, we began investigating what we can infer about the underlying population parameter.
+For the purposes of the lab, we assumed that a simple random sample of $n=500$ people were asked the question about increasing the number of electric vehicle charging stations in the U.S. Based on this sample, we began investigating what we can infer about the underlying population parameter.
 
 
-**a.** Suppose that somehow we actually know the true parameter: that **60%** of all US adults favor spending federal money to increase the number of electric vehicle charging stations in the U.S. Since we know the population parameter, we can compute the *sampling distribution*, instead of relying on a bootstrap distribution to estimate it. A fake population (of a pretend size 100,000) to sample from is set up in the code chunk below. **Create and plot a sampling distribution using 5000 samples of size 500 taken from the population, using the `rep_sample_n()` function.**
+**a.** Suppose that somehow we actually know the true parameter: that **60%** of all US adults favor spending federal money to increase the number of electric vehicle charging stations in the U.S. Since we know the population parameter, we can compute the *sampling distribution*, instead of relying on a bootstrap distribution to estimate it. A data frame representing this population (with size 100,000 instead of 270M to speed up the code) to sample from is set up in the code chunk below. **Create and plot a sampling distribution using 5000 samples of size 500 taken from the population, using the `rep_sample_n()` function.**
 
 [Code for this question.]
 
 *******************************************************************************
-
-*Note for CAs: If students are stuck for how to approach this problem, remind them that they created several sampling distributions for lab and HW 6. The code they used there can be readily adapted for this case.*
 
 ```{r}
 pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
@@ -55,30 +54,6 @@ pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
 
 
 ```
-
-*******************************************************************************
-
-
-
-**b.** In what ways is the distribution from part (a) different from the bootstrap distribution that we worked with in Lab 7?
-
-[Text for this question.]
-
-*******************************************************************************
-
-
-
-*******************************************************************************
-
-
-
-**c.** How are sampling distributions and null distributions related?
-
-[Text for this question.]
-
-*******************************************************************************
-
-
 
 *******************************************************************************
 

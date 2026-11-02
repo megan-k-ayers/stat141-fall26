@@ -59,6 +59,14 @@ library(tufte)
 :::::
 
 
+
+------------------------------------------------------------------------
+
+## Reminder
+
+- Office hour changes this week
+
+
 ------------------------------------------------------------------------
 
 ## Goals for today
@@ -161,6 +169,12 @@ dolphins %>%
 :::
 
 :::::
+
+```{r}
+#| echo: false
+countdown::countdown(2)
+```
+
 
 ------------------------------------------------------------------------
 
@@ -292,7 +306,7 @@ peng_null_stats <- p_df %>% select(sex) %>%
 
 ```{r echo = FALSE}
 #| output-location: column
-#| fig-height: 3.5
+#| fig-height: 2.75
 
 ggplot(peng_null_stats, aes(x = stat)) +
   geom_histogram(color = "white") +
@@ -436,11 +450,11 @@ Suppose we want to test whether someone can detect AI-generated text from real t
 
 ::: columns
 ::: column
-$H_0$:
+$H_0$: $p = 0.5$
 :::
 
 ::: column
-$H_a$:
+$H_a$: $p > 0.5$
 :::
 :::
 
@@ -480,11 +494,12 @@ both <- bind_rows(null, alt) %>%
 
 both %>%
   ggplot(mapping = aes(x = stat)) +
-  geom_histogram(bins = 40, color = "white") +
+  geom_histogram(binwidth = 0.1, color = "white") +
   xlim(c(0, 1.1)) +
   facet_wrap(~dist, ncol = 1) +
   geom_vline(xintercept = 0.9, size = 2,
-             color = "turquoise4")
+             color = "turquoise4") +
+  theme_bw(base_size = 20)
 
 power <- alt %>%
   summarize(power = mean(stat >= 0.9)) %>%
@@ -493,7 +508,7 @@ power <- alt %>%
 :::
 
 ::: column
--   When $\alpha=0.05$, they need 9 or more correct for a small enough p-value to reject $H_o$.
+-   When $\alpha=0.05$, they need 9 or more correct for a small enough p-value to reject $H_0$.
 
 -   When $\alpha=0.05$, the power of this test is **`r round(power, 2)`**.
 
@@ -560,11 +575,12 @@ both <- bind_rows(null, alt) %>%
 
 both %>%
   ggplot(mapping = aes(x = stat)) +
-  geom_histogram(bins = 25, color = "white") +
+  geom_histogram(bins = 20, color = "white") +
   xlim(c(0, 1.1)) +
   facet_wrap(~dist, ncol = 1) +
   geom_vline(xintercept = 0.64, size = 2,
-             color = "turquoise4")
+             color = "turquoise4") +
+  theme_bw(base_size = 20)
 
 power <- alt %>%
   summarize(power = mean(stat >= 0.64)) %>%
@@ -598,11 +614,12 @@ Suppose we want to test whether someone can detect AI-generated text from real t
 ```{r, echo = FALSE, fig.asp = 0.65}
 both %>%
   ggplot(mapping = aes(x = stat)) +
-  geom_histogram(bins = 25, color = "white") +
+  geom_histogram(bins = 20, color = "white") +
   xlim(c(0, 1.1)) +
   facet_wrap(~dist, ncol = 1) +
   geom_vline(xintercept = 0.58, size = 2,
-             color = "turquoise4")
+             color = "turquoise4") +
+  theme_bw(base_size = 20)
 
 power <- alt %>%
   summarize(power = mean(stat >= 0.58)) %>%
@@ -661,11 +678,12 @@ both <- bind_rows(null, alt) %>%
 
 both %>%
   ggplot(mapping = aes(x = stat)) +
-  geom_histogram(bins = 25, color = "white") +
+  geom_histogram(bins = 20, color = "white") +
   xlim(c(0, 1.1)) +
   facet_wrap(~dist, ncol = 1) +
   geom_vline(xintercept = 0.64, size = 2,
-             color = "turquoise4")
+             color = "turquoise4") +
+  theme_bw(base_size = 20)
 
 power <- alt %>%
   summarize(power = mean(stat >= 0.64)) %>%
@@ -798,7 +816,7 @@ ggplot(data = alt_stats, mapping = aes(x = stat)) +
 ### Computing Power
 
 ::: nonincremental
-4.  Find the probability of the critical value or more extreme under the **alternative distribution**.
+4.  Find the probability of observing the critical value or more extreme under the **alternative distribution**.
 :::
 
 ```{r}
