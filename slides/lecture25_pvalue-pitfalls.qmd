@@ -1,7 +1,7 @@
 ---
 pagetitle: "P-Value Pitfalls"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -71,6 +71,7 @@ library(tufte)
 
 <!-- ------------------------------------------------------------------------ -->
 
+- Office hours change reminder
 
 - A hearty p-values discussion
 

@@ -386,8 +386,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading27.qmd
-            # - type: Slides
-            #   href: slides/lecture25_pvalue-pitfalls.qmd
+            - type: Slides
+              href: slides/lecture25_pvalue-pitfalls.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture25_pvalue-pitfalls_handout.pdf
         - topic: "Lab: Hypothesis Testing | Quiz 6"
           display-date: Thursday, Nov 5
           date: 11/5/26

@@ -3722,5 +3722,75 @@
     "title": "STAT 141",
     "section": "Null Distribution in R via Permutation",
     "text": "Null Distribution in R via Permutation\n\n\n\nDiscipline for Smilers vs Non-Smilers\n\n\\(H_0\\): We expect the difference in average leniency scores between the smiling and non-smiling groups to be zero - no relationship between the leniency score and the treatment group.\nTo approximate the null distribution, we could:\n\nRandomly shuffle the treatment column of our data\nCalculate the difference in means between the leniency scores in each group\nRepeat 1-2 many times.\n\n\n\n\n\n\n\nhead(df, 3)\n\n\n  treatment score\n1     smile     6\n2   neutral     4\n3     smile     8\n\n\n\n\n\n# NOTE: This is more advanced wrangling than we've seen! \nset.seed(111)\nnull_stats &lt;- df %&gt;% select(treatment) %&gt;%\n  rep_sample_n(size = 60, replace = FALSE, reps = 5000) %&gt;%\n  add_column(score = rep(df$score, times = 5000)) %&gt;%\n  group_by(replicate, treatment) %&gt;%\n  summarize(ybar = mean(score)) %&gt;% \n  pivot_wider(names_from = treatment, values_from = ybar) %&gt;%\n  mutate(stat = smile - neutral)\nggplot(null_stats, aes(x = stat)) + \n  geom_histogram(color = \"white\", fill = \"gray60\")"
+  },
+  {
+    "objectID": "slides/lecture25_pvalue-pitfalls.html#goals-for-today",
+    "href": "slides/lecture25_pvalue-pitfalls.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\n\n\n\n\n\n\nOffice hours change reminder\nA hearty p-values discussion\nZoom out on statistical inference so far\nMotivate theory-based inference"
+  },
+  {
+    "objectID": "slides/lecture25_pvalue-pitfalls.html#where-does-p-hacking-come-from",
+    "href": "slides/lecture25_pvalue-pitfalls.html#where-does-p-hacking-come-from",
+    "title": "STAT 141",
+    "section": "Where does p-hacking come from?",
+    "text": "Where does p-hacking come from?\n\nCan be an unintentional consequence of data analysis’s “garden of forking paths”\nAlso partly a byproduct of publication bias/incentives in academia"
+  },
+  {
+    "objectID": "slides/lecture25_pvalue-pitfalls.html#moving-forward-from-p-hacking",
+    "href": "slides/lecture25_pvalue-pitfalls.html#moving-forward-from-p-hacking",
+    "title": "STAT 141",
+    "section": "Moving forward from p-hacking",
+    "text": "Moving forward from p-hacking\n\nDistinguish the purpose of your analysis: confirmatory vs exploratory\n\nConfirmatory analyses: Pre-register your hypotheses and planned analysis before conducting your study\nExploratory analyses: Less pressure on “statistical significance”, more focus on preliminary evidence that requires a confirmatory follow-up\n\nAlways present statistical context behind your conclusions: confidence intervals, p-values, analysis decisions, and assumptions\nMultiple testing corrections\n\nInformally, these inflate your p-values to account for performing many tests\nEx. If I perform \\(n\\) hypothesis tests, I change my rejection threshold to \\(\\alpha / n\\) (Bonferroni correction)"
+  },
+  {
+    "objectID": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-1",
+    "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-1",
+    "title": "STAT 141",
+    "section": "Inference: The Big Picture",
+    "text": "Inference: The Big Picture\n\nStatistical inference is the process of drawing conclusions about a population based on sample data.\nQ: How do point estimates and confidence intervals help us make inferences?\nQ: How does the hypothesis testing framework help us make inferences?"
+  },
+  {
+    "objectID": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-2",
+    "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-2",
+    "title": "STAT 141",
+    "section": "Inference: The Big Picture",
+    "text": "Inference: The Big Picture\n\nWorking with samples provides a window into the population, but we can’t see it all\nOverarching goal: distinguish between results that arise due to chance vs results that reflect a real, systematic pattern in the population\n\nThis led us to focus on sampling distributions, which we approximate using bootstrap distributions and resampling methods\nWe used these to accomplish two tasks:\n\nGenerate point + interval estimates: Our best guess + range of plausible values for a parameter\nPerform hypothesis tests: A scientific method for maintaining or rejecting a null hypothesis in favor of an alternative hypothesis"
+  },
+  {
+    "objectID": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-3",
+    "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-3",
+    "title": "STAT 141",
+    "section": "Inference: The Big Picture",
+    "text": "Inference: The Big Picture\n\nPoint + interval estimates: Our best guess + range of plausible values for a parameter\nHypothesis testing: A scientific method for maintaining or rejecting a null hypothesis in favor of an alternative hypothesis\nThese two approaches are two sides of the same coin!"
+  },
+  {
+    "objectID": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-4",
+    "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-4",
+    "title": "STAT 141",
+    "section": "Inference: The Big Picture",
+    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a test statistic\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
+  },
+  {
+    "objectID": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-5",
+    "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-5",
+    "title": "STAT 141",
+    "section": "Inference: The Big Picture",
+    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a test statistic\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
+  },
+  {
+    "objectID": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-6",
+    "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-6",
+    "title": "STAT 141",
+    "section": "Inference: The Big Picture",
+    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a test statistic\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
+  },
+  {
+    "objectID": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-7",
+    "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-7",
+    "title": "STAT 141",
+    "section": "Inference: The Big Picture",
+    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a test statistic\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
   }
 ]
