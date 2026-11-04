@@ -3770,27 +3770,27 @@
     "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-4",
     "title": "STAT 141",
     "section": "Inference: The Big Picture",
-    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a test statistic\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
+    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a sample average.\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
   },
   {
     "objectID": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-5",
     "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-5",
     "title": "STAT 141",
     "section": "Inference: The Big Picture",
-    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a test statistic\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
+    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a sample average.\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
   },
   {
     "objectID": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-6",
     "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-6",
     "title": "STAT 141",
     "section": "Inference: The Big Picture",
-    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a test statistic\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
+    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a sample average.\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
   },
   {
     "objectID": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-7",
     "href": "slides/lecture25_pvalue-pitfalls.html#inference-the-big-picture-7",
     "title": "STAT 141",
     "section": "Inference: The Big Picture",
-    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a test statistic\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
+    "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a sample average.\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
   }
 ]

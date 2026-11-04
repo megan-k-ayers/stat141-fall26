@@ -96,11 +96,10 @@ library(tufte)
 
 ### Let's Talk About P-values
 
-::: nonincremental
 -   **A consequence**: The p-value is often misinterpreted to be the probability the null hypothesis is true.
     -   A p-value of 0.003 does not mean there's a 0.3% chance that ESP doesn't exist!
     -   By giving people a simple rule, they never learned what the p-value actually measures.
-:::
+    
 
 ------------------------------------------------------------------------
 
@@ -378,7 +377,7 @@ countdown::countdown(3)
 ::: nonincremental
 - These two approaches are two sides of the same coin! 
 
-- Suppose we have $H_0: \mu = 0$, and observe a test statistic 
+- Suppose we have $H_0: \mu = 0$, and observe a sample average.
 
 - Performing **2-sided** hypothesis test with $\alpha = 0.05$ is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.
 
@@ -432,7 +431,7 @@ sim_data %>% ggplot(aes(x = x))+
 ::: nonincremental
 - These two approaches are two sides of the same coin! 
 
-- Suppose we have $H_0: \mu = 0$, and observe a test statistic 
+- Suppose we have $H_0: \mu = 0$, and observe a sample average.
 
 - Performing **2-sided** hypothesis test with $\alpha = 0.05$ is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.
 
@@ -489,7 +488,7 @@ sim_data %>% ggplot(aes(x = x))+
 ::: nonincremental
 - These two approaches are two sides of the same coin! 
 
-- Suppose we have $H_0: \mu = 0$, and observe a test statistic 
+- Suppose we have $H_0: \mu = 0$, and observe a sample average.
 
 - Performing **2-sided** hypothesis test with $\alpha = 0.05$ is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.
 
@@ -551,7 +550,7 @@ sim_data %>% ggplot(aes(x = x))+
 ::: nonincremental
 - These two approaches are two sides of the same coin! 
 
-- Suppose we have $H_0: \mu = 0$, and observe a test statistic 
+- Suppose we have $H_0: \mu = 0$, and observe a sample average.
 
 - Performing **2-sided** hypothesis test with $\alpha = 0.05$ is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.
 
@@ -563,7 +562,7 @@ sim_data %>% ggplot(aes(x = x))+
 
 ::: {.column width=35%}
 
-- For any value $x_{in}$ in CI, we **would not **reject a null hypothesis $H_0: \mu = x_{in}$ given our data. 
+- For any value $x_{in}$ in CI, we **would not** reject a null hypothesis $H_0: \mu = x_{in}$ given our data. 
 - For any value $x_{out}$ outside of CI, we **would** reject a null hypothesis $H_0: \mu = x_{out}$.
     
 :::
