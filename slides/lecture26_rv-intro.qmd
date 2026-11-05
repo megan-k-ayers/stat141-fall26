@@ -1,7 +1,7 @@
 ---
 pagetitle: "Random Variables I: Introduction"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -235,7 +235,7 @@ ggplot(dd, aes(x = t, y = p)) +
 :::
 
 - Heights of bars are **probabilities**
-- This is analogous to rescaling a histogram to have heights = proportions insted of counts
+- This is analogous to rescaling a histogram to have heights = proportions instead of counts
 
 :::
 

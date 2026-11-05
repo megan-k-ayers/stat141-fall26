@@ -62,7 +62,7 @@ pop_ev <- data.frame(ev_charging = c(rep("Yes", 0.6*100000),
 
 ## Exercise 2: EV Poll Hypothesis Testing
 
-**a.** Suppose the status quo belief is that only half of US adults favor spending federal money to increae the number of electric vehicle charging stations in the U.S. For policy reasons, we'd like to know if the survey discussed in Exercise 1 gives us strong evidence this proportion is actually more than 0.5 (a majority). Let p be the true proportion. **Write out the relevant null and alternative hypotheses in terms of p.** [Only text for this question.]
+**a.** Suppose the status quo belief is that only half of US adults favor spending federal money to increase the number of electric vehicle charging stations in the U.S. For policy reasons, we'd like to know if the survey discussed in Exercise 1 gives us strong evidence this proportion is actually more than 0.5 (a majority). Let p be the true proportion. **Write out the relevant null and alternative hypotheses in terms of p.** [Only text for this question.]
 
 *******************************************************************************
 

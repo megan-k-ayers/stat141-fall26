@@ -394,18 +394,20 @@ scheduled-docs:
           display-date: Thursday, Nov 5
           date: 11/5/26
           docs:
-              # - type: Download Lab 8
-              #   href: lab/lab08.zip
-              # - type: Download HW 8
-              #   href: hw/hw08.zip
+              - type: Download Lab 8
+                href: lab/lab08.zip
+              - type: Download HW 8
+                href: hw/hw08.zip
         - topic: "Random Variables I: Introduction"
           display-date: Friday, Nov 6
           date: 11/06/26
           docs:
             - type: Reading
               href: readings/reading28.qmd
-            # - type: Slides
-            #   href: slides/lecture26_rv-intro.qmd
+            - type: Slides
+              href: slides/lecture26_rv-intro.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture26_rv-intro_handout.pdf
       resources:
             - 'Submit assignment 7 (due Thurs 11/5 at 9am)'
             - 'Take Quiz 6 during lab'

@@ -84,6 +84,160 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture26_rv-intro.html#goals-for-today",
+    "href": "slides/lecture26_rv-intro.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\nDefine and introduce random variables"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#definitions",
+    "href": "slides/lecture26_rv-intro.html#definitions",
+    "title": "STAT 141",
+    "section": "Definitions",
+    "text": "Definitions\nA random variable is a numeric quantity whose value depends on the result of a random process.\n\nUse capital letters at the end of the alphabet (\\(W\\), \\(X\\), \\(Y\\), \\(Z\\)) to denote random variables\nUse lowercase letters \\((w,x,y,z)\\) to denote the particular values of a random variable\n\ne.g., \\(X=x\\) means “we observed the random variable \\(X\\) take the value \\(x\\)”\n\nUse equations to express events associated to random variables.\n\ne.g., “\\(X=5\\)” represents the event “The random variable \\(X\\) takes the value \\(5\\)”.\n\nEvents associated to variables have probabilities of occurring.\n\ne.g., \\(P(X=5) = 0.5\\) means \\(X\\) has probability 0.5 of taking the value \\(5\\)."
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#types-of-random-variables",
+    "href": "slides/lecture26_rv-intro.html#types-of-random-variables",
+    "title": "STAT 141",
+    "section": "Types of Random Variables",
+    "text": "Types of Random Variables\nThere are two main types of random variables:\n\nDiscrete variables can take only specific values (often a finite number of values).\nContinuous variables can take any value in an interval of real numbers.\n\n\nExamples of discrete variables:\n\nThe number of credits a randomly chosen Reed student is taking.\nThe number of vegetarians in a random sample of 10 people.\nThe result of a coin flip\n\n\n\nExamples of continuous variables:\n\nThe temperature of my office at a particular time of the day.\nThe amount of time it takes a radioactive particle to decay."
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#today-well-focus-on-discrete-random-variables",
+    "href": "slides/lecture26_rv-intro.html#today-well-focus-on-discrete-random-variables",
+    "title": "STAT 141",
+    "section": "Today, we’ll focus on discrete random variables",
+    "text": "Today, we’ll focus on discrete random variables\nFor a discrete random variable, care about its:\n\nDistribution: \\(p(x) = P(X = x)\\)\nCenter (Mean):\n\n\n\\[\n\\mu = \\sum_x x p(x)\n\\]\n\n\nSpread (Variance & Standard Deviation):\n\n\n\\[\n\\sigma^2 = \\sum_x (x - \\mu)^2 p(x)\n\\]\n\\[\n\\sigma = \\sqrt{ \\sum_x (x - \\mu)^2 p(x)}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#the-distribution-of-a-random-variable",
+    "href": "slides/lecture26_rv-intro.html#the-distribution-of-a-random-variable",
+    "title": "STAT 141",
+    "section": "The Distribution of a Random Variable",
+    "text": "The Distribution of a Random Variable\n\n\nRandom variables have distributions, which tell us…\n\nthe values the variable can take, and the probability the variable takes those values.\n\n\n\nExample: I play a casino game, where that the amount of money I win (in dollars) has the following distribution:\n\n\n\nWinnings\n$5\n$10\n$20\n$50\n\n\n\n\nProbability\n.3\n.4\n.2\n.1\n\n\n\n\n\n\nSuppose instead that I have a purse filled with the following 100 bills:\n\n\n\nType\n$5\n$10\n$20\n$50\n\n\n\n\nFrequency\n30\n40\n20\n10\n\n\n\n\n\n\nPlaying this casino game is very similar to drawing a random bill from the purse!"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#visualizing-discrete-distributions",
+    "href": "slides/lecture26_rv-intro.html#visualizing-discrete-distributions",
+    "title": "STAT 141",
+    "section": "Visualizing Discrete Distributions",
+    "text": "Visualizing Discrete Distributions\n\nWe often use bar charts to visualize the distribution of discrete random variables.\n\n\nSuppose a fair 6-sided die is rolled 6 times. Let \\(X\\) be the number of \\(1\\)s rolled. The distribution of \\(X\\) is given by:\n\n\n\n\n\n\n\n\n\n\n\n\nHeights of bars are probabilities\nThis is analogous to rescaling a histogram to have heights = proportions instead of counts"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#expected-value",
+    "href": "slides/lecture26_rv-intro.html#expected-value",
+    "title": "STAT 141",
+    "section": "Expected Value",
+    "text": "Expected Value\nInformally: The expected value is the average value the random variable takes.\n\nIf \\(X\\) represents the number of Heads when flipping a fair coin, its expected value is 0.5\n\n\nFormally: The expected value (or mean) of a discrete random variable \\(X\\) is \\[\nE[X] = x_1 P(X = x_1) + x_2 P(X = x_2) + \\dots x_n P(X = x_n) = \\sum_{i =1}^n x_i P(X = x_i)\n\\] where \\(x_1, \\dots, x_n\\) are all the values X could potentially take.\n\n\nThe expected value of \\(X\\) is a weighted average of the values \\(X\\) can take, where weights are probabilities.\nWe often use \\(\\mu\\) to denote expected values (i.e. \\(\\mu\\) = E[X])"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#expected-value-1",
+    "href": "slides/lecture26_rv-intro.html#expected-value-1",
+    "title": "STAT 141",
+    "section": "Expected Value",
+    "text": "Expected Value\nRecall the example: if \\(X\\) represents the number of Heads when flipping a fair coin, its expected value is 0.5\n\n\\[\n\\begin{align}\nE[X] &= 0 P(X=0) + 1 P(X=1)\\\\\n&= 0(0.5) + 1(0.5) \\\\\n&= 0.5\n\\end{align}\n\\]\n\n\nThe expected value of \\(X\\) is a weighted average of the values \\(X\\) can take, where weights are probabilities."
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#practice",
+    "href": "slides/lecture26_rv-intro.html#practice",
+    "title": "STAT 141",
+    "section": "Practice",
+    "text": "Practice\n\\[\nE[X] = x_1 P(X = x_1) + x_2 P(X = x_2) + \\dots x_n P(X = x_n) = \\sum_{i =1}^n x_i P(X = x_i)\n\\]\nSuppose we have a data set consisting of 10 values: \\(\\{1,1,2,2,2,2,3,4,5,5\\}\\).\n\nLet \\(X\\) be a value chosen from this data set randomly.\nWhat is the expected value of \\(X\\)?"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#the-law-of-large-numbers-again",
+    "href": "slides/lecture26_rv-intro.html#the-law-of-large-numbers-again",
+    "title": "STAT 141",
+    "section": "The Law of Large Numbers, again",
+    "text": "The Law of Large Numbers, again\nPreviously, we said that by the Law of Large numbers (LLN), the proportion of times an outcome occurs in a long sequence of trials is close to the probability for that outcome.\n\nThis is a generalization:\n\n\n\n\nTheorem: The Law of Large Numbers\n\n\nLet \\(X\\) be a random variable.\n\nSuppose we observe the random variable \\(n\\) times, \\(x_1,x_2,\\dots,x_n\\).\nLet \\(\\bar{x}_n\\) denote the mean of our \\(n\\) observations of \\(X\\).\nThen, as \\(n\\) becomes large, \\(\\bar{x}_n\\) will approach the expected value \\(E[X]\\) of the random variable \\(X\\)."
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#a-roll-of-the-die",
+    "href": "slides/lecture26_rv-intro.html#a-roll-of-the-die",
+    "title": "STAT 141",
+    "section": "A Roll of the Die",
+    "text": "A Roll of the Die\nSuppose we roll a fair 6-sided die. What is the expected value of the result?\n\nLet’s roll the same die 1000 times and keep track of the running mean of the results…\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe can see that the expected value is \\(3.5\\)"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#variance-and-standard-deviation",
+    "href": "slides/lecture26_rv-intro.html#variance-and-standard-deviation",
+    "title": "STAT 141",
+    "section": "Variance and Standard Deviation",
+    "text": "Variance and Standard Deviation\n\nThe variance of a discrete random variable \\(X\\) with mean \\(E(X) = \\mu\\) is \\[\n\\begin{align}\n\\mathrm{Var}(X) =& (x_1 - \\mu)^2 P(X = x_1) + (x_2- \\mu)^2 P(X = x_2) + \\dots  + (x_n-\\mu)^2 P(X = x_n)  \\\\\n=& \\sum_{i =1}^n (x_i-\\mu)^2 P(X = x_i)\n\\end{align}\n\\]\n\nThe variance of \\(X\\) is the sum the squared deviations of \\(X\\) from its mean \\(\\mu\\), weighted by the corresponding probabilities.\n\n\nWe also define the standard deviation of a random variable \\(X\\) to be \\[\n\\textrm{SD}(X) = \\sqrt{\\mathrm{Var}(X)}\n\\]\n\n\nWe often use:\n\n\\(\\sigma^2\\) to denote the variance of a variable\n\\(\\sigma\\) to denote the standard deviation"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#variance-and-standard-deviation-1",
+    "href": "slides/lecture26_rv-intro.html#variance-and-standard-deviation-1",
+    "title": "STAT 141",
+    "section": "Variance and Standard Deviation",
+    "text": "Variance and Standard Deviation\n\\[\n\\begin{align}\n\\mathrm{Var}(X) =& (x_1 - \\mu)^2 P(X = x_1) + (x_2- \\mu)^2 P(X = x_2) + \\dots  + (x_n-\\mu)^2 P(X = x_n)  \\\\\n=& \\sum_{i =1}^n (x_i-\\mu)^2 P(X = x_i)\n\\end{align}\n\\]\nSuppose we have a data set consisting of 5 values: \\(\\{1,1,3,5, 5\\}\\). Let \\(X\\) be a value chosen from this data set randomly. What is the variance of \\(X\\)?\n\nNote that \\(E(X) = \\mu = 3\\)"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#practice-one-coin-flip",
+    "href": "slides/lecture26_rv-intro.html#practice-one-coin-flip",
+    "title": "STAT 141",
+    "section": "Practice: One Coin Flip",
+    "text": "Practice: One Coin Flip\nConsider a random variable \\(X\\) which is the number of heads in a single fair coin flip.\n\nQ: What are the possible values for \\(X\\)? What are the probabilities each value of \\(X\\)?\n\n\n\n\\(X = 1\\) (H) with \\(P(X=1) = \\frac{1}{2}\\)\n\\(X = 0\\) (T) with \\(P(X=0) = \\frac{1}{2}\\)\n\n\n\nQ: Compute the expected value and variance for \\(X\\) (the number of heads in a single coin flip)\n\n\n\\[\nE[X] = (0)\\frac{1}{2} +  (1)\\frac{1}{2} = \\frac{1}{2}\n\\]\n\n\n\\[\nVar[X] = (0-1/2)^2\\frac{1}{2} +  (1-1/2)^2\\frac{1}{2} = \\frac{1}{4}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#linearity-of-expected-value",
+    "href": "slides/lecture26_rv-intro.html#linearity-of-expected-value",
+    "title": "STAT 141",
+    "section": "Linearity of Expected Value",
+    "text": "Linearity of Expected Value\n\n\n\nTheorem: Expectation of Sum\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Then \\[\nE(X + Y) = E(X) + E(Y)\n\\]\n\n\n\n\ne.g., If \\(X\\) is the face of one die roll, and \\(Y\\) is the face of another die roll, then \\(X + Y\\) would be the sum of the faces. And:\n\n\n\\[\n  E(X + Y) = E(X) + E(Y) = 3.5 + 3.5 = 7\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#linearity-of-expected-value-1",
+    "href": "slides/lecture26_rv-intro.html#linearity-of-expected-value-1",
+    "title": "STAT 141",
+    "section": "Linearity of Expected Value",
+    "text": "Linearity of Expected Value\n\n\n\nTheorem: Scalar Multiplication with Expectation\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\nE(cX) = cE(X)\n\\]\n\n\n\n\ne.g., We’re rolling a die, and we’ll make $5 times the number we roll – what are our expected earnings?\n\n\n\\[\nX = \\text{face of die roll} \\quad \\quad \\quad E(5 X) = 5 E(X) = 5(3.5) = 17.5\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#variance-of-sums-and-scalar-multiplication",
+    "href": "slides/lecture26_rv-intro.html#variance-of-sums-and-scalar-multiplication",
+    "title": "STAT 141",
+    "section": "Variance of Sums and Scalar Multiplication",
+    "text": "Variance of Sums and Scalar Multiplication\n\n\n\nTheorem: Variance of Sum\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Additionally, let \\(X\\) and \\(Y\\) be independent. Then \\[\n\\mathrm{Var}(X + Y) = \\mathrm{Var}(X) + \\mathrm{Var}(Y)\n\\]\n\n\n\n\nNote that \\(X\\) and \\(Y\\) must be independent for the above!\n\n\n\n\n\nTheorem: Scalar Multiplication with Variance\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\n\\mathrm{Var}(cX) = c^2\\mathrm{Var}(X)\n\\]\n\n\n\n\n\nWe get the \\(c^2\\) because variances consider squared differences from the mean"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#practice-two-coin-flips",
+    "href": "slides/lecture26_rv-intro.html#practice-two-coin-flips",
+    "title": "STAT 141",
+    "section": "Practice: Two Coin Flips",
+    "text": "Practice: Two Coin Flips\nNow let \\(Y\\) be the number of heads in two coin flips.\n\nQ: What are the possible values for \\(Y\\)? What are the probabilities each value of \\(Y\\)?\n\n\n\n\\(Y = 0\\) (TT) with \\(P (Y = 0) = \\frac{1}{4}\\)\n\\(Y = 1\\) (HT or TH) with \\(P (Y = 1) = \\frac{1}{2}\\)\n\\(Y = 2\\) (HH) with \\(P (Y = 2) = \\frac{1}{4}\\)\n\n\n\nQ: Compute the expected value and variance for \\(Y\\) (the number of heads in two coin flips.)\n\n\nWe could use the definitions of expected value and variance directly…\n\\[\nE[Y] = (0)\\frac{1}{4} +  (1)\\frac{1}{2} +(2)\\frac{1}{4} = 1\n\\]\n\n\n\\[\nVar[Y] = (0-1)^2\\frac{1}{4} +  (1-1)^2\\frac{1}{2}+ (2-1)^2\\frac{1}{4}= \\frac{1}{2}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#practice-two-coin-flips-1",
+    "href": "slides/lecture26_rv-intro.html#practice-two-coin-flips-1",
+    "title": "STAT 141",
+    "section": "Practice: Two Coin Flips",
+    "text": "Practice: Two Coin Flips\n…or, we could use our rules for expected value and variance:\n\\[Y = X_1 + X_2\\] where \\(X_1\\) and \\(X_2\\) are two independent versions of our random variable, \\(X\\).\n\nThus,\n\\[\nE[Y] = E[X_1] + E[X_2] = 0.5 + 0.5 = 1\n\\]\n\n\n\\[\nVar[Y] = Var[X_1] + Var[X_2] = 0.25+ 0.25 = 0.5\n\\]\n\n\nThat’s a lot simpler!"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#recap-properties-of-random-variables",
+    "href": "slides/lecture26_rv-intro.html#recap-properties-of-random-variables",
+    "title": "STAT 141",
+    "section": "Recap: Properties of Random Variables",
+    "text": "Recap: Properties of Random Variables\nThe expected value (or mean) of a discrete random variable \\(X\\) is \\[\nE[X] = \\mu = x_1 P(X = x_1) + x_2 P(X = x_2) + \\dots x_n P(X = x_n) = \\sum_{i =1}^n x_i P(X = x_i)\n\\] where \\(x_1, \\dots, x_n\\) are all the values X could potentially take.\nThe variance of a discrete random variable \\(X\\) with mean \\(E(X) = \\mu\\) is \\[\n\\mathrm{Var}(X) = \\sigma^2 = \\sum_{i =1}^n (x_i-\\mu)^2 P(X = x_i)\n\\]\nWe also define the standard deviation of a random variable \\(X\\) to be \\[\n\\textrm{SD}(X) = \\sqrt{\\mathrm{Var}(X)}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#recap-theorems-for-discrete-random-variables",
+    "href": "slides/lecture26_rv-intro.html#recap-theorems-for-discrete-random-variables",
+    "title": "STAT 141",
+    "section": "Recap: Theorems for Discrete Random Variables",
+    "text": "Recap: Theorems for Discrete Random Variables\n\n\n\n\n\nTheorem: Expectation of Sum\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Then \\[\nE(X + Y) = E(X) + E(Y)\n\\]\n\n\n\n\n\n\nTheorem: Scalar Multiplication with Expectation\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\nE(cX) = cE(X)\n\\]\n\n\n\n\n\n\n\nTheorem: Variance of Sum\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Additionally, let \\(X\\) and \\(Y\\) be ***independent***. Then \\[\n\\mathrm{Var}(X + Y) = \\mathrm{Var}(X) + \\mathrm{Var}(Y)\n\\]\n\n\n\n\n\n\nTheorem: Scalar Multiplication with Variance\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\n\\mathrm{Var}(cX) = c^2\\mathrm{Var}(X)\n\\]"
+  },
+  {
+    "objectID": "slides/lecture26_rv-intro.html#next-time",
+    "href": "slides/lecture26_rv-intro.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time:",
+    "text": "Next time:\n\nWe’ll define some specific named random variables!"
+  },
+  {
     "objectID": "slides/lecture24_hyp-test-errors.html#reminder",
     "href": "slides/lecture24_hyp-test-errors.html#reminder",
     "title": "STAT 141",
