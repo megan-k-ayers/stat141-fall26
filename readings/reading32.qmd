@@ -12,6 +12,7 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
+-    IMS 17.0-17.3
 -    IMS 19.0-19.3
 
 

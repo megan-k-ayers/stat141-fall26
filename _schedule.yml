@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 11/06/26
+  draft-after: 11/13/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -420,33 +420,33 @@ scheduled-docs:
           date: 11/09/26
           docs:
             - type: Reading
-              href: readings/reading30.qmd
-            - type: Slides
-              href: slides/lecture27_rv-discrete.qmd
+              href: readings/reading29.qmd
+            # - type: Slides
+            #   href: slides/lecture27_rv-discrete.qmd
         - topic: "Random Variables III: Continuous Distributions & the CLT"
           display-date: Wednesday, Nov 11
           date: 11/11/26
           docs:
             - type: Reading
-              href: readings/reading31.qmd
-            - type: Slides
-              href: slides/lecture28_rv-continuous-clt.qmd
+              href: readings/reading30.qmd
+            # - type: Slides
+            #   href: slides/lecture28_rv-continuous-clt.qmd
         - topic: "Lab: Random Variables | Quiz 7"
           display-date: Thursday, Nov 12
           date: 11/12/26
           docs:
-              - type: Download Lab 9
-                href: lab/lab09.zip
-              - type: Download HW 9
-                href: hw/hw09.zip
+              # - type: Download Lab 9
+              #   href: lab/lab09.zip
+              # - type: Download HW 9
+              #   href: hw/hw09.zip
         - topic: "Theory-based Inference I: Intro"
           display-date: Friday, Nov 13
           date: 11/13/26
           docs:
             - type: Reading
-              href: readings/reading32.qmd
-            - type: Slides
-              href: slides/lecture29_tbi-intro.qmd
+              href: readings/reading31.qmd
+            # - type: Slides
+            #   href: slides/lecture29_tbi-intro.qmd
       resources:
             - 'Submit assignment 8 (due Thurs 11/12 at 9am)'
             - 'Take Quiz 7 during lab'
