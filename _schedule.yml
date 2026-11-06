@@ -421,8 +421,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading29.qmd
-            # - type: Slides
-            #   href: slides/lecture27_rv-discrete.qmd
+            - type: Slides
+              href: slides/lecture27_rv-discrete.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture27_rv-discrete_handout.pdf
         - topic: "Random Variables III: Continuous Distributions & the CLT"
           display-date: Wednesday, Nov 11
           date: 11/11/26

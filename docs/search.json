@@ -3974,5 +3974,131 @@
     "title": "STAT 141",
     "section": "Inference: The Big Picture",
     "text": "Inference: The Big Picture\n\nThese two approaches are two sides of the same coin!\nSuppose we have \\(H_0: \\mu = 0\\), and observe a sample average.\nPerforming 2-sided hypothesis test with \\(\\alpha = 0.05\\) is equivalent to computing a 95% confidence interval (CI) from our data and seeing if 0 falls inside it.\n\n\n\n\nFor any value \\(x_{in}\\) in CI, we would not reject a null hypothesis \\(H_0: \\mu = x_{in}\\) given our data.\nFor any value \\(x_{out}\\) outside of CI, we would reject a null hypothesis \\(H_0: \\mu = x_{out}\\)."
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#goals-for-today",
+    "href": "slides/lecture27_rv-discrete.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for Today",
+    "text": "Goals for Today\n\nBrief review of expected value and variance\nIntroduce the Bernoulli distribution\nIntroduce the Binomial distribution"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#review-expected-value-variance-and-standard-deviation",
+    "href": "slides/lecture27_rv-discrete.html#review-expected-value-variance-and-standard-deviation",
+    "title": "STAT 141",
+    "section": "Review: Expected Value, Variance, and Standard Deviation",
+    "text": "Review: Expected Value, Variance, and Standard Deviation\nThe expected value (or mean) of a discrete random variable \\(X\\) is \\[\n\\mu = E[X] = \\sum_{i =1}^n x_i P(X = x_i)\n\\] where \\(x_1, \\dots, x_n\\) are all the values X could potentially take.\n\nThe variance and standard deviation of a discrete random variable \\(X\\) with mean \\(E(X) = \\mu\\) is \\[\n\\sigma^2 = \\mathrm{Var}(X) = \\sum_{i =1}^n (x_i-\\mu)^2 P(X = x_i)\n\\] \\[\n\\sigma = \\textrm{SD}(X) = \\sqrt{\\mathrm{Var}(X)}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#review-rules-for-expected-value-and-variance",
+    "href": "slides/lecture27_rv-discrete.html#review-rules-for-expected-value-and-variance",
+    "title": "STAT 141",
+    "section": "Review: Rules for Expected Value and Variance",
+    "text": "Review: Rules for Expected Value and Variance\n\n\n\n\n\n\nTheorem: Expectation of Sum\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Then \\[\nE(X + Y) = E(X) + E(Y)\n\\]\n\n\n\n\n\n\n\n\nTheorem: Scalar Multiplication with Expectation\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\nE(cX) = cE(X)\n\\]\n\n\n\n\n\n\n\n\n\nTheorem: Variance of Sum for Independent Random Variables\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Additionally, let \\(X\\) and \\(Y\\) be independent. Then \\[\n\\mathrm{Var}(X + Y) = \\mathrm{Var}(X) + \\mathrm{Var}(Y)\n\\]\n\n\n\n\n\n\n\n\nTheorem: Scalar Multiplication with Variance\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\n\\mathrm{Var}(cX) = c^2\\mathrm{Var}(X)\n\\]"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#recall-one-coin-flip",
+    "href": "slides/lecture27_rv-discrete.html#recall-one-coin-flip",
+    "title": "STAT 141",
+    "section": "Recall: One Coin Flip",
+    "text": "Recall: One Coin Flip\nConsider a random variable \\(X\\) which is the number of heads in a single coin flip.\n\nQ: What are the possible values for \\(X\\)? What are the probabilities each value of \\(X\\)?\n\n\n\n\\(X = 1\\) (H) with \\(P(X=1) = \\frac{1}{2}\\)\n\\(X = 0\\) (T) with \\(P(X=0) = \\frac{1}{2}\\)\n\n\n\nQ: Compute the expected value and variance for \\(X\\) (the number of heads in a single coin flip)\n\n\n\\[\nE[X] = (0)\\frac{1}{2} +  (1)\\frac{1}{2} = \\frac{1}{2}\n\\]\n\n\n\\[\nVar[X] = (0-1/2)^2\\frac{1}{2} +  (1-1/2)^2\\frac{1}{2} = \\frac{1}{4}\n\\]\n\n\nThis distribution has a name!\n\n\\(X\\) is called a Bernoulli random variable!"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#what-about-23-coin-tosses",
+    "href": "slides/lecture27_rv-discrete.html#what-about-23-coin-tosses",
+    "title": "STAT 141",
+    "section": "What about 23 coin tosses?",
+    "text": "What about 23 coin tosses?\nWe can model one fair coin toss as a \\(\\text{Bernoulli}(0.5)\\). How should we think about tossing the coin many (ex. 23) times?\nLet \\(Z\\) count the number of heads in \\(23\\) independent coin tosses.\n\nQ: Let \\(Z_i\\) represent the \\(i\\)th coin toss. Can we write \\(Z\\) in terms of the \\(Z_i\\)s?\nQ: What is \\(E(Z)\\)?\nQ: What is \\(\\mathrm{Var}(Z)\\)?\nQ: Suppose \\(X\\) represents the number of heads in \\(n\\) independent coin tosses. What is \\(E(X)\\) and \\(\\mathrm{Var}(X)\\)?"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#n-weighted-coin-tosses-expected-value-and-variance",
+    "href": "slides/lecture27_rv-discrete.html#n-weighted-coin-tosses-expected-value-and-variance",
+    "title": "STAT 141",
+    "section": "\\(n\\) “weighted coin tosses”: Expected Value and Variance",
+    "text": "\\(n\\) “weighted coin tosses”: Expected Value and Variance\nLet \\(X\\) be the number of successes in \\(n\\) independent Bernoulli(\\(p\\)) random variables.\nQ: What are \\(E(X)\\) and \\(\\mathrm{Var}(X)\\)?\n\nWe know, from the Bernoulli distribution, that if \\(X_1\\) is the number of heads in a single weighted coin flip with success probability \\(p\\), \\[E(X_1)=p \\quad \\text{ and } \\quad \\text{Var}(X_1)= p (1 - p)\\]"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#n-weighted-coin-tosses-expected-value-and-variance-1",
+    "href": "slides/lecture27_rv-discrete.html#n-weighted-coin-tosses-expected-value-and-variance-1",
+    "title": "STAT 141",
+    "section": "\\(n\\) “weighted coin tosses”: Expected Value and Variance",
+    "text": "\\(n\\) “weighted coin tosses”: Expected Value and Variance\nLet \\(X\\) be the number of heads in \\(n\\) independent Bernoulli(\\(p\\)) random variables.\nLet \\(X_1\\) = Heads in 1st toss, \\(\\dots\\) , \\(X_n\\) = Heads in \\(n\\)th toss: \\[\n  X = X_1 + \\dots + X_n = \\sum_{i=1}^n X_i\n\\]\n\\[\n\\begin{align}\n  E(X) &= E \\left( \\sum_{i=1}^n X_i \\right) =  \\sum_{i=1}^n E(X_i) = \\sum_{i=1}^n p = np\\\\\n  \\mathrm{Var}(X) &=  \\mathrm{Var}\\left( \\sum_{i=1}^n X_i \\right) =  \\sum_{i=1}^n  \\mathrm{Var}(X_i) = \\sum_{i=1}^n p(1-p) = np(1-p)\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#n-coin-toss-probabilities",
+    "href": "slides/lecture27_rv-discrete.html#n-coin-toss-probabilities",
+    "title": "STAT 141",
+    "section": "\\(n\\) coin toss probabilities?",
+    "text": "\\(n\\) coin toss probabilities?\n\nWe’ve calculated Expectation and Variance for the number of heads in \\(n\\) coin tosses.\n\n\nBut what about the probability that there are \\(k\\) heads in the \\(n\\) tosses?\n\n\n\nFor example, What’s the probability of \\(k=2\\) heads in \\(n=3\\) coin tosses?\n\n\n\nLet’s break down the problem: What are the possible outcomes?\n\n\n\n\\[\n\\begin{align}\n\\text{TTT} & \\implies X=0 \\quad& \\text{TTH or THT or HTT} & \\implies X=1\\\\\n\\text{HHH} & \\implies X=3 \\quad& \\text{THH or HTH or HHT} & \\implies X=2\\\\\n\\end{align}\n\\]\n\n\n\nThere are \\(8\\) possible sequences from 3 coin flips, each with equal probability.\n\n\n\nThe random variable \\(X\\) has \\(4\\) possible outcomes: 0, 1, 2, or 3. Those probabilities are: \\[\n\\begin{align}\nP(X=0) &= \\frac{1}{8} \\quad&\\quad P(X=1) &= \\frac{3}{8}\\\\\nP(X=3) &= \\frac{1}{8} \\quad&\\quad P(X=2) &= \\frac{3}{8}\\\\\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#coin-tosses-probabilities",
+    "href": "slides/lecture27_rv-discrete.html#coin-tosses-probabilities",
+    "title": "STAT 141",
+    "section": "3 coin tosses probabilities",
+    "text": "3 coin tosses probabilities\nThe random variable \\(X\\) has \\(4\\) possible outcomes: 0, 1, 2, or 3. Those probabilities are: \\[\n\\begin{align}\nP(X=0) &= \\frac{1}{8} \\quad&\\quad P(X=1) &= \\frac{3}{8}\\\\\nP(X=3) &= \\frac{1}{8} \\quad&\\quad P(X=2) &= \\frac{3}{8}\\\\\n\\end{align}\n\\]\n\nNotice that the probability of \\(k\\) heads in \\(n\\) coin flips is\n\\[P[X=k] = \\big(\\text{Number of ways to get k heads}\\big) \\times \\big(\\text{Prob of each flip sequence}\\big)\\]\n\n\nFor example, we found that in \\(n=3\\) coin tosses,\n\n3 ways to get 2 heads\nEach sequence of 3 coin flips has probability \\(\\frac12\\times\\frac12\\times\\frac12=\\frac18\\)\nThus, \\(P(X=2) = \\frac38\\)"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#generalization-1",
+    "href": "slides/lecture27_rv-discrete.html#generalization-1",
+    "title": "STAT 141",
+    "section": "Generalization 1",
+    "text": "Generalization 1\n\nFirst: What if \\(n\\) and \\(k\\) are bigger?\n\nIn this case, it’s hard to individually count all the different flip sequences\n\n\n\nInstead, we can rely on a handy formula: The number of ways to get \\(k\\) “successes” in \\(n\\) “trials” is \\[{n\\choose k} = \\frac{n!}{k!(n-k)!}\\] We read this as “n choose k”\n\n\n\nThe exclamation point is a factorial: \\[\n\\begin{align}\n  0! &= 1\\\\\n  1! &= 1\\\\\n  2! &= 2\\times 1=2\\\\\n  3! &= 3\\times2\\times1=6\\\\\n  4! &= 4\\times3\\times2\\times1=24\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#generalization-1-1",
+    "href": "slides/lecture27_rv-discrete.html#generalization-1-1",
+    "title": "STAT 141",
+    "section": "Generalization 1",
+    "text": "Generalization 1\n\nFirst: What if \\(n\\) and \\(k\\) are bigger?\n\nIn this case, it’s hard to individually count all the different flip sequences\nInstead, we can rely on a handy formula: The number of ways to get \\(k\\) “successes” in \\(n\\) “trials” is \\[{n\\choose k} = \\frac{n!}{k!(n-k)!}\\] We read this as “n choose k”\n\n\nSo in our example of 2 heads in 3 flips:\n\n\\[\\text{# of ways to choose 2 things out of 3 things} = {3\\choose2} = \\frac{3!}{2! \\cdot 1!} = \\frac{3 \\cdot 2}{2} = 3\\]"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#generalization-2",
+    "href": "slides/lecture27_rv-discrete.html#generalization-2",
+    "title": "STAT 141",
+    "section": "Generalization 2",
+    "text": "Generalization 2\nSecond: What if the probability of “success” changes?\n\nIn other words, how can we generalize to the sum of Bernoulli(\\(p\\)) case from the sum of the Bernoulli(\\(p=0.5\\)) case?\n\n\n\nIn this case, the probability of getting a particular sequence of \\(k\\) “successes” in \\(n\\) independent trials is: \\[p^k\\times(1-p)^{n-k}\\]\n\n\n\n\nThere are \\(k\\) “successes”, each with probability \\(p \\; \\rightarrow \\; p^k\\)\nThere are \\(n-k\\) “failures”, each with probability \\(1-p \\; \\rightarrow \\; (1-p)^{n-k}\\)"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#binomial-distribution-putting-it-all-together",
+    "href": "slides/lecture27_rv-discrete.html#binomial-distribution-putting-it-all-together",
+    "title": "STAT 141",
+    "section": "Binomial Distribution: Putting it all together",
+    "text": "Binomial Distribution: Putting it all together\nThus, the probability of observing \\(k\\) successes in \\(n\\) independent Bernoulli trials with probability of success \\(p\\) is\n\\[P[X=k] = {n \\choose k}p^k(1-p)^{n-k}\\]\nIn this case, we say \\(X \\sim \\text{Binomial}(n,~p)\\). Or, in words: \\(X\\) follows a binomial distribution with \\(n\\) trials each with \\(p\\) probability of success\n\nHow to tell if your distribution is a Binomial?\n\nNumber of trials, \\(n\\), must be fixed.\nEach trial must be Bernoulli and independent, with success probability \\(p\\) (\\(p\\) must stay the same for each trial!).\nWe must be counting the number of successes."
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#expectation-and-variance-of-binomial",
+    "href": "slides/lecture27_rv-discrete.html#expectation-and-variance-of-binomial",
+    "title": "STAT 141",
+    "section": "Expectation and Variance of Binomial",
+    "text": "Expectation and Variance of Binomial\nIf \\(X \\sim \\text{Binomial}(n,~p)\\), then:\n\n\\[\n\\begin{align}\n    E(X) &= np \\\\\n    Var(X) &= np(1-p)\n\\end{align}\n\\]\n\n\nNote that we derived this earlier before we knew what a Binomial was, just by using Theorems about sums of random variables!"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#calculating-binomial-probabilities-dbinom",
+    "href": "slides/lecture27_rv-discrete.html#calculating-binomial-probabilities-dbinom",
+    "title": "STAT 141",
+    "section": "Calculating Binomial Probabilities: dbinom()",
+    "text": "Calculating Binomial Probabilities: dbinom()\nIf \\(X\\) is a binomial random variable with \\(n\\) trials and probability of success \\(p\\), we can use R to calculate the probabilities with the dbinom() function\n\n\ne.g., \\(P(X = 2)\\) where \\(n=3\\) and \\(p=0.5\\) (2 heads in 3 fair coin tosses)\n\n\ndbinom(x = 2, size = 3, prob = 0.5)\n\n[1] 0.375\n\n\n\n\n\ne.g., \\(P(X = 10)\\) where \\(n=15\\) and \\(p=0.7\\)\n\n\ndbinom(x = 10, size = 15, prob = 0.7)\n\n[1] 0.2061304\n\n\n\n\n\ndbinom() takes in an observable value of a Binomial random variable, and returns the probability of observing it."
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#calculating-binomial-probabilities-pbinom",
+    "href": "slides/lecture27_rv-discrete.html#calculating-binomial-probabilities-pbinom",
+    "title": "STAT 141",
+    "section": "Calculating Binomial Probabilities: pbinom()",
+    "text": "Calculating Binomial Probabilities: pbinom()\n\nWe can also calculate \\(P(X \\leq k)\\) with pbinom()\n\n\ne.g., \\(P(X \\leq 2)\\) where \\(n=3\\) and \\(p=0.5\\) (2 or fewer heads in 3 fair coin tosses)\n\n\npbinom(q = 2, size = 3, prob = 0.5)\n\n[1] 0.875\n\n\n\n\nCan also calculate \\(P(X &gt; k)\\) by doing 1 - pbinom():\n\n\n\ne.g., \\(P(X &gt; 2)\\) where \\(n=3\\) and \\(p=0.5\\) (more than 2 heads in 3 fair coin tosses)\n\n\n1 - pbinom(q = 2, size = 3, prob = 0.5)\n\n[1] 0.125\n\n\n\n\n\ne.g., \\(P(X \\geq 2)\\) where \\(n=3\\) and \\(p=0.5\\)\n\n\n1 - pbinom(q = 1, size = 3, prob = 0.5)\n\n[1] 0.5\n\n\n\n\n\nThird bullet: why q = 1? pbinom() takes in an observable value of a Binomial random variable, and returns the probability of observing that value OR something smaller."
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#recap",
+    "href": "slides/lecture27_rv-discrete.html#recap",
+    "title": "STAT 141",
+    "section": "Recap",
+    "text": "Recap\n\nIf \\(X \\sim\\) Bernoulli \\((p)\\) (ex. one coin flip), then:\n\n\\(\\mathbb{E}[X] = p\\) and \\(Var(X) = p(1 - p)\\)\nThe distribution of \\(X\\) is:\n\n\n\n\n\\(x\\)\n0\n1\n\n\n\n\n\\(p(x)\\)\n1 - \\(p\\)\n\\(p\\)\n\n\n\n\nIf \\(X \\sim \\text{Binomial}(n,~p)\\) (i.e. \\(X\\) represents the number of successes in \\(n\\) independent Bernoulli trials with probability of success \\(p\\)), then:\n\n\\(\\mathbb{E}[X] = np\\) and \\(Var(X) = np(1-p)\\)\nThe distribution of \\(X\\) is:\n\n\\[P[X=k] = {n \\choose k}p^k(1-p)^{n-k}\\]\n\nWe can calculate Binomial probabilities using dbinom() and pbinom()."
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#next-time",
+    "href": "slides/lecture27_rv-discrete.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time",
+    "text": "Next time\n\nAnother binomial random variable activity\nContinuous random variables\nThe Central Limit Theorem!"
   }
 ]

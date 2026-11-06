@@ -1,7 +1,7 @@
 ---
 pagetitle: "Random Variables II: Discrete Distributions"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -358,44 +358,44 @@ countdown::countdown(1.5)
 <!-- \end{align*} -->
 <!-- $$ -->
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-### Bernoulli Random Variables
+<!-- ### Bernoulli Random Variables -->
 
-::: columns
-::: column
-$X \sim$ Bernoulli $(p)$
+<!-- ::: columns -->
+<!-- ::: column -->
+<!-- $X \sim$ Bernoulli $(p)$ -->
 
-```{=tex}
-\begin{align*}
-X=   \left\{
-\begin{array}{ll}
-      1 & \mbox{success} \\
-      0 & \mbox{failure} \\
-\end{array}
-\right.
-\end{align*}
-```
-:::
+<!-- ```{=tex} -->
+<!-- \begin{align*} -->
+<!-- X=   \left\{ -->
+<!-- \begin{array}{ll} -->
+<!--       1 & \mbox{success} \\ -->
+<!--       0 & \mbox{failure} \\ -->
+<!-- \end{array} -->
+<!-- \right. -->
+<!-- \end{align*} -->
+<!-- ``` -->
+<!-- ::: -->
 
-::: column
-Distribution:
+<!-- ::: column -->
+<!-- Distribution: -->
 
-| $x$    | 0       | 1   |
-|--------|---------|-----|
-| $p(x)$ | 1 - $p$ | $p$ |
-:::
-:::
+<!-- | $x$    | 0       | 1   | -->
+<!-- |--------|---------|-----| -->
+<!-- | $p(x)$ | 1 - $p$ | $p$ | -->
+<!-- ::: -->
+<!-- ::: -->
 
-**Question**: What's the expected value of a Bernoulli($p$) random variable?
+<!-- **Question**: What's the expected value of a Bernoulli($p$) random variable? -->
 
-$$
-\begin{align*}
-\mu &= \sum x p(x) \\
-& = 1*p + 0*(1 - p) \\
-& = p
-\end{align*}
-$$
+<!-- $$ -->
+<!-- \begin{align*} -->
+<!-- \mu &= \sum x p(x) \\ -->
+<!-- & = 1*p + 0*(1 - p) \\ -->
+<!-- & = p -->
+<!-- \end{align*} -->
+<!-- $$ -->
 
 ------------------------------------------------------------------------
 
@@ -442,44 +442,44 @@ countdown::countdown(2)
 <!-- \end{align*} -->
 <!-- $$ -->
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-### Bernoulli Random Variables
+<!-- ### Bernoulli Random Variables -->
 
-::: columns
-::: column
-$X \sim$ Bernoulli $(p)$
+<!-- ::: columns -->
+<!-- ::: column -->
+<!-- $X \sim$ Bernoulli $(p)$ -->
 
-```{=tex}
-\begin{align*}
-X=   \left\{
-\begin{array}{ll}
-      1 & \mbox{success} \\
-      0 & \mbox{failure} \\
-\end{array}
-\right.
-\end{align*}
-```
-:::
+<!-- ```{=tex} -->
+<!-- \begin{align*} -->
+<!-- X=   \left\{ -->
+<!-- \begin{array}{ll} -->
+<!--       1 & \mbox{success} \\ -->
+<!--       0 & \mbox{failure} \\ -->
+<!-- \end{array} -->
+<!-- \right. -->
+<!-- \end{align*} -->
+<!-- ``` -->
+<!-- ::: -->
 
-::: column
-Distribution:
+<!-- ::: column -->
+<!-- Distribution: -->
 
-| $x$    | 0       | 1   |
-|--------|---------|-----|
-| $p(x)$ | 1 - $p$ | $p$ |
-:::
-:::
+<!-- | $x$    | 0       | 1   | -->
+<!-- |--------|---------|-----| -->
+<!-- | $p(x)$ | 1 - $p$ | $p$ | -->
+<!-- ::: -->
+<!-- ::: -->
 
-**Question**: What's the standard deviation of a Bernoulli($p$) random variable?
+<!-- **Question**: What's the standard deviation of a Bernoulli($p$) random variable? -->
 
-$$
-\begin{align*}
-\sigma & = \sqrt{ \sum (x - \mu)^2 p(x)} \\
-& = \sqrt{(1 - p)^2*p + (0 - p)^2*(1 - p)}  \\
-& = \sqrt{p(1 - p)}
-\end{align*}
-$$
+<!-- $$ -->
+<!-- \begin{align*} -->
+<!-- \sigma & = \sqrt{ \sum (x - \mu)^2 p(x)} \\ -->
+<!-- & = \sqrt{(1 - p)^2*p + (0 - p)^2*(1 - p)}  \\ -->
+<!-- & = \sqrt{p(1 - p)} -->
+<!-- \end{align*} -->
+<!-- $$ -->
 
 
 # Activity: Many Bernoulli random variables
