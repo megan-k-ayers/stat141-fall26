@@ -84,13 +84,6 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
-    "objectID": "slides/lecture26_rv-intro.html#goals-for-today",
-    "href": "slides/lecture26_rv-intro.html#goals-for-today",
-    "title": "STAT 141",
-    "section": "Goals for today",
-    "text": "Goals for today\n\nDefine and introduce random variables"
-  },
-  {
     "objectID": "slides/lecture26_rv-intro.html#definitions",
     "href": "slides/lecture26_rv-intro.html#definitions",
     "title": "STAT 141",
@@ -165,7 +158,7 @@
     "href": "slides/lecture26_rv-intro.html#variance-and-standard-deviation",
     "title": "STAT 141",
     "section": "Variance and Standard Deviation",
-    "text": "Variance and Standard Deviation\n\nThe variance of a discrete random variable \\(X\\) with mean \\(E(X) = \\mu\\) is \\[\n\\begin{align}\n\\mathrm{Var}(X) =& (x_1 - \\mu)^2 P(X = x_1) + (x_2- \\mu)^2 P(X = x_2) + \\dots  + (x_n-\\mu)^2 P(X = x_n)  \\\\\n=& \\sum_{i =1}^n (x_i-\\mu)^2 P(X = x_i)\n\\end{align}\n\\]\n\nThe variance of \\(X\\) is the sum the squared deviations of \\(X\\) from its mean \\(\\mu\\), weighted by the corresponding probabilities.\n\n\nWe also define the standard deviation of a random variable \\(X\\) to be \\[\n\\textrm{SD}(X) = \\sqrt{\\mathrm{Var}(X)}\n\\]\n\n\nWe often use:\n\n\\(\\sigma^2\\) to denote the variance of a variable\n\\(\\sigma\\) to denote the standard deviation"
+    "text": "Variance and Standard Deviation\n\nThe variance of a discrete random variable \\(X\\) with mean \\(E(X) = \\mu\\) is\n\n\\[\n\\begin{align}\n\\mathrm{Var}(X) =& (x_1 - \\mu)^2 P(X = x_1) + (x_2- \\mu)^2 P(X = x_2) + \\dots  + (x_n-\\mu)^2 P(X = x_n)  \\\\\n=& \\sum_{i =1}^n (x_i-\\mu)^2 P(X = x_i)\n\\end{align}\n\\]\n\n\nThe variance of \\(X\\) is the sum the squared deviations of \\(X\\) from its mean \\(\\mu\\), weighted by the corresponding probabilities.\n\n\nWe also define the standard deviation of a random variable \\(X\\) to be \\[\n\\textrm{SD}(X) = \\sqrt{\\mathrm{Var}(X)}\n\\]\n\n\nWe often use:\n\n\\(\\sigma^2\\) to denote the variance of a variable\n\\(\\sigma\\) to denote the standard deviation"
   },
   {
     "objectID": "slides/lecture26_rv-intro.html#variance-and-standard-deviation-1",
@@ -207,7 +200,7 @@
     "href": "slides/lecture26_rv-intro.html#practice-two-coin-flips",
     "title": "STAT 141",
     "section": "Practice: Two Coin Flips",
-    "text": "Practice: Two Coin Flips\nNow let \\(Y\\) be the number of heads in two coin flips.\n\nQ: What are the possible values for \\(Y\\)? What are the probabilities each value of \\(Y\\)?\n\n\n\n\\(Y = 0\\) (TT) with \\(P (Y = 0) = \\frac{1}{4}\\)\n\\(Y = 1\\) (HT or TH) with \\(P (Y = 1) = \\frac{1}{2}\\)\n\\(Y = 2\\) (HH) with \\(P (Y = 2) = \\frac{1}{4}\\)\n\n\n\nQ: Compute the expected value and variance for \\(Y\\) (the number of heads in two coin flips.)\n\n\nWe could use the definitions of expected value and variance directly…\n\\[\nE[Y] = (0)\\frac{1}{4} +  (1)\\frac{1}{2} +(2)\\frac{1}{4} = 1\n\\]\n\n\n\\[\nVar[Y] = (0-1)^2\\frac{1}{4} +  (1-1)^2\\frac{1}{2}+ (2-1)^2\\frac{1}{4}= \\frac{1}{2}\n\\]"
+    "text": "Practice: Two Coin Flips\nNow let \\(Y\\) be the number of heads in two coin flips.\n\nQ: What are the possible values for \\(Y\\)? What are the probabilities each value of \\(Y\\)?\n\n\n\\(Y = 0\\) (TT) with \\(P (Y = 0) = \\frac{1}{4}\\)\n\\(Y = 1\\) (HT or TH) with \\(P (Y = 1) = \\frac{1}{2}\\)\n\\(Y = 2\\) (HH) with \\(P (Y = 2) = \\frac{1}{4}\\)\n\n\nQ: Compute the expected value and variance for \\(Y\\) (the number of heads in two coin flips.)\n\n\nWe could use the definitions of expected value and variance directly…\n\\[\nE[Y] = (0)\\frac{1}{4} +  (1)\\frac{1}{2} +(2)\\frac{1}{4} = 1\n\\]\n\n\n\\[\nVar[Y] = (0-1)^2\\frac{1}{4} +  (1-1)^2\\frac{1}{2}+ (2-1)^2\\frac{1}{4}= \\frac{1}{2}\n\\]"
   },
   {
     "objectID": "slides/lecture26_rv-intro.html#practice-two-coin-flips-1",
@@ -229,13 +222,6 @@
     "title": "STAT 141",
     "section": "Recap: Theorems for Discrete Random Variables",
     "text": "Recap: Theorems for Discrete Random Variables\n\n\n\n\n\nTheorem: Expectation of Sum\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Then \\[\nE(X + Y) = E(X) + E(Y)\n\\]\n\n\n\n\n\n\nTheorem: Scalar Multiplication with Expectation\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\nE(cX) = cE(X)\n\\]\n\n\n\n\n\n\n\nTheorem: Variance of Sum\n\n\nLet \\(X\\) and \\(Y\\) be random variables. Additionally, let \\(X\\) and \\(Y\\) be ***independent***. Then \\[\n\\mathrm{Var}(X + Y) = \\mathrm{Var}(X) + \\mathrm{Var}(Y)\n\\]\n\n\n\n\n\n\nTheorem: Scalar Multiplication with Variance\n\n\nLet \\(X\\) be a random variable, and let \\(c\\) be a number. Then \\[\n\\mathrm{Var}(cX) = c^2\\mathrm{Var}(X)\n\\]"
-  },
-  {
-    "objectID": "slides/lecture26_rv-intro.html#next-time",
-    "href": "slides/lecture26_rv-intro.html#next-time",
-    "title": "STAT 141",
-    "section": "Next time:",
-    "text": "Next time:\n\nWe’ll define some specific named random variables!"
   },
   {
     "objectID": "slides/lecture24_hyp-test-errors.html#reminder",
