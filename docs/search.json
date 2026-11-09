@@ -84,6 +84,216 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#remindersannouncements",
+    "href": "slides/lecture28_rv-continuous-clt.html#remindersannouncements",
+    "title": "STAT 141",
+    "section": "Reminders/Announcements",
+    "text": "Reminders/Announcements\n\nChange to my office hours today (when in doubt check Moodle)\nColloquium tomorrow - statistics PhD student at UW!"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#goals-for-today",
+    "href": "slides/lecture28_rv-continuous-clt.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for Today",
+    "text": "Goals for Today\n\nReview: Binomial distribution activity\nDiscuss continuous random variables\nIntroduce the normal distribution\nDiscuss the Central Limit Theorem!"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#activity-survey-of-portlanders",
+    "href": "slides/lecture28_rv-continuous-clt.html#activity-survey-of-portlanders",
+    "title": "STAT 141",
+    "section": "Activity: Survey of Portlanders",
+    "text": "Activity: Survey of Portlanders\nSuppose you believe 40% of Portlanders think the city should install more bike lanes. You will take a simple random survey of 50 Portlanders to test your belief.\n\nAssume your belief is true. Let \\(X\\) be the number of survey respondents who think the city should install more bike lanes. Does \\(X\\) follow a Binomial distribution? If so, what are \\(n\\) and \\(p\\)?\nCalculate the expected value and standard deviation of \\(X\\) (still assuming your belief is true)\nSuppose you conducted the survey and found 30 respondents wanted more bike lanes. In R, how would we calculate the probability that \\(X\\geq 30\\)? (If you have your computer - test it!)\nDraw the connection between the probability you calculated and a hypothesis test."
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#the-distribution-of-a-continuous-variable",
+    "href": "slides/lecture28_rv-continuous-clt.html#the-distribution-of-a-continuous-variable",
+    "title": "STAT 141",
+    "section": "The Distribution of a Continuous Variable",
+    "text": "The Distribution of a Continuous Variable\nIf \\(X\\) is a continuous random variable, it can take on any value in an interval.\n\ne.g., \\(0\\leq X\\leq 10\\) or \\(-\\infty &lt; X &lt; \\infty\\)\n\n\nRecall: For discrete random variables, we could list the probability of each possible outcome.\n\nFor continuous random variables, this won’t work. There are an uncountable number of outcomes!\n\n\n\nInstead, we represent relative chances of different possible outcomes using a density function \\(f(x)\\)\n\n\n\n\\(f(x) \\geq 0\\) for all possible \\(X\\)\nThe total area under the function is \\(1\\)\n\\(P(a\\leq X\\leq b)\\) is the area under \\(f\\) between \\(a\\) and \\(b\\)"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#density-curve",
+    "href": "slides/lecture28_rv-continuous-clt.html#density-curve",
+    "title": "STAT 141",
+    "section": "Density Curve",
+    "text": "Density Curve\nSuppose \\(X\\) is a random variable representing the time (in seconds) it takes for a particle to experience radioactive decay, where \\[\nf(x) = e^{-x} \\qquad \\textrm{for } x\\geq 0\n\\]\n\n\n\n\n\n\n\n\n\n\n\nThe probability that it takes between \\(1\\) and \\(2\\) seconds to decay is the area under the curve between \\(1\\) and \\(2\\). \\(P(1 &lt; T &lt; 2) =\\)"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#density-curve-1",
+    "href": "slides/lecture28_rv-continuous-clt.html#density-curve-1",
+    "title": "STAT 141",
+    "section": "Density Curve",
+    "text": "Density Curve\nSuppose \\(X\\) is a random variable representing the time (in seconds) it takes for a particle to experience radioactive decay, where \\[\nf(x) = e^{-x} \\qquad \\textrm{for } x\\geq 0\n\\]\n\n\n\n\n\n\n\n\n\n\nThe probability that it takes between \\(1\\) and \\(2\\) seconds to decay is the area under the curve between \\(1\\) and \\(2\\). \\(P(1 &lt; T &lt; 2) = \\color{red}{0.232}\\)"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#practice-with-continuous-random-variables",
+    "href": "slides/lecture28_rv-continuous-clt.html#practice-with-continuous-random-variables",
+    "title": "STAT 141",
+    "section": "Practice with Continuous Random Variables",
+    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1)\\)\n\\(P(X \\leq 2)\\)\n\\(P(2 \\leq X \\leq 3)\\)"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#practice-with-continuous-random-variables-1",
+    "href": "slides/lecture28_rv-continuous-clt.html#practice-with-continuous-random-variables-1",
+    "title": "STAT 141",
+    "section": "Practice with Continuous Random Variables",
+    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1) = 1 * 0.4 = \\boxed{0.4}\\)\n\\(P(X \\leq 2)\\)\n\\(P(2 \\leq X \\leq 3)\\)"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#practice-with-continuous-random-variables-2",
+    "href": "slides/lecture28_rv-continuous-clt.html#practice-with-continuous-random-variables-2",
+    "title": "STAT 141",
+    "section": "Practice with Continuous Random Variables",
+    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1) = 1 * 0.4 = \\boxed{0.4}\\)\n\\(P(X \\leq 2) = 2 * 0.4 = \\boxed{0.8}\\)\n\\(P(2 \\leq X \\leq 3)\\)"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#practice-with-continuous-random-variables-3",
+    "href": "slides/lecture28_rv-continuous-clt.html#practice-with-continuous-random-variables-3",
+    "title": "STAT 141",
+    "section": "Practice with Continuous Random Variables",
+    "text": "Practice with Continuous Random Variables\nLet \\(X\\) be a continuous random variable with the density function,\n\n\n\n\n\n\n\n\n\nCalculate:\n\n\\(P(X \\leq 1) = 1 * 0.4 = \\boxed{0.4}\\)\n\\(P(X \\leq 2) = 2 * 0.4 = \\boxed{0.8}\\)\n\\(P(2 \\leq X \\leq 3) = \\frac{1}{2} * 1 * 0.4 = \\boxed{0.2}\\)"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#mean-and-variance",
+    "href": "slides/lecture28_rv-continuous-clt.html#mean-and-variance",
+    "title": "STAT 141",
+    "section": "Mean and Variance",
+    "text": "Mean and Variance\nContinuous variables have a mean, variance, and standard deviation too!\n\n\nWe can’t use the same definition as for discrete random variables. \\[E[X] = \\sum_x xP[X=x]\\]\n\n\n\n\nThere are infinitely many values\nWith infinitely many, each specific value has probability 0 of occurring\n\n\n\nInstead, we have to use calculus to define mean and variance: \\[\n\\begin{align}\nE[X] &= \\int x f(x) \\, dx\\\\\n\\mathrm{Var}(X) &= \\int (x - \\mu)^2 f(x) \\, dx\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#mean-and-variance-1",
+    "href": "slides/lecture28_rv-continuous-clt.html#mean-and-variance-1",
+    "title": "STAT 141",
+    "section": "Mean and Variance",
+    "text": "Mean and Variance\n\\[\n\\begin{align}\nE[X] &= \\int x f(x) \\, dx\\\\\n\\mathrm{Var}(X) &= \\int (x - \\mu)^2 f(x) \\, dx\\\\\n\\mathrm{SD}(X) &=\\sqrt{\\mathrm{Var}(X)}\n\\end{align}\n\\]\n\n\nThese integrals are tools to meaningfully average infinitely many values\n(We won’t compute any integrals in this class!)\n\n\n\nAs always…\n\nthe mean of a random variable represents a typical value.\nthe standard deviation represents the typical size of deviations from the mean."
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#the-normal-distribution-1",
+    "href": "slides/lecture28_rv-continuous-clt.html#the-normal-distribution-1",
+    "title": "STAT 141",
+    "section": "The Normal Distribution",
+    "text": "The Normal Distribution\nThe Normal distribution is defined by two parameters:\n\nMean, \\(\\mu\\)\nStandard deviation, \\(\\sigma\\)\n\n\nSuppose \\(X\\) follows a Normal(\\(\\mu\\),\\(\\sigma\\)) distribution. The density function is\n\n\n\\[f(x) = \\frac{1}{\\sqrt{2 \\pi \\sigma^2}} \\cdot\\exp \\left(\\frac{-(x-\\mu)^2}{2\\sigma^2}\\right)\\]\n\n(Don’t memorize this!)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis is the official name for “bell curves”!"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#calculating-probabilities",
+    "href": "slides/lecture28_rv-continuous-clt.html#calculating-probabilities",
+    "title": "STAT 141",
+    "section": "Calculating Probabilities",
+    "text": "Calculating Probabilities\nR has built-in functions for calculating probabilities from a normal distribution.\n\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\n\n\\(P(X &lt; 80) =\\)\n\n\npnorm(q = 80, mean = 75, sd = 5)\n\n[1] 0.8413447"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#calculating-probabilities-1",
+    "href": "slides/lecture28_rv-continuous-clt.html#calculating-probabilities-1",
+    "title": "STAT 141",
+    "section": "Calculating Probabilities",
+    "text": "Calculating Probabilities\nR has built-in functions for calculating probabilities from a normal distribution.\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\\(P(X \\geq 80) = P(X&gt;80)=\\)\n\n\n1-pnorm(q = 80, mean = 75, sd = 5)\n\n[1] 0.1586553"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#calculating-probabilities-2",
+    "href": "slides/lecture28_rv-continuous-clt.html#calculating-probabilities-2",
+    "title": "STAT 141",
+    "section": "Calculating Probabilities",
+    "text": "Calculating Probabilities\nR has built-in functions for calculating probabilities from a normal distribution.\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\\(P(70 \\leq X \\leq 80) = P(X\\leq 80) - P(X\\leq 70) =\\)\n\n\npnorm(q = 80, mean = 75, sd = 5) - pnorm(q = 70, mean = 75, sd = 5)\n\n[1] 0.6826895"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#finding-quantiles",
+    "href": "slides/lecture28_rv-continuous-clt.html#finding-quantiles",
+    "title": "STAT 141",
+    "section": "Finding Quantiles",
+    "text": "Finding Quantiles\nWe can also use R to find quantiles of a Normal distribution.\n\nSuppose \\(X\\sim \\text{Normal}(\\mu=75, \\sigma=5)\\). Then:\n\n\n\nThe 0.95 quantile is the value \\(c\\) such that \\(P(X&lt;c) = 0.95\\)\n\n\nqnorm(p = 0.95, mean = 75, sd = 5)\n\n[1] 83.22427"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#scale-and-translation-invariance",
+    "href": "slides/lecture28_rv-continuous-clt.html#scale-and-translation-invariance",
+    "title": "STAT 141",
+    "section": "Scale and Translation Invariance",
+    "text": "Scale and Translation Invariance\nSuppose \\(X\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\) and \\(Y\\sim\\text{Normal}(\\mu=2,\\sigma=0.25)\\).\n\n\n\n\n\n\n\n\n\n\n\\(X\\) and \\(Y\\) have different means, heights, and widths…\n\nBut the same shapes!"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#scale-and-translation-invariance-1",
+    "href": "slides/lecture28_rv-continuous-clt.html#scale-and-translation-invariance-1",
+    "title": "STAT 141",
+    "section": "Scale and Translation Invariance",
+    "text": "Scale and Translation Invariance\nSuppose \\(X\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\) and \\(Y\\sim\\text{Normal}(\\mu=2,\\sigma=0.25)\\).\n\n\n\n\n\n\n\n\n\n\\(X\\) and \\(Y\\) have different means, heights, and widths…\n\nBut the same shapes!"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#scale-and-translation-invariance-2",
+    "href": "slides/lecture28_rv-continuous-clt.html#scale-and-translation-invariance-2",
+    "title": "STAT 141",
+    "section": "Scale and Translation Invariance",
+    "text": "Scale and Translation Invariance\nSuppose \\(X\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\) and \\(Y\\sim\\text{Normal}(\\mu=2,\\sigma=0.25)\\).\n\n\n\n\n\n\n\n\n\n\\(X\\) and \\(Y\\) have different means, heights, and widths…\n\nBut the same shapes!"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#standardization",
+    "href": "slides/lecture28_rv-continuous-clt.html#standardization",
+    "title": "STAT 141",
+    "section": "Standardization",
+    "text": "Standardization\n\n\n\nTheorem: Standardization\n\n\nSuppose \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\). Then, \\(Z = \\frac{X - \\mu}{\\sigma}\\) is a Normal random variable with mean 0 and standard deviation 1.\n\n\n\n\nStandard Normal: a Normal random variable with mean \\(0\\) and standard deviation \\(1\\).\n\nWe call the process of subtracting off \\(\\mu\\) and dividing by \\(\\sigma\\), standardizing.\n\n\n\n\nUseful Fact: If \\(X\\sim\\text{Normal}(\\mu=100,\\sigma=10)\\) and \\(Z\\sim\\text{Normal}(\\mu=0,\\sigma=1)\\), then,\n\n\n\n\\[P\\Big[X &lt; 90\\Big] = P\\Big[X&lt;\\text{ 1 SD below }\\mu\\Big] = P\\Big[Z&lt;-1\\Big]\\]\n\n\nMore Generally: If \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\) and \\(Z\\sim\\text{Normal}(0,1)\\), then \\[\nP(X \\leq x) = P\\left(Z \\leq \\frac{x-\\mu}{\\sigma}\\right)\n\\]"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#practice-with-standard-normals",
+    "href": "slides/lecture28_rv-continuous-clt.html#practice-with-standard-normals",
+    "title": "STAT 141",
+    "section": "Practice with Standard Normals",
+    "text": "Practice with Standard Normals\nMore Generally: If \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\) and \\(Z\\sim\\text{Normal}(0,1)\\), then\n\\[\nP(X \\leq x) = P\\left(Z \\leq \\frac{x-\\mu}{\\sigma}\\right)\n\\]\n\nPractice: For each of the following, rewrite \\(P(X \\leq x)\\) as \\(P(Z \\leq z)\\) for some \\(z\\).\n\n\\(P(X \\leq 10)\\) where \\(X\\sim\\text{Normal}(\\mu=5,\\sigma=5)\\)\n\\(P(X \\leq 15)\\) where \\(X\\sim\\text{Normal}(\\mu=20,\\sigma=10)\\)"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#daily-temperatures",
+    "href": "slides/lecture28_rv-continuous-clt.html#daily-temperatures",
+    "title": "STAT 141",
+    "section": "Daily Temperatures",
+    "text": "Daily Temperatures\nSuppose we’re astronomers studying four far away planets: Naboo, Tatooine, Coruscant, and Dagobah. We have the daily temperature on each of these planets over 200 days:"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#random-sample-means-n10",
+    "href": "slides/lecture28_rv-continuous-clt.html#random-sample-means-n10",
+    "title": "STAT 141",
+    "section": "Random Sample Means (n=10)",
+    "text": "Random Sample Means (n=10)\nSuppose we repeatedly take samples of 10 days from each planet, and compute the average temperature \\(\\bar{x}\\) for each sample (these are sampling distributions):\n\n\n\n\n\n\n\n\n\n\nQ: What does the distribution of sample means look like?"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#random-sample-means-n50",
+    "href": "slides/lecture28_rv-continuous-clt.html#random-sample-means-n50",
+    "title": "STAT 141",
+    "section": "Random Sample Means (n=50)",
+    "text": "Random Sample Means (n=50)\nSuppose we repeatedly take samples of 50 days from each planet, and compute the average temperature \\(\\bar{x}\\) for each sample (these are sampling distributions):\n\n\n\n\n\n\n\n\n\nQ: What does the distribution of sample means look like?"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#sampling-distributions-are-approximately-normal",
+    "href": "slides/lecture28_rv-continuous-clt.html#sampling-distributions-are-approximately-normal",
+    "title": "STAT 141",
+    "section": "Sampling Distributions are Approximately Normal",
+    "text": "Sampling Distributions are Approximately Normal\nThe sampling distribution for each planet appeared approximately Normal with \\(n=50\\), regardless of the shape of the population distribution."
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#sampling-distributions-are-approximately-normal-1",
+    "href": "slides/lecture28_rv-continuous-clt.html#sampling-distributions-are-approximately-normal-1",
+    "title": "STAT 141",
+    "section": "Sampling Distributions are Approximately Normal",
+    "text": "Sampling Distributions are Approximately Normal\nThe sampling distribution for each planet appeared approximately Normal with \\(n=50\\), regardless of the shape of the population distribution.\n\n\n\n\n\n\n\n\n\nWe’ve seen this before! As \\(n\\) increases,\n\nSampling distributions become more Normal\nVariance decreases\nMean doesn’t change; it is the parameter."
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#the-central-limit-theorem-clt",
+    "href": "slides/lecture28_rv-continuous-clt.html#the-central-limit-theorem-clt",
+    "title": "STAT 141",
+    "section": "The Central Limit Theorem (CLT)",
+    "text": "The Central Limit Theorem (CLT)\n\n\n\nTheorem: Central Limit Theorem\n\n\nSuppose a simple random sample of size \\(n\\) is drawn from a population with finite mean \\(\\mu\\) and finite standard deviation \\(\\sigma\\). Let \\(\\bar{x}\\) be the sample mean. When \\(n\\) is large, then approximately \\[\\bar{x} \\sim Normal\\Big(\\mu, \\frac{\\sigma}{\\sqrt{n}}\\Big)\\]\n\n\n\n\nA proof of the CLT requires more advanced techniques in probability (See Math 291).\nWe have gained intuition already for the CLT by examining sampling distributions!\nWe will use the CLT to conduct hypothesis tests/confidence intervals without simulation.\n\n\n\nEven when the world is strange and chaotic at the individual level, averages follow clear, predictable rules that we can use to draw conclusions!"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#the-clt-is-a-big-deal",
+    "href": "slides/lecture28_rv-continuous-clt.html#the-clt-is-a-big-deal",
+    "title": "STAT 141",
+    "section": "The CLT is a BIG deal!",
+    "text": "The CLT is a BIG deal!\n\nWhen conducting inference, our statistic is often a sample mean\n\nA proportion is a sample mean of sorts too!\n\n\n\n\nFor nearly any population distribution, the sample mean is approximately Normal (when \\(n\\) is large enough)\n\n\n\nThe CLT gives a formula to calculate the mean and variance of a sample mean.\n\nWe can estimate these using our data\nWe can then quickly approximate what the sampling distribution looks like"
+  },
+  {
+    "objectID": "slides/lecture28_rv-continuous-clt.html#next-time",
+    "href": "slides/lecture28_rv-continuous-clt.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time:",
+    "text": "Next time:\n\nWe’ll use the approximate distribution of the sample statistic (given by the CLT) to construct confidence intervals and to conduct hypothesis tests!"
+  },
+  {
     "objectID": "slides/lecture26_rv-intro.html#definitions",
     "href": "slides/lecture26_rv-intro.html#definitions",
     "title": "STAT 141",
@@ -4008,7 +4218,14 @@
     "href": "slides/lecture27_rv-discrete.html#what-about-23-coin-tosses",
     "title": "STAT 141",
     "section": "What about 23 coin tosses?",
-    "text": "What about 23 coin tosses?\nWe can model one fair coin toss as a \\(\\text{Bernoulli}(0.5)\\). How should we think about tossing the coin many (ex. 23) times?\nLet \\(Z\\) count the number of heads in \\(23\\) independent coin tosses.\n\nQ: Let \\(Z_i\\) represent the \\(i\\)th coin toss. Can we write \\(Z\\) in terms of the \\(Z_i\\)s?\nQ: What is \\(E(Z)\\)?\nQ: What is \\(\\mathrm{Var}(Z)\\)?\nQ: Suppose \\(X\\) represents the number of heads in \\(n\\) independent coin tosses. What is \\(E(X)\\) and \\(\\mathrm{Var}(X)\\)?"
+    "text": "What about 23 coin tosses?\nWe can model one fair coin toss as a \\(\\text{Bernoulli}(0.5)\\). How should we think about tossing the coin many (ex. 23) times?\nLet \\(Z\\) count the number of heads in \\(23\\) independent coin tosses.\n\nQ: Let \\(Z_i\\) represent the \\(i\\)th coin toss. Can we write \\(Z\\) in terms of the \\(Z_i\\)s?\nQ: What is \\(E(Z)\\)? (Hint: you do not need to write out the probability distribution of Z.)\nQ: What is \\(\\mathrm{Var}(Z)\\)?\nQ: Suppose \\(X\\) represents the number of heads in \\(n\\) independent coin tosses. What is \\(E(X)\\) and \\(\\mathrm{Var}(X)\\)?"
+  },
+  {
+    "objectID": "slides/lecture27_rv-discrete.html#activity-answers",
+    "href": "slides/lecture27_rv-discrete.html#activity-answers",
+    "title": "STAT 141",
+    "section": "Activity: Answers",
+    "text": "Activity: Answers\n\nLet \\(Z\\) be the number of heads in \\(23\\) independent fair coin tosses.\n\nQ: Let \\(Z_i\\) represent the \\(i\\)th coin toss. Can we write \\(Z\\) in terms of the \\(Z_i\\)s?\n\n\n\\[\n  Z = Z_1 + Z_2 +  \\dots + Z_{23}\n\\]\n\n\nQ: What is \\(E(Z)\\)?\n\n\n\\[\n  E(Z) = E(Z_1) + \\dots + E(Z_{23}) = 0.5+\\dots+0.5 = 23(0.5)\n\\]\n\n\nQ: What is \\(\\mathrm{Var}(Z)\\)?\n\n\n\\[\n  \\mathrm{Var}(Z) = \\mathrm{Var}(Z_1) + \\dots + \\mathrm{Var}(Z_{23}) = 0.25+\\dots+0.25 = 23(0.25)\n\\]\n\n\nQ: Suppose \\(X\\) represents the number of heads in \\(n\\) independent coin tosses. What is \\(E(X)\\) and \\(\\mathrm{Var}(X)\\)?\n\n\n\n\\(E(X) = nE(X_1) = (n)(0.5)\\)\n\\(\\mathrm{Var}(X) = n\\mathrm{Var}(X_1) = (n)(0.25)\\)"
   },
   {
     "objectID": "slides/lecture27_rv-discrete.html#n-weighted-coin-tosses-expected-value-and-variance",

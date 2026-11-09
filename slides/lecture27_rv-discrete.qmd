@@ -358,44 +358,84 @@ countdown::countdown(1.5)
 <!-- \end{align*} -->
 <!-- $$ -->
 
-<!-- ------------------------------------------------------------------------ -->
+------------------------------------------------------------------------
 
-<!-- ### Bernoulli Random Variables -->
+### Bernoulli Random Variables
 
-<!-- ::: columns -->
-<!-- ::: column -->
-<!-- $X \sim$ Bernoulli $(p)$ -->
+::: columns
+::: column
+$X \sim$ Bernoulli $(p)$
 
-<!-- ```{=tex} -->
-<!-- \begin{align*} -->
-<!-- X=   \left\{ -->
-<!-- \begin{array}{ll} -->
-<!--       1 & \mbox{success} \\ -->
-<!--       0 & \mbox{failure} \\ -->
-<!-- \end{array} -->
-<!-- \right. -->
-<!-- \end{align*} -->
-<!-- ``` -->
-<!-- ::: -->
+```{=tex}
+\begin{align*}
+X=   \left\{
+\begin{array}{ll}
+      1 & \mbox{success} \\
+      0 & \mbox{failure} \\
+\end{array}
+\right.
+\end{align*}
+```
+:::
 
-<!-- ::: column -->
-<!-- Distribution: -->
+::: column
+Distribution:
 
-<!-- | $x$    | 0       | 1   | -->
-<!-- |--------|---------|-----| -->
-<!-- | $p(x)$ | 1 - $p$ | $p$ | -->
-<!-- ::: -->
-<!-- ::: -->
+| $x$    | 0       | 1   |
+|--------|---------|-----|
+| $p(x)$ | 1 - $p$ | $p$ |
+:::
+:::
 
-<!-- **Question**: What's the expected value of a Bernoulli($p$) random variable? -->
+**Question**: What's the expected value of a Bernoulli($p$) random variable?
 
-<!-- $$ -->
-<!-- \begin{align*} -->
-<!-- \mu &= \sum x p(x) \\ -->
-<!-- & = 1*p + 0*(1 - p) \\ -->
-<!-- & = p -->
-<!-- \end{align*} -->
-<!-- $$ -->
+$$
+\begin{align*}
+\mu &= \sum x p(x) \\
+& \phantom{= 1*p + 0*(1 - p)} \\
+& \phantom{= p}
+\end{align*}
+$$
+
+------------------------------------------------------------------------
+
+### Bernoulli Random Variables
+
+::: columns
+::: column
+$X \sim$ Bernoulli $(p)$
+
+```{=tex}
+\begin{align*}
+X=   \left\{
+\begin{array}{ll}
+      1 & \mbox{success} \\
+      0 & \mbox{failure} \\
+\end{array}
+\right.
+\end{align*}
+```
+:::
+
+::: column
+Distribution:
+
+| $x$    | 0       | 1   |
+|--------|---------|-----|
+| $p(x)$ | 1 - $p$ | $p$ |
+:::
+:::
+
+**Question**: What's the expected value of a Bernoulli($p$) random variable?
+
+$$
+\begin{align*}
+\mu &= \sum x p(x) \\
+& = 1*p + 0*(1 - p) \\
+& = p
+\end{align*}
+$$
+
 
 ------------------------------------------------------------------------
 
@@ -442,44 +482,123 @@ countdown::countdown(2)
 <!-- \end{align*} -->
 <!-- $$ -->
 
-<!-- ------------------------------------------------------------------------ -->
+------------------------------------------------------------------------
 
-<!-- ### Bernoulli Random Variables -->
+### Bernoulli Random Variables
 
-<!-- ::: columns -->
-<!-- ::: column -->
-<!-- $X \sim$ Bernoulli $(p)$ -->
+::: columns
+::: column
+$X \sim$ Bernoulli $(p)$
 
-<!-- ```{=tex} -->
-<!-- \begin{align*} -->
-<!-- X=   \left\{ -->
-<!-- \begin{array}{ll} -->
-<!--       1 & \mbox{success} \\ -->
-<!--       0 & \mbox{failure} \\ -->
-<!-- \end{array} -->
-<!-- \right. -->
-<!-- \end{align*} -->
-<!-- ``` -->
-<!-- ::: -->
+```{=tex}
+\begin{align*}
+X=   \left\{
+\begin{array}{ll}
+      1 & \mbox{success} \\
+      0 & \mbox{failure} \\
+\end{array}
+\right.
+\end{align*}
+```
+:::
 
-<!-- ::: column -->
-<!-- Distribution: -->
+::: column
+Distribution:
 
-<!-- | $x$    | 0       | 1   | -->
-<!-- |--------|---------|-----| -->
-<!-- | $p(x)$ | 1 - $p$ | $p$ | -->
-<!-- ::: -->
-<!-- ::: -->
+| $x$    | 0       | 1   |
+|--------|---------|-----|
+| $p(x)$ | 1 - $p$ | $p$ |
+:::
+:::
 
-<!-- **Question**: What's the standard deviation of a Bernoulli($p$) random variable? -->
+**Question**: What's the standard deviation of a Bernoulli($p$) random variable?
 
-<!-- $$ -->
-<!-- \begin{align*} -->
-<!-- \sigma & = \sqrt{ \sum (x - \mu)^2 p(x)} \\ -->
-<!-- & = \sqrt{(1 - p)^2*p + (0 - p)^2*(1 - p)}  \\ -->
-<!-- & = \sqrt{p(1 - p)} -->
-<!-- \end{align*} -->
-<!-- $$ -->
+$$
+\begin{align*}
+\sigma & = \sqrt{ \sum (x - \mu)^2 p(x)} \\
+& \phantom{= \sqrt{(1 - p)^2*p + (0 - p)^2*(1 - p)}}  \\
+& \phantom{= \sqrt{p(1 - p)}}
+\end{align*}
+$$
+
+------------------------------------------------------------------------
+
+### Bernoulli Random Variables
+
+::: columns
+::: column
+$X \sim$ Bernoulli $(p)$
+
+```{=tex}
+\begin{align*}
+X=   \left\{
+\begin{array}{ll}
+      1 & \mbox{success} \\
+      0 & \mbox{failure} \\
+\end{array}
+\right.
+\end{align*}
+```
+:::
+
+::: column
+Distribution:
+
+| $x$    | 0       | 1   |
+|--------|---------|-----|
+| $p(x)$ | 1 - $p$ | $p$ |
+:::
+:::
+
+**Question**: What's the standard deviation of a Bernoulli($p$) random variable?
+
+$$
+\begin{align*}
+\sigma & = \sqrt{ \sum (x - \mu)^2 p(x)} \\
+& = \sqrt{(1 - p)^2*p + (0 - p)^2*(1 - p)}  \\
+& \phantom{= \sqrt{p(1 - p)}}
+\end{align*}
+$$
+
+------------------------------------------------------------------------
+
+### Bernoulli Random Variables
+
+::: columns
+::: column
+$X \sim$ Bernoulli $(p)$
+
+```{=tex}
+\begin{align*}
+X=   \left\{
+\begin{array}{ll}
+      1 & \mbox{success} \\
+      0 & \mbox{failure} \\
+\end{array}
+\right.
+\end{align*}
+```
+:::
+
+::: column
+Distribution:
+
+| $x$    | 0       | 1   |
+|--------|---------|-----|
+| $p(x)$ | 1 - $p$ | $p$ |
+:::
+:::
+
+**Question**: What's the standard deviation of a Bernoulli($p$) random variable?
+
+$$
+\begin{align*}
+\sigma & = \sqrt{ \sum (x - \mu)^2 p(x)} \\
+& = \sqrt{(1 - p)^2*p + (0 - p)^2*(1 - p)}  \\
+& = \sqrt{p(1 - p)}
+\end{align*}
+$$
+
 
 
 # Activity: Many Bernoulli random variables
@@ -495,7 +614,7 @@ Let $Z$ count the number of heads in $23$ independent coin tosses.
 
 **Q:** Let $Z_i$ represent the $i$th coin toss. Can we write $Z$ in terms of the $Z_i$s? 
 
-**Q:** What is $E(Z)$?
+**Q:** What is $E(Z)$? (*Hint: you do not need to write out the probability distribution of Z.*)
 
 **Q:** What is $\mathrm{Var}(Z)$?
 
@@ -507,46 +626,60 @@ countdown::countdown(5)
 ```
 
 
-<!-- ------------------------------------------------------------------------ -->
+------------------------------------------------------------------------
 
-<!-- ## Activity: Answers -->
+## Activity: Answers
 
-<!-- Let $Z$ be the number of heads in $23$ independent coin tosses. -->
+::: {style="font-size:0.9em;"}
 
-<!-- ::: {.fragment} -->
-<!-- **Q:** What is $E(Z)$? -->
-<!-- ::: -->
+Let $Z$ be the number of heads in $23$ independent *fair* coin tosses.
 
-<!-- ::: {.fragment} -->
-<!-- ::: {.nonincremental} -->
-<!-- - Let $X_1$ = Heads on 1st toss, $\dots$  , $X_{23}$ = Heads on $23$rd toss: -->
-<!-- $$ -->
-<!--   E(Z) = E(X_1) + \dots + E(X_{23}) = 0.5+\dots+0.5 = 23(0.5) -->
-<!-- $$ -->
-<!-- ::: -->
-<!-- ::: -->
+::: {.fragment}
+**Q:** Let $Z_i$ represent the $i$th coin toss. Can we write $Z$ in terms of the $Z_i$s? 
+:::
 
-<!-- ::: {.fragment} -->
-<!-- **Q:** What is $\mathrm{Var}(Z)$? -->
-<!-- ::: -->
+::: {.fragment}
+::: {.nonincremental}
+$$
+  Z = Z_1 + Z_2 +  \dots + Z_{23}
+$$
+:::
+:::
 
-<!-- ::: {.fragment} -->
-<!-- $$ -->
-<!--   \mathrm{Var}(Z) = \mathrm{Var}(X_1) + \dots + \mathrm{Var}(X_{23}) = 0.25+\dots+0.25 = 23(0.25) -->
-<!-- $$ -->
-<!-- ::: -->
+::: fragment
 
-<!-- ::: {.fragment} -->
-<!-- **Q:** Suppose $W$ represents the number of heads in $n$ independent coin tosses. What is $E(W)$ and $\mathrm{Var}(W)$? -->
-<!-- ::: -->
+**Q:** What is $E(Z)$?
 
-<!-- ::: {.fragment} -->
-<!-- ::: {.nonincremental} -->
-<!-- -   $E(W) = nE(X_1) = (n)(0.5)$ -->
-<!-- -   $\mathrm{Var}(W) = n\mathrm{Var}(X_1) = (n)(0.25)$ -->
-<!-- ::: -->
-<!-- ::: -->
+:::
 
+::: {.fragment}
+$$
+  E(Z) = E(Z_1) + \dots + E(Z_{23}) = 0.5+\dots+0.5 = 23(0.5)
+$$
+:::
+
+::: {.fragment}
+**Q:** What is $\mathrm{Var}(Z)$?
+:::
+
+::: {.fragment}
+$$
+  \mathrm{Var}(Z) = \mathrm{Var}(Z_1) + \dots + \mathrm{Var}(Z_{23}) = 0.25+\dots+0.25 = 23(0.25)
+$$
+:::
+
+::: {.fragment}
+**Q:** Suppose $X$ represents the number of heads in $n$ independent coin tosses. What is $E(X)$ and $\mathrm{Var}(X)$?
+:::
+
+::: {.fragment}
+::: {.nonincremental}
+-   $E(X) = nE(X_1) = (n)(0.5)$
+-   $\mathrm{Var}(X) = n\mathrm{Var}(X_1) = (n)(0.25)$
+:::
+:::
+
+:::
 
 ------------------------------------------------------------------------
 

@@ -431,8 +431,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading30.qmd
-            # - type: Slides
-            #   href: slides/lecture28_rv-continuous-clt.qmd
+            - type: Slides
+              href: slides/lecture28_rv-continuous-clt.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture28_rv-continuous-clt_handout.pdf
         - topic: "Lab: Random Variables | Quiz 7"
           display-date: Thursday, Nov 12
           date: 11/12/26

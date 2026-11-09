@@ -1,7 +1,7 @@
 ---
 pagetitle: "Random Variables III: Continuous Distributions & the CLT"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -68,6 +68,13 @@ library(tufte)
 :::::
 
 
+
+------------------------------------------------------------------------
+
+## Reminders/Announcements
+
+- Change to my office hours today (when in doubt check Moodle)
+- Colloquium tomorrow - statistics PhD student at UW!
 
 ------------------------------------------------------------------------
 
@@ -1072,7 +1079,7 @@ $$\bar{x} \sim Normal\Big(\mu, \frac{\sigma}{\sqrt{n}}\Big)$$
 
 \bigskip
 
-+ A proof of the CLT requires more advanced techniques in probability (See Math 391). 
++ A proof of the CLT requires more advanced techniques in probability (See Math 291). 
 
 + We have gained intuition already for the CLT by examining sampling distributions!
 

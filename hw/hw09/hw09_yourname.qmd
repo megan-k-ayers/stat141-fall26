@@ -319,7 +319,7 @@ dairy_queen <- fastfood %>%         # Data frame with just Dairy Queen data
 ```
 
 
-**a.** Make plots to visualize the *distribution* of the amount of *calories from fat* among the menu items at McDonald's and Dairy Queen (one plot per restaurant). **How do their centers, shapes, and spreads compare?** [*Code + written response required*]
+**a.** Make plots to visualize the *distribution* of the amount of *calories from fat* among the menu items at McDonald's and Dairy Queen (one plot per restaurant). **Do either appear bell-shaped or normal?** [*Code + written response required*]
 
 *******************************************************************************
 
@@ -329,7 +329,7 @@ dairy_queen <- fastfood %>%         # Data frame with just Dairy Queen data
 
 
 
-**b.** In your description of the distributions, did you use words like *bell-shaped* or *normal*? It's tempting to say so when faced with a unimodal symmetric distribution. To see how accurate that description is, we can plot a normal distribution curve on top of a histogram to see how closely the data follow a normal distribution.
+**b.** It's tempting to say "bell-shaped" or "normal" when faced with a unimodal symmetric distribution. And when we have a small-ish amount of data, it can be hard to decide either way. To see how accurate of a description "bell-shaped" or "normal" is, we can plot a normal distribution curve on top of a histogram to see how closely the data follow a normal distribution.
 
 This normal curve should have the same mean and standard deviation as the data. We'll focus on calories from fat from Dairy Queen products, so let's store them as a separate object and then calculate some statistics that will be referenced later.
 
@@ -345,7 +345,7 @@ Frequency and density histograms both display the same exact shape; they only di
 ```{r}
 ggplot(data = dairy_queen, aes(x = cal_fat)) +
   geom_histogram(aes(y = ..density..),  # Tells ggplot to make a *density* histogram
-                 color = "white", bins = 15) +
+                 color = "white", bins = 8) +
   stat_function(fun = dnorm,  # Tells ggplot: take the `dnorm()` function and plot it...
                 args = c(mean = dq_mean, sd = dq_sd), # ... with this mean and sd
                 color = "tomato", lwd = 1)
@@ -353,7 +353,7 @@ ggplot(data = dairy_queen, aes(x = cal_fat)) +
 
 The first layer of the plot above is a density histogram: the data from Dairy Queen that we observe. The second layer is a statistical function: the theoretical density of the normal curve, `dnorm`. We specify that we want the curve to have the same mean and standard deviation as the column of calories from fat. You can think of this as us finding the theoretical Normal distribution that *best fits* our data according to its mean and standard deviation.
 
-Based on this plot, does it appear that the data follow a nearly normal distribution? **If you are unsure, describe which aspects may suggest normality, and which do not.** [*Only written response required*]
+Based on this plot, are you any more or less convinced that this data comes from a Normal distribution? [*Only written response required*]
 
 *******************************************************************************
 
@@ -450,7 +450,7 @@ Why should we care?
 
 Statisticians know a lot about the normal distribution! Once you decide that a random variable is approximately normal, you can readily answer all sorts of questions about that variable related to probability. For example, consider the question *"What is the probability that a randomly chosen Dairy Queen product has more than 600 calories from fat?"*
 
-If we assume that the calories from fat from Dairy Queen's menu are normally distributed (a very close approximation is also okay), we can find this probability by calculating a probability in the Normal distribution. In R, this is done in one step with the function `pnorm()`.
+If we assume that the calories from fat from Dairy Queen's menu are normally distributed (a very close approximation is also okay, but we might argue whether this is "close"), we can find this probability by calculating a probability in the Normal distribution. In R, this is done in one step with the function `pnorm()`.
 
 ```{r}
 1 - pnorm(q = 600, mean = dq_mean, sd = dq_sd)

@@ -120,7 +120,7 @@ Models of this type arise frequently in settings where we have sparse informatio
 As a reminder, the probability that $T$ falls within some range will be the area under the density function for that range (e.g., $P(1.5 \leq T \leq 2)$ will be the area under the density function from 1.5 to 2). For each of the following parts of the problem, use *geometric reasoning* to compute areas (*you do not need to use calculus to answer any of these problems*).
 
 
-**a.** Verify that the function plotted above indeed has area of 1. **Your explanation should be mathematical in nature, but please explain your thought process in words.** [Only text is needed for this question]
+**a.** Verify that the function plotted above indeed has area of 1. [Only text is needed for this question]
 
 *******************************************************************************
 
@@ -137,16 +137,6 @@ As a reminder, the probability that $T$ falls within some range will be the area
 
 
 *******************************************************************************
-
-
-
-**c.** During what interval of length $1$ does the student have the largest probability of completing the exam. That is, find a number $a$ so that $P(a < T < a+1)$ is as large as possible. **Explain your reasoning.** [Only text is needed for this question]
-
-********************************************************
-
-
-
-********************************************************
 
 
 
