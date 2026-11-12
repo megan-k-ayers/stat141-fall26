@@ -1883,6 +1883,34 @@
     "text": "Demo: Finding the lab files, tour of RStudio, starting the lab"
   },
   {
+    "objectID": "readings/reading34.html",
+    "href": "readings/reading34.html",
+    "title": "Stat 141: Readings for November 20, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS 20.0-20.4"
+  },
+  {
+    "objectID": "readings/reading34.html#reading",
+    "href": "readings/reading34.html#reading",
+    "title": "Stat 141: Readings for November 20, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS 20.0-20.4"
+  },
+  {
+    "objectID": "readings/reading32.html",
+    "href": "readings/reading32.html",
+    "title": "Stat 141: Readings for November 16, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS 17.0-17.3"
+  },
+  {
+    "objectID": "readings/reading32.html#reading",
+    "href": "readings/reading32.html#reading",
+    "title": "Stat 141: Readings for November 16, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS 17.0-17.3"
+  },
+  {
     "objectID": "readings/reading30.html",
     "href": "readings/reading30.html",
     "title": "Stat 141: Readings for November 11, 2026",
@@ -2273,6 +2301,20 @@
     "title": "Stat 141: Readings for November 13, 2026",
     "section": "",
     "text": "Before coming to lecture today, please read the following material:\n\nIMS 16.0-16.3"
+  },
+  {
+    "objectID": "readings/reading33.html",
+    "href": "readings/reading33.html",
+    "title": "Stat 141: Readings for November 18, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS 19.0-19.2"
+  },
+  {
+    "objectID": "readings/reading33.html#reading",
+    "href": "readings/reading33.html#reading",
+    "title": "Stat 141: Readings for November 18, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS 19.0-19.2"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#goals-for-today",
@@ -4317,5 +4359,138 @@
     "title": "STAT 141",
     "section": "Next time",
     "text": "Next time\n\nAnother binomial random variable activity\nContinuous random variables\nThe Central Limit Theorem!"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#goals-for-today",
+    "href": "slides/lecture29_tbi-intro.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\nReview how to conduct inference\nApply the Central Limit Theorem to data from a Binomial distribution\nPractice “theory-based inference” for one proportion"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#whats-inference-again",
+    "href": "slides/lecture29_tbi-intro.html#whats-inference-again",
+    "title": "STAT 141",
+    "section": "What’s Inference Again?",
+    "text": "What’s Inference Again?\nStatistical Inference: Estimating or testing claims about a parameter in a population, using a statistic in a sample.\n\nEx: To understand proportion of Reedies who are vegetarians, we survey 40 students. 16 of the 40 are vegetarians.\n\nPopulation: All Reedies\nParameter: \\(p\\) = Proportion of all Reedies who are vegetarians\nSample: \\(n=40\\) Reedies we surveyed\nStatistic: \\(\\widehat{p} = 16/40 = 0.4\\)\n\nWe have seen two types of inference procedures:\n\nConfidence Intervals\nHypothesis Testing\n\nLet’s review each…"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#confidence-intervals",
+    "href": "slides/lecture29_tbi-intro.html#confidence-intervals",
+    "title": "STAT 141",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\nConfidence Intervals: plausible ranges of values for a parameter\nEx: What proportion of Reedies are vegetarians?\n\nPopulation: All Reedies\nParameter: \\(p\\) = Proportion of Reedies who are vegetarians\nSample: \\(n=40\\) students, of which 16 were vegetarian.\nStatistic: \\(\\widehat{p} = 16/40 = 0.4\\)\n\n\nUntil now, we have learned to construct confidence intervals using Bootstrap Distributions:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBootstrap distribution: Approximation of sampling distribution\nSample \\(n\\) observations with replacement from the sample\nFor each “bootstrap sample”, calculate/plot the statistic\n90% confidence interval: Middle 90% is \\((0.275, \\ 0.525)\\)"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#hypothesis-testing",
+    "href": "slides/lecture29_tbi-intro.html#hypothesis-testing",
+    "title": "STAT 141",
+    "section": "Hypothesis Testing",
+    "text": "Hypothesis Testing\n\nHypothesis Tests: formal procedure for testing claims about a parameter\nEx: Are less than 50% of Reedies vegetarians?\n\nParameter: \\(p\\) = Proportion of Reedies who are vegetarians\nStatistic: \\(\\widehat{p} = 16/40 = 0.4\\)\nState Hypotheses: \\(H_0: p=0.5\\); \\(H_a: p&lt;0.5\\)\n\n\nWe need to construct the Null Distribution:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNull distribution: Sampling distribution assuming \\(H_0\\)\nMany times, sample \\(n\\) observations from population assumed under \\(H_0\\)\nFor each “sample”, calculate/plot the statistic\nP-Value: Area under curve to the left of \\(\\widehat{p}\\) is \\(0.07\\)\nCompare to Significance Level: Using \\(\\alpha = 0.05\\), we would fail to reject \\(H_0\\)."
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#whats-similar",
+    "href": "slides/lecture29_tbi-intro.html#whats-similar",
+    "title": "STAT 141",
+    "section": "What’s Similar?",
+    "text": "What’s Similar?\n\nBoth inference procedures require a sampling distribution of a statistic:\n\nConfidence Intervals: Approximate with our bootstrap distribution (based on our sample)\nHypothesis Testing: Simulate a sampling distribution assuming a population under \\(H_0\\)\n\n\n\n\nWe’ve had to use simulation in R to find these “distributions of statistics”\n\n\n\n\n\nCould we utilize probability theory to do this work more efficiently? What did people use before computers?"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#theory-based-inference",
+    "href": "slides/lecture29_tbi-intro.html#theory-based-inference",
+    "title": "STAT 141",
+    "section": "Theory-Based Inference",
+    "text": "Theory-Based Inference\n\n\nCould we do this work more efficiently? Yes! Use the Central Limit Theorem (CLT)!\nLast lecture, we found:\n\nMany sample statistics can be written as a “sample mean”\nSample means follow Normal distributions, with formulas for the mean and SD\nWe can use the CLT to characterize the distribution of a statistic!\n\n\n\n\n\nInstead of…\n\n\n\n\n\n\n\n\n\n\n… we will instead use:"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#central-limit-theorem-clt",
+    "href": "slides/lecture29_tbi-intro.html#central-limit-theorem-clt",
+    "title": "STAT 141",
+    "section": "Central Limit Theorem (CLT)",
+    "text": "Central Limit Theorem (CLT)\n\n\n\nTheorem: Central Limit Theorem\n\n\nSuppose a simple random sample of size \\(n\\) is drawn from a population with finite mean \\(\\mu\\) and finite standard deviation \\(\\sigma\\). Let \\(\\bar{x}\\) be the sample mean. When \\(n\\) is large, then approximately \\[\\bar{x} \\sim Normal\\Big(\\mu, \\frac{\\sigma}{\\sqrt{n}}\\Big)\\]\n\n\n\n\nGoal: Can we write a sample proportion \\(\\widehat{p}\\) as a sample mean?"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#sample-proportion-as-a-sample-mean",
+    "href": "slides/lecture29_tbi-intro.html#sample-proportion-as-a-sample-mean",
+    "title": "STAT 141",
+    "section": "Sample Proportion as a Sample Mean",
+    "text": "Sample Proportion as a Sample Mean\n\n\nReminder: Let \\(X\\sim \\text{Binomial}(n,p)\\) distribution\n\n\\(X\\) is number of “successes” in \\(n\\) independent trials, each trial has probability of success, \\(p\\)\n\\(E(X) = np\\) and \\(SD(X) = \\sqrt{np(1-p)}\\)\n\nEx: Polling (a SRS of) \\(n\\) Reedies about vegetarianism\n\n\n\n\n\n\nKey Trick 1: Define\n\n\\(X_1 = 1\\) if Person 1 is vegetarian, 0 if not                    \\(\\vdots\\)\n\\(X_n = 1\\) if Person n is vegetarian, 0 if not\n\n\n\n\nNote each \\(X_i \\sim \\text{Bernoulli}(p)\\)\n\n\n\nKey Trick 2: The sample proportion, \\(\\widehat{p}\\) is a sample mean of these \\(X_i\\)’s! \\[\n\\begin{align}\n\\widehat{p} &= \\frac{\\text{Number of vegetarians}}{n} \\\\\n&= \\frac{X_1 + X_2 + \\dots + X_n}{n} \\\\\n& = \\bar{x}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#proportions-and-the-clt",
+    "href": "slides/lecture29_tbi-intro.html#proportions-and-the-clt",
+    "title": "STAT 141",
+    "section": "Proportions and the CLT",
+    "text": "Proportions and the CLT\n\n\n\nTheorem: Central Limit Theorem\n\n\nSuppose a simple random sample of size \\(n\\) is drawn from a population with finite mean \\(\\mu\\) and finite standard deviation \\(\\sigma\\). Let \\(\\bar{x}\\) be the sample mean. When \\(n\\) is large, then approximately \\[\\bar{x} \\sim Normal\\Big(\\mu, \\frac{\\sigma}{\\sqrt{n}}\\Big)\\]\n\n\n\n\nBernoulli Random Variables: If \\(X_i\\sim \\text{Bernoulli}(p)\\), then \\[\\mu = E(X_i) = p \\ \\ \\ \\text{and} \\ \\ \\ \\sigma = SD(X) = \\sqrt{p(1-p)}\\]\n\n\n\\(\\widehat{p} = \\bar{x}\\)\nPlugging this in to CLT, \\(\\widehat{p} \\sim \\text{Normal}\\Big(p, \\sqrt{\\frac{p(1-p)}{n}}\\Big)\\)"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#theory-based-sampling-distribution-for-one-sample-proportion",
+    "href": "slides/lecture29_tbi-intro.html#theory-based-sampling-distribution-for-one-sample-proportion",
+    "title": "STAT 141",
+    "section": "Theory-Based Sampling Distribution for One Sample Proportion",
+    "text": "Theory-Based Sampling Distribution for One Sample Proportion\n\n\n\nTheorem: Theory-Based Sampling Distribution for One Sample Proportion\n\n\nGiven a SRS of size \\(n\\) drawn from a population with true proportion \\(p\\), when \\(n\\) is large the sample proportion \\(\\widehat{p}\\) is distributed as: \\[\\widehat{p} \\sim \\text{Normal}\\Big(\\ p, \\ \\sqrt{\\frac{p(1-p)}{n}}\\ \\Big)\\]\n\n\n\n\nTraditionally, \\(n\\) is considered “large enough” when there are:\n\n10 or more “successes”, and\n10 or more “failures”\n\nMathematically,\n\n\\(n \\widehat{p} \\geq 10\\), and\n\\(n (1 - \\widehat{p}) \\geq 10\\)"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#word-of-caution-clt-requires-large-n",
+    "href": "slides/lecture29_tbi-intro.html#word-of-caution-clt-requires-large-n",
+    "title": "STAT 141",
+    "section": "Word of Caution: CLT requires “large” \\(n\\)",
+    "text": "Word of Caution: CLT requires “large” \\(n\\)\n\n\\[\\textbf{Theory-Based Sampling Distribution:} \\ \\ \\  \\widehat{p} \\sim \\text{Normal}\\Big(\\ p, \\ \\sqrt{\\frac{p(1-p)}{n}}\\ \\Big)\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n“Large Enough \\(n\\)”: 10 or more “successes” and “failures”\n\n\n\nQ: When does the (red) theory-based curve best/worst match the true sampling distribution? Why?"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#confidence-intervals-again",
+    "href": "slides/lecture29_tbi-intro.html#confidence-intervals-again",
+    "title": "STAT 141",
+    "section": "Confidence Intervals (again)",
+    "text": "Confidence Intervals (again)\nEx: What proportion of Reedies are vegetarians?\n\nPopulation: All Reedies\nParameter: \\(p\\) = Proportion of Reedies who are vegetarians\nSample: \\(n=40\\) students, of which 16 were vegetarian.\nStatistic: \\(\\widehat{p} = 16/40 = 0.4\\)\n\n\nSampling Distribution:\n\n\n\n\n\n\nTheoretical sampling distribution: \\(\\widehat{p} \\sim \\text{Normal}(p,\\sqrt{p(1-p)/n})\\)\nFor our best guess, substitute \\(\\widehat{p}=0.4\\) for \\(p\\): \\(\\widehat{p} \\sim \\text{Normal}(0.4,\\sqrt{0.4(1-0.4)/40})\\)"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#confidence-intervals-again-1",
+    "href": "slides/lecture29_tbi-intro.html#confidence-intervals-again-1",
+    "title": "STAT 141",
+    "section": "Confidence Intervals (again)",
+    "text": "Confidence Intervals (again)\nEx: What proportion of Reedies are vegetarians?\n\nPopulation: All Reedies\nParameter: \\(p\\) = Proportion of Reedies who are vegetarians\nSample: \\(n=40\\) students, of which 16 were vegetarian.\nStatistic: \\(\\widehat{p} = 16/40 = 0.4\\)\n\nSampling Distribution:\n\n\n\n\n\nTheoretical sampling distribution: \\(\\widehat{p} \\sim \\text{Normal}(p,\\sqrt{p(1-p)/n})\\)\nFor our best guess, substitute \\(\\widehat{p}=0.4\\) for \\(p\\): \\(\\widehat{p} \\sim \\text{Normal}(0.4,\\sqrt{0.4(1-0.4)/40})\\)\nQuantiles of this distribution give us confidence intervals, ex. \\((0.273, \\ 0.527)\\)"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#confidence-intervals-process-check",
+    "href": "slides/lecture29_tbi-intro.html#confidence-intervals-process-check",
+    "title": "STAT 141",
+    "section": "Confidence Intervals: Process Check",
+    "text": "Confidence Intervals: Process Check\n\nWhen making (percentile) confidence intervals using computational methods, we:\n\nSpecify our population, and parameter\nCollect a sample, and calculate the statistic\nCreate a bootstrap distribution to approximate the sampling distribution\nUse quantiles of the approximated sampling distribution to make a confidence interval\n\n\n\nQ: Which steps above are the same and which are different with our new “theory-based” way?\n\n\nOnly #3 is different!\n“Old Way”: Collect bootstrap samples\n“Theory-based Way”: Use CLT, which gives a “theoretical” sampling distribution of \\[\\widehat{p} \\sim \\text{Normal}(\\widehat{p},\\sqrt{\\widehat{p}(1-\\widehat{p})/n})\\]"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#hypothesis-testing-again",
+    "href": "slides/lecture29_tbi-intro.html#hypothesis-testing-again",
+    "title": "STAT 141",
+    "section": "Hypothesis Testing (again)",
+    "text": "Hypothesis Testing (again)\n\nEx: Are less than 50% of Reedies vegetarians?\n\nParameter: \\(p\\) = Proportion of Reedies who are vegetarians\nStatistic: \\(\\widehat{p} = 16/40 = 0.4\\)\nState Hypotheses: \\(H_0: p=0.5\\); \\(H_a: p&lt;0.5\\)\n\n\nNull Distribution:\n\n\n\n\n\n\nTheoretical sampling distribution: \\(\\widehat{p} \\sim \\text{Normal}(p,\\sqrt{p(1-p)/n})\\)\nFor null distribution, substitute “null value” \\(p=0.5\\): \\(\\widehat{p} \\sim \\text{Normal}(0.5,\\sqrt{0.5(1-0.5)/40})\\)"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#hypothesis-testing-again-1",
+    "href": "slides/lecture29_tbi-intro.html#hypothesis-testing-again-1",
+    "title": "STAT 141",
+    "section": "Hypothesis Testing (again)",
+    "text": "Hypothesis Testing (again)\n\nEx: Are less than 50% of Reedies vegetarians?\n\nParameter: \\(p\\) = Proportion of Reedies who are vegetarians\nStatistic: \\(\\widehat{p} = 16/40 = 0.4\\)\nState Hypotheses: \\(H_0: p=0.5\\); \\(H_a: p&lt;0.5\\)\n\nNull Distribution:\n\n\n\n\n\nTheoretical sampling distribution: \\(\\widehat{p} \\sim \\text{Normal}(p,\\sqrt{p(1-p)/n})\\)\nFor null distribution, substitute “null value” \\(p=0.5\\): \\(\\widehat{p} \\sim \\text{Normal}(0.5,\\sqrt{0.5(1-0.5)/40})\\)\nP-Value: In this case, area under curve to the left of \\(\\widehat{p}=0.4\\). Here, \\(\\text{P-Value}=0.07\\).\n\n\nCompare the P-Value to your significance level (\\(\\alpha\\))."
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#hypothesis-tests-process-check",
+    "href": "slides/lecture29_tbi-intro.html#hypothesis-tests-process-check",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests: Process Check",
+    "text": "Hypothesis Tests: Process Check\n\nWhen conducting hypothesis tests, we:\n\nSpecify our population, and parameter\nState null (\\(H_0\\)) and alternative (\\(H_a\\)) hypotheses, e.g., \\[\nH_0: p = p_0 \\qquad \\qquad H_a: p \\neq p_0 \\ \\ \\text{or} \\ \\ p &lt; p_0 \\ \\ \\text{or} \\ \\ p &gt; p_0\n\\]\nCollect a sample, and calculate the statistic\nCreate a null distribution\nUse “areas/proportions” of the null distribution distribution to calculate the p-value\nCompare p-value to our rejection threshold \\(\\alpha\\), and make a conclusion\n\n\n\nQ: Which steps in the above are the same in both the “old” way of doing hypothesis tests, and this new “theory-based” way? Which steps are different?\nOnly #4 is different! (again, the distribution we use comes from theory instead of simulation)"
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#activity-1",
+    "href": "slides/lecture29_tbi-intro.html#activity-1",
+    "title": "STAT 141",
+    "section": "Activity",
+    "text": "Activity\n\n\n\nIn a SRS of 60 Reedies, 45 have watched the Lord of the Rings trilogy. Create a 80% confidence interval for the true proportion of Reedies who have watched LOTR using theory-based inference.\n\n\nIdentify the population, sample, parameter, statistic.\nSketch and write down the assumed sampling distribution of the statistic\nWrite R code that would calculate the confidence interval\nSuppose you get [0.68, 0.82]. Interpret this confidence interval in context.\n\n\n\n\n\n\n\n\n\nIn a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a hypothesis test using theory-based inference.\n\n\nIdentify the population, sample, parameter, statistic, and hypotheses.\nSketch and write down the null distribution\nWrite R code that would calculate the p-value.\nSuppose your p-value is 0.23. Use this p-value to make a conclusion with \\(\\alpha=0.10\\)."
+  },
+  {
+    "objectID": "slides/lecture29_tbi-intro.html#recap-theory-based-inference",
+    "href": "slides/lecture29_tbi-intro.html#recap-theory-based-inference",
+    "title": "STAT 141",
+    "section": "Recap: Theory-Based Inference",
+    "text": "Recap: Theory-Based Inference\n\\[\\textbf{CLT-Based Sampling Distribution:} \\ \\ \\  \\widehat{p} \\sim \\text{Normal}\\Big(\\ p, \\ \\sqrt{\\frac{p(1-p)}{n}}\\ \\Big)\\]\n\nThe general steps we take are the same as before, but we now use the CLT instead of simulation to find sampling distributions.\n\n\n\n\\[\\textbf{Confidence Intervals}\\] \\[\\text{Sampling Distribution of } p\\] \\[(\\text{Plug in statistic, }\\color{red}{\\widehat{p}})\\]\n\\[\\text{Normal}\\Bigg(\\color{red}{\\widehat{p}}, \\ \\sqrt{\\frac{\\color{red}{\\widehat{p}}(1-\\color{red}{\\widehat{p}})}{n}} \\ \\Bigg)\\]\n\n\n\n\\[\\textbf{Hypothesis Testing}\\] \\[\\text{Null Distribution}\\] \\[(\\text{Plug in null value, }\\color{red}{p_0})\\]\n\\[\\text{Normal}\\Bigg(\\color{red}{p_0}, \\ \\sqrt{\\frac{\\color{red}{p_0}(1-\\color{red}{p_0})}{n}} \\ \\Bigg)\\]"
   }
 ]

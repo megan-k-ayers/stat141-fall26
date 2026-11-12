@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 11/13/26
+  draft-after: 11/20/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -439,18 +439,20 @@ scheduled-docs:
           display-date: Thursday, Nov 12
           date: 11/12/26
           docs:
-              # - type: Download Lab 9
-              #   href: lab/lab09.zip
-              # - type: Download HW 9
-              #   href: hw/hw09.zip
+              - type: Download Lab 9
+                href: lab/lab09.zip
+              - type: Download HW 9
+                href: hw/hw09.zip
         - topic: "Theory-based Inference I: Intro"
           display-date: Friday, Nov 13
           date: 11/13/26
           docs:
             - type: Reading
               href: readings/reading31.qmd
-            # - type: Slides
-            #   href: slides/lecture29_tbi-intro.qmd
+            - type: Slides
+              href: slides/lecture29_tbi-intro.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture29_tbi-intro_handout.pdf
       resources:
             - 'Submit assignment 8 (due Thurs 11/12 at 9am)'
             - 'Take Quiz 7 during lab'
@@ -463,33 +465,33 @@ scheduled-docs:
           date: 11/16/26
           docs:
             - type: Reading
-              href: readings/reading33.qmd
-            - type: Slides
-              href: slides/lecture30_tbi-proportions.qmd
+              href: readings/reading32.qmd
+            # - type: Slides
+            #   href: slides/lecture30_tbi-proportions.qmd
         - topic: "Theory-based Inference III: Means"
           display-date: Wednesday, Nov 18
           date: 11/18/26
           docs:
             - type: Reading
-              href: readings/reading34.qmd
-            - type: Slides
-              href: slides/lecture31_tbi-means.qmd
+              href: readings/reading33.qmd
+            # - type: Slides
+            #   href: slides/lecture31_tbi-means.qmd
         - topic: "Lab: Theory-Based Inference | Quiz 8"
           display-date: Thursday, Nov 19
           date: 11/19/26
-          docs:
-              - type: Download Lab 10
-                href: lab/lab10.zip
-              - type: Download HW 10
-                href: hw/hw10.zip
+          # docs:
+          #     - type: Download Lab 10
+          #       href: lab/lab10.zip
+          #     - type: Download HW 10
+          #       href: hw/hw10.zip
         - topic: "Theory-based Inference IV: Difference in Means"
           display-date: Friday, Nov 20
           date: 11/20/26
           docs:
             - type: Reading
-              href: readings/reading35.qmd
-            - type: Slides
-              href: slides/lecture32_tbi-diff-means.qmd
+              href: readings/reading34.qmd
+            # - type: Slides
+            #   href: slides/lecture32_tbi-diff-means.qmd
       resources:
             - 'Submit assignment 9 (due Thurs 11/19 at 9am)'
             - 'Take Quiz 8 during lab'

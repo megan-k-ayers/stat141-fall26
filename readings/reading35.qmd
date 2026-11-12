@@ -12,5 +12,6 @@ execute:
 
 Before coming to lecture today, please read the following material: 
 
+-  IMS 24.0-24.5 
 -  IMS 24.6-24.7  
 

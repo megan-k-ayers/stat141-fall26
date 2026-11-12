@@ -1,7 +1,7 @@
 ---
 pagetitle: "Theory-Based Inference I: Introduction"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -86,7 +86,7 @@ theme_set(theme_bw())
 
 - Review how to conduct inference
 
-- Apply the Central Limit Theorem to the Binomial distribution
+- Apply the Central Limit Theorem to data from a Binomial distribution
 
 - Practice "theory-based inference" for one proportion
 
