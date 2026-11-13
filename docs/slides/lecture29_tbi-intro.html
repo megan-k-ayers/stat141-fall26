@@ -146,6 +146,12 @@
 </div>
 </div></div>
 </section>
+<section id="announcementsreminders" class="slide level2">
+<h2>Announcements/Reminders</h2>
+<ul>
+<li class="fragment">Quiz 6 revisions</li>
+</ul>
+</section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
 <ul>
@@ -243,7 +249,7 @@
 <li class="fragment"><p><strong>Null distribution:</strong> Sampling distribution <u>assuming <span class="math inline">\(H_0\)</span></u></p></li>
 <li class="fragment"><p>Many times, sample <span class="math inline">\(n\)</span> observations from <u>population assumed under <span class="math inline">\(H_0\)</span></u></p></li>
 <li class="fragment"><p>For each “sample”, calculate/plot the statistic</p></li>
-<li class="fragment"><p><strong>P-Value:</strong> Area under curve to the left of <span class="math inline">\(\widehat{p}\)</span> is <span class="math inline">\(0.07\)</span></p></li>
+<li class="fragment"><p><strong>P-Value:</strong> Area under curve to the left of <span class="math inline">\(\widehat{p} = 0.4\)</span> is <span class="math inline">\(0.07\)</span></p></li>
 <li class="fragment"><p><strong>Compare to Significance Level:</strong> Using <span class="math inline">\(\alpha = 0.05\)</span>, we would <em>fail to reject</em> <span class="math inline">\(H_0\)</span>.</p></li>
 </ul>
 </div></div>
@@ -255,8 +261,14 @@
 <ul>
 <li class="fragment"><p><strong>Both inference procedures require a <u>sampling distribution of a statistic:</u></strong></p>
 <ul>
-<li class="fragment"><p><u>Confidence Intervals:</u> Approximate with our bootstrap distribution (based on our sample)</p></li>
-<li class="fragment"><p><u>Hypothesis Testing:</u> Simulate a sampling distribution assuming a population under <span class="math inline">\(H_0\)</span></p></li>
+<li class="fragment"><u>Confidence Intervals:</u> Approximate with our bootstrap distribution
+<ul>
+<li class="fragment">We rely on <em>our sample</em> being representative of the population for this approximation</li>
+</ul></li>
+<li class="fragment"><u>Hypothesis Testing:</u> Simulate a sampling distribution representing <span class="math inline">\(H_0\)</span>
+<ul>
+<li class="fragment">We create a hypothetical population that encodes <span class="math inline">\(H_0\)</span> to see whether our test statistic “fits in” with the sampling distribution when <span class="math inline">\(H_0\)</span> is true</li>
+</ul></li>
 </ul></li>
 </ul>
 <p><br></p>
@@ -638,7 +650,7 @@ H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p &lt; p_0 \ \ \tex
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_03274dee" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_99e7c11d" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div><div class="column" style="width:4%;">
@@ -654,7 +666,7 @@ H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p &lt; p_0 \ \ \tex
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_00f9d008" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_d42142b0" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>

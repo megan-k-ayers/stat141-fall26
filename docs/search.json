@@ -4361,6 +4361,13 @@
     "text": "Next time\n\nAnother binomial random variable activity\nContinuous random variables\nThe Central Limit Theorem!"
   },
   {
+    "objectID": "slides/lecture29_tbi-intro.html#announcementsreminders",
+    "href": "slides/lecture29_tbi-intro.html#announcementsreminders",
+    "title": "STAT 141",
+    "section": "Announcements/Reminders",
+    "text": "Announcements/Reminders\n\nQuiz 6 revisions"
+  },
+  {
     "objectID": "slides/lecture29_tbi-intro.html#goals-for-today",
     "href": "slides/lecture29_tbi-intro.html#goals-for-today",
     "title": "STAT 141",
@@ -4386,14 +4393,14 @@
     "href": "slides/lecture29_tbi-intro.html#hypothesis-testing",
     "title": "STAT 141",
     "section": "Hypothesis Testing",
-    "text": "Hypothesis Testing\n\nHypothesis Tests: formal procedure for testing claims about a parameter\nEx: Are less than 50% of Reedies vegetarians?\n\nParameter: \\(p\\) = Proportion of Reedies who are vegetarians\nStatistic: \\(\\widehat{p} = 16/40 = 0.4\\)\nState Hypotheses: \\(H_0: p=0.5\\); \\(H_a: p&lt;0.5\\)\n\n\nWe need to construct the Null Distribution:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNull distribution: Sampling distribution assuming \\(H_0\\)\nMany times, sample \\(n\\) observations from population assumed under \\(H_0\\)\nFor each “sample”, calculate/plot the statistic\nP-Value: Area under curve to the left of \\(\\widehat{p}\\) is \\(0.07\\)\nCompare to Significance Level: Using \\(\\alpha = 0.05\\), we would fail to reject \\(H_0\\)."
+    "text": "Hypothesis Testing\n\nHypothesis Tests: formal procedure for testing claims about a parameter\nEx: Are less than 50% of Reedies vegetarians?\n\nParameter: \\(p\\) = Proportion of Reedies who are vegetarians\nStatistic: \\(\\widehat{p} = 16/40 = 0.4\\)\nState Hypotheses: \\(H_0: p=0.5\\); \\(H_a: p&lt;0.5\\)\n\n\nWe need to construct the Null Distribution:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNull distribution: Sampling distribution assuming \\(H_0\\)\nMany times, sample \\(n\\) observations from population assumed under \\(H_0\\)\nFor each “sample”, calculate/plot the statistic\nP-Value: Area under curve to the left of \\(\\widehat{p} = 0.4\\) is \\(0.07\\)\nCompare to Significance Level: Using \\(\\alpha = 0.05\\), we would fail to reject \\(H_0\\)."
   },
   {
     "objectID": "slides/lecture29_tbi-intro.html#whats-similar",
     "href": "slides/lecture29_tbi-intro.html#whats-similar",
     "title": "STAT 141",
     "section": "What’s Similar?",
-    "text": "What’s Similar?\n\nBoth inference procedures require a sampling distribution of a statistic:\n\nConfidence Intervals: Approximate with our bootstrap distribution (based on our sample)\nHypothesis Testing: Simulate a sampling distribution assuming a population under \\(H_0\\)\n\n\n\n\nWe’ve had to use simulation in R to find these “distributions of statistics”\n\n\n\n\n\nCould we utilize probability theory to do this work more efficiently? What did people use before computers?"
+    "text": "What’s Similar?\n\nBoth inference procedures require a sampling distribution of a statistic:\n\nConfidence Intervals: Approximate with our bootstrap distribution\n\nWe rely on our sample being representative of the population for this approximation\n\nHypothesis Testing: Simulate a sampling distribution representing \\(H_0\\)\n\nWe create a hypothetical population that encodes \\(H_0\\) to see whether our test statistic “fits in” with the sampling distribution when \\(H_0\\) is true\n\n\n\n\n\nWe’ve had to use simulation in R to find these “distributions of statistics”\n\n\n\n\n\nCould we utilize probability theory to do this work more efficiently? What did people use before computers?"
   },
   {
     "objectID": "slides/lecture29_tbi-intro.html#theory-based-inference",

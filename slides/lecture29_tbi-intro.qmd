@@ -79,6 +79,14 @@ library(gridExtra)
 theme_set(theme_bw())
 ```
 
+
+------------------------------------------------------------------------
+
+## Announcements/Reminders
+
+- Quiz 6 revisions
+
+
 ------------------------------------------------------------------------
 
 
@@ -220,7 +228,7 @@ ggplot(sampling, aes(x=phat))+
     
   + For each "sample", calculate/plot the statistic
   
-  + **P-Value:** Area under curve to the left of $\widehat{p}$ is $0.07$
+  + **P-Value:** Area under curve to the left of $\widehat{p} = 0.4$ is $0.07$
 
   + **Compare to Significance Level:** Using $\alpha = 0.05$, we would *fail to reject* $H_0$.
   
@@ -238,10 +246,11 @@ ggplot(sampling, aes(x=phat))+
 
 - **Both inference procedures require a [sampling distribution of a statistic:]{.underline}**
 
-  + [Confidence Intervals:]{.underline} Approximate with our bootstrap distribution (based on our sample)
+  + [Confidence Intervals:]{.underline} Approximate with our bootstrap distribution
+      - We rely on *our sample* being representative of the population for this approximation
   
-  + [Hypothesis Testing:]{.underline} Simulate a sampling distribution assuming a population under $H_0$
-  
+  + [Hypothesis Testing:]{.underline} Simulate a sampling distribution representing $H_0$
+      - We create a hypothetical population that encodes $H_0$ to see whether our test statistic "fits in" with the sampling distribution when $H_0$ is true
 
 <br>
 
