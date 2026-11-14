@@ -171,7 +171,7 @@
 <ul>
 <li>STAT 392: Mathematical Statistics (Lenny)
 <ul>
-<li>(prereqs: STAT 141, STAT 291)</li>
+<li>(prereqs: STAT 141, STAT 291, MATH 202)</li>
 </ul></li>
 </ul>
 </div>
@@ -244,7 +244,7 @@
 <h3 id="difference-in-proportions-populations-parameter-samples-statistic">Difference in Proportions: Population(s), Parameter, Sample(s), Statistic</h3>
 <ul>
 <li class="fragment"><p><strong>Population(s):</strong> Population 1, <em>and</em> Population 2</p></li>
-<li class="fragment"><p><strong>Parameter:</strong> The <u>parameter</u> is: <strong><span class="math inline">\(p_1 - p_2\)</span> = Difference in <em>population</em> proportions</strong>, where</p>
+<li class="fragment"><p><strong>Parameter:</strong> <span class="math inline">\(p_1 - p_2\)</span> = Difference in <em>population</em> proportions, where</p>
 <ul>
 <li class="fragment"><span class="math inline">\(p_1\)</span>=Proportion in <em>Population</em> 1</li>
 <li class="fragment"><span class="math inline">\(p_2\)</span>=Proportion in <em>Population</em> 2</li>
@@ -254,7 +254,7 @@
 <li class="fragment"><u>Sample 1</u>: <span class="math inline">\(n_1\)</span> individuals from Population 1</li>
 <li class="fragment"><u>Sample 2</u>: <span class="math inline">\(n_2\)</span> individuals from Population 2</li>
 </ul></li>
-<li class="fragment"><p><strong>Statistic:</strong> The <u>statistic</u> is: <strong><span class="math inline">\(\widehat{p}_1 - \widehat{p}_2\)</span> = Difference in <em>sample</em> proportions</strong>, where</p>
+<li class="fragment"><p><strong>Statistic:</strong> <span class="math inline">\(\widehat{p}_1 - \widehat{p}_2\)</span> = Difference in <em>sample</em> proportions, where</p>
 <ul>
 <li class="fragment"><span class="math inline">\(\widehat{p}_1\)</span> = Proportion in <em>Sample</em> 1</li>
 <li class="fragment"><span class="math inline">\(\widehat{p}_2\)</span> = Proportion in <em>Sample</em> 2</li>
@@ -284,7 +284,7 @@
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_fa0f89ed" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_cdb35ace" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -292,15 +292,15 @@
 <h2>Example: Comparing Drug A to Drug B</h2>
 <div style="font-size:0.9em;">
 <ul>
-<li class="fragment"><strong>Population(s):</strong> Overall, sampling from adults who have heart disease
+<li class="fragment"><strong>Population(s):</strong> Overall, sampling from adults diagnosed with heart disease
 <ul>
-<li class="fragment">Population 1: More specifically, adults with heart disease when they receive drug A</li>
-<li class="fragment">Population 2: More specifically, adults with heart disease when they receive drug B</li>
+<li class="fragment">Population 1: More specifically, these adults <em>when they receive drug A</em></li>
+<li class="fragment">Population 2: More specifically, these adults <em>when they receive drug B</em></li>
 </ul></li>
-<li class="fragment"><strong>Parameter:</strong> The <u>parameter</u> is: <strong><span class="math inline">\(p_1 - p_2\)</span> = Difference in recovery rates <u>for all adults with heart disease</u></strong>, where
+<li class="fragment"><strong>Parameter:</strong> <span class="math inline">\(p_1 - p_2\)</span> = Difference in recovery rates <u>for all adults with heart disease</u>, where
 <ul>
-<li class="fragment"><span class="math inline">\(p_1\)</span>=Proportion who would recover with Drug A</li>
-<li class="fragment"><span class="math inline">\(p_2\)</span>=Proportion who would recover with Drug B</li>
+<li class="fragment"><span class="math inline">\(p_1\)</span>=Proportion <em>who would</em> recover with Drug A</li>
+<li class="fragment"><span class="math inline">\(p_2\)</span>=Proportion <em>who would</em> recover with Drug B</li>
 </ul></li>
 <li class="fragment"><strong>Sample(s):</strong> Of the <span class="math inline">\(n\)</span> total that we sampled,
 <ul>
@@ -379,7 +379,7 @@
 </div></div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_56535aaa" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_b1dd71c3" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -586,7 +586,7 @@
 <section id="confidence-intervals-drug-comparison-2" class="slide level2">
 <h2>Confidence Intervals: Drug Comparison</h2>
 <p><strong>We want a 95% confidence interval for <span class="math inline">\(p_1 - p_2\)</span></strong></p>
-<p><span class="math display">\[\text{Normal}\Bigg(p_1-p_2,\sqrt{\frac{p_1(1-p_1)}{n_1}+ \frac{p_2(1-p_2)}{n_2}} \Bigg)\]</span></p>
+<p><span class="math display">\[\text{Normal} \left( {\widehat{p}_1}-{\widehat{p}_2},\sqrt{\frac{{\widehat{p}_1}(1-{\widehat{p}_1})}{n_1}+ \frac{{\widehat{p}_2}(1-{\widehat{p}_2})}{n_2}} \right)\]</span></p>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell" data-layout-align="center">

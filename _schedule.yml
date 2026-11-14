@@ -449,7 +449,7 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading31.qmd
-            - type: Slides
+            - type: Slides (+activity solutions)
               href: slides/lecture29_tbi-intro.qmd
             - type: Slides Printout (Optional)
               href: handouts/lecture29_tbi-intro_handout.pdf
@@ -466,8 +466,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading32.qmd
-            # - type: Slides
-            #   href: slides/lecture30_tbi-proportions.qmd
+            - type: Slides
+              href: slides/lecture30_tbi-proportions.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture30_tbi-proportions_handout.pdf
         - topic: "Theory-based Inference III: Means"
           display-date: Wednesday, Nov 18
           date: 11/18/26

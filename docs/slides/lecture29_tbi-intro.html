@@ -28,6 +28,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-dcd0113d5cc71e8f14b6292e6de6236b.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -650,7 +716,7 @@ H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p &lt; p_0 \ \ \tex
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_99e7c11d" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_bcc84058" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div><div class="column" style="width:4%;">
@@ -666,76 +732,97 @@ H_0: p = p_0 \qquad \qquad H_a: p \neq p_0 \ \ \text{or} \ \ p &lt; p_0 \ \ \tex
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_d42142b0" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_3f9c8986" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div></div>
 </div>
-<!-- ------------------------------------------------------------------------ -->
-<!-- ## Answers (Confidence Intervals) {.smaller} -->
-<!-- In a SRS of 60 Reedies, 45 have watched the *Lord of the Rings* trilogy. Create a **80% confidence interval** for the true proportion of Reedies who have watched *LOTR* using theory-based inference. -->
-<!-- ::::: columns -->
-<!-- ::: {.column width=50%} -->
-<!-- - **Collect Data:** In a sample of 60 students, 45 watched *LOTR* -->
-<!-- - **Point Estimate:** We estimate $\widehat{p} = 45/60 = 0.75$ -->
-<!-- - **Get Sampling Distribution:** -->
-<!-- ::: fragment -->
-<!-- $$\text{Normal}(0.75,\ \sqrt{0.75(1-0.75)/60})$$ -->
-<!-- ```{r echo=FALSE,out.width="100%",fig.asp=0.65} -->
-<!-- theory <- data.frame(x=seq(0.6,.90,length=10000), -->
-<!--                      density=dnorm(seq(0.6,.90,length=10000),mean=0.75,sd=sqrt(.75*.25/60))) -->
-<!-- ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+ -->
-<!--   stat_function(fun = function(x){dnorm(x,0.75,sqrt(.75*.25/60))}, -->
-<!--                 xlim = c(.678,.822), geom = "area", fill = "steelblue") + -->
-<!--   annotate(geom = "text", label = "Middle 80%", x = .75, y = 2.5,color="white",size=5) + -->
-<!--   geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+ -->
-<!--   labs(title="Theory-Based Bootstrap Distribution")+ -->
-<!--   scale_x_continuous(breaks=c(.678,.75,.822)) -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- ::: -->
-<!-- ::: {.column width=50%} -->
-<!-- - **Get confidence interval:** -->
-<!-- -  Need 0.1 and 0.9 quantiles for 80% confidence interval -->
-<!-- ::: {.fragment .nonincremental} -->
-<!-- ```{r echo=TRUE} -->
-<!-- qnorm(c(0.1, 0.9), 0.75, sqrt(0.75*0.25/60)) -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- - We are 80% confident that between 67.8% and 82.2% of Reedies have watched *LOTR* -->
-<!-- ::: -->
-<!-- ::::: -->
-<!-- ------------------------------------------------------------------------ -->
-<!-- ## Answers (Hypothesis Testing) {.smaller} -->
-<!-- In a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a **hypothesis test** using theory-based inference. -->
-<!-- ::::: columns -->
-<!-- ::: {.column width=48% .fragment .nonincremental} -->
-<!-- - **State Hypotheses:** $H_0: p=0.6$; $H_a: p>0.6$ -->
-<!-- - **Null Distribution:** -->
-<!-- $$\text{Normal}(0.6,\sqrt{0.6(1-0.6)/30})$$ -->
-<!-- ```{r echo=FALSE,out.width="100%",fig.asp=0.65} -->
-<!-- theory <- data.frame(x=seq(0.3,1,length=10000), -->
-<!--                      density=dnorm(seq(0.3,1,length=10000),mean=0.6,sd=sqrt(.6*.4/30))) -->
-<!-- ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)))+ -->
-<!--   stat_function(fun = function(x){dnorm(x,.6,sqrt(.6*.4/30))}, -->
-<!--                 xlim = c(.667,1), geom = "area", fill = "steelblue") + -->
-<!--   annotate(geom = "text", label = "p-value=\n0.228", x = .82, y = 2,color="black",size=7) + -->
-<!--   geom_line()+theme_bw(base_size=15)+theme(panel.grid=element_blank())+ -->
-<!--   labs(title="Theory-Based Null Distribution")+ -->
-<!--   scale_x_continuous(breaks=seq(.3,.9,by=0.1)) -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- ::: {.column width=50%} -->
-<!-- - **Collect Data:** $\widehat{p}=20/30=0.667$ -->
-<!-- - **Calculate P-Value:** Area under null distribution curve to the right of $\widehat{p}$ -->
-<!-- ::: fragment -->
-<!-- ``` {r echo=T} -->
-<!-- 1 - pnorm(20/30, 0.6, sqrt(0.6*(1 - 0.6) / 30)) -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- - **Conclusion:** Because 0.228 > 0.10, we fail to reject $H_0$ that 60% of birds in the Reed canyon are crows. -->
-<!-- ::: -->
-<!-- ::::: -->
+</section>
+<section id="answers-confidence-intervals" class="slide level2 smaller">
+<h2>Answers (Confidence Intervals)</h2>
+<p>In a SRS of 60 Reedies, 45 have watched the <em>Lord of the Rings</em> trilogy. Create a <strong>80% confidence interval</strong> for the true proportion of Reedies who have watched <em>LOTR</em> using theory-based inference.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><strong>Population</strong>: All Reedies</li>
+<li class="fragment"><strong>Parameter:</strong> Proportion <span class="math inline">\(p\)</span> of all Reedies who have seen <em>LOTR</em></li>
+<li class="fragment"><strong>Sample:</strong> The 60 students surveyed</li>
+<li class="fragment"><strong>Statistic:</strong> We estimate <span class="math inline">\(\widehat{p} = 45/60 = 0.75\)</span></li>
+<li class="fragment"><strong>Assumed Sampling Distribution:</strong></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[\text{Normal}(0.75,\ \sqrt{0.75(1-0.75)/60})\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture29_tbi-intro_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p><strong>Get confidence interval:</strong></p></li>
+<li class="fragment"><p>Need 0.1 and 0.9 quantiles for 80% confidence interval</p></li>
+</ul>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>), <span class="fl">0.75</span>, <span class="fu">sqrt</span>(<span class="fl">0.75</span><span class="sc">*</span><span class="fl">0.25</span><span class="sc">/</span><span class="dv">60</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6783591 0.8216409</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">We are 80% confident that between 67.8% and 82.2% of Reedies have watched <em>LOTR</em></li>
+</ul>
+</div></div>
+</section>
+<section id="answers-hypothesis-testing" class="slide level2 smaller">
+<h2>Answers (Hypothesis Testing)</h2>
+<p>In a SRS of 30 birds in the Reed canyon, 20 are crows. Do we have evidence that more than 60% of birds in the Reed canyon are crows? Conduct a <strong>hypothesis test</strong> using theory-based inference.</p>
+<div class="columns">
+<div class="column" style="width:48%;">
+<ul>
+<li class="fragment"><strong>Population</strong>: All canyon birds</li>
+<li class="fragment"><strong>Parameter:</strong> Proportion <span class="math inline">\(p\)</span> of all canyon birds who are crows</li>
+<li class="fragment"><strong>Sample:</strong> The 30 birds studied</li>
+<li class="fragment"><strong>Statistic:</strong> We estimate <span class="math inline">\(\widehat{p} = 20/30 = 0.67\)</span></li>
+<li class="fragment"><strong>State Hypotheses:</strong> <span class="math inline">\(H_0: p=0.6\)</span>; <span class="math inline">\(H_a: p&gt;0.6\)</span></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><strong>Null Distribution:</strong></li>
+</ul>
+<p><span class="math display">\[\text{Normal}(0.6,\sqrt{0.6(1-0.6)/30})\]</span></p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture29_tbi-intro_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><strong>Calculate P-Value:</strong> Area under null distribution curve to the right of <span class="math inline">\(\widehat{p}\)</span></li>
+</ul>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">20</span><span class="sc">/</span><span class="dv">30</span>, <span class="fl">0.6</span>, <span class="fu">sqrt</span>(<span class="fl">0.6</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.6</span>) <span class="sc">/</span> <span class="dv">30</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2280283</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment"><strong>Conclusion:</strong> Because 0.228 &gt; 0.10, we fail to reject <span class="math inline">\(H_0\)</span> that 60% of birds in the Reed canyon are crows.</li>
+</ul>
+</div></div>
 </section>
 <section id="recap-theory-based-inference" class="slide level2">
 <h2>Recap: Theory-Based Inference</h2>

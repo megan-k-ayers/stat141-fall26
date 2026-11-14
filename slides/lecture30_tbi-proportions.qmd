@@ -1,7 +1,7 @@
 ---
 pagetitle: "Theory-Based Inference II: Proportions"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -97,7 +97,7 @@ library(tufte)
 
 ::: {.fragment .nonincremental}
 - STAT 392: Mathematical Statistics (Lenny)
-    - (prereqs: STAT 141, STAT 291)
+    - (prereqs: STAT 141, STAT 291, MATH 202)
     
 :::    
 
@@ -176,7 +176,7 @@ Today, we'll perform inference on a **difference in proportions**, $p_1 - p_2$
 
 - **Population(s):** Population 1, *and* Population 2
   
-- **Parameter:** The [parameter]{.underline} is: **$p_1 - p_2$ = Difference in *population* proportions**, where
+- **Parameter:** $p_1 - p_2$ = Difference in *population* proportions, where
     - $p_1$=Proportion in *Population* 1
     - $p_2$=Proportion in *Population* 2
  
@@ -184,7 +184,7 @@ Today, we'll perform inference on a **difference in proportions**, $p_1 - p_2$
     - [Sample 1]{.underline}: $n_1$ individuals from Population 1
     - [Sample 2]{.underline}: $n_2$ individuals from Population 2
 
-- **Statistic:** The [statistic]{.underline} is: **$\widehat{p}_1 - \widehat{p}_2$ = Difference in *sample* proportions**, where
+- **Statistic:** $\widehat{p}_1 - \widehat{p}_2$ = Difference in *sample* proportions, where
     - $\widehat{p}_1$ = Proportion in *Sample* 1
     - $\widehat{p}_2$ = Proportion in *Sample* 2
  
@@ -219,14 +219,14 @@ countdown::countdown(2)
 
 ::: {style="font-size:0.9em;"}
 
-- **Population(s):** Overall, sampling from adults who have heart disease 
-    - Population 1: More specifically, adults with heart disease when they receive drug A
-    - Population 2: More specifically, adults with heart disease when they receive drug B
+- **Population(s):** Overall, sampling from adults diagnosed with heart disease 
+    - Population 1: More specifically, these adults *when they receive drug A*
+    - Population 2: More specifically, these adults *when they receive drug B*
     
   
-- **Parameter:** The [parameter]{.underline} is: **$p_1 - p_2$ = Difference in recovery rates [for all adults with heart disease]{.underline}**, where
-    - $p_1$=Proportion who would recover with Drug A
-    - $p_2$=Proportion who would recover with Drug B
+- **Parameter:** $p_1 - p_2$ = Difference in recovery rates [for all adults with heart disease]{.underline}, where
+    - $p_1$=Proportion *who would* recover with Drug A
+    - $p_2$=Proportion *who would* recover with Drug B
 
 
 - **Sample(s):** Of the $n$ total that we sampled,
@@ -653,7 +653,7 @@ ggplot(theory, aes(x=x,y=density))+labs(x=expression(hat(p)[1]-hat(p)[2]))+
 
 **We want a 95% confidence interval for $p_1 - p_2$**
 
-$$\text{Normal}\Bigg(p_1-p_2,\sqrt{\frac{p_1(1-p_1)}{n_1}+ \frac{p_2(1-p_2)}{n_2}} \Bigg)$$
+$$\text{Normal} \left( {\widehat{p}_1}-{\widehat{p}_2},\sqrt{\frac{{\widehat{p}_1}(1-{\widehat{p}_1})}{n_1}+ \frac{{\widehat{p}_2}(1-{\widehat{p}_2})}{n_2}} \right)$$
 
 ::::: columns
 
