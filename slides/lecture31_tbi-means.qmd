@@ -214,20 +214,28 @@ ggplot(theory2, aes(x=x,y=density))+labs(x=element_blank())+
 
 ::: {style="font-size:0.85em;"}
 
+::: fragment
+
 **Sampling Distribution:**
 For a sample proportion, we know,
 $$\hat p \sim \text{Normal}\Big(\ \text{Mean} = p, \ \mathrm{SE} = \sqrt{\frac{p(1-p)}{n}}\ \Big)$$ 
+
+:::
+
+::: fragment
+
 For Sampling Distribution, we plug in **$\hat{p}=0.40$** for $p$ (i.e., the statistic)
 $$\hat{p} \sim \text{Normal}\Big(\text{Mean} = \color{red}{0.40},\ \mathrm{SE}  = \sqrt{\frac{\color{red}{0.40}(1-\color{red}{0.40})}{40}}\Big)$$ 
 
-
-**Calculate 90% Confidence Interval - Percentile Method:**
+:::
 
 
 ::::: columns
-::: {.column width=50% .fragment}
+::: {.column width=60% .fragment}
 
-```{r echo=FALSE,fig.height=4.5}
+**Calculate 90% Confidence Interval - Percentile Method:**
+
+```{r echo=FALSE,fig.height=3.5}
 theory <- data.frame(x=seq(0.1,0.7,length=10000),
                      density=dnorm(seq(0.1,0.7,length=10000),mean=0.4,sd=sqrt(.4*(1-0.4)/40)))
 ggplot(theory, aes(x=x,y=density))+labs(x=element_blank())+
@@ -550,7 +558,7 @@ $$
 
 - Notice that we had to use $\bar{x}$ to estimate $\sigma$...
 
-- It turns out, with all this "estimating", our distribution is **not Normal** anymore...
+- With all this "estimating", we now have a second source of uncertainty to deal with...
 
 :::
 
@@ -558,7 +566,7 @@ $$
 
 ## The $t$-distribution
 
-- Instead, $\bar{x}$, [after standardizing]{.underline}, follows a **$t$-distribution**
+- Instead of a Normal distribution, $\bar{x}$, [after standardizing]{.underline}, follows a **$t$-distribution**
 
 - Like the *standard* Normal distribution, a $t$-distribution is **symmetric, single-peaked, bell-shaped and centered at $0$.**
 

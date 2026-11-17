@@ -258,10 +258,15 @@
 <section id="confidence-intervals-critical-values" class="slide level2">
 <h2>Confidence Intervals: Critical Values</h2>
 <div style="font-size:0.85em;">
-<p><strong>Sampling Distribution:</strong> For a sample proportion, we know, <span class="math display">\[\hat p \sim \text{Normal}\Big(\ \text{Mean} = p, \ \mathrm{SE} = \sqrt{\frac{p(1-p)}{n}}\ \Big)\]</span> For Sampling Distribution, we plug in <strong><span class="math inline">\(\hat{p}=0.40\)</span></strong> for <span class="math inline">\(p\)</span> (i.e., the statistic) <span class="math display">\[\hat{p} \sim \text{Normal}\Big(\text{Mean} = \color{red}{0.40},\ \mathrm{SE}  = \sqrt{\frac{\color{red}{0.40}(1-\color{red}{0.40})}{40}}\Big)\]</span></p>
-<p><strong>Calculate 90% Confidence Interval - Percentile Method:</strong></p>
+<div class="fragment">
+<p><strong>Sampling Distribution:</strong> For a sample proportion, we know, <span class="math display">\[\hat p \sim \text{Normal}\Big(\ \text{Mean} = p, \ \mathrm{SE} = \sqrt{\frac{p(1-p)}{n}}\ \Big)\]</span></p>
+</div>
+<div class="fragment">
+<p>For Sampling Distribution, we plug in <strong><span class="math inline">\(\hat{p}=0.40\)</span></strong> for <span class="math inline">\(p\)</span> (i.e., the statistic) <span class="math display">\[\hat{p} \sim \text{Normal}\Big(\text{Mean} = \color{red}{0.40},\ \mathrm{SE}  = \sqrt{\frac{\color{red}{0.40}(1-\color{red}{0.40})}{40}}\Big)\]</span></p>
+</div>
 <div class="columns">
-<div class="column fragment" style="width:50%;">
+<div class="column fragment" style="width:60%;">
+<p><strong>Calculate 90% Confidence Interval - Percentile Method:</strong></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -432,7 +437,7 @@
 </div></div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_5a59e504" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_fa157418" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </div>
@@ -465,14 +470,14 @@ s=\sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}
 </div>
 <ul>
 <li class="fragment"><p>Notice that we had to use <span class="math inline">\(\bar{x}\)</span> to estimate <span class="math inline">\(\sigma\)</span>…</p></li>
-<li class="fragment"><p>It turns out, with all this “estimating”, our distribution is <strong>not Normal</strong> anymore…</p></li>
+<li class="fragment"><p>With all this “estimating”, we now have a second source of uncertainty to deal with…</p></li>
 </ul>
 </div>
 </section>
 <section id="the-t-distribution" class="slide level2">
 <h2>The <span class="math inline">\(t\)</span>-distribution</h2>
 <ul>
-<li class="fragment"><p>Instead, <span class="math inline">\(\bar{x}\)</span>, <u>after standardizing</u>, follows a <strong><span class="math inline">\(t\)</span>-distribution</strong></p></li>
+<li class="fragment"><p>Instead of a Normal distribution, <span class="math inline">\(\bar{x}\)</span>, <u>after standardizing</u>, follows a <strong><span class="math inline">\(t\)</span>-distribution</strong></p></li>
 <li class="fragment"><p>Like the <em>standard</em> Normal distribution, a <span class="math inline">\(t\)</span>-distribution is <strong>symmetric, single-peaked, bell-shaped and centered at <span class="math inline">\(0\)</span>.</strong></p></li>
 </ul>
 <div class="fragment">
@@ -638,7 +643,7 @@ s=\sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2}
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_08310edd" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e5548de6" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>

@@ -4701,7 +4701,7 @@
     "href": "slides/lecture31_tbi-means.html#confidence-intervals-critical-values",
     "title": "STAT 141",
     "section": "Confidence Intervals: Critical Values",
-    "text": "Confidence Intervals: Critical Values\n\nSampling Distribution: For a sample proportion, we know, \\[\\hat p \\sim \\text{Normal}\\Big(\\ \\text{Mean} = p, \\ \\mathrm{SE} = \\sqrt{\\frac{p(1-p)}{n}}\\ \\Big)\\] For Sampling Distribution, we plug in \\(\\hat{p}=0.40\\) for \\(p\\) (i.e., the statistic) \\[\\hat{p} \\sim \\text{Normal}\\Big(\\text{Mean} = \\color{red}{0.40},\\ \\mathrm{SE}  = \\sqrt{\\frac{\\color{red}{0.40}(1-\\color{red}{0.40})}{40}}\\Big)\\]\nCalculate 90% Confidence Interval - Percentile Method:"
+    "text": "Confidence Intervals: Critical Values\n\n\nSampling Distribution: For a sample proportion, we know, \\[\\hat p \\sim \\text{Normal}\\Big(\\ \\text{Mean} = p, \\ \\mathrm{SE} = \\sqrt{\\frac{p(1-p)}{n}}\\ \\Big)\\]\n\n\nFor Sampling Distribution, we plug in \\(\\hat{p}=0.40\\) for \\(p\\) (i.e., the statistic) \\[\\hat{p} \\sim \\text{Normal}\\Big(\\text{Mean} = \\color{red}{0.40},\\ \\mathrm{SE}  = \\sqrt{\\frac{\\color{red}{0.40}(1-\\color{red}{0.40})}{40}}\\Big)\\]\n\n\n\nCalculate 90% Confidence Interval - Percentile Method:"
   },
   {
     "objectID": "slides/lecture31_tbi-means.html#confidence-intervals-critical-values-1",
@@ -4750,14 +4750,14 @@
     "href": "slides/lecture31_tbi-means.html#example-2",
     "title": "STAT 141",
     "section": "Example",
-    "text": "Example\n\n\\[\n\\begin{align*}\n\\bar{x} \\approx \\text{Normal}\\big(\\text{Mean} = \\mu,\\quad \\text{SE}=\\frac{\\sigma}{\\sqrt{n}} \\big)\n\\end{align*}\n\\]\n\n\nFor confidence intervals, what will we “plug in” for \\(\\mu\\)? \\(\\rightarrow\\) \\(\\bar{x}\\) (the statistic)\n\n\n\n\nFor hypothesis tests, what will we “plug in” for \\(\\mu\\)? \\(\\rightarrow\\) The “null-value” (e.g., \\(\\mu_0\\)) that we assume in \\(H_0: \\mu = \\mu_0\\),\n\n\n\n\nWhat should we “plug in” for \\(\\sigma\\)? \\(\\rightarrow\\) the sample standard deviation, \\(s\\)\n\n\\[\ns=\\sqrt{\\frac{1}{n-1} \\sum_{i=1}^n (x_i - \\bar{x})^2}\n\\]\n\n\nNotice that we had to use \\(\\bar{x}\\) to estimate \\(\\sigma\\)…\nIt turns out, with all this “estimating”, our distribution is not Normal anymore…"
+    "text": "Example\n\n\\[\n\\begin{align*}\n\\bar{x} \\approx \\text{Normal}\\big(\\text{Mean} = \\mu,\\quad \\text{SE}=\\frac{\\sigma}{\\sqrt{n}} \\big)\n\\end{align*}\n\\]\n\n\nFor confidence intervals, what will we “plug in” for \\(\\mu\\)? \\(\\rightarrow\\) \\(\\bar{x}\\) (the statistic)\n\n\n\n\nFor hypothesis tests, what will we “plug in” for \\(\\mu\\)? \\(\\rightarrow\\) The “null-value” (e.g., \\(\\mu_0\\)) that we assume in \\(H_0: \\mu = \\mu_0\\),\n\n\n\n\nWhat should we “plug in” for \\(\\sigma\\)? \\(\\rightarrow\\) the sample standard deviation, \\(s\\)\n\n\\[\ns=\\sqrt{\\frac{1}{n-1} \\sum_{i=1}^n (x_i - \\bar{x})^2}\n\\]\n\n\nNotice that we had to use \\(\\bar{x}\\) to estimate \\(\\sigma\\)…\nWith all this “estimating”, we now have a second source of uncertainty to deal with…"
   },
   {
     "objectID": "slides/lecture31_tbi-means.html#the-t-distribution",
     "href": "slides/lecture31_tbi-means.html#the-t-distribution",
     "title": "STAT 141",
     "section": "The \\(t\\)-distribution",
-    "text": "The \\(t\\)-distribution\n\nInstead, \\(\\bar{x}\\), after standardizing, follows a \\(t\\)-distribution\nLike the standard Normal distribution, a \\(t\\)-distribution is symmetric, single-peaked, bell-shaped and centered at \\(0\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\nBut the \\(t\\)-distribution has heavier tails than the Normal distribution."
+    "text": "The \\(t\\)-distribution\n\nInstead of a Normal distribution, \\(\\bar{x}\\), after standardizing, follows a \\(t\\)-distribution\nLike the standard Normal distribution, a \\(t\\)-distribution is symmetric, single-peaked, bell-shaped and centered at \\(0\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\nBut the \\(t\\)-distribution has heavier tails than the Normal distribution."
   },
   {
     "objectID": "slides/lecture31_tbi-means.html#the-t-distribution-1",
