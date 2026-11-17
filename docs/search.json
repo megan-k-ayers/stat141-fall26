@@ -4660,5 +4660,159 @@
     "title": "STAT 141",
     "section": "Recap: Theory-Based Inference",
     "text": "Recap: Theory-Based Inference\n\\[\\textbf{CLT-Based Sampling Distribution:} \\ \\ \\  \\widehat{p} \\sim \\text{Normal}\\Big(\\ p, \\ \\sqrt{\\frac{p(1-p)}{n}}\\ \\Big)\\]\n\nThe general steps we take are the same as before, but we now use the CLT instead of simulation to find sampling distributions.\n\n\n\n\\[\\textbf{Confidence Intervals}\\] \\[\\text{Sampling Distribution of } p\\] \\[(\\text{Plug in statistic, }\\color{red}{\\widehat{p}})\\]\n\\[\\text{Normal}\\Bigg(\\color{red}{\\widehat{p}}, \\ \\sqrt{\\frac{\\color{red}{\\widehat{p}}(1-\\color{red}{\\widehat{p}})}{n}} \\ \\Bigg)\\]\n\n\n\n\\[\\textbf{Hypothesis Testing}\\] \\[\\text{Null Distribution}\\] \\[(\\text{Plug in null value, }\\color{red}{p_0})\\]\n\\[\\text{Normal}\\Bigg(\\color{red}{p_0}, \\ \\sqrt{\\frac{\\color{red}{p_0}(1-\\color{red}{p_0})}{n}} \\ \\Bigg)\\]"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#goals-for-today",
+    "href": "slides/lecture31_tbi-means.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\nFormalize and investigate Z-Scores\nDiscuss Inference for One Mean via the \\(t\\) distribution"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#example",
+    "href": "slides/lecture31_tbi-means.html#example",
+    "title": "STAT 141",
+    "section": "Example",
+    "text": "Example\n\nEx: To understand proportion of Reedies who are vegetarians, we survey \\(40\\) students. 16 of the students are vegetarians.\n\nPopulation: All Reedies\nParameter: \\(p\\) = Proportion of all Reedies who are vegetarians\nSample: \\(n=40\\) Reedies we surveyed\nStatistic: \\(\\hat{p} = 16/40 = 0.40\\)\n\nSuppose we want to do a hypothesis test: \\[H_0: p = 0.5 \\ \\ \\ \\ \\ \\text{vs.} \\ \\ \\ \\ \\  H_a: p&lt;0.5\\]\nUnder this null hypothesis, our CLT for \\(\\hat{p}\\) gives us: \\[\\hat{p}\\sim \\text{Normal}\\Big(\\text{Mean} = \\color{red}{0.5}, \\text{SE}=\\sqrt{\\frac{\\color{red}{0.5}(1-\\color{red}{0.5})}{40}}\\Big)\\] ————————————————————————"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#z-scores-standardization",
+    "href": "slides/lecture31_tbi-means.html#z-scores-standardization",
+    "title": "STAT 141",
+    "section": "Z-Scores: Standardization",
+    "text": "Z-Scores: Standardization\n\n\n\n\n\nTheorem: Standardization (from 11/11 slides)\n\n\nSuppose \\(X\\sim\\text{Normal}(\\mu,\\sigma)\\). Then, \\(Z = \\frac{X - \\mu}{\\sigma}\\) is a Standard Normal random variable (with mean 0 and standard deviation 1).\n\n\n\n\n\nWe can apply standardization to \\(\\hat{p}\\) under the null distribution:\n\\[\n\\hat{p} \\sim \\text{Normal}\\big(0.5,\\sqrt{0.5(1-0.5)/40}\\big) \\quad  \\rightarrow \\quad \\frac{\\hat{p}-0.5}{\\sqrt{0.5(1-0.5)/40}} \\sim \\underbrace{\\text{Normal}\\big(0,1\\big)}_{Z}\n\\]\n\n\nWe can write our p-value as a probability about \\(Z\\)\n\\[\n\\begin{aligned}\n\\text{p-value} &= P\\big[\\hat{p} &lt; 0.4 | H_0 \\text{ is true} \\big]  \\\\\n&= P \\left[ \\frac{\\hat{p}-0.5}{\\sqrt{0.5(1-0.5)/40}} &lt; \\frac{0.4-0.5}{\\sqrt{0.5(1-0.5)/40}} \\right] \\\\\n&= P \\left[ Z &lt; -1.26 \\right]\n\\end{aligned}\n\\]\n\n\nRecall (HW 9) that \\(-1.26\\) is called the Z-Score."
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#visualizing-z-scores",
+    "href": "slides/lecture31_tbi-means.html#visualizing-z-scores",
+    "title": "STAT 141",
+    "section": "Visualizing Z-Scores",
+    "text": "Visualizing Z-Scores\n\n\nNull Distribution\n\n\n\n\n\n\n\n\n\n“Direct” P-Value: \\(P( \\hat{p} \\leq 0.40)\\)\n\nStandard Normal Distribution\n\n\n\n\n\n\n\n\n\n“Z-Score” P-Value: \\(P( Z \\leq -1.26)\\)\n\n“0.4 is 1.26 standard deviations below the mean of the null distribution”"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#z-scores-why",
+    "href": "slides/lecture31_tbi-means.html#z-scores-why",
+    "title": "STAT 141",
+    "section": "Z-Scores: Why?",
+    "text": "Z-Scores: Why?\nTakeaway: To find the p-value, we could either:\n\nUse our Null Distribution and observed statistic, OR\nUse a Standard Normal Distribution and the Z-Score (i.e., standardized observed statistic)\n\n\n\nQ: Why would I ever use z-scores? (Any ideas?)\n\nOnly need probabilities/areas under curves for one distribution (i.e., Standard Normal). This was very helpful before computers.\nUseful to consider Z-Scores for Inference for One Mean\nZ-Scores are very related to “Critical Values” for general standard-error method confidence intervals"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#confidence-intervals-critical-values",
+    "href": "slides/lecture31_tbi-means.html#confidence-intervals-critical-values",
+    "title": "STAT 141",
+    "section": "Confidence Intervals: Critical Values",
+    "text": "Confidence Intervals: Critical Values\n\nSampling Distribution: For a sample proportion, we know, \\[\\hat p \\sim \\text{Normal}\\Big(\\ \\text{Mean} = p, \\ \\mathrm{SE} = \\sqrt{\\frac{p(1-p)}{n}}\\ \\Big)\\] For Sampling Distribution, we plug in \\(\\hat{p}=0.40\\) for \\(p\\) (i.e., the statistic) \\[\\hat{p} \\sim \\text{Normal}\\Big(\\text{Mean} = \\color{red}{0.40},\\ \\mathrm{SE}  = \\sqrt{\\frac{\\color{red}{0.40}(1-\\color{red}{0.40})}{40}}\\Big)\\]\nCalculate 90% Confidence Interval - Percentile Method:"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#confidence-intervals-critical-values-1",
+    "href": "slides/lecture31_tbi-means.html#confidence-intervals-critical-values-1",
+    "title": "STAT 141",
+    "section": "Confidence Intervals: Critical Values",
+    "text": "Confidence Intervals: Critical Values\n\n\n\nCalculate 90% Confidence Interval - Percentile Method:\n\n\n\n\n\n\n\n\n\n\nThis is equivalent to the SE approach using a critical value!\n\\[\n\\begin{aligned}\n(&0.273, \\ 0.527) \\\\\n&= 0.4 \\pm 0.127  \\\\\n&= 0.4 \\pm \\frac{0.127}{\\sqrt{\\frac{0.4*0.6}{40}}}\\sqrt{\\frac{0.4*0.6}{40}}  \\\\\n&= \\underbrace{0.4}_{\\hat{p}} \\pm \\underbrace{1.64}_{z*}\\times\\underbrace{\\sqrt{\\frac{0.4*0.6}{40}}}_{\\text{SE}}\n\\end{aligned}\n\\]\n\n\n\\(z^*\\) is the # of standard errors from the center of our sampling distribution to the 0.95 (or 0.05) quantile.\n\\(z^*\\) is the Z-score for the 0.95 quantile of our sampling distribution"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#confidence-intervals-using-critical-values",
+    "href": "slides/lecture31_tbi-means.html#confidence-intervals-using-critical-values",
+    "title": "STAT 141",
+    "section": "Confidence Intervals using Critical Values",
+    "text": "Confidence Intervals using Critical Values\n\\[\n\\textbf{Sampling Distribution:} \\ \\ \\ \\ \\ \\hat{p} \\sim \\text{Normal}\\Big(\\text{Mean} = 0.4,\\ \\mathrm{SE} = \\sqrt{\\frac{0.4(0.6)}{40}}\\Big)\n\\]\n\\[\n\\textbf{90% Confidence Interval:} \\ \\ \\ \\ \\ \\underbrace{0.4}_{\\hat{p}} \\pm \\underbrace{1.64}_{z*}\\times\\underbrace{\\sqrt{\\frac{0.4*0.6}{40}}}_{\\text{SE}}\n\\]\n\n\n\nThis is a standard-error method confidence interval!\nBut now for 90% confidence instead of the usual 95% (where \\(z^{*} = 2\\)).\nWhy do we use \\(z^{*} = 1.64\\)? It gives the middle 90% in a Standard Normal!"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#theoretical-standard-error-method-confidence-intervals",
+    "href": "slides/lecture31_tbi-means.html#theoretical-standard-error-method-confidence-intervals",
+    "title": "STAT 141",
+    "section": "Theoretical Standard-Error Method Confidence Intervals",
+    "text": "Theoretical Standard-Error Method Confidence Intervals\nTheoretical Standard-Error Method Confidence Intervals: When a sample statistic is approximately Normally distributed, a standard-error method \\(C\\)% confidence interval is \\[\\textrm{Sample Statistic} \\pm z^* \\times SE\\] where\n\n\\(z^*\\) is the critical value: the \\((\\frac{100+C}{2})\\)th percentile of a standard Normal distribution.\nSE is the standard error of the theoretical sampling distribution\n\n\n\n\ne.g., For \\(\\color{blue}{95\\%}\\), we want \\(z^{*} =(\\frac{100+\\color{blue}{95}}{2})\\text{th} = 97.5\\)th percentile of Standard Normal\ne.g., For \\(\\color{orange}{80\\%}\\), we want \\(z^{*} = (\\frac{100+\\color{orange}{80}}{2})\\text{th} = 90\\)th percentile of Standard Normal"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#inference-on-a-single-mean-1",
+    "href": "slides/lecture31_tbi-means.html#inference-on-a-single-mean-1",
+    "title": "STAT 141",
+    "section": "Inference on a Single Mean",
+    "text": "Inference on a Single Mean\n\nToday, we’ll study inference on a single mean, \\(\\mu\\)\n“Single Means” come up all the time in the real world:\n\ne.g., Average hours of sleep Reed students get\ne.g., Average time it takes to complete a marathon\ne.g., Average weight of cheese blocks made at a Tillamook factory\n\nTo answer these questions, we’ll use our similar procedures from before.\n\n… but we need to derive a new sampling distribution!"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#distribution-of-sample-means",
+    "href": "slides/lecture31_tbi-means.html#distribution-of-sample-means",
+    "title": "STAT 141",
+    "section": "Distribution of Sample Means",
+    "text": "Distribution of Sample Means\nWhen interested in inference on a population mean \\(\\mu\\), we often use a sample mean \\(\\bar{x}\\).\nBy the CLT, the distribution of \\(\\bar{x}\\) is, \\[ \\color{red}{\\bar{x} \\approx \\text{Normal}\\Big(\\mathrm{Mean} = \\mu, \\ \\ \\mathrm{SE} =\\frac{\\sigma}{\\sqrt{n}}\\Big) }\\] where\n\n\n\n\\(n\\) is the sample size\n\\(\\sigma\\) is the population standard deviation"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#example-1",
+    "href": "slides/lecture31_tbi-means.html#example-1",
+    "title": "STAT 141",
+    "section": "Example",
+    "text": "Example\n\nEx: We’re interested in average weight of cheese blocks at a Tillamook factory.\n\nPopulation: Cheese blocks at a Tillamook factory\nParameter: \\(\\mu=\\)Average weight of cheese blocks at the Tillamook factory.\nSample: SRS of \\(n=15\\) cheese blocks\nStatistic: \\(\\bar{x}\\) = 16.5 (average weight of \\(n=15\\) blocks in sample)\n\n\n\n\nFor Hypothesis Tests and Confidence Intervals, we’ll use that:\n\\[\n\\begin{align*}\n\\color{red}{\\bar{x} \\approx \\text{Normal}\\big(\\text{Mean} = \\mu,\\quad \\text{SE}=\\frac{\\sigma}{\\sqrt{n}} \\big)}\n\\end{align*}\n\\]\nwhere \\(\\sigma\\) is the standard deviation of the cheese block weights in the population\n\n\nDiscuss with Partner(s): We’re going to need to “fill in” the unknown parameters (\\(\\mu\\) and \\(\\sigma\\)) in the above distribution.\n\nFor confidence intervals, what will we “plug in” for \\(\\mu\\)?\nFor hypothesis tests, what will we “plug in” for \\(\\mu\\)?\nWhat should we “plug in” for \\(\\sigma\\)?"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#example-2",
+    "href": "slides/lecture31_tbi-means.html#example-2",
+    "title": "STAT 141",
+    "section": "Example",
+    "text": "Example\n\n\\[\n\\begin{align*}\n\\bar{x} \\approx \\text{Normal}\\big(\\text{Mean} = \\mu,\\quad \\text{SE}=\\frac{\\sigma}{\\sqrt{n}} \\big)\n\\end{align*}\n\\]\n\n\nFor confidence intervals, what will we “plug in” for \\(\\mu\\)? \\(\\rightarrow\\) \\(\\bar{x}\\) (the statistic)\n\n\n\n\nFor hypothesis tests, what will we “plug in” for \\(\\mu\\)? \\(\\rightarrow\\) The “null-value” (e.g., \\(\\mu_0\\)) that we assume in \\(H_0: \\mu = \\mu_0\\),\n\n\n\n\nWhat should we “plug in” for \\(\\sigma\\)? \\(\\rightarrow\\) the sample standard deviation, \\(s\\)\n\n\\[\ns=\\sqrt{\\frac{1}{n-1} \\sum_{i=1}^n (x_i - \\bar{x})^2}\n\\]\n\n\nNotice that we had to use \\(\\bar{x}\\) to estimate \\(\\sigma\\)…\nIt turns out, with all this “estimating”, our distribution is not Normal anymore…"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#the-t-distribution",
+    "href": "slides/lecture31_tbi-means.html#the-t-distribution",
+    "title": "STAT 141",
+    "section": "The \\(t\\)-distribution",
+    "text": "The \\(t\\)-distribution\n\nInstead, \\(\\bar{x}\\), after standardizing, follows a \\(t\\)-distribution\nLike the standard Normal distribution, a \\(t\\)-distribution is symmetric, single-peaked, bell-shaped and centered at \\(0\\).\n\n\n\n\n\n\n\n\n\n\n\n\n\nBut the \\(t\\)-distribution has heavier tails than the Normal distribution."
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#the-t-distribution-1",
+    "href": "slides/lecture31_tbi-means.html#the-t-distribution-1",
+    "title": "STAT 141",
+    "section": "The \\(t\\)-distribution",
+    "text": "The \\(t\\)-distribution\n\nInstead, \\(\\bar{x}\\), after standardizing, follows a \\(t\\)-distribution\nLike the standard Normal distribution, a \\(t\\)-distribution is symmetric, single-peaked, bell-shaped and centered at \\(0\\).\n\n\n\n\n\n\n\n\n\n\n\nBut the \\(t\\)-distribution has heavier tails than the Normal distribution\n\nQ: What does this imply about extreme values in the \\(t\\)-distribution?\n\nThey’re more likely in the \\(t\\)-distribution than in the normal distribution!"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#degrees-of-freedom",
+    "href": "slides/lecture31_tbi-means.html#degrees-of-freedom",
+    "title": "STAT 141",
+    "section": "Degrees of Freedom",
+    "text": "Degrees of Freedom\n\n\nThe \\(t\\)-distribution is actually a family of distributions, defined by the parameter Degrees of Freedom (\\(df\\))\nThe degrees of freedom \\(df\\) determines the heaviness of tails \\[\n\\text{lower df}\\implies\\text{heavier tails} \\quad \\quad \\text{higher df}\\implies\\text{lighter tails} \\quad\n\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(t\\) distribution gets closer to the Normal distribution as degrees of freedom increases\nFor \\(df \\geq 30\\), the \\(t\\) distribution is nearly indistinguishable from a Normal"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#distribution-of-sample-means-using-t-distribution",
+    "href": "slides/lecture31_tbi-means.html#distribution-of-sample-means-using-t-distribution",
+    "title": "STAT 141",
+    "section": "Distribution of Sample Means using \\(t\\)-distribution",
+    "text": "Distribution of Sample Means using \\(t\\)-distribution\n\n\nReminder: \\(\\bar{x}\\) follows a \\(t\\)-distribution “after standardizing”\n\ni.e., \\(\\bar{x}\\) follows a \\(t\\)-distribution after turning it into a “\\(Z\\)-Score”!\n\n\n\n\nBy the CLT, \\[\n\\bar{x} \\approx \\text{Normal}\\Big(\\text{Mean}=\\mu, \\ \\ \\text{SE}=\\frac{\\sigma}{\\sqrt{n}}\\Big)\n\\]\n\n\n\n\nThen, the standardized statistic \\(\\color{red}{\\frac{\\bar{x}-\\mu}{s/\\sqrt{n}}}\\) is approximately \\(t\\)-distributed with \\(n-1\\) degrees of freedom\n\n\\[\n\\color{red}{\\frac{\\bar{x}-\\mu}{s/\\sqrt{n}}} \\sim t\\big(\\text{df}= n-1\\big)\n\\]\n      where \\(s\\) is the sample standard deviation.\n\n\nIn R, we’ll use pt(q, df) and qt(p, df) to compute probabilities and quantiles of \\(t\\) distributions (more next lecture)"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#distribution-of-sample-means-using-t-distribution-1",
+    "href": "slides/lecture31_tbi-means.html#distribution-of-sample-means-using-t-distribution-1",
+    "title": "STAT 141",
+    "section": "Distribution of Sample Means using \\(t\\)-distribution",
+    "text": "Distribution of Sample Means using \\(t\\)-distribution\n\n\n\nTheorem: Distribution of (Standardized) Sample Mean\n\n\nSuppose a simple random sample of size \\(n\\) is drawn from a population with mean \\(\\mu\\) and standard deviation \\(\\sigma\\). Let \\(\\bar{x}\\) be the sample mean, and let \\(s\\) be the sample standard deviation. Then, the standardized statistic \\(\\frac{\\bar{x}-\\mu}{s/\\sqrt{n}}\\) is approximately \\(t\\)-distributed with \\(n-1\\) degrees of freedom\n\\[\n\\frac{\\bar{x}-\\mu}{s/\\sqrt{n}} \\sim t\\big(\\text{df}= n-1\\big)\n\\]\nwhenever one of the following conditions holds:\n\n\\(n\\geq 30\\), or\nThe population distribution is approximately Normal.\n\n\n\n\n\nBig Takeaway: We will be doing:\n\n\nThe “Z-Score Way” of calculating Hypothesis Test P-Values\nThe Standard-Error Method of calculating Confidence Intervals\n\n\nbut we use the \\(t\\)-distribution (with \\(df=n-1\\)) for (i) probabilities, and (ii) critical values"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#implications-heavier-tails",
+    "href": "slides/lecture31_tbi-means.html#implications-heavier-tails",
+    "title": "STAT 141",
+    "section": "Implications: Heavier Tails",
+    "text": "Implications: Heavier Tails\n\nHypothesis Tests: the “Z-Score Way” of calculating P-Values, but use \\(t\\)-distribution (with \\(df=n-1\\)) for probabilities (instead of standard normal)\n\n\nConfidence Intervals: the Standard-Error Method, but use \\(t\\)-distribution (with \\(df=n-1\\)) for critical values (instead of standard normal)\n\n\nReminder: The \\(t\\)-distribution has heavier tails than the Normal distribution\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDiscuss with Neighbors: What are the implications of the heavier tails for:\n\ncalculating P-Values (i.e., are they bigger, smaller, or the same?)\ncalculating Confidence Intervals (i.e., are they wider, narrower, or the same?)"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#implications-heavier-tails-1",
+    "href": "slides/lecture31_tbi-means.html#implications-heavier-tails-1",
+    "title": "STAT 141",
+    "section": "Implications: Heavier Tails",
+    "text": "Implications: Heavier Tails\n\n\n\n\n\n\n\n\n\n\n\n\nImplications for P-Values?\n\nThey get bigger! (i.e., harder to reject \\(H_0\\))\n\nImplications for Confidence Intervals?\n\nThey get wider! (i.e., more uncertainty)\n\n\n\n\nQ: What is the intuition for this?\n\nReminder: We’re using the \\(t\\)-distribution because we had one extra parameter we needed to estimate: \\(\\sigma\\) (population SD)\nWhen we estimate \\(\\sigma\\) with \\(s\\) (sample SD), we gain uncertainty!"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#implications-sample-size",
+    "href": "slides/lecture31_tbi-means.html#implications-sample-size",
+    "title": "STAT 141",
+    "section": "Implications: Sample Size",
+    "text": "Implications: Sample Size\nReminder: In a \\(t\\)-distribution,\n\nLower degrees of freedom (\\(df\\)) \\(\\implies\\) heavier tails\nGet closer to the Normal distribution as degrees of freedom increases\n\n\n\n\nQ: What does this imply about using the \\(t\\)-distribution versus the standard normal distribution as \\(n\\) increases?\n\nThe difference becomes negligible!\nThey would give about the same P-Values and Confidence Intervals when \\(n\\) is large.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDoes this make sense intuitively?\n\nWhen our sample is large, we expect \\(s\\) to be a close estimate of \\(\\sigma\\)"
+  },
+  {
+    "objectID": "slides/lecture31_tbi-means.html#next-time",
+    "href": "slides/lecture31_tbi-means.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time",
+    "text": "Next time\n\nTheory-based inference for difference-in-means\nActivity"
   }
 ]

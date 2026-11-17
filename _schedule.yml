@@ -476,8 +476,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading33.qmd
-            # - type: Slides
-            #   href: slides/lecture31_tbi-means.qmd
+            - type: Slides
+              href: slides/lecture31_tbi-means.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture31_tbi-means_handout.pdf
         - topic: "Lab: Theory-Based Inference | Quiz 8"
           display-date: Thursday, Nov 19
           date: 11/19/26

@@ -109,7 +109,7 @@ The short answer is: nothing! You could argue that we would be fine with 9 or th
 
 We can investigate the interplay between $n$ and $p$ and the shape of the sampling distribution of $\hat{p}$ by using simulations. We've written a simple app to do this in `R`. To use it, open the `app.R` file in this homework folder, and without changing anything in the file, click "Run App" (towards the right corner on the bar where you normally see "Render").
 
-Play around with the app to investigate how the shape, center, and spread of the distribution of $\hat{p}$ changes as $n$ and $p$ changes.
+Play around with the app to investigate how the shape, center, and spread of the distribution of $\hat{p}$ changes as $n$ and $p$ changes. **NOTE:** When $n$ is large, you will need to adjust the x-axis min and max values to see the distribution (make sure these include $p$).
 
 
 
@@ -191,7 +191,7 @@ You should use a combination of code and text to show and explain your work.
 
 
 
-**d.** Using theory-based inference methods, construct a 90% confidence interval for this difference in proportions using *percentiles*. [Only code is needed for this question]
+**d.** Using theory-based inference methods, construct a 90% confidence interval for this difference in proportions using *the percentile method*. [Only code is needed for this question]
 
 *******************************************************************************
 
@@ -219,7 +219,7 @@ You should use a combination of code and text to show and explain your work.
 
 ## Exercise 4: Inference with a Single Mean
 
-Let's now return to the combined [Opportunity Insights dataset](http://www.equality-of-opportunity.org/data/) and college endowment data set from Homework 5. For the purpose of this lab, let's proceed as if this is a random sample of elite colleges in the U.S, and that we want to make inferences about the *average* endowment assets per student in 2016 across all elite colleges.
+Let's now return to the combined [Opportunity Insights dataset](http://www.equality-of-opportunity.org/data/) and college endowment data set from Homework 5. For the purpose of this lab, let's proceed as if this is a random sample of elite colleges in the U.S, and assume that we want to make inferences about the *average* endowment assets per student in 2016 across all elite colleges.
 
 ```{r}
 load("data/colleges_endow.Rdata")
