@@ -30,8 +30,8 @@ website:
         text: Syllabus
       - href: office_hours.qmd
         text: Office Hours
-      # - href: inference_cheatsheet.qmd
-      #   text: Inference Summary Tables
+      - href: inference_cheatsheet.qmd
+        text: Inference Summary Tables
     tools:
       - icon: chat-dots-fill
         href: https://stat141-fall2026.slack.com

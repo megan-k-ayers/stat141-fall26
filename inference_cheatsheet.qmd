@@ -63,45 +63,33 @@ symbols %>%
 ```
 
 
-### Common Test Statistics and Approximate Distributions (Hypothesis Testing)
+### Common Test Statistics and Theoretical Null Distributions (Hypothesis Testing)
 
 ```{r, message=FALSE, warning=FALSE, echo = FALSE}
 library(knitr)
 library(kableExtra)
-dists <- data.frame(Response = c("quantitative", "categorical",
-                                 "quantitative", "categorical",
-                                 # "quantitative",
-                                 "quantitative"
-                                 # "quantitative", "categorical"
+dists <- data.frame(Numerical_Quantity = c("mean", 
+                                           "proportion",
+                                           "difference in means",
+                                           "difference in proportions",
+                                           # "correlation",
+                                           "regression coefficient"
+                                           # "difference in many means",
+                                           # "difference in many proportions"
 ),
-Explanatory = c("-", "-",
-                "categorical",
-                "categorical",
-                # "quantitative",
-                "quant and/or cat"
-                # "categorical",
-                # "categorical"
+Common_H0 = c("$\\mu = \\mu_0$", "$p = p_0$", "$\\mu_1 - \\mu_2 = 0$", "$p_1 - p_2 = 0$", "$\\beta = 0$"
 ),
-Numerical_Quantity = c("mean", 
-                       "proportion",
-                       "difference in means",
-                       "difference in proportions",
-                       # "correlation",
-                       "regression coefficient"
-                       # "difference in many means",
-                       # "difference in many proportions"
-),
-Test_Statistic = c("$\\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$",
-                   "$\\frac{\\hat{p} - p_0}{\\sqrt{\\frac{p_0(1 - p_0)}{n}}}$",
-                   "$\\frac{\\bar{x}_1 - \\bar{x}_2 - 0}{\\sqrt{\\frac{s^2_1}{n_1} + \\frac{s^2_2}{n_2}}}$",
-                   "$(\\hat{p}_1 - \\hat{p}_2 - 0) / \\sqrt{\\frac{\\hat{p}_{pooled}(1 - \\hat{p}_{pooled})}{n_1} + \\frac{\\hat{p}_{pooled}(1 - \\hat{p}_{pooled})}{n_2}}$",
+Test_Statistic = c("$\\dfrac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}$",
+                   "$\\widehat{p}$",
+                   "$\\dfrac{\\bar{x}_1 - \\bar{x}_2 - 0}{\\sqrt{\\dfrac{s^2_1}{n_1} + \\dfrac{s^2_2}{n_2}}}$",
+                   "$\\widehat{p}_1 - \\widehat{p}_2$",
                    # "$\\frac{r - 0}{\\sqrt{\\frac{1 - r^2}{n - 2}}}$",
-                   "$\\frac{\\hat{\\beta} - 0}{\\widehat{SE}(\\hat{\\beta})}$"
+                   "$\\dfrac{\\widehat{\\beta} - 0}{\\widehat{SE}(\\widehat{\\beta})}$"
                    # "$F = \\frac{\\mbox{avg. variation between groups}}{\\mbox{avg. variation within groups}}$",
                    # "$\\chi^2 = \\sum_{cells}\\left(\\frac{\\mbox{observed - expected}}{\\sqrt{\\mbox{expected}}}\\right)^2$"
 ),
-Distribution = c("$t(df = n - 1)$", "$N(0, 1)$", "$t(df = \\min(n_1, n_2) - 1)$",
-                 "$N(0, 1)$", # "$t(df = n - 2)$",
+Null_Distribution = c("$t(df = n - 1)$", "$N \\left(p_0, \\sqrt{\\frac{p_0(1 - p_0)}{n}} \\right)$", "$t(df = \\min(n_1, n_2) - 1)$",
+                 "$N \\left( 0, \\sqrt{\\dfrac{\\hat{p}_{pooled}(1 - \\hat{p}_{pooled})}{n_1} + \\dfrac{\\hat{p}_{pooled}(1 - \\hat{p}_{pooled})}{n_2}} \\right)$", # "$t(df = n - 2)$",
                  "$t(df = n - p)$"
                  # "$F(df1 = K - 1, df2 = n - K)$", "$\\chi^2(df = (k - 1)(j - 1))$"
 ),
@@ -116,7 +104,7 @@ Assumptions = c("$n \\geq 30$ or data are normal",
 ))
 
 dists %>% 
-  kableExtra::kbl(format="markdown") 
+  kableExtra::kbl(format="markdown")
 
 ```
 
@@ -125,16 +113,7 @@ dists %>%
 ```{r, message=FALSE, warning=FALSE, echo = FALSE}
 library(knitr)
 library(kableExtra)
-cis <- data.frame(Response = c("quantitative", "categorical",
-                                   "quantitative", "categorical",
-                                   # "quantitative",
-                               "quantitative"),
-                         Explanatory = c("-", "-",
-                                         "categorical",
-                                         "categorical",
-                                         # "quantitative", 
-                                         "quant and/or cat"),
-                         Numerical_Quantity = c("mean", 
+cis <- data.frame(Numerical_Quantity = c("mean", 
                                                 "proportion",
                                                 "difference in means",
                                                 "difference in proportions",
@@ -142,11 +121,11 @@ cis <- data.frame(Response = c("quantitative", "categorical",
                                                 "regression coefficient"),
                          Confidence_Interval = c("$\\bar{x} \\pm t^*s/\\sqrt{n}$",
                                             "$\\hat{p} \\pm z^* \\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}$",
-                                            "$\\bar{x}_1 - \\bar{x}_2 \\pm t^* \\sqrt{\\frac{s^2_1}{n_1} + \\frac{s^2_2}{n_2}}$",
-                                            "$\\hat{p}_1 - \\hat{p}_2 \\pm z^* \\sqrt{\\frac{\\hat{p}_1(1 - \\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1 - \\hat{p}_2)}{n_2}}$",
+                                            "$(\\bar{x}_1 - \\bar{x}_2) \\pm t^* \\sqrt{\\frac{s^2_1}{n_1} + \\frac{s^2_2}{n_2}}$",
+                                            "$(\\hat{p}_1 - \\hat{p}_2) \\pm z^* \\sqrt{\\frac{\\hat{p}_1(1 - \\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1 - \\hat{p}_2)}{n_2}}$",
                                             # "$r \\pm t^* \\sqrt{\\frac{1 - r^2}{n - 2}}$",
                                             "$\\hat{\\beta} \\pm t^* \\widehat{SE}(\\hat{\\beta})$"),
-                    Distribution = c("$t(df = n - 1)$", "$N(0, 1)$", "$t(df = \\min(n_1, n_2) - 1)$",
+                    Critical_Value_Distribution = c("$t(df = n - 1)$", "$N(0, 1)$", "$t(df = \\min(n_1, n_2) - 1)$",
                                      "$N(0, 1)$",
                                      # "$t(df = n - 2)$",
                                      "$t(df = n - p)$"),

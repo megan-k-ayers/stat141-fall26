@@ -146,7 +146,7 @@ Although formal confidence intervals and hypothesis tests don't show up in the r
 
 
 
-**b.** Using theory-based inference methods in R, calculate an 80% confidence confidence interval for the proportion of atheists in the US in 2012. [Code only for this part]
+**b.** Using theory-based inference methods in R, calculate an 80% confidence confidence interval for the proportion of atheists in the US in 2012 using **first the SE method, and then the percentile method**. [Code only for this part]
 
 *******************************************************************************
 

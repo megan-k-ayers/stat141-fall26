@@ -84,6 +84,125 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture32_tbi-diff-means.html#goals-for-today",
+    "href": "slides/lecture32_tbi-diff-means.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\nPerform inference on the difference in two means\nRecap Theory-Based Inference so far\nWork on an activity with difference in means"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#difference-in-means",
+    "href": "slides/lecture32_tbi-diff-means.html#difference-in-means",
+    "title": "STAT 141",
+    "section": "Difference in Means",
+    "text": "Difference in Means\n\nToday, we’ll study inference on a difference in means, \\(\\mu_1-\\mu_2\\)\n“Difference in Means” comes up all the time in the real world:\n\nAre average home prices in Portland and Seattle different?\nDoes coffee improve test performance (compared to a control)?\nIs there a difference in birth weight for babies whose birth parent smoked?\n\n\n\n\nTo answer these questions, we’ll perform inference.\n\nBut we need (yet again) to derive a new sampling distribution"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#difference-in-means-populations-parameter-samples-statistic",
+    "href": "slides/lecture32_tbi-diff-means.html#difference-in-means-populations-parameter-samples-statistic",
+    "title": "STAT 141",
+    "section": "Difference in Means: Populations, Parameter, Samples, Statistic",
+    "text": "Difference in Means: Populations, Parameter, Samples, Statistic\n\nPopulations: Population 1, and Population 2\nParameter: The parameter is: \\(\\mu_1 - \\mu_2\\) = Difference in population means, where\n\n\\(\\mu_1\\)=Mean in Population 1\n\\(\\mu_2\\)=Mean in Population 2\n\nSamples:\n\nSample 1: \\(n_1\\) individuals from Population 1\nSample 2: \\(n_2\\) individuals from Population 2\n\nStatistic: The statistic is: \\(\\bar{x}_1 - \\bar{x}_2\\) = Difference in sample means, where\n\n\\(\\bar{x}_1\\)=Mean in Sample 1\n\\(\\bar{x}_2\\)=Mean in Sample 2"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means",
+    "href": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means",
+    "title": "STAT 141",
+    "section": "Distribution of a Difference in Means",
+    "text": "Distribution of a Difference in Means\n\n\nWe know the (large-sample) sampling distributions of \\(\\bar{x}_1\\) and \\(\\bar{x}_2\\) individually:\n\\[\n  \\begin{align*}\n    \\bar{x}_1 &\\sim \\text{Normal} \\biggr( \\mu_1, \\frac{\\sigma_1}{\\sqrt{n_1}} \\biggr) \\\\\n    \\bar{x}_2 &\\sim \\text{Normal} \\biggr( \\mu_2, \\frac{\\sigma_2}{\\sqrt{n_2}} \\biggr)\n  \\end{align*}\n\\]\nwhere \\(\\sigma_1\\) and \\(\\sigma_2\\) are the SDs in the populations.\n\n\n\nWe also know that for z-scores under certain conditions,\n\\[\n  \\begin{align*}\n    &\\frac{\\bar{x}_1 - \\mu_1}{s_1 / \\sqrt{n_1}} \\sim t(df=n_1-1) \\\\\n    &\\frac{\\bar{x}_2 - \\mu_2}{s_2 / \\sqrt{n_2}} \\sim t(df=n_2-1)\n  \\end{align*}\n\\]\nwhere \\(s_1\\) and \\(s_2\\) are the SDs in the samples.\n\n\nMain Takeaway: Were we to do Inference for One Mean for each sample, we could use\n\nThe “Z-Score Way” of calculating Hypothesis Test P-Values\nThe Standard-Error Method of calculating Confidence Intervals\nBoth using the \\(t\\)-distribution: \\(df=n_1-1\\) for Sample 1, and \\(df=n_2-1\\) for Sample 2."
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means-1",
+    "href": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means-1",
+    "title": "STAT 141",
+    "section": "Distribution of a Difference in Means",
+    "text": "Distribution of a Difference in Means\n\nParameter: \\(\\mu_1 - \\mu_2\\) = Difference in population means\nStatistic: \\(\\bar{x}_1 - \\bar{x}_2\\) = Difference in sample means\nAgain, we’ll be using the:\n\nThe “Z-Score Way” of calculating Hypothesis Test P-Values\nThe Standard-Error Method of calculating Confidence Intervals\n\n\n\nBut first need to derive the distribution of the standardized statistic \\[\n  \\color{red}{\\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1 - \\mu_2)}{\\widehat{SE}}}\n\\] where \\(\\widehat{SE}\\) will be a formula where we replace \\(\\sigma_1\\) with \\(s_1\\) and \\(\\sigma_2\\) with \\(s_2\\).\n\n\n\nBut what is that formula for the SE?"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#reminder-subtracting-independent-normal-distributions",
+    "href": "slides/lecture32_tbi-diff-means.html#reminder-subtracting-independent-normal-distributions",
+    "title": "STAT 141",
+    "section": "Reminder: Subtracting (Independent) Normal Distributions",
+    "text": "Reminder: Subtracting (Independent) Normal Distributions\nDifferences of Normal Distributions: Given two independent normal distributions\n\\[\n  \\begin{align*}\n    X \\sim \\text{Normal}(\\mu_X, \\sigma_X) \\qquad \\text{and} \\qquad Y \\sim \\text{Normal}(\\mu_Y, \\sigma_Y)\n  \\end{align*}\n\\]\nThen,\n\\[\n    \\begin{align*}\n    \\color{red}{\\boxed{X - Y \\sim N\\biggr(\\mu_X - \\mu_Y, \\sqrt{\\sigma_X^2  + \\sigma_Y^2} \\biggr)}}\n  \\end{align*}\n\\]\n\nMean: Difference in the means of the two distributions\nSD: A “combination” of the SDs of the two distributions"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means-2",
+    "href": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means-2",
+    "title": "STAT 141",
+    "section": "Distribution of a Difference in Means",
+    "text": "Distribution of a Difference in Means\n\n\nWe know:\n\\[\n\\begin{align*}\n    \\bar{x}_1 &\\sim \\text{Normal} \\biggr( \\mu_1, \\frac{\\sigma_1}{\\sqrt{n_1}} \\biggr) \\\\\n    \\bar{x}_2 &\\sim \\text{Normal} \\biggr( \\mu_2, \\frac{\\sigma_2}{\\sqrt{n_2}} \\biggr)\n  \\end{align*}\n\\]\n\nSo: \\[\n    \\color{red}{\\bar{x}_1 -  \\bar{x}_2 \\sim \\text{Normal} \\biggr( \\mu_1 - \\mu_2, \\sqrt{\\frac{\\sigma^2_1}{n_1} + \\frac{\\sigma^2_2}{n_2}} \\biggr)}\n\\]\n\n\nThat means our standardized statistic should be: \\[\n  \\color{red}{\\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1 - \\mu_2)}{\\sqrt{\\frac{s^2_1}{n_1} + \\frac{s^2_2}{n_2}}}}\n\\]\n\n\nQ: What kind of distribution do you think this will follow?\n\n\\(t\\)-distribution! This time with \\(df=\\min\\{n_1 -1, n_2 -1\\}\\)"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means-3",
+    "href": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means-3",
+    "title": "STAT 141",
+    "section": "Distribution of a Difference in Means",
+    "text": "Distribution of a Difference in Means\n\n\n\nTheorem: Distribution of (Standardized) Difference in Means\n\n\nGiven two simple random samples,\n\nSample 1: \\(n_1\\) observations; sample mean \\(\\bar{x}_1\\); sample SD \\(s_1\\)\nSample 2: \\(n_2\\) observations; sample mean \\(\\bar{x}_2\\); sample SD \\(s_2\\)\n\nfrom two populations,\n\nPopulation 1: true mean \\(\\mu_1\\); true SD \\(\\sigma_1\\)\nPopulation 2: true mean \\(\\mu_2\\); true SD \\(\\sigma_2\\)\n\nthe standardized difference of sample means has the approximate distribution:\n\\[\n\\frac{(\\bar{x}_1 - \\bar{x}_2) - (\\mu_1 - \\mu_2)}{\\sqrt{ \\frac{s^2_1}{n_1} + \\frac{s_2^2}{n_2}}} \\sim t\\Big(\\text{df}=\\min\\{n_1 -1, n_2 -1\\}\\Big)\n\\]\nwhen the following conditions hold:\n\nThe two samples are independent\n\\(n_1\\geq30\\), OR Population 1 is approximately Normally distributed\n\\(n_2\\geq30\\), OR Population 2 is approximately Normally distributed."
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means-implications",
+    "href": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means-implications",
+    "title": "STAT 141",
+    "section": "Distribution of a Difference in Means: Implications",
+    "text": "Distribution of a Difference in Means: Implications\nHypothesis Tests: For the null hypothesis (\\(H_0\\)),\n\\[\nH_0: \\mu_1 - \\mu_2 = \\delta_0\n\\]\nWe will first turn our statistic \\(\\bar{x}_1 - \\bar{x}_2\\) into a “Z-Score” (assuming \\(H_0\\)),\n\\[\n  \\frac{(\\bar{x}_1 - \\bar{x}_2) - \\delta_0}{\\sqrt{ \\frac{s^2_1}{n_1} + \\frac{s_2^2}{n_2}}}\n\\]\n\nThe P-Value is the probability we get the z-score or anything more extreme in the direction of \\(H_a\\) according to a \\(t\\)-distribution with \\(\\text{df}=\\min\\{n_1 -1, n_2 -1\\}\\).\n\nOften, \\(\\delta_0 = 0\\) (i.e., \\(H_0: \\mu_1 - \\mu_2 =0\\))"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means-implications-1",
+    "href": "slides/lecture32_tbi-diff-means.html#distribution-of-a-difference-in-means-implications-1",
+    "title": "STAT 141",
+    "section": "Distribution of a Difference in Means: Implications",
+    "text": "Distribution of a Difference in Means: Implications\nConfidence Intervals: For a \\(C%\\) interval, we calculate\n\\[\n\\underbrace{(\\bar{x}_1 - \\bar{x}_2)}_{\\text{Statistic}} \\pm t^{*} \\underbrace{\\sqrt{ \\frac{s^2_1}{n_1} + \\frac{s_2^2}{n_2}}}_{\\widehat{\\text{SE}}}\n\\]\nwhere \\(t^*\\) is the appropriate critical value (using the \\((\\frac{100+C}{2})\\)th percentile) from a \\(t\\)-distribution with \\(\\text{df}=\\min\\{n_1 -1, n_2 -1\\}\\)."
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#example-penguin-weight-by-species",
+    "href": "slides/lecture32_tbi-diff-means.html#example-penguin-weight-by-species",
+    "title": "STAT 141",
+    "section": "Example: Penguin Weight, by Species",
+    "text": "Example: Penguin Weight, by Species\nEx: Do Adelie penguins and Gentoo penguins differ by weight?\n\nSamples: We randomly sample each penguin species:\n\nAdelie: \\(n_1=50\\), \\(\\bar{x}_1=36.1\\) pounds, \\(s_1=5\\) pounds.\nGentoo: \\(n_2=55\\), \\(\\bar{x}_2=32.3\\) pounds, \\(s_2=10\\) pounds.\n\n\nConditions:\n\nEach sample has more than 30 observations\nThe samples are independent\n\n\n\nLet’s proceed with inference!"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#confidence-intervals",
+    "href": "slides/lecture32_tbi-diff-means.html#confidence-intervals",
+    "title": "STAT 141",
+    "section": "Confidence Intervals",
+    "text": "Confidence Intervals\n\n\\(t\\) Distribution: \\(t(\\text{df}=\\min\\{50 -1, 55 -1\\}) = \\color{red}{t(\\text{df}=49)}\\)\nConfidence Interval Our C% confidence interval is \\((\\bar{x}_1 - \\bar{x}_2) \\pm t^*\\sqrt{\\frac{s_1^2}{n_1}+\\frac{s_2^2}{n_2}}\\), where \\(t^*\\) is the critical value from a t-distribution with \\(49\\) degrees of freedom.\n\nFor 95%, this is the 0.975 quantile:\n\n\n\n\nqt(p=0.975, df=49)\n\n[1] 2.009575\n\n\n\n\nThus, we are 95% confident that the mean difference in weights is between \\[\\begin{aligned}(36.1-32.3) \\pm 2.01\\sqrt{ \\frac{5^2}{50} + \\frac{10^2}{55}} \\implies 3.8\\pm 3.059 \\implies (0.74, 6.9)\n\\end{aligned}\\]\nConclusion?"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#hypothesis-test",
+    "href": "slides/lecture32_tbi-diff-means.html#hypothesis-test",
+    "title": "STAT 141",
+    "section": "Hypothesis Test",
+    "text": "Hypothesis Test\nState Hypotheses: \\[ H_0: \\mu_{1} - \\mu_{2} = 0 \\qquad H_a: \\mu_{1} - \\mu_{2} \\neq 0 \\]\n\nNull Distribution: \\[\\frac{(\\bar{x}_1 - \\bar{x}_2) - (0)}{\\sqrt{ \\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}} \\sim t\\Big(\\text{df}=\\min\\{n_1 -1, n_2 -1\\}\\Big)\\]\n\n\nStandardized Statistic: Turn the observed statistic \\((\\bar{x}_1 - \\bar{x}_2)\\) into a Z-Score (assuming \\(H_0\\)), \\[\\frac{(36.1-32.3)-(0)}{\\sqrt{\\frac{5^2}{50}+\\frac{10^2}{55}}} = 2.497\\]"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#hypothesis-test-continued",
+    "href": "slides/lecture32_tbi-diff-means.html#hypothesis-test-continued",
+    "title": "STAT 141",
+    "section": "Hypothesis Test (continued)",
+    "text": "Hypothesis Test (continued)\nCalculate p-value:\n\n\n\n\nNull Distribution: \\(t(\\text{df}=49)\\)\nStandardized Statistic: \\(2.497\\)\n\n\n\n\nTwo-sided hypothesis test\n\n\n2*(1 - pt(2.497, 49))\n\n[1] 0.01593462\n\n\n\n\n\nSide note: suppose we defined our difference the other way:\n\n\nmy_stat &lt;- -2.497\n2*(1 - pt(abs(my_stat), 49))\n\n[1] 0.01593462\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConclusion: The P-Value = 0.016, so we reject null hypothesis with a significance level of \\(\\alpha = 0.05\\) (but not \\(\\alpha = 0.01\\))."
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#steps",
+    "href": "slides/lecture32_tbi-diff-means.html#steps",
+    "title": "STAT 141",
+    "section": "Steps",
+    "text": "Steps\n\nEspecially when relying on standardization (i.e., Z Scores), the theory-based inference procedures we’ve studied follow the same general steps.\n\n1. Determine what parameter are we estimating\n\nSingle mean or proportion? Difference in means or proportions?\n\n\n\n2. Check conditions for inference\n\ne.g., for one proportion: 10 or more successes and 10 or more failures\n\n\n\n3. Use theoretical distribution to conduct a hypothesis test or confidence interval\n\n\n\n\nHypothesis Test: Turn statistic into a \\(Z\\)-Score\n\\[\n\\frac{\\text{Statistic} - \\text{Null Value}}{\\text{SE}}\n\\]\nand calculate the corresponding P-Value according to\n\nThe standard normal distribution (for proportions), or\nthe appropriate \\(t\\)-distribution (for means).\n\n\nConfidence Interval: Calculate\n\\[\n\\text{Statistic} \\pm \\text{Critical_Value}*SE\n\\]\nwhere the \\(\\text{Critical_Value}\\) is the appropriate quantile from\n\nThe standard normal distribution (for proportions), or\nthe appropriate \\(t\\)-distribution (for means)."
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#activity-average-home-price-between-seattle-and-portland",
+    "href": "slides/lecture32_tbi-diff-means.html#activity-average-home-price-between-seattle-and-portland",
+    "title": "STAT 141",
+    "section": "Activity: Average Home Price between Seattle and Portland",
+    "text": "Activity: Average Home Price between Seattle and Portland\nSuppose you’re interested in comparing average home price between Seattle and Portland\n\nYou randomly sample \\(n_1=50\\) Seattle homes, and find \\(\\bar{x}_1=0.95M\\), \\(s_1=0.15M\\).\nYou randomly sample \\(n_2=35\\) Portland homes, and find \\(\\bar{x}_2=0.70M\\), \\(s_2=0.35M\\).\n\n\n\nWith Neighbor(s): Choose a question below and work through it on the board.\n\n\n\nConfidence Intervals\n\nFind a 80% confidence interval for the difference in average home price.\nAre we 80% confident there’s actually a difference?\n\n\nHypothesis Testing\n\nYou’ve heard there’s no difference between Seattle and Portland!\nTest your claim using a hypothesis test (with a significance level of \\(\\alpha = 0.01\\)).\n\n\n\nIf you finish early, do the other question!"
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#next-time",
+    "href": "slides/lecture32_tbi-diff-means.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time:",
+    "text": "Next time:\n\nStart inference for regression!"
+  },
+  {
     "objectID": "slides/lecture30_tbi-proportions.html#goals-for-today",
     "href": "slides/lecture30_tbi-proportions.html#goals-for-today",
     "title": "STAT 141",
@@ -2030,6 +2149,20 @@
     "text": "Demo: Finding the lab files, tour of RStudio, starting the lab"
   },
   {
+    "objectID": "readings/reading36.html",
+    "href": "readings/reading36.html",
+    "title": "Stat 141: Readings for November 25, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS 24.6-24.7"
+  },
+  {
+    "objectID": "readings/reading36.html#reading",
+    "href": "readings/reading36.html#reading",
+    "title": "Stat 141: Readings for November 25, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS 24.6-24.7"
+  },
+  {
     "objectID": "readings/reading34.html",
     "href": "readings/reading34.html",
     "title": "Stat 141: Readings for November 20, 2026",
@@ -2244,7 +2377,7 @@
     "href": "inference_cheatsheet.html",
     "title": "Theory-Based Inference Summary",
     "section": "",
-    "text": "Notation for Parameters and Statistics\n\n\n\n\n\n\n\n\n\n\n\n\nResponse\nExplanatory\nNumerical_Quantity\nParameter\nStatistic\n\n\n\n\nquantitative\n-\nmean\n\\(\\mu\\)\n\\(\\bar{x}\\)\n\n\ncategorical\n-\nproportion\n\\(p\\)\n\\(\\hat{p}\\)\n\n\nquantitative\ncategorical\ndifference in means\n\\(\\mu_1 - \\mu_2\\)\n\\(\\bar{x}_1 - \\bar{x}_2\\)\n\n\ncategorical\ncategorical\ndifference in proportions\n\\(p_1 - p_2\\)\n\\(\\hat{p}_1 - \\hat{p}_2\\)\n\n\nquantitative\nquantitative\ncorrelation\n\\(\\rho\\)\n\\(r\\)\n\n\nquantitative\nquant and/or cat\nregression coefficient\n\\(\\beta\\)\n\\(\\hat{\\beta}\\)\n\n\n\n\n\n\n\nCommon Test Statistics and Approximate Distributions (Hypothesis Testing)\n\n\n\n\n\n\n\n\n\n\n\n\n\nResponse\nExplanatory\nNumerical_Quantity\nTest_Statistic\nDistribution\nAssumptions\n\n\n\n\nquantitative\n-\nmean\n\\(\\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}\\)\n\\(t(df = n - 1)\\)\n\\(n \\geq 30\\) or data are normal\n\n\ncategorical\n-\nproportion\n\\(\\frac{\\hat{p} - p_0}{\\sqrt{\\frac{p_0(1 - p_0)}{n}}}\\)\n\\(N(0, 1)\\)\n10 successes, 10 failures\n\n\nquantitative\ncategorical\ndifference in means\n\\(\\frac{\\bar{x}_1 - \\bar{x}_2 - 0}{\\sqrt{\\frac{s^2_1}{n_1} + \\frac{s^2_2}{n_2}}}\\)\n\\(t(df = \\min(n_1, n_2) - 1)\\)\n\\(n_1, n_2 \\geq 30\\) or data are normal, independent samples\n\n\ncategorical\ncategorical\ndifference in proportions\n\\((\\hat{p}_1 - \\hat{p}_2 - 0) / \\sqrt{\\frac{\\hat{p}_{pooled}(1 - \\hat{p}_{pooled})}{n_1} + \\frac{\\hat{p}_{pooled}(1 - \\hat{p}_{pooled})}{n_2}}\\)\n\\(N(0, 1)\\)\n10 successes, 10 failures in each category, independent samples\n\n\nquantitative\nquant and/or cat\nregression coefficient\n\\(\\frac{\\hat{\\beta} - 0}{\\widehat{SE}(\\hat{\\beta})}\\)\n\\(t(df = n - p)\\)\nLINE conditions\n\n\n\n\n\n\n\nCommon Distribution-Based Confidence Interval Formulae\n\n\n\n\n\n\n\n\n\n\n\n\n\nResponse\nExplanatory\nNumerical_Quantity\nConfidence_Interval\nDistribution\nAssumptions\n\n\n\n\nquantitative\n-\nmean\n\\(\\bar{x} \\pm t^*s/\\sqrt{n}\\)\n\\(t(df = n - 1)\\)\n\\(n \\geq 30\\) or data are normal\n\n\ncategorical\n-\nproportion\n\\(\\hat{p} \\pm z^* \\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}\\)\n\\(N(0, 1)\\)\n10 successes, 10 failures\n\n\nquantitative\ncategorical\ndifference in means\n\\(\\bar{x}_1 - \\bar{x}_2 \\pm t^* \\sqrt{\\frac{s^2_1}{n_1} + \\frac{s^2_2}{n_2}}\\)\n\\(t(df = \\min(n_1, n_2) - 1)\\)\n\\(n_1, n_2 \\geq 30\\) or data are normal, independent samples\n\n\ncategorical\ncategorical\ndifference in proportions\n\\(\\hat{p}_1 - \\hat{p}_2 \\pm z^* \\sqrt{\\frac{\\hat{p}_1(1 - \\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1 - \\hat{p}_2)}{n_2}}\\)\n\\(N(0, 1)\\)\n10 successes, 10 failures in each category, independent samples\n\n\nquantitative\nquant and/or cat\nregression coefficient\n\\(\\hat{\\beta} \\pm t^* \\widehat{SE}(\\hat{\\beta})\\)\n\\(t(df = n - p)\\)\nLINE conditions"
+    "text": "Notation for Parameters and Statistics\n\n\n\n\n\n\n\n\n\n\n\n\nResponse\nExplanatory\nNumerical_Quantity\nParameter\nStatistic\n\n\n\n\nquantitative\n-\nmean\n\\(\\mu\\)\n\\(\\bar{x}\\)\n\n\ncategorical\n-\nproportion\n\\(p\\)\n\\(\\hat{p}\\)\n\n\nquantitative\ncategorical\ndifference in means\n\\(\\mu_1 - \\mu_2\\)\n\\(\\bar{x}_1 - \\bar{x}_2\\)\n\n\ncategorical\ncategorical\ndifference in proportions\n\\(p_1 - p_2\\)\n\\(\\hat{p}_1 - \\hat{p}_2\\)\n\n\nquantitative\nquantitative\ncorrelation\n\\(\\rho\\)\n\\(r\\)\n\n\nquantitative\nquant and/or cat\nregression coefficient\n\\(\\beta\\)\n\\(\\hat{\\beta}\\)\n\n\n\n\n\n\n\nCommon Test Statistics and Theoretical Null Distributions (Hypothesis Testing)\n\n\n\n\n\n\n\n\n\n\n\n\nNumerical_Quantity\nCommon_H0\nTest_Statistic\nNull_Distribution\nAssumptions\n\n\n\n\nmean\n\\(\\mu = \\mu_0\\)\n\\(\\dfrac{\\bar{x} - \\mu_0}{s/\\sqrt{n}}\\)\n\\(t(df = n - 1)\\)\n\\(n \\geq 30\\) or data are normal\n\n\nproportion\n\\(p = p_0\\)\n\\(\\widehat{p}\\)\n\\(N \\left(p_0, \\sqrt{\\frac{p_0(1 - p_0)}{n}} \\right)\\)\n10 successes, 10 failures\n\n\ndifference in means\n\\(\\mu_1 - \\mu_2 = 0\\)\n\\(\\dfrac{\\bar{x}_1 - \\bar{x}_2 - 0}{\\sqrt{\\dfrac{s^2_1}{n_1} + \\dfrac{s^2_2}{n_2}}}\\)\n\\(t(df = \\min(n_1, n_2) - 1)\\)\n\\(n_1, n_2 \\geq 30\\) or data are normal, independent samples\n\n\ndifference in proportions\n\\(p_1 - p_2 = 0\\)\n\\(\\widehat{p}_1 - \\widehat{p}_2\\)\n\\(N \\left( 0, \\sqrt{\\dfrac{\\hat{p}_{pooled}(1 - \\hat{p}_{pooled})}{n_1} + \\dfrac{\\hat{p}_{pooled}(1 - \\hat{p}_{pooled})}{n_2}} \\right)\\)\n10 successes, 10 failures in each category, independent samples\n\n\nregression coefficient\n\\(\\beta = 0\\)\n\\(\\dfrac{\\widehat{\\beta} - 0}{\\widehat{SE}(\\widehat{\\beta})}\\)\n\\(t(df = n - p)\\)\nLINE conditions\n\n\n\n\n\n\n\nCommon Distribution-Based Confidence Interval Formulae\n\n\n\n\n\n\n\n\n\n\n\nNumerical_Quantity\nConfidence_Interval\nCritical_Value_Distribution\nAssumptions\n\n\n\n\nmean\n\\(\\bar{x} \\pm t^*s/\\sqrt{n}\\)\n\\(t(df = n - 1)\\)\n\\(n \\geq 30\\) or data are normal\n\n\nproportion\n\\(\\hat{p} \\pm z^* \\sqrt{\\frac{\\hat{p}(1 - \\hat{p})}{n}}\\)\n\\(N(0, 1)\\)\n10 successes, 10 failures\n\n\ndifference in means\n\\((\\bar{x}_1 - \\bar{x}_2) \\pm t^* \\sqrt{\\frac{s^2_1}{n_1} + \\frac{s^2_2}{n_2}}\\)\n\\(t(df = \\min(n_1, n_2) - 1)\\)\n\\(n_1, n_2 \\geq 30\\) or data are normal, independent samples\n\n\ndifference in proportions\n\\((\\hat{p}_1 - \\hat{p}_2) \\pm z^* \\sqrt{\\frac{\\hat{p}_1(1 - \\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1 - \\hat{p}_2)}{n_2}}\\)\n\\(N(0, 1)\\)\n10 successes, 10 failures in each category, independent samples\n\n\nregression coefficient\n\\(\\hat{\\beta} \\pm t^* \\widehat{SE}(\\hat{\\beta})\\)\n\\(t(df = n - p)\\)\nLINE conditions"
   },
   {
     "objectID": "readings/reading01.html",
@@ -2462,6 +2595,20 @@
     "title": "Stat 141: Readings for November 18, 2026",
     "section": "",
     "text": "Before coming to lecture today, please read the following material:\n\nIMS 19.0-19.2"
+  },
+  {
+    "objectID": "readings/reading35.html",
+    "href": "readings/reading35.html",
+    "title": "Stat 141: Readings for November 23, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS 24.0-24.5"
+  },
+  {
+    "objectID": "readings/reading35.html#reading",
+    "href": "readings/reading35.html#reading",
+    "title": "Stat 141: Readings for November 23, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS 24.0-24.5"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#goals-for-today",

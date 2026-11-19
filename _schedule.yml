@@ -1,5 +1,5 @@
 scheduled-docs:
-  draft-after: 11/20/26
+  draft-after: 11/25/26
   timezone: "-08:00"
   autonav:
     hybrid:
@@ -483,19 +483,21 @@ scheduled-docs:
         - topic: "Lab: Theory-Based Inference | Quiz 8"
           display-date: Thursday, Nov 19
           date: 11/19/26
-          # docs:
-          #     - type: Download Lab 10
-          #       href: lab/lab10.zip
-          #     - type: Download HW 10
-          #       href: hw/hw10.zip
+          docs:
+              - type: Download Lab 10
+                href: lab/lab10.zip
+              - type: Download HW 10
+                href: hw/hw10.zip
         - topic: "Theory-based Inference IV: Difference in Means"
           display-date: Friday, Nov 20
           date: 11/20/26
           docs:
             - type: Reading
               href: readings/reading34.qmd
-            # - type: Slides
-            #   href: slides/lecture32_tbi-diff-means.qmd
+            - type: Slides
+              href: slides/lecture32_tbi-diff-means.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture31_tbi-means_handout.pdf
       resources:
             - 'Submit assignment 9 (due Thurs 11/19 at 9am)'
             - 'Take Quiz 8 during lab'
@@ -508,17 +510,17 @@ scheduled-docs:
           date: 11/23/26
           docs:
             - type: Reading
-              href: readings/reading36.qmd
-            - type: Slides
-              href: slides/lecture33_reg-inference-slr.qmd
+              href: readings/reading35.qmd
+            # - type: Slides
+            #   href: slides/lecture33_reg-inference-slr.qmd
         - topic: "Inference for Regression II: MLR"
           display-date: Wednesday, Nov 25
           date: 11/25/26
           docs:
             - type: Reading
-              href: readings/reading37.qmd
-            - type: Slides
-              href: slides/lecture34_reg-inference-mlr.qmd
+              href: readings/reading36.qmd
+            # - type: Slides
+            #   href: slides/lecture34_reg-inference-mlr.qmd
         - topic: "No Class (Thanksgiving Break)"
           display-date: Thursday, Nov 26
           date: 11/26/26

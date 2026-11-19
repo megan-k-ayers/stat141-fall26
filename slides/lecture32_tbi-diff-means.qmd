@@ -1,7 +1,7 @@
 ---
 pagetitle: "Theory-Based Inference IV: Difference in Means and Activity"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true

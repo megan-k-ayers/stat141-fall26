@@ -10,5 +10,6 @@ execute:
 
 ## Reading 
 
+-  IMS Ch 22
 No new readings for today! 
 
