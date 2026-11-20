@@ -497,7 +497,7 @@ scheduled-docs:
             - type: Slides
               href: slides/lecture32_tbi-diff-means.qmd
             - type: Slides Printout (Optional)
-              href: handouts/lecture31_tbi-means_handout.pdf
+              href: handouts/lecture32_tbi-diff-means_handout.pdf
       resources:
             - 'Submit assignment 9 (due Thurs 11/19 at 9am)'
             - 'Take Quiz 8 during lab'

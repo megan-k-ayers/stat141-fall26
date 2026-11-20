@@ -77,6 +77,13 @@ theme_set(theme_bw())
 
 ------------------------------------------------------------------------
 
+### Reminders/Announcements
+
+- HW 10 due Thurs 12/3
+- Quiz 7 optional revisions due Fri 12/4
+
+------------------------------------------------------------------------
+
 ## Goals for today
 
 - Perform inference on the **difference in two means**
@@ -586,23 +593,23 @@ Suppose you're interested in comparing average home price between Seattle and Po
 
 ::::: columns
 
-::: {.column width=50% .fragment .nonincremental}
+::: {.column width=50% .fragment .nonincremental style="font-size:0.9em;"}
 
 **Confidence Intervals**
 
-- Find a 80% confidence interval for the difference in average home price.
+- Write out how we'd find a 80% confidence interval for the difference in average home price (including R code).
 
-- Are we 80% confident there's actually a difference?
+- Suppose we get (0.168, \ 0.332). Are we 80% confident there's actually a difference?
 
 :::
 
-::: {.column width=50% .fragment .nonincremental}
+::: {.column width=50% .fragment .nonincremental style="font-size:0.9em;"}
 
 **Hypothesis Testing**
 
 - You've **heard** there's no difference between Seattle and Portland!
 
-- Test your claim using a hypothesis test (with a significance level of $\alpha = 0.01$).
+- Write steps / R code to test your claim using a hypothesis test (with a significance level of $\alpha = 0.01$).
 
 :::
 
@@ -670,7 +677,7 @@ countdown::countdown(12)
 <!-- 2*(1-pt(3.978,df=min(50-1,35-1))) -->
 <!-- ``` -->
 
-<!-- :::  -->
+<!-- ::: -->
 
 <!-- 5. Conclude: We reject the null hypothesis (at the $\alpha = 0.01$ level), in favor of the hypothesis that Portland and Seattle have different average home prices. -->
 
