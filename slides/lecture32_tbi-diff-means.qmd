@@ -626,60 +626,60 @@ Suppose you're interested in comparing average home price between Seattle and Po
 countdown::countdown(12)
 ```
 
-<!-- ------------------------------------------------------------------------ -->
+------------------------------------------------------------------------
 
-<!-- ## Answer Key: Confidence Intervals -->
+## Answer Key: Confidence Intervals
 
-<!-- ::: fragment -->
+::: fragment
 
-<!-- With *independent* samples of size $n_1>30$, $n_2>30$, we can use the t-distribution approximation method. -->
+With *independent* samples of size $n_1>30$, $n_2>30$, we can use the t-distribution approximation method.
 
-<!-- ```{r echo=T} -->
-<!-- qt(0.90, df= min(50-1,35-1)) -->
-<!-- sqrt(0.15^2/50 + 0.35^2/35) -->
-<!-- ``` -->
+```{r echo=T}
+qt(0.90, df= min(50-1,35-1))
+sqrt(0.15^2/50 + 0.35^2/35)
+```
 
-<!-- ::: -->
+:::
 
-<!-- ::: fragment -->
+::: fragment
 
-<!-- $$ -->
-<!-- \begin{align*} -->
-<!-- (\bar{x}_1-\bar{x}_2) \pm t^*\times \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} &= (.95-.70) \pm 1.307 \times 0.06285\\ -->
-<!-- & = (0.1679, \ 0.3321) -->
-<!-- \end{align*} -->
-<!-- $$ -->
+$$
+\begin{align*}
+(\bar{x}_1-\bar{x}_2) \pm t^*\times \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} &= (.95-.70) \pm 1.307 \times 0.06285\\
+& = (0.1679, \ 0.3321)
+\end{align*}
+$$
 
-<!-- ::: -->
+:::
 
-<!-- ::: fragment -->
+::: fragment
 
-<!-- Thus, at the 80% confidence level, we think there is a difference in average home price between Seattle and Portland. -->
+Thus, at the 80% confidence level, we think there is a difference in average home price between Seattle and Portland.
 
-<!-- ::: -->
+:::
 
-<!-- ------------------------------------------------------------------------ -->
+------------------------------------------------------------------------
 
-<!-- ## Answer Key: Hypothesis Testing -->
+## Answer Key: Hypothesis Testing
 
-<!-- 1. Hypotheses: $H_0: \mu_1 -\mu_2 = 0 \quad H_a: \mu_1-\mu_2 \neq 0$ -->
+1. Hypotheses: $H_0: \mu_1 -\mu_2 = 0 \quad H_a: \mu_1-\mu_2 \neq 0$
 
-<!-- 2. Assess Conditions (on previous slide) -->
+2. Assess Conditions (on previous slide)
 
-<!-- 3. Compute test statistic under $H_0$ -->
-<!-- $$t = \frac{(\bar{x}_1 - \bar{x}_{2})-(\mu_1-\mu_{2})}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}} = \frac{(.95-.70)-(0)}{\sqrt{\frac{0.15^2}{50} + \frac{0.35^2}{35} }} = 3.978 $$ -->
+3. Compute test statistic under $H_0$
+$$t = \frac{(\bar{x}_1 - \bar{x}_{2})-(\mu_1-\mu_{2})}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}} = \frac{(.95-.70)-(0)}{\sqrt{\frac{0.15^2}{50} + \frac{0.35^2}{35} }} = 3.978 $$
 
 
-<!-- ::: {.fragment .nonincremental} -->
-<!-- 4. Calculate p-value -->
+::: {.fragment .nonincremental}
+4. Calculate p-value
 
-<!-- ```{r echo=T} -->
-<!-- 2*(1-pt(3.978,df=min(50-1,35-1))) -->
-<!-- ``` -->
+```{r echo=T}
+2*(1-pt(3.978,df=min(50-1,35-1)))
+```
 
-<!-- ::: -->
+:::
 
-<!-- 5. Conclude: We reject the null hypothesis (at the $\alpha = 0.01$ level), in favor of the hypothesis that Portland and Seattle have different average home prices. -->
+5. Conclude: We reject the null hypothesis (at the $\alpha = 0.01$ level), in favor of the hypothesis that Portland and Seattle have different average home prices.
 
 
 <!-- ------------------------------------------------------------------------ -->

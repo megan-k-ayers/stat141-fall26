@@ -196,6 +196,20 @@
     "text": "Activity: Average Home Price between Seattle and Portland\nSuppose you’re interested in comparing average home price between Seattle and Portland\n\nYou randomly sample \\(n_1=50\\) Seattle homes, and find \\(\\bar{x}_1=0.95M\\), \\(s_1=0.15M\\).\nYou randomly sample \\(n_2=35\\) Portland homes, and find \\(\\bar{x}_2=0.70M\\), \\(s_2=0.35M\\).\n\n\n\nWith Neighbor(s): Choose a question below and work through it on the board.\n\n\n\nConfidence Intervals\n\nWrite out how we’d find a 80% confidence interval for the difference in average home price (including R code).\nSuppose we get (0.168,  0.332). Are we 80% confident there’s actually a difference?\n\n\nHypothesis Testing\n\nYou’ve heard there’s no difference between Seattle and Portland!\nWrite steps / R code to test your claim using a hypothesis test (with a significance level of \\(\\alpha = 0.01\\)).\n\n\n\nIf you finish early, do the other question!"
   },
   {
+    "objectID": "slides/lecture32_tbi-diff-means.html#answer-key-confidence-intervals",
+    "href": "slides/lecture32_tbi-diff-means.html#answer-key-confidence-intervals",
+    "title": "STAT 141",
+    "section": "Answer Key: Confidence Intervals",
+    "text": "Answer Key: Confidence Intervals\n\nWith independent samples of size \\(n_1&gt;30\\), \\(n_2&gt;30\\), we can use the t-distribution approximation method.\n\nqt(0.90, df= min(50-1,35-1))\n\n[1] 1.306952\n\nsqrt(0.15^2/50 + 0.35^2/35)\n\n[1] 0.06284903\n\n\n\n\n\\[\n\\begin{align*}\n(\\bar{x}_1-\\bar{x}_2) \\pm t^*\\times \\sqrt{\\frac{s_1^2}{n_1}+\\frac{s_2^2}{n_2}} &= (.95-.70) \\pm 1.307 \\times 0.06285\\\\\n& = (0.1679, \\ 0.3321)\n\\end{align*}\n\\]\n\n\nThus, at the 80% confidence level, we think there is a difference in average home price between Seattle and Portland."
+  },
+  {
+    "objectID": "slides/lecture32_tbi-diff-means.html#answer-key-hypothesis-testing",
+    "href": "slides/lecture32_tbi-diff-means.html#answer-key-hypothesis-testing",
+    "title": "STAT 141",
+    "section": "Answer Key: Hypothesis Testing",
+    "text": "Answer Key: Hypothesis Testing\n\nHypotheses: \\(H_0: \\mu_1 -\\mu_2 = 0 \\quad H_a: \\mu_1-\\mu_2 \\neq 0\\)\nAssess Conditions (on previous slide)\nCompute test statistic under \\(H_0\\) \\[t = \\frac{(\\bar{x}_1 - \\bar{x}_{2})-(\\mu_1-\\mu_{2})}{\\sqrt{\\frac{s_1^2}{n_1}+\\frac{s_2^2}{n_2}}} = \\frac{(.95-.70)-(0)}{\\sqrt{\\frac{0.15^2}{50} + \\frac{0.35^2}{35} }} = 3.978 \\]\n\n\n\nCalculate p-value\n\n\n2*(1-pt(3.978,df=min(50-1,35-1)))\n\n[1] 0.0003448846\n\n\n\n\nConclude: We reject the null hypothesis (at the \\(\\alpha = 0.01\\) level), in favor of the hypothesis that Portland and Seattle have different average home prices."
+  },
+  {
     "objectID": "slides/lecture32_tbi-diff-means.html#next-time",
     "href": "slides/lecture32_tbi-diff-means.html#next-time",
     "title": "STAT 141",
@@ -4961,5 +4975,215 @@
     "title": "STAT 141",
     "section": "Next time",
     "text": "Next time\n\nTheory-based inference for difference-in-means\nActivity"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#goals-for-today",
+    "href": "slides/lecture33_reg-inference-slr.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\nDiscuss theoretical inference for simple linear regression (SLR)\nDiscuss inference with bootstrap for linear models"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#review-of-simple-linear-regression-1",
+    "href": "slides/lecture33_reg-inference-slr.html#review-of-simple-linear-regression-1",
+    "title": "STAT 141",
+    "section": "Review of Simple Linear Regression",
+    "text": "Review of Simple Linear Regression\nWe’ve used linear models to analyze the relationship between two quantitative variables\n\\[\ny = \\beta_0 + \\beta_1 x + \\epsilon\n\\]\n\n\\(\\beta_0\\) and \\(\\beta_1\\) are fixed numbers in our population model\n\\(\\beta_0\\) represents the intercept of a line\n\\(\\beta_1\\) represents the slope of a line\n\n\nPerforming least squares regression gives us our best guess at this model by providing estimates \\(\\widehat{\\beta}_1\\) and \\(\\widehat{\\beta}_2\\) based on our sample data:\n\\[\n\\widehat{y} = \\widehat{\\beta}_0 + \\widehat{\\beta}_1 x\n\\]"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#linear-models-in-r",
+    "href": "slides/lecture33_reg-inference-slr.html#linear-models-in-r",
+    "title": "STAT 141",
+    "section": "Linear Models in R",
+    "text": "Linear Models in R\n\n\nTo fit a linear model in R, we use the lm() function\n\n\nmy_mod &lt;- lm(y ~ x, data = my_data)\n\n\n\n\nTo view coefficients of the model, we use get_regression_table()\n\n\nget_regression_table(my_mod)\n\n# A tibble: 2 × 7\n  term      estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept 1292.      394.         3.28   0.001  509.    2074.   \n2 x           -0.605     0.198     -3.06   0.003   -0.998   -0.212\n\n\n\n\n\nCorrelation can be computed using cor():\n\n\ncor(my_data$x, my_data$y)\n\n[1] -0.295056\n\n\n\n\n\nRecall that \\(\\widehat{\\beta}_1 = \\frac{s_y}{s_x}r\\)\n\n\\(s_y \\geq 0\\) and \\(s_x \\geq 0\\) (\\(s_x = 0\\) or \\(s_y = 0\\) are uninteresting cases)"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#statistical-inference-for-regression",
+    "href": "slides/lecture33_reg-inference-slr.html#statistical-inference-for-regression",
+    "title": "STAT 141",
+    "section": "Statistical Inference for Regression",
+    "text": "Statistical Inference for Regression\n\nWe can fit a linear model to any data set we want, but if we just have a sample of data, any trend we detect doesn’t necessarily demonstrate that the trend exists in the population.\nGoal of Inference: Use statistics calculated from data to make inferences about parameters\n\n\nParameters: \\(\\beta_0\\) (intercept) and \\(\\beta_1\\) (slope)\n\\[\ny = \\beta_0 + \\beta_1 x + \\epsilon\n\\]\n\n\nWe won’t ever know the true values of these parameters. So we estimate them based on a least squares model in the sample:\n\\[\n\\widehat{y} = \\widehat{\\beta}_0 + \\widehat{\\beta}_1 x\n\\]\n\n\nStatistics: \\(\\widehat{\\beta}_0\\) (intercept) and \\(\\widehat{\\beta}_1\\) (slope)"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#example-for-today-reed-theses",
+    "href": "slides/lecture33_reg-inference-slr.html#example-for-today-reed-theses",
+    "title": "STAT 141",
+    "section": "Example for Today: Reed Theses",
+    "text": "Example for Today: Reed Theses\n\n\nSeveral years ago, some Stat 141 students collected data on several hundred senior theses from thesis tower.\n\n\n\nPage Count (\\(y\\)) and Year Published (\\(x\\)) for several of these theses are shown below:\n\n\n\n\n\n\n\n\n\n\n\n\nBut this is just a sample of data. What can we say about the underlying population slope?"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#inference-for-regression",
+    "href": "slides/lecture33_reg-inference-slr.html#inference-for-regression",
+    "title": "STAT 141",
+    "section": "Inference for Regression",
+    "text": "Inference for Regression\n\nWe assume that in the population, there is the following relationship between Page Count (\\(y\\)) and Year (\\(x\\))\n\\[\n\\underbrace{\\text{Page Count}}_{y} = \\beta_0 + \\beta_1 \\underbrace{\\text{Year}}_{x} + \\underbrace{\\epsilon}_{\\text{error}}\n\\]\n\n\nHypothesis Tests\n\nNull Hypothesis: Year (\\(x\\)) and Page Count (\\(y\\)) are uncorrelated\nAlternative Hypothesis: Page Count and Year are correlated\n\nQ: What do these hypotheses translate to in mathematical symbols and parameters?\n\n\\[H_0: \\beta_1 = 0 \\qquad H_a: \\beta_1 \\neq 0\\]\n\n\n\n\n\nConfidence intervals - Can I make a 95% confidence interval for \\(\\beta_1\\)?\n\n\n\nWe’ll use the least squares sample model to conduct these inference tasks:\n\\[\n\\widehat{y} = \\widehat{\\beta}_0 + \\widehat{\\beta}_1 x = 1291.54 - 0.61 x\n\\]"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#roadmap-for-inference",
+    "href": "slides/lecture33_reg-inference-slr.html#roadmap-for-inference",
+    "title": "STAT 141",
+    "section": "Roadmap for Inference",
+    "text": "Roadmap for Inference\n\nRegression is a potential tool for assessing relationships between variables.\n\nWe have four “LINE” conditions for regression\nWe would like to conduct inference on parameters \\(\\beta_0\\) and/or \\(\\beta_1\\)\n\n\n\n\nToday, we will:\n\n\nConduct theory-based inference for \\(\\beta_0\\), \\(\\beta_1\\)\n\nRequires ALL of the LINE conditions be met. Rigid!!\nStraightforward to conduct\n\nConduct simulation-based inference for \\(\\beta_0\\), \\(\\beta_1\\)\n\nOnly requires Linearity and Independence. Flexible!!\nNeeds some extra code."
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-for-slope",
+    "href": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-for-slope",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests for Slope",
+    "text": "Hypothesis Tests for Slope\n\n\n\n\\[\\text{Population Model:   } y = \\beta_0 + \\beta_1 x + \\epsilon\\]\n\n\\[\\text{Sample Model:   } \\widehat{y} = \\widehat{\\beta}_0 + \\widehat{\\beta}_1 X \\]\n\n\\[H_0: \\beta_1 = 0 \\qquad H_a: \\beta_1 \\neq 0\\]\n\nWe’d like to use \\(\\widehat{\\beta}_1\\) to do this hypothesis test\n\nNeed to know the mean, standard error, and shape of the sampling distribution for \\(\\widehat{\\beta}_1\\)\n\n\n\nUnder the LINE conditions (we’ll check these soon), \\(\\widehat{\\beta}_1\\) is:\n\n\nApproximately normally distributed\nHas mean \\(\\beta_1\\), and a standard error of:\n\n\n\\[\n\\color{red}{SE(\\widehat{\\beta}_1) = \\sqrt{\\frac{1}{n-2} \\frac{\\sum_{i =1}^n (y_i - (\\beta_0 + \\beta_1 x_i) )^2}{\\sum_{i=1}^n (x_i - \\bar x)^2}}}\n\\] (Don’t memorize this equation!)"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-for-slope-1",
+    "href": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-for-slope-1",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests for Slope",
+    "text": "Hypothesis Tests for Slope\n\n\\[H_0: \\beta_1 = 0 \\qquad H_a: \\beta_1 \\neq 0\\]\nUnder the LINE conditions:\n\\[\n\\widehat{\\beta}_1 \\underbrace{\\sim}_{approx.} Normal \\left( \\beta_1, \\; SE (\\widehat{\\beta}) \\; \\right) = Normal \\left( \\beta_1, \\; \\sqrt{\\frac{1}{n-2} \\frac{\\sum_{i =1}^n (y_i - (\\beta_0 + \\beta_1 x_i) )^2}{\\sum_{i=1}^n (x_i - \\bar x)^2}} \\; \\right)\n\\]\n\nIn practice, we estimate \\(\\beta_0, \\beta_1\\) in the formula using \\(\\widehat{\\beta}_0, \\widehat{\\beta}_1\\), giving \\(\\widehat{SE} (\\widehat{\\beta}_1)\\)\nWe perform a hypothesis test of \\(H_0: \\beta_1 = 0\\) using the standardized t-statistic\n\n\n\\[\n\\text{t-statistic} = \\frac{\\textrm{sample stat}- \\textrm{null value}}{\\widehat{SE} (\\widehat{\\beta}_1)} = \\frac{\\widehat{\\beta}_1 - 0}{\\widehat{SE} (\\widehat{\\beta}_1)}\n\\]\n\n\nThe \\(t\\)-statistic follows a \\(t\\)-distribution with n-2 degrees of freedom.\nWe can use the pt() function to calculate the corresponding p-value"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#confidence-intervals-for-slope",
+    "href": "slides/lecture33_reg-inference-slr.html#confidence-intervals-for-slope",
+    "title": "STAT 141",
+    "section": "Confidence Intervals for Slope",
+    "text": "Confidence Intervals for Slope\nWe create a confidence interval for \\(\\beta_1\\) using\n\\[\n\\textrm{sample stat} \\pm \\underbrace{t^*}_{\\text{critical value}} \\cdot \\widehat{SE} (\\widehat{\\beta}_1) \\quad = \\quad \\color{red}{\\widehat{\\beta}_1 \\pm t^* \\cdot \\widehat{SE} (\\widehat{\\beta}_1)}\n\\]\nWe use the critical values from a \\(t\\)-distribution with \\(n-2\\) degrees of freedom!\n\n\nCan we do hypothesis tests and get confidence intervals for \\(\\beta_1\\) without tedious calculation?\n\nYes! Using the lm() and get_regression_table() functions in R."
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-and-confidence-intervals-through-lm",
+    "href": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-and-confidence-intervals-through-lm",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests and Confidence Intervals through lm()",
+    "text": "Hypothesis Tests and Confidence Intervals through lm()\n\nthesis_mod &lt;- lm(n_pages ~ year, data = theses_samp)\nget_regression_table(theses_mod)\n\n# A tibble: 2 × 7\n  term      estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept 1292.      394.         3.28   0.001  509.    2074.   \n2 year        -0.605     0.198     -3.06   0.003   -0.998   -0.212\n\n\n\nHypothesis Test\n\nstd_error — theory-based standard error (0.198)\nstatistic — \\(t\\)-statistic (-3.06)\np_value — p-value (0.003) of observing our \\(t\\)-statistic or something more extreme in the t-distribution with \\(df=n-2\\) for the two-sided test, \\[H_0: \\beta_1 = 0 \\qquad H_a: \\beta_1 \\neq 0\\]"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-and-confidence-intervals-through-lm-1",
+    "href": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-and-confidence-intervals-through-lm-1",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests and Confidence Intervals through lm()",
+    "text": "Hypothesis Tests and Confidence Intervals through lm()\n\nthesis_mod &lt;- lm(n_pages ~ year, data = theses_samp)\nget_regression_table(theses_mod)\n\n# A tibble: 2 × 7\n  term      estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept 1292.      394.         3.28   0.001  509.    2074.   \n2 year        -0.605     0.198     -3.06   0.003   -0.998   -0.212\n\n\n\nConfidence Interval\n\nBy default, the upper and lower bounds are provided for the 95% confidence interval with lower_ci and upper_ci, giving the 95% interval (-0.998, -0.212)\nThe table also gives similar information for the intercept with:\n\nHypothesis test \\(H_0: \\beta_0 = 0\\), \\(H_a: \\beta_0 \\neq 0\\)\n95% confidence intervals\n(But this is less useful in practice)."
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-and-confidence-intervals-through-lm-2",
+    "href": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-and-confidence-intervals-through-lm-2",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests and Confidence Intervals through lm()",
+    "text": "Hypothesis Tests and Confidence Intervals through lm()\n\nthesis_mod &lt;- lm(n_pages ~ year, data = theses_samp)\nget_regression_table(theses_mod, conf.level = 0.80) # Note change\n\n# A tibble: 2 × 7\n  term      estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept 1292.      394.         3.28   0.001   783.    1800.  \n2 year        -0.605     0.198     -3.06   0.003    -0.86    -0.35\n\n\n\nGeneral Confidence Interval\n\nUse conf.level argument to change confidence level\n80% confidence intervals: c(-0.860, -0.350)"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#line-conditions",
+    "href": "slides/lecture33_reg-inference-slr.html#line-conditions",
+    "title": "STAT 141",
+    "section": "LINE Conditions",
+    "text": "LINE Conditions\n\nTo do theory-based inference for regression, we require the LINE conditions we talked about way back in week 4!\n\n\nLinearity: The relationship between explanatory and response variables must be approximately linear\n\nCheck using scatterplot/residual plot\n\n\n\n\n\nIndependence: The observations should be independent of one another\n\nConsider sample design and data context\n\n\n\n\n\nNormality: The distribution of residuals should be normally distributed\n\nHistogram of residuals\nQ-Q plot of residuals\n\n\n\n\n\nEqual Variability: Variance of residuals should be roughly constant across data set\n\nCheck using residual plot.\n\n\n\n\nThese make up the LINE Conditions (Linearity, Independence, Normality, Equal Variability)"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#linearity",
+    "href": "slides/lecture33_reg-inference-slr.html#linearity",
+    "title": "STAT 141",
+    "section": "1) Linearity",
+    "text": "1) Linearity\nLinearity: The relationship between explanatory and response variables must be approximately linear\n\nPoints should be evenly distributed above and below the regression line at each “slice” of X\n\n\n\n\n\n\n\n\n\n\n\nSome potential outliers with high page counts…\nBut this mostly looks okay!"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#independent-observations",
+    "href": "slides/lecture33_reg-inference-slr.html#independent-observations",
+    "title": "STAT 141",
+    "section": "2) Independent Observations",
+    "text": "2) Independent Observations\nIndependence: The observations should be independent of one another.\n\nHard to know if any two theses have dependence … but not totally unreasonable"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#normality-of-residuals",
+    "href": "slides/lecture33_reg-inference-slr.html#normality-of-residuals",
+    "title": "STAT 141",
+    "section": "3) Normality (of Residuals)",
+    "text": "3) Normality (of Residuals)\nNormality of Residuals: The distribution of residuals should be normally distributed\n\n\n\n\n\n\n\n\n\n\nDistribution appears somewhat right-skewed, with a notable potential outliers on the right.\nThis provides some evidence residuals are not Normally distributed."
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#equal-variability-of-residuals",
+    "href": "slides/lecture33_reg-inference-slr.html#equal-variability-of-residuals",
+    "title": "STAT 141",
+    "section": "4) Equal Variability (of Residuals)",
+    "text": "4) Equal Variability (of Residuals)\nEqual Variability: Variance of residuals should be roughly constant across data set.\n\n\n\n\n\n\n\n\n\n\nResiduals appear to have constant variability between 1980 and 2020\nHowever, theses prior to 1980 appear to have more spread"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#line-conditions-recap",
+    "href": "slides/lecture33_reg-inference-slr.html#line-conditions-recap",
+    "title": "STAT 141",
+    "section": "LINE Conditions: Recap",
+    "text": "LINE Conditions: Recap\n\nLinearity and Independence seem to be reasonably met…\nbut Normality and Equal Variance do not\n\n\n\nAre we unable to do inference???\n\nFear not! We can get around this with the bootstrap!"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#bootstrap-can-get-around-normality-and-equal-variance-with-larger-n",
+    "href": "slides/lecture33_reg-inference-slr.html#bootstrap-can-get-around-normality-and-equal-variance-with-larger-n",
+    "title": "STAT 141",
+    "section": "Bootstrap can get around Normality and Equal Variance! (with larger \\(n\\))",
+    "text": "Bootstrap can get around Normality and Equal Variance! (with larger \\(n\\))\nWhen Normality and Equal Variance do not hold, we can use the bootstrap for correct inference!\n\nBut we do need the sample size \\(n\\) to be larger than usual.\nYou should feel okay about this with a sample size of at least a couple hundred"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#bootstrapping-slopes",
+    "href": "slides/lecture33_reg-inference-slr.html#bootstrapping-slopes",
+    "title": "STAT 141",
+    "section": "Bootstrapping Slopes",
+    "text": "Bootstrapping Slopes\n\nTo approximate variability in the slope statistic \\(\\widehat{\\beta}_1\\), we create a bootstrap sample by resampling data rows with replacement, and then calculating a new linear model, with a new slope\n\n\n\nset.seed(11)\ntheses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1)\n\n\n\n# A tibble: 6 × 3\n# Groups:   replicate [1]\n  replicate n_pages  year\n      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1         1      77  2010\n2         1      62  2001\n3         1     124  1989\n4         1      78  2016\n5         1      33  2001\n6         1      90  2007\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDashed red line: regression line for original sample\nDarker points: observations included in bootstrap sample more than once"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#bootstrap-distribution-of-slopes",
+    "href": "slides/lecture33_reg-inference-slr.html#bootstrap-distribution-of-slopes",
+    "title": "STAT 141",
+    "section": "Bootstrap Distribution of Slopes",
+    "text": "Bootstrap Distribution of Slopes\nNow we generate 1000 replicates/bootstrap samples, and compute the slope for each.\n\nLet’s step carefully through this code - we’re combining lm(), get_regression_table(), and our dplyr data wrangling functions.\n\n\nset.seed(11)\ntheses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#bootstrap-distribution-of-slopes-1",
+    "href": "slides/lecture33_reg-inference-slr.html#bootstrap-distribution-of-slopes-1",
+    "title": "STAT 141",
+    "section": "Bootstrap Distribution of Slopes",
+    "text": "Bootstrap Distribution of Slopes\nNow we generate 1000 replicates/bootstrap samples, and compute the slope for each.\n\nWe draw 1000 different bootstrap samples of size nrow(theses_samp) (our sample size)\n \n\nset.seed(11)\ntheses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#bootstrap-distribution-of-slopes-2",
+    "href": "slides/lecture33_reg-inference-slr.html#bootstrap-distribution-of-slopes-2",
+    "title": "STAT 141",
+    "section": "Bootstrap Distribution of Slopes",
+    "text": "Bootstrap Distribution of Slopes\nNow we generate 1000 replicates/bootstrap samples, and compute the slope for each.\n\nThen we group by replicate: we want R to do the next calculation within every bootstrap sample\n\n\nset.seed(11)\ntheses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#bootstrap-distribution-of-slopes-3",
+    "href": "slides/lecture33_reg-inference-slr.html#bootstrap-distribution-of-slopes-3",
+    "title": "STAT 141",
+    "section": "Bootstrap Distribution of Slopes",
+    "text": "Bootstrap Distribution of Slopes\nNow we generate 1000 replicates/bootstrap samples, and compute the slope for each.\n\nAcross each bootstrap sample, we calculate a single number inside summarize(): the slope estimate (second estimate) from the regression table from lm(n_pages ~ year)\n\n\n\n\nset.seed(11)\ntheses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])\n\n\n\n\n# A tibble: 6 × 2\n  replicate  slope\n      &lt;int&gt;  &lt;dbl&gt;\n1         1 -0.527\n2         2 -0.689\n3         3 -0.426\n4         4 -0.549\n5         5 -0.216\n6         6 -0.472\n\n\n\n\nNote: get_regression_table rounds values to 3 digits by default (can change digits)"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#bootstrap-distribution-of-slopes-4",
+    "href": "slides/lecture33_reg-inference-slr.html#bootstrap-distribution-of-slopes-4",
+    "title": "STAT 141",
+    "section": "Bootstrap Distribution of Slopes",
+    "text": "Bootstrap Distribution of Slopes\n\n\nPlotting the bootstrap distribution\n\n\nboot_slope %&gt;% ggplot(aes(x = slope)) +\n  geom_histogram(color = \"white\") +\n  theme_bw()\n\n\n\n\n\n\n\n\n\nThe original sample had slope \\(\\widehat{\\beta}_1 =\\) -0.61\n\n\n\nWe can make the same plot and add the implied 95% confidence interval:\n\nci &lt;- quantile(boot_slope$slope, c(0.025, 0.975))\n\nboot_slope %&gt;% ggplot(aes(x = slope)) +\n  geom_histogram(color = \"white\") +\n  geom_vline(xintercept = ci, color = \"dodgerblue\") +\n  annotate(\"rect\", xmin = ci[1], xmax = ci[2], ymin = 0,\n           ymax = Inf, fill = \"dodgerblue\", alpha = 0.25) +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#confidence-intervals---putting-it-all-together",
+    "href": "slides/lecture33_reg-inference-slr.html#confidence-intervals---putting-it-all-together",
+    "title": "STAT 141",
+    "section": "Confidence Intervals - putting it all together",
+    "text": "Confidence Intervals - putting it all together\nGathering bootstrap samples…\n\n\nboot_slope &lt;- theses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])\nhead(boot_slope)\n\n\n# A tibble: 6 × 2\n  replicate  slope\n      &lt;int&gt;  &lt;dbl&gt;\n1         1 -0.411\n2         2 -0.762\n3         3 -0.614\n4         4 -0.665\n5         5 -0.961\n6         6 -0.615\n\n\n\n\n\nPercentile confidence interval\n\nq_ci &lt;- quantile(boot_slope$slope,\n                 c(0.025, 0.975))\nq_ci\n\n    2.5%    97.5% \n-1.17215 -0.22095 \n\n\n\nStandard error confidence interval (-0.61 is the original slope)…\n\ntstar &lt;- qt(0.975, nrow(theses_samp) - 2)\nse &lt;- sd(boot_slope$slope)\nse_ci &lt;- c(b1 - tstar*se, b1 + tstar*se)\nse_ci\n\n      year       year \n-1.0936881 -0.1263119 \n\n\n\n\nNeither interval contains 0!"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#hypothesis-tests",
+    "href": "slides/lecture33_reg-inference-slr.html#hypothesis-tests",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests",
+    "text": "Hypothesis Tests\n\\[H_0: \\beta_1 = 0 \\qquad H_a: \\beta_1 \\neq 0\\]\nEven without Normality and Equal Variability of the residuals, the standardized statistic\n\\[\nZ = \\frac{\\widehat{\\beta}_1 - \\beta_1}{\\text{Bootstrap $\\widehat{SE}$}}\n\\]\nis approximately standard normal (i.e., mean 0 and SD 1) as \\(n\\) gets large enough.\n\nThis means we can use pnorm() to get our p-values!\n\nThe bootstrap is helping us estimate the SE for our z-score.\nWe need to use the bootstrap because we can’t trust the lm() theory-based SE estimates when these assumptions are violated.\n\nWe could go fully simulation-based and avoid even assuming that \\(Z\\) is approximately Normal - this just requires extra coding."
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-1",
+    "href": "slides/lecture33_reg-inference-slr.html#hypothesis-tests-1",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests",
+    "text": "Hypothesis Tests\n\\[\nH_0: \\beta_1 = 0 \\qquad H_a: \\beta_1 \\neq 0 \\qquad \\qquad Z = \\frac{\\widehat{\\beta}_1 - \\beta_1}{\\text{Bootstrap $\\widehat{SE}$}}\n\\]\n\n\n\n\nGather bootstrap samples…\n\n\nboot_slope &lt;- theses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])\n\n\n\n\nCalculate the bootstrapped SE…\n\n\nbootstrap_se &lt;- sd(boot_slope$slope)\nbootstrap_se\n\n[1] 0.243737\n\n\n\n\n\n\n\n\nCalculate z-score under the null (\\(\\widehat{\\beta}_1=-0.61\\) is the original slope)…\n\n\nz &lt;- (b1 - 0) / bootstrap_se\nz\n\n     year \n-2.502698 \n\n\n\n\n\nCalculate the p-value (2-sided test)…\n\n\np_value &lt;- 2*pnorm(z)\np_value\n\n      year \n0.01232507 \n\n\n\n\n\nWe reject \\(H_0\\) at the 0.05 level! (But not at the 0.01 level)"
+  },
+  {
+    "objectID": "slides/lecture33_reg-inference-slr.html#next-time",
+    "href": "slides/lecture33_reg-inference-slr.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time",
+    "text": "Next time\n\nInference for multiple regression"
   }
 ]

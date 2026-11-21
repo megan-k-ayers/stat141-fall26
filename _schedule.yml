@@ -511,8 +511,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading35.qmd
-            # - type: Slides
-            #   href: slides/lecture33_reg-inference-slr.qmd
+            - type: Slides
+              href: slides/lecture33_reg-inference-slr.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture33_reg-inference-slr_handout.pdf
         - topic: "Inference for Regression II: MLR"
           display-date: Wednesday, Nov 25
           date: 11/25/26

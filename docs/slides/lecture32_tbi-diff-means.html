@@ -610,42 +610,58 @@ H_0: \mu_1 - \mu_2 = \delta_0
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_03856289" minutes="12" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_7cbacd45" minutes="12" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
-<!-- ------------------------------------------------------------------------ -->
-<!-- ## Answer Key: Confidence Intervals -->
-<!-- ::: fragment -->
-<!-- With *independent* samples of size $n_1>30$, $n_2>30$, we can use the t-distribution approximation method. -->
-<!-- ```{r echo=T} -->
-<!-- qt(0.90, df= min(50-1,35-1)) -->
-<!-- sqrt(0.15^2/50 + 0.35^2/35) -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- ::: fragment -->
-<!-- $$ -->
-<!-- \begin{align*} -->
-<!-- (\bar{x}_1-\bar{x}_2) \pm t^*\times \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} &= (.95-.70) \pm 1.307 \times 0.06285\\ -->
-<!-- & = (0.1679, \ 0.3321) -->
-<!-- \end{align*} -->
-<!-- $$ -->
-<!-- ::: -->
-<!-- ::: fragment -->
-<!-- Thus, at the 80% confidence level, we think there is a difference in average home price between Seattle and Portland. -->
-<!-- ::: -->
-<!-- ------------------------------------------------------------------------ -->
-<!-- ## Answer Key: Hypothesis Testing -->
-<!-- 1. Hypotheses: $H_0: \mu_1 -\mu_2 = 0 \quad H_a: \mu_1-\mu_2 \neq 0$ -->
-<!-- 2. Assess Conditions (on previous slide) -->
-<!-- 3. Compute test statistic under $H_0$ -->
-<!-- $$t = \frac{(\bar{x}_1 - \bar{x}_{2})-(\mu_1-\mu_{2})}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}} = \frac{(.95-.70)-(0)}{\sqrt{\frac{0.15^2}{50} + \frac{0.35^2}{35} }} = 3.978 $$ -->
-<!-- ::: {.fragment .nonincremental} -->
-<!-- 4. Calculate p-value -->
-<!-- ```{r echo=T} -->
-<!-- 2*(1-pt(3.978,df=min(50-1,35-1))) -->
-<!-- ``` -->
-<!-- ::: -->
-<!-- 5. Conclude: We reject the null hypothesis (at the $\alpha = 0.01$ level), in favor of the hypothesis that Portland and Seattle have different average home prices. -->
+</section>
+<section id="answer-key-confidence-intervals" class="slide level2">
+<h2>Answer Key: Confidence Intervals</h2>
+<div class="fragment">
+<p>With <em>independent</em> samples of size <span class="math inline">\(n_1&gt;30\)</span>, <span class="math inline">\(n_2&gt;30\)</span>, we can use the t-distribution approximation method.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">qt</span>(<span class="fl">0.90</span>, <span class="at">df=</span> <span class="fu">min</span>(<span class="dv">50-1</span>,<span class="dv">35-1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.306952</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">sqrt</span>(<span class="fl">0.15</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">50</span> <span class="sc">+</span> <span class="fl">0.35</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">35</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.06284903</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{align*}
+(\bar{x}_1-\bar{x}_2) \pm t^*\times \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}} &amp;= (.95-.70) \pm 1.307 \times 0.06285\\
+&amp; = (0.1679, \ 0.3321)
+\end{align*}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Thus, at the 80% confidence level, we think there is a difference in average home price between Seattle and Portland.</p>
+</div>
+</section>
+<section id="answer-key-hypothesis-testing" class="slide level2">
+<h2>Answer Key: Hypothesis Testing</h2>
+<ol type="1">
+<li class="fragment"><p>Hypotheses: <span class="math inline">\(H_0: \mu_1 -\mu_2 = 0 \quad H_a: \mu_1-\mu_2 \neq 0\)</span></p></li>
+<li class="fragment"><p>Assess Conditions (on previous slide)</p></li>
+<li class="fragment"><p>Compute test statistic under <span class="math inline">\(H_0\)</span> <span class="math display">\[t = \frac{(\bar{x}_1 - \bar{x}_{2})-(\mu_1-\mu_{2})}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}} = \frac{(.95-.70)-(0)}{\sqrt{\frac{0.15^2}{50} + \frac{0.35^2}{35} }} = 3.978 \]</span></p></li>
+</ol>
+<div class="fragment">
+<ol start="4" type="1">
+<li>Calculate p-value</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pt</span>(<span class="fl">3.978</span>,<span class="at">df=</span><span class="fu">min</span>(<span class="dv">50-1</span>,<span class="dv">35-1</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0003448846</code></pre>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li class="fragment">Conclude: We reject the null hypothesis (at the <span class="math inline">\(\alpha = 0.01\)</span> level), in favor of the hypothesis that Portland and Seattle have different average home prices.</li>
+</ol>
 <!-- ------------------------------------------------------------------------ -->
 </section>
 <section id="next-time" class="slide level2">

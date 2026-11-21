@@ -1,7 +1,7 @@
 ---
 pagetitle: "Inference for Regression I: Recap and Simple Linear Regression"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
