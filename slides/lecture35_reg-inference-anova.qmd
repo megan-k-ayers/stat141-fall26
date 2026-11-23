@@ -53,14 +53,16 @@ penguins$species <- factor(penguins$species,levels=c("Chinstrap","Gentoo","Adeli
 ```
 
 ::::: columns
-::: {.column .center width="50%"}
+::: {.column .center width="55%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="50%"}
+::: {.column .center width="45%"}
 <br>
 
+::: {style="font-size:0.9em;"}
 [Inference for Regression III: ANOVA]{.custom-title}
+:::
 
 <br> <br> 
 
@@ -95,7 +97,7 @@ Do thesis lengths vary by division?
 
 ```{r, fig.height=4}
 ggplot(theses,aes(x=division))+geom_bar()+
-  theme_bw()+
+  theme_bw(base_size=16)+
   labs(x=element_blank(),title="Barchart of Theses by Division",
        y = "Number of theses in sample")
 ```
@@ -125,7 +127,8 @@ Does there appear to be a relationship?
 ggplot(data = theses, 
        mapping = aes(x = division,
                      y = n_pages)) + 
-  geom_boxplot() +     
+  geom_boxplot() +
+  theme_bw(base_size=16)+
   stat_summary(fun = mean, geom = "point", 
                color = "purple",
                shape = 8, size = 3)
@@ -316,20 +319,20 @@ p1 <- ggplot(data = dat, mapping = aes(x = expl, y = response1)) +
   geom_jitter(alpha = 0.1, width = .1, height = 0) +
   stat_summary(fun.y = mean, colour = "red", geom="point",
                shape = 8, size = 3) + 
-  labs(title = "Scenario 1")
+  labs(title = "Scenario 1") + theme_bw(base_size=16)
 p2 <- ggplot(data = dat, mapping = aes(x = expl, y = response2)) +
   geom_boxplot() + ylim(-10, 20) +
   geom_jitter(alpha = 0.1, width = .1, height = 0) +
   stat_summary(fun.y = mean, colour = "red", geom="point",
                shape = 8, size = 3)  + 
-  labs(title = "Scenario 2")
+  labs(title = "Scenario 2") + theme_bw(base_size=16)
 p3 <- ggplot(data = dat, mapping = aes(x = expl, y = response3)) +
   geom_boxplot() + ylim(-10, 20) +
   geom_jitter(alpha = 0.1, width = .1, height = 0) +
   stat_summary(fun.y = mean, colour = "red", geom="point",
                shape = 8, size = 3)  + 
-  labs(title = "Scenario 3")
-grid.arrange(p1, p2, p3, ncol = 3)
+  labs(title = "Scenario 3") + theme_bw(base_size=16)
+grid.arrange(p1, p2, p3, ncol = 3) 
 ```
 
 **Question**: For which scenario are you most convinced that the means are different?
@@ -449,7 +452,8 @@ grid.arrange(p1, p2, p3, ncol = 3)
 ### Mean Squares
 
 \begin{align*}
-\mbox{Total Variability} & = \mbox{Variability Between Groups (SSG)} + \mbox{Variability Within Groups(SSE)}
+\mbox{Total Variability} =& \mbox{Variability Between Groups (SSG)} + \\
+& \mbox{Variability Within Groups(SSE)}
 \end{align*}
 
 Need to standardize the Sums of Squares to compare SSG to SSE.
@@ -470,7 +474,9 @@ Need to standardize the Sums of Squares to compare SSG to SSE.
 
 ------------------------------------------------------------------------
 
-## Test Statistic {.smaller}
+## Test Statistic
+
+::: {style="font-size:0.9em;"}
 
 In some ways, MSG is the natural test statistic but as we saw for this example, MSG alone isn't enough.
 
@@ -483,6 +489,8 @@ grid.arrange(p1, p2, p3, ncol = 3)
 
 
 * That is where MSE comes in!
+
+:::
 
 ------------------------------------------------------------------------
 
@@ -550,7 +558,7 @@ anova(mod)
 ggplot(theses, aes(x=division,y=n_pages))+
   geom_boxplot(outlier.alpha=0.3)+
   labs(x=element_blank(),y="Number of Pages")+
-  theme_bw(base_size=15)
+  theme_bw(base_size=18)
 ```
 
 :::
@@ -584,7 +592,7 @@ theses %>%
 ```
 
 - **Rule of thumb**: 
-    - Take the ratio of the smallest and largest variances
+    - Take the ratio of the smallest and largest standard deviations
     - Concern if it is smaller than 0.5 or larger than 2
     
 ::: fragment
@@ -603,7 +611,7 @@ Check assumptions!
 
 ::: columns
 
-::: {.column width=75%}
+::: {.column width=70%}
 
 ```{r, fig.height=5}
 ggplot(data = theses, mapping = aes(x = n_pages)) +
@@ -613,7 +621,7 @@ ggplot(data = theses, mapping = aes(x = n_pages)) +
 
 :::
 
-::: {.column width=25% .fragment}
+::: {.column width=30% .fragment}
 
 ```{r echo = TRUE}
 count(theses, division)
@@ -679,5 +687,4 @@ $$
 
 - Model selection activity - bring your laptop or tablet!
 
-------------------------------------------------------------------------
 

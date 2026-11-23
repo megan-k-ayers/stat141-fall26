@@ -57,11 +57,7 @@ grid.arrange(
 
 Which variables seem to be important predictors of arrival delay? Consider the plots above and context.
 
-*******************************************************************************
 
-
-
-*******************************************************************************
 
 
 
@@ -77,17 +73,11 @@ Let's test if arrival delay varies by airline carrier using ANOVA.
 
 **a.** Specify the relevant parameters and the set of hypotheses.
 
-*******************************************************************************
 
 
-  
-*******************************************************************************
+\vspace{3cm}
   
   
-
-
-
-
 
 
 **b.** State the p-value calculated by R (below) and interpret the result in context. What have you learned about these airline carriers from the ANOVA F-test and Figure 2?
@@ -97,11 +87,7 @@ mod_carrier <- lm(arr_delay ~ carrier, data)
 anova(mod_carrier)
 ```
 
-*******************************************************************************
 
-
-
-*******************************************************************************
 
 
 
@@ -118,13 +104,10 @@ Suppose we decide to model arrival delay using air time, departure delay, and ca
   + Small Model: Predict Arrival Delay with Air Time, Departure Delay, and Carrier
   + Large Model: Predict Arrival Delay with Air Time, Departure Delay, Carrier, and the interaction between Departure Delay and Carrier. 
 
-**a.** How many coefficients are in each of the small and large models? What variables do they represent?
-
-*******************************************************************************
+**a.** How many coefficients will be in each of the small and large models? What variables do they represent?
 
 
-
-*******************************************************************************
+\vspace{4cm}
 
 
 
@@ -132,13 +115,9 @@ Suppose we decide to model arrival delay using air time, departure delay, and ca
 
 **b.** Write down the set of hypotheses for a Nested F-Test to compare the small and large model above.
 
-*******************************************************************************
-
 
   
-*******************************************************************************
-  
-  
+\newpage
   
 
 
@@ -150,14 +129,10 @@ mod2 <- lm(arr_delay ~ air_time + dep_delay * carrier, data)
 anova(mod1, mod2)
 ```
 
-*******************************************************************************
 
 
 
-*******************************************************************************
-
-
-\newpage
+\vspace{4cm}
 
 
 
@@ -170,14 +145,6 @@ Suppose your colleague proposes using a Nested F-Test to determine compare the t
   + Model 2: Predict Arrival Delay with Air Time, Carrier, and the interaction between Air Time and Carrier. 
 
 Explain why a nested F-test \underline{cannot} be conducted to compare these two models.
-
-*******************************************************************************
-
-
-
-
-*******************************************************************************
-
 
 
 
@@ -200,20 +167,14 @@ grid.arrange(
 )
 ```
 
-*******************************************************************************
 
-
-
-
-
-*******************************************************************************
 
 
 \newpage
 
 
 
-### Question 6:
+### Question 6 - BONUS:
 
 Examine the regression table below.
 
@@ -223,13 +184,7 @@ get_regression_table(mod2, conf.level = 0.8)
 
 **a.** Write down the estimated model equation implied by the regression table.
 
-*******************************************************************************
-
-
-
-
-
-*******************************************************************************
+\vspace{2cm}
 
 
 
@@ -237,38 +192,20 @@ get_regression_table(mod2, conf.level = 0.8)
 
 **b.** Interpret, in context, the coefficients for the (i) intercept, (ii) slope term on air time, (iii) the slope term on departure delay. Be particularly careful for when interpreting (iii) !
 
-*******************************************************************************
 
-
-
-
-
-*******************************************************************************
-
+\vspace{4cm}
 
 
 
 **c.** Write down the equation for the specific case when the airline carrier is Delta.
 
-*******************************************************************************
 
-
-
-
-
-*******************************************************************************
-
+\vspace{2cm}
 
 
 
 **d.** What is the confidence level for the confidence intervals shown? 
 
-*******************************************************************************
 
-
-
-
-
-*******************************************************************************
 
 

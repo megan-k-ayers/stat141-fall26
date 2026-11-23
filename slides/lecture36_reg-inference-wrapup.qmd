@@ -44,14 +44,16 @@ library(tufte)
 ```
 
 ::::: columns
-::: {.column .center width="50%"}
+::: {.column .center width="55%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="50%"}
+::: {.column .center width="45%"}
 <br>
 
+::: {style="font-size:0.9em;"}
 [Inference for Regression IV]{.custom-title}
+:::
 
 <br> <br> 
 
@@ -85,8 +87,7 @@ rm(mod)
 ::: nonincremental
 
 - Work on inference for regression worksheet in small groups of 3-4
-    - Activity file is posted on the course website next to today's slides
-    - **Each** group member should upload a finished worksheet to Gradescope, but you can collaborate on your answers. 
+    - Activity file is also posted on the course website next to today's slides
     
 <br>
 
@@ -102,4 +103,4 @@ rm(mod)
 
 - Chi-squared tests 
 
----------------------------------------------------------------------
+

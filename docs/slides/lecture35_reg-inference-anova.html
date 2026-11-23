@@ -200,11 +200,13 @@
 <section class="slide level2">
 
 <div class="columns">
-<div class="column center" style="width:50%;">
+<div class="column center" style="width:55%;">
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
-</div><div class="column center" style="width:50%;">
+</div><div class="column center" style="width:45%;">
 <p><br></p>
+<div style="font-size:0.9em;">
 <p><span class="custom-title">Inference for Regression III: ANOVA</span></p>
+</div>
 <p><br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 14</span></p>
@@ -297,7 +299,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_d5f0d4a8" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_01b0f6b4" minutes="3" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -327,7 +329,7 @@
 </ul>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_ed24389b" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_c98e84d0" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -378,7 +380,7 @@
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_3987fbb7" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_11b2c11d" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -531,7 +533,8 @@
 
 <h3 id="mean-squares">Mean Squares</h3>
 <p><span class="math display">\[\begin{align*}
-\mbox{Total Variability} &amp; = \mbox{Variability Between Groups (SSG)} + \mbox{Variability Within Groups(SSE)}
+\mbox{Total Variability} =&amp; \mbox{Variability Between Groups (SSG)} + \\
+&amp; \mbox{Variability Within Groups(SSE)}
 \end{align*}\]</span></p>
 <p>Need to standardize the Sums of Squares to compare SSG to SSE.</p>
 <p><span class="math display">\[\begin{align*}
@@ -545,8 +548,9 @@
 <li class="fragment"><p>Now we can create a test statistic that compares these two measures of variability.</p></li>
 </ul>
 </section>
-<section id="test-statistic-1" class="slide level2 smaller">
+<section id="test-statistic-1" class="slide level2">
 <h2>Test Statistic</h2>
+<div style="font-size:0.9em;">
 <p>In some ways, MSG is the natural test statistic but as we saw for this example, MSG alone isn’t enough.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -561,6 +565,7 @@
 <li class="fragment"><p>Scenarios 2 and 3 have roughly the same MSG but we are much more convinced that the means are different for 2 than 3.</p></li>
 <li class="fragment"><p>That is where MSE comes in!</p></li>
 </ul>
+</div>
 </section>
 <section class="slide level2">
 
@@ -672,7 +677,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <ul>
 <li class="fragment"><strong>Rule of thumb</strong>:
 <ul>
-<li class="fragment">Take the ratio of the smallest and largest variances</li>
+<li class="fragment">Take the ratio of the smallest and largest standard deviations</li>
 <li class="fragment">Concern if it is smaller than 0.5 or larger than 2</li>
 </ul></li>
 </ul>
@@ -689,7 +694,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <h2>The ANOVA Test</h2>
 <p>Check assumptions!</p>
 <div class="columns">
-<div class="column" style="width:75%;">
+<div class="column" style="width:70%;">
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -699,7 +704,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </div>
-</div><div class="column fragment" style="width:25%;">
+</div><div class="column fragment" style="width:30%;">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">count</span>(theses, division)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -729,7 +734,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_f60be249" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_5ad723c6" minutes="2" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -763,9 +768,6 @@ H_a:&amp; \text{ The large model is superior to the small at explaining Y}\\
 <ul>
 <li class="fragment">Model selection activity - bring your laptop or tablet!</li>
 </ul>
-</section>
-<section class="slide level2">
-
 
 
 </section></section>

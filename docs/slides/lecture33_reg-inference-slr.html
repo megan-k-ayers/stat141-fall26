@@ -208,6 +208,12 @@
 <p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 13</span></p>
 </div></div>
 </section>
+<section id="announcements" class="slide level2">
+<h2>Announcements</h2>
+<ul>
+<li class="fragment">Office hours this week</li>
+</ul>
+</section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
 <ul>
@@ -309,11 +315,11 @@ y = \beta_0 + \beta_1 x + \epsilon
 <h2>Example for Today: Reed Theses</h2>
 <div style="font-size:0.9em;">
 <ul>
-<li class="fragment">Several years ago, some Stat 141 students collected data on several hundred senior theses from thesis tower.</li>
+<li class="fragment">Several years ago, some Stat 141 students collected data on a sample of senior theses from the thesis tower.</li>
 </ul>
 <div class="fragment">
 <ul>
-<li>Page Count (<span class="math inline">\(y\)</span>) and Year Published (<span class="math inline">\(x\)</span>) for several of these theses are shown below:</li>
+<li>Page Count (<span class="math inline">\(y\)</span>) and Year Published (<span class="math inline">\(x\)</span>) are shown below:</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -375,7 +381,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 </ul>
 <p><br></p>
 <div class="fragment">
-<p>Today, we will:</p>
+<p>Today and Wednesday, we will:</p>
 </div>
 <ol type="1">
 <li class="fragment">Conduct <strong>theory-based</strong> inference for <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>
@@ -435,7 +441,7 @@ y = \beta_0 + \beta_1 x + \epsilon
 \]</span></p>
 <ul>
 <li class="fragment"><p>In practice, <strong>we estimate <span class="math inline">\(\beta_0, \beta_1\)</span> in the formula using <span class="math inline">\(\widehat{\beta}_0, \widehat{\beta}_1\)</span></strong>, giving <span class="math inline">\(\widehat{SE} (\widehat{\beta}_1)\)</span></p></li>
-<li class="fragment"><p>We perform a hypothesis test of <span class="math inline">\(H_0: \beta_1 = 0\)</span> using the standardized t-statistic</p></li>
+<li class="fragment"><p>We perform a hypothesis test of <span class="math inline">\(H_0: \beta_1 = 0\)</span> using the <u>standardized t-statistic</u></p></li>
 </ul>
 <div class="fragment">
 <p><span class="math display">\[
@@ -480,8 +486,8 @@ y = \beta_0 + \beta_1 x + \epsilon
 <p><strong>Hypothesis Test</strong></p>
 <ul>
 <li class="fragment"><p><code>std_error</code> — theory-based standard error (0.198)</p></li>
-<li class="fragment"><p><code>statistic</code> — <span class="math inline">\(t\)</span>-statistic (-3.06)</p></li>
-<li class="fragment"><p><code>p_value</code> — p-value (0.003) of observing our <span class="math inline">\(t\)</span>-statistic or something more extreme in the t-distribution with <span class="math inline">\(df=n-2\)</span> for the <u><em>two-sided test</em></u>, <span class="math display">\[H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0\]</span></p></li>
+<li class="fragment"><p><code>statistic</code> — standardized statistic (-3.06)</p></li>
+<li class="fragment"><p><code>p_value</code> — p-value (0.003) of observing our standardized statistic or something more extreme in the t-distribution with <span class="math inline">\(df=n-2\)</span> for the <u><em>two-sided test</em></u>, <span class="math display">\[H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0\]</span></p></li>
 </ul>
 </section>
 <section id="hypothesis-tests-and-confidence-intervals-through-lm-1" class="slide level2">

@@ -44,11 +44,11 @@ library(tufte)
 ```
 
 ::::: columns
-::: {.column .center width="50%"}
+::: {.column .center width="55%"}
 ![](img/DAW.jpeg){width="90%"}
 :::
 
-::: {.column .center width="50%"}
+::: {.column .center width="45%"}
 <br>
 
 [Chi-Squared Tests]{.custom-title}
@@ -87,11 +87,9 @@ theses<-read_csv("data/theses.csv") %>%
 
 ## Goals for today
 
-- Finish going through solutions from last lecture's activity
-
 - Chi-squared tests
 
-- "There is only one test" 
+- Vote for topics to review in class next week 
 
 ------------------------------------------------------------------------
 
@@ -295,25 +293,32 @@ But we would expect that those with each eye condition are equally distributed a
 
 ------------------------------------------------------------------------
 
-## Sample Result Tables {.smaller}
+## Sample Result Tables
 
 ::: columns
-::: column
+::: {.column width=40%}
 #### Observed Sample Table
 
 <br>
+
+::: {style="font-size:0.8em;"}
 
 ```{r}
 table(eye_data$Eye, eye_data$Lighting) %>%
   addmargins() %>%
   kable(format = "html")
 ```
+
 :::
 
-::: column
+:::
+
+::: {.column width=60%}
 #### Expected Sample Table
 
 **Question**: If $H_0$ were correct, what table would we expect to see?
+
+::: {style="font-size:0.8em;"}
 
 |        |         dark |        night |        room | Sum |
 |:-------|-------------:|-------------:|------------:|----:|
@@ -321,6 +326,9 @@ table(eye_data$Eye, eye_data$Lighting) %>%
 | Near   | (137/479)172 | (137/479)232 | (137/479)75 | 137 |
 | Normal | (251/479)172 | (251/479)232 | (251/479)75 | 251 |
 | Sum    |          172 |          232 |          75 | 479 |
+
+:::
+
 :::
 :::
 
@@ -515,7 +523,7 @@ null_dist <- eye_data %>%
   calculate(stat = "Chisq")
 
 
-visualize(null_dist)
+visualize(null_dist) + theme_bw(base_size = 16)
 ```
 
 :::
@@ -539,7 +547,7 @@ visualize(null_dist)
 ::: {.column width=65%}
 
 ```{r, fig.height = 4, echo = FALSE}
-visualize(null_dist)
+visualize(null_dist) + theme_bw(base_size = 16)
 ```
 
 :::
@@ -609,9 +617,7 @@ ggplot(data = eye_data,
        mapping = aes(x = Lighting,
                      fill = Eye)) + 
   geom_bar(position = "fill") +
-  theme(axis.text = element_text(size = 14),
-        axis.title = element_text(size=15),
-        legend.text = element_text(size=16))
+  theme_bw(base_size = 20)
 ```
 
 
@@ -628,27 +634,22 @@ ggplot(data = eye_data,
     - Are traffic accidents uniformally distributed across days of the week?
     
 
-------------------------------------------------------------------------
-
-### "There is only one test"
-
-<br>
 
 
-![Allen Downey’s hypothesis testing framework.](img/there_is_only_one_test.png){width=120%}
-
+# Final exam in-class review requests
 
 ------------------------------------------------------------------------
 
-## Next week (last week!)
+## Final exam in-class review requests
 
-- **Monday**: Modeling categorical outcomes (will not be tested on the exam)
-- **Wednesday**: Look back at all we've learned and wrap up the course
-- **Thursday & Friday**: Lots of exam review
+- Spend a few minutes reflecting on past quizzes (feel free to open up Gradescope)
 
-------------------------------------------------------------------------
+- Slack message Megan with 2 topics or questions you would most like covered during in-class review
 
-
+```{r}
+#| echo: false
+countdown::countdown(5)
+```
 
 
 

@@ -77,6 +77,12 @@ theme_set(theme_bw())
 
 ------------------------------------------------------------------------
 
+## Announcements
+
+- Office hours this week
+
+------------------------------------------------------------------------
+
 ## Goals for today
 
 - Discuss theoretical inference for simple linear regression (SLR)
@@ -212,11 +218,11 @@ $$
 
 ::: {style="font-size:0.9em;"}
 
-- Several years ago, some Stat 141 students collected data on several hundred senior theses from thesis tower.
+- Several years ago, some Stat 141 students collected data on a sample of senior theses from the thesis tower.
 
 ::: {.fragment .nonincremental}
 
-- Page Count ($y$) and Year Published ($x$) for several of these theses are shown below:
+- Page Count ($y$) and Year Published ($x$) are shown below:
 
 ```{r echo=F, fig.height=2.25}
 theses_samp %>% 
@@ -309,7 +315,7 @@ $$
 
 ::: fragment
 
-Today, we will:
+Today and Wednesday, we will:
 
 :::
 
@@ -392,7 +398,7 @@ $$
 
 - In practice, **we estimate $\beta_0, \beta_1$ in the formula using $\widehat{\beta}_0, \widehat{\beta}_1$**, giving $\widehat{SE} (\widehat{\beta}_1)$
   
-- We perform a hypothesis test of $H_0: \beta_1 = 0$ using the standardized t-statistic 
+- We perform a hypothesis test of $H_0: \beta_1 = 0$ using the [standardized t-statistic]{.underline}
 
 ::: fragment
 
@@ -443,9 +449,9 @@ get_regression_table(theses_mod)
 
 - `std_error` --- theory-based standard error (0.198) 
 
-- `statistic` --- $t$-statistic (-3.06)
+- `statistic` --- standardized statistic (-3.06)
 
-- `p_value` --- p-value (0.003) of observing our $t$-statistic or something more extreme in the t-distribution with $df=n-2$ for the [*two-sided test*]{.underline},
+- `p_value` --- p-value (0.003) of observing our standardized statistic or something more extreme in the t-distribution with $df=n-2$ for the [*two-sided test*]{.underline},
 $$H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0$$
 
 

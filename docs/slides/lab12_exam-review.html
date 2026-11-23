@@ -10,7 +10,7 @@
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.25">
 
-  <title>STAT 141 – The Big Picture</title>
+  <title>STAT 141 – Exam Review</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -28,72 +28,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-dcd0113d5cc71e8f14b6292e6de6236b.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -204,417 +138,232 @@
 <p><img data-src="img/DAW.jpeg" style="width:90.0%"></p>
 </div><div class="column center" style="width:50%;">
 <p><br></p>
-<p><span class="custom-title">The Big Picture</span></p>
+<p><span class="custom-title">Exam Review</span></p>
 <p><br> <br></p>
 <p><span class="custom-subtitle">Megan Ayers</span></p>
-<p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Monday, Week 15</span></p>
+<p><span class="custom-subtitle">Stat 141 | Fall 2026 <br> Tuesday, Week 15</span></p>
 </div></div>
-</section>
-<section id="announcements" class="slide level2">
-<h2>Announcements</h2>
-<ul>
-<li class="fragment">Reading week office hours are set</li>
-</ul>
 </section>
 <section id="goals-for-today" class="slide level2">
 <h2>Goals for today</h2>
 <ul>
-<li class="fragment"><p>Reflect on the big picture of learning from data using probability, statistics, and <code>R</code></p></li>
-<li class="fragment"><p>Highlights from questions of the day</p></li>
-<li class="fragment"><p>Vote for topics to review in class</p></li>
-<li class="fragment"><p>Course evaluations</p></li>
-</ul>
-</section>
-<section id="learning-outcomes" class="slide level2">
-<h2>Learning Outcomes</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="img/DAW.jpeg"></p>
-</div><div class="column" style="width:45%;">
-<p><br><br><br></p>
-<ul>
-<li class="fragment"><p>Think back to your week 1 self</p></li>
-<li class="fragment"><p>Since then, we’ve learned skills to work with data, draw conclusions from data, and critically engage in the entire data analysis process!</p></li>
-</ul>
-</div></div>
-</section>
-<section id="learning-outcomes-1" class="slide level2">
-<h2>Learning Outcomes</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="img/DAW.jpeg"></p>
-</div><div class="column" style="width:45%;">
-<p><strong>Exploration &amp; Visualization</strong></p>
-<p>Over the semester we’ve learned how to…</p>
-<div class="fragment">
-<ul>
-<li>Recognize common data structures in R</li>
-<li>Create beautiful and effective graphs with <code>ggplot</code>!</li>
-<li>Use visualizations to gain insights from data</li>
-<li>Critically interpret visualizations</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section id="learning-outcomes-2" class="slide level2">
-<h2>Learning Outcomes</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="img/DAW.jpeg"></p>
-</div><div class="column" style="width:45%;">
-<p><strong>Data Wrangling</strong></p>
-<p>Over the semester we’ve learned how to…</p>
-<div class="fragment">
-<ul>
-<li>Perform data wrangling operations in <code>R</code></li>
-<li>Calculate statistics from data</li>
-<li>Resample data to create bootstrap, null, sampling distributions</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section id="learning-outcomes-3" class="slide level2">
-<h2>Learning Outcomes</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="img/DAW.jpeg"></p>
-</div><div class="column" style="width:45%;">
-<p><strong>Data Acquisition</strong></p>
-<p>Over the semester we’ve learned how to…</p>
-<div class="fragment">
-<ul>
-<li>Determine the data and study conditions necessary to conduct different analyses</li>
-<li>Critically consider where our data comes from</li>
-<li>Consider sampling strategies and study design when interpreting results</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section id="learning-outcomes-4" class="slide level2">
-<h2>Learning Outcomes</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="img/DAW.jpeg"></p>
-</div><div class="column" style="width:45%;">
-<p><strong>Modeling &amp; Inference</strong></p>
-<p>Over the semester we’ve learned how to…</p>
-<div class="fragment">
-<ul>
-<li>Build linear regression models and determine when they are appropriate</li>
-<li>Perform simulation-based inference with hypothesis testing and confidence intervals</li>
-<li>Use probability theory to perform theory-based inference tasks</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section id="learning-outcomes-5" class="slide level2">
-<h2>Learning Outcomes</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="img/DAW.jpeg"></p>
-</div><div class="column" style="width:45%;">
-<p><strong>Question Formulation</strong></p>
-<p>Over the semester we’ve learned how to…</p>
-<div class="fragment">
-<ul>
-<li>Translate research questions into testable hypotheses involving parameters and statistics</li>
-<li>Use exploratory data analysis to generate new research questions</li>
-<li>Identify the questions our data and analyses can, and cannot, answer</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section id="learning-outcomes-6" class="slide level2">
-<h2>Learning Outcomes</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><img data-src="img/DAW.jpeg"></p>
-</div><div class="column" style="width:45%;">
-<p><strong>Communicating Findings</strong></p>
-<p>Over the semester we’ve learned how to…</p>
-<div class="fragment">
-<ul>
-<li>Work with Quarto documents (<code>.qmd</code> files) to develop a reproducible workflow</li>
-<li>Interpret and communicate the results of statistical analyses effectively</li>
-<li>Use graphs to communicate findings visually</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section id="statistical-thinking" class="slide level2">
-<h2>Statistical Thinking</h2>
-<ul>
-<li>Software like <code>R</code> makes it incredibly easy to perform statistical analyses and tests and abstract away the details.</li>
-</ul>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">t.test</span>(response <span class="sc">~</span> group, <span class="at">data =</span> df)  <span class="co"># Inference for difference-in-means</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><br></p>
-<ul>
-<li class="fragment">There is deep theory, and, strong assumptions about the underlying data behind one-liners like this. In this course we’ve discussed:
-<ul>
-<li class="fragment">Tools to understand the underlying <strong>probability theory</strong> being employed</li>
-<li class="fragment">The <strong>conditions</strong> required for tests and analyses to be valid, and <strong>how we can check them</strong> using data wrangling, visualization, and context on the data collection process</li>
-<li class="fragment"><strong>Simulation-based methods as alternatives</strong> when some conditions aren’t met</li>
-<li class="fragment">How to <strong>responsibly interpret p-values</strong> and what kinds of conclusions are reasonable given the data context</li>
-</ul></li>
+<li class="fragment">Reminder: no calculators needed for the exam - can leave algebra unsimplified</li>
+<li class="fragment">Practice problems and exam review</li>
 </ul>
 </section>
 <section>
-<section id="question-of-the-day-findings" class="title-slide slide level1 center">
-<h1>Question of the day findings</h1>
+<section id="quick-review" class="title-slide slide level1 center">
+<h1>Quick Review</h1>
 
 </section>
-<section id="special-shoutouts" class="slide level2">
-<h2>Special shoutouts…</h2>
-<p><code>case_when()</code> and I would like to thank all 26 of you who always used the same spelling/format of your name for every “Question of the Day”!</p>
-<p><br></p>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>attendance <span class="ot">&lt;-</span> attendance <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a></a>  <span class="fu">mutate</span>(<span class="at">name =</span> <span class="fu">case_when</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MEGAN"</span>, <span class="st">"Megan"</span>, <span class="st">"MEGAN A"</span>, <span class="st">"Megan Ayers"</span>) <span class="sc">~</span> <span class="st">"Megan A"</span>,</span>
-<span id="cb2-3"><a></a>                          name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Michael P"</span>, <span class="st">"Mikey P"</span>, <span class="st">"MP"</span>, <span class="st">"Michaeeeel"</span>) <span class="sc">~</span> <span class="st">"Michael P"</span>,</span>
-<span id="cb2-4"><a></a>                          name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"G Dog"</span>, <span class="st">"Grayson W"</span>, <span class="st">"Grayson White"</span>) <span class="sc">~</span> <span class="st">"Grayson W"</span>,</span>
-<span id="cb2-5"><a></a>                          ...))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="special-shoutouts-1" class="slide level2">
-<h2>Special shoutouts…</h2>
+<section id="when-to-use-which-versions-of-inference" class="slide level2">
+<h2>When to use which versions of inference?</h2>
 <ul>
-<li class="fragment">Question of the day suggestions you gave me that are unasked but still in my heart…
-<ul>
-<li class="fragment">“Would you rather: salami underwear, wasabi for toothpaste?”</li>
-<li class="fragment">“Rate Reed College’s reefer madness culture out of 10”</li>
-<li class="fragment">“See who will give you the last 4 digits of their ssn”</li>
-</ul></li>
+<li class="fragment">Variable types determine what parameter/statistics</li>
 </ul>
 <p><br></p>
 <ul>
-<li class="fragment">Thank you for brightening my day with your creative QOD responses:
-<ul>
-<li class="fragment"><strong>Q</strong>: How do you feel about the Reed geese?
-<ul>
-<li class="fragment">“I love them, they’re like if giraffes were birds”</li>
-</ul></li>
-<li class="fragment"><strong>Q</strong>: Describe your ideal spring break in one word.
-<ul>
-<li class="fragment">“Unshackled”</li>
-</ul></li>
-<li class="fragment"><strong>Q</strong>: Best road trip snack?
-<ul>
-<li class="fragment">“Hydroxyzine”</li>
-</ul></li>
-</ul></li>
+<li class="fragment">Data conditions (and maybe preference) determine if we use theory-based or simulation-based</li>
 </ul>
 </section>
-<section id="tag-yourself" class="slide level2">
-<h2>Tag Yourself!</h2>
-<div class="columns">
-<div class="column" style="width:33%;">
-<p>Data Visualizer</p>
-<iframe src="https://giphy.com/embed/d31vTpVi1LAcDvdm" width="480" height="362" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</div><div class="column" style="width:33%;">
-<p>Data Wrangler</p>
-<iframe src="https://giphy.com/embed/DbaUtl1DcLyrdwhzGJ" width="480" height="362" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</div><div class="column" style="width:33%;">
-<p>Model Builder</p>
+<section id="confidence-intervals-theory-and-simulation" class="slide level2">
+<h2>Confidence Intervals (theory and simulation)</h2>
+<ul>
+<li class="fragment"><strong>General idea</strong>: given <u>some approximated sampling distribution</u>, to find a <span class="math inline">\(C\%\)</span> confidence interval…
+<ul>
+<li class="fragment"><strong>SE method</strong>: <span class="math inline">\((\text{statistic}) \pm (\text{crit. value})_C\cdot(SE \text{ of sampling distribution})\)</span>. Only works if sampling distribution is bell-shaped!</li>
+<li class="fragment"><strong>Percentile method</strong>: Find the <span class="math inline">\(\dfrac{100-C}{2}\)</span> and <span class="math inline">\(100 - \dfrac{100-C}{2}\)</span> percentiles of the sampling distribution, these are your confidence interval bounds</li>
+</ul></li>
+<li class="fragment"><strong>Individual steps:</strong>
+<ol type="1">
+<li class="fragment">Specify parameter and population</li>
+<li class="fragment">Specify sample and statistic</li>
+<li class="fragment">Approximate your sampling distribution, either via bootstrapping (simulation) or probability model (theory-based)</li>
+<li class="fragment">Use one of the two methods above depending on the shape of your distribution</li>
+</ol></li>
+</ul>
+</section>
+<section id="hypothesis-testing-theory-and-simulation" class="slide level2">
+<h2>Hypothesis Testing (theory and simulation)</h2>
+<ul>
+<li class="fragment"><p><strong>General idea</strong>: Figure out the probability of observing our data if the null hypothesis is true. Use this probability to inform whether we reject or maintain the null.</p></li>
+<li class="fragment"><p><strong>Individual steps:</strong></p>
+<ol type="1">
+<li class="fragment">Specify parameter and population</li>
+<li class="fragment">State your hypotheses and specify <span class="math inline">\(\alpha\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(H_0: p = p_0\)</span>, <span class="math inline">\(H_a:\)</span> either <span class="math inline">\(p \neq p_0\)</span>, <span class="math inline">\(p &gt; p_0\)</span>, or <span class="math inline">\(p &lt; p_0\)</span></li>
+</ul></li>
+<li class="fragment">Specify sample and <strong>test statistic</strong> (may be a standardized version of another statistic)</li>
+<li class="fragment">Approximate the <strong>null sampling distribution</strong>, either via resampling from a simulated null population, or via probability model (theory-based)</li>
+<li class="fragment">Use proportion/area of the null distribution to calculate <span class="math inline">\(\text{P-value}=P[\text{observe our test statistic } \textit{or something more extreme} | H_0]\)</span></li>
+<li class="fragment">Compare <span class="math inline">\(\text{P-value}\)</span> to <span class="math inline">\(\alpha\)</span> to make a conclusion about <span class="math inline">\(H_0\)</span> vs <span class="math inline">\(H_a\)</span>.</li>
+</ol></li>
+</ul>
+</section></section>
+<section>
+<section id="practice-problems" class="title-slide slide level1 center">
+<h1>Practice Problems</h1>
+
+</section>
+<section id="question-1-theory-based-inference---hypothesis-tests" class="slide level2 smaller">
+<h2>Question 1: Theory-Based Inference - Hypothesis Tests</h2>
+<ul>
+<li class="fragment">Suppose I’m interested in comparing effectiveness of two techniques of studying for a final exam: complete practice problems vs.&nbsp;no studying at all.
+<ul>
+<li class="fragment">I randomly sample 100 intro stat students at a large university</li>
+<li class="fragment">I randomly divide them into two groups: Treatment (complete practice problems) and Control (no studying allowed)</li>
+<li class="fragment">40/50 students get an “A” in the Treatment group, 25/50 students get an “A” in the Control group</li>
+</ul></li>
+</ul>
 <p><br></p>
-<iframe src="https://giphy.com/embed/xZsLh7B3KMMyUptD9D" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen="">
-</iframe>
-</div></div>
 <div class="fragment">
+<p><strong>Questions</strong></p>
+<ol type="1">
+<li><p>What kind of inference are we interested in conducting? (single mean or proportion, difference in means or proportions)</p></li>
+<li><p>State the conditions for theory-based inference and if we’ve met them</p></li>
+<li><p>Determine the mean and SE of the theory-based <strong>null distribution</strong></p></li>
+<li><p>Sketch the null distribution and shade the area corresponding to the p-value for a two-sided test</p></li>
+<li><p>Suppose the p-value is 0.02. Can we say doing practice problems causes better exam scores?</p></li>
+<li><p>State an ethical problem with the study.</p></li>
+<li><p>If we wanted to do simulation-based inference instead, what would change about our process?</p></li>
+</ol>
+</div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture38_course-wrapup_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
+<countdown-timer class="countdown" id="timer_c6727d10" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
-<section id="feelings-about-geese-and-sense-of-cat-self" class="slide level2">
-<h2>Feelings about geese and sense of cat self</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lecture38_course-wrapup_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:40%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stdout">
-<pre><code>         
-          love fear both neither Sum
-  indoor     8    3    7       7  25
-  outdoor    0    3    2       4   9
-  Sum        8    6    9      11  34</code></pre>
-</div>
-</div>
-<p><br></p>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Pearson's Chi-squared test
+<section class="slide level2">
 
-data:  qod$cat and qod$geese
-X-squared = 5, df = 3, p-value = 0.2</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Fisher's Exact Test for Count Data
-
-data:  qod$cat and qod$geese
-p-value = 0.2
-alternative hypothesis: two.sided</code></pre>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="plant-name-reveal" class="slide level2">
-<h2>Plant name reveal…</h2>
-<div class="fragment center">
-<p>Welcome to the world, <strong>Mike Wazowski Confidence Ayers</strong>!</p>
-<p><img data-src="img/monstera.jpeg" style="width:5in"></p>
-</div>
+<!-- ## SOLUTION: Question 1 -->
+<!-- ::: nonincremental -->
+<!-- > [Suppose I'm interested in comparing effectiveness of two techniques of studying for a final exam: complete practice problems vs. no studying at all. I randomly sample 100 intro stat students at a large university. I randomly divide them into two groups: Treatment (complete practice problems) and Control (no studying allowed). 40/50 students get an "A" in the Treatment group, 25/50 students get an "A" in the Control group]{style="color:darkred;"}. -->
+<!-- ::: -->
+<!-- 1. What kind of inference? -->
+<!--     - Difference in proportions -->
+<!-- 2. Conditions? -->
+<!--     - Two independent samples, 10 "successes" and "failures" in each. All conditions have been met. -->
+<!-- 3. Mean and SE of the **null distribution**? -->
+<!--     - Mean: 0; SE = $\sqrt{\frac{.65(1-.65)}{50} + \frac{.65(1-.65)}{50}}$. (0.65 is the "pooled proportion") -->
 <!-- ------------------------------------------------------------------------ -->
-<!-- ## Midterm Feelings {.smaller} -->
-<!-- ```{r fig.height = 1.8, fig.width = 5} -->
-<!-- midterm <- read.csv("data/midterm_feelings.csv") -->
-<!-- midterm$grade <- midterm$grade*100 -->
-<!-- midterm %>% -->
-<!--   ggplot(aes(x = pre_feeling, y = post_feeling)) + -->
-<!--   geom_point() + -->
-<!--   geom_abline(aes(intercept = 0, slope = 1), lty = 2, color = "gray") + -->
-<!--   geom_smooth(method = "lm", se = FALSE) + -->
-<!--   annotate("text", x = 5, y = 60, color = "blue", -->
-<!--            label = paste0("r = ", round(cor(midterm$pre_feeling, midterm$post_feeling), 2))) -->
-<!-- ``` -->
-<!-- ::: fragment -->
-<!-- ::: columns -->
-<!-- ::: column -->
-<!-- ```{r echo=T} -->
-<!-- mod <- lm(grade ~ pre_feeling, midterm) -->
-<!-- get_regression_table(mod) -->
-<!-- ``` -->
+<!-- ## SOLUTION: Question 1 -->
+<!-- ::: nonincremental -->
+<!-- > [Suppose I'm interested in comparing effectiveness of two techniques of studying for a final exam: complete practice problems vs. no studying at all. I randomly sample 100 intro stat students at a large university. I randomly divide them into two groups: Treatment (complete practice problems) and Control (no studying allowed). 40/50 students get an "A" in the Treatment group, 25/50 students get an "A" in the Control group]{style="color:darkred;"}. -->
 <!-- ::: -->
-<!-- ::: column -->
-<!-- ```{r echo=T} -->
-<!-- mod <- lm(grade ~ post_feeling, midterm) -->
-<!-- get_regression_table(mod) -->
-<!-- ``` -->
+<!-- 4. Sketch the null distribution and shade the area corresponding to the p-value. -->
+<!--     - Null distribution is a bell-curve centered at 0. Shade the area above $\frac{15}{50}$ and below $-\frac{15}{50}$ -->
+<!-- 5. Suppose the p-value is 0.02. Can we say doing practice problems causes better exam scores? -->
+<!--     - Probably yes, depending on $\alpha$. We have a low p-value to reject the null *and* we have a **random experiment** which allows for causal conclusions. -->
+<!-- 6. Ethical problems? -->
+<!--     - Our study "forces" some students to **not** study! This isn't fair to those students! -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## SOLUTION: Question 1 -->
+<!-- ::: nonincremental -->
+<!-- > [Suppose I'm interested in comparing effectiveness of two techniques of studying for a final exam: complete practice problems vs. no studying at all. I randomly sample 100 intro stat students at a large university. I randomly divide them into two groups: Treatment (complete practice problems) and Control (no studying allowed). 40/50 students get an "A" in the Treatment group, 25/50 students get an "A" in the Control group]{style="color:darkred;"}. -->
 <!-- ::: -->
-<!-- ::: -->
-<!-- ::: -->
-<!-- ::: {.fragment .center} -->
-<!-- ```{r echo=T} -->
-<!-- mod <- lm(grade ~ pre_feeling + post_feeling, midterm) -->
-<!-- get_regression_table(mod) -->
-<!-- ``` -->
-<!-- ::: -->
+<!-- 7. Changes for simulation based inference? -->
+<!--     - Above we assume that under the null, $\widehat{p}_1 - \widehat{p}_0 \sim Normal(0, \widehat{SE})$. Instead, we would simulate a population under the null (ex. 1000 students where 65% get A's).  -->
+<!--     - Then, sample 2 independent samples of size 50, and calculate the difference in proportions. Repeat ~1000 times to obtain an approximate null distribution.  -->
+<!--     - Our p-value would then be the proportion of null statistics that were more extreme than our observed statistic. -->
+<!-- ------------------------------------------------------------------------ -->
 </section>
-<section id="most-recommended-tv-movies-games-summer-break-considerations" class="slide level2">
-<h2>Most Recommended TV / Movies / Games (Summer Break considerations)</h2>
-<div class="columns">
-<div class="column" style="width:25%;">
-<p><strong>TV</strong></p>
+<section id="question-2-theory-based-inference---confidence-intervals" class="slide level2 smaller">
+<h2>Question 2: Theory-Based Inference - Confidence Intervals</h2>
 <ul>
-<li>Avatar the Last Airbender</li>
-<li>The Good Place</li>
-<li>Star Trek</li>
-<li>Breaking Bad</li>
-<li>The Pitt</li>
-<li>New Girl</li>
-</ul>
-</div><div class="column fragment" style="width:50%;">
-<p><strong>Movies</strong></p>
+<li>Suppose I’m interested in comparing effectiveness of two techniques of studying for a final exam: complete practice problems vs.&nbsp;no studying at all.
 <ul>
-<li>The Princess Bride</li>
-<li>Eternal Sunshine of the Spotless Mind</li>
-<li>Ponyo (Miyazaki movies in general)</li>
-<li>Shawshank Redemption</li>
-<li>The Big Lebowski</li>
-<li>Ratatouille</li>
+<li>I randomly sample 100 intro stat students at a large university</li>
+<li>I randomly divide them into two groups: Treatment (complete practice problems) and Control (no studying allowed)</li>
+<li>40/50 students get an “A” in the Treatment group, 25/50 students get an “A” in the Control group</li>
+</ul></li>
 </ul>
-</div><div class="column fragment" style="width:25%;">
-<p><strong>Board Games</strong></p>
-<ul>
-<li>Settlers of Catan</li>
-<li>Clue</li>
-<li>Monopoly</li>
-<li>Ticket to Ride</li>
-<li>I hate board games</li>
-</ul>
-</div></div>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:20%;">
-<p><strong>Video Games</strong></p>
-<ul>
-<li>Stardew Valley</li>
-<li>Minecraft</li>
-</ul>
-</div><div class="column" style="width:20%;">
 <p><br></p>
-<ul>
-<li>Mario Kart</li>
-<li>Disco Elysium</li>
-<li>The Sims</li>
-</ul>
-</div><div class="column" style="width:60%;">
-
-</div></div>
+<div class="fragment">
+<p><strong>Questions</strong></p>
+<ol type="1">
+<li><p>What theoretical sampling distribution would we consider for constructing confidence intervals?</p></li>
+<li><p>Given that the relevant critical value is 1.64, write the formula to find the theory-based 90% confidence interval for this scenario. Where does the critical value come from?</p></li>
+<li><p>Suppose the confidence interval is approximately [0.15, 0.5]. Can we say doing practice problems causes better exam scores?</p></li>
+<li><p>What would we change to get simulation-based confidence intervals using the percentile method instead?</p></li>
+</ol>
 </div>
-</section></section>
-<section>
-<section id="final-exam-in-class-review-requests" class="title-slide slide level1 center">
-<h1>Final exam in-class review requests</h1>
-
-</section>
-<section id="final-exam-in-class-review-requests-1" class="slide level2">
-<h2>Final exam in-class review requests</h2>
-<ul>
-<li class="fragment"><p>Spend a few minutes looking through the review sheet</p></li>
-<li class="fragment"><p>Slack message Megan with 2 topics you would most like covered during in-class review sessions</p></li>
-</ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_c380721d" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_df5f4781" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
-</section></section>
-<section>
-<section id="course-evaluations" class="title-slide slide level1 center">
-<h1>Course Evaluations</h1>
-
 </section>
 <section class="slide level2">
 
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="img/NewCourseEvalKeynote_Alison Crocker Slide.jpg" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
-</figure>
+<!-- ## SOLUTION: Question 2 -->
+<!-- ::: nonincremental -->
+<!-- > [Suppose I'm interested in comparing effectiveness of two techniques of studying for a final exam: complete practice problems vs. no studying at all. I randomly sample 100 intro stat students at a large university. I randomly divide them into two groups: Treatment (complete practice problems) and Control (no studying allowed). 40/50 students get an "A" in the Treatment group, 25/50 students get an "A" in the Control group]{style="color:darkred;"}. -->
+<!-- ::: -->
+<!-- 1. Theoretical sampling distribution? -->
+<!--     - $\widehat{p}_1 - \widehat{p}_0 \sim Normal(\frac{40}{50} - \frac{25}{50}, \widehat{SE}) \text{, where } \widehat{SE} = \sqrt{\frac{0.8\cdot0.2}{50} + \frac{0.5\cdot0.5}{50}}$ -->
+<!-- 2. Formula for 90% confidence interval: -->
+<!--     - $(\widehat{p}_1 - \widehat{p}_0) \pm 1.64\cdot \widehat{SE} = \frac{15}{50} \pm 1.64\cdot 0.09 = [0.152 , 0.448]$.  -->
+<!--     - The critical value $z^* = 1.64$ comes from the 0.95 quantile of $Normal(0, 1)$. -->
+<!--     - When we multiply $z^*$ by $\widehat{SE}$ and add/subtract $\widehat{p}_1 - \widehat{p}_0$, this gives us the 0.95 and 0.05 quantiles of the distribution from part 1 of this question.  -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## SOLUTION: Question 2 -->
+<!-- ::: nonincremental -->
+<!-- > [Suppose I'm interested in comparing effectiveness of two techniques of studying for a final exam: complete practice problems vs. no studying at all. I randomly sample 100 intro stat students at a large university. I randomly divide them into two groups: Treatment (complete practice problems) and Control (no studying allowed). 40/50 students get an "A" in the Treatment group, 25/50 students get an "A" in the Control group]{style="color:darkred;"}. -->
+<!-- ::: -->
+<!-- 3. Based on the confidence interval, can we say doing practice problems causes better exam scores? -->
+<!--     - Yes it seems likely - the 90% confidence interval does not include 0, and this was a randomized experiment. -->
+<!-- 4. What would we change to get simulation-based confidence intervals using the percentile method instead?  -->
+<!--     - We would approximate our sampling distribution using bootstrapping -->
+<!--     - Then we'd take the 0.05 and 0.95 quantiles of the bootstrap distribution to use as our confidence interval -->
+<!-- ------------------------------------------------------------------------ -->
+</section>
+<section id="question-3-linear-regression" class="slide level2">
+<h2>Question 3: Linear Regression</h2>
+<p>Consider the following regression model:</p>
+<p><span class="math display">\[\widehat{y}_\text{Movie Duration} = -980 + 0.56(x_\text{Year}) + 20(x_\text{Drama}) + 0.01(x_\text{Year})(x_\text{Drama})\]</span></p>
+<div class="fragment">
+<p><strong>Questions</strong></p>
+<ol type="1">
+<li><p>Using the regression equation, predict the duration of a Drama movie released in 1950.</p></li>
+<li><p>Carefully interpret the intercept coefficient, in context.</p></li>
+<li><p>Carefully interpret the slope coefficient for Year, in context.</p></li>
+<li><p>Carefully interpret the slope coefficient for Drama, in context.</p></li>
+<li><p>Which slope coefficients have <em>practical</em> significance? Explain your reasoning.</p></li>
+<li><p>If we fit this model in R, where would we look to do theory-based inference for these coefficients?</p></li>
+<li><p>What general steps would we follow to do simulation-based inference for <span class="math inline">\(\beta_{year}\)</span>?</p></li>
+</ol>
 </div>
-<!-- # ```{r} -->
-<!-- # #| echo: false -->
-<!-- # countdown::countdown(20) -->
-<!-- # ``` -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<countdown-timer class="countdown" id="timer_47ed94a8" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+</div>
+</div>
 </section>
 <section class="slide level2">
 
+<!-- ## SOLUTION: Question 3 {.smaller} -->
+<!-- $$\widehat{y}_\text{Movie Duration} = -980 + 0.56(x_\text{Year}) + 20(x_\text{Drama}) + 0.01(x_\text{Year})(x_\text{Drama})$$ -->
+<!-- 1. Predict the duration of a Drama movie released in 1950. -->
+<!--     - -980 + .56(1950) + 20(1) + 0.01(1950)(1) = 151.5 minutes -->
+<!-- 2. Carefully interpret the intercept coefficient, in context.  -->
+<!--     - We predict a non-Drama movie released in the year 0 to be -980 minutes long, on average. -->
+<!-- 3. Carefully interpret the slope coefficient for Year, in context. -->
+<!--     - For every additional year a *non-Drama* movie is released, we predict the movie's duration to increase by 0.56 minutes, on average. -->
+<!-- 4. Carefully interpret the slope coefficient for Drama, in context. -->
+<!--     - We expect a drama movie to be 20 minutes longer than a non-drama movie, on average, **in the year 0**. -->
+<!-- 5. Which slope coefficients have *practical* significance? Explain your reasoning. -->
+<!--     - ALL coefficients have practical significance! (The interaction coefficient may seem small, but trying plugging in 1900 for year!) -->
+<!-- 6. If we fit this model in R, where would we look to do theory-based inference for these coefficients? -->
+<!--     - The output of the regression table (from `get_regression_table`) has both theory-based confidence intervals and hypothesis testing results. -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- ## SOLUTION: Question 3 {.smaller} -->
+<!-- $$\widehat{y}_\text{Movie Duration} = -980 + 0.56(x_\text{Year}) + 20(x_\text{Drama}) + 0.01(x_\text{Year})(x_\text{Drama})$$ -->
+<!-- 7. What general steps would we follow to do simulation-based inference for $\beta_{year}$? -->
+<!--     - Bootstrapping: in each bootstrap sample, refit our model and grab the estimated coefficient.  -->
+<!--         - Calculate quantiles of the bootstrap distribution of coefficients to get confidence intervals. -->
+<!--         - Use the standard deviation of the distribution as $\widehat{SE}$ to calculate a z-score and perform hypothesis testing with `pnorm` (assuming $n$ is large enough). -->
 
 
 </section></section>

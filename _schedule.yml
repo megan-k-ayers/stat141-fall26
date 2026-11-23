@@ -542,8 +542,6 @@ scheduled-docs:
               href: readings/reading38.qmd
             - type: Slides
               href: slides/lecture35_reg-inference-anova.qmd
-            - type: Activity
-              href: in_class/inference_for_regression.zip
         - topic: "Inference for Regression IV: Wrapping Up"
           display-date: Wednesday, Dec 2
           date: 12/02/26
@@ -552,6 +550,8 @@ scheduled-docs:
               href: readings/reading39.qmd
             - type: Slides
               href: slides/lecture36_reg-inference-wrapup.qmd
+            - type: Activity
+              href: in_class/inference_for_regression.zip
         - topic: "Lab: Inference for Regression | Quiz 9"
           display-date: Thursday, Dec 3
           date: 12/03/26
@@ -577,7 +577,7 @@ scheduled-docs:
           
     - week: 15
       days:  
-        - topic: "Course Wrap Up"
+        - topic: "\"There Is Only One Test\""
           display-date: Monday, Dec 7
           date: 12/07/26
           docs:
@@ -589,7 +589,7 @@ scheduled-docs:
           docs:
              - type: Review Exercises
                href: in_class/lab_review_session.pdf
-        - topic: "Final Exam Review | Quiz 10"
+        - topic: "Quiz 10 in class | Wrap Up"
           display-date: Wednesday, Dec 9
           date: 12/09/26
           docs:
