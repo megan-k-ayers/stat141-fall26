@@ -1,7 +1,7 @@
 ---
-date: 11/25/26
+date: 11/30/26
 editor: source
-draft: true
+draft: false
 execute:
   freeze: auto
 ---
@@ -10,6 +10,7 @@ execute:
 
 ## Reading 
 
+Before coming to lecture today, please read the following material: 
+
 -  IMS Ch 22
-No new readings for today! 
 

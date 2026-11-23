@@ -84,6 +84,181 @@
     "text": "Footnotes\n\n\nThis Code of Conduct is adapted from the Contributor Covenant, version 2.0.↩︎"
   },
   {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#goals-for-today",
+    "href": "slides/lecture34_reg-inference-mlr.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\nPick up from last lecture: inference for regression with bootstrap\nReview multiple linear regression (MLR)\nDiscuss model selection"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#roadmap-for-inference",
+    "href": "slides/lecture34_reg-inference-mlr.html#roadmap-for-inference",
+    "title": "STAT 141",
+    "section": "Roadmap for Inference",
+    "text": "Roadmap for Inference\n\nRegression is a potential tool for assessing relationships between variables.\n\nWe have four “LINE” conditions for regression\nWe would like to conduct inference on parameters \\(\\beta_0\\) and/or \\(\\beta_1\\)\n\n\n\n\nTwo methods for conducting inference:\n\n\nConduct theory-based inference for \\(\\beta_0\\), \\(\\beta_1\\)\n\nRequires ALL of the LINE conditions be met. Rigid!!\nStraightforward to conduct\n\nConduct simulation-based inference for \\(\\beta_0\\), \\(\\beta_1\\)\n\nOnly requires Linearity and Independence. Flexible!!\nNeeds some extra code."
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#reed-theses-data",
+    "href": "slides/lecture34_reg-inference-mlr.html#reed-theses-data",
+    "title": "STAT 141",
+    "section": "Reed Theses Data",
+    "text": "Reed Theses Data\n\n\nSeveral years ago, some Stat 141 students collected data on a sample of senior theses from the thesis tower.\n\n\n\nPage Count (\\(y\\)) and Year Published (\\(x\\)) are shown below:\n\n\n\n\n\n\n\n\n\n\n\n\nBut this is just a sample of data. How might \\(\\widehat{\\beta}_1\\) change if we took a different sample?"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#bootstrapping-slopes",
+    "href": "slides/lecture34_reg-inference-mlr.html#bootstrapping-slopes",
+    "title": "STAT 141",
+    "section": "Bootstrapping Slopes",
+    "text": "Bootstrapping Slopes\n\nTo approximate variability in the slope statistic \\(\\widehat{\\beta}_1\\), we create a bootstrap sample by resampling data rows with replacement, and then calculating a new linear model, with a new slope\n\n\n\nset.seed(11)\ntheses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1)\n\n\n\n# A tibble: 6 × 3\n# Groups:   replicate [1]\n  replicate n_pages  year\n      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1         1      77  2010\n2         1      62  2001\n3         1     124  1989\n4         1      78  2016\n5         1      33  2001\n6         1      90  2007\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDashed red line: regression line for original sample\nDarker points: observations included in bootstrap sample more than once"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#bootstrap-distribution-of-slopes",
+    "href": "slides/lecture34_reg-inference-mlr.html#bootstrap-distribution-of-slopes",
+    "title": "STAT 141",
+    "section": "Bootstrap Distribution of Slopes",
+    "text": "Bootstrap Distribution of Slopes\nNow we generate 1000 replicates/bootstrap samples, and compute the slope for each.\n\nAcross each bootstrap sample, we calculate a single number inside summarize(): the slope estimate (second estimate) from the regression table from lm(n_pages ~ year)\n\n\nset.seed(11)\ntheses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#bootstrap-distribution-of-slopes-1",
+    "href": "slides/lecture34_reg-inference-mlr.html#bootstrap-distribution-of-slopes-1",
+    "title": "STAT 141",
+    "section": "Bootstrap Distribution of Slopes",
+    "text": "Bootstrap Distribution of Slopes\n\n\nPlotting the bootstrap distribution\n\n\nboot_slope %&gt;% ggplot(aes(x = slope)) +\n  geom_histogram(color = \"white\") +\n  theme_bw(base_size = 20)\n\n\n\n\n\n\n\n\n\nThe original sample had slope \\(\\widehat{\\beta}_1 =\\) -0.61\n\n\n\nWe can make the same plot and add the implied 95% confidence interval:\n\nci &lt;- quantile(boot_slope$slope, c(0.025, 0.975))\n\nboot_slope %&gt;% ggplot(aes(x = slope)) +\n  geom_histogram(color = \"white\") +\n  geom_vline(xintercept = ci, color = \"dodgerblue\") +\n  annotate(\"rect\", xmin = ci[1], xmax = ci[2], ymin = 0,\n           ymax = Inf, fill = \"dodgerblue\", alpha = 0.25) +\n  theme_bw(base_size = 20)"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#confidence-intervals---putting-it-all-together",
+    "href": "slides/lecture34_reg-inference-mlr.html#confidence-intervals---putting-it-all-together",
+    "title": "STAT 141",
+    "section": "Confidence Intervals - putting it all together",
+    "text": "Confidence Intervals - putting it all together\nGathering bootstrap samples…\n\n\nboot_slope &lt;- theses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])\nhead(boot_slope)\n\n\n# A tibble: 6 × 2\n  replicate  slope\n      &lt;int&gt;  &lt;dbl&gt;\n1         1 -0.411\n2         2 -0.762\n3         3 -0.614\n4         4 -0.665\n5         5 -0.961\n6         6 -0.615\n\n\n\n\n\nPercentile confidence interval\n\nq_ci &lt;- quantile(boot_slope$slope,\n                 c(0.025, 0.975))\nq_ci\n\n 2.5% 97.5% \n-1.17 -0.22 \n\n\n\nStandard error confidence interval (-0.61 is the original slope)…\n\ntstar &lt;- qt(0.975, nrow(theses_samp) - 2)\nse &lt;- sd(boot_slope$slope)\nse_ci &lt;- c(b1 - tstar*se, b1 + tstar*se)\nse_ci\n\n year  year \n-1.09 -0.13 \n\n\n\n\nNeither interval contains 0!"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#hypothesis-tests",
+    "href": "slides/lecture34_reg-inference-mlr.html#hypothesis-tests",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests",
+    "text": "Hypothesis Tests\n\\[H_0: \\beta_1 = 0 \\qquad H_a: \\beta_1 \\neq 0\\]\nEven without Normality and Equal Variability of the residuals, the standardized statistic\n\\[\nZ = \\frac{\\widehat{\\beta}_1 - \\beta_1}{\\text{Bootstrap $\\widehat{SE}$}}\n\\]\nis approximately standard normal (i.e., mean 0 and SD 1) as \\(n\\) gets large enough.\n\nThis means we can use pnorm() to get our p-values!\n\nThe bootstrap is helping us estimate the SE for our z-score.\nWe need to use the bootstrap because we can’t trust the lm() theory-based SE estimates when these assumptions are violated.\n\nWe could go fully simulation-based and avoid even assuming that \\(Z\\) is approximately Normal - this just requires extra coding."
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#hypothesis-tests-1",
+    "href": "slides/lecture34_reg-inference-mlr.html#hypothesis-tests-1",
+    "title": "STAT 141",
+    "section": "Hypothesis Tests",
+    "text": "Hypothesis Tests\n\\[\nH_0: \\beta_1 = 0 \\qquad H_a: \\beta_1 \\neq 0 \\qquad \\qquad Z = \\frac{\\widehat{\\beta}_1 - \\beta_1}{\\text{Bootstrap $\\widehat{SE}$}}\n\\]\n\n\n\n\nGather bootstrap samples…\n\n\nboot_slope &lt;- theses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])\n\n\n\n\nCalculate the bootstrapped SE…\n\n\nbootstrap_se &lt;- sd(boot_slope$slope)\nbootstrap_se\n\n[1] 0.24\n\n\n\n\n\n\n\n\nCalculate z-score under the null (\\(\\widehat{\\beta}_1=-0.61\\) is the original slope)…\n\n\nz &lt;- (b1 - 0) / bootstrap_se\nz\n\nyear \n-2.5 \n\n\n\n\n\nCalculate the p-value (2-sided test)…\n\n\np_value &lt;- 2*pnorm(z)\np_value\n\n year \n0.012 \n\n\n\n\n\nWe reject \\(H_0\\) at the 0.05 level! (But not at the 0.01 level)"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#example-reed-theses",
+    "href": "slides/lecture34_reg-inference-mlr.html#example-reed-theses",
+    "title": "STAT 141",
+    "section": "Example: Reed Theses",
+    "text": "Example: Reed Theses\nHow does Page Count (\\(y\\)) vary by Year (\\(x_1\\)) and Division (\\(x_2\\))?"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#example-reed-theses-1",
+    "href": "slides/lecture34_reg-inference-mlr.html#example-reed-theses-1",
+    "title": "STAT 141",
+    "section": "Example: Reed Theses",
+    "text": "Example: Reed Theses\nHow does Page Count (\\(y\\)) vary by Year (\\(x_1\\)) and Division (\\(x_2\\))?\n\nmod_YearDivision &lt;- lm(n_pages ~ year + division, data = theses)\nget_regression_table(mod_YearDivision)\n\n# A tibble: 8 × 7\n  term           estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept      1150.      142.         8.10   0       872.   1429.   \n2 year             -0.541     0.071     -7.61   0        -0.68   -0.401\n3 division: G      26.5      20.1        1.32   0.189   -13.0    66.0  \n4 division: HSS    35.8       6.61       5.41   0        22.8    48.8  \n5 division: ID     27.6       8.66       3.18   0.002    10.6    44.6  \n6 division: LL     12.3       6.89       1.79   0.075    -1.22   25.8  \n7 division: MNS    -9.50      6.49      -1.46   0.144   -22.2     3.25 \n8 division: PRPL    8.28      6.99       1.18   0.237    -5.44   22.0"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#review-multiple-regression-model",
+    "href": "slides/lecture34_reg-inference-mlr.html#review-multiple-regression-model",
+    "title": "STAT 141",
+    "section": "Review: Multiple Regression Model",
+    "text": "Review: Multiple Regression Model\n\n\nmod_YearDivision &lt;- lm(n_pages ~ year + division, data = theses)\nget_regression_table(mod_YearDivision)\n\n# A tibble: 8 × 7\n  term           estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept      1150.      142.         8.10   0       872.   1429.   \n2 year             -0.541     0.071     -7.61   0        -0.68   -0.401\n3 division: G      26.5      20.1        1.32   0.189   -13.0    66.0  \n4 division: HSS    35.8       6.61       5.41   0        22.8    48.8  \n5 division: ID     27.6       8.66       3.18   0.002    10.6    44.6  \n6 division: LL     12.3       6.89       1.79   0.075    -1.22   25.8  \n7 division: MNS    -9.50      6.49      -1.46   0.144   -22.2     3.25 \n8 division: PRPL    8.28      6.99       1.18   0.237    -5.44   22.0  \n\n\n\n\nWe assume in the population, the response \\(y\\) is a linear function of the explanatory variables \\(x_1,\\dots,x_k\\):\n\\[\ny  = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\dots + \\beta_k x_k + \\epsilon\n\\]\n\n\nBut we estimate the model from the sample data that we actually have:\n\\[\n\\begin{aligned}\n\\widehat{y}  &= \\widehat{\\beta_0} + \\widehat{\\beta_1}  x_1 + \\widehat{\\beta_2}  x_2 + \\dots + \\widehat{\\beta_k}  x_k\\\\\n&= 626 -0.284 \\cdot \\text{Year} + 33.2 \\cdot \\text{HSS} + 22.7 \\cdot \\text{LL} - 4.99 \\cdot \\text{MNS} + 21.1 \\cdot \\text{PRPL}\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#review-interpretation",
+    "href": "slides/lecture34_reg-inference-mlr.html#review-interpretation",
+    "title": "STAT 141",
+    "section": "Review: Interpretation",
+    "text": "Review: Interpretation\n\\[\n\\begin{aligned}\n\\widehat{y}  &= 626 -0.284 \\cdot \\text{Year} + 33.2 \\cdot \\text{HSS} + 22.7 \\cdot \\text{LL} - 4.99 \\cdot \\text{MNS} + 21.1 \\cdot \\text{PRPL}\n\\end{aligned}\n\\]\n\n\nIntercept: The [expected/predicted] number of pages (y) for a thesis in year 0 and for the baseline division (Arts) is 626 pages, on average\nQuantitative Slope: For a one-year increase in time, we [expect/predict] a 0.284 page decrease in thesis length on average, holding division constant.\nCategorical Slope: Comparing a thesis in the HSS division to the baseline division (Arts), we [expect/predict] a 33.2 page increase in thesis length, on average, holding year constant."
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#review-conditions",
+    "href": "slides/lecture34_reg-inference-mlr.html#review-conditions",
+    "title": "STAT 141",
+    "section": "Review: Conditions",
+    "text": "Review: Conditions\nWe want linear regression models to satisfy 4 conditions:\n\nLinearity: The relationship between explanatory and response variables must be approximately linear\n\nCheck using scatterplot/residual plot\n\nIndependence: The observations should be independent of one another.\n\nAssess using context!\n\nNormality: The distribution of residuals should be normally distributed\n\nHistogram of residuals\nQ-Q plot of residuals\n\nEqual Variability: Variance of residuals should be roughly constant across data set.\n\nCheck using scatterplot/residual plot."
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#code-for-checking-conditions",
+    "href": "slides/lecture34_reg-inference-mlr.html#code-for-checking-conditions",
+    "title": "STAT 141",
+    "section": "Code for Checking Conditions",
+    "text": "Code for Checking Conditions\n\n\n\nResidual plot: Residuals vs fitted values\n\nmod_YearDivision %&gt;% \n  get_regression_points() %&gt;%\n  ggplot(aes(x = n_pages_hat, y = residual))+\n  geom_point() +\n  geom_smooth(method = \"lm\", se = F)\n\n\n\n\n\n\n\n\n\nResiduals histogram and Q-Q Plot\n\nmod_YearDivision %&gt;% \n  get_regression_points() %&gt;%\n  ggplot(aes(x = residual)) +\n  geom_histogram(bins = 20, color = \"white\")\n\n\n\n\n\n\n\n\n\nmod_YearDivision %&gt;% \n  get_regression_points() %&gt;%\n  ggplot(aes(sample = residual)) +\n  geom_qq() + \n  geom_qq_line()"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#inference-procedures",
+    "href": "slides/lecture34_reg-inference-mlr.html#inference-procedures",
+    "title": "STAT 141",
+    "section": "Inference Procedures",
+    "text": "Inference Procedures\n\nWe can proceed with coefficient-level inference for Multiple Linear Regression exactly the same way we did for Simple Linear Regression!\n\n\n\n\nIf ALL of the LINE conditions are satisfied\n\nUse theory-based inference!\nConfidence intervals and coefficient-level hypothesis tests given by get_regression_table() function\n\n\n\n\nIf at least Linearity and Independence are satisfied\n\nResampling-based inference\nUse resampling methods to create confidence intervals and coefficient-level hypothesis tests\nMore practice on next week’s lab\n\n\n\n\nALWAYS\n\nCheck adjusted \\(R^2\\) using get_regression_summaries() function\nConsider statistical AND practical significance\nLook at plots (e.g., exploratory plots, regression model plots, plots for assumptions)"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#background-model-selection",
+    "href": "slides/lecture34_reg-inference-mlr.html#background-model-selection",
+    "title": "STAT 141",
+    "section": "Background: Model Selection",
+    "text": "Background: Model Selection\n\nOften, we have a more generic goal than learning about a specific coefficient:\n\nWhat’s the best model to predict \\(y\\) using some combination of variables \\(x_1, x_2, \\dots, x_k\\)?\n\n\n\n\nA few options:\n\n“Smallest” model: Intercept-only model (i.e., no predictors at all!)\n“Biggest model: Include all variables and their interactions\nSomething in between?"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#things-to-avoid",
+    "href": "slides/lecture34_reg-inference-mlr.html#things-to-avoid",
+    "title": "STAT 141",
+    "section": "Things to Avoid",
+    "text": "Things to Avoid\nThere is no single correct way to pick a model…but there are “bad” ways\n\nFitting the biggest model and only keeping variables with “significant” p-values\n\nVariables can be interrelated. We may remove groups of variables which add value to our model!\nIdeally, we should be able to justify why each variable is included in the model, beyond “the p-value told me to”\n\nForward selection and Backward selection\n\nSome statisticians used to advocate for successively adding/removing variables based on highest/lowest p-values.\nThis can be inaccurate, noisy, and messes with our type-I error rate"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#how-to-engage-in-model-selection",
+    "href": "slides/lecture34_reg-inference-mlr.html#how-to-engage-in-model-selection",
+    "title": "STAT 141",
+    "section": "How to Engage in Model Selection",
+    "text": "How to Engage in Model Selection\nThree recommended tools for model selection:\n\nContext: Do we have a contextual reason to believe a variable should be included?\n\nTalk to experts; examine data plots; hypothesize\n\nParsimony: Is there a simpler model that’s about as good?\n\nExamine data plots, see how \\(R^2\\) changes\n\n“Nested F-tests”: Hypothesis test for including groups of variables in our model\n\nWe’ll learn about this today!"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#more-penguins",
+    "href": "slides/lecture34_reg-inference-mlr.html#more-penguins",
+    "title": "STAT 141",
+    "section": "More Penguins",
+    "text": "More Penguins\nLet’s again predict Bill Length (\\(y\\)) with Species (\\(x_1\\)) and Body Mass (\\(x_2\\))\n\n\n\n\n\n\n\n\n\n\nContext: We can see Body Mass and Species are related to Bill Length (and this probably aligns with our hypotheses)\nShould we include interaction terms? (consider parsimony)"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#nested-f-tests",
+    "href": "slides/lecture34_reg-inference-mlr.html#nested-f-tests",
+    "title": "STAT 141",
+    "section": "Nested F-Tests",
+    "text": "Nested F-Tests\nThe Nested F-Test is designed for these situations:\nIt compares two “nested” models:\n\\[\n\\begin{aligned}\n\\text{\"Small\" Model:} \\quad &y = \\beta_0 + \\beta_1x_1 +\\dots+\\beta_mx_m\\\\\n\\text{\"Large\" Model:} \\quad &y = \\beta_0 + \\beta_1x_1 +\\dots+\\beta_mx_m + \\beta_{m+1}x_{m+1} + \\dots + \\beta_px_p\n\\end{aligned}\n\\]\n\nHypotheses \\[\n\\begin{aligned}\nH_0:& \\text{ The small model is sufficient at explaining y}\\\\\nH_a:& \\text{ The large model is superior to the small at explaining y}\\\\\n\\end{aligned}\n\\]\n\n\nModels MUST be “nested”\nCondition: “Large” model should satisfy LINE conditions\nWe’ll learn more about F-tests in the next lecture. For now, let R do the work.\nQ: If we get a very small (\\(&lt; \\alpha\\)) p-value from our F-test, what should we conclude?"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#nested-f-tests-1",
+    "href": "slides/lecture34_reg-inference-mlr.html#nested-f-tests-1",
+    "title": "STAT 141",
+    "section": "Nested F-Tests",
+    "text": "Nested F-Tests\n\n# Setting up our models\nmodel_small &lt;- lm(bill_length_mm ~ body_mass_g + species, data = penguins)\nmodel_large &lt;- lm(bill_length_mm ~ body_mass_g * species, data = penguins)\n\n\n\n# We'll learn more about what anova() is doing next time!!\n# Small model first, large model second\nanova(model_small, model_large)\n\nAnalysis of Variance Table\n\nModel 1: bill_length_mm ~ body_mass_g + species\nModel 2: bill_length_mm ~ body_mass_g * species\n  Res.Df  RSS Df Sum of Sq    F Pr(&gt;F)\n1    338 1952                         \n2    336 1933  2      18.6 1.62    0.2\n\n\n\n\nWe have a p-value of 0.20 \\(\\implies\\) insufficient evidence to reject the null.\nThus, we should use the “small” model (without interaction effects!)"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#word-of-caution",
+    "href": "slides/lecture34_reg-inference-mlr.html#word-of-caution",
+    "title": "STAT 141",
+    "section": "Word of Caution",
+    "text": "Word of Caution\nSuppose you had fit the small and large models and compared each coefficient’s p-value:\n\n\n\n\n\nterm\npvals SMALL model\npvals LARGE model\n\n\n\n\nintercept\n0\n0.00\n\n\nbody_mass_g\n0\n0.00\n\n\nspecies: Chinstrap\n0\n0.12\n\n\nspecies: Gentoo\n0\n0.92\n\n\nbody_mass_g:speciesChinstrap\nNA\n0.15\n\n\nbody_mass_g:speciesGentoo\nNA\n0.14\n\n\n\n\n\n\nThink-Pair-Share:\n\nWhat variables would you have kept if you only looked at p-values in the “large” model?\nWhat do you notice? Are you surprised?\nCan you explain this behavior?"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#final-note-model-selection",
+    "href": "slides/lecture34_reg-inference-mlr.html#final-note-model-selection",
+    "title": "STAT 141",
+    "section": "Final Note: Model Selection",
+    "text": "Final Note: Model Selection\n\nThere are tons of other tools for model selection:\n\n“Goodness-of-Fit” criteria, like AIC and BIC\nPenalized regression, like the “lasso” and “ridge regression”\nCross validation\n\nThese are covered in Math 243!"
+  },
+  {
+    "objectID": "slides/lecture34_reg-inference-mlr.html#next-time",
+    "href": "slides/lecture34_reg-inference-mlr.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time",
+    "text": "Next time\n\nMore inference for regression\n\nSpecial case when we have 1 categorical predictor (ANOVA)"
+  },
+  {
     "objectID": "slides/lecture32_tbi-diff-means.html#goals-for-today",
     "href": "slides/lecture32_tbi-diff-means.html#goals-for-today",
     "title": "STAT 141",
@@ -2163,6 +2338,34 @@
     "text": "Demo: Finding the lab files, tour of RStudio, starting the lab"
   },
   {
+    "objectID": "readings/reading39.html",
+    "href": "readings/reading39.html",
+    "title": "Stat 141: Readings for December 4, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS Chapter 18"
+  },
+  {
+    "objectID": "readings/reading39.html#reading",
+    "href": "readings/reading39.html#reading",
+    "title": "Stat 141: Readings for December 4, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS Chapter 18"
+  },
+  {
+    "objectID": "readings/reading37.html",
+    "href": "readings/reading37.html",
+    "title": "Stat 141: Readings for November 30, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS Ch 22"
+  },
+  {
+    "objectID": "readings/reading37.html#reading",
+    "href": "readings/reading37.html#reading",
+    "title": "Stat 141: Readings for November 30, 2026",
+    "section": "",
+    "text": "Before coming to lecture today, please read the following material:\n\nIMS Ch 22"
+  },
+  {
     "objectID": "readings/reading35.html",
     "href": "readings/reading35.html",
     "title": "Stat 141: Readings for November 23, 2026",
@@ -2623,6 +2826,20 @@
     "title": "Stat 141: Readings for November 25, 2026",
     "section": "",
     "text": "Before coming to lecture today, please read the following material:\n\nIMS 24.6-24.7"
+  },
+  {
+    "objectID": "readings/reading38.html",
+    "href": "readings/reading38.html",
+    "title": "Stat 141: Readings for December 2, 2026",
+    "section": "",
+    "text": "No new readings for today!"
+  },
+  {
+    "objectID": "readings/reading38.html#reading",
+    "href": "readings/reading38.html#reading",
+    "title": "Stat 141: Readings for December 2, 2026",
+    "section": "",
+    "text": "No new readings for today!"
   },
   {
     "objectID": "slides/lecture01_stat-thinking.html#goals-for-today",

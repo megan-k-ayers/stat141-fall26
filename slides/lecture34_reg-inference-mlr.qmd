@@ -1,7 +1,7 @@
 ---
 pagetitle: "Inference for Regression II: Multiple Linear Regression"
 editor: source
-draft: true
+draft: false
 format: 
   revealjs:
     chalkboard: true
@@ -82,6 +82,20 @@ theses<-read_csv("data/theses.csv") %>%
   drop_na(n_pages, year) %>% filter(n_pages < 200, year > 1920)
 ```
 
+```{r echo = F}
+set.seed(100)
+theses<-read_csv("data/theses_2022.csv") %>% drop_na(n_pages, year) 
+
+theses_samp<-theses %>%  sample_n(size = 100)
+
+theses_mod <- lm(n_pages~year, data= theses_samp)
+b0 <- round(coef(theses_mod)[1],2)
+b1 <- round(coef(theses_mod)[2],2)
+R <- round(cor(theses_samp$year, theses_samp$n_pages), 2)
+
+my_data <- theses_samp %>% mutate(x  = year, y = n_pages)
+```
+
 ------------------------------------------------------------------------
 
 ## Goals for today
@@ -93,8 +107,365 @@ theses<-read_csv("data/theses.csv") %>%
 - Discuss model selection
 
 
-# Picking up from last lecture: bootstrap for regression inference
+------------------------------------------------------------------------
 
+## Roadmap for Inference
+
+- Regression is a potential tool for assessing relationships between variables.
+    - We have four "LINE" conditions for regression 
+    - We would like to conduct inference on parameters $\beta_0$ and/or $\beta_1$
+  
+<br>
+
+::: fragment
+
+Two methods for conducting inference:
+
+:::
+
+1. Conduct **theory-based** inference for $\beta_0$, $\beta_1$
+    - Requires [ALL]{.underline} of the LINE conditions be met. Rigid!!
+    - Straightforward to conduct
+
+2. Conduct **simulation**-based inference for $\beta_0$, $\beta_1$
+    - Only requires Linearity and Independence. Flexible!!
+    - Needs some extra code.
+
+
+------------------------------------------------------------------------
+
+## Reed Theses Data
+
+::: {style="font-size:0.9em;"}
+
+- Several years ago, some Stat 141 students collected data on a sample of senior theses from the thesis tower.
+
+::: {.fragment .nonincremental}
+
+- Page Count ($y$) and Year Published ($x$) are shown below:
+
+```{r echo=F, fig.height=4}
+theses_samp %>% 
+  ggplot(aes(x = year, y = n_pages)) + 
+  geom_point() + geom_smooth(method = "lm", se = F) +
+  labs(title = "Reed Theses", x = "Year", y = "Page Count") +
+  annotate(geom = "text", x = 2000, y = 250, label = paste("r=", R)) +
+  annotate(geom = "text", x = 2000, y = 200, label = paste("Y=", b0, b1, "X")) +
+  theme_bw(base_size=20)
+```
+
+:::
+
+- But this is just a sample of data. How might $\widehat{\beta}_1$ change if we took a different sample?
+
+:::
+
+------------------------------------------------------------------------
+
+## Bootstrapping Slopes
+
+
+::: {style="font-size:0.85em;"}
+
+To approximate variability in the slope statistic $\widehat{\beta}_1$, we create a bootstrap sample by resampling data rows [with replacement]{.underline}, and then calculating **a new linear model, with a new slope**
+
+
+::::: columns
+
+::: {.column width=40% .fragment}
+
+```{r eval = F, echo = T}
+set.seed(11)
+theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1)
+```
+
+
+```{r echo = F}
+set.seed(13)
+samp1 <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1)
+
+samp1 %>% 
+  head()
+```
+
+:::
+
+::: {.column width=60% .fragment .nonincremental}
+
+```{r echo = F, out.width = "100%", fig.height = 5}
+ggplot(samp1, aes(x = year, y = n_pages))+geom_point(alpha = .35, size = 2)+geom_smooth(method = "lm", se = F)+
+  geom_abline(slope = b1, intercept = b0, color = "red", linetype = "dashed")+
+  labs(title = "Bootstrap Sample") + theme_bw(base_size = 20)
+```
+
+
+:::
+
+:::::
+
+- Dashed red line: regression line for original sample
+
+- Darker points: observations included in bootstrap sample more than once
+
+:::
+
+------------------------------------------------------------------------
+
+## Bootstrap Distribution of Slopes
+
+
+Now we generate 1000 replicates/bootstrap samples, and compute the slope for each.
+
+<br>
+
+Across each bootstrap sample, we calculate a single number inside `summarize()`: the **slope** estimate (second `estimate`) from the regression table from `lm(n_pages ~ year)`
+
+<br>
+
+
+```{r eval = F, echo = T}
+set.seed(11)
+theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000) %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+```
+
+
+```{r eval = T, echo = F, cache=T}
+set.seed(11)
+boot_slope <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000)
+
+boot_slope <- boot_slope %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+```
+
+
+------------------------------------------------------------------------
+
+## Bootstrap Distribution of Slopes
+
+::::: columns
+
+::: {.column width=50%}
+
+Plotting the bootstrap distribution
+
+<br>
+
+```{r eval = T, echo = T,  fig.height=3.5}
+boot_slope %>% ggplot(aes(x = slope)) +
+  geom_histogram(color = "white") +
+  theme_bw(base_size = 20)
+```
+
+
+- The original sample had slope $\widehat{\beta}_1 =$ `r b1`
+
+:::
+
+::: {.column width=50%}
+
+::: fragment
+
+We can make the same plot and add the implied 95% confidence interval:
+
+```{r eval = T, echo = T,  fig.height=3.5}
+
+ci <- quantile(boot_slope$slope, c(0.025, 0.975))
+
+boot_slope %>% ggplot(aes(x = slope)) +
+  geom_histogram(color = "white") +
+  geom_vline(xintercept = ci, color = "dodgerblue") +
+  annotate("rect", xmin = ci[1], xmax = ci[2], ymin = 0,
+           ymax = Inf, fill = "dodgerblue", alpha = 0.25) +
+  theme_bw(base_size = 20)
+```
+
+:::
+
+:::
+
+:::::
+
+
+------------------------------------------------------------------------
+
+## Confidence Intervals - putting it all together
+
+Gathering bootstrap samples...
+
+```{r eval = T, echo = T}
+#| output-location: column
+boot_slope <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000) %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+head(boot_slope)
+```
+
+<br>
+
+::::: columns
+
+::: {.column width=40% .fragment}
+
+**Percentile confidence interval**
+
+```{r eval = T, echo = T}
+q_ci <- quantile(boot_slope$slope,
+                 c(0.025, 0.975))
+q_ci
+```
+
+:::
+
+::: {.column width=60% .fragment}
+
+**Standard error confidence interval** (`r b1` is the original slope)...
+
+```{r eval = T, echo = T}
+tstar <- qt(0.975, nrow(theses_samp) - 2)
+se <- sd(boot_slope$slope)
+se_ci <- c(b1 - tstar*se, b1 + tstar*se)
+se_ci
+```
+
+
+:::
+
+:::::
+
+
+- Neither interval contains 0!
+
+
+------------------------------------------------------------------------
+
+## Hypothesis Tests 
+
+$$H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0$$
+
+
+Even without **Normality** and **Equal Variability** [of the *residuals*]{.underline}, the standardized statistic
+
+$$
+Z = \frac{\widehat{\beta}_1 - \beta_1}{\text{Bootstrap $\widehat{SE}$}}
+$$
+
+is **approximately standard normal (i.e., mean 0 and SD 1) as $n$ gets large enough.**
+
+
+
+- This means we can use `pnorm()` to get our p-values! 
+    - The bootstrap is helping us estimate the SE for our z-score. 
+    - We need to use the bootstrap because we can't trust the `lm()` theory-based SE estimates when these assumptions are violated.
+
+- We could go *fully* simulation-based and avoid even assuming that $Z$ is approximately Normal - this just requires extra coding.
+
+
+------------------------------------------------------------------------
+
+## Hypothesis Tests 
+
+
+$$
+H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\beta}_1 - \beta_1}{\text{Bootstrap $\widehat{SE}$}}
+$$
+
+::::: columns
+
+::: {.column width=45%}
+
+::: {.fragment .nonincremental}
+
+1) Gather bootstrap samples...
+
+```{r eval = F, echo = T}
+boot_slope <- theses_samp %>% 
+  select(n_pages, year) %>%
+  rep_sample_n(nrow(theses_samp),
+               replace = TRUE, reps = 1000) %>%
+  group_by(replicate) %>%
+  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])
+```
+
+:::
+
+
+::: {.fragment .nonincremental}
+
+2) Calculate the bootstrapped SE...
+
+```{r eval = T, echo = T}
+bootstrap_se <- sd(boot_slope$slope)
+bootstrap_se
+```
+
+
+:::
+
+:::
+
+::: {.column width=3%}
+
+:::
+
+::: {.column width=52%}
+
+::: {.fragment .nonincremental}
+
+3) Calculate z-score under the null ($\widehat{\beta}_1=-0.61$ is the original slope)...
+
+
+```{r eval = T, echo = F}
+z <- (-0.61 - 0) / bootstrap_se
+```
+
+
+```{r eval = T, echo = T}
+z <- (b1 - 0) / bootstrap_se
+z
+```
+
+
+:::
+
+::: {.fragment .nonincremental}
+
+4) Calculate the p-value (2-sided test)...
+
+
+```{r eval = T, echo = T}
+p_value <- 2*pnorm(z)
+p_value
+```
+
+:::
+
+:::
+
+:::::
+
+::: fragment
+
+**We reject $H_0$ at the 0.05 level! (But not at the 0.01 level)**
+
+:::
 
 
 # Review: Multiple Linear Regression
@@ -304,7 +675,7 @@ mod_YearDivision %>%
 ## Background: Model Selection
 
 - Often, we have a more generic goal than learning about a specific coefficient:
-    - **What's the [best]{.underline} model to predict $y$ using some combination of variables $x_1$, $x_2$,\dots,$x_k$?**
+    - **What's the [best]{.underline} model to predict $y$ using some combination of variables $x_1, x_2, \dots, x_k$?**
 
 <br>
 

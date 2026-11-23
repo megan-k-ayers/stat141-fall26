@@ -218,11 +218,299 @@
 <li class="fragment"><p>Discuss model selection</p></li>
 </ul>
 </section>
-<section id="picking-up-from-last-lecture-bootstrap-for-regression-inference" class="title-slide slide level1 center">
-<h1>Picking up from last lecture: bootstrap for regression inference</h1>
-
+<section id="roadmap-for-inference" class="slide level2">
+<h2>Roadmap for Inference</h2>
+<ul>
+<li class="fragment">Regression is a potential tool for assessing relationships between variables.
+<ul>
+<li class="fragment">We have four “LINE” conditions for regression</li>
+<li class="fragment">We would like to conduct inference on parameters <span class="math inline">\(\beta_0\)</span> and/or <span class="math inline">\(\beta_1\)</span></li>
+</ul></li>
+</ul>
+<p><br></p>
+<div class="fragment">
+<p>Two methods for conducting inference:</p>
+</div>
+<ol type="1">
+<li class="fragment">Conduct <strong>theory-based</strong> inference for <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>
+<ul>
+<li class="fragment">Requires <u>ALL</u> of the LINE conditions be met. Rigid!!</li>
+<li class="fragment">Straightforward to conduct</li>
+</ul></li>
+<li class="fragment">Conduct <strong>simulation</strong>-based inference for <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span>
+<ul>
+<li class="fragment">Only requires Linearity and Independence. Flexible!!</li>
+<li class="fragment">Needs some extra code.</li>
+</ul></li>
+</ol>
 </section>
+<section id="reed-theses-data" class="slide level2">
+<h2>Reed Theses Data</h2>
+<div style="font-size:0.9em;">
+<ul>
+<li class="fragment">Several years ago, some Stat 141 students collected data on a sample of senior theses from the thesis tower.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Page Count (<span class="math inline">\(y\)</span>) and Year Published (<span class="math inline">\(x\)</span>) are shown below:</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">But this is just a sample of data. How might <span class="math inline">\(\widehat{\beta}_1\)</span> change if we took a different sample?</li>
+</ul>
+</div>
+</section>
+<section id="bootstrapping-slopes" class="slide level2">
+<h2>Bootstrapping Slopes</h2>
+<div style="font-size:0.85em;">
+<p>To approximate variability in the slope statistic <span class="math inline">\(\widehat{\beta}_1\)</span>, we create a bootstrap sample by resampling data rows <u>with replacement</u>, and then calculating <strong>a new linear model, with a new slope</strong></p>
+<div class="columns">
+<div class="column fragment" style="width:40%;">
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
+<span id="cb1-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb1-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+# Groups:   replicate [1]
+  replicate n_pages  year
+      &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;
+1         1      77  2010
+2         1      62  2001
+3         1     124  1989
+4         1      78  2016
+5         1      33  2001
+6         1      90  2007</code></pre>
+</div>
+</div>
+</div><div class="column fragment" style="width:60%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<ul>
+<li class="fragment"><p>Dashed red line: regression line for original sample</p></li>
+<li class="fragment"><p>Darker points: observations included in bootstrap sample more than once</p></li>
+</ul>
+</div>
+</section>
+<section id="bootstrap-distribution-of-slopes" class="slide level2">
+<h2>Bootstrap Distribution of Slopes</h2>
+<p>Now we generate 1000 replicates/bootstrap samples, and compute the slope for each.</p>
+<p><br></p>
+<p>Across each bootstrap sample, we calculate a single number inside <code>summarize()</code>: the <strong>slope</strong> estimate (second <code>estimate</code>) from the regression table from <code>lm(n_pages ~ year)</code></p>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
+<span id="cb3-2"><a></a>theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb3-5"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="bootstrap-distribution-of-slopes-1" class="slide level2">
+<h2>Bootstrap Distribution of Slopes</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Plotting the bootstrap distribution</p>
+<p><br></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>boot_slope <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> slope)) <span class="sc">+</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">The original sample had slope <span class="math inline">\(\widehat{\beta}_1 =\)</span> -0.61</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p>We can make the same plot and add the implied 95% confidence interval:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boot_slope<span class="sc">$</span>slope, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb5-2"><a></a></span>
+<span id="cb5-3"><a></a>boot_slope <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> slope)) <span class="sc">+</span></span>
+<span id="cb5-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> ci, <span class="at">color =</span> <span class="st">"dodgerblue"</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> ci[<span class="dv">1</span>], <span class="at">xmax =</span> ci[<span class="dv">2</span>], <span class="at">ymin =</span> <span class="dv">0</span>,</span>
+<span id="cb5-7"><a></a>           <span class="at">ymax =</span> <span class="cn">Inf</span>, <span class="at">fill =</span> <span class="st">"dodgerblue"</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="confidence-intervals---putting-it-all-together" class="slide level2">
+<h2>Confidence Intervals - putting it all together</h2>
+<p>Gathering bootstrap samples…</p>
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>boot_slope <span class="ot">&lt;-</span> theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb6-4"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span>
+<span id="cb6-7"><a></a><span class="fu">head</span>(boot_slope)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  replicate  slope
+      &lt;int&gt;  &lt;dbl&gt;
+1         1 -0.411
+2         2 -0.762
+3         3 -0.614
+4         4 -0.665
+5         5 -0.961
+6         6 -0.615</code></pre>
+</div>
+</div></div>
+<p><br></p>
+<div class="columns">
+<div class="column fragment" style="width:40%;">
+<p><strong>Percentile confidence interval</strong></p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>q_ci <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boot_slope<span class="sc">$</span>slope,</span>
+<span id="cb8-2"><a></a>                 <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb8-3"><a></a>q_ci</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 2.5% 97.5% 
+-1.17 -0.22 </code></pre>
+</div>
+</div>
+</div><div class="column fragment" style="width:60%;">
+<p><strong>Standard error confidence interval</strong> (-0.61 is the original slope)…</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>tstar <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="fu">nrow</span>(theses_samp) <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb10-2"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_slope<span class="sc">$</span>slope)</span>
+<span id="cb10-3"><a></a>se_ci <span class="ot">&lt;-</span> <span class="fu">c</span>(b1 <span class="sc">-</span> tstar<span class="sc">*</span>se, b1 <span class="sc">+</span> tstar<span class="sc">*</span>se)</span>
+<span id="cb10-4"><a></a>se_ci</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> year  year 
+-1.09 -0.13 </code></pre>
+</div>
+</div>
+</div></div>
+<ul>
+<li class="fragment">Neither interval contains 0!</li>
+</ul>
+</section>
+<section id="hypothesis-tests" class="slide level2">
+<h2>Hypothesis Tests</h2>
+<p><span class="math display">\[H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0\]</span></p>
+<p>Even without <strong>Normality</strong> and <strong>Equal Variability</strong> <u>of the <em>residuals</em></u>, the standardized statistic</p>
+<p><span class="math display">\[
+Z = \frac{\widehat{\beta}_1 - \beta_1}{\text{Bootstrap $\widehat{SE}$}}
+\]</span></p>
+<p>is <strong>approximately standard normal (i.e., mean 0 and SD 1) as <span class="math inline">\(n\)</span> gets large enough.</strong></p>
+<ul>
+<li class="fragment">This means we can use <code>pnorm()</code> to get our p-values!
+<ul>
+<li class="fragment">The bootstrap is helping us estimate the SE for our z-score.</li>
+<li class="fragment">We need to use the bootstrap because we can’t trust the <code>lm()</code> theory-based SE estimates when these assumptions are violated.</li>
+</ul></li>
+<li class="fragment">We could go <em>fully</em> simulation-based and avoid even assuming that <span class="math inline">\(Z\)</span> is approximately Normal - this just requires extra coding.</li>
+</ul>
+</section>
+<section id="hypothesis-tests-1" class="slide level2">
+<h2>Hypothesis Tests</h2>
+<p><span class="math display">\[
+H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\beta}_1 - \beta_1}{\text{Bootstrap $\widehat{SE}$}}
+\]</span></p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="fragment">
+<ol type="1">
+<li>Gather bootstrap samples…</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>boot_slope <span class="ot">&lt;-</span> theses_samp <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a></a>  <span class="fu">select</span>(n_pages, year) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a></a>  <span class="fu">rep_sample_n</span>(<span class="fu">nrow</span>(theses_samp),</span>
+<span id="cb12-4"><a></a>               <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">reps =</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">group_by</span>(replicate) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a></a>  <span class="fu">summarize</span>(<span class="at">slope =</span> <span class="fu">get_regression_table</span>(<span class="fu">lm</span>(n_pages <span class="sc">~</span> year))<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Calculate the bootstrapped SE…</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>bootstrap_se <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_slope<span class="sc">$</span>slope)</span>
+<span id="cb13-2"><a></a>bootstrap_se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.24</code></pre>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:3%;">
 
+</div><div class="column" style="width:52%;">
+<div class="fragment">
+<ol start="3" type="1">
+<li>Calculate z-score under the null (<span class="math inline">\(\widehat{\beta}_1=-0.61\)</span> is the original slope)…</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>z <span class="ot">&lt;-</span> (b1 <span class="sc">-</span> <span class="dv">0</span>) <span class="sc">/</span> bootstrap_se</span>
+<span id="cb15-2"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>year 
+-2.5 </code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ol start="4" type="1">
+<li>Calculate the p-value (2-sided test)…</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(z)</span>
+<span id="cb17-2"><a></a>p_value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> year 
+0.012 </code></pre>
+</div>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<p><strong>We reject <span class="math inline">\(H_0\)</span> at the 0.05 level! (But not at the 0.01 level)</strong></p>
+</div>
+</section>
 <section>
 <section id="review-multiple-linear-regression" class="title-slide slide level1 center">
 <h1>Review: Multiple Linear Regression</h1>
@@ -235,7 +523,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
+<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" style="width:95.0%"></p>
 </figure>
 </div>
 </div>
@@ -245,18 +533,20 @@
 <h2>Example: Reed Theses</h2>
 <p>How does <strong>Page Count</strong> (<span class="math inline">\(y\)</span>) vary by <strong>Year</strong> (<span class="math inline">\(x_1\)</span>) and <strong>Division</strong> (<span class="math inline">\(x_2\)</span>)?</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>mod_YearDivision <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year <span class="sc">+</span> division, <span class="at">data =</span> theses)</span>
-<span id="cb1-2"><a></a><span class="fu">get_regression_table</span>(mod_YearDivision)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>mod_YearDivision <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year <span class="sc">+</span> division, <span class="at">data =</span> theses)</span>
+<span id="cb19-2"><a></a><span class="fu">get_regression_table</span>(mod_YearDivision)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 7
+<pre><code># A tibble: 8 × 7
   term           estimate std_error statistic p_value lower_ci upper_ci
   &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 intercept       626.      127.         4.94   0      377.     875.   
-2 year             -0.284     0.064     -4.45   0       -0.409   -0.159
-3 division: HSS    33.2       5.08       6.55   0       23.3     43.2  
-4 division: LL     22.7       5.53       4.11   0       11.9     33.6  
-5 division: MNS    -4.99      5.09      -0.98   0.327  -15.0      5.01 
-6 division: PRPL   21.1       5.51       3.83   0       10.3     31.9  </code></pre>
+1 intercept      1150.      142.         8.10   0       872.   1429.   
+2 year             -0.541     0.071     -7.61   0        -0.68   -0.401
+3 division: G      26.5      20.1        1.32   0.189   -13.0    66.0  
+4 division: HSS    35.8       6.61       5.41   0        22.8    48.8  
+5 division: ID     27.6       8.66       3.18   0.002    10.6    44.6  
+6 division: LL     12.3       6.89       1.79   0.075    -1.22   25.8  
+7 division: MNS    -9.50      6.49      -1.46   0.144   -22.2     3.25 
+8 division: PRPL    8.28      6.99       1.18   0.237    -5.44   22.0  </code></pre>
 </div>
 </div>
 </section>
@@ -264,18 +554,20 @@
 <h2>Review: Multiple Regression Model</h2>
 <div style="font-size:0.9em">
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>mod_YearDivision <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year <span class="sc">+</span> division, <span class="at">data =</span> theses)</span>
-<span id="cb3-2"><a></a><span class="fu">get_regression_table</span>(mod_YearDivision)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>mod_YearDivision <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year <span class="sc">+</span> division, <span class="at">data =</span> theses)</span>
+<span id="cb21-2"><a></a><span class="fu">get_regression_table</span>(mod_YearDivision)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 7
+<pre><code># A tibble: 8 × 7
   term           estimate std_error statistic p_value lower_ci upper_ci
   &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 intercept       626.      127.         4.94   0      377.     875.   
-2 year             -0.284     0.064     -4.45   0       -0.409   -0.159
-3 division: HSS    33.2       5.08       6.55   0       23.3     43.2  
-4 division: LL     22.7       5.53       4.11   0       11.9     33.6  
-5 division: MNS    -4.99      5.09      -0.98   0.327  -15.0      5.01 
-6 division: PRPL   21.1       5.51       3.83   0       10.3     31.9  </code></pre>
+1 intercept      1150.      142.         8.10   0       872.   1429.   
+2 year             -0.541     0.071     -7.61   0        -0.68   -0.401
+3 division: G      26.5      20.1        1.32   0.189   -13.0    66.0  
+4 division: HSS    35.8       6.61       5.41   0        22.8    48.8  
+5 division: ID     27.6       8.66       3.18   0.002    10.6    44.6  
+6 division: LL     12.3       6.89       1.79   0.075    -1.22   25.8  
+7 division: MNS    -9.50      6.49      -1.46   0.144   -22.2     3.25 
+8 division: PRPL    8.28      6.99       1.18   0.237    -5.44   22.0  </code></pre>
 </div>
 </div>
 <p><br></p>
@@ -340,15 +632,15 @@ y  = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + \epsilon
 <div class="column">
 <p><strong>Residual plot</strong>: Residuals vs fitted values</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>mod_YearDivision <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">get_regression_points</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n_pages_hat, <span class="at">y =</span> residual))<span class="sc">+</span></span>
-<span id="cb5-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb5-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>mod_YearDivision <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a></a>  <span class="fu">get_regression_points</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> n_pages_hat, <span class="at">y =</span> residual))<span class="sc">+</span></span>
+<span id="cb23-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb23-5"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -356,28 +648,28 @@ y  = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + \epsilon
 </div><div class="column">
 <p><strong>Residuals histogram and Q-Q Plot</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>mod_YearDivision <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">get_regression_points</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> residual)) <span class="sc">+</span></span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>mod_YearDivision <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a></a>  <span class="fu">get_regression_points</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> residual)) <span class="sc">+</span></span>
+<span id="cb24-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"white"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>mod_YearDivision <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">get_regression_points</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> residual)) <span class="sc">+</span></span>
-<span id="cb7-4"><a></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span> </span>
-<span id="cb7-5"><a></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>mod_YearDivision <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a></a>  <span class="fu">get_regression_points</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> residual)) <span class="sc">+</span></span>
+<span id="cb25-4"><a></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span> </span>
+<span id="cb25-5"><a></a>  <span class="fu">geom_qq_line</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -428,7 +720,7 @@ y  = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + \epsilon
 <ul>
 <li class="fragment">Often, we have a more generic goal than learning about a specific coefficient:
 <ul>
-<li class="fragment"><strong>What’s the <u>best</u> model to predict <span class="math inline">\(y\)</span> using some combination of variables <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>,,<span class="math inline">\(x_k\)</span>?</strong></li>
+<li class="fragment"><strong>What’s the <u>best</u> model to predict <span class="math inline">\(y\)</span> using some combination of variables <span class="math inline">\(x_1, x_2, \dots, x_k\)</span>?</strong></li>
 </ul></li>
 </ul>
 <p><br></p>
@@ -489,7 +781,7 @@ y  = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + \epsilon
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+<p><img data-src="lecture34_reg-inference-mlr_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
 </figure>
 </div>
 </div>
@@ -527,15 +819,15 @@ H_a:&amp; \text{ The large model is superior to the small at explaining y}\\
 <section id="nested-f-tests-1" class="slide level2">
 <h2>Nested F-Tests</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># Setting up our models</span></span>
-<span id="cb8-2"><a></a>model_small <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_length_mm <span class="sc">~</span> body_mass_g <span class="sc">+</span> species, <span class="at">data =</span> penguins)</span>
-<span id="cb8-3"><a></a>model_large <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_length_mm <span class="sc">~</span> body_mass_g <span class="sc">*</span> species, <span class="at">data =</span> penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="co"># Setting up our models</span></span>
+<span id="cb26-2"><a></a>model_small <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_length_mm <span class="sc">~</span> body_mass_g <span class="sc">+</span> species, <span class="at">data =</span> penguins)</span>
+<span id="cb26-3"><a></a>model_large <span class="ot">&lt;-</span> <span class="fu">lm</span>(bill_length_mm <span class="sc">~</span> body_mass_g <span class="sc">*</span> species, <span class="at">data =</span> penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="co"># We'll learn more about what anova() is doing next time!!</span></span>
-<span id="cb9-2"><a></a><span class="co"># Small model first, large model second</span></span>
-<span id="cb9-3"><a></a><span class="fu">anova</span>(model_small, model_large)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># We'll learn more about what anova() is doing next time!!</span></span>
+<span id="cb27-2"><a></a><span class="co"># Small model first, large model second</span></span>
+<span id="cb27-3"><a></a><span class="fu">anova</span>(model_small, model_large)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Analysis of Variance Table
 
@@ -611,7 +903,7 @@ Model 2: bill_length_mm ~ body_mass_g * species
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_689c1c2d" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_f3f2c0e7" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
