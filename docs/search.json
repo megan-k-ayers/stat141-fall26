@@ -130,7 +130,7 @@
     "href": "slides/lecture34_reg-inference-mlr.html#confidence-intervals---putting-the-code-all-together",
     "title": "STAT 141",
     "section": "Confidence Intervals - putting the code all together",
-    "text": "Confidence Intervals - putting the code all together\nGathering bootstrap samples…\n\n\nboot_slope &lt;- theses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])\nhead(boot_slope)\n\n\n# A tibble: 6 × 2\n  replicate  slope\n      &lt;int&gt;  &lt;dbl&gt;\n1         1 -0.411\n2         2 -0.762\n3         3 -0.614\n4         4 -0.665\n5         5 -0.961\n6         6 -0.615\n\n\n\n\n\nPercentile confidence interval\n\nq_ci &lt;- quantile(boot_slope$slope,\n                 c(0.025, 0.975))\nq_ci\n\n 2.5% 97.5% \n-1.17 -0.22 \n\n\n\nStandard error confidence interval (-0.61 is the original slope)…\n\ntstar &lt;- qt(0.975, nrow(theses_samp) - 2)\nse &lt;- sd(boot_slope$slope)\nse_ci &lt;- c(b1 - tstar*se, b1 + tstar*se)\nse_ci\n\n year  year \n-1.09 -0.13 \n\n\n\n\nNeither interval contains 0!"
+    "text": "Confidence Intervals - putting the code all together\nGathering bootstrap samples…\n\n\nboot_slope &lt;- theses_samp %&gt;% \n  select(n_pages, year) %&gt;%\n  rep_sample_n(nrow(theses_samp),\n               replace = TRUE, reps = 1000) %&gt;%\n  group_by(replicate) %&gt;%\n  summarize(slope = get_regression_table(lm(n_pages ~ year))$estimate[2])\nhead(boot_slope)\n\n\n# A tibble: 6 × 2\n  replicate  slope\n      &lt;int&gt;  &lt;dbl&gt;\n1         1 -0.411\n2         2 -0.762\n3         3 -0.614\n4         4 -0.665\n5         5 -0.961\n6         6 -0.615\n\n\n\n\n\nPercentile confidence interval\n\nq_ci &lt;- quantile(boot_slope$slope,\n                 c(0.025, 0.975))\nq_ci\n\n 2.5% 97.5% \n-1.17 -0.22 \n\n\n\nStandard error confidence interval (-0.61 is the original slope)…\n\nb1 &lt;- -0.61\ntstar &lt;- qt(0.975, nrow(theses_samp) - 2)\nse &lt;- sd(boot_slope$slope)\nse_ci &lt;- c(b1 - tstar*se, b1 + tstar*se)\nse_ci\n\n[1] -1.09 -0.13\n\n\n\n\nNeither interval contains 0!"
   },
   {
     "objectID": "slides/lecture34_reg-inference-mlr.html#hypothesis-tests",
@@ -249,7 +249,7 @@
     "href": "slides/lecture34_reg-inference-mlr.html#final-note-model-selection",
     "title": "STAT 141",
     "section": "Final Note: Model Selection",
-    "text": "Final Note: Model Selection\n\nThere are tons of other tools for model selection:\n\n“Goodness-of-Fit” criteria, like AIC and BIC\nPenalized regression, like the “lasso” and “ridge regression”\nCross validation\n\nThese are covered in Math 243!"
+    "text": "Final Note: Model Selection\n\nThere are tons of other tools for model selection:\n\n“Goodness-of-Fit” criteria, like AIC and BIC\nPenalized regression, like the “lasso” and “ridge regression”\nCross validation\n\nThese are covered in Stat 243!"
   },
   {
     "objectID": "slides/lecture34_reg-inference-mlr.html#next-time",
@@ -5409,5 +5409,96 @@
     "title": "STAT 141",
     "section": "Next time",
     "text": "Next time\n\nInference for multiple regression"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#goals-for-today",
+    "href": "slides/lecture35_reg-inference-anova.html#goals-for-today",
+    "title": "STAT 141",
+    "section": "Goals for today",
+    "text": "Goals for today\n\n\n\nDiscuss inference for regression with categorical variables\nIntroduce ANOVA\n\n\n\nLearn about the F distribution\nConnect back to the F-test for comparing nested models"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#recall-regression-with-a-categorical-predictor",
+    "href": "slides/lecture35_reg-inference-anova.html#recall-regression-with-a-categorical-predictor",
+    "title": "STAT 141",
+    "section": "Recall: Regression with a Categorical Predictor",
+    "text": "Recall: Regression with a Categorical Predictor\n\nWe can build a linear model to predict Number of Pages (\\(y\\)) with Division (\\(x\\)) to assess this more formally.\n\n\n\nQ: How many coefficient estimates will we get?\n\n\n# fit the model\nmod &lt;- lm(n_pages ~ division, theses)\nget_regression_table(mod)\n\n\n\n\n\n# A tibble: 5 × 7\n  term           estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept          76.1      8.57      8.88   0        59.2     92.9 \n2 division: HSS      29.6      9.71      3.04   0.002    10.5     48.6 \n3 division: LL       15.3     10.5       1.46   0.146    -5.36    36.0 \n4 division: MNS     -10.3      9.78     -1.06   0.291   -29.6      8.87\n5 division: PRPL     14.2     10.5       1.35   0.177    -6.47    34.9 \n\n\n\n\nDiscuss with Neighbor(s):\n\n\nWhat is the equation for the fitted model?\nHow should we interpret each coefficient? What do +/- coefficients imply?"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#inference-for-regression-with-a-categorical-predictor",
+    "href": "slides/lecture35_reg-inference-anova.html#inference-for-regression-with-a-categorical-predictor",
+    "title": "STAT 141",
+    "section": "Inference for Regression with a Categorical Predictor",
+    "text": "Inference for Regression with a Categorical Predictor\n\n\n# A tibble: 5 × 7\n  term           estimate std_error statistic p_value lower_ci upper_ci\n  &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1 intercept          76.1      8.57      8.88   0        59.2     92.9 \n2 division: HSS      29.6      9.71      3.04   0.002    10.5     48.6 \n3 division: LL       15.3     10.5       1.46   0.146    -5.36    36.0 \n4 division: MNS     -10.3      9.78     -1.06   0.291   -29.6      8.87\n5 division: PRPL     14.2     10.5       1.35   0.177    -6.47    34.9 \n\n\nDiscuss with Neighbor(s):\n\nQ: How should we interpret the confidence interval for division:HSS?\nQ: What hypothesis tests are happening here?\n\nHow are we mathematically defining and evaluating them?\nHow do we interpret the results contextually?\n\nQ: Are there other tests we might want to carry out instead?"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#inference-for-many-means-1",
+    "href": "slides/lecture35_reg-inference-anova.html#inference-for-many-means-1",
+    "title": "STAT 141",
+    "section": "Inference for Many Means",
+    "text": "Inference for Many Means\nConsider the general situation where:\n\nResponse variable: quantitative\nExplanatory variable: categorical\nWe want to compare the average responses in the different categories\n\nParameter of interest: \\(\\mu_1 - \\mu_2\\)?\nThis parameter of interest only makes sense if the explanatory variable is restricted to two categories.\n\n\n\n\nCan use linear regression to assess individual means, but in the special case of categorical explanatory variables, we have another option.\n\nWe can conduct inference for more than two means with one test!"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#test-statistic",
+    "href": "slides/lecture35_reg-inference-anova.html#test-statistic",
+    "title": "STAT 141",
+    "section": "Test Statistic",
+    "text": "Test Statistic\nNeed a test statistic!\n\nWon’t be a single summary statistic.\nNeeds to measure the discrepancy between the observed sample and the sample we’d expect to see if \\(H_0\\) were true.\nWould be nice if its null distribution could be approximated by a known probability model."
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#anova",
+    "href": "slides/lecture35_reg-inference-anova.html#anova",
+    "title": "STAT 141",
+    "section": "ANOVA",
+    "text": "ANOVA\nWe’ll consider a test called “ANOVA”\n\nCalled “Analysis of VARIANCE” test.\nNot called “Analysis of MEANS” test!\nQuestion: Why analyze variability to test differences in means?"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#test-statistic-1",
+    "href": "slides/lecture35_reg-inference-anova.html#test-statistic-1",
+    "title": "STAT 141",
+    "section": "Test Statistic",
+    "text": "Test Statistic\n\nIn some ways, MSG is the natural test statistic but as we saw for this example, MSG alone isn’t enough.\n\n\n\n\n\n\n\n\n\n\nScenarios 2 and 3 have roughly the same MSG but we are much more convinced that the means are different for 2 than 3.\nThat is where MSE comes in!"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#conditions-for-anova",
+    "href": "slides/lecture35_reg-inference-anova.html#conditions-for-anova",
+    "title": "STAT 141",
+    "section": "Conditions for ANOVA",
+    "text": "Conditions for ANOVA\nWe can safely use ANOVA for this type of hypothesis test if we have:\n\nIndependence of observations\nAt least 30 observations in each group (rule of thumb), or the response variable is normal\nSimilar variability for all groups"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#the-anova-test",
+    "href": "slides/lecture35_reg-inference-anova.html#the-anova-test",
+    "title": "STAT 141",
+    "section": "The ANOVA Test",
+    "text": "The ANOVA Test\nCheck assumptions!\n\n\n# A tibble: 5 × 3\n  division `n()` `sd(n_pages)`\n  &lt;chr&gt;    &lt;int&gt;         &lt;dbl&gt;\n1 ART         49          77.4\n2 HSS        172          54.3\n3 LL          96          50.0\n4 MNS        162          66.2\n5 PRPL        96          57.8\n\n\n\nRule of thumb:\n\nTake the ratio of the smallest and largest standard deviations\nConcern if it is smaller than 0.5 or larger than 2\n\n\n\n\n77.4/50\n\n[1] 1.55"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#the-anova-test-1",
+    "href": "slides/lecture35_reg-inference-anova.html#the-anova-test-1",
+    "title": "STAT 141",
+    "section": "The ANOVA Test",
+    "text": "The ANOVA Test\nCheck assumptions!\n\n\n\n\n\n\n\n\n\n\n\n\n\ncount(theses, division)\n\n# A tibble: 5 × 2\n  division     n\n  &lt;chr&gt;    &lt;int&gt;\n1 ART         49\n2 HSS        172\n3 LL          96\n4 MNS        162\n5 PRPL        96"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#anova-learning-check",
+    "href": "slides/lecture35_reg-inference-anova.html#anova-learning-check",
+    "title": "STAT 141",
+    "section": "ANOVA learning check",
+    "text": "ANOVA learning check\nThinking of your future self studying for the final exam, write down 1-2 sentences briefly explaining what ANOVA is (at a high level) and why we use it."
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#many-anova-tests-out-there",
+    "href": "slides/lecture35_reg-inference-anova.html#many-anova-tests-out-there",
+    "title": "STAT 141",
+    "section": "Many ANOVA Tests Out There!",
+    "text": "Many ANOVA Tests Out There!\n\nWe learned the One-Way ANOVA test.\nTwo-Way: Have two categorical, explanatory variables and one quantitative response.\nRepeated Measures ANOVA: Have multiple observations on each case.\n\nAll the tests we have focused on assumed independent observations.\n\n\n\n\nANOVA Tests for Regression: Allow comparisons of various subsets of a multiple linear regression model\n\nRemember our hypothesis tests about nested models last class! This comparison involves an F-Test too.\n\n\n\\[\n\\begin{aligned}\nH_0:& \\text{ The small model is sufficient at explaining Y}\\\\\nH_a:& \\text{ The large model is superior to the small at explaining Y}\\\\\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "slides/lecture35_reg-inference-anova.html#next-time",
+    "href": "slides/lecture35_reg-inference-anova.html#next-time",
+    "title": "STAT 141",
+    "section": "Next time:",
+    "text": "Next time:\n\nModel selection activity - bring your laptop or tablet!"
   }
 ]

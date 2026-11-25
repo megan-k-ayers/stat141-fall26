@@ -414,13 +414,13 @@
 </div><div class="column fragment" style="width:60%;">
 <p><strong>Standard error confidence interval</strong> (-0.61 is the original slope)…</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>tstar <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="fu">nrow</span>(theses_samp) <span class="sc">-</span> <span class="dv">2</span>)</span>
-<span id="cb10-2"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_slope<span class="sc">$</span>slope)</span>
-<span id="cb10-3"><a></a>se_ci <span class="ot">&lt;-</span> <span class="fu">c</span>(b1 <span class="sc">-</span> tstar<span class="sc">*</span>se, b1 <span class="sc">+</span> tstar<span class="sc">*</span>se)</span>
-<span id="cb10-4"><a></a>se_ci</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>b1 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fl">0.61</span></span>
+<span id="cb10-2"><a></a>tstar <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="fu">nrow</span>(theses_samp) <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb10-3"><a></a>se <span class="ot">&lt;-</span> <span class="fu">sd</span>(boot_slope<span class="sc">$</span>slope)</span>
+<span id="cb10-4"><a></a>se_ci <span class="ot">&lt;-</span> <span class="fu">c</span>(b1 <span class="sc">-</span> tstar<span class="sc">*</span>se, b1 <span class="sc">+</span> tstar<span class="sc">*</span>se)</span>
+<span id="cb10-5"><a></a>se_ci</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> year  year 
--1.09 -0.13 </code></pre>
+<pre><code>[1] -1.09 -0.13</code></pre>
 </div>
 </div>
 </div></div>
@@ -906,7 +906,7 @@ Model 2: bill_length_mm ~ body_mass_g * species
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_aba4364e" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_68254ec1" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -919,7 +919,7 @@ Model 2: bill_length_mm ~ body_mass_g * species
 <li class="fragment">Penalized regression, like the “lasso” and “ridge regression”</li>
 <li class="fragment">Cross validation</li>
 </ul></li>
-<li class="fragment">These are covered in Math 243!</li>
+<li class="fragment">These are covered in Stat 243!</li>
 </ul>
 </section>
 <section id="next-time" class="slide level2">

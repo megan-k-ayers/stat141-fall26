@@ -542,8 +542,10 @@ scheduled-docs:
           docs:
             - type: Reading
               href: readings/reading37.qmd
-            # - type: Slides
-            #   href: slides/lecture35_reg-inference-anova.qmd
+            - type: Slides
+              href: slides/lecture35_reg-inference-anova.qmd
+            - type: Slides Printout (Optional)
+              href: handouts/lecture35_reg-inference-anova_handout.pdf
         - topic: "Inference for Regression IV: Wrapping Up"
           display-date: Wednesday, Dec 2
           date: 12/02/26

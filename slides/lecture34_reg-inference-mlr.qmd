@@ -335,6 +335,7 @@ q_ci
 **Standard error confidence interval** (`r b1` is the original slope)...
 
 ```{r eval = T, echo = T}
+b1 <- -0.61
 tstar <- qt(0.975, nrow(theses_samp) - 2)
 se <- sd(boot_slope$slope)
 se_ci <- c(b1 - tstar*se, b1 + tstar*se)
@@ -861,7 +862,7 @@ countdown::countdown(5)
     - Penalized regression, like the "lasso" and "ridge regression"
     - Cross validation
   
-- These are covered in Math 243!
+- These are covered in Stat 243!
 
 
 ------------------------------------------------------------------------
