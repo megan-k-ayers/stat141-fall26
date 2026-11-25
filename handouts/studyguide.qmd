@@ -1,0 +1,138 @@
+---
+title: "Stat 141"
+format: pdf
+author: "Exam Review Guide"
+---
+
+This review sheet is meant to help you self-assess your understanding of course material from Stat 141, and identify areas to focus your review.
+
+The questions provided here are not all representative of how exam questions will be asked, and the final exam will assess a subset of these concepts. Most of these questions are pretty general, but connect to problems you've seen on homeworks, quizzes, and lectures. Here's what I recommend for your studying:
+
+- Take a first pass through the questions here. Mark the questions whose answers feel obvious to you, and highlight the ones you are uncertain about.
+- For the questions you marked as uncertain:
+    - Try to identify a related quiz question or homework problem and relevant lecture slides to review. If you aren't able to find these for a particular question, ask Megan or on Slack for help. Once you've reviewed, redo the identified problem timed and without notes.
+    - Consider adding a related note on this topic to your index card (see below)
+
+**You are allowed one 3x5 index card with handwritten notes on both sides, but otherwise, you are not allowed to use *any* notes, textbooks, or any other kind of resources on the exam. I will include theory-based inference summary tables in the exam.** 
+
+**NOTE: You will be required to submit your note card along with your final exam.** 
+
+Consider attending office hours, posting to the Slack channel, and collaborating with your peers while you prepare for the exam!
+
+\newpage
+
+## Summary Statistics and Visualization
+
+- What types of visualizations/summaries are best for the following variable type(s):
+    a. One quantitative
+    b. One categorical
+    c. One quantitative and one categorical
+    d. Two categorical
+    e. Two quantitative
+- What summary statistics are relevant or helpful for interpreting boxplots? Histograms?
+- What are the elements of the grammar of graphics, and: 
+    - What purpose does each serve?
+    - How do we control these when we make `ggplot`s? 
+
+## Data Wrangling
+
+- How does each of the following `dplyr` functions change a data frame?
+    - `filter()`
+    - `mutate()`
+    - `group_by()`
+    - `summarize()`
+    - `count()`
+
+## Sampling Schemes and Study Design
+
+- What are the differences between simple random sampling, cluster random sampling, and stratified random sampling strategies? What are the pros and cons of each?
+- Recall potential sources of sampling bias. Without looking at your response, practice answering and explaining HW 4 #1.
+- How can you distinguish an observational study from an experiment? What kind of conclusions does each offer?
+
+\newpage
+
+## Probability
+
+- Define probability, and explain how it relates to the Law of Large Numbers.
+
+- Conditional Probability, Multiplication Rule, Bayes Rule, and the Law of Total Probability
+    i. What are the definitions of these probability rules? 
+    ii. When is each of them useful?
+    iii. Solve OI 3.22 (exit poll). You should get 0.487.
+
+- How do we know, mathematically, when two events are independent? Give an example of two independent events and an example of two dependent events.
+    
+    
+## Linear Regression
+
+- What do we mean by the "line of best fit"? 
+- What do the `lm()`, `get_regression_table()`, and `get_regression_points()` functions do?
+- Practice writing model equations and interpreting coefficients (ex. from quiz 4)
+- How can we use $R^2$ and adjusted $R^2$ to select a model? What is the difference between these two metrics? 
+- What are the LINE assumptions and how do we assess whether they are met? Draw examples of good and bad diagnostic plots.
+
+
+
+## Inference overview
+
+Suppose we want to know how many *more* gallons of kombucha the average Portlander consumes in a year compared to the average Boulderite (from Boulder CO). We do a survey of 100 randomly sampled Portlanders and 100 randomly sampled Boulderites and ask them about their yearly intake.
+
+- What is the population, the sample, the parameter, and the statistic of interest?
+- Explain the differences and relationships between the following distributions and explain why we care about them for inference:
+    i. Population distributions of annual kombucha intake in each city
+    ii. Sampling distribution of the statistic
+    iii. Bootstrap distribution of the statistic
+    iv. Null distribution of the statistic (assuming our null hypothesis is that the parameter $= 0$). 
+
+- Suppose the value of our statistic is 1.5, and that the true parameter value is 2. What is the center of the distributions from ii, iii, and iv above?
+ 
+- We've discussed theory-based inference for four specific parameters: a proportion, a difference in proportions, a mean, and a difference in means. When do we consider each type of parameter? Consider the following possible data settings:
+    - One categorical variable (ex. `var1` = whether or not each Portlander in our sample drinks any kombucha)
+    - Two categorical variables (ex. `var1` = whether or not each person in our sample drinks any kombucha, and `var2` = whether they live in Portland or Boulder)
+    - One quantitative variable (ex. `var1` = how many gallons of kombucha each Portlander in our sample drinks)
+    - One quantitative variable and one categorical variable (ex. `var1` = how many gallons of kombucha each person in our sample drinks, and `var2` = whether they live in Portland or Boulder)
+    
+
+## Confidence intervals
+
+- Explain the difference between the percentile and SE methods for constructing confidence intervals, including how we generally calculate each and conditions for when we should use each method.
+- How do confidence intervals relate conceptually to sampling distributions? 
+- How do confidence intervals change if: we change the sample size, we change the confidence level, or we take a new sample from the population? 
+- Suppose we are given a 90% confidence interval of [1.5, 3] for some parameter. How should we interpret this confidence interval? Why would it be wrong to say "there is a 90% chance the parameter is in our interval?" 
+- What are the general steps we follow to construct simulation-based confidence intervals? What essential `R` functions do we use?
+- What are the general steps we follow to construct theory-based confidence intervals? For the SE method, what are "critical values" and how do we find them?
+
+
+## Hypothesis testing
+
+- What are the general steps for the hypothesis testing framework? What changes between simulation-based and theory-based approaches?
+- What is the general interpretation of a p-value?
+- What does it mean if we set $\alpha = 0.10$? What are the effects of changing $\alpha$?
+- What are Type I and Type II errors? How do we control each of these? 
+- What is power, and why is it important?
+- What distinguishes a 1-sided test from a 2-sided test? Draw pictures of the null distribution and what parts of it represent the p-value for each type of test. 
+
+\newpage
+
+## Random variables
+
+- How do we define and calculate expected value of a random variable?
+- How do we define and calculate variance of a random variable? 
+- When $X$ and $Y$ are two random variables and $c$ is a fixed number, how/under what conditions can we calculate:
+    - $E[X + Y]$
+    - $E[cX]$
+    - $Var[X + Y]$
+    - $Var[cX]$
+- What is an example of a Binomial distributed random variable? What are the relevant parameters? What are the formulas for the mean and variance of a Binomial random variable? 
+- What is an example of a Normally distributed random variable? What are the relevant parameters?
+- What do we mean by the "Standard Normal" distribution? What is a Z-score?
+- In your own words, what does the Central Limit Theorem tell us, and why is it important for statistical inference?
+
+
+## Inference for regression
+
+- How can we perform theory-based hypothesis tests and obtain confidence intervals using `get_regression_table()`?
+- What are the conditions for theory-based inference for regression? For simulation-based inference for regression?
+- What hypotheses does ANOVA test? Generally speaking, how does it compare our observed data to the data we'd expect to see under the null? 
+
+

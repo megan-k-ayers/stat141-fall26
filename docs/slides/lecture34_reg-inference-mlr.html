@@ -373,8 +373,8 @@
 </div>
 </div></div>
 </section>
-<section id="confidence-intervals---putting-it-all-together" class="slide level2">
-<h2>Confidence Intervals - putting it all together</h2>
+<section id="confidence-intervals---putting-the-code-all-together" class="slide level2">
+<h2>Confidence Intervals - putting the code all together</h2>
 <p>Gathering bootstrap samples…</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
@@ -445,8 +445,8 @@ Z = \frac{\widehat{\beta}_1 - \beta_1}{\text{Bootstrap $\widehat{SE}$}}
 <li class="fragment">We could go <em>fully</em> simulation-based and avoid even assuming that <span class="math inline">\(Z\)</span> is approximately Normal - this just requires extra coding.</li>
 </ul>
 </section>
-<section id="hypothesis-tests-1" class="slide level2">
-<h2>Hypothesis Tests</h2>
+<section id="hypothesis-tests---code" class="slide level2">
+<h2>Hypothesis Tests - Code</h2>
 <p><span class="math display">\[
 H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\beta}_1 - \beta_1}{\text{Bootstrap $\widehat{SE}$}}
 \]</span></p>
@@ -485,11 +485,10 @@ H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\be
 <li>Calculate z-score under the null (<span class="math inline">\(\widehat{\beta}_1=-0.61\)</span> is the original slope)…</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>z <span class="ot">&lt;-</span> (b1 <span class="sc">-</span> <span class="dv">0</span>) <span class="sc">/</span> bootstrap_se</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>z <span class="ot">&lt;-</span> (<span class="sc">-</span><span class="fl">0.61</span> <span class="sc">-</span> <span class="dv">0</span>) <span class="sc">/</span> bootstrap_se</span>
 <span id="cb15-2"><a></a>z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>year 
--2.5 </code></pre>
+<pre><code>[1] -2.5</code></pre>
 </div>
 </div>
 </div>
@@ -501,8 +500,7 @@ H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\be
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>p_value <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(z)</span>
 <span id="cb17-2"><a></a>p_value</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> year 
-0.012 </code></pre>
+<pre><code>[1] 0.012</code></pre>
 </div>
 </div>
 </div>
@@ -536,17 +534,15 @@ H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\be
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>mod_YearDivision <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year <span class="sc">+</span> division, <span class="at">data =</span> theses)</span>
 <span id="cb19-2"><a></a><span class="fu">get_regression_table</span>(mod_YearDivision)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 7
+<pre><code># A tibble: 6 × 7
   term           estimate std_error statistic p_value lower_ci upper_ci
   &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 intercept      1150.      142.         8.10   0       872.   1429.   
-2 year             -0.541     0.071     -7.61   0        -0.68   -0.401
-3 division: G      26.5      20.1        1.32   0.189   -13.0    66.0  
-4 division: HSS    35.8       6.61       5.41   0        22.8    48.8  
-5 division: ID     27.6       8.66       3.18   0.002    10.6    44.6  
-6 division: LL     12.3       6.89       1.79   0.075    -1.22   25.8  
-7 division: MNS    -9.50      6.49      -1.46   0.144   -22.2     3.25 
-8 division: PRPL    8.28      6.99       1.18   0.237    -5.44   22.0  </code></pre>
+1 intercept       626.      127.         4.94   0      377.     875.   
+2 year             -0.284     0.064     -4.45   0       -0.409   -0.159
+3 division: HSS    33.2       5.08       6.55   0       23.3     43.2  
+4 division: LL     22.7       5.53       4.11   0       11.9     33.6  
+5 division: MNS    -4.99      5.09      -0.98   0.327  -15.0      5.01 
+6 division: PRPL   21.1       5.51       3.83   0       10.3     31.9  </code></pre>
 </div>
 </div>
 </section>
@@ -557,17 +553,15 @@ H_0: \beta_1 = 0 \qquad H_a: \beta_1 \neq 0 \qquad \qquad Z = \frac{\widehat{\be
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>mod_YearDivision <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_pages <span class="sc">~</span> year <span class="sc">+</span> division, <span class="at">data =</span> theses)</span>
 <span id="cb21-2"><a></a><span class="fu">get_regression_table</span>(mod_YearDivision)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 7
+<pre><code># A tibble: 6 × 7
   term           estimate std_error statistic p_value lower_ci upper_ci
   &lt;chr&gt;             &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-1 intercept      1150.      142.         8.10   0       872.   1429.   
-2 year             -0.541     0.071     -7.61   0        -0.68   -0.401
-3 division: G      26.5      20.1        1.32   0.189   -13.0    66.0  
-4 division: HSS    35.8       6.61       5.41   0        22.8    48.8  
-5 division: ID     27.6       8.66       3.18   0.002    10.6    44.6  
-6 division: LL     12.3       6.89       1.79   0.075    -1.22   25.8  
-7 division: MNS    -9.50      6.49      -1.46   0.144   -22.2     3.25 
-8 division: PRPL    8.28      6.99       1.18   0.237    -5.44   22.0  </code></pre>
+1 intercept       626.      127.         4.94   0      377.     875.   
+2 year             -0.284     0.064     -4.45   0       -0.409   -0.159
+3 division: HSS    33.2       5.08       6.55   0       23.3     43.2  
+4 division: LL     22.7       5.53       4.11   0       11.9     33.6  
+5 division: MNS    -4.99      5.09      -0.98   0.327  -15.0      5.01 
+6 division: PRPL   21.1       5.51       3.83   0       10.3     31.9  </code></pre>
 </div>
 </div>
 <p><br></p>
@@ -597,9 +591,18 @@ y  = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k + \epsilon
 \]</span></p>
 <p><br></p>
 <ul>
-<li class="fragment"><p><u>Intercept:</u> The <strong>[expected/predicted]</strong> number of pages (y) for a thesis in <strong>year 0</strong> and for the <strong>baseline division</strong> (Arts) is 626 pages, <strong>on average</strong></p></li>
-<li class="fragment"><p><u>Quantitative Slope:</u> For a <strong>one-year increase in time</strong>, we <strong>[expect/predict]</strong> a 0.284 page decrease in thesis length <strong>on average</strong>, holding <strong>division constant</strong>.</p></li>
-<li class="fragment"><p><u>Categorical Slope:</u> Comparing a thesis in the <strong>HSS division to the baseline division (Arts)</strong>, we <strong>[expect/predict]</strong> a 33.2 page increase in thesis length, <strong>on average</strong>, holding <strong>year constant</strong>.</p></li>
+<li class="fragment"><u>Intercept:</u>
+<ul>
+<li class="fragment">The <strong>[expected/predicted]</strong> number of pages (y) for a thesis in <strong>year 0</strong> and for the <strong>baseline division</strong> (Arts) is 626 pages, <strong>on average</strong></li>
+</ul></li>
+<li class="fragment"><u>Quantitative Slope:</u>
+<ul>
+<li class="fragment">For a <strong>one-year increase in time</strong>, we <strong>[expect/predict]</strong> a 0.284 page decrease in thesis length <strong>on average</strong>, holding <strong>division constant</strong>.</li>
+</ul></li>
+<li class="fragment"><u>Categorical Slope:</u>
+<ul>
+<li class="fragment">Comparing a thesis in the <strong>HSS division to the baseline division (Arts)</strong>, we <strong>[expect/predict]</strong> a 33.2 page increase in thesis length, <strong>on average</strong>, holding <strong>year constant</strong>.</li>
+</ul></li>
 </ul>
 </section>
 <section id="review-conditions" class="slide level2">
@@ -903,7 +906,7 @@ Model 2: bill_length_mm ~ body_mass_g * species
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_f3f2c0e7" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_aba4364e" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
